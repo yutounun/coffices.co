@@ -12,11 +12,7 @@ import AccountBoxIcon from "../../../node_modules/@mui/icons-material/AccountBox
 import SidebarRow from "./SidebarRow";
 import Image from "../../../node_modules/next/image";
 
-interface propTypes {
-  selectedTabTitle: "list" | "search" | "create" | "profile" | "config";
-}
-
-const Sidebar = ({ selectedTabTitle }: propTypes) => {
+const Sidebar = () => {
   const rowProps = [
     {
       children: <LibraryBooksIcon />,
