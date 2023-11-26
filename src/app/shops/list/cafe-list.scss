@@ -1,9 +1,8 @@
 .row__cards {
   width: 100%;
   overflow-x: scroll;
-  overflow-y: hidden;
   width: 100em;
-  height: 20em;
+  height: 25em;
   padding-left: 30px;
 }
 
@@ -15,8 +14,6 @@
   object-fit: contain;
   border-radius: 10%;
   padding: 10px;
-  width: 300px;
-  height: 100px;
   transition: transform 450ms;
   &:hover {
     transform: scale(1.15);

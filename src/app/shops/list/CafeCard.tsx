@@ -3,10 +3,13 @@ import React, { useState } from "react";
 import Image from "next/image";
 import "./cafe-list.scss";
 import {
+  Box,
   Stack,
   Typography,
 } from "../../../../node_modules/@mui/material/index";
 import { CafeI } from "types/cafes";
+import CafeDescription from "./CafeDescription";
+import { NextImage } from "_commons/NextImage";
 
 interface propTypes {
   cafe: CafeI;
@@ -34,44 +37,15 @@ const CafeCard = ({ cafe }: propTypes) => {
         overflow: "visible",
       }}
     >
-      <Image
-        className="row__picture"
-        src={cafe.image}
-        alt=""
-        width={300}
-        height={150}
-        layout="responsive"
-        onMouseOver={handleMouseOver}
-        onMouseOut={handleMouseOut}
-      />
-      {isHovering && (
-        <Stack
-          sx={{
-            m: "10px",
-            position: "absolute",
-            top: "220px",
-          }}
-          spacing={1}
-        >
-          <Typography variant="h5" sx={{ mb: "4px" }}>
-            {cafe.title}
-          </Typography>
-          <Typography variant="h6">★★★★ {cafe.rate}</Typography>
-          <Typography variant="body1">{cafe.area}</Typography>
-          <Typography variant="body1">
-            {cafe.openHour} ~ {cafe.closeHour}
-          </Typography>
-          <Typography variant="body1">
-            Wifi {cafe.isWifi ? "○" : "×"}
-          </Typography>
-          <Typography variant="body1">
-            電源 {cafe.isOutlet ? "○" : "×"}
-          </Typography>
-          <Typography variant="body1">
-            喫煙 {cafe.isSmoking ? "○" : "×"}
-          </Typography>
-        </Stack>
-      )}
+      <Box sx={{ height: "200px", width: "300px" }}>
+        <NextImage
+          src={cafe.image}
+          alt="cafe1"
+          onMouseOver={handleMouseOver}
+          onMouseOut={handleMouseOut}
+        />
+        {isHovering && <CafeDescription cafe={cafe} />}
+      </Box>
     </Stack>
   );
 };
