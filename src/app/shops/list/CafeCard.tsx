@@ -6,8 +6,13 @@ import {
   Stack,
   Typography,
 } from "../../../../node_modules/@mui/material/index";
+import { CafeI } from "types/cafes";
 
-const CafeCard = () => {
+interface propTypes {
+  cafe: CafeI;
+}
+
+const CafeCard = ({ cafe }: propTypes) => {
   const [isHovering, setIsHovering] = useState(false);
 
   const handleMouseOver = () => {
@@ -24,13 +29,14 @@ const CafeCard = () => {
         mx: "10px",
         height: "100",
         border: "1px",
-        backgroundColor: "white",
-        zIndex: "40",
+        position: "relative",
+        zIndex: 100,
+        overflow: "visible",
       }}
     >
       <Image
         className="row__picture"
-        src="/cafe1.png"
+        src={cafe.image}
         alt=""
         width={300}
         height={150}
@@ -39,18 +45,31 @@ const CafeCard = () => {
         onMouseOut={handleMouseOut}
       />
       {isHovering && (
-        <Stack sx={{ m: "10px" }} spacing={1}>
-          <Typography
-            variant="h5"
-            sx={{ mb: "4px", display: "flex", justifyContent: "center" }}
-          >
-            Nomad Cafe
+        <Stack
+          sx={{
+            m: "10px",
+            position: "absolute",
+            top: "220px",
+          }}
+          spacing={1}
+        >
+          <Typography variant="h5" sx={{ mb: "4px" }}>
+            {cafe.title}
           </Typography>
-          <Typography variant="h6">★★★★ 4.0</Typography>
-          <Typography variant="body1">東京都中目黒区</Typography>
-          <Typography variant="body1">Wifi ○</Typography>
-          <Typography variant="body1">電源 ○</Typography>
-          <Typography variant="body1">7:00 ~ 18:00</Typography>
+          <Typography variant="h6">★★★★ {cafe.rate}</Typography>
+          <Typography variant="body1">{cafe.area}</Typography>
+          <Typography variant="body1">
+            {cafe.openHour} ~ {cafe.closeHour}
+          </Typography>
+          <Typography variant="body1">
+            Wifi {cafe.isWifi ? "○" : "×"}
+          </Typography>
+          <Typography variant="body1">
+            電源 {cafe.isOutlet ? "○" : "×"}
+          </Typography>
+          <Typography variant="body1">
+            喫煙 {cafe.isSmoking ? "○" : "×"}
+          </Typography>
         </Stack>
       )}
     </Stack>

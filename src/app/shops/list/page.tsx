@@ -1,12 +1,13 @@
 import React from "react";
 import "./cafe-list.scss";
 import CafeRow from "./CafeRow";
+import Data from "./data.json";
 
 const ShopsList = () => {
   return (
     <>
-      <CafeRow />
-      <CafeRow />
+      <CafeRow cafes={Data} />
+      <CafeRow cafes={Data} />
     </>
   );
 };
