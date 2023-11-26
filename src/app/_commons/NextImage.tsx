@@ -6,8 +6,8 @@ import "../shops/list/cafe-list.scss";
 type NextImageProps = {
   src: string;
   alt: string;
-  onMouseOver: () => void;
-  onMouseOut: () => void;
+  onMouseOver?: () => void;
+  onMouseOut?: () => void;
 };
 
 export const NextImage: FC<NextImageProps> = ({

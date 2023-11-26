@@ -4,6 +4,7 @@ import {
   Typography,
 } from "../../../../node_modules/@mui/material/index";
 import { CafeI } from "types/cafes";
+import { stars } from "./functions";
 
 interface PropTypes {
   cafe: CafeI;
@@ -22,14 +23,10 @@ const CafeDescription = ({ cafe }: PropTypes) => {
       <Typography variant="h5" sx={{ mb: "4px" }}>
         {cafe.title}
       </Typography>
-      <Typography variant="h6">★★★★ {cafe.rate}</Typography>
-      <Typography variant="body1">{cafe.area}</Typography>
-      {/* <Typography variant="body1">
-        {cafe.openHour} ~ {cafe.closeHour}
+      <Typography variant="h6">
+        {stars(cafe.rate)} {cafe.rate}
       </Typography>
-      <Typography variant="body1">Wifi {cafe.isWifi ? "○" : "×"}</Typography>
-      <Typography variant="body1">電源 {cafe.isOutlet ? "○" : "×"}</Typography>
-      <Typography variant="body1">喫煙 {cafe.isSmoking ? "○" : "×"}</Typography> */}
+      <Typography variant="body1">{cafe.area}</Typography>
     </Stack>
   );
 };

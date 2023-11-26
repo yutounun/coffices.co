@@ -8,13 +8,14 @@ import CafeCard from "./CafeCard";
 
 interface propTypes {
   cafes: CafeI[];
+  area: string;
 }
 
-const CafeRow = ({ cafes }: propTypes) => {
+const CafeRow = ({ cafes, area }: propTypes) => {
   return (
     <>
       <Typography variant="h5" sx={{ m: "10px" }}>
-        恵比寿・中目黒エリア
+        {area}
       </Typography>
       <Stack direction="row" className="row__cards">
         {cafes.map((cafe) => (
