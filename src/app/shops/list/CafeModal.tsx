@@ -1,5 +1,11 @@
 import React from "react";
 import { CafeI } from "types/cafes";
+import WifiIcon from "../../../../node_modules/@mui/icons-material/Wifi";
+import PowerIcon from "../../../../node_modules/@mui/icons-material/Power";
+import StoreMallDirectoryIcon from "../../../../node_modules/@mui/icons-material/StoreMallDirectory";
+import SmokingRoomsIcon from "../../../../node_modules/@mui/icons-material/SmokingRooms";
+import PanoramaFishEyeIcon from "@mui/icons-material/PanoramaFishEye";
+import DoDisturbAltIcon from "@mui/icons-material/DoDisturbAlt";
 import {
   Box,
   Modal,
@@ -17,7 +23,7 @@ const modalStyle = {
   width: 800,
   bgcolor: "background.paper",
   boxShadow: 24,
-  height: 800,
+  height: 850,
   display: "flex",
   flexDirection: "column",
 };
@@ -49,27 +55,47 @@ const CafeModal = ({
           width={800} // Match the modal width
           height={400} // 50% of the modal height
         />
-        <Stack id="modal-modal-description" sx={{ m: 2 }} spacing={1}>
-          <Stack spacing={3} direction="row" sx={{ alignItems: "center" }}>
-            <Typography variant="h5" sx={{ mb: "4px" }}>
-              {cafe.title}
-            </Typography>
-            <Typography variant="h6">
-              {stars(cafe.rate)} {cafe.rate}
-            </Typography>
-          </Stack>
-          <Typography variant="subtitle1">{cafe.area}</Typography>
-          <Typography variant="subtitle1">
-            {cafe.openHour} ~ {cafe.closeHour}
+        <Stack id="modal-modal-description" sx={{ m: 3 }} spacing={1}>
+          <Typography
+            variant="h4"
+            sx={{ mb: "4px", display: "flex", justifyContent: "center" }}
+          >
+            {cafe.title}
           </Typography>
-          <Typography variant="subtitle1">
-            Wifi {cafe.isWifi ? "○" : "×"}
+          <Typography
+            variant="h5"
+            sx={{ mb: "4px", display: "flex", justifyContent: "center" }}
+          >
+            {stars(cafe.rate)} {cafe.rate}
           </Typography>
-          <Typography variant="subtitle1">
-            電源 {cafe.isOutlet ? "○" : "×"}
+          <Typography variant="h6">{cafe.area}</Typography>
+          <Typography
+            variant="h6"
+            sx={{ alignItems: "center", display: "flex" }}
+          >
+            <StoreMallDirectoryIcon sx={{ mr: "0.5em" }} /> {cafe.openHour} ~{" "}
+            {cafe.closeHour}
           </Typography>
-          <Typography variant="subtitle1">
-            喫煙 {cafe.isSmoking ? "○" : "×"}
+          <Typography
+            variant="h6"
+            sx={{ alignItems: "center", display: "flex" }}
+          >
+            <WifiIcon sx={{ mr: "0.5em" }} />{" "}
+            {cafe.isWifi ? <PanoramaFishEyeIcon /> : <DoDisturbAltIcon />}
+          </Typography>
+          <Typography
+            variant="h6"
+            sx={{ alignItems: "center", display: "flex" }}
+          >
+            <PowerIcon sx={{ mr: "0.5em" }} />{" "}
+            {cafe.isOutlet ? <PanoramaFishEyeIcon /> : <DoDisturbAltIcon />}
+          </Typography>
+          <Typography
+            variant="h6"
+            sx={{ alignItems: "center", display: "flex" }}
+          >
+            <SmokingRoomsIcon sx={{ mr: "0.5em" }} />{" "}
+            {cafe.isSmoking ? <PanoramaFishEyeIcon /> : <DoDisturbAltIcon />}
           </Typography>
         </Stack>
       </Box>
