@@ -24,12 +24,12 @@ const CafeDescription = ({ cafe }: PropTypes) => {
       </Typography>
       <Typography variant="h6">★★★★ {cafe.rate}</Typography>
       <Typography variant="body1">{cafe.area}</Typography>
-      <Typography variant="body1">
+      {/* <Typography variant="body1">
         {cafe.openHour} ~ {cafe.closeHour}
       </Typography>
       <Typography variant="body1">Wifi {cafe.isWifi ? "○" : "×"}</Typography>
       <Typography variant="body1">電源 {cafe.isOutlet ? "○" : "×"}</Typography>
-      <Typography variant="body1">喫煙 {cafe.isSmoking ? "○" : "×"}</Typography>
+      <Typography variant="body1">喫煙 {cafe.isSmoking ? "○" : "×"}</Typography> */}
     </Stack>
   );
 };

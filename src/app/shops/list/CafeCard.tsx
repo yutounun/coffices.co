@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import Image from "next/image";
 import "./cafe-list.scss";
 import {
   Box,
@@ -35,6 +34,10 @@ const CafeCard = ({ cafe }: propTypes) => {
         position: "relative",
         zIndex: 100,
         overflow: "visible",
+        "&:hover": {
+          scale: "1.07",
+          transition: "all 0.5s ease",
+        },
       }}
     >
       <Box sx={{ height: "200px", width: "300px" }}>
@@ -44,7 +47,7 @@ const CafeCard = ({ cafe }: propTypes) => {
           onMouseOver={handleMouseOver}
           onMouseOut={handleMouseOut}
         />
-        {isHovering && <CafeDescription cafe={cafe} />}
+        <CafeDescription cafe={cafe} />
       </Box>
     </Stack>
   );
