@@ -15,11 +15,11 @@ const Stars = ({ rate }: propTypes) => {
 
   for (let i = 0; i < 5; i++) {
     if (i < wholePart) {
-      stars.push(<StarIcon key={i} />);
+      stars.push(<StarIcon color="warning" key={i} />);
     } else if (i === wholePart && decimalPart >= 0.5) {
-      stars.push(<StarHalfIcon key={i} />);
+      stars.push(<StarHalfIcon color="warning" key={i} />);
     } else {
-      stars.push(<StarBorderIcon key={i} />);
+      stars.push(<StarBorderIcon color="warning" key={i} />);
     }
   }
 

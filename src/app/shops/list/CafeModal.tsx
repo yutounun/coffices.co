@@ -24,7 +24,7 @@ const modalStyle = {
   width: 800,
   bgcolor: "background.paper",
   boxShadow: 24,
-  height: 850,
+  height: 880,
   display: "flex",
   flexDirection: "column",
 };
@@ -50,33 +50,22 @@ const CafeModal = ({
       <Box sx={modalStyle}>
         <Image
           src={cafe.image}
-          alt="cafe1"
+          alt={cafe.title}
           layout="responsive"
           objectFit="cover"
           width={800} // Match the modal width
           height={400} // 50% of the modal height
         />
-        <Stack id="modal-modal-description" sx={{ mx: 5, my: 3 }} spacing={1}>
-          <Typography
-            variant="h4"
-            sx={{ mb: "4px", display: "flex", justifyContent: "center" }}
-          >
+        <Stack id="modal-modal-description" sx={{ mx: 5, my: 3 }} spacing={2}>
+          <Typography variant="h3" sx={{ mb: 1 }}>
             {cafe.title}
           </Typography>
-          <Typography
-            variant="h5"
-            sx={{
-              mb: "4px",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
+          <Stack direction="row" alignItems="center" spacing={1}>
             <Stars rate={cafe.rate} />
-            <Typography variant="h5" sx={{ ml: "0.5em" }}>
-              {cafe.rate}
+            <Typography variant="subtitle1" color="text.secondary">
+              {cafe.rate.toFixed(1)}
             </Typography>
-          </Typography>
+          </Stack>
           <Typography
             variant="h6"
             sx={{ alignItems: "center", display: "flex" }}
