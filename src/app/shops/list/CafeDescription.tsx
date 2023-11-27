@@ -5,6 +5,7 @@ import {
 } from "../../../../node_modules/@mui/material/index";
 import { CafeI } from "types/cafes";
 import { stars } from "./functions";
+import Stars from "_commons/Stars";
 
 interface PropTypes {
   cafe: CafeI;
@@ -23,9 +24,14 @@ const CafeDescription = ({ cafe }: PropTypes) => {
       <Typography variant="h5" sx={{ mb: "4px" }}>
         {cafe.title}
       </Typography>
-      <Typography variant="h6">
-        {stars(cafe.rate)} {cafe.rate}
-      </Typography>
+      <Stack
+        direction="row"
+        spacing={1}
+        sx={{ display: "flex", alignItems: "center" }}
+      >
+        <Stars rate={cafe.rate} />
+        <Typography variant="h6">{cafe.rate}</Typography>
+      </Stack>
       <Typography variant="body1">{cafe.area}</Typography>
     </Stack>
   );

@@ -7,9 +7,6 @@ import SmokingRoomsIcon from "../../../../node_modules/@mui/icons-material/Smoki
 import PanoramaFishEyeIcon from "../../../../node_modules/@mui/icons-material/PanoramaFishEye";
 import DoDisturbAltIcon from "../../../../node_modules/@mui/icons-material/DoDisturbAlt";
 import AlternateEmailIcon from "../../../../node_modules/@mui/icons-material/AlternateEmail";
-import StarHalfIcon from "../../../../node_modules/@mui/icons-material/StarHalf";
-import StarIcon from "../../../../node_modules/@mui/icons-material/Star";
-import StarBorderIcon from "../../../../node_modules/@mui/icons-material/StarBorder";
 import {
   Box,
   Modal,
@@ -17,8 +14,7 @@ import {
   Typography,
 } from "../../../../node_modules/@mui/material/index";
 import Image from "../../../../node_modules/next/image";
-import { stars } from "./functions";
-import { constants } from "buffer";
+import Stars from "_commons/Stars";
 
 const modalStyle = {
   position: "absolute",
@@ -44,16 +40,6 @@ const CafeModal = ({
   showCafeDetail,
   handleCafeDetailClose,
 }: propTypes) => {
-  function stars(rate: number) {
-    const stars = [];
-    for (let i = 0; i < rate; i++) {
-      stars.push(<StarIcon key={i} />);
-    }
-    for (let i = 0; i < 5 - rate; i++) {
-      stars.push(<StarBorderIcon key={i} />);
-    }
-    return stars;
-  }
   return (
     <Modal
       open={showCafeDetail}
@@ -86,9 +72,7 @@ const CafeModal = ({
               alignItems: "center",
             }}
           >
-            {stars(cafe.rate).map((star) => (
-              <>{star}</>
-            ))}
+            <Stars rate={cafe.rate} />
             <Typography variant="h5" sx={{ ml: "0.5em" }}>
               {cafe.rate}
             </Typography>
