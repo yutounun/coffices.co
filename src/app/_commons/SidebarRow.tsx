@@ -15,14 +15,14 @@ const SidebarRow = ({ children, title }: propTypes) => {
    *
    * @return {boolean} - true if the title and path match certain conditions, false otherwise.
    */
-  function isBold() {
-    if (title === "作成" && currentPath === "/shops/create") {
+  function isCurrentPath() {
+    if (title === "作成" && currentPath === "/cafe/create") {
       return true;
     }
-    if (title === "検索" && currentPath === "/shops/search") {
+    if (title === "検索" && currentPath === "/cafe/search") {
       return false;
     }
-    if (title === "一覧" && currentPath === "/shops/list") {
+    if (title === "一覧" && currentPath === "/cafe/list") {
       return true;
     }
     if (title === "プロフィール" && currentPath === "/profile") {
@@ -32,6 +32,10 @@ const SidebarRow = ({ children, title }: propTypes) => {
       return true;
     }
     return false;
+  }
+
+  function bgColor() {
+    return isCurrentPath() ? "transparent" : "rgba(0, 0, 0, 0.05)";
   }
   return (
     <Stack
@@ -43,7 +47,7 @@ const SidebarRow = ({ children, title }: propTypes) => {
         cursor: "pointer",
         ":hover": {
           fontWeight: "bold",
-          backgroundColor: "rgba(0, 0, 0, 0.05)",
+          backgroundColor: bgColor(),
         },
       }}
       spacing={1}
@@ -51,7 +55,9 @@ const SidebarRow = ({ children, title }: propTypes) => {
       {/* Icon */}
       {children}
 
-      <Typography fontWeight={isBold() ? "bold" : "normal"}>{title}</Typography>
+      <Typography fontWeight={isCurrentPath() ? "bold" : "normal"}>
+        {title}
+      </Typography>
     </Stack>
   );
 };
