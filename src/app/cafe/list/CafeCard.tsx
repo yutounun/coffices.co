@@ -1,16 +1,11 @@
 "use client";
 import React, { useState } from "react";
 import "./cafe-list.scss";
-import {
-  Box,
-  Modal,
-  Stack,
-  Typography,
-} from "../../../../node_modules/@mui/material/index";
+import { Box, Stack } from "../../../../node_modules/@mui/material/index";
 import { CafeI } from "types/cafes";
 import CafeDescription from "./CafeDescription";
 import { NextImage } from "_commons/NextImage";
-import CafeModal from "./CafeModal";
+import CafeDetailModal from "./CafeDetailModal";
 
 interface propTypes {
   cafe: CafeI;
@@ -50,7 +45,7 @@ const CafeCard = ({ cafe }: propTypes) => {
       </Stack>
 
       {showCafeDetail && (
-        <CafeModal
+        <CafeDetailModal
           handleCafeDetailClose={handleCafeDetailClose}
           showCafeDetail
           cafe={cafe}

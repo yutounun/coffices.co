@@ -50,7 +50,7 @@ const CafeModal = ({
       <Box sx={modalStyle}>
         <Image
           src={cafe.image}
-          alt={cafe.title}
+          alt="cafe1"
           layout="responsive"
           objectFit="cover"
           width={800} // Match the modal width
