@@ -32,7 +32,7 @@ const Sidebar = () => {
       sx={{
         position: "fixed",
         left: 0,
-        width: "13%",
+        width: "16%",
         py: 8,
         px: 3,
         height: "100%",

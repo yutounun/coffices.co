@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import { Box, Stack } from "../../node_modules/@mui/material/index";
 import "./globals.css";
 import Sidebar from "./_commons/Sidebar";
+import { Noto_Sans_JP } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+const notojp = Noto_Sans_JP({
+  weight: ["400", "500"],
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Coffices.co",
@@ -18,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={notojp.className}>
         <Stack direction="row">
           <Sidebar />
           <Box sx={{ ml: "24rem", mt: "60px" }}>{children}</Box>
