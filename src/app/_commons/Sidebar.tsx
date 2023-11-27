@@ -1,11 +1,6 @@
 import React from "react";
-import {
-  Box,
-  Stack,
-  Typography,
-} from "../../../node_modules/@mui/material/index";
+import { Stack } from "../../../node_modules/@mui/material/index";
 import AddCircleOutlineIcon from "../../../node_modules/@mui/icons-material/AddCircleOutline";
-import SearchIcon from "../../../node_modules/@mui/icons-material/Search";
 import LibraryBooksIcon from "../../../node_modules/@mui/icons-material/LibraryBooks";
 import SettingsIcon from "../../../node_modules/@mui/icons-material/Settings";
 import AccountBoxIcon from "../../../node_modules/@mui/icons-material/AccountBox";
@@ -17,10 +12,6 @@ const Sidebar = () => {
     {
       children: <LibraryBooksIcon />,
       title: "一覧",
-    },
-    {
-      children: <SearchIcon />,
-      title: "検索",
     },
     {
       children: <AddCircleOutlineIcon />,

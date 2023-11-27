@@ -4,8 +4,12 @@ import WifiIcon from "../../../../node_modules/@mui/icons-material/Wifi";
 import PowerIcon from "../../../../node_modules/@mui/icons-material/Power";
 import StoreMallDirectoryIcon from "../../../../node_modules/@mui/icons-material/StoreMallDirectory";
 import SmokingRoomsIcon from "../../../../node_modules/@mui/icons-material/SmokingRooms";
-import PanoramaFishEyeIcon from "@mui/icons-material/PanoramaFishEye";
-import DoDisturbAltIcon from "@mui/icons-material/DoDisturbAlt";
+import PanoramaFishEyeIcon from "../../../../node_modules/@mui/icons-material/PanoramaFishEye";
+import DoDisturbAltIcon from "../../../../node_modules/@mui/icons-material/DoDisturbAlt";
+import AlternateEmailIcon from "../../../../node_modules/@mui/icons-material/AlternateEmail";
+import StarHalfIcon from "../../../../node_modules/@mui/icons-material/StarHalf";
+import StarIcon from "../../../../node_modules/@mui/icons-material/Star";
+import StarBorderIcon from "../../../../node_modules/@mui/icons-material/StarBorder";
 import {
   Box,
   Modal,
@@ -14,6 +18,7 @@ import {
 } from "../../../../node_modules/@mui/material/index";
 import Image from "../../../../node_modules/next/image";
 import { stars } from "./functions";
+import { constants } from "buffer";
 
 const modalStyle = {
   position: "absolute",
@@ -39,6 +44,16 @@ const CafeModal = ({
   showCafeDetail,
   handleCafeDetailClose,
 }: propTypes) => {
+  function stars(rate: number) {
+    const stars = [];
+    for (let i = 0; i < rate; i++) {
+      stars.push(<StarIcon key={i} />);
+    }
+    for (let i = 0; i < 5 - rate; i++) {
+      stars.push(<StarBorderIcon key={i} />);
+    }
+    return stars;
+  }
   return (
     <Modal
       open={showCafeDetail}
@@ -55,7 +70,7 @@ const CafeModal = ({
           width={800} // Match the modal width
           height={400} // 50% of the modal height
         />
-        <Stack id="modal-modal-description" sx={{ m: 3 }} spacing={1}>
+        <Stack id="modal-modal-description" sx={{ mx: 5, my: 3 }} spacing={1}>
           <Typography
             variant="h4"
             sx={{ mb: "4px", display: "flex", justifyContent: "center" }}
@@ -64,38 +79,66 @@ const CafeModal = ({
           </Typography>
           <Typography
             variant="h5"
-            sx={{ mb: "4px", display: "flex", justifyContent: "center" }}
+            sx={{
+              mb: "4px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
           >
-            {stars(cafe.rate)} {cafe.rate}
-          </Typography>
-          <Typography variant="h6">{cafe.area}</Typography>
-          <Typography
-            variant="h6"
-            sx={{ alignItems: "center", display: "flex" }}
-          >
-            <StoreMallDirectoryIcon sx={{ mr: "0.5em" }} /> {cafe.openHour} ~{" "}
-            {cafe.closeHour}
-          </Typography>
-          <Typography
-            variant="h6"
-            sx={{ alignItems: "center", display: "flex" }}
-          >
-            <WifiIcon sx={{ mr: "0.5em" }} />{" "}
-            {cafe.isWifi ? <PanoramaFishEyeIcon /> : <DoDisturbAltIcon />}
+            {stars(cafe.rate).map((star) => (
+              <>{star}</>
+            ))}
+            <Typography variant="h5" sx={{ ml: "0.5em" }}>
+              {cafe.rate}
+            </Typography>
           </Typography>
           <Typography
             variant="h6"
             sx={{ alignItems: "center", display: "flex" }}
           >
-            <PowerIcon sx={{ mr: "0.5em" }} />{" "}
-            {cafe.isOutlet ? <PanoramaFishEyeIcon /> : <DoDisturbAltIcon />}
+            <AlternateEmailIcon color="primary" sx={{ mr: "0.5em" }} />
+            {cafe.area}
           </Typography>
           <Typography
             variant="h6"
             sx={{ alignItems: "center", display: "flex" }}
           >
-            <SmokingRoomsIcon sx={{ mr: "0.5em" }} />{" "}
-            {cafe.isSmoking ? <PanoramaFishEyeIcon /> : <DoDisturbAltIcon />}
+            <StoreMallDirectoryIcon color="primary" sx={{ mr: "0.5em" }} />{" "}
+            {cafe.openHour} ~ {cafe.closeHour}
+          </Typography>
+          <Typography
+            variant="h6"
+            sx={{ alignItems: "center", display: "flex" }}
+          >
+            <WifiIcon color="primary" sx={{ mr: "0.5em" }} />{" "}
+            {cafe.isWifi ? (
+              <PanoramaFishEyeIcon color="success" />
+            ) : (
+              <DoDisturbAltIcon color="success" />
+            )}
+          </Typography>
+          <Typography
+            variant="h6"
+            sx={{ alignItems: "center", display: "flex" }}
+          >
+            <PowerIcon color="primary" sx={{ mr: "0.5em" }} />{" "}
+            {cafe.isOutlet ? (
+              <PanoramaFishEyeIcon color="success" />
+            ) : (
+              <DoDisturbAltIcon color="success" />
+            )}
+          </Typography>
+          <Typography
+            variant="h6"
+            sx={{ alignItems: "center", display: "flex" }}
+          >
+            <SmokingRoomsIcon color="primary" sx={{ mr: "0.5em" }} />{" "}
+            {cafe.isSmoking ? (
+              <PanoramaFishEyeIcon color="success" />
+            ) : (
+              <DoDisturbAltIcon color="success" />
+            )}
           </Typography>
         </Stack>
       </Box>
