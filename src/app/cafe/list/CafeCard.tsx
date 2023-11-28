@@ -39,7 +39,7 @@ const CafeCard = ({ cafe }: propTypes) => {
         onClick={handleCafeCardClick}
       >
         <Box sx={{ height: "200px", width: "300px" }}>
-          <NextImage src={cafe.image} alt="cafe1" />
+          <NextImage className="row__picture" src={cafe.image} alt="cafe1" />
           <CafeDescription cafe={cafe} />
         </Box>
       </Stack>

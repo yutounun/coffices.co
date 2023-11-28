@@ -1,14 +1,15 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { Stack, Typography } from "../../../node_modules/@mui/material/index";
 import { usePathname } from "../../../node_modules/next/navigation";
-
+import CafePostModal from "../cafe/_create/CafePostModal";
 interface propTypes {
   children: React.ReactNode;
   title: string;
 }
 const SidebarRow = ({ children, title }: propTypes) => {
   const currentPath = usePathname();
+  const [postCafeModal, setPostCafeModal] = useState(false);
 
   /**
    * Determines if the title and path match certain conditions and returns a boolean value.
@@ -37,28 +38,43 @@ const SidebarRow = ({ children, title }: propTypes) => {
   function bgColor() {
     return isCurrentPath() ? "transparent" : "rgba(0, 0, 0, 0.05)";
   }
-  return (
-    <Stack
-      direction="row"
-      sx={{
-        alignItems: "center",
-        p: 2,
-        borderRadius: 2,
-        cursor: "pointer",
-        ":hover": {
-          fontWeight: "bold",
-          backgroundColor: bgColor(),
-        },
-      }}
-      spacing={1}
-    >
-      {/* Icon */}
-      {children}
 
-      <Typography fontWeight={isCurrentPath() ? "bold" : "normal"}>
-        {title}
-      </Typography>
-    </Stack>
+  function openPostCafeModal() {
+    if (title === "作成") {
+      setPostCafeModal(true);
+    }
+  }
+  return (
+    <>
+      <Stack
+        direction="row"
+        sx={{
+          alignItems: "center",
+          p: 2,
+          borderRadius: 2,
+          cursor: "pointer",
+          ":hover": {
+            fontWeight: "bold",
+            backgroundColor: bgColor(),
+          },
+        }}
+        spacing={1}
+        onClick={openPostCafeModal}
+      >
+        {/* Icon */}
+        {children}
+
+        <Typography fontWeight={isCurrentPath() ? "bold" : "normal"}>
+          {title}
+        </Typography>
+      </Stack>
+      {postCafeModal && (
+        <CafePostModal
+          handleModalClose={() => setPostCafeModal(false)}
+          showModal={postCafeModal}
+        />
+      )}
+    </>
   );
 };
 
