@@ -8,6 +8,7 @@ type NextImageProps = {
   alt: string;
   onMouseOver?: () => void;
   onMouseOut?: () => void;
+  className?: string;
 };
 
 export const NextImage: FC<NextImageProps> = ({
@@ -15,6 +16,7 @@ export const NextImage: FC<NextImageProps> = ({
   alt,
   onMouseOver,
   onMouseOut,
+  className,
 }) => {
   return (
     <div className="container">
@@ -25,7 +27,7 @@ export const NextImage: FC<NextImageProps> = ({
         onMouseOut={onMouseOut}
         fill
         sizes="100vw"
-        className="row__picture image"
+        className={`${className} image`}
       />
     </div>
   );

@@ -27,6 +27,7 @@ const modalStyle = {
   height: 880,
   display: "flex",
   flexDirection: "column",
+  borderRadius: 5,
 };
 
 interface propTypes {
