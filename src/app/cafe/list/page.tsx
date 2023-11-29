@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { CafeI } from "types/cafes";
+import { getCafe } from "_utils/api";
 import "./cafe-list.scss";
 import CafeRow from "./CafeRow";
 import StationSearch from "./StationSearch";
@@ -9,13 +10,11 @@ import StationSearch from "./StationSearch";
 const ShopsList = () => {
   const [cafeList, setCafeList] = useState<CafeI[]>([]);
   useEffect(() => {
-    fetch("http://localhost:9000/cafe")
-      .then((res) => res.json())
+    getCafe()
       .then((json) => {
         setCafeList(json);
-        console.log(json);
       })
-      .catch(() => error("error"));
+      .catch((err) => console.log("error", err));
   }, []);
 
   function filterEbisuAndMeguro() {
