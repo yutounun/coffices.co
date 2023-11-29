@@ -6,8 +6,8 @@ import {
   Stack,
   Typography,
 } from "../../../../node_modules/@mui/material/index";
-import { styled } from "@mui/material/styles";
 import SelectImagePage from "./SelectImagePage";
+import CafeInputForm from "./CafeInputFormPage";
 
 const modalStyle = {
   position: "absolute",
@@ -17,23 +17,11 @@ const modalStyle = {
   width: 800,
   bgcolor: "background.paper",
   boxShadow: 24,
-  height: 880,
+  height: 800,
   display: "flex",
   flexDirection: "column",
   borderRadius: 5,
 };
-
-const VisuallyHiddenInput = styled("input")({
-  clip: "rect(0 0 0 0)",
-  clipPath: "inset(50%)",
-  height: 1,
-  overflow: "hidden",
-  position: "absolute",
-  bottom: 0,
-  left: 0,
-  whiteSpace: "nowrap",
-  width: 1,
-});
 
 interface propTypes {
   showModal: boolean;
@@ -56,6 +44,7 @@ const CafeModal = ({ showModal, handleModalClose }: propTypes) => {
       aria-describedby="modal-modal-description"
     >
       <Box sx={modalStyle}>
+        {/* Modal Header */}
         <Stack
           direction="row"
           sx={{
@@ -73,12 +62,13 @@ const CafeModal = ({ showModal, handleModalClose }: propTypes) => {
             カフェを新規追加
           </Typography>
           <Button onClick={incrementPageNumber} sx={{ fontWeight: "bold" }}>
-            {pageNumber !== 3 && "次へ"}
+            {pageNumber !== 2 && "次へ"}
           </Button>
         </Stack>
 
-        {/* Receive a image from user */}
+        {/* Modal Body */}
         {pageNumber === 1 && <SelectImagePage />}
+        {pageNumber === 2 && <CafeInputForm />}
       </Box>
     </Modal>
   );

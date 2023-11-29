@@ -37,8 +37,7 @@ const SelectImagePage = () => {
       </Typography>
       <Button component="label" variant="contained">
         コンピューターから選択
-        <input type="file" hidden onChange={handleFileInput} />{" "}
-        {/* VisuallyHiddenInputをinputに変更 */}
+        <input type="file" hidden onChange={handleFileInput} />
       </Button>
     </Stack>
   );
