@@ -1,26 +1,46 @@
 "use client";
 
 import React from "react";
-import { useForm } from "react-hook-form";
+import { useForm, Controller, FieldValues } from "react-hook-form";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { TimePicker } from "@mui/x-date-pickers/TimePicker";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import {
   Button,
   FormControl,
   FormControlLabel,
   FormLabel,
-  Input,
   Radio,
   RadioGroup,
   Stack,
   TextField,
+  Typography,
 } from "../../../../node_modules/@mui/material/index";
 
-const CafeInputForm = () => {
-  const { register, handleSubmit } = useForm({
+interface propTypes {
+  handleCafePostSubmit: any;
+}
+
+interface CafeFormInput extends FieldValues {
+  openHour: Date | null;
+  closeHour: Date | null;
+  // 他のフィールドの型定義...
+}
+const CafeInputForm = ({ handleCafePostSubmit }: propTypes) => {
+  const { register, handleSubmit, control } = useForm<CafeFormInput>({
     mode: "onChange",
+    defaultValues: {
+      title: "",
+      rate: 0,
+      image: "/cafe1.png",
+      area: "",
+      openHour: null,
+      closeHour: null,
+      isWifi: "true",
+      isSmoking: "true",
+      isOutlet: "true",
+    },
   });
-  function handleCafePostSubmit(e) {
-    console.log("e :", e);
-  }
   return (
     <form
       onSubmit={handleSubmit(handleCafePostSubmit)}
@@ -35,24 +55,71 @@ const CafeInputForm = () => {
           height: "100%",
           display: "flex",
           px: "5em",
-          py: "5em",
+          py: "3em",
         }}
         spacing={4}
       >
         <TextField
           id="outlined-basic"
-          label="Title"
+          label="店名"
           variant="outlined"
           sx={{ width: "100%" }}
           {...register("title")}
         />
         <TextField
           id="outlined-basic"
-          label="Rating"
+          label="エリア"
+          variant="outlined"
+          sx={{ width: "100%" }}
+          {...register("area")}
+        />
+        <TextField
+          id="outlined-basic"
+          label="駅名"
+          variant="outlined"
+          sx={{ width: "100%" }}
+          {...register("station")}
+        />
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <Stack
+            direction="row"
+            sx={{ alignItems: "center", justifyContent: "space-between" }}
+          >
+            <Controller
+              name="openHour"
+              control={control}
+              render={({ field }) => (
+                <TimePicker
+                  sx={{ width: "45%" }}
+                  label="開店時間"
+                  {...field}
+                  renderInput={(params) => <TextField {...params} />}
+                />
+              )}
+            />
+            <Typography variant="h5">~</Typography>
+            <Controller
+              name="closeHour"
+              control={control}
+              render={({ field }) => (
+                <TimePicker
+                  sx={{ width: "45%" }}
+                  label="閉店時間"
+                  {...field}
+                  renderInput={(params) => <TextField {...params} />}
+                />
+              )}
+            />
+          </Stack>
+        </LocalizationProvider>
+        <TextField
+          id="outlined-basic"
+          label="評価(1 ~ 5)"
           type="number"
           variant="outlined"
+          InputProps={{ inputProps: { min: 0, max: 5 } }}
           sx={{ width: "20%" }}
-          {...register("rating")}
+          {...register("rate")}
         />
         <FormControl sx={{ width: "80%" }}>
           <FormLabel id="demo-row-radio-buttons-group-label">Wifi</FormLabel>
@@ -62,7 +129,7 @@ const CafeInputForm = () => {
             name="row-radio-buttons-group"
             {...register("isWifi")}
           >
-            <FormControlLabel value="有" control={<Radio />} label="有" />
+            <FormControlLabel value={true} control={<Radio />} label="有" />
             <FormControlLabel value="無" control={<Radio />} label="無" />
           </RadioGroup>
         </FormControl>
@@ -74,7 +141,7 @@ const CafeInputForm = () => {
             name="row-radio-buttons-group"
             {...register("isOutlet")}
           >
-            <FormControlLabel value="有" control={<Radio />} label="有" />
+            <FormControlLabel value={true} control={<Radio />} label="有" />
             <FormControlLabel value="無" control={<Radio />} label="無" />
           </RadioGroup>
         </FormControl>
@@ -82,11 +149,11 @@ const CafeInputForm = () => {
           <FormLabel id="demo-row-radio-buttons-group-label">喫煙所</FormLabel>
           <RadioGroup
             row
-            {...register("isSmokingArea")}
             aria-labelledby="demo-row-radio-buttons-group-label"
             name="row-radio-buttons-group"
+            {...register("isSmoking")}
           >
-            <FormControlLabel value="有" control={<Radio />} label="有" />
+            <FormControlLabel value={true} control={<Radio />} label="有" />
             <FormControlLabel value="無" control={<Radio />} label="無" />
           </RadioGroup>
         </FormControl>

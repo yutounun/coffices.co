@@ -7,6 +7,7 @@ import SmokingRoomsIcon from "../../../../node_modules/@mui/icons-material/Smoki
 import PanoramaFishEyeIcon from "../../../../node_modules/@mui/icons-material/PanoramaFishEye";
 import DoDisturbAltIcon from "../../../../node_modules/@mui/icons-material/DoDisturbAlt";
 import AlternateEmailIcon from "../../../../node_modules/@mui/icons-material/AlternateEmail";
+import TrainIcon from "@mui/icons-material/Train";
 import {
   Box,
   Modal,
@@ -24,7 +25,7 @@ const modalStyle = {
   width: 800,
   bgcolor: "background.paper",
   boxShadow: 24,
-  height: 880,
+  height: 950,
   display: "flex",
   flexDirection: "column",
   borderRadius: 5,
@@ -64,7 +65,7 @@ const CafeModal = ({
           <Stack direction="row" alignItems="center" spacing={1}>
             <Stars rate={cafe.rate} />
             <Typography variant="subtitle1" color="text.secondary">
-              {cafe.rate.toFixed(1)}
+              {cafe.rate}
             </Typography>
           </Stack>
           <Typography
@@ -73,6 +74,13 @@ const CafeModal = ({
           >
             <AlternateEmailIcon color="primary" sx={{ mr: "0.5em" }} />
             {cafe.area}
+          </Typography>
+          <Typography
+            variant="h6"
+            sx={{ alignItems: "center", display: "flex" }}
+          >
+            <TrainIcon color="primary" sx={{ mr: "0.5em" }} />
+            {cafe.station}
           </Typography>
           <Typography
             variant="h6"

@@ -8,6 +8,9 @@ import {
 } from "../../../../node_modules/@mui/material/index";
 import SelectImagePage from "./SelectImagePage";
 import CafeInputForm from "./CafeInputFormPage";
+import { postCafe } from "_utils/api";
+import { CafePostRequestI } from "types/cafes";
+import { extractHourMinute } from "_utils/commonFn";
 
 const modalStyle = {
   position: "absolute",
@@ -17,7 +20,7 @@ const modalStyle = {
   width: 800,
   bgcolor: "background.paper",
   boxShadow: 24,
-  height: 800,
+  height: 940,
   display: "flex",
   flexDirection: "column",
   borderRadius: 5,
@@ -35,6 +38,18 @@ const CafeModal = ({ showModal, handleModalClose }: propTypes) => {
   }
   function decrementPageNumber() {
     setPageNumber((prev) => prev - 1);
+  }
+
+  /** Submit action */
+  function handleCafePostSubmit(data: CafePostRequestI) {
+    data.isWifi = data.isWifi === "true";
+    data.isOutlet = data.isOutlet === "true";
+    data.isSmoking = data.isSmoking === "true";
+    data.openHour = extractHourMinute(data.openHour);
+    data.closeHour = extractHourMinute(data.closeHour);
+    postCafe(data).then(() => {
+      handleModalClose();
+    });
   }
   return (
     <Modal
@@ -68,7 +83,9 @@ const CafeModal = ({ showModal, handleModalClose }: propTypes) => {
 
         {/* Modal Body */}
         {pageNumber === 1 && <SelectImagePage />}
-        {pageNumber === 2 && <CafeInputForm />}
+        {pageNumber === 2 && (
+          <CafeInputForm handleCafePostSubmit={handleCafePostSubmit} />
+        )}
       </Box>
     </Modal>
   );

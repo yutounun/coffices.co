@@ -4,6 +4,10 @@
   overflow-y: hidden;
   width: 100em;
   height: 25em;
+  // モバイル
+  @media screen and (max-width: 2000px) {
+    width: 85em;
+  }
 }
 
 .row__cards::-webkit-scrollbar {
