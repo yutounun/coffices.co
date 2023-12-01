@@ -1,11 +1,14 @@
 "use client";
 
 import React from "react";
+import Stations from "../../json/stations.json";
+import Areas from "../../json/areas.json";
 import { useForm, Controller, FieldValues } from "react-hook-form";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import {
+  Autocomplete,
   Button,
   FormControl,
   FormControlLabel,
@@ -72,23 +75,51 @@ const CafeInputForm = ({ handleCafePostSubmit }: propTypes) => {
           error={!!errors.title}
           helperText={errors.title?.message}
         />
-        <TextField
-          id="outlined-basic"
+        <Autocomplete
           label="エリア"
-          variant="outlined"
           sx={{ width: "100%" }}
-          {...register("area", { required: "エリアを入力してください" })}
+          freeSolo
+          id="free-solo-2-demo"
+          disableClearable
           error={!!errors.area}
           helperText={errors.area?.message}
+          options={Areas.map((area) => area.name)}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              error={!!errors.station}
+              helperText={errors.station?.message}
+              {...register("area", { required: "エリアを入力してください" })}
+              label="エリア"
+              InputProps={{
+                ...params.InputProps,
+                type: "search",
+              }}
+            />
+          )}
         />
-        <TextField
-          id="outlined-basic"
+        <Autocomplete
           label="駅名"
-          variant="outlined"
           sx={{ width: "100%" }}
-          {...register("station", { required: "駅名を入力してください" })}
+          freeSolo
+          id="free-solo-2-demo"
+          disableClearable
           error={!!errors.station}
           helperText={errors.station?.message}
+          options={Stations.map((station) => station.name)}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              {...register("station", { required: "駅名を入力してください" })}
+              error={!!errors.station}
+              helperText={errors.station?.message}
+              label="駅名"
+              InputProps={{
+                ...params.InputProps,
+                type: "search",
+              }}
+            />
+          )}
         />
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <Stack
