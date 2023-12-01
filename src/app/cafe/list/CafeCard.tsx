@@ -18,7 +18,6 @@ const CafeCard = ({ cafe }: propTypes) => {
   }
   function handleCafeDetailClose() {
     setShowCafeDetail(false);
-    console.log("showCafeDetail :", showCafeDetail);
   }
   return (
     <>
@@ -39,7 +38,11 @@ const CafeCard = ({ cafe }: propTypes) => {
         onClick={handleCafeCardClick}
       >
         <Box sx={{ height: "200px", width: "300px" }}>
-          <NextImage className="row__picture" src={cafe.image} alt="cafe1" />
+          <NextImage
+            className="row__picture"
+            src={cafe.image ? cafe.image : "/no-image.png"}
+            alt="cafe1"
+          />
           <CafeDescription cafe={cafe} />
         </Box>
       </Stack>

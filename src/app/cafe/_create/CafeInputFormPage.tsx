@@ -39,7 +39,7 @@ const CafeInputForm = ({ handleCafePostSubmit }: propTypes) => {
     defaultValues: {
       title: "",
       rate: null,
-      image: "/cafe1.png",
+      image: "",
       area: "",
       openHour: null,
       closeHour: null,
