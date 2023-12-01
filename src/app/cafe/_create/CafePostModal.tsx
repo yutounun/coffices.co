@@ -12,21 +12,6 @@ import { postCafe } from "_utils/api";
 import { CafePostRequestI } from "types/cafes";
 import { extractHourMinute } from "_utils/commonFn";
 
-const modalStyle = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 800,
-  bgcolor: "background.paper",
-  boxShadow: 24,
-  pb: 5,
-  minHeight: 940,
-  display: "flex",
-  flexDirection: "column",
-  borderRadius: 5,
-};
-
 interface propTypes {
   showModal: boolean;
   handleModalClose: () => void;
@@ -34,6 +19,24 @@ interface propTypes {
 
 const CafeModal = ({ showModal, handleModalClose }: propTypes) => {
   const [pageNumber, setPageNumber] = useState(1);
+
+  const height = pageNumber === 1 ? "80%" : "auto";
+  const modalStyle = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 800,
+    bgcolor: "background.paper",
+    boxShadow: 24,
+    pb: 5,
+    minHeight: "80%",
+    height: height,
+    display: "flex",
+    flexDirection: "column",
+    borderRadius: 5,
+  };
+
   function incrementPageNumber() {
     setPageNumber((prev) => prev + 1);
   }
