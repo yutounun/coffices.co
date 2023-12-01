@@ -40,9 +40,9 @@ const CafeInputForm = ({ handleCafePostSubmit }: propTypes) => {
       area: "",
       openHour: null,
       closeHour: null,
-      isWifi: "false",
-      isSmoking: "false",
-      isOutlet: "false",
+      isWifi: false,
+      isSmoking: false,
+      isOutlet: false,
     },
   });
   return (
@@ -135,41 +135,69 @@ const CafeInputForm = ({ handleCafePostSubmit }: propTypes) => {
         />
         <FormControl sx={{ width: "80%" }}>
           <FormLabel id="demo-row-radio-buttons-group-label">Wifi</FormLabel>
-          <RadioGroup
-            row
-            aria-labelledby="demo-row-radio-buttons-group-label"
-            name="row-radio-buttons-group"
-          >
-            <FormControlLabel value={true} control={<Radio />} label="有" />
-            <FormControlLabel value={false} control={<Radio />} label="無" />
-          </RadioGroup>
+          <Controller
+            name="isWifi"
+            control={control}
+            render={({ field }) => (
+              <RadioGroup
+                row
+                aria-labelledby="demo-row-radio-buttons-group-label"
+                name="row-radio-buttons-group"
+                {...field}
+              >
+                <FormControlLabel value={true} control={<Radio />} label="有" />
+                <FormControlLabel
+                  value={false}
+                  control={<Radio />}
+                  label="無"
+                />
+              </RadioGroup>
+            )}
+          />
         </FormControl>
         <FormControl sx={{ width: "80%" }}>
           <FormLabel id="demo-row-radio-buttons-group-label">電源席</FormLabel>
-          <RadioGroup
-            row
-            aria-labelledby="demo-row-radio-buttons-group-label"
-            name="row-radio-buttons-group"
-          >
-            {" "}
-            <FormControlLabel value={true} control={<Radio />} label="有" />
-            <FormControlLabel value={false} control={<Radio />} label="無" />
-          </RadioGroup>
+          <Controller
+            name="isOutlet"
+            control={control}
+            render={({ field }) => (
+              <RadioGroup
+                row
+                aria-labelledby="demo-row-radio-buttons-group-label"
+                name="row-radio-buttons-group"
+                {...field}
+              >
+                <FormControlLabel value={true} control={<Radio />} label="有" />
+                <FormControlLabel
+                  value={false}
+                  control={<Radio />}
+                  label="無"
+                />
+              </RadioGroup>
+            )}
+          />
         </FormControl>
         <FormControl sx={{ width: "80%" }}>
           <FormLabel id="demo-row-radio-buttons-group-label">喫煙所</FormLabel>
-          <RadioGroup
-            row
-            aria-labelledby="demo-row-radio-buttons-group-label"
-            name="row-radio-buttons-group"
-          >
-            <FormControlLabel value={true} control={<Radio />} label="有" />
-            <FormControlLabel
-              value={false}
-              control={<Radio />}
-              label="無"
-            />{" "}
-          </RadioGroup>
+          <Controller
+            name="isSmoking"
+            control={control}
+            render={({ field }) => (
+              <RadioGroup
+                row
+                aria-labelledby="demo-row-radio-buttons-group-label"
+                name="row-radio-buttons-group"
+                {...field}
+              >
+                <FormControlLabel value={true} control={<Radio />} label="有" />
+                <FormControlLabel
+                  value={false}
+                  control={<Radio />}
+                  label="無"
+                />
+              </RadioGroup>
+            )}
+          />
         </FormControl>
       </Stack>
       <Stack

@@ -43,9 +43,9 @@ const CafeModal = ({ showModal, handleModalClose }: propTypes) => {
 
   /** Submit action */
   function handleCafePostSubmit(data: CafePostRequestI) {
-    data.isWifi = data.isWifi === "yes";
-    data.isOutlet = data.isOutlet === "yes";
-    data.isSmoking = data.isSmoking === "yes";
+    data.isWifi = data.isWifi === "true";
+    data.isOutlet = data.isOutlet === "true";
+    data.isSmoking = data.isSmoking === "true";
     data.openHour = extractHourMinute(data.openHour);
     data.closeHour = extractHourMinute(data.closeHour);
     postCafe(data).then(() => {
