@@ -4,6 +4,13 @@ export function getCafe() {
     .catch((err) => console.log(err));
 }
 
+/**
+ * postCafe - post cafe data to backend
+ *
+ * @param data - posted cafe data
+ * @returns - cafe data list
+ * @throws - error
+ */
 export async function postCafe(data) {
   return await fetch("http://localhost:9000/cafe", {
     method: "POST",
@@ -12,6 +19,12 @@ export async function postCafe(data) {
     },
     body: JSON.stringify(data),
   })
+    .then((res) => res.json())
+    .catch((err) => console.log(err));
+}
+
+export async function getStationsInTokyo() {
+  return await fetch("http://api.ekispert.jp/v1/json/station")
     .then((res) => res.json())
     .catch((err) => console.log(err));
 }
