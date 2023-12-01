@@ -6,7 +6,7 @@ import {
   Stack,
   TextField,
 } from "../../../../node_modules/@mui/material/index";
-import Stations from "./stations.json";
+import Stations from "../../json/stations.json";
 
 const StationSearch = () => {
   const [selectedValue, setSelectedValue] = useState("");
