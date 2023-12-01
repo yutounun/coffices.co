@@ -20,7 +20,8 @@ const modalStyle = {
   width: 800,
   bgcolor: "background.paper",
   boxShadow: 24,
-  height: 940,
+  pb: 5,
+  minHeight: 940,
   display: "flex",
   flexDirection: "column",
   borderRadius: 5,
@@ -42,9 +43,9 @@ const CafeModal = ({ showModal, handleModalClose }: propTypes) => {
 
   /** Submit action */
   function handleCafePostSubmit(data: CafePostRequestI) {
-    data.isWifi = data.isWifi === "true";
-    data.isOutlet = data.isOutlet === "true";
-    data.isSmoking = data.isSmoking === "true";
+    data.isWifi = data.isWifi === "yes";
+    data.isOutlet = data.isOutlet === "yes";
+    data.isSmoking = data.isSmoking === "yes";
     data.openHour = extractHourMinute(data.openHour);
     data.closeHour = extractHourMinute(data.closeHour);
     postCafe(data).then(() => {

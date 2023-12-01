@@ -24,21 +24,25 @@ interface propTypes {
 interface CafeFormInput extends FieldValues {
   openHour: Date | null;
   closeHour: Date | null;
-  // 他のフィールドの型定義...
 }
 const CafeInputForm = ({ handleCafePostSubmit }: propTypes) => {
-  const { register, handleSubmit, control } = useForm<CafeFormInput>({
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors, isDirty, isValid },
+  } = useForm<CafeFormInput>({
     mode: "onChange",
     defaultValues: {
       title: "",
-      rate: 0,
+      rate: null,
       image: "/cafe1.png",
       area: "",
       openHour: null,
       closeHour: null,
-      isWifi: "true",
-      isSmoking: "true",
-      isOutlet: "true",
+      isWifi: "false",
+      isSmoking: "false",
+      isOutlet: "false",
     },
   });
   return (
@@ -64,21 +68,27 @@ const CafeInputForm = ({ handleCafePostSubmit }: propTypes) => {
           label="店名"
           variant="outlined"
           sx={{ width: "100%" }}
-          {...register("title")}
+          {...register("title", { required: "店名を入力してください" })}
+          error={!!errors.title}
+          helperText={errors.title?.message}
         />
         <TextField
           id="outlined-basic"
           label="エリア"
           variant="outlined"
           sx={{ width: "100%" }}
-          {...register("area")}
+          {...register("area", { required: "エリアを入力してください" })}
+          error={!!errors.area}
+          helperText={errors.area?.message}
         />
         <TextField
           id="outlined-basic"
           label="駅名"
           variant="outlined"
           sx={{ width: "100%" }}
-          {...register("station")}
+          {...register("station", { required: "駅名を入力してください" })}
+          error={!!errors.station}
+          helperText={errors.station?.message}
         />
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <Stack
@@ -119,7 +129,9 @@ const CafeInputForm = ({ handleCafePostSubmit }: propTypes) => {
           variant="outlined"
           InputProps={{ inputProps: { min: 0, max: 5 } }}
           sx={{ width: "20%" }}
-          {...register("rate")}
+          {...register("rate", { required: "評価を入力してください" })}
+          error={!!errors.rate}
+          helperText={errors.rate?.message}
         />
         <FormControl sx={{ width: "80%" }}>
           <FormLabel id="demo-row-radio-buttons-group-label">Wifi</FormLabel>
@@ -127,10 +139,9 @@ const CafeInputForm = ({ handleCafePostSubmit }: propTypes) => {
             row
             aria-labelledby="demo-row-radio-buttons-group-label"
             name="row-radio-buttons-group"
-            {...register("isWifi")}
           >
             <FormControlLabel value={true} control={<Radio />} label="有" />
-            <FormControlLabel value="無" control={<Radio />} label="無" />
+            <FormControlLabel value={false} control={<Radio />} label="無" />
           </RadioGroup>
         </FormControl>
         <FormControl sx={{ width: "80%" }}>
@@ -139,10 +150,10 @@ const CafeInputForm = ({ handleCafePostSubmit }: propTypes) => {
             row
             aria-labelledby="demo-row-radio-buttons-group-label"
             name="row-radio-buttons-group"
-            {...register("isOutlet")}
           >
+            {" "}
             <FormControlLabel value={true} control={<Radio />} label="有" />
-            <FormControlLabel value="無" control={<Radio />} label="無" />
+            <FormControlLabel value={false} control={<Radio />} label="無" />
           </RadioGroup>
         </FormControl>
         <FormControl sx={{ width: "80%" }}>
@@ -151,10 +162,13 @@ const CafeInputForm = ({ handleCafePostSubmit }: propTypes) => {
             row
             aria-labelledby="demo-row-radio-buttons-group-label"
             name="row-radio-buttons-group"
-            {...register("isSmoking")}
           >
             <FormControlLabel value={true} control={<Radio />} label="有" />
-            <FormControlLabel value="無" control={<Radio />} label="無" />
+            <FormControlLabel
+              value={false}
+              control={<Radio />}
+              label="無"
+            />{" "}
           </RadioGroup>
         </FormControl>
       </Stack>
