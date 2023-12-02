@@ -72,55 +72,57 @@ const CafeInputForm = ({ handleCafePostSubmit }: propTypes) => {
           variant="outlined"
           sx={{ width: "100%" }}
           {...register("title", { required: "店名を入力してください" })}
-          error={!!errors.title}
-          helperText={errors.title?.message}
+          helperText={errors.title?.message?.toString()}
         />
-        <Autocomplete
-          label="エリア"
-          sx={{ width: "100%" }}
-          freeSolo
-          id="free-solo-2-demo"
-          disableClearable
-          error={!!errors.area}
-          helperText={errors.area?.message}
-          options={Areas.map((area) => area.name)}
-          renderInput={(params) => (
-            <TextField
-              {...params}
-              error={!!errors.station}
-              helperText={errors.station?.message}
-              {...register("area", { required: "エリアを入力してください" })}
-              label="エリア"
-              InputProps={{
-                ...params.InputProps,
-                type: "search",
-              }}
-            />
-          )}
-        />
-        <Autocomplete
-          label="駅名"
-          sx={{ width: "100%" }}
-          freeSolo
-          id="free-solo-2-demo"
-          disableClearable
-          error={!!errors.station}
-          helperText={errors.station?.message}
-          options={Stations.map((station) => station.name)}
-          renderInput={(params) => (
-            <TextField
-              {...params}
-              {...register("station", { required: "駅名を入力してください" })}
-              error={!!errors.station}
-              helperText={errors.station?.message}
-              label="駅名"
-              InputProps={{
-                ...params.InputProps,
-                type: "search",
-              }}
-            />
-          )}
-        />
+        <Stack
+          direction="row"
+          sx={{ alignItems: "center", justifyContent: "space-between" }}
+        >
+          <Autocomplete
+            sx={{ width: "45%" }}
+            freeSolo
+            id="free-solo-2-demo"
+            disableClearable
+            error={!!errors.area}
+            helperText={errors.area?.message?.toString()}
+            options={Areas.map((area) => area.name)}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                error={!!errors.station}
+                helperText={errors.station?.message?.toString()}
+                {...register("area", { required: "エリアを入力してください" })}
+                label="エリア"
+                InputProps={{
+                  ...params.InputProps,
+                  type: "search",
+                }}
+              />
+            )}
+          />
+          <Autocomplete
+            sx={{ width: "45%" }}
+            freeSolo
+            id="free-solo-2-demo"
+            disableClearable
+            error={!!errors.station}
+            helperText={errors.station?.message?.toString()}
+            options={Stations.map((station) => station.name)}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                {...register("station", { required: "駅名を入力してください" })}
+                error={!!errors.station}
+                helperText={errors.station?.message?.toString()}
+                label="駅名"
+                InputProps={{
+                  ...params.InputProps,
+                  type: "search",
+                }}
+              />
+            )}
+          />
+        </Stack>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <Stack
             direction="row"
@@ -159,77 +161,98 @@ const CafeInputForm = ({ handleCafePostSubmit }: propTypes) => {
           type="number"
           variant="outlined"
           InputProps={{ inputProps: { min: 0, max: 5 } }}
-          sx={{ width: "20%" }}
+          sx={{ width: "45%" }}
           {...register("rate", { required: "評価を入力してください" })}
           error={!!errors.rate}
-          helperText={errors.rate?.message}
+          helperText={errors.rate?.message?.toString()}
         />
-        <FormControl sx={{ width: "80%" }}>
-          <FormLabel id="demo-row-radio-buttons-group-label">Wifi</FormLabel>
-          <Controller
-            name="isWifi"
-            control={control}
-            render={({ field }) => (
-              <RadioGroup
-                row
-                aria-labelledby="demo-row-radio-buttons-group-label"
-                name="row-radio-buttons-group"
-                {...field}
-              >
-                <FormControlLabel value={true} control={<Radio />} label="有" />
-                <FormControlLabel
-                  value={false}
-                  control={<Radio />}
-                  label="無"
-                />
-              </RadioGroup>
-            )}
-          />
-        </FormControl>
-        <FormControl sx={{ width: "80%" }}>
-          <FormLabel id="demo-row-radio-buttons-group-label">電源席</FormLabel>
-          <Controller
-            name="isOutlet"
-            control={control}
-            render={({ field }) => (
-              <RadioGroup
-                row
-                aria-labelledby="demo-row-radio-buttons-group-label"
-                name="row-radio-buttons-group"
-                {...field}
-              >
-                <FormControlLabel value={true} control={<Radio />} label="有" />
-                <FormControlLabel
-                  value={false}
-                  control={<Radio />}
-                  label="無"
-                />
-              </RadioGroup>
-            )}
-          />
-        </FormControl>
-        <FormControl sx={{ width: "80%" }}>
-          <FormLabel id="demo-row-radio-buttons-group-label">喫煙所</FormLabel>
-          <Controller
-            name="isSmoking"
-            control={control}
-            render={({ field }) => (
-              <RadioGroup
-                row
-                aria-labelledby="demo-row-radio-buttons-group-label"
-                name="row-radio-buttons-group"
-                {...field}
-              >
-                <FormControlLabel value={true} control={<Radio />} label="有" />
-                <FormControlLabel
-                  value={false}
-                  control={<Radio />}
-                  label="無"
-                />
-              </RadioGroup>
-            )}
-          />
-        </FormControl>
+        <Stack
+          direction="row"
+          sx={{ alignItems: "center", justifyContent: "space-between" }}
+        >
+          <FormControl sx={{ width: "30%" }}>
+            <FormLabel id="demo-row-radio-buttons-group-label">Wifi</FormLabel>
+            <Controller
+              name="isWifi"
+              control={control}
+              render={({ field }) => (
+                <RadioGroup
+                  row
+                  aria-labelledby="demo-row-radio-buttons-group-label"
+                  name="row-radio-buttons-group"
+                  {...field}
+                >
+                  <FormControlLabel
+                    value={true}
+                    control={<Radio />}
+                    label="有"
+                  />
+                  <FormControlLabel
+                    value={false}
+                    control={<Radio />}
+                    label="無"
+                  />
+                </RadioGroup>
+              )}
+            />
+          </FormControl>
+          <FormControl sx={{ width: "30%" }}>
+            <FormLabel id="demo-row-radio-buttons-group-label">
+              電源席
+            </FormLabel>
+            <Controller
+              name="isOutlet"
+              control={control}
+              render={({ field }) => (
+                <RadioGroup
+                  row
+                  aria-labelledby="demo-row-radio-buttons-group-label"
+                  name="row-radio-buttons-group"
+                  {...field}
+                >
+                  <FormControlLabel
+                    value={true}
+                    control={<Radio />}
+                    label="有"
+                  />
+                  <FormControlLabel
+                    value={false}
+                    control={<Radio />}
+                    label="無"
+                  />
+                </RadioGroup>
+              )}
+            />
+          </FormControl>
+          <FormControl sx={{ width: "30%" }}>
+            <FormLabel id="demo-row-radio-buttons-group-label">
+              喫煙所
+            </FormLabel>
+            <Controller
+              name="isSmoking"
+              control={control}
+              render={({ field }) => (
+                <RadioGroup
+                  row
+                  aria-labelledby="demo-row-radio-buttons-group-label"
+                  name="row-radio-buttons-group"
+                  {...field}
+                >
+                  <FormControlLabel
+                    value={true}
+                    control={<Radio />}
+                    label="有"
+                  />
+                  <FormControlLabel
+                    value={false}
+                    control={<Radio />}
+                    label="無"
+                  />
+                </RadioGroup>
+              )}
+            />
+          </FormControl>
+        </Stack>
       </Stack>
       <Stack
         sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
