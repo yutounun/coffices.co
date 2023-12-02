@@ -26,7 +26,7 @@ const modalStyle = {
   width: 800,
   bgcolor: "background.paper",
   boxShadow: 24,
-  height: 950,
+  height: 850,
   display: "flex",
   flexDirection: "column",
   borderRadius: 5,
@@ -54,8 +54,13 @@ const CafeModal = ({
         <NextImage
           src={cafe.image ? cafe.image : "/no-image.png"}
           alt="cafe1"
+          className="top-rounded"
         />
-        <Stack id="modal-modal-description" sx={{ mx: 5, my: 3 }} spacing={2}>
+        <Stack
+          id="modal-modal-description"
+          sx={{ mx: 5, my: 3, pb: "3%" }}
+          spacing={2}
+        >
           <Stack sx={{ alignItems: "center", justifyContent: "center" }}>
             <Typography variant="h3">{cafe.title}</Typography>
             <Stack
