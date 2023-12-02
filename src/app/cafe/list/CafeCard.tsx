@@ -19,6 +19,7 @@ const CafeCard = ({ cafe }: propTypes) => {
   function handleCafeDetailClose() {
     setShowCafeDetail(false);
   }
+
   return (
     <>
       <Stack

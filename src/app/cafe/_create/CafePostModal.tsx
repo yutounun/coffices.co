@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+"use client";
+import React, { useRef, useState } from "react";
+import type { PutBlobResult, put } from "@vercel/blob";
 import {
   Box,
   Button,
@@ -19,6 +21,8 @@ interface propTypes {
 
 const CafeModal = ({ showModal, handleModalClose }: propTypes) => {
   const [pageNumber, setPageNumber] = useState(1);
+  const inputFileRef = useRef<HTMLInputElement>(null);
+  const [cafeImageFile, setCafeImageFile] = useState<any>(null);
 
   const height = pageNumber === 1 ? "80%" : "auto";
   const modalStyle = {
@@ -44,16 +48,58 @@ const CafeModal = ({ showModal, handleModalClose }: propTypes) => {
     setPageNumber((prev) => prev - 1);
   }
 
+  /**
+   * Retrieves the selected image file from the input file reference.
+   *
+   * @return {File} The selected image file.
+   */
+  function getImageFile() {
+    if (!inputFileRef.current?.files) {
+      throw new Error("No file selected");
+    }
+
+    setCafeImageFile(inputFileRef.current.files[0]);
+  }
+
+  /**
+   * Handles the submission of a cafe image.
+   *
+   * @param {React.FormEvent<HTMLFormElement>} event - The form submission event.
+   */
+  async function handleCafeImageSubmit() {
+    const response = await fetch(
+      `/api/cafe/upload?filename=${cafeImageFile?.name}`,
+      {
+        method: "POST",
+        body: cafeImageFile,
+      }
+    );
+
+    return (await response.json()) as PutBlobResult;
+  }
+
   /** Submit action */
-  function handleCafePostSubmit(data: CafePostRequestI) {
+  async function handleCafePostSubmit(data: CafePostRequestI) {
     data.isWifi = data.isWifi === "true";
     data.isOutlet = data.isOutlet === "true";
     data.isSmoking = data.isSmoking === "true";
     data.openHour = extractHourMinute(data.openHour);
     data.closeHour = extractHourMinute(data.closeHour);
-    postCafe(data).then(() => {
-      handleModalClose();
-    });
+
+    // Upload image and retrieve url
+    if (cafeImageFile) {
+      await handleCafeImageSubmit().then((res) => {
+        data.image = res.url || "";
+        // And then, post detailed cafe data
+        postCafe(data).then(() => {
+          handleModalClose();
+        });
+      });
+    } else {
+      postCafe(data).then(() => {
+        handleModalClose();
+      });
+    }
   }
   return (
     <Modal
@@ -86,7 +132,12 @@ const CafeModal = ({ showModal, handleModalClose }: propTypes) => {
         </Stack>
 
         {/* Modal Body */}
-        {pageNumber === 1 && <SelectImagePage />}
+        {pageNumber === 1 && (
+          <SelectImagePage
+            inputFileRef={inputFileRef}
+            getImageFile={getImageFile}
+          />
+        )}
         {pageNumber === 2 && (
           <CafeInputForm handleCafePostSubmit={handleCafePostSubmit} />
         )}
