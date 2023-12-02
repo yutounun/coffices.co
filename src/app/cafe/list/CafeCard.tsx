@@ -13,6 +13,7 @@ interface propTypes {
 
 const CafeCard = ({ cafe }: propTypes) => {
   const [showCafeDetail, setShowCafeDetail] = useState(false);
+
   function handleCafeCardClick() {
     setShowCafeDetail(true);
   }

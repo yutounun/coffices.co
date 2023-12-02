@@ -8,16 +8,22 @@ import {
 } from "../../../../node_modules/@mui/material/index";
 import Stations from "../../json/stations.json";
 
-const StationSearch = () => {
-  const [selectedValue, setSelectedValue] = useState("");
+interface propTypes {
+  filterByStationName: (stationName: string) => void;
+  clearFiltering: () => void;
+}
+
+const StationSearch = ({ filterByStationName, clearFiltering }: propTypes) => {
+  const [stationName, setStationName] = useState("");
 
   const handleAutocompleteChange = (event: any, newValue: string) => {
-    setSelectedValue(newValue);
+    setStationName(newValue);
   };
 
   function onClickSearch() {
-    console.log(selectedValue);
+    filterByStationName(stationName);
   }
+
   return (
     <Stack
       direction="row"
@@ -40,6 +46,7 @@ const StationSearch = () => {
         renderInput={(params) => (
           <TextField
             {...params}
+            onChange={handleAutocompleteChange}
             label="駅名"
             InputProps={{
               ...params.InputProps,

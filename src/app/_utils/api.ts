@@ -1,7 +1,24 @@
 import type { PutBlobResult } from "@vercel/blob";
 
+/**
+ * Retrieves cafe data from the server.
+ *
+ * @return {Promise<any>} A promise that resolves to the cafe data.
+ */
 export function getCafe() {
-  return fetch("http://localhost:9000/cafe")
+  return fetch(`http://localhost:9000/cafe`)
+    .then((res) => res.json())
+    .catch((err) => console.log(err));
+}
+
+/**
+ * Retrieves cafe data from the server based on the specified station name.
+ *
+ * @param {string} stationName - The name of the station to filter cafe data by.
+ * @return {Promise} A Promise that resolves to the cafe data fetched from the server.
+ */
+export function filterCafe(stationName: string) {
+  return fetch(`http://localhost:9000/cafe?station=${stationName}`)
     .then((res) => res.json())
     .catch((err) => console.log(err));
 }
