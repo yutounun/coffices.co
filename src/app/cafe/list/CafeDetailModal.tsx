@@ -16,6 +16,7 @@ import {
 } from "../../../../node_modules/@mui/material/index";
 import Image from "../../../../node_modules/next/image";
 import Stars from "_commons/Stars";
+import { NextImage } from "_commons/NextImage";
 
 const modalStyle = {
   position: "absolute",
@@ -50,13 +51,9 @@ const CafeModal = ({
       aria-describedby="modal-modal-description"
     >
       <Box sx={modalStyle}>
-        <Image
-          src={cafe.image}
+        <NextImage
+          src={cafe.image ? cafe.image : "/no-image.png"}
           alt="cafe1"
-          layout="responsive"
-          objectFit="cover"
-          width={800} // Match the modal width
-          height={400} // 50% of the modal height
         />
         <Stack id="modal-modal-description" sx={{ mx: 5, my: 3 }} spacing={2}>
           <Typography variant="h3" sx={{ mb: 1 }}>
