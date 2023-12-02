@@ -56,14 +56,18 @@ const CafeModal = ({
           alt="cafe1"
         />
         <Stack id="modal-modal-description" sx={{ mx: 5, my: 3 }} spacing={2}>
-          <Typography variant="h3" sx={{ mb: 1 }}>
-            {cafe.title}
-          </Typography>
-          <Stack direction="row" alignItems="center" spacing={1}>
-            <Stars rate={cafe.rate} />
-            <Typography variant="subtitle1" color="text.secondary">
-              {cafe.rate}
-            </Typography>
+          <Stack sx={{ alignItems: "center", justifyContent: "center" }}>
+            <Typography variant="h3">{cafe.title}</Typography>
+            <Stack
+              direction="row"
+              sx={{ alignItems: "center", justifyContent: "center" }}
+              spacing={1}
+            >
+              <Stars rate={cafe.rate} />
+              <Typography variant="subtitle1" color="text.secondary">
+                {cafe.rate}
+              </Typography>
+            </Stack>
           </Stack>
           <Typography
             variant="h6"
