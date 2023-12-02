@@ -10,10 +10,9 @@ import Stations from "../../json/stations.json";
 
 interface propTypes {
   filterByStationName: (stationName: string) => void;
-  clearFiltering: () => void;
 }
 
-const StationSearch = ({ filterByStationName, clearFiltering }: propTypes) => {
+const StationSearch = ({ filterByStationName }: propTypes) => {
   const [stationName, setStationName] = useState("");
 
   const handleAutocompleteChange = (event: any, newValue: string) => {

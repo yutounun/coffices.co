@@ -1,4 +1,5 @@
 import type { PutBlobResult } from "@vercel/blob";
+import { CafePostRequestI } from "types/cafes";
 
 /**
  * Retrieves cafe data from the server.
@@ -30,7 +31,7 @@ export function filterCafe(stationName: string) {
  * @returns - cafe data list
  * @throws - error
  */
-export async function postCafe(data) {
+export async function postCafe(data: CafePostRequestI) {
   return await fetch("http://localhost:9000/cafe", {
     method: "POST",
     headers: {

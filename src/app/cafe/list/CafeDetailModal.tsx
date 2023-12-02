@@ -14,7 +14,6 @@ import {
   Stack,
   Typography,
 } from "../../../../node_modules/@mui/material/index";
-import Image from "../../../../node_modules/next/image";
 import Stars from "_commons/Stars";
 import { NextImage } from "_commons/NextImage";
 
@@ -26,7 +25,7 @@ const modalStyle = {
   width: 800,
   bgcolor: "background.paper",
   boxShadow: 24,
-  height: 850,
+  height: "90%",
   display: "flex",
   flexDirection: "column",
   borderRadius: 5,

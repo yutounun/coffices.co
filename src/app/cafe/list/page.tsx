@@ -22,9 +22,9 @@ const ShopsList = () => {
     if (!filterParam) {
       getCafeLocal();
     } else {
-      setStationName(filterParam);
       filterCafe(filterParam).then((json) => setCafeList(json));
     }
+    filterParam ? setStationName(filterParam) : setStationName("");
   }
 
   return (
