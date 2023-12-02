@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef, useState } from "react";
-import type { PutBlobResult, put } from "@vercel/blob";
+import type { PutBlobResult } from "@vercel/blob";
 import {
   Box,
   Button,
@@ -13,6 +13,7 @@ import CafeInputForm from "./CafeInputFormPage";
 import { postCafe } from "_utils/api";
 import { CafePostRequestI } from "types/cafes";
 import { extractHourMinute } from "_utils/commonFn";
+import { cafeImageUpload } from "_utils/api";
 
 interface propTypes {
   showModal: boolean;
@@ -61,23 +62,6 @@ const CafeModal = ({ showModal, handleModalClose }: propTypes) => {
     setCafeImageFile(inputFileRef.current.files[0]);
   }
 
-  /**
-   * Handles the submission of a cafe image.
-   *
-   * @param {React.FormEvent<HTMLFormElement>} event - The form submission event.
-   */
-  async function handleCafeImageSubmit() {
-    const response = await fetch(
-      `/api/cafe/upload?filename=${cafeImageFile?.name}`,
-      {
-        method: "POST",
-        body: cafeImageFile,
-      }
-    );
-
-    return (await response.json()) as PutBlobResult;
-  }
-
   /** Submit action */
   async function handleCafePostSubmit(data: CafePostRequestI) {
     data.isWifi = data.isWifi === "true";
@@ -88,7 +72,7 @@ const CafeModal = ({ showModal, handleModalClose }: propTypes) => {
 
     // Upload image and retrieve url
     if (cafeImageFile) {
-      await handleCafeImageSubmit().then((res) => {
+      await cafeImageUpload(cafeImageFile).then((res) => {
         data.image = res.url || "";
         // And then, post detailed cafe data
         postCafe(data).then(() => {
