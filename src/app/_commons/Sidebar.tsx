@@ -12,6 +12,7 @@ const Sidebar = () => {
     {
       children: <LibraryBooksIcon />,
       title: "一覧",
+      path: "/cafe/list",
     },
     {
       children: <AddCircleOutlineIcon />,
@@ -20,10 +21,12 @@ const Sidebar = () => {
     {
       children: <AccountBoxIcon />,
       title: "プロフィール",
+      path: "/profile/[userId]",
     },
     {
       children: <SettingsIcon />,
       title: "設定",
+      path: "/config",
     },
   ];
   return (
@@ -43,7 +46,7 @@ const Sidebar = () => {
 
       <Stack>
         {rowProps.map((row) => (
-          <SidebarRow key={row.title} title={row.title}>
+          <SidebarRow key={row.title} title={row.title} path={row.path}>
             {row.children}
           </SidebarRow>
         ))}

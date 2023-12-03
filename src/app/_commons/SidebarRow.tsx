@@ -1,15 +1,17 @@
 "use client";
 import React, { useState } from "react";
 import { Stack, Typography } from "../../../node_modules/@mui/material/index";
-import { usePathname } from "../../../node_modules/next/navigation";
+import { usePathname, useRouter } from "../../../node_modules/next/navigation";
 import CafePostModal from "../cafe/_create/CafePostModal";
 interface propTypes {
   children: React.ReactNode;
   title: string;
+  path: string;
 }
-const SidebarRow = ({ children, title }: propTypes) => {
+const SidebarRow = ({ children, title, path }: propTypes) => {
   const currentPath = usePathname();
   const [postCafeModal, setPostCafeModal] = useState(false);
+  const router = useRouter();
 
   /**
    * Determines if the title and path match certain conditions and returns a boolean value.
@@ -26,7 +28,7 @@ const SidebarRow = ({ children, title }: propTypes) => {
     if (title === "一覧" && currentPath === "/cafe/list") {
       return true;
     }
-    if (title === "プロフィール" && currentPath === "/profile") {
+    if (title === "プロフィール" && currentPath.includes("/profile")) {
       return true;
     }
     if (title === "設定" && currentPath === "/config") {
@@ -42,6 +44,8 @@ const SidebarRow = ({ children, title }: propTypes) => {
   function openPostCafeModal() {
     if (title === "作成") {
       setPostCafeModal(true);
+    } else {
+      router.push(path);
     }
   }
   return (
