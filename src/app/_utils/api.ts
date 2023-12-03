@@ -1,5 +1,5 @@
 import type { PutBlobResult } from "@vercel/blob";
-import { CafePostRequestI } from "types/cafes";
+import { CafePostRequestI, CafePutRequestI } from "types/cafes";
 
 /**
  * Retrieves cafe data from the server.
@@ -38,6 +38,35 @@ export async function postCafe(data: CafePostRequestI) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(data),
+  })
+    .then((res) => res.json())
+    .catch((err) => console.log(err));
+}
+
+/**
+ * Sends a PUT request to the server to update a cafe's data.
+ *
+ * @param {CafePutRequestI} data - The data to be sent in the request body.
+ * @return {Promise<any>} A Promise that resolves to the JSON response from the server, or logs an error if the request fails.
+ */
+export async function putCafe(data: CafePutRequestI) {
+  return await fetch(`http://localhost:9000/cafe/${data.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  })
+    .then((res) => res.json())
+    .catch((err) => console.log(err));
+}
+
+export async function deleteCafe(cafeId: string | number) {
+  return await fetch(`http://localhost:9000/cafe/${cafeId}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
   })
     .then((res) => res.json())
     .catch((err) => console.log(err));
