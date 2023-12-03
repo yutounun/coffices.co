@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import { Stack, Typography } from "../../../node_modules/@mui/material/index";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
@@ -88,6 +87,12 @@ const SidebarRow = ({ row, open }: propTypes) => {
           />
         </ListItemButton>
       </ListItem>
+      {postCafeModal && (
+        <CafePostModal
+          handleModalClose={() => setPostCafeModal(false)}
+          showModal={postCafeModal}
+        />
+      )}
     </>
   );
 };

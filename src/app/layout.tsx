@@ -25,7 +25,7 @@ export default function RootLayout({
       <body className={notojp.className}>
         <Stack direction="row">
           <Sidebar />
-          <Box sx={{ ml: "4rem", width: "100%" }}>{children}</Box>
+          <Box sx={{ width: "100%" }}>{children}</Box>
         </Stack>
       </body>
     </html>

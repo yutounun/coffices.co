@@ -108,11 +108,7 @@ export default function MiniDrawer() {
     <>
       <CssBaseline />
       <Drawer variant="permanent" open={open}>
-        <DrawerHeader
-          sx={{
-            mr: 0.5,
-          }}
-        >
+        <DrawerHeader>
           <IconButton
             color="primary"
             aria-label="open drawer"
