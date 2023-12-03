@@ -31,7 +31,7 @@ const ShopsList = () => {
     <>
       <StationSearch filterByStationName={filterByStationName} />
       <CafeRow
-        area={stationName ? stationName : "恵比寿・目黒周辺"}
+        area={stationName ? stationName : "東京の人気作業カフェ"}
         cafes={cafeList}
       />
       {/* <CafeRow area="銀座・新橋周辺" cafes={cafeList} />

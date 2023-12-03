@@ -37,7 +37,7 @@ const CafeInputForm = ({ handleCafePostSubmit }: propTypes) => {
   } = useForm<CafeFormInput>({
     mode: "onChange",
     defaultValues: {
-      title: "",
+      title: null,
       rate: null,
       image: "",
       area: "",
@@ -71,8 +71,9 @@ const CafeInputForm = ({ handleCafePostSubmit }: propTypes) => {
           label="店名"
           variant="outlined"
           sx={{ width: "100%" }}
-          {...register("title", { required: "店名を入力してください" })}
+          error={!!errors.title}
           helperText={errors.title?.message?.toString()}
+          {...register("title", { required: "店名を入力してください" })}
         />
         <Stack
           direction="row"
@@ -83,14 +84,12 @@ const CafeInputForm = ({ handleCafePostSubmit }: propTypes) => {
             freeSolo
             id="free-solo-2-demo"
             disableClearable
-            error={!!errors.area}
-            helperText={errors.area?.message?.toString()}
             options={Areas.map((area) => area.name)}
-            renderInput={(params) => (
+            renderInput={(params: any) => (
               <TextField
                 {...params}
-                error={!!errors.station}
-                helperText={errors.station?.message?.toString()}
+                error={!!errors.area}
+                helperText={errors.area?.message?.toString()}
                 {...register("area", { required: "エリアを入力してください" })}
                 label="エリア"
                 InputProps={{
@@ -105,10 +104,8 @@ const CafeInputForm = ({ handleCafePostSubmit }: propTypes) => {
             freeSolo
             id="free-solo-2-demo"
             disableClearable
-            error={!!errors.station}
-            helperText={errors.station?.message?.toString()}
             options={Stations.map((station) => station.name)}
-            renderInput={(params) => (
+            renderInput={(params: any) => (
               <TextField
                 {...params}
                 {...register("station", { required: "駅名を入力してください" })}
@@ -132,12 +129,7 @@ const CafeInputForm = ({ handleCafePostSubmit }: propTypes) => {
               name="openHour"
               control={control}
               render={({ field }) => (
-                <TimePicker
-                  sx={{ width: "45%" }}
-                  label="開店時間"
-                  {...field}
-                  renderInput={(params) => <TextField {...params} />}
-                />
+                <TimePicker sx={{ width: "45%" }} label="開店時間" {...field} />
               )}
             />
             <Typography variant="h5">~</Typography>
@@ -145,12 +137,7 @@ const CafeInputForm = ({ handleCafePostSubmit }: propTypes) => {
               name="closeHour"
               control={control}
               render={({ field }) => (
-                <TimePicker
-                  sx={{ width: "45%" }}
-                  label="閉店時間"
-                  {...field}
-                  renderInput={(params) => <TextField {...params} />}
-                />
+                <TimePicker sx={{ width: "45%" }} label="閉店時間" {...field} />
               )}
             />
           </Stack>
@@ -179,7 +166,6 @@ const CafeInputForm = ({ handleCafePostSubmit }: propTypes) => {
                 <RadioGroup
                   row
                   aria-labelledby="demo-row-radio-buttons-group-label"
-                  name="row-radio-buttons-group"
                   {...field}
                 >
                   <FormControlLabel
@@ -207,7 +193,6 @@ const CafeInputForm = ({ handleCafePostSubmit }: propTypes) => {
                 <RadioGroup
                   row
                   aria-labelledby="demo-row-radio-buttons-group-label"
-                  name="row-radio-buttons-group"
                   {...field}
                 >
                   <FormControlLabel
@@ -235,7 +220,6 @@ const CafeInputForm = ({ handleCafePostSubmit }: propTypes) => {
                 <RadioGroup
                   row
                   aria-labelledby="demo-row-radio-buttons-group-label"
-                  name="row-radio-buttons-group"
                   {...field}
                 >
                   <FormControlLabel

@@ -1,6 +1,5 @@
 "use client";
 import React, { useRef, useState } from "react";
-import type { PutBlobResult } from "@vercel/blob";
 import {
   Box,
   Button,
@@ -25,7 +24,7 @@ const CafeModal = ({ showModal, handleModalClose }: propTypes) => {
   const inputFileRef = useRef<HTMLInputElement>(null);
   const [cafeImageFile, setCafeImageFile] = useState<any>(null);
 
-  const height = pageNumber === 1 ? "80%" : "auto";
+  const height = pageNumber === 1 ? "60%" : "auto";
   const modalStyle = {
     position: "absolute",
     top: "50%",
@@ -35,7 +34,6 @@ const CafeModal = ({ showModal, handleModalClose }: propTypes) => {
     bgcolor: "background.paper",
     boxShadow: 24,
     pb: 5,
-    minHeight: "80%",
     height: height,
     display: "flex",
     flexDirection: "column",
@@ -72,7 +70,7 @@ const CafeModal = ({ showModal, handleModalClose }: propTypes) => {
 
     // Upload image and retrieve url
     if (cafeImageFile) {
-      await cafeImageUpload(cafeImageFile).then((res) => {
+      await cafeImageUpload(cafeImageFile).then((res: any) => {
         data.image = res.url || "";
         // And then, post detailed cafe data
         postCafe(data).then(() => {

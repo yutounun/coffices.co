@@ -15,8 +15,14 @@ interface propTypes {
 const StationSearch = ({ filterByStationName }: propTypes) => {
   const [stationName, setStationName] = useState("");
 
-  const handleAutocompleteChange = (event: any, newValue: string) => {
-    setStationName(newValue);
+  const handleAutocompleteChange = (_: any, value: string | null) => {
+    if (value) setStationName(value); // Autocomplete からの値
+  };
+
+  const handleTextFieldChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setStationName(event.target.value); // TextField からの値
   };
 
   function onClickSearch() {
@@ -45,7 +51,7 @@ const StationSearch = ({ filterByStationName }: propTypes) => {
         renderInput={(params) => (
           <TextField
             {...params}
-            onChange={handleAutocompleteChange}
+            onChange={handleTextFieldChange} // TextField 用の別の関数
             label="駅名"
             InputProps={{
               ...params.InputProps,

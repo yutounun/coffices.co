@@ -55,6 +55,7 @@ export async function getStationsInTokyo() {
  * @param {React.FormEvent<HTMLFormElement>} event - The form submission event.
  */
 export async function cafeImageUpload(cafeImageFile: any) {
+  if (!cafeImageFile) return;
   const response = await fetch(
     `/api/cafe/upload?filename=${cafeImageFile?.name}`,
     {
