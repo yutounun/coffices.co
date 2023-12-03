@@ -107,7 +107,7 @@ export default function MiniDrawer() {
   return (
     <>
       <CssBaseline />
-      <Drawer variant="permanent" open={open}>
+      <Drawer variant="permanent" open={open} theme={theme}>
         <DrawerHeader>
           <IconButton
             color="primary"
