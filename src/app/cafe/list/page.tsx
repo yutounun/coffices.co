@@ -27,15 +27,24 @@ const ShopsList = () => {
     filterParam ? setStationName(filterParam) : setStationName("");
   }
 
+  function cafeShopsInSpecificArea(area: string) {
+    return cafeList.filter((cafe) => cafe.area === area);
+  }
+
   return (
     <>
       <StationSearch filterByStationName={filterByStationName} />
       <CafeRow
-        area={stationName ? stationName : "東京の人気作業カフェ"}
+        area={stationName ? stationName : "東京都全体の人気作業カフェ"}
         cafes={cafeList}
       />
-      {/* <CafeRow area="銀座・新橋周辺" cafes={cafeList} />
-      <CafeRow area="表参道・青山周辺" cafes={cafeList} /> */}
+      {!stationName && (
+        <>
+          <CafeRow area="新宿区" cafes={cafeShopsInSpecificArea("新宿")} />
+          <CafeRow area="吉祥寺" cafes={cafeShopsInSpecificArea("吉祥寺")} />
+          <CafeRow area="渋谷区" cafes={cafeShopsInSpecificArea("渋谷")} />
+        </>
+      )}
     </>
   );
 };
