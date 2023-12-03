@@ -43,10 +43,6 @@ const SidebarRow = ({ row, open }: propTypes) => {
     return false;
   }
 
-  function bgColor() {
-    return isCurrentPath() ? "transparent" : "rgba(0, 0, 0, 0.05)";
-  }
-
   function onClickRow() {
     if (row.title === "作成") {
       setPostCafeModal(true);
@@ -63,6 +59,7 @@ const SidebarRow = ({ row, open }: propTypes) => {
         onClick={onClickRow}
       >
         <ListItemButton
+          selected={isCurrentPath()}
           sx={{
             minHeight: 48,
             justifyContent: open ? "initial" : "center",
@@ -82,7 +79,6 @@ const SidebarRow = ({ row, open }: propTypes) => {
             primary={row.title}
             sx={{
               opacity: open ? 1 : 0,
-              fontWeight: isCurrentPath() ? "bold" : "normal",
             }}
           />
         </ListItemButton>
