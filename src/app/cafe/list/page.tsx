@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { CafeI } from "types/cafes";
 import { filterCafe, getCafe } from "_utils/api";
-import "./cafe-list.scss";
+import "../../styles/cafe-list.scss";
 import CafeRow from "./CafeRow";
 import StationSearch from "./StationSearch";
 

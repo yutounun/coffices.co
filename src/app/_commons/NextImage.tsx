@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { FC } from "react";
-import "./NextImage.scss";
-import "../cafe/list/cafe-list.scss";
+import "../styles/NextImage.scss";
+import "../styles/cafe-list.scss";
 
 type NextImageProps = {
   src: string;
