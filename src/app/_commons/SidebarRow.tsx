@@ -1,14 +1,21 @@
 "use client";
 import React, { useState } from "react";
 import { Stack, Typography } from "../../../node_modules/@mui/material/index";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
 import { usePathname, useRouter } from "../../../node_modules/next/navigation";
 import CafePostModal from "../cafe/_create/CafePostModal";
 interface propTypes {
-  children: React.ReactNode;
-  title: string;
-  path: string;
+  row: {
+    icon: React.ReactNode;
+    title: string;
+    path?: string;
+  };
+  open: boolean;
 }
-const SidebarRow = ({ children, title, path }: propTypes) => {
+const SidebarRow = ({ row, open }: propTypes) => {
   const currentPath = usePathname();
   const [postCafeModal, setPostCafeModal] = useState(false);
   const router = useRouter();
@@ -19,19 +26,19 @@ const SidebarRow = ({ children, title, path }: propTypes) => {
    * @return {boolean} - true if the title and path match certain conditions, false otherwise.
    */
   function isCurrentPath() {
-    if (title === "作成" && currentPath === "/cafe/create") {
+    if (row.title === "作成" && currentPath === "/cafe/create") {
       return true;
     }
-    if (title === "検索" && currentPath === "/cafe/search") {
+    if (row.title === "検索" && currentPath === "/cafe/search") {
       return false;
     }
-    if (title === "一覧" && currentPath === "/cafe/list") {
+    if (row.title === "一覧" && currentPath === "/cafe/list") {
       return true;
     }
-    if (title === "プロフィール" && currentPath.includes("/profile")) {
+    if (row.title === "プロフィール" && currentPath.includes("/profile")) {
       return true;
     }
-    if (title === "設定" && currentPath === "/config") {
+    if (row.title === "設定" && currentPath === "/config") {
       return true;
     }
     return false;
@@ -41,43 +48,46 @@ const SidebarRow = ({ children, title, path }: propTypes) => {
     return isCurrentPath() ? "transparent" : "rgba(0, 0, 0, 0.05)";
   }
 
-  function openPostCafeModal() {
-    if (title === "作成") {
+  function onClickRow() {
+    if (row.title === "作成") {
       setPostCafeModal(true);
-    } else {
-      router.push(path);
+    } else if (row.path) {
+      router.push(row.path);
     }
   }
   return (
     <>
-      <Stack
-        direction="row"
-        sx={{
-          alignItems: "center",
-          p: 2,
-          borderRadius: 2,
-          cursor: "pointer",
-          ":hover": {
-            fontWeight: "bold",
-            backgroundColor: bgColor(),
-          },
-        }}
-        spacing={1}
-        onClick={openPostCafeModal}
+      <ListItem
+        key={row.title}
+        disablePadding
+        sx={{ display: "block" }}
+        onClick={onClickRow}
       >
-        {/* Icon */}
-        {children}
-
-        <Typography fontWeight={isCurrentPath() ? "bold" : "normal"}>
-          {title}
-        </Typography>
-      </Stack>
-      {postCafeModal && (
-        <CafePostModal
-          handleModalClose={() => setPostCafeModal(false)}
-          showModal={postCafeModal}
-        />
-      )}
+        <ListItemButton
+          sx={{
+            minHeight: 48,
+            justifyContent: open ? "initial" : "center",
+            px: 2.5,
+          }}
+        >
+          <ListItemIcon
+            sx={{
+              minWidth: 0,
+              mr: open ? 3 : "auto",
+              justifyContent: "center",
+            }}
+          >
+            {row.icon}
+          </ListItemIcon>
+          <ListItemText
+            primary={row.title}
+            sx={{
+              opacity: open ? 1 : 0,
+              fontWeight: isCurrentPath() ? "bold" : "normal",
+            }}
+          />
+        </ListItemButton>
+      </ListItem>
     </>
   );
 };
