@@ -12,6 +12,8 @@ import { filterCafe, getCafe } from "_utils/api";
 import "../../styles/cafe-list.scss";
 import CafeRow from "./CafeRow";
 import StationSearch from "./StationSearch";
+import useCreateModalStore from "../../../store/openCreateCafeModal";
+import CafePostModal from "../_create/CafePostModal";
 
 interface CafeListContextType {
   cafeList: CafeI[];
@@ -24,6 +26,8 @@ export const CafeListContext = createContext<CafeListContextType>({
 });
 
 const ShopsList = () => {
+  const { showsCreateModal, openCreateCafeModal, closeCreateCafeModal } =
+    useCreateModalStore();
   const [cafeList, setCafeList] = useState<CafeI[]>([]);
   const [stationName, setStationName] = useState("");
   useEffect(() => {
@@ -45,7 +49,6 @@ const ShopsList = () => {
 
   function cafeShopsInSpecificArea(area: string) {
     return cafeList?.filter((cafe) => cafe.area === area);
-    // return cafeList;
   }
 
   return (
@@ -62,6 +65,12 @@ const ShopsList = () => {
             <CafeRow area="吉祥寺" cafes={cafeShopsInSpecificArea("吉祥寺")} />
             <CafeRow area="渋谷区" cafes={cafeShopsInSpecificArea("渋谷")} />
           </>
+        )}
+        {showsCreateModal && (
+          <CafePostModal
+            handleModalClose={closeCreateCafeModal}
+            showModal={openCreateCafeModal}
+          />
         )}
       </CafeListContext.Provider>
     </>

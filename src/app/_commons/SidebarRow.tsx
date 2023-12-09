@@ -5,7 +5,8 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { usePathname, useRouter } from "../../../node_modules/next/navigation";
-import CafePostModal from "../cafe/_create/CafePostModal";
+import useCreateModalStore from "../../store/openCreateCafeModal";
+
 interface propTypes {
   row: {
     icon: React.ReactNode;
@@ -15,8 +16,8 @@ interface propTypes {
   open: boolean;
 }
 const SidebarRow = ({ row, open }: propTypes) => {
+  const { openCreateCafeModal } = useCreateModalStore();
   const currentPath = usePathname();
-  const [postCafeModal, setPostCafeModal] = useState(false);
   const router = useRouter();
 
   /**
@@ -45,7 +46,7 @@ const SidebarRow = ({ row, open }: propTypes) => {
 
   function onClickRow() {
     if (row.title === "作成") {
-      setPostCafeModal(true);
+      openCreateCafeModal();
     } else if (row.path) {
       router.push(row.path);
     }
@@ -83,12 +84,6 @@ const SidebarRow = ({ row, open }: propTypes) => {
           />
         </ListItemButton>
       </ListItem>
-      {postCafeModal && (
-        <CafePostModal
-          handleModalClose={() => setPostCafeModal(false)}
-          showModal={postCafeModal}
-        />
-      )}
     </>
   );
 };

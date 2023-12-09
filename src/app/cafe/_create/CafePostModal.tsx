@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import {
   Box,
   Button,
@@ -13,6 +13,7 @@ import { postCafe } from "_utils/api";
 import { CafePostRequestI } from "types/cafes";
 import { extractHourMinute } from "_utils/commonFn";
 import { cafeImageUpload } from "_utils/api";
+import { CafeListContext } from "cafe/list/page";
 
 interface propTypes {
   showModal: boolean;
@@ -20,6 +21,7 @@ interface propTypes {
 }
 
 const CafeModal = ({ showModal, handleModalClose }: propTypes) => {
+  const { setCafeList } = useContext(CafeListContext);
   const [pageNumber, setPageNumber] = useState(1);
   const inputFileRef = useRef<HTMLInputElement>(null);
   const [cafeImageFile, setCafeImageFile] = useState<any>(null);
@@ -73,12 +75,14 @@ const CafeModal = ({ showModal, handleModalClose }: propTypes) => {
       await cafeImageUpload(cafeImageFile).then((res: any) => {
         data.image = res.url || "";
         // And then, post detailed cafe data
-        postCafe(data).then(() => {
+        postCafe(data).then((res) => {
+          setCafeList(res);
           handleModalClose();
         });
       });
     } else {
-      postCafe(data).then(() => {
+      postCafe(data).then((res) => {
+        setCafeList(res);
         handleModalClose();
       });
     }
