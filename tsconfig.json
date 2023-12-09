@@ -28,7 +28,9 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app"
+    "src/app",
+    "src/libs/connectDB.js",
+    "src/libs/models/CafeModel.js"
   ],
   "exclude": ["node_modules"]
 }

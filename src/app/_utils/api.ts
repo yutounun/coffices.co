@@ -8,8 +8,13 @@ const api = process.env.NEXT_PUBLIC_LOCAL_API_URL;
  *
  * @return {Promise<any>} A promise that resolves to the cafe data.
  */
-export function getCafe() {
-  return fetch(`${api}/cafe`)
+export async function getCafe() {
+  return await fetch("/api/cafe", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
     .then((res) => res.json())
     .catch((err) => console.log(err));
 }

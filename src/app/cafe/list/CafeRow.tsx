@@ -18,9 +18,9 @@ const CafeRow = ({ cafes, area }: propTypes) => {
         {area}
       </Typography>
       <Stack direction="row" className="row__cards">
-        {cafes.map((cafe) => (
-          <CafeCard key={cafe.id} cafe={cafe} />
-        ))}
+        {cafes &&
+          cafes.length > 0 &&
+          cafes.map((cafe) => <CafeCard key={cafe.id} cafe={cafe} />)}
       </Stack>
     </>
   );

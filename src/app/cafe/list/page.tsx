@@ -28,7 +28,8 @@ const ShopsList = () => {
   }
 
   function cafeShopsInSpecificArea(area: string) {
-    return cafeList.filter((cafe) => cafe.area === area);
+    // return cafeList.filter((cafe) => cafe.area === area);
+    return cafeList;
   }
 
   return (
