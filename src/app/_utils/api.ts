@@ -1,7 +1,7 @@
 import type { PutBlobResult } from "@vercel/blob";
 import { CafePostRequestI, CafePutRequestI } from "types/cafes";
 
-const api = process.env.NEXT_PUBLIC_LOCAL_API_URL;
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 /**
  * Retrieves cafe data from the server.
@@ -9,7 +9,7 @@ const api = process.env.NEXT_PUBLIC_LOCAL_API_URL;
  * @return {Promise<any>} A promise that resolves to the cafe data.
  */
 export async function getCafe() {
-  return await fetch("/api/cafe", {
+  return await fetch(`${API_URL}/cafe`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -26,7 +26,7 @@ export async function getCafe() {
  * @return {Promise} A Promise that resolves to the cafe data fetched from the server.
  */
 export function filterCafe(stationName: string) {
-  return fetch(`${api}/cafe?station=${stationName}`)
+  return fetch(`${API_URL}/cafe?station=${stationName}`)
     .then((res) => res.json())
     .catch((err) => console.log(err));
 }
