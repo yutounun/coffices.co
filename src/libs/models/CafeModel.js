@@ -51,4 +51,4 @@ const CafeSchema = new Schema(
 );
 
 export const CafeModel =
-  mongoose.models.Cafe || mongoose.model("cafes", CafeSchema);
+  mongoose.models.cafes || mongoose.model("cafes", CafeSchema);
