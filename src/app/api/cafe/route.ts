@@ -27,13 +27,20 @@ export async function GET(request: NextApiRequest) {
   }
 }
 
+/**
+ * Handles the HTTP POST request.
+ *
+ * @param {NextApiRequest} request - The request object.
+ * @return {Promise<NextResponse>} A JSON response containing all cafe records including the created cafe object or an error message.
+ */
 export async function POST(request: NextApiRequest) {
   await connectDB();
 
   try {
     const data = await request.json();
-    const cafe = await CafeModel.create(data);
-    return NextResponse.json(cafe);
+    await CafeModel.create(data);
+    const cafes = await CafeModel.find({});
+    return NextResponse.json(cafes);
   } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "An unknown error occurred";
