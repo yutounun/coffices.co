@@ -1,13 +1,15 @@
 import type { PutBlobResult } from "@vercel/blob";
 import { CafePostRequestI, CafePutRequestI } from "types/cafes";
 
+const api = process.env.NEXT_PUBLIC_LOCAL_API_URL;
+
 /**
  * Retrieves cafe data from the server.
  *
  * @return {Promise<any>} A promise that resolves to the cafe data.
  */
 export function getCafe() {
-  return fetch(`http://localhost:9000/cafe`)
+  return fetch(`${api}/cafe`)
     .then((res) => res.json())
     .catch((err) => console.log(err));
 }
@@ -19,7 +21,7 @@ export function getCafe() {
  * @return {Promise} A Promise that resolves to the cafe data fetched from the server.
  */
 export function filterCafe(stationName: string) {
-  return fetch(`http://localhost:9000/cafe?station=${stationName}`)
+  return fetch(`${api}/cafe?station=${stationName}`)
     .then((res) => res.json())
     .catch((err) => console.log(err));
 }
@@ -32,7 +34,7 @@ export function filterCafe(stationName: string) {
  * @throws - error
  */
 export async function postCafe(data: CafePostRequestI) {
-  return await fetch("http://localhost:9000/cafe", {
+  return await fetch("${api}/cafe", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -50,7 +52,7 @@ export async function postCafe(data: CafePostRequestI) {
  * @return {Promise<any>} A Promise that resolves to the JSON response from the server, or logs an error if the request fails.
  */
 export async function putCafe(data: CafePutRequestI) {
-  return await fetch(`http://localhost:9000/cafe/${data.id}`, {
+  return await fetch(`${api}/cafe/${data.id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -62,7 +64,7 @@ export async function putCafe(data: CafePutRequestI) {
 }
 
 export async function deleteCafe(cafeId: string | number) {
-  return await fetch(`http://localhost:9000/cafe/${cafeId}`, {
+  return await fetch(`${api}/cafe/${cafeId}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
