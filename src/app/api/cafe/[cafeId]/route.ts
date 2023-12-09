@@ -8,10 +8,12 @@ export async function PUT(request: NextApiRequest) {
 
   try {
     const data = await request.json();
-    const cafe = await CafeModel.findOneAndUpdate({ id: data.id }, data, {
+    await CafeModel.findOneAndUpdate({ id: data.id }, data, {
       new: true,
     });
-    return NextResponse.json(cafe);
+    // return all cafes after updating to refresh the page
+    const cafes = await CafeModel.find({});
+    return NextResponse.json(cafes);
   } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "An unknown error occurred";

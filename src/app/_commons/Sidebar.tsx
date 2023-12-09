@@ -6,8 +6,6 @@ import SettingsIcon from "../../../node_modules/@mui/icons-material/Settings";
 import AccountBoxIcon from "../../../node_modules/@mui/icons-material/AccountBox";
 import { styled, useTheme, Theme, CSSObject } from "@mui/material/styles";
 import MuiDrawer from "@mui/material/Drawer";
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
 import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
@@ -48,10 +46,6 @@ const DrawerHeader = styled("div")(({ theme }: { theme: Theme }) => ({
   // necessary for content to be below app bar
   ...theme.mixins.toolbar,
 }));
-
-interface AppBarProps extends MuiAppBarProps {
-  open?: boolean;
-}
 
 const Drawer = styled(MuiDrawer, {
   shouldForwardProp: (prop: string) => prop !== "open",

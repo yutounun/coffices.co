@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import {
   Box,
   Button,
@@ -13,6 +13,7 @@ import { putCafe } from "_utils/api";
 import { CafeI, CafePostRequestI, CafePutRequestI } from "types/cafes";
 import { extractHourMinute } from "_utils/commonFn";
 import { cafeImageUpload } from "_utils/api";
+import { CafeListContext } from "cafe/list/page";
 
 interface propTypes {
   showModal: boolean;
@@ -21,6 +22,8 @@ interface propTypes {
 }
 
 const CafeEditModal = ({ showModal, handleModalClose, cafe }: propTypes) => {
+  let { setCafeList } = useContext(CafeListContext);
+
   const [pageNumber, setPageNumber] = useState(1);
   const inputFileRef = useRef<HTMLInputElement>(null);
   const [cafeImageFile, setCafeImageFile] = useState<any>(null);
@@ -43,7 +46,6 @@ const CafeEditModal = ({ showModal, handleModalClose, cafe }: propTypes) => {
 
   function incrementPageNumber() {
     setPageNumber((prev) => prev + 1);
-    console.log("cafe :", cafe);
   }
   function decrementPageNumber() {
     setPageNumber((prev) => prev - 1);
@@ -64,27 +66,25 @@ const CafeEditModal = ({ showModal, handleModalClose, cafe }: propTypes) => {
 
   /** Submit action */
   async function handleCafePutSubmit(data: CafePutRequestI) {
-    console.log(
-      "🚀 ~ file: CafeEditModal.tsx:67 ~ handleCafePutSubmit ~ data:",
-      data
-    );
     data.isWifi = data.isWifi === "true";
     data.isOutlet = data.isOutlet === "true";
     data.isSmoking = data.isSmoking === "true";
     data.openHour = extractHourMinute(data.openHour);
     data.closeHour = extractHourMinute(data.closeHour);
-
+    console.log("あれ");
     // Upload image and retrieve url
     if (cafeImageFile) {
       await cafeImageUpload(cafeImageFile).then((res: any) => {
         data.image = res.url || "";
         // And then, update detailed cafe data
-        putCafe(data).then(() => {
+        putCafe(data).then((res) => {
+          setCafeList(res);
           handleModalClose();
         });
       });
     } else {
-      putCafe(data).then(() => {
+      await putCafe(data).then((res) => {
+        setCafeList(res);
         handleModalClose();
       });
     }

@@ -64,7 +64,12 @@ export async function putCafe(data: CafePutRequestI) {
     },
     body: JSON.stringify(data),
   })
-    .then((res) => res.json())
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error(`Error: ${res.status}`);
+      }
+      return res.json();
+    })
     .catch((err) => console.log(err));
 }
 
