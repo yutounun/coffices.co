@@ -1,3 +1,13 @@
+export interface ReviewI {
+  id: string;
+  title: string;
+  content: string;
+  userId: string;
+  rate: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
 export interface CafeI {
   id: number | string;
   title: string;
@@ -10,6 +20,7 @@ export interface CafeI {
   isWifi: boolean | string;
   isSmoking: boolean;
   isOutlet: boolean;
+  reviews: ReviewI[];
 }
 
 export interface CafePostRequestI {

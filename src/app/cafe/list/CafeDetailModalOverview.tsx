@@ -1,6 +1,9 @@
 import React from "react";
 import { CafeI } from "types/cafes";
-import { Typography } from "../../../../node_modules/@mui/material/index";
+import {
+  Stack,
+  Typography,
+} from "../../../../node_modules/@mui/material/index";
 import TrainIcon from "@mui/icons-material/Train";
 import WifiIcon from "../../../../node_modules/@mui/icons-material/Wifi";
 import PowerIcon from "../../../../node_modules/@mui/icons-material/Power";

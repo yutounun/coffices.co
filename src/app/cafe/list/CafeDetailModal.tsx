@@ -61,14 +61,16 @@ const CafeModal = ({
         aria-describedby="modal-modal-description"
       >
         <Box sx={modalStyle}>
-          <NextImage
-            src={cafe.image ? cafe.image : "/no-image.png"}
-            alt="cafe1"
-            className="top-rounded"
-          />
+          <Box sx={{ height: "60%" }}>
+            <NextImage
+              src={cafe.image ? cafe.image : "/no-image.png"}
+              alt="cafe1"
+              className="top-rounded"
+            />
+          </Box>
           <Stack
             id="modal-modal-description"
-            sx={{ mx: 5, my: 3, pb: "3%" }}
+            sx={{ mx: 5, my: 3, pb: "3%", height: "40%" }}
             spacing={2}
           >
             <Stack
@@ -78,7 +80,7 @@ const CafeModal = ({
               <Button
                 onClick={() => setShowsReviews(!showsReviews)}
                 variant="contained"
-                sx={{ borderRadius: 5 }}
+                sx={{ borderRadius: 5, width: 110, boxShadow: 0 }}
               >
                 {showsReviews ? "Overview" : "Reviews"}
               </Button>
