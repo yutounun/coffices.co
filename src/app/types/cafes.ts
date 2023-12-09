@@ -9,6 +9,7 @@ export interface ReviewI {
 }
 
 export interface CafeI {
+  _id: string;
   id: number | string;
   title: string;
   rate: number;
@@ -37,6 +38,7 @@ export interface CafePostRequestI {
 }
 
 export interface CafePutRequestI {
+  _id: string;
   id: string | number;
   title: string;
   rate: number;
@@ -51,6 +53,7 @@ export interface CafePutRequestI {
 }
 
 export interface CafeGetResponseI {
+  _id: string;
   id: number;
   title: string;
   rate: number;

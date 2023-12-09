@@ -32,5 +32,6 @@
     "src/libs/connectDB.js",
     "src/libs/models/CafeModel.js"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+  "moduleResolution": "node"
 }

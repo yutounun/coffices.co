@@ -71,7 +71,7 @@ const CafeEditModal = ({ showModal, handleModalClose, cafe }: propTypes) => {
     data.isSmoking = data.isSmoking === "true";
     data.openHour = extractHourMinute(data.openHour);
     data.closeHour = extractHourMinute(data.closeHour);
-    console.log("あれ");
+
     // Upload image and retrieve url
     if (cafeImageFile) {
       await cafeImageUpload(cafeImageFile).then((res: any) => {

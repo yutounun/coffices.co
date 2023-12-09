@@ -20,7 +20,7 @@ const CafeRow = ({ cafes, area }: propTypes) => {
       <Stack direction="row" className="row__cards">
         {cafes &&
           cafes.length > 0 &&
-          cafes.map((cafe) => <CafeCard key={cafe.id} cafe={cafe} />)}
+          cafes.map((cafe) => <CafeCard key={cafe._id} cafe={cafe} />)}
       </Stack>
     </>
   );
