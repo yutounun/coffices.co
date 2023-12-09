@@ -39,7 +39,7 @@ export function filterCafe(stationName: string) {
  * @throws - error
  */
 export async function postCafe(data: CafePostRequestI) {
-  return await fetch("${api}/cafe", {
+  return await fetch(`${API_URL}/cafe`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -57,7 +57,7 @@ export async function postCafe(data: CafePostRequestI) {
  * @return {Promise<any>} A Promise that resolves to the JSON response from the server, or logs an error if the request fails.
  */
 export async function putCafe(data: CafePutRequestI) {
-  return await fetch(`${api}/cafe/${data.id}`, {
+  return await fetch(`${API_URL}/cafe/${data.id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -69,7 +69,7 @@ export async function putCafe(data: CafePutRequestI) {
 }
 
 export async function deleteCafe(cafeId: string | number) {
-  return await fetch(`${api}/cafe/${cafeId}`, {
+  return await fetch(`${API_URL}/cafe/${cafeId}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",

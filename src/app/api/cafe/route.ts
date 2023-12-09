@@ -26,3 +26,19 @@ export async function GET(request: NextApiRequest) {
     });
   }
 }
+
+export async function POST(request: NextApiRequest) {
+  await connectDB();
+
+  try {
+    const data = await request.json();
+    const cafe = await CafeModel.create(data);
+    return NextResponse.json(cafe);
+  } catch (error) {
+    const errorMessage =
+      error instanceof Error ? error.message : "An unknown error occurred";
+    return new NextResponse(JSON.stringify({ error: errorMessage }), {
+      status: 500,
+    });
+  }
+}
