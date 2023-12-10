@@ -61,9 +61,12 @@ const ShopsList = () => {
         />
         {!stationName && (
           <>
-            <CafeRow area="新宿区" cafes={cafeShopsInSpecificArea("新宿")} />
-            <CafeRow area="吉祥寺" cafes={cafeShopsInSpecificArea("吉祥寺")} />
-            <CafeRow area="渋谷区" cafes={cafeShopsInSpecificArea("渋谷")} />
+            <CafeRow area="新宿区" cafes={cafeShopsInSpecificArea("新宿区")} />
+            <CafeRow
+              area="千代田区"
+              cafes={cafeShopsInSpecificArea("千代田区")}
+            />
+            <CafeRow area="渋谷区" cafes={cafeShopsInSpecificArea("渋谷区")} />
           </>
         )}
         {showsCreateModal && (
