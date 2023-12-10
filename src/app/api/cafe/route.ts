@@ -5,9 +5,9 @@ import connectDB from "../../../libs/connectDB";
 import { CafeModel } from "../../../libs/models/CafeModel";
 import { ReviewModel } from "../../../libs/models/ReviewModel";
 
-async function getCafeWithReviews(cafes: CafeI[]) {
+async function getCafeWithReviews(cafes: any) {
   return await Promise.all(
-    cafes.map(async (cafe) => {
+    cafes.map(async (cafe: any) => {
       const reviews = await ReviewModel.find({ cafeId: cafe._id });
       return { ...cafe.toJSON(), reviews };
     })

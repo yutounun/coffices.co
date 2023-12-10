@@ -30,8 +30,8 @@ const CafePostReviewModal = ({
   } = useForm({
     mode: "onChange",
     defaultValues: {
-      title: null,
-      content: null,
+      title: "",
+      content: "",
       rate: null,
       cafeId: cafe._id,
     },
@@ -53,12 +53,8 @@ const CafePostReviewModal = ({
   };
 
   /** Submit action */
-  async function handleCafeReviewPostSubmit(data: CreateReviewRequestI) {
-    console.log(
-      "🚀 ~ file: CafePostReviewModal.tsx:57 ~ handleCafeReviewPostSubmit ~ data:",
-      data
-    );
-    await addReview(data).then((res) => {
+  async function handleCafeReviewPostSubmit(data: any) {
+    await addReview(data).then(() => {
       handleModalClose();
     });
   }
