@@ -8,7 +8,7 @@ export async function PUT(request: NextApiRequest) {
 
   try {
     const data = await request.json();
-    await CafeModel.findOneAndUpdate({ id: data.id }, data, {
+    await CafeModel.findByIdAndUpdate(data._id, data, {
       new: true,
     });
     // return all cafes after updating to refresh the page
@@ -34,6 +34,7 @@ export async function DELETE(request: NextApiRequest) {
 
   try {
     const cafeId = request.nextUrl.pathname.split("/").pop();
+    await CafeModel.findByIdAndDelete(cafeId);
     const cafes = await CafeModel.find({});
     return NextResponse.json(cafes);
   } catch (error) {

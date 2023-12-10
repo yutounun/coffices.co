@@ -8,7 +8,6 @@ import {
 import Image from "../../../../node_modules/next/image";
 
 const CafeDetailModalReviews = ({ cafe }: { cafe: CafeI }) => {
-  console.log(cafe.reviews);
   return (
     <Stack
       spacing={4}

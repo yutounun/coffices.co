@@ -49,7 +49,7 @@ const CafeModal = ({
   }
 
   function handleDeleteClick() {
-    deleteCafe(cafe.id);
+    deleteCafe(cafe._id);
     handleCafeDetailClose();
   }
   return (

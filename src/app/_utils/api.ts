@@ -57,7 +57,7 @@ export async function postCafe(data: CafePostRequestI) {
  * @return {Promise<any>} A Promise that resolves to the JSON response from the server, or logs an error if the request fails.
  */
 export async function putCafe(data: CafePutRequestI) {
-  return await fetch(`${API_URL}/cafe/${data.id}`, {
+  return await fetch(`${API_URL}/cafe/${data._id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",

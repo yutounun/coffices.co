@@ -40,7 +40,7 @@ const CafeInputForm = ({ handleCafePutSubmit, cafe }: propTypes) => {
   } = useForm<CafeFormInput>({
     mode: "onChange",
     defaultValues: {
-      id: cafe.id,
+      _id: cafe._id,
       title: cafe.title ? cafe.title : "",
       station: cafe.station ? cafe.station : "",
       rate: cafe.rate ? cafe.rate : "",
