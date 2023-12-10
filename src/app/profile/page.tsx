@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
-import Image from "../../../../node_modules/next/image";
-import { Box, Stack } from "../../../../node_modules/@mui/material/index";
+import Image from "../../../node_modules/next/image";
+import { Box, Stack } from "../../../node_modules/@mui/material/index";
 import ProfileDesc from "./ProfileDesc";
 import { useSession } from "next-auth/react";
 const Profile = () => {
@@ -40,7 +40,7 @@ const Profile = () => {
         }}
       >
         <Image
-          src={session?.user.image}
+          src={session?.user?.image || "/github.png"}
           alt="profile"
           width={200}
           height={200}

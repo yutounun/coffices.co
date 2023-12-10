@@ -82,7 +82,7 @@ export default function MiniDrawer() {
     {
       icon: <AccountBoxIcon />,
       title: "プロフィール",
-      path: "/profile/[userId]",
+      path: "/profile",
     },
     {
       icon: <SettingsIcon />,
