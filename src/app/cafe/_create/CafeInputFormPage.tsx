@@ -41,6 +41,7 @@ const CafeInputForm = ({ handleCafePostSubmit }: propTypes) => {
       rate: null,
       image: "",
       area: "",
+      station: "",
       openHour: null,
       closeHour: null,
       isWifi: false,

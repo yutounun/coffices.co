@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { DevTool } from "@hookform/devtools";
 import dayjs from "dayjs";
 import Stations from "../../json/stations.json";
 import Areas from "../../json/areas.json";
@@ -27,17 +28,14 @@ interface propTypes {
   cafe: CafeI;
 }
 
-interface CafeFormInput extends FieldValues {
-  openHour: Date | null;
-  closeHour: Date | null;
-}
-const CafeInputForm = ({ handleCafePutSubmit, cafe }: propTypes) => {
+const CafeUpdateForm = ({ handleCafePutSubmit, cafe }: propTypes) => {
+  const env = process.env.NEXT_PUBLIC_ENV;
   const {
     register,
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm<CafeFormInput>({
+  } = useForm({
     mode: "onChange",
     defaultValues: {
       _id: cafe._id,
@@ -54,219 +52,234 @@ const CafeInputForm = ({ handleCafePutSubmit, cafe }: propTypes) => {
     },
   });
   return (
-    <form
-      onSubmit={handleSubmit(handleCafePutSubmit)}
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-      }}
-    >
-      <Stack
-        sx={{
-          height: "100%",
+    <>
+      <form
+        onSubmit={handleSubmit(handleCafePutSubmit)}
+        style={{
           display: "flex",
-          px: "5em",
-          py: "3em",
+          flexDirection: "column",
+          justifyContent: "center",
         }}
-        spacing={4}
       >
-        <TextField
-          id="outlined-basic"
-          label="店名"
-          variant="outlined"
-          sx={{ width: "100%" }}
-          error={!!errors.title}
-          helperText={errors.title?.message?.toString()}
-          {...register("title", { required: "店名を入力してください" })}
-        />
         <Stack
-          direction="row"
-          sx={{ alignItems: "center", justifyContent: "space-between" }}
+          sx={{
+            height: "100%",
+            display: "flex",
+            px: "5em",
+            py: "3em",
+          }}
+          spacing={4}
         >
-          <Controller
-            name="area"
-            control={control}
-            render={({ field }) => (
-              <Autocomplete
-                {...field}
-                sx={{ width: "45%" }}
-                freeSolo
-                id="area-autocomplete"
-                disableClearable
-                options={Areas.map((area) => area.name)}
-                renderInput={(params) => (
-                  <TextField
-                    {...params}
-                    label="エリア"
-                    error={!!errors.area}
-                    helperText={errors.area?.message?.toString()}
-                  />
-                )}
-                onInputChange={(event, value) => field.onChange(value)}
-                value={field.value || ""}
-              />
-            )}
+          <TextField
+            id="outlined-basic"
+            label="店名"
+            variant="outlined"
+            sx={{ width: "100%" }}
+            error={!!errors.title}
+            helperText={errors.title?.message?.toString()}
+            {...register("title", { required: "店名を入力してください" })}
           />
-
-          <Controller
-            name="station"
-            control={control}
-            render={({ field }) => (
-              <Autocomplete
-                {...field}
-                sx={{ width: "45%" }}
-                freeSolo
-                id="station-autocomplete"
-                disableClearable
-                options={Stations.map((station) => station.name)}
-                renderInput={(params) => (
-                  <TextField
-                    {...params}
-                    label="駅名"
-                    error={!!errors.station}
-                    helperText={errors.station?.message?.toString()}
-                  />
-                )}
-                onInputChange={(event, value) => field.onChange(value)}
-                value={field.value || ""}
-              />
-            )}
-          />
-        </Stack>
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
           <Stack
             direction="row"
             sx={{ alignItems: "center", justifyContent: "space-between" }}
           >
             <Controller
-              name="openHour"
+              name="area"
               control={control}
-              render={({ field }) => (
-                <TimePicker label="開店時間" {...field} sx={{ width: "45%" }} />
+              render={({ field: { onChange, value } }) => (
+                <Autocomplete
+                  sx={{ width: "45%" }}
+                  freeSolo
+                  id="area-autocomplete"
+                  disableClearable
+                  options={Areas.map((area) => area.name)}
+                  value={value}
+                  onInputChange={(event, newValue) => onChange(newValue)}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      label="エリア"
+                      error={!!errors.area}
+                      helperText={errors.area?.message?.toString()}
+                    />
+                  )}
+                />
               )}
             />
 
-            <Typography variant="h5">~</Typography>
             <Controller
-              name="closeHour"
+              name="station"
               control={control}
-              render={({ field }) => (
-                <TimePicker sx={{ width: "45%" }} label="閉店時間" {...field} />
+              render={({ field: { onChange, value } }) => (
+                <Autocomplete
+                  sx={{ width: "45%" }}
+                  freeSolo
+                  id="area-autocomplete"
+                  disableClearable
+                  options={Stations.map((station) => station.name)}
+                  value={value}
+                  onInputChange={(event, newValue) => onChange(newValue)}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      label="駅名"
+                      error={!!errors.station}
+                      helperText={errors.station?.message?.toString()}
+                    />
+                  )}
+                />
               )}
             />
           </Stack>
-        </LocalizationProvider>
-        <TextField
-          id="outlined-basic"
-          label="評価(1 ~ 5)"
-          type="number"
-          variant="outlined"
-          InputProps={{ inputProps: { min: 0, max: 5 } }}
-          sx={{ width: "45%" }}
-          {...register("rate", { required: "評価を入力してください" })}
-          error={!!errors.rate}
-          helperText={errors.rate?.message?.toString()}
-        />
-        <Stack
-          direction="row"
-          sx={{ alignItems: "center", justifyContent: "space-between" }}
-        >
-          <FormControl sx={{ width: "30%" }}>
-            <FormLabel id="demo-row-radio-buttons-group-label">Wifi</FormLabel>
-            <Controller
-              name="isWifi"
-              control={control}
-              render={({ field }) => (
-                <RadioGroup
-                  row
-                  aria-labelledby="demo-row-radio-buttons-group-label"
-                  {...field}
-                >
-                  <FormControlLabel
-                    value={true}
-                    control={<Radio />}
-                    label="有"
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <Stack
+              direction="row"
+              sx={{ alignItems: "center", justifyContent: "space-between" }}
+            >
+              <Controller
+                name="openHour"
+                control={control}
+                render={({ field }) => (
+                  <TimePicker
+                    label="開店時間"
+                    {...field}
+                    sx={{ width: "45%" }}
                   />
-                  <FormControlLabel
-                    value={false}
-                    control={<Radio />}
-                    label="無"
+                )}
+              />
+
+              <Typography variant="h5">~</Typography>
+              <Controller
+                name="closeHour"
+                control={control}
+                render={({ field }) => (
+                  <TimePicker
+                    sx={{ width: "45%" }}
+                    label="閉店時間"
+                    {...field}
                   />
-                </RadioGroup>
-              )}
-            />
-          </FormControl>
-          <FormControl sx={{ width: "30%" }}>
-            <FormLabel id="demo-row-radio-buttons-group-label">
-              電源席
-            </FormLabel>
-            <Controller
-              name="isOutlet"
-              control={control}
-              render={({ field }) => (
-                <RadioGroup
-                  row
-                  aria-labelledby="demo-row-radio-buttons-group-label"
-                  {...field}
-                >
-                  <FormControlLabel
-                    value={true}
-                    control={<Radio />}
-                    label="有"
-                  />
-                  <FormControlLabel
-                    value={false}
-                    control={<Radio />}
-                    label="無"
-                  />
-                </RadioGroup>
-              )}
-            />
-          </FormControl>
-          <FormControl sx={{ width: "30%" }}>
-            <FormLabel id="demo-row-radio-buttons-group-label">
-              喫煙所
-            </FormLabel>
-            <Controller
-              name="isSmoking"
-              control={control}
-              render={({ field }) => (
-                <RadioGroup
-                  row
-                  aria-labelledby="demo-row-radio-buttons-group-label"
-                  {...field}
-                >
-                  <FormControlLabel
-                    value={true}
-                    control={<Radio />}
-                    label="有"
-                  />
-                  <FormControlLabel
-                    value={false}
-                    control={<Radio />}
-                    label="無"
-                  />
-                </RadioGroup>
-              )}
-            />
-          </FormControl>
+                )}
+              />
+            </Stack>
+          </LocalizationProvider>
+          <TextField
+            id="outlined-basic"
+            label="評価(1 ~ 5)"
+            type="number"
+            variant="outlined"
+            InputProps={{ inputProps: { min: 0, max: 5 } }}
+            sx={{ width: "45%" }}
+            {...register("rate", { required: "評価を入力してください" })}
+            error={!!errors.rate}
+            helperText={errors.rate?.message?.toString()}
+          />
+          <Stack
+            direction="row"
+            sx={{ alignItems: "center", justifyContent: "space-between" }}
+          >
+            <FormControl sx={{ width: "30%" }}>
+              <FormLabel id="demo-row-radio-buttons-group-label">
+                Wifi
+              </FormLabel>
+              <Controller
+                name="isWifi"
+                control={control}
+                render={({ field }) => (
+                  <RadioGroup
+                    row
+                    aria-labelledby="demo-row-radio-buttons-group-label"
+                    {...field}
+                  >
+                    <FormControlLabel
+                      value={true}
+                      control={<Radio />}
+                      label="有"
+                    />
+                    <FormControlLabel
+                      value={false}
+                      control={<Radio />}
+                      label="無"
+                    />
+                  </RadioGroup>
+                )}
+              />
+            </FormControl>
+            <FormControl sx={{ width: "30%" }}>
+              <FormLabel id="demo-row-radio-buttons-group-label">
+                電源席
+              </FormLabel>
+              <Controller
+                name="isOutlet"
+                control={control}
+                render={({ field }) => (
+                  <RadioGroup
+                    row
+                    aria-labelledby="demo-row-radio-buttons-group-label"
+                    {...field}
+                  >
+                    <FormControlLabel
+                      value={true}
+                      control={<Radio />}
+                      label="有"
+                    />
+                    <FormControlLabel
+                      value={false}
+                      control={<Radio />}
+                      label="無"
+                    />
+                  </RadioGroup>
+                )}
+              />
+            </FormControl>
+            <FormControl sx={{ width: "30%" }}>
+              <FormLabel id="demo-row-radio-buttons-group-label">
+                喫煙所
+              </FormLabel>
+              <Controller
+                name="isSmoking"
+                control={control}
+                render={({ field }) => (
+                  <RadioGroup
+                    row
+                    aria-labelledby="demo-row-radio-buttons-group-label"
+                    {...field}
+                  >
+                    <FormControlLabel
+                      value={true}
+                      control={<Radio />}
+                      label="有"
+                    />
+                    <FormControlLabel
+                      value={false}
+                      control={<Radio />}
+                      label="無"
+                    />
+                  </RadioGroup>
+                )}
+              />
+            </FormControl>
+          </Stack>
         </Stack>
-      </Stack>
-      <Stack
-        sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
-      >
-        <Button
-          type="submit"
-          color="primary"
-          variant="contained"
-          sx={{ width: "30%", borderRadius: 1 }}
+        <Stack
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
         >
-          登録
-        </Button>
-      </Stack>
-    </form>
+          <Button
+            type="submit"
+            color="primary"
+            variant="contained"
+            sx={{ width: "30%", borderRadius: 1 }}
+          >
+            登録
+          </Button>
+        </Stack>
+      </form>
+      {(env === "dev" || env === "local") && <DevTool control={control} />}
+    </>
   );
 };
 
-export default CafeInputForm;
+export default CafeUpdateForm;
