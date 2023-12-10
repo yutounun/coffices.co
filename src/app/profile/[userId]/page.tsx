@@ -1,9 +1,11 @@
+"use client";
 import React from "react";
 import Image from "../../../../node_modules/next/image";
 import { Box, Stack } from "../../../../node_modules/@mui/material/index";
 import ProfileDesc from "./ProfileDesc";
-
+import { useSession } from "next-auth/react";
 const Profile = () => {
+  const { data: session } = useSession();
   return (
     <Stack
       sx={{
@@ -29,15 +31,16 @@ const Profile = () => {
       <Box
         sx={{
           top: "30%",
-          left: "43%",
+          left: "50%", // 親要素の中心に配置
           position: "absolute",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          transform: "translateX(-50%)", // 画像の幅の半分だけ左にずらす
         }}
       >
         <Image
-          src="/github.png"
+          src={session?.user.image}
           alt="profile"
           width={200}
           height={200}
