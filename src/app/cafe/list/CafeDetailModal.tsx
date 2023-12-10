@@ -3,6 +3,7 @@ import { CafeI } from "types/cafes";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import CafeEditModal from "../_edit/CafeEditModal";
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import {
   Box,
   Button,
@@ -15,6 +16,7 @@ import { NextImage } from "_commons/NextImage";
 import { deleteCafe } from "_utils/api";
 import CafeDetailModalOverview from "./CafeDetailModalOverview";
 import CafeDetailModalReviews from "./CafeDetailModalReviews";
+import CafePostReviewModal from "cafe/_create/CafePostReviewModal";
 
 const modalStyle = {
   position: "absolute",
@@ -43,6 +45,7 @@ const CafeModal = ({
 }: propTypes) => {
   const [openCafeEditModal, setOpenCafeEditModal] = useState(false);
   const [showsReviews, setShowsReviews] = useState(false);
+  const [openCafeReviewModal, setOpenCafeReviewModal] = useState(false);
 
   function handleEditClick() {
     setOpenCafeEditModal(true);
@@ -51,6 +54,10 @@ const CafeModal = ({
   function handleDeleteClick() {
     deleteCafe(cafe._id);
     handleCafeDetailClose();
+  }
+
+  function handleAddReviewClick() {
+    setOpenCafeReviewModal(true);
   }
   return (
     <>
@@ -77,15 +84,36 @@ const CafeModal = ({
               direction="row"
               sx={{ alignItems: "center", justifyContent: "space-between" }}
             >
-              <Button
-                onClick={() => setShowsReviews(!showsReviews)}
-                variant="contained"
-                sx={{ borderRadius: 5, width: 110, boxShadow: 0 }}
+              <Stack
+                direction="row"
+                spacing={1}
+                sx={{
+                  alignItems: "center",
+                  justifyContent: "left",
+                  width: "25%",
+                }}
               >
-                {showsReviews ? "Overview" : "Reviews"}
-              </Button>
-              <Stack>
-                <Typography variant="h3">{cafe.title}</Typography>
+                <Button
+                  onClick={() => setShowsReviews(!showsReviews)}
+                  variant="contained"
+                  sx={{ borderRadius: 5, width: 110, boxShadow: 0 }}
+                >
+                  {showsReviews ? "Overview" : "Reviews"}
+                </Button>
+                {showsReviews && (
+                  <AddCircleOutlineIcon
+                    color="primary"
+                    onClick={handleAddReviewClick}
+                  />
+                )}
+              </Stack>
+              <Stack sx={{ width: "50%", justifyContent: "center" }}>
+                <Typography
+                  sx={{ justifyContent: "center", mx: "auto", my: 0 }}
+                  variant="h3"
+                >
+                  {cafe.title}
+                </Typography>
                 <Stack
                   direction="row"
                   sx={{ alignItems: "center", justifyContent: "center" }}
@@ -97,7 +125,11 @@ const CafeModal = ({
                   </Typography>
                 </Stack>
               </Stack>
-              <Stack direction="row" spacing={2}>
+              <Stack
+                direction="row"
+                spacing={2}
+                sx={{ width: "25%", justifyContent: "right" }}
+              >
                 <EditIcon
                   sx={{ cursor: "pointer" }}
                   onClick={handleEditClick}
@@ -121,6 +153,14 @@ const CafeModal = ({
           cafe={cafe}
           handleModalClose={() => setOpenCafeEditModal(false)}
           showModal={openCafeEditModal}
+        />
+      )}
+
+      {openCafeReviewModal && (
+        <CafePostReviewModal
+          cafe={cafe}
+          handleModalClose={() => setOpenCafeReviewModal(false)}
+          showModal={openCafeReviewModal}
         />
       )}
     </>

@@ -11,8 +11,8 @@ export interface ReviewI {
 export interface CreateReviewRequestI {
   title: string;
   content: string;
-  userId: string;
   rate: number;
+  cafeId: string;
 }
 
 export interface CafeI {

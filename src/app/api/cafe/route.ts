@@ -1,7 +1,18 @@
 import { NextResponse } from "next/server";
+import { CafeI } from "types/cafes";
 import { NextRequest } from "../../../../node_modules/next/server";
 import connectDB from "../../../libs/connectDB";
 import { CafeModel } from "../../../libs/models/CafeModel";
+import { ReviewModel } from "../../../libs/models/ReviewModel";
+
+async function getCafeWithReviews(cafes: CafeI[]) {
+  return await Promise.all(
+    cafes.map(async (cafe) => {
+      const reviews = await ReviewModel.find({ cafeId: cafe._id });
+      return { ...cafe.toJSON(), reviews };
+    })
+  );
+}
 
 /**
  * Retrieves the cafes based on the specified station name or returns all cafes if no station name is provided.
@@ -14,10 +25,17 @@ export async function GET(request: NextRequest) {
 
   try {
     const stationQuery = request.nextUrl.searchParams.get("station");
-    // station name is specified, filter by station name
     const query = stationQuery ? { station: stationQuery } : {};
     const cafes = await CafeModel.find(query);
-    return NextResponse.json(cafes);
+
+    const cafesWithReviews = await Promise.all(
+      cafes.map(async (cafe: any) => {
+        const reviews = await ReviewModel.find({ cafeId: cafe._id });
+        return { ...cafe.toJSON(), reviews };
+      })
+    );
+
+    return NextResponse.json(cafesWithReviews);
   } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "An unknown error occurred";
@@ -38,7 +56,6 @@ export async function POST(request: NextRequest) {
 
   try {
     const data = await request.json();
-    console.log("🚀 ~ file: route.ts:41 ~ POST ~ data:", data);
     await CafeModel.create(data);
     const cafes = await CafeModel.find({});
     return NextResponse.json(cafes);

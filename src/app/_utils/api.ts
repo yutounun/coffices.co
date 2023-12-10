@@ -1,5 +1,9 @@
 import type { PutBlobResult } from "@vercel/blob";
-import { CafePostRequestI, CafePutRequestI } from "types/cafes";
+import {
+  CafePostRequestI,
+  CafePutRequestI,
+  CreateReviewRequestI,
+} from "types/cafes";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -39,7 +43,6 @@ export function filterCafe(stationName: string) {
  * @throws - error
  */
 export async function postCafe(data: CafePostRequestI) {
-  console.log("🚀 ~ file: api.ts:42 ~ postCafe ~ data:", data);
   return await fetch(`${API_URL}/cafe`, {
     method: "POST",
     headers: {
@@ -107,4 +110,16 @@ export async function cafeImageUpload(cafeImageFile: any) {
   );
 
   return (await response.json()) as PutBlobResult;
+}
+
+export async function addReview(data: CreateReviewRequestI) {
+  return await fetch(`${API_URL}/review`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  })
+    .then((res) => res.json())
+    .catch((err) => console.log(err));
 }
