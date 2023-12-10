@@ -14,7 +14,7 @@ import CafeRow from "./CafeRow";
 import StationSearch from "./StationSearch";
 import useCreateModalStore from "../../../store/openCreateCafeModal";
 import CafePostModal from "../_create/CafePostModal";
-import { CafeListContext } from "../../../contexts/ShowsCreateModal";
+import { CafeListContext } from "../../../contexts/CafeListContext";
 
 const ShopsList = () => {
   const { showsCreateModal, openCreateCafeModal, closeCreateCafeModal } =
