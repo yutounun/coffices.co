@@ -74,6 +74,15 @@ const CafeModal = ({ showModal, handleModalClose }: propTypes) => {
     if (cafeImageFile) {
       await cafeImageUpload(cafeImageFile).then((res: any) => {
         data.image = res.url || "";
+        data.reviews = [
+          {
+            title: "sampleです",
+            content:
+              "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam error impedit illo omnis! Quas magni architecto dolorum nihil aut enim voluptas optio repellat fugit temporibus, veritatis consequatur magnam recusandae dicta!",
+            userId: "4389h384",
+            rate: 4,
+          },
+        ];
         // And then, post detailed cafe data
         postCafe(data).then((res) => {
           setCafeList(res);
@@ -81,6 +90,15 @@ const CafeModal = ({ showModal, handleModalClose }: propTypes) => {
         });
       });
     } else {
+      data.reviews = [
+        {
+          title: "sampleです",
+          content:
+            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam error impedit illo omnis! Quas magni architecto dolorum nihil aut enim voluptas optio repellat fugit temporibus, veritatis consequatur magnam recusandae dicta!",
+          userId: "4389h384",
+          rate: 4,
+        },
+      ];
       postCafe(data).then((res) => {
         setCafeList(res);
         handleModalClose();

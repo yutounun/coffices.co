@@ -46,6 +46,10 @@ const CafeSchema = new Schema(
       type: Boolean,
       required: false,
     },
+    reviews: {
+      type: Array,
+      required: false,
+    },
   },
   { timestamps: true }
 );

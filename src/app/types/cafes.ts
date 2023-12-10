@@ -8,6 +8,13 @@ export interface ReviewI {
   updatedAt: string;
 }
 
+export interface CreateReviewRequestI {
+  title: string;
+  content: string;
+  userId: string;
+  rate: number;
+}
+
 export interface CafeI {
   _id: string;
   id: number | string;
@@ -35,6 +42,7 @@ export interface CafePostRequestI {
   isSmoking: boolean | string;
   isOutlet: boolean | string;
   station: string;
+  reviews: CreateReviewRequestI[];
 }
 
 export interface CafePutRequestI {

@@ -38,6 +38,7 @@ export async function POST(request: NextApiRequest) {
 
   try {
     const data = await request.json();
+    console.log("🚀 ~ file: route.ts:41 ~ POST ~ data:", data);
     await CafeModel.create(data);
     const cafes = await CafeModel.find({});
     return NextResponse.json(cafes);

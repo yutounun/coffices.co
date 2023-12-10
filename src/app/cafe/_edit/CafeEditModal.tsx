@@ -10,7 +10,7 @@ import {
 import EditImagePage from "./EditImagePage";
 import CafeEditForm from "./CafeEditFormPage";
 import { putCafe } from "_utils/api";
-import { CafeI, CafePostRequestI, CafePutRequestI } from "types/cafes";
+import { CafeI, CafePutRequestI } from "types/cafes";
 import { extractHourMinute } from "_utils/commonFn";
 import { cafeImageUpload } from "_utils/api";
 import { CafeListContext } from "cafe/list/page";

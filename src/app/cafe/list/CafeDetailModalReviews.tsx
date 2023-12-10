@@ -17,30 +17,32 @@ const CafeDetailModalReviews = ({ cafe }: { cafe: CafeI }) => {
         "&::-webkit-scrollbar": { display: "none" },
       }}
     >
-      {cafe.reviews.map((review: ReviewI) => (
-        <Stack key={review.id} spacing={2}>
-          <Stack
-            direction="row"
-            spacing={2}
-            sx={{ alignItems: "center", justifyContent: "space-between" }}
-          >
-            <Stack direction="row" spacing={1}>
-              <Image src="/github.png" width="31" height="31" alt="image" />
-              <Typography variant="h6">{review.title}</Typography>
+      {cafe.reviews &&
+        cafe.reviews.length > 0 &&
+        cafe.reviews.map((review: ReviewI) => (
+          <Stack key={review.id} spacing={2}>
+            <Stack
+              direction="row"
+              spacing={2}
+              sx={{ alignItems: "center", justifyContent: "space-between" }}
+            >
+              <Stack direction="row" spacing={1}>
+                <Image src="/github.png" width="31" height="31" alt="image" />
+                <Typography variant="h6">{review.title}</Typography>
+              </Stack>
+              <Stack direction="row" spacing={1}>
+                <Stars rate={review.rate} />
+                <Typography variant="body1">{review.rate}</Typography>
+              </Stack>
             </Stack>
-            <Stack direction="row" spacing={1}>
-              <Stars rate={review.rate} />
-              <Typography variant="body1">{review.rate}</Typography>
-            </Stack>
+            <Typography variant="body1">{review.content}</Typography>
+            <Stack
+              direction="row"
+              spacing={2}
+              sx={{ alignItems: "center", justifyContent: "space-between" }}
+            ></Stack>
           </Stack>
-          <Typography variant="body1">{review.content}</Typography>
-          <Stack
-            direction="row"
-            spacing={2}
-            sx={{ alignItems: "center", justifyContent: "space-between" }}
-          ></Stack>
-        </Stack>
-      ))}
+        ))}
     </Stack>
   );
 };

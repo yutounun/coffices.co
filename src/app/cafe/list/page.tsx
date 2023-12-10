@@ -72,7 +72,7 @@ const ShopsList = () => {
         {showsCreateModal && (
           <CafePostModal
             handleModalClose={closeCreateCafeModal}
-            showModal={openCreateCafeModal}
+            showModal={showsCreateModal}
           />
         )}
       </CafeListContext.Provider>
