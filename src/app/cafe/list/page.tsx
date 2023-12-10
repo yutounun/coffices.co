@@ -14,16 +14,7 @@ import CafeRow from "./CafeRow";
 import StationSearch from "./StationSearch";
 import useCreateModalStore from "../../../store/openCreateCafeModal";
 import CafePostModal from "../_create/CafePostModal";
-
-interface CafeListContextType {
-  cafeList: CafeI[];
-  setCafeList: Dispatch<SetStateAction<CafeI[]>>;
-}
-
-export const CafeListContext = createContext<CafeListContextType>({
-  cafeList: [],
-  setCafeList: () => {},
-});
+import { CafeListContext } from "../../../contexts/ShowsCreateModal";
 
 const ShopsList = () => {
   const { showsCreateModal, openCreateCafeModal, closeCreateCafeModal } =

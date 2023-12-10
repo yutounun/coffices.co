@@ -1,9 +1,9 @@
-import type { NextApiRequest } from "next";
 import { NextResponse } from "next/server";
+import { NextRequest } from "../../../../../node_modules/next/server";
 import connectDB from "../../../../libs/connectDB";
 import { CafeModel } from "../../../../libs/models/CafeModel";
 
-export async function PUT(request: NextApiRequest) {
+export async function PUT(request: NextRequest) {
   await connectDB();
 
   try {
@@ -26,10 +26,10 @@ export async function PUT(request: NextApiRequest) {
 /**
  * Deletes a cafe from the database based on the given request.
  *
- * @param {NextApiRequest} request - The request object containing information about the cafe to be deleted.
+ * @param {NextRequest} request - The request object containing information about the cafe to be deleted.
  * @return {NextResponse} A response object containing the deleted cafe if successful, or an error message if an error occurs.
  */
-export async function DELETE(request: NextApiRequest) {
+export async function DELETE(request: NextRequest) {
   await connectDB();
 
   try {

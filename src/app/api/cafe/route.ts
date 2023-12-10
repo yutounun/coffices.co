@@ -1,15 +1,15 @@
-import type { NextApiRequest } from "next";
 import { NextResponse } from "next/server";
+import { NextRequest } from "../../../../node_modules/next/server";
 import connectDB from "../../../libs/connectDB";
 import { CafeModel } from "../../../libs/models/CafeModel";
 
 /**
  * Retrieves the cafes based on the specified station name or returns all cafes if no station name is provided.
  *
- * @param {NextApiRequest} request - The Next.js API request object.
+ * @param {NextRequest} request - The Next.js API request object.
  * @return {Promise<NextResponse>} A promise that resolves to the response containing the JSON representation of the retrieved cafes.
  */
-export async function GET(request: NextApiRequest) {
+export async function GET(request: NextRequest) {
   await connectDB();
 
   try {
@@ -30,10 +30,10 @@ export async function GET(request: NextApiRequest) {
 /**
  * Handles the HTTP POST request.
  *
- * @param {NextApiRequest} request - The request object.
+ * @param {NextRequest} request - The request object.
  * @return {Promise<NextResponse>} A JSON response containing all cafe records including the created cafe object or an error message.
  */
-export async function POST(request: NextApiRequest) {
+export async function POST(request: NextRequest) {
   await connectDB();
 
   try {

@@ -14,7 +14,7 @@ import Stars from "_commons/Stars";
 import { NextImage } from "_commons/NextImage";
 import { deleteCafe } from "_utils/api";
 import CafeDetailModalOverview from "./CafeDetailModalOverview";
-import CafeDetailModalReviews from "./CafeDEtailModalReviews";
+import CafeDetailModalReviews from "./CafeDetailModalReviews";
 
 const modalStyle = {
   position: "absolute",
