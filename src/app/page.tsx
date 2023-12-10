@@ -35,7 +35,8 @@ export default function Home() {
             }}
           >
             {/* <NextImage src="/no-image.png" alt="image" /> */}
-            <Image src="/man.png" alt="image" width={300} height={600} />
+            {/* <Image src="/man.png" alt="image" width={300} height={600} /> */}
+            <Image src="/woman.png" alt="image" width={800} height={600} />
           </Stack>
           <Stack
             sx={{
