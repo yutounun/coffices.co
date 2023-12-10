@@ -1,5 +1,5 @@
 import Sidebar from "_commons/Sidebar";
-import { Box, Stack } from "../../../../node_modules/@mui/material/index";
+import { Box, Stack } from "../../../node_modules/@mui/material/index";
 
 export default function CafeListLayout({
   children,
@@ -9,9 +9,7 @@ export default function CafeListLayout({
   return (
     <Stack direction="row">
       <Sidebar />
-      <Box sx={{ width: "100%" }}>
-        <Box sx={{ ml: "4rem", mt: "60px" }}>{children}</Box>;
-      </Box>
+      <Box sx={{ width: "100%" }}>{children}</Box>
     </Stack>
   );
 }

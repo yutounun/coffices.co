@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import { Box, Stack } from "../../node_modules/@mui/material/index";
 import "./globals.css";
-import Sidebar from "./_commons/Sidebar";
 import { Noto_Sans_JP } from "next/font/google";
 
 const notojp = Noto_Sans_JP({
@@ -22,12 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={notojp.className}>
-        <Stack direction="row">
-          <Sidebar />
-          <Box sx={{ width: "100%" }}>{children}</Box>
-        </Stack>
-      </body>
+      <body className={notojp.className}>{children}</body>
     </html>
   );
 }
