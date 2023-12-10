@@ -1,8 +1,15 @@
 "use client";
-import { NextImage } from "_commons/NextImage";
-import { Box, Stack, Typography } from "../../node_modules/@mui/material/index";
+import {
+  Button,
+  Stack,
+  Typography,
+} from "../../node_modules/@mui/material/index";
 import Image from "../../node_modules/next/image";
-import styles from "./page.module.css";
+import { signIn } from "next-auth/react";
+import GoogleIcon from "@mui/icons-material/Google";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import GitHubIcon from "@mui/icons-material/GitHub";
 
 export default function Home() {
   return (
@@ -19,8 +26,8 @@ export default function Home() {
         <Stack
           sx={{
             borderRadius: "20px",
-            width: "70%",
-            height: "70%",
+            width: "50%",
+            height: "50%",
           }}
           direction="row"
         >
@@ -36,7 +43,13 @@ export default function Home() {
           >
             {/* <NextImage src="/no-image.png" alt="image" /> */}
             {/* <Image src="/man.png" alt="image" width={300} height={600} /> */}
-            <Image src="/woman.png" alt="image" width={800} height={600} />
+            <Image
+              priority={true}
+              src="/woman.png"
+              alt="image"
+              width={500}
+              height={300}
+            />
           </Stack>
           <Stack
             sx={{
@@ -46,14 +59,75 @@ export default function Home() {
               borderRadius: "0 20px 20px 0",
               py: "3em",
             }}
+            spacing={4}
           >
             <Typography
               color="primary"
-              variant="h3"
-              sx={{ textAlign: "center" }}
+              variant="h4"
+              sx={{ textAlign: "center", height: "7%" }}
             >
-              Login
+              Sign In
             </Typography>
+            <Stack
+              spacing={3}
+              sx={{
+                height: "70%",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Button
+                variant="contained"
+                onClick={() => signIn("google", { callbackUrl: "/cafe/list" })}
+                sx={{ width: "45%", mx: "auto", fontWeight: "bold" }}
+                startIcon={<GoogleIcon />}
+              >
+                Google
+              </Button>
+              <Button
+                variant="contained"
+                onClick={() =>
+                  signIn("facebook", { callbackUrl: "/cafe/list" })
+                }
+                sx={{
+                  width: "45%",
+                  mx: "auto",
+                  fontWeight: "bold",
+                  backgroundColor: "#4867AA",
+                }}
+                startIcon={<FacebookIcon />}
+              >
+                FaceBook
+              </Button>
+              <Button
+                variant="contained"
+                onClick={() => signIn("github", { callbackUrl: "/cafe/list" })}
+                sx={{
+                  width: "45%",
+                  mx: "auto",
+                  fontWeight: "bold",
+                  backgroundColor: "#1F2327",
+                  "&:hover": { backgroundColor: "#1F2327" },
+                }}
+                startIcon={<GitHubIcon />}
+              >
+                Github
+              </Button>
+              <Button
+                variant="contained"
+                onClick={() => signIn("line", { callbackUrl: "/cafe/list" })}
+                sx={{
+                  width: "45%",
+                  mx: "auto",
+                  fontWeight: "bold",
+                  backgroundColor: "#03B602",
+                  "&:hover": { backgroundColor: "#03B602" },
+                }}
+                startIcon={<WhatsAppIcon />}
+              >
+                LINE
+              </Button>
+            </Stack>
           </Stack>
         </Stack>
       </Stack>

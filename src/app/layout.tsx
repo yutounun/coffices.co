@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Noto_Sans_JP } from "next/font/google";
+import { ReactNode } from "react";
+import { NextAuthProvider } from "../contexts/SessionProviderContext";
+
+type LayoutProps = {
+  children: ReactNode;
+};
 
 const notojp = Noto_Sans_JP({
   weight: ["400", "500"],
@@ -13,14 +19,12 @@ export const metadata: Metadata = {
   description: "Coffee shops for nomad workers",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: LayoutProps) {
   return (
-    <html lang="en">
-      <body className={notojp.className}>{children}</body>
-    </html>
+    <NextAuthProvider>
+      <html lang="en">
+        <body className={notojp.className}>{children}</body>
+      </html>
+    </NextAuthProvider>
   );
 }

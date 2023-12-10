@@ -4,6 +4,7 @@ import AddCircleOutlineIcon from "../../../node_modules/@mui/icons-material/AddC
 import LibraryBooksIcon from "../../../node_modules/@mui/icons-material/LibraryBooks";
 import SettingsIcon from "../../../node_modules/@mui/icons-material/Settings";
 import AccountBoxIcon from "../../../node_modules/@mui/icons-material/AccountBox";
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import { styled, useTheme, Theme, CSSObject } from "@mui/material/styles";
 import MuiDrawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
@@ -87,6 +88,10 @@ export default function MiniDrawer() {
       icon: <SettingsIcon />,
       title: "設定",
       path: "/config",
+    },
+    {
+      icon: <ExitToAppIcon />,
+      title: "サインアウト",
     },
   ];
 

@@ -6,6 +6,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { usePathname, useRouter } from "../../../node_modules/next/navigation";
 import useCreateModalStore from "../../store/openCreateCafeModal";
+import { signOut } from "next-auth/react";
 
 interface propTypes {
   row: {
@@ -49,6 +50,8 @@ const SidebarRow = ({ row, open }: propTypes) => {
       openCreateCafeModal();
     } else if (row.path) {
       router.push(row.path);
+    } else if (row.title === "サインアウト") {
+      signOut({ callbackUrl: "/" });
     }
   }
   return (

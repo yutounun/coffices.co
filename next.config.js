@@ -7,6 +7,11 @@ const nextConfig = {
         hostname: "qa6tcgnajcglvnsr.public.blob.vercel-storage.com",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "avatars.githubusercontent.com",
+        port: "",
+      },
     ],
   },
 };
