@@ -32,12 +32,33 @@ const authOptions = {
   database: process.env.DB_API_KEY,
   secret: process.env.SECRET,
   callbacks: {
+    async signIn({ user }) {
+      const { name, email } = user;
+
+      try {
+        // Create new user
+        const response = await fetch("http://localhost:3000/api/user", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ username: name, email: email }),
+        });
+        if (response.ok) {
+          return user;
+        }
+        return false;
+      } catch {
+        console.log("error:", error);
+        return false;
+      }
+    },
     async session({ session, user, token }) {
-      // tokenにGoogleからのレスポンスが含まれる
-      session.user.id = token.sub; // GoogleのユーザーID
-      session.user.name = token.name; // ユーザーの名前
-      session.user.email = token.email; // ユーザーのメールアドレス
-      session.user.image = token.picture; // ユーザーの画像URL
+      // Include user detail from providers
+      session.user.id = token.sub;
+      session.user.name = token.name;
+      session.user.email = token.email;
+      session.user.image = token.picture;
 
       return session;
     },

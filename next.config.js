@@ -12,6 +12,21 @@ const nextConfig = {
         hostname: "avatars.githubusercontent.com",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
+        port: "",
+      },
+      {
+        protocol: "https",
+        hostname: "platform-lookaside.fbsbx.com",
+        port: "",
+      },
+      {
+        protocol: "https",
+        hostname: "profile.line-scdn.net",
+        port: "",
+      },
     ],
   },
 };
