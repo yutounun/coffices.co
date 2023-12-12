@@ -69,7 +69,7 @@ const ProfileDesc = ({
               variant="contained"
               sx={{ borderRadius: "20px" }}
             >
-              Admin
+              ADMIN
             </Button>
           )}
         </Stack>
