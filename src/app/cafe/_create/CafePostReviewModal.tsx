@@ -13,6 +13,7 @@ import { useForm } from "react-hook-form";
 import { CafeI } from "types/cafes";
 import meStore from "../../../store/me";
 import { useSession } from "next-auth/react";
+import { CafeListContext } from "../../../contexts/CafeListContext";
 
 interface propTypes {
   showModal: boolean;
@@ -27,6 +28,7 @@ const CafePostReviewModal = ({
 }: propTypes) => {
   const { me } = meStore();
   const { data: session } = useSession();
+  const { setCafeList } = useContext(CafeListContext);
 
   const {
     register,
@@ -61,8 +63,13 @@ const CafePostReviewModal = ({
   async function handleCafeReviewPostSubmit(data: any) {
     data.userId = me._id;
     data.image = session.user.image;
-    await addReview(data).then(() => {
+    await addReview(data).then((res) => {
+      console.log(
+        "🚀 ~ file: CafePostReviewModal.tsx:67 ~ awaitaddReview ~ res:",
+        res
+      );
       handleModalClose();
+      setCafeList(res);
     });
   }
   return (

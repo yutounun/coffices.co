@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { NextRequest } from "../../../../node_modules/next/server";
 import connectDB from "../../../libs/connectDB";
+import { CafeModel } from "../../../libs/models/CafeModel";
 import { ReviewModel } from "../../../libs/models/ReviewModel";
 import UserModel from "../../../libs/models/UserModel";
 /**
@@ -21,8 +22,13 @@ export async function POST(request: NextRequest) {
     }
     data.name = user.username;
 
-    const createdReview = await ReviewModel.create(data);
-    return NextResponse.json(createdReview);
+    await ReviewModel.create(data);
+
+    // return all cafe after updating to refresh the page
+    const cafeList = await fetch("http://localhost:3000/api/cafe").then((res) =>
+      res.json()
+    );
+    return NextResponse.json(cafeList);
   } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "An unknown error occurred";

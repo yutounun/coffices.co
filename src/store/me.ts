@@ -2,6 +2,7 @@ import create from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
 interface meI {
+  _id: string;
   sessionId: string;
   username: string;
   email: string;
