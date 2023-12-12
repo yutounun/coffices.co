@@ -123,3 +123,26 @@ export async function addReview(data: CreateReviewRequestI) {
     .then((res) => res.json())
     .catch((err) => console.log(err));
 }
+
+export async function getUser(sessionId: string) {
+  return await fetch(`${API_URL}/user?sessionId=${sessionId}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((res) => res.json())
+    .catch((err) => console.log(err));
+}
+
+export async function updateUser(data: string) {
+  return await fetch(`${API_URL}/user`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  })
+    .then((res) => res.json())
+    .catch((err) => console.log(err));
+}

@@ -1,11 +1,15 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Image from "../../../node_modules/next/image";
 import { Box, Stack } from "../../../node_modules/@mui/material/index";
 import ProfileDesc from "./ProfileDesc";
 import { useSession } from "next-auth/react";
+import ProfileEditModal from "./ProfileEditModal";
+import meStore from "../../store/me";
+
 const Profile = () => {
   const { data: session } = useSession();
+  const [showModal, setShowModal] = useState(false);
   return (
     <Stack
       sx={{
@@ -40,7 +44,7 @@ const Profile = () => {
         }}
       >
         <Image
-          src={session?.user?.image || "/github.png"}
+          src={session?.user?.image || ""}
           alt="profile"
           width={200}
           height={200}
@@ -51,7 +55,11 @@ const Profile = () => {
       </Box>
 
       {/* Profile */}
-      <ProfileDesc />
+      <ProfileDesc setShowModal={setShowModal} />
+      <ProfileEditModal
+        showModal={showModal}
+        handleModalClose={() => setShowModal(false)}
+      />
     </Stack>
   );
 };

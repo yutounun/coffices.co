@@ -33,7 +33,7 @@ const authOptions = {
   secret: process.env.SECRET,
   callbacks: {
     async signIn({ user }) {
-      const { name, email } = user;
+      const { name, email, id } = user;
 
       try {
         // Create new user
@@ -42,7 +42,7 @@ const authOptions = {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ username: name, email: email }),
+          body: JSON.stringify({ id: id, username: name, email: email }),
         });
         if (response.ok) {
           return user;
