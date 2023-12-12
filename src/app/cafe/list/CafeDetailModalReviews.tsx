@@ -27,7 +27,8 @@ const CafeDetailModalReviews = ({ cafe }: { cafe: CafeI }) => {
               sx={{ alignItems: "center", justifyContent: "space-between" }}
             >
               <Stack direction="row" spacing={1}>
-                <Image src="/github.png" width="31" height="31" alt="image" />
+                <Image src={review.image} width="31" height="31" alt="image" />
+                <Typography variant="h6">{review.name}</Typography>
                 <Typography variant="h6">{review.title}</Typography>
               </Stack>
               <Stack direction="row" spacing={1}>

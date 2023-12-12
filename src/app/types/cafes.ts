@@ -6,6 +6,8 @@ export interface ReviewI {
   rate: number;
   createdAt: string;
   updatedAt: string;
+  image: string;
+  name: string;
 }
 
 export interface CreateReviewRequestI {

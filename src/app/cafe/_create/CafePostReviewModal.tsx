@@ -10,7 +10,9 @@ import {
 } from "../../../../node_modules/@mui/material/index";
 import { addReview, putCafe } from "_utils/api";
 import { useForm } from "react-hook-form";
-import { CafeI, CreateReviewRequestI } from "types/cafes";
+import { CafeI } from "types/cafes";
+import meStore from "../../../store/me";
+import { useSession } from "next-auth/react";
 
 interface propTypes {
   showModal: boolean;
@@ -23,6 +25,9 @@ const CafePostReviewModal = ({
   handleModalClose,
   cafe,
 }: propTypes) => {
+  const { me } = meStore();
+  const { data: session } = useSession();
+
   const {
     register,
     handleSubmit,
@@ -54,6 +59,8 @@ const CafePostReviewModal = ({
 
   /** Submit action */
   async function handleCafeReviewPostSubmit(data: any) {
+    data.userId = me._id;
+    data.image = session.user.image;
     await addReview(data).then(() => {
       handleModalClose();
     });
