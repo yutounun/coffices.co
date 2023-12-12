@@ -38,7 +38,7 @@ const ProfileDesc = ({
     bio: me.bio,
     github: me.github || "https://github.com",
     twitter: me.twitter || "https://twitter.com",
-    linkedin: me.linkedin || "https://linkedin.com",
+    linkedin: me.linkedIn || "https://linkedin.com",
     homepage: me.homepage || "https://homepage.com",
   };
   return (
@@ -67,7 +67,6 @@ const ProfileDesc = ({
             <Button
               color="warning"
               variant="contained"
-              fontSize="small"
               sx={{ borderRadius: "20px" }}
             >
               Admin

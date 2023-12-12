@@ -1,4 +1,4 @@
-import create from "zustand";
+import create, { StateCreator, StoreApi } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
 interface meI {
@@ -7,18 +7,23 @@ interface meI {
   username: string;
   email: string;
   isAdmin: boolean;
-  bio: string;
+  bio?: string;
   createdAt: string;
   updatedAt: string;
+  github?: string;
+  twitter?: string;
+  linkedIn?: string;
+  homepage?: string;
 }
+
 interface meState {
   me: meI;
   setMe: (me: meI) => void;
 }
 
-const useCreateModalStore = create<meState>(
+const useCreateModalStore = create<meState, [["zustand/persist", unknown]]>(
   persist(
-    (set: any) => ({
+    (set: (f: (state: meState) => meState) => void) => ({
       me: {
         sessionId: "",
         username: "",
@@ -27,12 +32,17 @@ const useCreateModalStore = create<meState>(
         bio: "",
         createdAt: "",
         updatedAt: "",
+        github: "",
+        twitter: "",
+        linkedIn: "",
+        homepage: "",
+        _id: "",
       },
-      setMe: (me: meI) => set({ me: me }),
+      setMe: (newMe: meI) => set((state) => ({ ...state, me: newMe })),
     }),
     {
       name: "me-storage",
-      storage: createJSONStorage(() => sessionStorage), // (optional) by default, 'localStorage' is used
+      storage: createJSONStorage(() => sessionStorage),
     }
   )
 );

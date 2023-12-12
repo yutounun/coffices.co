@@ -31,8 +31,6 @@ export async function POST(request: NextRequest) {
 
     // Create new user
     const newUser = await UserModel.create(editedUser);
-    console.log("🚀 ~ file: route.ts:34 ~ POST ~ editedUser:", editedUser);
-    console.log("🚀 ~ file: route.ts:34 ~ POST ~ newUser:", newUser);
     return NextResponse.json(newUser);
   } catch (error) {
     const errorMessage =
@@ -68,7 +66,6 @@ export async function GET(request: NextRequest) {
 }
 
 export async function PUT(request: NextRequest) {
-  console.log("🚀 ~ file: route.ts:71 ~ PUT ~ request:", request);
   await connectDB();
 
   try {

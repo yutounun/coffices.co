@@ -16,7 +16,8 @@ export default function CafeListLayout({
   const { data: session } = useSession();
   useEffect(() => {
     if (session) {
-      getUser(session.user.id).then((user) => {
+      // @ts-ignore
+      getUser(session?.user?.id).then((user) => {
         setMe(user);
       });
     }

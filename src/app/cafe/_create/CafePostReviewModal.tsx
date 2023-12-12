@@ -62,12 +62,8 @@ const CafePostReviewModal = ({
   /** Submit action */
   async function handleCafeReviewPostSubmit(data: any) {
     data.userId = me._id;
-    data.image = session.user.image;
+    data.image = session?.user?.image;
     await addReview(data).then((res) => {
-      console.log(
-        "🚀 ~ file: CafePostReviewModal.tsx:67 ~ awaitaddReview ~ res:",
-        res
-      );
       handleModalClose();
       setCafeList(res);
     });
