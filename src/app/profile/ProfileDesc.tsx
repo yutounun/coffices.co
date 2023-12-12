@@ -1,6 +1,10 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Stack, Typography } from "../../../node_modules/@mui/material/index";
+import {
+  Button,
+  Stack,
+  Typography,
+} from "../../../node_modules/@mui/material/index";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import LinkIcon from "@mui/icons-material/Link";
@@ -55,9 +59,21 @@ const ProfileDesc = ({
         }}
         spacing={5}
       >
-        <Typography fontWeight="bold" variant="h4">
-          {userInfo.name}
-        </Typography>
+        <Stack direction="row" spacing={2}>
+          <Typography fontWeight="bold" variant="h4">
+            {userInfo.name}
+          </Typography>
+          {me.isAdmin && (
+            <Button
+              color="warning"
+              variant="contained"
+              fontSize="small"
+              sx={{ borderRadius: "20px" }}
+            >
+              Admin
+            </Button>
+          )}
+        </Stack>
         <Stack direction="row" spacing={1}>
           <Typography variant="subtitle1">{userInfo.bio}</Typography>
           <EditIcon fontSize="small" onClick={() => setShowModal(true)} />
