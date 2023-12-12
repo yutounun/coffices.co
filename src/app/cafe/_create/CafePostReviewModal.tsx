@@ -46,7 +46,7 @@ const CafePostReviewModal = ({
     bgcolor: "background.paper",
     boxShadow: 24,
     pb: 5,
-    height: "55%",
+    height: "auto",
     display: "flex",
     flexDirection: "column",
     borderRadius: 5,
