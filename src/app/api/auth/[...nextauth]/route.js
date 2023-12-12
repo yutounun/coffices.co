@@ -41,7 +41,7 @@ const authOptions = {
 
       try {
         // Create new user
-        const response = await fetch("http://localhost:3000/api/user", {
+        const response = await fetch("/api/user", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
