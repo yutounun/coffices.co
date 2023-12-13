@@ -41,13 +41,16 @@ const authOptions = {
 
       try {
         // Create new user
-        const response = await fetch("/api/user", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ id: id, username: name, email: email }),
-        });
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/api/user`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ id: id, username: name, email: email }),
+          }
+        );
         if (response.ok) {
           return user;
         }

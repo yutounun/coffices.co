@@ -24,7 +24,9 @@ export async function POST(request: NextRequest) {
     await ReviewModel.create(data);
 
     // return all cafe after updating to refresh the page
-    const cafeList = await fetch("/api/cafe").then((res) => res.json());
+    const cafeList = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/cafe`
+    ).then((res) => res.json());
     return NextResponse.json(cafeList);
   } catch (error) {
     const errorMessage =
