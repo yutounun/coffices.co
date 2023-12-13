@@ -13,7 +13,7 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL;
  * @return {Promise<any>} A promise that resolves to the cafe data.
  */
 export async function getCafe() {
-  return await fetch(`${API_URL}/cafe`, {
+  return await fetch(`${API_URL}/api/cafe`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -30,7 +30,7 @@ export async function getCafe() {
  * @return {Promise} A Promise that resolves to the cafe data fetched from the server.
  */
 export function filterCafe(stationName: string) {
-  return fetch(`${API_URL}/cafe?station=${stationName}`)
+  return fetch(`${API_URL}/api/cafe?station=${stationName}`)
     .then((res) => res.json())
     .catch((err) => console.log(err));
 }
@@ -43,7 +43,7 @@ export function filterCafe(stationName: string) {
  * @throws - error
  */
 export async function postCafe(data: CafePostRequestI) {
-  return await fetch(`${API_URL}/cafe`, {
+  return await fetch(`${API_URL}/api/cafe`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -61,7 +61,7 @@ export async function postCafe(data: CafePostRequestI) {
  * @return {Promise<any>} A Promise that resolves to the JSON response from the server, or logs an error if the request fails.
  */
 export async function putCafe(data: CafePutRequestI) {
-  return await fetch(`${API_URL}/cafe/${data._id}`, {
+  return await fetch(`${API_URL}/api/cafe/${data._id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -78,7 +78,7 @@ export async function putCafe(data: CafePutRequestI) {
 }
 
 export async function deleteCafe(cafeId: string | number) {
-  return await fetch(`${API_URL}/cafe/${cafeId}`, {
+  return await fetch(`${API_URL}/api/cafe/${cafeId}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
@@ -113,7 +113,7 @@ export async function cafeImageUpload(cafeImageFile: any) {
 }
 
 export async function addReview(data: CreateReviewRequestI) {
-  return await fetch(`${API_URL}/review`, {
+  return await fetch(`${API_URL}/api/review`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -125,7 +125,7 @@ export async function addReview(data: CreateReviewRequestI) {
 }
 
 export async function getUser(sessionId: string) {
-  return await fetch(`${API_URL}/user?sessionId=${sessionId}`, {
+  return await fetch(`${API_URL}/api/user?sessionId=${sessionId}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -136,7 +136,7 @@ export async function getUser(sessionId: string) {
 }
 
 export async function updateUser(data: string) {
-  return await fetch(`${API_URL}/user`, {
+  return await fetch(`${API_URL}/api/user`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
