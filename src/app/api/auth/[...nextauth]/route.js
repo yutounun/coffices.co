@@ -8,7 +8,6 @@ const authOptions = {
   // Configure one or more authentication providers
   providers: [
     GoogleProvider({
-      checks: ["none"],
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
       authorization: {
@@ -18,17 +17,14 @@ const authOptions = {
       },
     }),
     FacebookProvider({
-      checks: ["none"],
       clientId: process.env.FACEBOOK_CLIENT_ID,
       clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
     }),
     GitHubProvider({
-      checks: ["none"],
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
     }),
     LineProvider({
-      checks: ["none"],
       clientId: process.env.LINE_CLIENT_ID,
       clientSecret: process.env.LINE_CLIENT_SECRET,
     }),
@@ -42,7 +38,7 @@ const authOptions = {
       try {
         // Create new user
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/api/user`,
+          `${process.env.NEXT_PUBLIC_LOCAL_API_URL}/api/user`,
           {
             method: "POST",
             headers: {
