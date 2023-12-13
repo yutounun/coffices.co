@@ -64,7 +64,7 @@ export default function Home() {
             <Typography
               color="primary"
               variant="h4"
-              sx={{ textAlign: "center", height: "7%" }}
+              sx={{ textAlign: "center", height: "7%", fontWeight: "bold" }}
             >
               Sign In
             </Typography>
