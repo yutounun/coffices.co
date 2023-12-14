@@ -10,6 +10,7 @@ import {
   Modal,
   Stack,
   Typography,
+  Tooltip,
 } from "../../../../node_modules/@mui/material/index";
 import Stars from "_commons/Stars";
 import { NextImage } from "_commons/NextImage";
@@ -17,7 +18,7 @@ import { deleteCafe } from "_utils/api";
 import CafeDetailModalOverview from "./CafeDetailModalOverview";
 import CafeDetailModalReviews from "./CafeDetailModalReviews";
 import CafePostReviewModal from "cafe/_create/CafePostReviewModal";
-
+import meStore from "../../../store/me";
 const modalStyle = {
   position: "absolute",
   top: "50%",
@@ -43,6 +44,7 @@ const CafeModal = ({
   showCafeDetail,
   handleCafeDetailClose,
 }: propTypes) => {
+  const { me } = meStore();
   const [openCafeEditModal, setOpenCafeEditModal] = useState(false);
   const [showsReviews, setShowsReviews] = useState(false);
   const [openCafeReviewModal, setOpenCafeReviewModal] = useState(false);
@@ -130,14 +132,37 @@ const CafeModal = ({
                 spacing={2}
                 sx={{ width: "25%", justifyContent: "right" }}
               >
-                <EditIcon
-                  sx={{ cursor: "pointer" }}
-                  onClick={handleEditClick}
-                />
-                <DeleteIcon
-                  sx={{ cursor: "pointer" }}
-                  onClick={handleDeleteClick}
-                />
+                {me.isAdmin ? (
+                  <>
+                    <Tooltip title="Edit">
+                      <EditIcon
+                        sx={{ cursor: "pointer" }}
+                        onClick={handleEditClick}
+                      />
+                    </Tooltip>
+                    <Tooltip title="Delete">
+                      <DeleteIcon
+                        sx={{ cursor: "pointer" }}
+                        onClick={handleDeleteClick}
+                      />
+                    </Tooltip>
+                  </>
+                ) : (
+                  <>
+                    <Tooltip title="Not allowed">
+                      <EditIcon
+                        sx={{ color: "#CCCCCC" }}
+                        onClick={handleEditClick}
+                      />
+                    </Tooltip>
+                    <Tooltip title="Not allowed">
+                      <DeleteIcon
+                        sx={{ color: "#CCCCCC" }}
+                        onClick={handleDeleteClick}
+                      />
+                    </Tooltip>
+                  </>
+                )}
               </Stack>
             </Stack>
             {showsReviews ? (
