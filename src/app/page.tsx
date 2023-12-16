@@ -41,7 +41,7 @@ export default function Home() {
               borderRadius: "20px 0 0 20px",
             }}
           >
-            {/* <NextImage src="/no-image.png" alt="image" /> */}
+            {/* <NextImage src="/coffee.jpg" alt="image" /> */}
             {/* <Image src="/man.png" alt="image" width={300} height={600} /> */}
             <Image
               priority={true}

@@ -44,7 +44,7 @@ const Profile = () => {
         }}
       >
         <Image
-          src={session?.user?.image || "/no-image.png"}
+          src={session?.user?.image || "/coffee.jpg"}
           alt="profile"
           width={200}
           height={200}

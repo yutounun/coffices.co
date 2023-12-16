@@ -10,6 +10,7 @@ import StationSearch from "./StationSearch";
 import useCreateModalStore from "../../../store/openCreateCafeModal";
 import CafePostModal from "../_create/CafePostModal";
 import { CafeListContext } from "../../../contexts/CafeListContext";
+import CafeSearchList from "./CafeSearchList";
 
 const ShopsList = () => {
   const { showsCreateModal, closeCreateCafeModal } = useCreateModalStore();
@@ -42,13 +43,21 @@ const ShopsList = () => {
       <StationSearch filterByStationName={filterByStationName} />
       <CafeListContext.Provider value={{ cafeList, setCafeList }}>
         <Suspense fallback={<Loading />}>
-          <CafeRow
-            area={stationName ? stationName : "東京都全体の人気作業カフェ"}
-            cafes={cafeList}
-            isLoading={isLoading}
-          />
-          {!stationName && (
+          {stationName ? (
             <>
+              <CafeSearchList
+                cafes={cafeShopsInSpecificArea(stationName)}
+                area={stationName}
+                isLoading={isLoading}
+              />
+            </>
+          ) : (
+            <>
+              <CafeRow
+                area={stationName ? stationName : "東京都全体の人気作業カフェ"}
+                cafes={cafeList}
+                isLoading={isLoading}
+              />
               <CafeRow
                 area="新宿区"
                 cafes={cafeShopsInSpecificArea("新宿区")}

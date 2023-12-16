@@ -181,7 +181,7 @@ function ResponsiveAppBar() {
             <IconButton onClick={handleOpenProfile} sx={{ p: 0 }}>
               <Avatar
                 alt="Remy Sharp"
-                src={session?.user?.image || "/no-image.png"}
+                src={session?.user?.image || "/coffee.jpg"}
               />
             </IconButton>
           </Stack>

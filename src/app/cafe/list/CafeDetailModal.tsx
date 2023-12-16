@@ -72,7 +72,7 @@ const CafeModal = ({
         <Box sx={modalStyle}>
           <Box sx={{ height: "60%" }}>
             <NextImage
-              src={cafe.image ? cafe.image : "/no-image.png"}
+              src={cafe.image ? cafe.image : "/coffee.jpg"}
               alt="cafe1"
               className="top-rounded"
             />

@@ -33,7 +33,7 @@ const SelectImagePage = ({
       }}
       spacing={1}
     >
-      <NextImage src={imageUrl ? imageUrl : "/no-image.png"} alt="image" />
+      <NextImage src={imageUrl ? imageUrl : "/coffee.jpg"} alt="image" />
       <Button component="label" variant="contained">
         コンピューターから選択
         <input
