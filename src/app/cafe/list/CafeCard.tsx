@@ -6,6 +6,7 @@ import { CafeI } from "types/cafes";
 import CafeDescription from "./CafeDescription";
 import { NextImage } from "_commons/NextImage";
 import CafeDetailModal from "./CafeDetailModal";
+import Card from "@mui/material/Card";
 
 interface propTypes {
   cafe: CafeI;
@@ -23,15 +24,13 @@ const CafeCard = ({ cafe }: propTypes) => {
 
   return (
     <>
-      <Stack
+      <Card
         sx={{
-          minWidth: "300px",
-          mx: "10px",
-          height: "100",
-          border: "1px",
+          minWidth: "290px",
+          mt: "5em",
           position: "relative",
-          zIndex: 100,
           overflow: "visible",
+          height: "23em",
           "&:hover": {
             scale: "1.07",
             transition: "all 0.5s ease",
@@ -47,8 +46,7 @@ const CafeCard = ({ cafe }: propTypes) => {
           />
           <CafeDescription cafe={cafe} />
         </Box>
-      </Stack>
-
+      </Card>
       {showCafeDetail && (
         <CafeDetailModal
           handleCafeDetailClose={handleCafeDetailClose}

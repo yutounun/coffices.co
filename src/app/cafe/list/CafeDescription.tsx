@@ -4,7 +4,6 @@ import {
   Typography,
 } from "../../../../node_modules/@mui/material/index";
 import { CafeI } from "types/cafes";
-import { stars } from "./functions";
 import Stars from "_commons/Stars";
 
 interface PropTypes {
