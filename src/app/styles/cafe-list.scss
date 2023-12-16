@@ -8,6 +8,7 @@
   @media screen and (max-width: 2000px) {
     width: 105em;
   }
+  margin: 5em 0;
 }
 
 .row__cards::-webkit-scrollbar {
@@ -17,6 +18,5 @@
 .row__picture {
   object-fit: contain;
   border-radius: 0% 0% 0 0;
-  padding-right: 10px;
   transition: transform 450ms;
 }

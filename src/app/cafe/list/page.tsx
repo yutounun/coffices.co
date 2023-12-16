@@ -46,8 +46,8 @@ const ShopsList = () => {
           {stationName ? (
             <>
               <CafeSearchList
-                cafes={cafeShopsInSpecificArea(stationName)}
                 area={stationName}
+                cafes={cafeList}
                 isLoading={isLoading}
               />
             </>

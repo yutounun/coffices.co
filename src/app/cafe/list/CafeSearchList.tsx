@@ -6,6 +6,7 @@ import {
 } from "../../../../node_modules/@mui/material/index";
 import CafeCard from "./CafeCard";
 import Loading from "../../loading";
+import NotFound from "../../NotFound";
 
 interface propTypes {
   cafes: CafeI[];
@@ -19,7 +20,6 @@ const CafeSearchList = ({ cafes, area, isLoading }: propTypes) => {
       <Typography
         variant="h5"
         sx={{
-          m: "1em",
           fontFamily: "monospace",
           fontWeight: 700,
           letterSpacing: ".3rem",
@@ -29,11 +29,13 @@ const CafeSearchList = ({ cafes, area, isLoading }: propTypes) => {
       >
         {area}
       </Typography>
-      <Stack direction="row" spacing={3} className="row__cards">
+      <Stack direction="row" sx={{ width: "100%", flexWrap: "wrap" }}>
         {isLoading && <Loading />}
         {cafes &&
           cafes.length > 0 &&
           cafes.map((cafe) => <CafeCard key={cafe._id} cafe={cafe} />)}
+
+        {cafes.length === 0 && <NotFound />}
       </Stack>
     </>
   );

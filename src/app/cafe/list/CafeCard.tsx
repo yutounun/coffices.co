@@ -27,7 +27,8 @@ const CafeCard = ({ cafe }: propTypes) => {
       <Card
         sx={{
           minWidth: "290px",
-          mt: "5em",
+          mt: "2em",
+          mr: "2em",
           position: "relative",
           overflow: "visible",
           height: "23em",
