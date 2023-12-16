@@ -1,12 +1,7 @@
 "use client";
-
-import React, {
-  useEffect,
-  useState,
-  createContext,
-  Dispatch,
-  SetStateAction,
-} from "react";
+import React, { Suspense, useEffect, useState } from "react";
+import Loading from "../../loading";
+import { useQuery } from "react-query";
 import { CafeI } from "types/cafes";
 import { filterCafe, getCafe } from "_utils/api";
 import "../../styles/cafe-list.scss";
@@ -20,17 +15,18 @@ const ShopsList = () => {
   const { showsCreateModal, closeCreateCafeModal } = useCreateModalStore();
   const [cafeList, setCafeList] = useState<CafeI[]>([]);
   const [stationName, setStationName] = useState("");
-  useEffect(() => {
-    getCafeLocal();
-  }, []);
 
-  async function getCafeLocal() {
-    getCafe().then((json) => setCafeList(json));
-  }
+  const { data, isLoading } = useQuery("cafes", getCafe);
+
+  useEffect(() => {
+    if (data) {
+      setCafeList(data);
+    }
+  }, [data]);
 
   function filterByStationName(filterParam?: string) {
     if (!filterParam) {
-      getCafeLocal();
+      // getCafeLocal();
     } else {
       filterCafe(filterParam).then((json) => setCafeList(json));
     }
@@ -43,28 +39,40 @@ const ShopsList = () => {
 
   return (
     <>
-      {/* <StationSearch filterByStationName={filterByStationName} /> */}
+      <StationSearch filterByStationName={filterByStationName} />
       <CafeListContext.Provider value={{ cafeList, setCafeList }}>
-        <CafeRow
-          area={stationName ? stationName : "東京都全体の人気作業カフェ"}
-          cafes={cafeList}
-        />
-        {!stationName && (
-          <>
-            <CafeRow area="新宿区" cafes={cafeShopsInSpecificArea("新宿区")} />
-            <CafeRow
-              area="千代田区"
-              cafes={cafeShopsInSpecificArea("千代田区")}
-            />
-            <CafeRow area="渋谷区" cafes={cafeShopsInSpecificArea("渋谷区")} />
-          </>
-        )}
-        {showsCreateModal && (
-          <CafePostModal
-            handleModalClose={closeCreateCafeModal}
-            showModal={showsCreateModal}
+        <Suspense fallback={<Loading />}>
+          <CafeRow
+            area={stationName ? stationName : "東京都全体の人気作業カフェ"}
+            cafes={cafeList}
+            isLoading={isLoading}
           />
-        )}
+          {!stationName && (
+            <>
+              <CafeRow
+                area="新宿区"
+                cafes={cafeShopsInSpecificArea("新宿区")}
+                isLoading={isLoading}
+              />
+              <CafeRow
+                area="千代田区"
+                cafes={cafeShopsInSpecificArea("千代田区")}
+                isLoading={isLoading}
+              />
+              <CafeRow
+                area="渋谷区"
+                cafes={cafeShopsInSpecificArea("渋谷区")}
+                isLoading={isLoading}
+              />
+            </>
+          )}
+          {showsCreateModal && (
+            <CafePostModal
+              handleModalClose={closeCreateCafeModal}
+              showModal={showsCreateModal}
+            />
+          )}
+        </Suspense>
       </CafeListContext.Provider>
     </>
   );

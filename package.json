@@ -29,6 +29,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.48.2",
+    "react-query": "^3.39.3",
     "sass": "^1.69.5",
     "zustand": "^4.4.7"
   },

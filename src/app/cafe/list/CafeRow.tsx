@@ -5,13 +5,15 @@ import {
   Typography,
 } from "../../../../node_modules/@mui/material/index";
 import CafeCard from "./CafeCard";
+import Loading from "../../loading";
 
 interface propTypes {
   cafes: CafeI[];
   area: string;
+  isLoading?: boolean;
 }
 
-const CafeRow = ({ cafes, area }: propTypes) => {
+const CafeRow = ({ cafes, area, isLoading }: propTypes) => {
   return (
     <>
       <Typography
@@ -28,6 +30,7 @@ const CafeRow = ({ cafes, area }: propTypes) => {
         {area}
       </Typography>
       <Stack direction="row" spacing={3} className="row__cards">
+        {isLoading && <Loading />}
         {cafes &&
           cafes.length > 0 &&
           cafes.map((cafe) => <CafeCard key={cafe._id} cafe={cafe} />)}
