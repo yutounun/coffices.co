@@ -171,11 +171,12 @@ function ResponsiveAppBar() {
               sx={{
                 my: 2,
                 color: "white",
-                display: "block",
                 display: { xs: "none", md: "flex" },
               }}
             >
-              ログアウト
+              <Typography sx={{ fontweight: 700, fontFamily: "monospace" }}>
+                ログアウト
+              </Typography>
             </Button>
             <IconButton onClick={handleOpenProfile} sx={{ p: 0 }}>
               <Avatar
