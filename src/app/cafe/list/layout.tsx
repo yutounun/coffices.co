@@ -24,7 +24,7 @@ export default function CafeListLayout({
   }, [session]);
 
   return (
-    <Stack direction="row">
+    <Stack>
       <Sidebar />
       <Box sx={{ width: "100%" }}>
         <Box sx={{ ml: "4rem", mt: "60px" }}>{children}</Box>;

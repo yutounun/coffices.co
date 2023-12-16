@@ -7,7 +7,7 @@ export default function CafeListLayout({
   children: React.ReactNode;
 }) {
   return (
-    <Stack direction="row">
+    <Stack>
       <Sidebar />
       <Box sx={{ width: "100%" }}>{children}</Box>
     </Stack>

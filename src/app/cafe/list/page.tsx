@@ -17,8 +17,7 @@ import CafePostModal from "../_create/CafePostModal";
 import { CafeListContext } from "../../../contexts/CafeListContext";
 
 const ShopsList = () => {
-  const { showsCreateModal, openCreateCafeModal, closeCreateCafeModal } =
-    useCreateModalStore();
+  const { showsCreateModal, closeCreateCafeModal } = useCreateModalStore();
   const [cafeList, setCafeList] = useState<CafeI[]>([]);
   const [stationName, setStationName] = useState("");
   useEffect(() => {
@@ -44,7 +43,7 @@ const ShopsList = () => {
 
   return (
     <>
-      <StationSearch filterByStationName={filterByStationName} />
+      {/* <StationSearch filterByStationName={filterByStationName} /> */}
       <CafeListContext.Provider value={{ cafeList, setCafeList }}>
         <CafeRow
           area={stationName ? stationName : "東京都全体の人気作業カフェ"}

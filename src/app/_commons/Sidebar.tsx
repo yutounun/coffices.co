@@ -1,140 +1,171 @@
 "use client";
+
 import * as React from "react";
-import AddCircleOutlineIcon from "../../../node_modules/@mui/icons-material/AddCircleOutline";
-import LibraryBooksIcon from "../../../node_modules/@mui/icons-material/LibraryBooks";
-import SettingsIcon from "../../../node_modules/@mui/icons-material/Settings";
-import AccountBoxIcon from "../../../node_modules/@mui/icons-material/AccountBox";
-import ExitToAppIcon from "@mui/icons-material/ExitToApp";
-import { styled, useTheme, Theme, CSSObject } from "@mui/material/styles";
-import MuiDrawer from "@mui/material/Drawer";
-import List from "@mui/material/List";
-import CssBaseline from "@mui/material/CssBaseline";
-import Divider from "@mui/material/Divider";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import SidebarRow from "./SidebarRow";
+import Container from "@mui/material/Container";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import MenuItem from "@mui/material/MenuItem";
+import CoffeeIcon from "@mui/icons-material/Coffee";
+import useCreateModalStore from "../../store/openCreateCafeModal";
+import { useRouter } from "../../../node_modules/next/navigation";
+import { signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 
-const drawerWidth = 240;
+const pages = ["一覧", "作成"];
 
-const openedMixin = (theme: Theme): CSSObject => ({
-  width: drawerWidth,
-  transition: theme.transitions.create("width", {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.enteringScreen,
-  }),
-  overflowX: "hidden",
-});
+function ResponsiveAppBar() {
+  const router = useRouter();
+  const { data: session } = useSession();
+  const { openCreateCafeModal } = useCreateModalStore();
 
-const closedMixin = (theme: Theme): CSSObject => ({
-  transition: theme.transitions.create("width", {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  overflowX: "hidden",
-  width: `calc(${theme.spacing(7)} + 1px)`,
-  [theme.breakpoints.up("sm")]: {
-    width: `calc(${theme.spacing(8)} + 1px)`,
-  },
-});
+  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
+    null
+  );
+  const [showsSettings, setShowsSettings] = React.useState<null | HTMLElement>(
+    null
+  );
 
-const DrawerHeader = styled("div")(({ theme }: { theme: Theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "flex-end",
-  padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
-  ...theme.mixins.toolbar,
-}));
-
-const Drawer = styled(MuiDrawer, {
-  shouldForwardProp: (prop: string) => prop !== "open",
-})(({ theme, open }: { theme: Theme; open: boolean }) => ({
-  width: drawerWidth,
-  flexShrink: 0,
-  whiteSpace: "nowrap",
-  boxSizing: "border-box",
-  ...(open && {
-    ...openedMixin(theme),
-    "& .MuiDrawer-paper": openedMixin(theme),
-  }),
-  ...(!open && {
-    ...closedMixin(theme),
-    "& .MuiDrawer-paper": closedMixin(theme),
-  }),
-}));
-
-export default function MiniDrawer() {
-  const theme = useTheme();
-  const [open, setOpen] = React.useState(true);
-
-  const rowProps = [
-    {
-      icon: <LibraryBooksIcon />,
-      title: "一覧",
-      path: "/cafe/list",
-    },
-    {
-      icon: <AddCircleOutlineIcon />,
-      title: "作成",
-    },
-    {
-      icon: <AccountBoxIcon />,
-      title: "プロフィール",
-      path: "/profile",
-    },
-    {
-      icon: <SettingsIcon />,
-      title: "設定",
-      path: "/config",
-    },
-    {
-      icon: <ExitToAppIcon />,
-      title: "サインアウト",
-    },
-  ];
-
-  const handleDrawerOpen = () => {
-    setOpen(true);
+  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElNav(event.currentTarget);
+  };
+  const handleOpenProfile = (event: React.MouseEvent<HTMLElement>) => {
+    router.push("/profile");
   };
 
-  const handleDrawerClose = () => {
-    setOpen(false);
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
+
+  const onClickListButton = () => {
+    router.push("/cafe/list");
+  };
+
+  const onClickCreateButton = () => {
+    openCreateCafeModal();
+  };
+
+  const onClickProfileButton = () => {
+    router.push("/profile");
+  };
+
+  const onClickLogoutButton = () => {
+    signOut({ callbackUrl: "/" });
   };
 
   return (
-    <>
-      <CssBaseline />
-      <Drawer variant="permanent" open={open} theme={theme}>
-        <DrawerHeader>
-          <IconButton
-            color="primary"
-            aria-label="open drawer"
-            onClick={open ? handleDrawerClose : handleDrawerOpen}
-            edge="start"
+    <AppBar position="static">
+      <Container maxWidth="xl">
+        {/* Mobile */}
+        <Toolbar disableGutters>
+          <CoffeeIcon sx={{ display: { xs: "none", md: "flex" } }} />
+          <Typography
+            variant="h6"
+            noWrap
+            component="a"
+            href="#app-bar-with-responsive-menu"
             sx={{
-              mr: 1,
+              display: { xs: "none", md: "flex" },
+              fontFamily: "monospace",
+              fontWeight: 700,
+              letterSpacing: ".3rem",
+              color: "inherit",
+              textDecoration: "none",
             }}
           >
-            {open ? (
-              theme.direction === "rtl" ? (
-                <ChevronRightIcon />
-              ) : (
-                <ChevronLeftIcon />
-              )
-            ) : (
+            coffices.co
+          </Typography>
+
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleOpenNavMenu}
+              color="inherit"
+            >
               <MenuIcon />
-            )}
-          </IconButton>
-        </DrawerHeader>
-        <Divider />
-        <List>
-          {rowProps.map((row, index) => (
-            <SidebarRow open={open} key={index} row={row} />
-          ))}
-        </List>
-      </Drawer>
-    </>
+            </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorElNav}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "left",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "left",
+              }}
+              open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
+              sx={{
+                display: { xs: "block", md: "none" },
+              }}
+            >
+              {pages.map((page) => (
+                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">{page}</Typography>
+                </MenuItem>
+              ))}
+            </Menu>
+          </Box>
+
+          {/* PC */}
+          <CoffeeIcon sx={{ display: { xs: "flex", md: "none" } }} />
+          <Typography
+            variant="h5"
+            noWrap
+            component="a"
+            href="#app-bar-with-responsive-menu"
+            sx={{
+              display: { xs: "flex", md: "none" },
+              flexGrow: 1,
+              fontFamily: "monospace",
+              fontWeight: 700,
+              letterSpacing: ".3rem",
+              color: "inherit",
+              textDecoration: "none",
+            }}
+          >
+            LOGO
+          </Typography>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+            <Button
+              key={pages[0]}
+              onClick={onClickListButton}
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              {pages[0]}
+            </Button>
+            <Button
+              key={pages[1]}
+              onClick={onClickCreateButton}
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              {pages[1]}
+            </Button>
+          </Box>
+
+          <Box sx={{ flexGrow: 0 }}>
+            <IconButton onClick={handleOpenProfile} sx={{ p: 0 }}>
+              <Avatar
+                alt="Remy Sharp"
+                src={session?.user?.image || "/no-image.png"}
+              />
+            </IconButton>
+          </Box>
+        </Toolbar>
+      </Container>
+    </AppBar>
   );
 }
+export default ResponsiveAppBar;
