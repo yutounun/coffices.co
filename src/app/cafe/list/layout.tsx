@@ -1,6 +1,6 @@
 "use client";
 
-import Sidebar from "_commons/Sidebar";
+import Header from "_commons/Header";
 import { Box, Stack } from "../../../../node_modules/@mui/material/index";
 import { useSession } from "next-auth/react";
 import { useEffect } from "react";
@@ -25,7 +25,7 @@ export default function CafeListLayout({
 
   return (
     <Stack>
-      <Sidebar />
+      <Header />
       <Box sx={{ width: "100%" }}>
         <Box sx={{ ml: "4rem", mt: "60px" }}>{children}</Box>;
       </Box>

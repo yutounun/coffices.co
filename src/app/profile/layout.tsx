@@ -1,4 +1,4 @@
-import Sidebar from "_commons/Sidebar";
+import Header from "_commons/Header";
 import { Box, Stack } from "../../../node_modules/@mui/material/index";
 
 export default function CafeListLayout({
@@ -8,7 +8,7 @@ export default function CafeListLayout({
 }) {
   return (
     <Stack>
-      <Sidebar />
+      <Header />
       <Box sx={{ width: "100%" }}>{children}</Box>
     </Stack>
   );

@@ -14,7 +14,17 @@ interface propTypes {
 const CafeRow = ({ cafes, area }: propTypes) => {
   return (
     <>
-      <Typography variant="h5" sx={{ m: "10px" }}>
+      <Typography
+        variant="h5"
+        sx={{
+          m: "1em",
+          fontFamily: "monospace",
+          fontWeight: 700,
+          letterSpacing: ".3rem",
+          color: "inherit",
+          textDecoration: "none",
+        }}
+      >
         {area}
       </Typography>
       <Stack direction="row" className="row__cards">

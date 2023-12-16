@@ -11,6 +11,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
 import MenuItem from "@mui/material/MenuItem";
 import CoffeeIcon from "@mui/icons-material/Coffee";
 import useCreateModalStore from "../../store/openCreateCafeModal";
@@ -26,9 +27,6 @@ function ResponsiveAppBar() {
   const { openCreateCafeModal } = useCreateModalStore();
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
-    null
-  );
-  const [showsSettings, setShowsSettings] = React.useState<null | HTMLElement>(
     null
   );
 
@@ -49,10 +47,6 @@ function ResponsiveAppBar() {
 
   const onClickCreateButton = () => {
     openCreateCafeModal();
-  };
-
-  const onClickProfileButton = () => {
-    router.push("/profile");
   };
 
   const onClickLogoutButton = () => {
@@ -155,14 +149,21 @@ function ResponsiveAppBar() {
             </Button>
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
+          <Stack direction="row" sx={{ flexGrow: 0 }} spacing={2}>
+            <Button
+              key={pages[1]}
+              onClick={onClickLogoutButton}
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              ログアウト
+            </Button>
             <IconButton onClick={handleOpenProfile} sx={{ p: 0 }}>
               <Avatar
                 alt="Remy Sharp"
                 src={session?.user?.image || "/no-image.png"}
               />
             </IconButton>
-          </Box>
+          </Stack>
         </Toolbar>
       </Container>
     </AppBar>
