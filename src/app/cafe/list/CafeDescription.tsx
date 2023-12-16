@@ -20,7 +20,7 @@ const CafeDescription = ({ cafe }: PropTypes) => {
       }}
       spacing={1}
     >
-      <Typography variant="h5" sx={{ mb: "4px" }}>
+      <Typography variant="h5" sx={{ mb: "4px", fontFamily: "monospace" }}>
         {cafe.title}
       </Typography>
       <Stack
@@ -31,7 +31,9 @@ const CafeDescription = ({ cafe }: PropTypes) => {
         <Stars rate={cafe.rate} />
         <Typography variant="h6">{cafe.rate}</Typography>
       </Stack>
-      <Typography variant="body1">{cafe.area}</Typography>
+      <Typography variant="body1" sx={{ fontFamily: "monospace" }}>
+        {cafe.area}
+      </Typography>
     </Stack>
   );
 };

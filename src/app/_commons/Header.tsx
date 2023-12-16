@@ -54,9 +54,8 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar sx={{ mb: 4 }}>
       <Container maxWidth="xl">
-        {/* Mobile */}
         <Toolbar disableGutters>
           <CoffeeIcon sx={{ display: { xs: "none", md: "flex" } }} />
           <Typography
@@ -71,6 +70,7 @@ function ResponsiveAppBar() {
               letterSpacing: ".3rem",
               color: "inherit",
               textDecoration: "none",
+              mr: 2,
             }}
           >
             coffices.co
@@ -113,7 +113,6 @@ function ResponsiveAppBar() {
             </Menu>
           </Box>
 
-          {/* PC */}
           <CoffeeIcon sx={{ display: { xs: "flex", md: "none" } }} />
           <Typography
             variant="h5"
@@ -130,20 +129,36 @@ function ResponsiveAppBar() {
               textDecoration: "none",
             }}
           >
-            LOGO
+            coffices.co
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             <Button
               key={pages[0]}
               onClick={onClickListButton}
-              sx={{ my: 2, color: "white", display: "block" }}
+              sx={{
+                my: 2,
+                color: "white",
+                display: "block",
+                fontFamily: "monospace",
+                fontWeight: 700,
+                letterSpacing: ".3rem",
+                textDecoration: "none",
+              }}
             >
               {pages[0]}
             </Button>
             <Button
               key={pages[1]}
               onClick={onClickCreateButton}
-              sx={{ my: 2, color: "white", display: "block" }}
+              sx={{
+                my: 2,
+                color: "white",
+                display: "block",
+                fontFamily: "monospace",
+                fontWeight: 700,
+                letterSpacing: ".3rem",
+                textDecoration: "none",
+              }}
             >
               {pages[1]}
             </Button>
@@ -153,7 +168,12 @@ function ResponsiveAppBar() {
             <Button
               key={pages[1]}
               onClick={onClickLogoutButton}
-              sx={{ my: 2, color: "white", display: "block" }}
+              sx={{
+                my: 2,
+                color: "white",
+                display: "block",
+                display: { xs: "none", md: "flex" },
+              }}
             >
               ログアウト
             </Button>

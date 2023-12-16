@@ -26,7 +26,7 @@ export default function CafeListLayout({
   return (
     <Stack>
       <Header />
-      <Box sx={{ width: "100%" }}>
+      <Box sx={{ mt: "3em", width: "100%" }}>
         <Box sx={{ ml: "4rem", mt: "60px" }}>{children}</Box>;
       </Box>
     </Stack>
