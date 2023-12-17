@@ -42,6 +42,10 @@ const ShopsList = () => {
     });
   }
 
+  function top20() {
+    return cafeList?.slice(0, 20);
+  }
+
   return (
     <>
       <StationSearch filterByStationName={filterByStationName} />
@@ -51,7 +55,7 @@ const ShopsList = () => {
             <>
               <CafeSearchList
                 area={stationName}
-                cafes={cafeList}
+                cafes={top20()}
                 isLoading={isLoading}
               />
             </>
