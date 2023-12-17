@@ -3,10 +3,10 @@
   overflow-y: hidden;
   height: 28em;
   // モニター
-  width: 120em;
+  width: 130em;
   // PC
-  @media screen and (max-width: 2000px) {
-    width: 98em;
+  @media screen and (max-width: 2200px) {
+    width: 115em;
   }
 }
 

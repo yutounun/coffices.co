@@ -74,7 +74,7 @@ const CafeRow = ({ cafes, area, isLoading }: propTypes) => {
       <Stack
         direction="row"
         spacing={3}
-        sx={{ height: "30em", alignItems: "center", justifyContent: "center" }}
+        sx={{ height: "30em", alignItems: "center" }}
       >
         <Arrow
           hidden={!isScrollLeft || !showScroll}
