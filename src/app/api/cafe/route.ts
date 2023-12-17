@@ -61,7 +61,8 @@ export async function POST(request: NextRequest) {
   await connectDB();
 
   try {
-    const data = await request.json();
+    let data = await request.json();
+    data.rate = 0;
     await CafeModel.create(data);
     const cafes = await CafeModel.find({});
     return NextResponse.json(cafes);

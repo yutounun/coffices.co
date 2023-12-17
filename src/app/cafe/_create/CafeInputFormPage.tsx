@@ -33,12 +33,11 @@ const CafeInputForm = ({ handleCafePostSubmit }: propTypes) => {
     register,
     handleSubmit,
     control,
-    formState: { errors, isDirty, isValid },
+    formState: { errors },
   } = useForm<CafeFormInput>({
     mode: "onChange",
     defaultValues: {
       title: null,
-      rate: null,
       image: "",
       area: "",
       station: "",
@@ -143,17 +142,6 @@ const CafeInputForm = ({ handleCafePostSubmit }: propTypes) => {
             />
           </Stack>
         </LocalizationProvider>
-        <TextField
-          id="outlined-basic"
-          label="評価(1 ~ 5)"
-          type="number"
-          variant="outlined"
-          InputProps={{ inputProps: { min: 0, max: 5 } }}
-          sx={{ width: "45%" }}
-          {...register("rate", { required: "評価を入力してください" })}
-          error={!!errors.rate}
-          helperText={errors.rate?.message?.toString()}
-        />
         <Stack
           direction="row"
           sx={{ alignItems: "center", justifyContent: "space-between" }}

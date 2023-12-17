@@ -41,7 +41,7 @@ const CafeUpdateForm = ({ handleCafePutSubmit, cafe }: propTypes) => {
       _id: cafe._id,
       title: cafe.title ? cafe.title : "",
       station: cafe.station ? cafe.station : "",
-      rate: cafe.rate ? cafe.rate : "",
+      rate: cafe.rate,
       area: cafe.area ? cafe.area : "",
       openHour: cafe.openHour ? dayjs(cafe.openHour, "HH:mm") : null,
       closeHour: cafe.closeHour ? dayjs(cafe.closeHour, "HH:mm") : null,
@@ -162,17 +162,6 @@ const CafeUpdateForm = ({ handleCafePutSubmit, cafe }: propTypes) => {
               />
             </Stack>
           </LocalizationProvider>
-          <TextField
-            id="outlined-basic"
-            label="評価(1 ~ 5)"
-            type="number"
-            variant="outlined"
-            InputProps={{ inputProps: { min: 0, max: 5 } }}
-            sx={{ width: "45%" }}
-            {...register("rate", { required: "評価を入力してください" })}
-            error={!!errors.rate}
-            helperText={errors.rate?.message?.toString()}
-          />
           <Stack
             direction="row"
             sx={{ alignItems: "center", justifyContent: "space-between" }}

@@ -28,8 +28,14 @@ const CafeDescription = ({ cafe }: PropTypes) => {
         spacing={1}
         sx={{ display: "flex", alignItems: "center" }}
       >
-        <Stars rate={cafe.rate} />
-        <Typography variant="h6">{cafe.rate}</Typography>
+        {cafe.rate === 0 ? (
+          <Typography variant="h6">評価なし</Typography>
+        ) : (
+          <>
+            <Stars rate={cafe.rate} />
+            <Typography variant="h6">{cafe.rate}</Typography>
+          </>
+        )}
       </Stack>
       <Typography variant="body1" sx={{ fontFamily: "monospace" }}>
         {cafe.area}

@@ -35,7 +35,6 @@ export interface CafeI {
 
 export interface CafePostRequestI {
   title: string;
-  rate: number;
   image: string;
   area: string;
   openHour: string;
@@ -51,7 +50,6 @@ export interface CafePutRequestI {
   _id: string;
   id: string | number;
   title: string;
-  rate: number;
   image: string;
   area: string;
   openHour: string;

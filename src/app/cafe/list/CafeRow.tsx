@@ -36,7 +36,6 @@ const CafeRow = ({ cafes, area, isLoading }: propTypes) => {
   };
 
   useEffect(() => {
-    console.log("cafes.length :", cafes.length);
     if (cafes.length < 6) {
       setShowScroll(false);
     } else {
