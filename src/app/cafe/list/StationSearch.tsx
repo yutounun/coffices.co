@@ -34,10 +34,11 @@ const StationSearch = ({ filterByStationName }: propTypes) => {
       direction="row"
       sx={{
         width: "25%",
-        mb: "2em",
         alignItems: "center",
         height: "2.5em",
-        ml: "10px",
+        ml: "5em",
+        backgroundColor: "primary.main",
+        borderRadius: "4px",
       }}
     >
       <Autocomplete
@@ -53,6 +54,19 @@ const StationSearch = ({ filterByStationName }: propTypes) => {
             {...params}
             onChange={handleTextFieldChange} // TextField 用の別の関数
             label="駅名"
+            sx={{
+              "& .MuiInputLabel-outlined": {
+                color: "secondary.main",
+              },
+              "& .MuiInputLabel-outlined.Mui-focused": {
+                color: "secondary.main",
+              },
+              "& .MuiInputLabel-outlined.MuiInputLabel-shrink": {
+                color: "secondary.main",
+              },
+              backgroundColor: "primary.contrastText",
+              borderRadius: "4px",
+            }}
             InputProps={{
               ...params.InputProps,
               type: "search",

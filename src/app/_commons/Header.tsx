@@ -18,10 +18,16 @@ import useCreateModalStore from "../../store/openCreateCafeModal";
 import { useRouter } from "../../../node_modules/next/navigation";
 import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
+import StationSearch from "cafe/list/StationSearch";
+import { CafeListContext } from "../../contexts/CafeListContext";
+import { filterCafe } from "_utils/api";
+import { StationNameContext } from "../../contexts/StationNameContext";
 
 const pages = ["一覧", "作成"];
 
 function ResponsiveAppBar() {
+  const { setCafeList } = React.useContext(CafeListContext);
+  const { setStationName } = React.useContext(StationNameContext);
   const router = useRouter();
   const { data: session } = useSession();
   const { openCreateCafeModal } = useCreateModalStore();
@@ -52,6 +58,15 @@ function ResponsiveAppBar() {
   const onClickLogoutButton = () => {
     signOut({ callbackUrl: "/" });
   };
+
+  function filterByStationName(filterParam?: string) {
+    if (!filterParam) {
+      // getCafeLocal();
+    } else {
+      filterCafe(filterParam).then((json) => setCafeList(json));
+    }
+    filterParam ? setStationName(filterParam) : setStationName("");
+  }
 
   return (
     <AppBar sx={{ mb: 4 }}>
@@ -132,7 +147,13 @@ function ResponsiveAppBar() {
           >
             coffices.co
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "none", md: "flex" },
+              alignItems: "center",
+            }}
+          >
             <Button
               key={pages[0]}
               onClick={onClickListButton}
@@ -163,6 +184,7 @@ function ResponsiveAppBar() {
             >
               {pages[1]}
             </Button>
+            <StationSearch filterByStationName={filterByStationName} />
           </Box>
 
           <Stack direction="row" sx={{ flexGrow: 0 }} spacing={2}>

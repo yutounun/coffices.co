@@ -6,16 +6,17 @@ import { CafeI } from "types/cafes";
 import { filterCafe, getCafe } from "_utils/api";
 import "../../styles/cafe-list.scss";
 import CafeRow from "./CafeRow";
-import StationSearch from "./StationSearch";
+// import StationSearch from "./StationSearch";
 import useCreateModalStore from "../../../store/openCreateCafeModal";
 import CafePostModal from "../_create/CafePostModal";
 import { CafeListContext } from "../../../contexts/CafeListContext";
 import CafeSearchList from "./CafeSearchList";
+import { StationNameContext } from "../../../contexts/StationNameContext";
 
 const ShopsList = () => {
+  const { stationName } = React.useContext(StationNameContext);
   const { showsCreateModal, closeCreateCafeModal } = useCreateModalStore();
   const [cafeList, setCafeList] = useState<CafeI[]>([]);
-  const [stationName, setStationName] = useState("");
 
   const { data, isLoading } = useQuery("cafes", getCafe);
 
@@ -24,16 +25,6 @@ const ShopsList = () => {
       setCafeList(data);
     }
   }, [data]);
-
-  function filterByStationName(filterParam?: string) {
-    if (!filterParam) {
-      // getCafeLocal();
-    } else {
-      filterCafe(filterParam).then((json) => setCafeList(json));
-    }
-    filterParam ? setStationName(filterParam) : setStationName("");
-  }
-
   function cafeShopsInSpecificArea(stations: string[]) {
     return cafeList?.filter((cafe) => {
       for (const station of stations) {
@@ -48,7 +39,7 @@ const ShopsList = () => {
 
   return (
     <>
-      <StationSearch filterByStationName={filterByStationName} />
+      {/* <StationSearch filterByStationName={filterByStationName} /> */}
       <CafeListContext.Provider value={{ cafeList, setCafeList }}>
         <Suspense fallback={<Loading />}>
           {stationName ? (
