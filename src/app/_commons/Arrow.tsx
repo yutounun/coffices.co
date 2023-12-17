@@ -21,9 +21,9 @@ const Arrow = ({
         borderRadius: "50%",
         padding: "10px",
         transform: "translateY(-50%)",
-        zIndex: 10,
+        zIndex: 50,
         "&:hover": {
-          backgroundColor: "rgba(255, 255, 255, 0.9)",
+          backgroundColor: "red",
           transition: "background-color 0.3s",
         },
         // 左側の矢印の場合は左に、そうでない場合は右に配置

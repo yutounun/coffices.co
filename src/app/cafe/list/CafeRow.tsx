@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { CafeI } from "types/cafes";
 import {
-  IconButton,
   Stack,
   Typography,
 } from "../../../../node_modules/@mui/material/index";

@@ -25,6 +25,8 @@ export async function GET(request: NextRequest) {
 
   try {
     const stationQuery = request.nextUrl.searchParams.get("station");
+    // stationQueryがなければ、reviewスコア順に表示
+
     const query = stationQuery ? { station: stationQuery } : {};
     const cafes = await CafeModel.find(query);
 

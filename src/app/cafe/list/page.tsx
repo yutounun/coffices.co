@@ -34,8 +34,12 @@ const ShopsList = () => {
     filterParam ? setStationName(filterParam) : setStationName("");
   }
 
-  function cafeShopsInSpecificArea(area: string) {
-    return cafeList?.filter((cafe) => cafe.area === area);
+  function cafeShopsInSpecificArea(stations: string[]) {
+    return cafeList?.filter((cafe) => {
+      for (const station of stations) {
+        return cafe.station === station;
+      }
+    });
   }
 
   return (
@@ -54,23 +58,32 @@ const ShopsList = () => {
           ) : (
             <>
               <CafeRow
-                area={stationName ? stationName : "東京都全体の人気作業カフェ"}
+                area={stationName ? stationName : "東京都の作業カフェTOP20"}
                 cafes={cafeList}
                 isLoading={isLoading}
               />
               <CafeRow
-                area="新宿区"
-                cafes={cafeShopsInSpecificArea("新宿区")}
+                area="目黒・代官山エリア"
+                cafes={cafeShopsInSpecificArea(["目黒駅", "代官山駅"])}
                 isLoading={isLoading}
               />
               <CafeRow
-                area="千代田区"
-                cafes={cafeShopsInSpecificArea("千代田区")}
+                area="吉祥寺エリア"
+                cafes={cafeShopsInSpecificArea(["吉祥寺駅"])}
                 isLoading={isLoading}
               />
               <CafeRow
-                area="渋谷区"
-                cafes={cafeShopsInSpecificArea("渋谷区")}
+                area="代々木エリア"
+                cafes={cafeShopsInSpecificArea([
+                  "代々木駅",
+                  "代々木上原駅",
+                  "代々木八幡駅",
+                ])}
+                isLoading={isLoading}
+              />
+              <CafeRow
+                area="渋谷エリア"
+                cafes={cafeShopsInSpecificArea(["神泉駅", "渋谷駅"])}
                 isLoading={isLoading}
               />
             </>
