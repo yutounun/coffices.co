@@ -3,7 +3,8 @@ import "./globals.css";
 import { Noto_Sans_JP } from "next/font/google";
 import { ReactNode } from "react";
 import { NextAuthProvider } from "../contexts/SessionProviderContext";
-
+import theme from "./theme";
+import { ThemeProvider } from "@mui/material";
 type LayoutProps = {
   children: ReactNode;
 };
@@ -22,9 +23,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps) {
   return (
     <NextAuthProvider>
-      <html lang="en">
-        <body className={notojp.className}>{children}</body>
-      </html>
+      <ThemeProvider theme={theme}>
+        <html lang="en">
+          <body className={notojp.className}>{children}</body>
+        </html>
+      </ThemeProvider>
     </NextAuthProvider>
   );
 }

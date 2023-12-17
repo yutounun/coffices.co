@@ -72,6 +72,7 @@ function ResponsiveAppBar() {
               textDecoration: "none",
               mr: 2,
             }}
+            onClick={onClickListButton}
           >
             coffices.co
           </Typography>

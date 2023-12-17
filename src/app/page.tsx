@@ -20,7 +20,7 @@ export default function Home() {
           alignItems: "center",
           width: "100vw",
           height: "100vh",
-          backgroundColor: "#88A9EF",
+          backgroundColor: "primary.light",
         }}
       >
         <Stack
@@ -37,7 +37,7 @@ export default function Home() {
               height: "100%",
               justifyContent: "center",
               alignItems: "center",
-              backgroundColor: "#E6F0FF",
+              backgroundColor: "#6B4E31",
               borderRadius: "20px 0 0 20px",
             }}
           >
@@ -62,9 +62,14 @@ export default function Home() {
             spacing={4}
           >
             <Typography
-              color="primary"
+              color="#6B4E31"
               variant="h4"
-              sx={{ textAlign: "center", height: "7%", fontWeight: "bold" }}
+              sx={{
+                textAlign: "center",
+                height: "7%",
+                fontWeight: "bold",
+                fontFamily: "monospace",
+              }}
             >
               Sign In
             </Typography>
@@ -79,7 +84,15 @@ export default function Home() {
               <Button
                 variant="contained"
                 onClick={() => signIn("google", { callbackUrl: "/cafe/list" })}
-                sx={{ width: "45%", mx: "auto", fontWeight: "bold" }}
+                sx={{
+                  width: "45%",
+                  mx: "auto",
+                  fontWeight: "bold",
+                  backgroundColor: "#4284F3",
+                  "&:hover": {
+                    backgroundColor: "#4284F3",
+                  },
+                }}
                 startIcon={<GoogleIcon />}
               >
                 Google
@@ -94,6 +107,9 @@ export default function Home() {
                   mx: "auto",
                   fontWeight: "bold",
                   backgroundColor: "#4867AA",
+                  "&:hover": {
+                    backgroundColor: "#4867AA",
+                  },
                 }}
                 startIcon={<FacebookIcon />}
               >

@@ -62,7 +62,7 @@ const StationSearch = ({ filterByStationName }: propTypes) => {
       />
       <Box
         sx={{
-          backgroundColor: "primary.main",
+          backgroundColor: "secondary.main",
           height: "100%",
           width: "2.9em",
           borderRadius: "0 4px 4px 0",

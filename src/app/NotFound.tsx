@@ -7,7 +7,7 @@ const NotFound = () => {
       direction="row"
       sx={{ ml: "4em", alignItems: "center", width: "100%", height: "10em" }}
     >
-      <Typography variant="h6" sx={{ color: "#AB47BC" }}>
+      <Typography variant="h6" sx={{ color: "#A9A9A9" }}>
         🙅‍♂️ Unfortunately not found. Please post a new café to improve this
         service experience.
       </Typography>

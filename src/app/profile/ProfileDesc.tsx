@@ -90,10 +90,10 @@ const ProfileDesc = ({
             <GitHubIcon fontSize="large" />
           </Link>
           <Link href={userInfo.twitter}>
-            <TwitterIcon color="primary" fontSize="large" />
+            <TwitterIcon color="info" fontSize="large" />
           </Link>
           <Link href={userInfo.linkedin}>
-            <LinkedInIcon color="primary" fontSize="large" />
+            <LinkedInIcon color="info" fontSize="large" />
           </Link>
           <Link href={userInfo.homepage}>
             <LinkIcon fontSize="large" />
