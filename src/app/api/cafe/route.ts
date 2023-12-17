@@ -25,17 +25,21 @@ export async function GET(request: NextRequest) {
 
   try {
     const stationQuery = request.nextUrl.searchParams.get("station");
-    // stationQueryがなければ、reviewスコア順に表示
-
     const query = stationQuery ? { station: stationQuery } : {};
     const cafes = await CafeModel.find(query);
 
     const cafesWithReviews = await Promise.all(
       cafes.map(async (cafe: any) => {
         const reviews = await ReviewModel.find({ cafeId: cafe._id });
-        return { ...cafe.toJSON(), reviews };
+        const averageRate =
+          reviews.reduce((acc, review) => acc + review.rate, 0) /
+          reviews.length;
+        return { ...cafe.toJSON(), reviews, averageRate };
       })
     );
+
+    // 平均スコアで降順に並び替え
+    cafesWithReviews.sort((a, b) => b.averageRate - a.averageRate);
 
     return NextResponse.json(cafesWithReviews);
   } catch (error) {
