@@ -30,6 +30,7 @@ Our tech stack is as thoughtfully selected as the cafés we feature:
 - **[Material-UI](https://mui.com/)**: Styling our platform to be as visually appealing as it is functional.
 - **[NextAuth.js](https://next-auth.js.org/)**: Keeping your sessions secure, just like the best cafés keep your belongings safe.
 - **[Vercel](https://vercel.com/)**: Deploying our platform and café images to the cloud.
+- **[Google API](https://console.cloud.google.com/apis/library)**: Searching café image urls using Google API.
 
 ## Brew Your Contribution to Coffices.co
 

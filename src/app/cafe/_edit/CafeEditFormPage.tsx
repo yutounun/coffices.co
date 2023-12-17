@@ -266,7 +266,7 @@ const CafeUpdateForm = ({ handleCafePutSubmit, cafe }: propTypes) => {
           </Button>
         </Stack>
       </form>
-      {(env === "dev" || env === "local") && <DevTool control={control} />}
+      {/* {(env === "dev" || env === "local") && <DevTool control={control} />} */}
     </>
   );
 };

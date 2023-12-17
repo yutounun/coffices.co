@@ -70,7 +70,7 @@ const CafeModal = ({
         aria-describedby="modal-modal-description"
       >
         <Box sx={modalStyle}>
-          <Box sx={{ height: "60%" }}>
+          <Box sx={{ height: "55%" }}>
             <NextImage
               src={cafe.image ? cafe.image : "/coffee.jpg"}
               alt="cafe1"

@@ -1,13 +1,11 @@
 "use client";
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   Box,
-  Button,
   Modal,
   Stack,
   Typography,
 } from "../../../../node_modules/@mui/material/index";
-import EditImagePage from "./EditImagePage";
 import CafeEditForm from "./CafeEditFormPage";
 import { putCafe } from "_utils/api";
 import { CafeI, CafePutRequestI } from "types/cafes";
@@ -24,11 +22,9 @@ interface propTypes {
 const CafeEditModal = ({ showModal, handleModalClose, cafe }: propTypes) => {
   let { setCafeList } = useContext(CafeListContext);
 
-  const [pageNumber, setPageNumber] = useState(1);
-  const inputFileRef = useRef<HTMLInputElement>(null);
   const [cafeImageFile, setCafeImageFile] = useState<any>(null);
 
-  const height = pageNumber === 1 ? "60%" : "auto";
+  const height = "auto";
   const modalStyle = {
     position: "absolute",
     top: "50%",
@@ -43,26 +39,6 @@ const CafeEditModal = ({ showModal, handleModalClose, cafe }: propTypes) => {
     flexDirection: "column",
     borderRadius: 5,
   };
-
-  function incrementPageNumber() {
-    setPageNumber((prev) => prev + 1);
-  }
-  function decrementPageNumber() {
-    setPageNumber((prev) => prev - 1);
-  }
-
-  /**
-   * Retrieves the selected image file from the input file reference.
-   *
-   * @return {File} The selected image file.
-   */
-  function getImageFile() {
-    if (!inputFileRef.current?.files) {
-      throw new Error("No file selected");
-    }
-
-    setCafeImageFile(inputFileRef.current.files[0]);
-  }
 
   /** Submit action */
   async function handleCafePutSubmit(data: CafePutRequestI) {
@@ -104,32 +80,16 @@ const CafeEditModal = ({ showModal, handleModalClose, cafe }: propTypes) => {
             borderBottom: "solid 1px",
             px: 5,
             py: 2,
-            justifyContent: "space-between",
+            justifyContent: "center",
             alignItems: "center",
           }}
         >
-          <Button onClick={decrementPageNumber} sx={{ fontWeight: "bold" }}>
-            {pageNumber !== 1 && "前へ"}
-          </Button>
           <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
             カフェ情報を編集
           </Typography>
-          <Button onClick={incrementPageNumber} sx={{ fontWeight: "bold" }}>
-            {pageNumber !== 2 && "次へ"}
-          </Button>
         </Stack>
 
-        {/* Modal Body */}
-        {pageNumber === 1 && (
-          <EditImagePage
-            imageUrl={cafe.image}
-            inputFileRef={inputFileRef}
-            getImageFile={getImageFile}
-          />
-        )}
-        {pageNumber === 2 && (
-          <CafeEditForm cafe={cafe} handleCafePutSubmit={handleCafePutSubmit} />
-        )}
+        <CafeEditForm cafe={cafe} handleCafePutSubmit={handleCafePutSubmit} />
       </Box>
     </Modal>
   );
