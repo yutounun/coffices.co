@@ -6,7 +6,6 @@ import { CafeI } from "types/cafes";
 import { filterCafe, getCafe } from "_utils/api";
 import "../../styles/cafe-list.scss";
 import CafeRow from "./CafeRow";
-// import StationSearch from "./StationSearch";
 import useCreateModalStore from "../../../store/openCreateCafeModal";
 import CafePostModal from "../_create/CafePostModal";
 import { CafeListContext } from "../../../contexts/CafeListContext";
@@ -33,20 +32,25 @@ const ShopsList = () => {
     });
   }
 
+  function filteredCafes() {
+    return cafeList?.filter((cafe) => {
+      return cafe.station === stationName;
+    });
+  }
+
   function top20() {
     return cafeList?.slice(0, 20);
   }
 
   return (
     <>
-      {/* <StationSearch filterByStationName={filterByStationName} /> */}
       <CafeListContext.Provider value={{ cafeList, setCafeList }}>
         <Suspense fallback={<Loading />}>
           {stationName ? (
             <>
               <CafeSearchList
                 area={stationName}
-                cafes={top20()}
+                cafes={filteredCafes()}
                 isLoading={isLoading}
               />
             </>
@@ -54,7 +58,7 @@ const ShopsList = () => {
             <>
               <CafeRow
                 area={stationName ? stationName : "東京都の作業カフェTOP20"}
-                cafes={cafeList}
+                cafes={top20()}
                 isLoading={isLoading}
               />
               <CafeRow
