@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useContext, useRef, useState } from "react";
 import {
   Box,
   Button,
@@ -7,21 +7,28 @@ import {
   Stack,
   TextField,
   Typography,
-} from "../../../node_modules/@mui/material/index";
+} from "@mui/material";
+import { addReview, putCafe } from "_utils/api";
 import { useForm } from "react-hook-form";
-import meStore from "../../store/me";
-import { updateUser } from "_utils/api";
+import { CafeI } from "types/cafes";
+import meStore from "../../../../store/me";
+import { useSession } from "next-auth/react";
+import { CafeListContext } from "../../../../contexts/CafeListContext";
 
 interface propTypes {
   showModal: boolean;
   handleModalClose: () => void;
+  cafe: CafeI;
 }
 
-const ProfileEditModal = ({
+const CafePostReviewModal = ({
   showModal,
   handleModalClose,
+  cafe,
 }: propTypes) => {
-  const { me, setMe } = meStore();
+  const { me } = meStore();
+  const { data: session } = useSession();
+  const { setCafeList } = useContext(CafeListContext);
 
   const {
     register,
@@ -30,12 +37,10 @@ const ProfileEditModal = ({
   } = useForm({
     mode: "onChange",
     defaultValues: {
-      _id: me._id,
-      bio: me.bio,
-      github: me.github,
-      twitter: me.twitter,
-      linkedIn: me.linkedIn,
-      homePage: me.homepage,
+      title: "",
+      content: "",
+      rate: null,
+      cafeId: cafe._id,
     },
   });
 
@@ -55,10 +60,13 @@ const ProfileEditModal = ({
   };
 
   /** Submit action */
-  async function handleProfileUpdateSubmit(data: any) {
-    const user = await updateUser(data);
-    setMe(user);
-    handleModalClose();
+  async function handleCafeReviewPostSubmit(data: any) {
+    data.userId = me._id;
+    data.image = session?.user?.image;
+    await addReview(data).then((res) => {
+      handleModalClose();
+      setCafeList(res);
+    });
   }
   return (
     <Modal
@@ -75,19 +83,19 @@ const ProfileEditModal = ({
             borderBottom: "solid 1px",
             px: 5,
             py: 2,
-            justifyContent: "center",
+            justifyContent: "space-between",
             alignItems: "center",
           }}
         >
           <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
-            プロフィールを編集
+            レビューを追加
           </Typography>
         </Stack>
 
         {/* Modal Body */}
         <Box sx={{ px: 5, py: 2 }}>
           <form
-            onSubmit={handleSubmit(handleProfileUpdateSubmit)}
+            onSubmit={handleSubmit(handleCafeReviewPostSubmit)}
             style={{
               display: "flex",
               flexDirection: "column",
@@ -105,52 +113,37 @@ const ProfileEditModal = ({
             >
               <TextField
                 id="outlined-basic"
-                label="紹介文"
+                label="タイトル"
                 variant="outlined"
                 sx={{ width: "100%" }}
-                error={!!errors.bio}
-                helperText={errors.bio?.message?.toString()}
-                {...register("bio")}
+                error={!!errors.title}
+                helperText={errors.title?.message?.toString()}
+                {...register("title", {
+                  required: "タイトルを入力してください",
+                })}
               />
 
               <TextField
                 id="outlined-basic"
-                label="Github URL"
+                label="コメント内容"
                 variant="outlined"
                 sx={{ width: "100%" }}
-                error={!!errors.github}
-                helperText={errors.github?.message?.toString()}
-                {...register("github")}
+                error={!!errors.content}
+                helperText={errors.content?.message?.toString()}
+                {...register("content", {
+                  required: "コメント内容を入力してください",
+                })}
               />
-
               <TextField
                 id="outlined-basic"
-                label="Twitter URL"
+                label="評価(1 ~ 5)"
+                type="number"
                 variant="outlined"
-                sx={{ width: "100%" }}
-                error={!!errors.twitter}
-                helperText={errors.twitter?.message?.toString()}
-                {...register("twitter")}
-              />
-
-              <TextField
-                id="outlined-basic"
-                label="LinkedIn URL"
-                variant="outlined"
-                sx={{ width: "100%" }}
-                error={!!errors.linkedIn}
-                helperText={errors.linkedIn?.message?.toString()}
-                {...register("linkedIn")}
-              />
-
-              <TextField
-                id="outlined-basic"
-                label="HomePage URL"
-                variant="outlined"
-                sx={{ width: "100%" }}
-                error={!!errors.homePage}
-                helperText={errors.homePage?.message?.toString()}
-                {...register("homePage")}
+                InputProps={{ inputProps: { min: 0, max: 5 } }}
+                sx={{ width: "45%" }}
+                {...register("rate", { required: "評価を入力してください" })}
+                error={!!errors.rate}
+                helperText={errors.rate?.message?.toString()}
               />
             </Stack>
             <Stack
@@ -176,4 +169,4 @@ const ProfileEditModal = ({
   );
 };
 
-export default ProfileEditModal;
+export default CafePostReviewModal;

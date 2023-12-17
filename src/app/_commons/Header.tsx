@@ -18,7 +18,7 @@ import useCreateModalStore from "../../store/openCreateCafeModal";
 import { useRouter } from "../../../node_modules/next/navigation";
 import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
-import StationSearch from "cafe/list/StationSearch";
+import StationSearch from "(Header)/cafe/list/StationSearch";
 import { CafeListContext } from "../../contexts/CafeListContext";
 import { filterCafe } from "_utils/api";
 import { StationNameContext } from "../../contexts/StationNameContext";

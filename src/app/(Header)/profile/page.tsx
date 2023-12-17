@@ -1,11 +1,11 @@
 "use client";
 import React, { useState } from "react";
-import Image from "../../../node_modules/next/image";
-import { Box, Stack } from "../../../node_modules/@mui/material/index";
+import Image from "next/image";
+import { Box, Stack } from "@mui/material";
 import ProfileDesc from "./ProfileDesc";
 import { useSession } from "next-auth/react";
 import ProfileEditModal from "./ProfileEditModal";
-import meStore from "../../store/me";
+import meStore from "../../../store/me";
 
 const Profile = () => {
   const { data: session } = useSession();

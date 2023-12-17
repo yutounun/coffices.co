@@ -1,16 +1,15 @@
 "use client";
 import React, { Suspense, useEffect, useState } from "react";
-import Loading from "../../loading";
+import Loading from "../../../loading";
 import { useQuery } from "react-query";
 import { CafeI } from "types/cafes";
 import { filterCafe, getCafe } from "_utils/api";
-import "../../styles/cafe-list.scss";
+import "../../../styles/cafe-list.scss";
 import CafeRow from "./CafeRow";
-import useCreateModalStore from "../../../store/openCreateCafeModal";
-import CafePostModal from "../_create/CafePostModal";
-import { CafeListContext } from "../../../contexts/CafeListContext";
+import useCreateModalStore from "../../../../store/openCreateCafeModal";
+import { CafeListContext } from "../../../../contexts/CafeListContext";
 import CafeSearchList from "./CafeSearchList";
-import { StationNameContext } from "../../../contexts/StationNameContext";
+import { StationNameContext } from "../../../../contexts/StationNameContext";
 
 const ShopsList = () => {
   const { stationName } = React.useContext(StationNameContext);
@@ -86,12 +85,6 @@ const ShopsList = () => {
                 isLoading={isLoading}
               />
             </>
-          )}
-          {showsCreateModal && (
-            <CafePostModal
-              handleModalClose={closeCreateCafeModal}
-              showModal={showsCreateModal}
-            />
           )}
         </Suspense>
       </CafeListContext.Provider>

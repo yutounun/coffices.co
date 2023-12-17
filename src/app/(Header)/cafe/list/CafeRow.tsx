@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { CafeI } from "types/cafes";
-import {
-  Stack,
-  Typography,
-} from "../../../../node_modules/@mui/material/index";
+import { Stack, Typography } from "@mui/material";
 import CafeCard from "./CafeCard";
-import Loading from "../../loading";
-import Arrow from "../../_commons/Arrow";
+import Loading from "../../../loading";
+import Arrow from "../../../_commons/Arrow";
 
 interface propTypes {
   cafes: CafeI[];
@@ -82,7 +79,7 @@ const CafeRow = ({ cafes, area, isLoading }: propTypes) => {
         <Arrow
           hidden={!isScrollLeft || !showScroll}
           direction="left"
-          onClick={() => scroll(-1000)}
+          onClick={() => scroll(-1800)}
         />
         <Stack
           ref={containerRef}
@@ -98,7 +95,7 @@ const CafeRow = ({ cafes, area, isLoading }: propTypes) => {
         <Arrow
           hidden={!isScrollRight || !showScroll}
           direction="right"
-          onClick={() => scroll(1000)}
+          onClick={() => scroll(1800)}
         />
       </Stack>
     </>

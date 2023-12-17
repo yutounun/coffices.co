@@ -1,17 +1,13 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import {
-  Button,
-  Stack,
-  Typography,
-} from "../../../node_modules/@mui/material/index";
+import { Button, Stack, Typography } from "@mui/material";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import LinkIcon from "@mui/icons-material/Link";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import Link from "../../../node_modules/next/link";
+import Link from "next/link";
 import { useSession } from "next-auth/react";
-import meStore from "../../store/me";
+import meStore from "../../../store/me";
 import EditIcon from "@mui/icons-material/Edit";
 
 const ProfileDesc = ({

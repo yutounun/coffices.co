@@ -5,6 +5,8 @@ import { ReactNode } from "react";
 import { NextAuthProvider } from "../contexts/SessionProviderContext";
 import theme from "./theme";
 import { ThemeProvider } from "@mui/material";
+import CafePostModal from "./(Header)/cafe/_create/CafePostModal";
+
 type LayoutProps = {
   children: ReactNode;
 };

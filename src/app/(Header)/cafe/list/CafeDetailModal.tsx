@@ -4,21 +4,14 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import CafeEditModal from "../_edit/CafeEditModal";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import {
-  Box,
-  Button,
-  Modal,
-  Stack,
-  Typography,
-  Tooltip,
-} from "../../../../node_modules/@mui/material/index";
+import { Box, Button, Modal, Stack, Typography, Tooltip } from "@mui/material";
 import Stars from "_commons/Stars";
 import { NextImage } from "_commons/NextImage";
 import { deleteCafe } from "_utils/api";
 import CafeDetailModalOverview from "./CafeDetailModalOverview";
 import CafeDetailModalReviews from "./CafeDetailModalReviews";
-import CafePostReviewModal from "cafe/_create/CafePostReviewModal";
-import meStore from "../../../store/me";
+import CafePostReviewModal from "(Header)/cafe/_create/CafePostReviewModal";
+import meStore from "../../../../store/me";
 const modalStyle = {
   position: "absolute",
   top: "50%",

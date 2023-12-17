@@ -1,8 +1,5 @@
 import React from "react";
-import {
-  Stack,
-  Typography,
-} from "../../../../node_modules/@mui/material/index";
+import { Stack, Typography } from "@mui/material";
 import { CafeI } from "types/cafes";
 import Stars from "_commons/Stars";
 

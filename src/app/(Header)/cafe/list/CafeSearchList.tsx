@@ -1,12 +1,9 @@
 import React from "react";
 import { CafeI } from "types/cafes";
-import {
-  Stack,
-  Typography,
-} from "../../../../node_modules/@mui/material/index";
+import { Stack, Typography } from "@mui/material";
 import CafeCard from "./CafeCard";
-import Loading from "../../loading";
-import NotFound from "../../NotFound";
+import Loading from "../../../loading";
+import NotFound from "../../../NotFound";
 
 interface propTypes {
   cafes: CafeI[];

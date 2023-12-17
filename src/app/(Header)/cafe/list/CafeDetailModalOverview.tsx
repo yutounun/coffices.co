@@ -1,17 +1,14 @@
 import React from "react";
 import { CafeI } from "types/cafes";
-import {
-  Stack,
-  Typography,
-} from "../../../../node_modules/@mui/material/index";
+import { Stack, Typography } from "@mui/material";
 import TrainIcon from "@mui/icons-material/Train";
-import WifiIcon from "../../../../node_modules/@mui/icons-material/Wifi";
-import PowerIcon from "../../../../node_modules/@mui/icons-material/Power";
-import StoreMallDirectoryIcon from "../../../../node_modules/@mui/icons-material/StoreMallDirectory";
-import SmokingRoomsIcon from "../../../../node_modules/@mui/icons-material/SmokingRooms";
-import PanoramaFishEyeIcon from "../../../../node_modules/@mui/icons-material/PanoramaFishEye";
-import DoDisturbAltIcon from "../../../../node_modules/@mui/icons-material/DoDisturbAlt";
-import AlternateEmailIcon from "../../../../node_modules/@mui/icons-material/AlternateEmail";
+import WifiIcon from "@mui/icons-material/Wifi";
+import PowerIcon from "@mui/icons-material/Power";
+import StoreMallDirectoryIcon from "@mui/icons-material/StoreMallDirectory";
+import SmokingRoomsIcon from "@mui/icons-material/SmokingRooms";
+import PanoramaFishEyeIcon from "@mui/icons-material/PanoramaFishEye";
+import DoDisturbAltIcon from "@mui/icons-material/DoDisturbAlt";
+import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
 
 const CafeDetailModalOverview = ({ cafe }: { cafe: CafeI }) => {
   return (

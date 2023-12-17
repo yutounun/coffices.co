@@ -1,11 +1,8 @@
 import React from "react";
 import { CafeI, ReviewI } from "types/cafes";
 import Stars from "_commons/Stars";
-import {
-  Stack,
-  Typography,
-} from "../../../../node_modules/@mui/material/index";
-import Image from "../../../../node_modules/next/image";
+import { Stack, Typography } from "@mui/material";
+import Image from "next/image";
 
 const CafeDetailModalReviews = ({ cafe }: { cafe: CafeI }) => {
   return (

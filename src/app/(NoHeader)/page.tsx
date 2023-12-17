@@ -1,10 +1,6 @@
 "use client";
-import {
-  Button,
-  Stack,
-  Typography,
-} from "../../node_modules/@mui/material/index";
-import Image from "../../node_modules/next/image";
+import { Button, Stack, Typography } from "@mui/material";
+import Image from "next/image";
 import { signIn } from "next-auth/react";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";

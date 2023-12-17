@@ -3,8 +3,8 @@
 import React from "react";
 import { DevTool } from "@hookform/devtools";
 import dayjs from "dayjs";
-import Stations from "../../json/stations.json";
-import Areas from "../../json/areas.json";
+import Stations from "../../../json/stations.json";
+import Areas from "../../../json/areas.json";
 import { useForm, Controller, FieldValues } from "react-hook-form";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
@@ -20,7 +20,7 @@ import {
   Stack,
   TextField,
   Typography,
-} from "../../../../node_modules/@mui/material/index";
+} from "@mui/material";
 import { CafeI } from "types/cafes";
 
 interface propTypes {

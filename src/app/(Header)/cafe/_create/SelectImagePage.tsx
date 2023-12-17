@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import { Button, Stack } from "../../../../node_modules/@mui/material/index";
-import { NextImage } from "../../_commons/NextImage";
+import React, { useRef, useState } from "react";
+import PanoramaIcon from "@mui/icons-material/Panorama";
+import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
+import { Box, Button, Stack, Typography } from "@mui/material";
+import { NextImage } from "../../../_commons/NextImage";
 
 const SelectImagePage = ({
   inputFileRef,
   getImageFile,
-  imageUrl,
 }: {
   inputFileRef: React.RefObject<HTMLInputElement>;
   getImageFile: () => void;
-  imageUrl: string;
 }) => {
   const [cafeImage, setCafeImage] = useState<string>("");
 
@@ -33,7 +33,14 @@ const SelectImagePage = ({
       }}
       spacing={1}
     >
-      <NextImage src={imageUrl ? imageUrl : "/coffee.jpg"} alt="image" />
+      <Box>
+        <PanoramaIcon sx={{ fontSize: 100, fontWeight: "thin" }} />
+        <OndemandVideoIcon sx={{ fontSize: 100, fontWeight: 10 }} />
+      </Box>
+      <Typography variant="h6">
+        ここに写真や画像をドラッグ(スキップ可能)
+      </Typography>
+      {/* <form onSubmit={handleCafeImageSubmit}> */}
       <Button component="label" variant="contained">
         コンピューターから選択
         <input
@@ -43,6 +50,8 @@ const SelectImagePage = ({
           hidden
         />
       </Button>
+      {/* <button type="submit">登録</button> */}
+      {/* </form> */}
     </Stack>
   );
 };

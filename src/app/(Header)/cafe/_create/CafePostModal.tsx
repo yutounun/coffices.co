@@ -1,28 +1,19 @@
 "use client";
-import React, { useContext, useState } from "react";
-import {
-  Box,
-  Modal,
-  Stack,
-  Typography,
-} from "../../../../node_modules/@mui/material/index";
-import CafeEditForm from "./CafeEditFormPage";
-import { putCafe } from "_utils/api";
-import { CafeI, CafePutRequestI } from "types/cafes";
+import React, { useContext } from "react";
+import { Box, Modal, Stack, Typography } from "@mui/material";
+import CafeInputForm from "./CafeInputFormPage";
+import { postCafe } from "_utils/api";
+import { CafePostRequestI } from "types/cafes";
 import { extractHourMinute } from "_utils/commonFn";
-import { cafeImageUpload } from "_utils/api";
-import { CafeListContext } from "../../../contexts/CafeListContext";
+import { CafeListContext } from "../../../../contexts/CafeListContext";
 
 interface propTypes {
   showModal: boolean;
   handleModalClose: () => void;
-  cafe: CafeI;
 }
 
-const CafeEditModal = ({ showModal, handleModalClose, cafe }: propTypes) => {
-  let { setCafeList } = useContext(CafeListContext);
-
-  const [cafeImageFile, setCafeImageFile] = useState<any>(null);
+const CafeModal = ({ showModal, handleModalClose }: propTypes) => {
+  const { setCafeList } = useContext(CafeListContext);
 
   const height = "auto";
   const modalStyle = {
@@ -41,7 +32,7 @@ const CafeEditModal = ({ showModal, handleModalClose, cafe }: propTypes) => {
   };
 
   /** Submit action */
-  async function handleCafePutSubmit(data: CafePutRequestI) {
+  async function handleCafePostSubmit(data: CafePostRequestI) {
     data.isWifi = data.isWifi === "true";
     data.isOutlet = data.isOutlet === "true";
     data.isSmoking = data.isSmoking === "true";
@@ -49,21 +40,11 @@ const CafeEditModal = ({ showModal, handleModalClose, cafe }: propTypes) => {
     data.closeHour = extractHourMinute(data.closeHour);
 
     // Upload image and retrieve url
-    if (cafeImageFile) {
-      await cafeImageUpload(cafeImageFile).then((res: any) => {
-        data.image = res.url || "";
-        // And then, update detailed cafe data
-        putCafe(data).then((res) => {
-          setCafeList(res);
-          handleModalClose();
-        });
-      });
-    } else {
-      await putCafe(data).then((res) => {
-        setCafeList(res);
-        handleModalClose();
-      });
-    }
+    data.reviews = [];
+    postCafe(data).then((res) => {
+      setCafeList(res);
+      handleModalClose();
+    });
   }
   return (
     <Modal
@@ -85,14 +66,14 @@ const CafeEditModal = ({ showModal, handleModalClose, cafe }: propTypes) => {
           }}
         >
           <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
-            カフェ情報を編集
+            カフェを新規追加
           </Typography>
         </Stack>
 
-        <CafeEditForm cafe={cafe} handleCafePutSubmit={handleCafePutSubmit} />
+        <CafeInputForm handleCafePostSubmit={handleCafePostSubmit} />
       </Box>
     </Modal>
   );
 };
 
-export default CafeEditModal;
+export default CafeModal;
