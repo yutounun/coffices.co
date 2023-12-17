@@ -21,16 +21,26 @@ const Arrow = ({
         borderRadius: "50%",
         padding: "10px",
         transform: "translateY(-50%)",
-        zIndex: 50,
+        zIndex: 10,
         "&:hover": {
-          backgroundColor: "red",
+          backgroundColor: hidden ? "white" : "#A9A9A9",
           transition: "background-color 0.3s",
         },
         // 左側の矢印の場合は左に、そうでない場合は右に配置
         [isLeft ? "left" : "right"]: "10px",
       }}
     >
-      {isLeft ? <ArrowBackIosIcon /> : <ArrowForwardIosIcon />}
+      {isLeft ? (
+        <ArrowBackIosIcon
+          sx={{
+            ":&hover": {
+              color: "white",
+            },
+          }}
+        />
+      ) : (
+        <ArrowForwardIosIcon />
+      )}
     </IconButton>
   );
 };
