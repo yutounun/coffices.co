@@ -1,6 +1,14 @@
 "use client";
 import React, { useContext } from "react";
-import { Box, Modal, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Modal,
+  Stack,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import CafeInputForm from "./CafeInputFormPage";
 import { postCafe } from "_utils/api";
 import { CafePostRequestI } from "types/cafes";
@@ -14,14 +22,15 @@ interface propTypes {
 
 const CafeModal = ({ showModal, handleModalClose }: propTypes) => {
   const { setCafeList } = useContext(CafeListContext);
-
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const height = "auto";
   const modalStyle = {
     position: "absolute",
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: { xs: 260, md: 800 },
+    width: { xs: 400, md: 800 },
     bgcolor: "background.paper",
     boxShadow: 24,
     pb: 5,
@@ -68,6 +77,12 @@ const CafeModal = ({ showModal, handleModalClose }: propTypes) => {
           <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
             カフェを新規追加
           </Typography>
+          {isMobile && (
+            <HighlightOffIcon
+              sx={{ position: "absolute", right: 30 }}
+              onClick={handleModalClose}
+            />
+          )}
         </Stack>
 
         <CafeInputForm handleCafePostSubmit={handleCafePostSubmit} />
