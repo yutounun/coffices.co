@@ -151,7 +151,8 @@ export default function Home() {
                 height: "100%",
                 justifyContent: "center",
                 alignItems: "center",
-                backgroundColor: "#6B4E31",
+                backgroundColor: "white",
+                borderRight: "1px solid  #6B4E31",
                 borderRadius: "20px 0 0 20px",
               }}
             >
