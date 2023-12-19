@@ -2,7 +2,7 @@
 
 import Header from "_commons/Header";
 import { Box, Stack } from "@mui/material";
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { getUser } from "_utils/api";
 import meStore from "../../store/me";
@@ -10,14 +10,16 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { StationNameContext } from "../../contexts/StationNameContext";
 import CafePostModal from "./cafe/_create/CafePostModal";
 import useCreateModalStore from "../../store/openCreateCafeModal";
+import { useRouter } from "next/navigation";
 
 export default function CafeListLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const router = useRouter();
   const { setMe, me } = meStore();
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const { showsCreateModal, closeCreateCafeModal } = useCreateModalStore();
 
   useEffect(() => {
@@ -28,6 +30,13 @@ export default function CafeListLayout({
       });
     }
   }, [session]);
+
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      router.push("/");
+    }
+  }, [status]);
+
   const queryClient = new QueryClient();
   const [stationName, setStationName] = useState("");
 
