@@ -131,7 +131,7 @@ function ResponsiveAppBar() {
 
           <CoffeeIcon sx={{ display: { xs: "flex", md: "none" } }} />
           <Typography
-            variant="h5"
+            variant="h6"
             noWrap
             component="a"
             href="#app-bar-with-responsive-menu"
