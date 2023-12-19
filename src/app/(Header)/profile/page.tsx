@@ -36,7 +36,7 @@ const Profile = () => {
       {/* Profile Image */}
       <Box
         sx={{
-          top: { xs: "35%", md: "40%" },
+          top: "35%",
           left: "50%", // 親要素の中心に配置
           position: "absolute",
           display: "flex",
