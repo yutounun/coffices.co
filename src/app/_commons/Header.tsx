@@ -48,14 +48,17 @@ function ResponsiveAppBar() {
   };
 
   const onClickListButton = () => {
+    handleCloseNavMenu();
     router.push("/cafe/list");
   };
 
   const onClickCreateButton = () => {
+    handleCloseNavMenu();
     openCreateCafeModal();
   };
 
   const onClickLogoutButton = () => {
+    handleCloseNavMenu();
     signOut({ callbackUrl: "/" });
   };
 
@@ -121,11 +124,12 @@ function ResponsiveAppBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
+              <MenuItem onClick={onClickListButton}>
+                <Typography textAlign="center">{pages[0]}</Typography>
+              </MenuItem>
+              <MenuItem onClick={onClickCreateButton}>
+                <Typography textAlign="center">{pages[1]}</Typography>
+              </MenuItem>
             </Menu>
           </Box>
 
