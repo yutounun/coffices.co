@@ -21,7 +21,7 @@ const CafeModal = ({ showModal, handleModalClose }: propTypes) => {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: 800,
+    width: { xs: 260, md: 800 },
     bgcolor: "background.paper",
     boxShadow: 24,
     pb: 5,

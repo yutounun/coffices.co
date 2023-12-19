@@ -18,6 +18,8 @@ import {
   Stack,
   TextField,
   Typography,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 
 interface propTypes {
@@ -48,6 +50,8 @@ const CafeInputForm = ({ handleCafePostSubmit }: propTypes) => {
       isOutlet: false,
     },
   });
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <form
       onSubmit={handleSubmit(handleCafePostSubmit)}
@@ -61,12 +65,13 @@ const CafeInputForm = ({ handleCafePostSubmit }: propTypes) => {
         sx={{
           height: "100%",
           display: "flex",
-          px: "5em",
+          px: { xs: "3em", sm: "5em" },
           py: "3em",
+          gap: { xs: 2, sm: 4 },
         }}
-        spacing={4}
       >
         <TextField
+          size={isMobile ? "small" : "medium"}
           id="outlined-basic"
           label="店名"
           variant="outlined"
@@ -76,17 +81,22 @@ const CafeInputForm = ({ handleCafePostSubmit }: propTypes) => {
           {...register("title", { required: "店名を入力してください" })}
         />
         <Stack
-          direction="row"
-          sx={{ alignItems: "center", justifyContent: "space-between" }}
+          sx={{
+            flexDirection: { xs: "column", sm: "row" },
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
         >
           <Autocomplete
-            sx={{ width: "45%" }}
+            sx={{ width: { xs: "100%", sm: "45%" }, mb: { xs: "1em", md: 0 } }}
             freeSolo
             id="free-solo-2-demo"
             disableClearable
+            size={isMobile ? "small" : "medium"}
             options={Areas.map((area) => area.name)}
             renderInput={(params: any) => (
               <TextField
+                size={isMobile ? "small" : "medium"}
                 {...params}
                 error={!!errors.area}
                 helperText={errors.area?.message?.toString()}
@@ -100,13 +110,15 @@ const CafeInputForm = ({ handleCafePostSubmit }: propTypes) => {
             )}
           />
           <Autocomplete
-            sx={{ width: "45%" }}
+            sx={{ width: { xs: "100%", sm: "45%" } }}
             freeSolo
             id="free-solo-2-demo"
             disableClearable
             options={Stations.map((station) => station.name)}
+            size={isMobile ? "small" : "medium"}
             renderInput={(params: any) => (
               <TextField
+                size={isMobile ? "small" : "medium"}
                 {...params}
                 {...register("station", { required: "駅名を入力してください" })}
                 error={!!errors.station}
@@ -122,31 +134,61 @@ const CafeInputForm = ({ handleCafePostSubmit }: propTypes) => {
         </Stack>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <Stack
-            direction="row"
-            sx={{ alignItems: "center", justifyContent: "space-between" }}
+            sx={{
+              flexDirection: { xs: "column", sm: "row", md: "row" },
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
           >
             <Controller
               name="openHour"
               control={control}
               render={({ field }) => (
-                <TimePicker sx={{ width: "45%" }} label="開店時間" {...field} />
+                <TimePicker
+                  label="開店時間"
+                  {...field}
+                  sx={{
+                    mb: { xs: "1em", md: 0 },
+                    width: { xs: "100%", sm: "45%" },
+                  }}
+                  slotProps={{
+                    textField: { size: isMobile ? "small" : "medium" },
+                  }}
+                />
               )}
             />
-            <Typography variant="h5">~</Typography>
+            {!isMobile && (
+              <Typography
+                sx={{ display: { sx: "none", sm: "block" } }}
+                variant="h5"
+              >
+                ~
+              </Typography>
+            )}
             <Controller
               name="closeHour"
               control={control}
               render={({ field }) => (
-                <TimePicker sx={{ width: "45%" }} label="閉店時間" {...field} />
+                <TimePicker
+                  sx={{ width: { xs: "100%", sm: "45%" } }}
+                  label="閉店時間"
+                  {...field}
+                  slotProps={{
+                    textField: { size: isMobile ? "small" : "medium" },
+                  }}
+                />
               )}
             />
           </Stack>
         </LocalizationProvider>
         <Stack
-          direction="row"
-          sx={{ alignItems: "center", justifyContent: "space-between" }}
+          sx={{
+            flexDirection: { xs: "column", sm: "row", md: "row" },
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
         >
-          <FormControl sx={{ width: "30%" }}>
+          <FormControl sx={{ width: { xs: "100%", sm: "30%" } }}>
             <FormLabel id="demo-row-radio-buttons-group-label">Wifi</FormLabel>
             <Controller
               name="isWifi"
@@ -171,7 +213,7 @@ const CafeInputForm = ({ handleCafePostSubmit }: propTypes) => {
               )}
             />
           </FormControl>
-          <FormControl sx={{ width: "30%" }}>
+          <FormControl sx={{ width: { xs: "100%", sm: "30%" } }}>
             <FormLabel id="demo-row-radio-buttons-group-label">
               電源席
             </FormLabel>
@@ -198,7 +240,7 @@ const CafeInputForm = ({ handleCafePostSubmit }: propTypes) => {
               )}
             />
           </FormControl>
-          <FormControl sx={{ width: "30%" }}>
+          <FormControl sx={{ width: { xs: "100%", sm: "30%" } }}>
             <FormLabel id="demo-row-radio-buttons-group-label">
               喫煙所
             </FormLabel>
