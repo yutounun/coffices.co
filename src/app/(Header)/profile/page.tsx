@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import { Box, Stack } from "@mui/material";
+import { Box, Stack, useMediaQuery, useTheme } from "@mui/material";
 import ProfileDesc from "./ProfileDesc";
 import { useSession } from "next-auth/react";
 import ProfileEditModal from "./ProfileEditModal";
@@ -10,6 +10,8 @@ import meStore from "../../../store/me";
 const Profile = () => {
   const { data: session } = useSession();
   const [showModal, setShowModal] = useState(false);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <Stack
       sx={{
@@ -34,7 +36,7 @@ const Profile = () => {
       {/* Profile Image */}
       <Box
         sx={{
-          top: "30%",
+          top: { xs: "35%", md: "40%" },
           left: "50%", // 親要素の中心に配置
           position: "absolute",
           display: "flex",
@@ -43,15 +45,27 @@ const Profile = () => {
           transform: "translateX(-50%)", // 画像の幅の半分だけ左にずらす
         }}
       >
-        <Image
-          src={session?.user?.image || "/coffee.jpg"}
-          alt="profile"
-          width={200}
-          height={200}
-          style={{
-            borderRadius: "50%",
-          }}
-        />
+        {isMobile ? (
+          <Image
+            src={session?.user?.image || "/coffee.jpg"}
+            alt="profile"
+            width={100}
+            height={100}
+            style={{
+              borderRadius: "50%",
+            }}
+          />
+        ) : (
+          <Image
+            src={session?.user?.image || "/coffee.jpg"}
+            alt="profile"
+            width={200}
+            height={200}
+            style={{
+              borderRadius: "50%",
+            }}
+          />
+        )}
       </Box>
 
       {/* Profile */}

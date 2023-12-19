@@ -43,7 +43,7 @@ const ProfileDesc = ({
         alignItems: "center",
         width: "100%",
         minHeight: "55%",
-        mt: 2,
+        mt: { xs: 1, md: 2 },
         background: "#F6F6F6",
       }}
     >
@@ -51,7 +51,7 @@ const ProfileDesc = ({
         sx={{
           width: "45%",
           alignItems: "center",
-          pt: 15,
+          pt: { xs: 10, md: 15 },
         }}
         spacing={5}
       >
