@@ -8,6 +8,10 @@
   @media screen and (max-width: 2200px) {
     width: 115em;
   }
+  // mobile
+  @media screen and (max-width: 1200px) {
+    height: 17em;
+  }
 }
 
 .row__cards::-webkit-scrollbar {

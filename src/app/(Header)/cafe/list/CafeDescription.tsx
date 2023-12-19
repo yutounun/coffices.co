@@ -1,5 +1,5 @@
 import React from "react";
-import { Stack, Typography } from "@mui/material";
+import { Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { CafeI } from "types/cafes";
 import Stars from "_commons/Stars";
 
@@ -8,16 +8,24 @@ interface PropTypes {
 }
 
 const CafeDescription = ({ cafe }: PropTypes) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <Stack
       sx={{
-        m: "10px",
-        position: "absolute",
-        top: "220px",
+        m: { xs: "10px", md: "10px" },
+        position: { sx: "initial", md: "absolute" },
+        top: { xs: "10px", md: "220px" },
       }}
       spacing={1}
     >
-      <Typography variant="h5" sx={{ mb: "4px", fontFamily: "monospace" }}>
+      <Typography
+        variant="h5"
+        sx={{
+          mb: "4px",
+          fontFamily: "monospace",
+        }}
+      >
         {cafe.title}
       </Typography>
       <Stack
@@ -34,9 +42,11 @@ const CafeDescription = ({ cafe }: PropTypes) => {
           </>
         )}
       </Stack>
-      <Typography variant="body1" sx={{ fontFamily: "monospace" }}>
-        {cafe.area}
-      </Typography>
+      {!isMobile && (
+        <Typography variant="body1" sx={{ fontFamily: "monospace" }}>
+          {cafe.area}
+        </Typography>
+      )}
     </Stack>
   );
 };

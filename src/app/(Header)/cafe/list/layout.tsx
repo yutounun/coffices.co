@@ -32,7 +32,7 @@ export default function CafeListLayout({
       <StationNameContext.Provider value={{ stationName, setStationName }}>
         <Header />
         <QueryClientProvider client={queryClient}>
-          <Box sx={{ ml: "4rem", mt: "2em" }}>{children}</Box>
+          <Box sx={{ ml: { xs: "0", md: "4rem" }, mt: "2em" }}>{children}</Box>
         </QueryClientProvider>
       </StationNameContext.Provider>
     </Stack>

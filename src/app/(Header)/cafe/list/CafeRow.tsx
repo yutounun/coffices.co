@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { CafeI } from "types/cafes";
-import { Stack, Typography } from "@mui/material";
+import { Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import CafeCard from "./CafeCard";
 import Loading from "../../../loading";
 import Arrow from "../../../_commons/Arrow";
@@ -16,6 +16,8 @@ const CafeRow = ({ cafes, area, isLoading }: propTypes) => {
   const [isScrollLeft, setIsScrollLeft] = useState(false);
   const [isScrollRight, setIsScrollRight] = useState(true);
   const [showScroll, setShowScroll] = useState(true);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const checkScrollPosition = () => {
     if (containerRef.current) {
@@ -61,6 +63,7 @@ const CafeRow = ({ cafes, area, isLoading }: propTypes) => {
         variant="h5"
         sx={{
           m: "1em",
+          fontSize: { xs: "1.5em", md: "2em" },
           fontFamily: "monospace",
           fontWeight: 700,
           letterSpacing: ".3rem",
@@ -74,13 +77,19 @@ const CafeRow = ({ cafes, area, isLoading }: propTypes) => {
       <Stack
         direction="row"
         spacing={3}
-        sx={{ height: "30em", alignItems: "center" }}
+        sx={{
+          mx: { xs: 2.5, md: "0" },
+          height: { xs: "19em", md: "30em" },
+          alignItems: "center",
+        }}
       >
-        <Arrow
-          hidden={!isScrollLeft || !showScroll}
-          direction="left"
-          onClick={() => scroll(-1800)}
-        />
+        {!isMobile && (
+          <Arrow
+            hidden={!isScrollLeft || !showScroll || isMobile}
+            direction="left"
+            onClick={() => scroll(-1800)}
+          />
+        )}
         <Stack
           ref={containerRef}
           direction="row"
@@ -92,11 +101,13 @@ const CafeRow = ({ cafes, area, isLoading }: propTypes) => {
             cafes.length > 0 &&
             cafes.map((cafe) => <CafeCard key={cafe._id} cafe={cafe} />)}
         </Stack>
-        <Arrow
-          hidden={!isScrollRight || !showScroll}
-          direction="right"
-          onClick={() => scroll(1800)}
-        />
+        {!isMobile && (
+          <Arrow
+            hidden={!isScrollRight || !showScroll}
+            direction="right"
+            onClick={() => scroll(1800)}
+          />
+        )}
       </Stack>
     </>
   );
