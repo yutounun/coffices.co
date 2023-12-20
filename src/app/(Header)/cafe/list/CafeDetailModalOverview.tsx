@@ -13,19 +13,47 @@ import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
 const CafeDetailModalOverview = ({ cafe }: { cafe: CafeI }) => {
   return (
     <>
-      <Typography variant="h6" sx={{ alignItems: "center", display: "flex" }}>
+      <Typography
+        variant="h6"
+        sx={{
+          fontSize: { xs: "1rem", md: "1.5rem" },
+          alignItems: "center",
+          display: "flex",
+        }}
+      >
         <AlternateEmailIcon color="primary" sx={{ mr: "0.5em" }} />
         {cafe.area}
       </Typography>
-      <Typography variant="h6" sx={{ alignItems: "center", display: "flex" }}>
+      <Typography
+        variant="h6"
+        sx={{
+          fontSize: { xs: "1rem", md: "1.5rem" },
+          alignItems: "center",
+          display: "flex",
+        }}
+      >
         <TrainIcon color="primary" sx={{ mr: "0.5em" }} />
         {cafe.station}
       </Typography>
-      <Typography variant="h6" sx={{ alignItems: "center", display: "flex" }}>
+      <Typography
+        variant="h6"
+        sx={{
+          fontSize: { xs: "1rem", md: "1.5rem" },
+          alignItems: "center",
+          display: "flex",
+        }}
+      >
         <StoreMallDirectoryIcon color="primary" sx={{ mr: "0.5em" }} />{" "}
         {cafe.openHour} ~ {cafe.closeHour}
       </Typography>
-      <Typography variant="h6" sx={{ alignItems: "center", display: "flex" }}>
+      <Typography
+        variant="h6"
+        sx={{
+          fontSize: { xs: "1rem", md: "1.5rem" },
+          alignItems: "center",
+          display: "flex",
+        }}
+      >
         <WifiIcon color="primary" sx={{ mr: "0.5em" }} />{" "}
         {cafe.isWifi ? (
           <PanoramaFishEyeIcon color="success" />
@@ -33,7 +61,14 @@ const CafeDetailModalOverview = ({ cafe }: { cafe: CafeI }) => {
           <DoDisturbAltIcon color="success" />
         )}
       </Typography>
-      <Typography variant="h6" sx={{ alignItems: "center", display: "flex" }}>
+      <Typography
+        variant="h6"
+        sx={{
+          fontSize: { xs: "1rem", md: "1.5rem" },
+          alignItems: "center",
+          display: "flex",
+        }}
+      >
         <PowerIcon color="primary" sx={{ mr: "0.5em" }} />{" "}
         {cafe.isOutlet ? (
           <PanoramaFishEyeIcon color="success" />
@@ -41,7 +76,14 @@ const CafeDetailModalOverview = ({ cafe }: { cafe: CafeI }) => {
           <DoDisturbAltIcon color="success" />
         )}
       </Typography>
-      <Typography variant="h6" sx={{ alignItems: "center", display: "flex" }}>
+      <Typography
+        variant="h6"
+        sx={{
+          fontSize: { xs: "1rem", md: "1.5rem" },
+          alignItems: "center",
+          display: "flex",
+        }}
+      >
         <SmokingRoomsIcon color="primary" sx={{ mr: "0.5em" }} />{" "}
         {cafe.isSmoking ? (
           <PanoramaFishEyeIcon color="success" />
