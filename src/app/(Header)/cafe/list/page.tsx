@@ -48,10 +48,6 @@ const ShopsList = () => {
     });
   }, [cafeList, stationName]);
 
-  const top20 = useCallback(() => {
-    return cafeList?.slice(0, 20);
-  }, [cafeList]);
-
   return (
     <>
       <CafeListContext.Provider value={{ cafeList, setCafeList }}>
@@ -67,8 +63,10 @@ const ShopsList = () => {
           ) : (
             <>
               <CafeRow
-                area={stationName ? stationName : "東京都の作業カフェTOP20"}
-                cafes={top20()}
+                area={
+                  stationName ? stationName : "東京都の作業カフェランキング"
+                }
+                cafes={cafeList}
                 isLoading={isLoading}
               />
               <CafeRow
