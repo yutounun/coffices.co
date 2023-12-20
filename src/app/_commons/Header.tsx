@@ -23,7 +23,7 @@ import { CafeListContext } from "../../contexts/CafeListContext";
 import { filterCafe } from "_utils/api";
 import { StationNameContext } from "../../contexts/StationNameContext";
 
-const pages = ["一覧", "作成"];
+const pages = ["一覧", "作成", "ログアウト"];
 
 function ResponsiveAppBar() {
   const { setCafeList } = React.useContext(CafeListContext);
@@ -130,6 +130,9 @@ function ResponsiveAppBar() {
               <MenuItem onClick={onClickCreateButton}>
                 <Typography textAlign="center">{pages[1]}</Typography>
               </MenuItem>
+              <MenuItem onClick={() => signOut({ callbackUrl: "/" })}>
+                <Typography textAlign="center">{pages[2]}</Typography>
+              </MenuItem>
             </Menu>
           </Box>
 
@@ -158,6 +161,7 @@ function ResponsiveAppBar() {
               alignItems: "center",
             }}
           >
+            {/* List */}
             <Button
               key={pages[0]}
               onClick={onClickListButton}
@@ -173,6 +177,8 @@ function ResponsiveAppBar() {
             >
               {pages[0]}
             </Button>
+
+            {/* Create */}
             <Button
               key={pages[1]}
               onClick={onClickCreateButton}

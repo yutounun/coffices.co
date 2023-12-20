@@ -31,17 +31,31 @@ const CafeDetailModalReviews = ({ cafe }: { cafe: CafeI }) => {
             >
               {isMobile ? (
                 <>
-                  <Stack spacing={1}>
-                    <Image
-                      src={review.image}
-                      width="31"
-                      height="31"
-                      alt="image"
-                    />
-                    <Typography variant="h6">{review.name}</Typography>
-                    <Typography variant="h6">{review.title}</Typography>
-                    <Stars rate={review.rate} />
-                    <Typography variant="body1">{review.rate}</Typography>
+                  <Stack sx={{ width: "100%" }}>
+                    <Stack
+                      direction="row"
+                      spacing={1}
+                      sx={{ alignItems: "center" }}
+                    >
+                      <Image
+                        src={review.image}
+                        width="24"
+                        height="24"
+                        alt="image"
+                      />
+                      <Typography variant="h6">{review.name}</Typography>
+                    </Stack>
+                    <Typography variant="h6" sx={{ fontSize: "1em" }}>
+                      {review.title}
+                    </Typography>
+                    <Stack
+                      direction="row"
+                      spacing={1}
+                      sx={{ justifyContent: "right", width: "100%" }}
+                    >
+                      <Stars rate={review.rate} />
+                      <Typography variant="body1">{review.rate}</Typography>
+                    </Stack>
                   </Stack>
                 </>
               ) : (
@@ -64,11 +78,6 @@ const CafeDetailModalReviews = ({ cafe }: { cafe: CafeI }) => {
               )}
             </Stack>
             <Typography variant="body1">{review.content}</Typography>
-            <Stack
-              direction="row"
-              spacing={2}
-              sx={{ alignItems: "center", justifyContent: "space-between" }}
-            ></Stack>
           </Stack>
         ))}
     </Stack>

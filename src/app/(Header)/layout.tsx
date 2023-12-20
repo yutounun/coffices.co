@@ -46,7 +46,7 @@ export default function CafeListLayout({
         <Header />
         <QueryClientProvider client={queryClient}>
           <Box sx={{ width: "100%" }}>
-            <Box sx={{ mt: "60px" }}>{children}</Box>
+            <Box sx={{ mt: "3em" }}>{children}</Box>
             {showsCreateModal && (
               <CafePostModal
                 handleModalClose={closeCreateCafeModal}
