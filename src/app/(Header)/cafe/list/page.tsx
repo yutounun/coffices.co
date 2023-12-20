@@ -3,19 +3,22 @@ import React, { Suspense, useCallback, useEffect, useState } from "react";
 import Loading from "../../../loading";
 import { useQuery } from "react-query";
 import { CafeI } from "types/cafes";
-import { getCafe } from "_utils/api";
+import { filterCafe, getCafe } from "_utils/api";
 import "../../../styles/cafe-list.scss";
 import CafeRow from "./CafeRow";
 import { CafeListContext } from "../../../../contexts/CafeListContext";
 import CafeSearchList from "./CafeSearchList";
 import { StationNameContext } from "../../../../contexts/StationNameContext";
+import StationSearch from "./StationSearch";
+import { useMediaQuery, useTheme } from "@mui/material";
 
 const ShopsList = () => {
   const { stationName } = React.useContext(StationNameContext);
   const [cafeList, setCafeList] = useState<CafeI[]>([]);
-
+  const { setStationName } = React.useContext(StationNameContext);
   const { data, isLoading } = useQuery("cafes", getCafe);
-
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   useEffect(() => {
     if (data) {
       setCafeList(data);
@@ -48,10 +51,22 @@ const ShopsList = () => {
     });
   }, [cafeList, stationName]);
 
+  function filterByStationName(filterParam?: string) {
+    if (!filterParam) {
+      // getCafeLocal();
+    } else {
+      filterCafe(filterParam).then((json) => setCafeList(json));
+    }
+    filterParam ? setStationName(filterParam) : setStationName("");
+  }
+
   return (
     <>
       <CafeListContext.Provider value={{ cafeList, setCafeList }}>
         <Suspense fallback={<Loading />}>
+          {isMobile && (
+            <StationSearch filterByStationName={filterByStationName} />
+          )}
           {stationName ? (
             <>
               <CafeSearchList

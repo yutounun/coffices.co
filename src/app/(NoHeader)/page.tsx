@@ -22,6 +22,7 @@ export default function Home() {
         <Stack
           sx={{
             width: "100%",
+            height: "100%", // Changed from 100vh to 100%
             backgroundColor: "white",
             py: "2em",
             justifyContent: "center",

@@ -27,7 +27,12 @@ export default function RootLayout({ children }: LayoutProps) {
     <NextAuthProvider>
       <ThemeProvider theme={theme}>
         <html lang="en">
-          <body className={notojp.className}>{children}</body>
+          <body
+            style={{ backgroundColor: "white" }}
+            className={notojp.className}
+          >
+            {children}
+          </body>
         </html>
       </ThemeProvider>
     </NextAuthProvider>

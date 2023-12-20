@@ -1,6 +1,6 @@
 import React from "react";
 import { CafeI } from "types/cafes";
-import { Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import CafeCard from "./CafeCard";
 import Loading from "../../../loading";
 import NotFound from "../../../NotFound";
@@ -12,8 +12,10 @@ interface propTypes {
 }
 
 const CafeSearchList = ({ cafes, area, isLoading }: propTypes) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
-    <>
+    <Box sx={{ ml: 3, mt: 5 }}>
       <Typography
         variant="h5"
         sx={{
@@ -22,11 +24,18 @@ const CafeSearchList = ({ cafes, area, isLoading }: propTypes) => {
           letterSpacing: ".3rem",
           color: "inherit",
           textDecoration: "none",
+          fontSize: { xs: "1.2rem", md: "2rem" },
         }}
       >
         {area}
       </Typography>
-      <Stack direction="row" sx={{ width: "100%", flexWrap: "wrap" }}>
+      <Stack
+        sx={{
+          flexDirection: isMobile ? "column" : "row",
+          width: "100%",
+          flexWrap: "wrap",
+        }}
+      >
         {isLoading && <Loading />}
         {cafes &&
           cafes.length > 0 &&
@@ -34,7 +43,7 @@ const CafeSearchList = ({ cafes, area, isLoading }: propTypes) => {
 
         {cafes.length === 0 && <NotFound />}
       </Stack>
-    </>
+    </Box>
   );
 };
 

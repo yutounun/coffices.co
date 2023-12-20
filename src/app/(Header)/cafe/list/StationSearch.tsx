@@ -28,10 +28,11 @@ const StationSearch = ({ filterByStationName }: propTypes) => {
     <Stack
       direction="row"
       sx={{
-        width: "25%",
+        width: { xs: "80%", sm: "25%" },
         alignItems: "center",
         height: "2.5em",
-        ml: "5em",
+        ml: { xs: "2em", sm: "5em" },
+        mb: { xs: "1em", sm: "0" },
         backgroundColor: "primary.main",
         borderRadius: "4px",
       }}
