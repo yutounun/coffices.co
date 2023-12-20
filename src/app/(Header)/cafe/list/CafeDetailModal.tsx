@@ -78,10 +78,6 @@ const CafeModal = ({
         <Box sx={modalStyle}>
           <Box sx={{ height: { xs: "30%", md: "55%" } }}>
             {isMobile && (
-              // <HighlightOffIcon
-              //   sx={{ position: "absolute", right: 60, top: 40 }}
-              //   onClick={handleCafeDetailClose}
-              // />
               <CancelIcon
                 sx={{
                   color: "white",
@@ -101,7 +97,7 @@ const CafeModal = ({
           </Box>
           <Stack
             id="modal-modal-description"
-            sx={{ mx: 5, my: 3, pb: "3%", height: "40%" }}
+            sx={{ mx: 5, my: 3, pb: "3%", height: { xs: "62%", md: "40%" } }}
             spacing={2}
           >
             <Stack
@@ -136,7 +132,12 @@ const CafeModal = ({
                   )}
                 </Stack>
               )}
-              <Stack sx={{ width: "50%", justifyContent: "center" }}>
+              <Stack
+                sx={{
+                  width: { xs: "90%", md: "50%" },
+                  justifyContent: "center",
+                }}
+              >
                 <Typography
                   sx={{
                     justifyContent: "center",

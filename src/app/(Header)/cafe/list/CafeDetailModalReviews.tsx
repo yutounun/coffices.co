@@ -1,10 +1,12 @@
 import React from "react";
 import { CafeI, ReviewI } from "types/cafes";
 import Stars from "_commons/Stars";
-import { Stack, Typography } from "@mui/material";
+import { Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import Image from "next/image";
 
 const CafeDetailModalReviews = ({ cafe }: { cafe: CafeI }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <Stack
       spacing={4}
@@ -17,21 +19,49 @@ const CafeDetailModalReviews = ({ cafe }: { cafe: CafeI }) => {
       {cafe.reviews &&
         cafe.reviews.length > 0 &&
         cafe.reviews.map((review: ReviewI) => (
-          <Stack key={review.id} spacing={2}>
+          <Stack sx={{ height: "100%" }} key={review.id} spacing={2}>
             <Stack
               direction="row"
               spacing={2}
-              sx={{ alignItems: "center", justifyContent: "space-between" }}
+              sx={{
+                alignItems: "center",
+                justifyContent: "space-between",
+                height: "100%",
+              }}
             >
-              <Stack direction="row" spacing={1}>
-                <Image src={review.image} width="31" height="31" alt="image" />
-                <Typography variant="h6">{review.name}</Typography>
-                <Typography variant="h6">{review.title}</Typography>
-              </Stack>
-              <Stack direction="row" spacing={1}>
-                <Stars rate={review.rate} />
-                <Typography variant="body1">{review.rate}</Typography>
-              </Stack>
+              {isMobile ? (
+                <>
+                  <Stack spacing={1}>
+                    <Image
+                      src={review.image}
+                      width="31"
+                      height="31"
+                      alt="image"
+                    />
+                    <Typography variant="h6">{review.name}</Typography>
+                    <Typography variant="h6">{review.title}</Typography>
+                    <Stars rate={review.rate} />
+                    <Typography variant="body1">{review.rate}</Typography>
+                  </Stack>
+                </>
+              ) : (
+                <>
+                  <Stack direction="row" spacing={1}>
+                    <Image
+                      src={review.image}
+                      width="31"
+                      height="31"
+                      alt="image"
+                    />
+                    <Typography variant="h6">{review.name}</Typography>
+                    <Typography variant="h6">{review.title}</Typography>
+                  </Stack>
+                  <Stack direction="row" spacing={1}>
+                    <Stars rate={review.rate} />
+                    <Typography variant="body1">{review.rate}</Typography>
+                  </Stack>
+                </>
+              )}
             </Stack>
             <Typography variant="body1">{review.content}</Typography>
             <Stack

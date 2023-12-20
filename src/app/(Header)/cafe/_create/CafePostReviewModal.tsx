@@ -49,7 +49,7 @@ const CafePostReviewModal = ({
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: 800,
+    width: { xs: 370, md: 800 },
     bgcolor: "background.paper",
     boxShadow: 24,
     pb: 5,
@@ -83,7 +83,7 @@ const CafePostReviewModal = ({
             borderBottom: "solid 1px",
             px: 5,
             py: 2,
-            justifyContent: "space-between",
+            justifyContent: "center",
             alignItems: "center",
           }}
         >
@@ -106,7 +106,7 @@ const CafePostReviewModal = ({
               sx={{
                 height: "100%",
                 display: "flex",
-                px: "5em",
+                px: { xs: 0, md: "5em" },
                 py: "3em",
               }}
               spacing={4}
@@ -115,6 +115,7 @@ const CafePostReviewModal = ({
                 id="outlined-basic"
                 label="タイトル"
                 variant="outlined"
+                size="small"
                 sx={{ width: "100%" }}
                 error={!!errors.title}
                 helperText={errors.title?.message?.toString()}
@@ -125,6 +126,7 @@ const CafePostReviewModal = ({
 
               <TextField
                 id="outlined-basic"
+                size="small"
                 label="コメント内容"
                 variant="outlined"
                 sx={{ width: "100%" }}
@@ -137,10 +139,11 @@ const CafePostReviewModal = ({
               <TextField
                 id="outlined-basic"
                 label="評価(1 ~ 5)"
+                size="small"
                 type="number"
                 variant="outlined"
                 InputProps={{ inputProps: { min: 0, max: 5 } }}
-                sx={{ width: "45%" }}
+                sx={{ width: { xs: "100%", sm: "45%" } }}
                 {...register("rate", { required: "評価を入力してください" })}
                 error={!!errors.rate}
                 helperText={errors.rate?.message?.toString()}
