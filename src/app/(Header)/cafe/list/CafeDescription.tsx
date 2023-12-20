@@ -43,11 +43,9 @@ const CafeDescription = ({ cafe }: PropTypes) => {
           </>
         )}
       </Stack>
-      {!isMobile && (
-        <Typography variant="body1" sx={{ fontFamily: "monospace" }}>
-          {cafe.area}
-        </Typography>
-      )}
+      <Typography variant="body1" sx={{ fontFamily: "monospace" }}>
+        {cafe.station}
+      </Typography>
     </Stack>
   );
 };

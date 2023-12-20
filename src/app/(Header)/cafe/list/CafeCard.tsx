@@ -31,7 +31,7 @@ const CafeCard = ({ cafe }: propTypes) => {
           mr: "2em",
           position: "relative",
           overflow: "visible",
-          height: { xs: "240px", md: "360px" },
+          height: { xs: "266px", md: "360px" },
           "&:hover": {
             scale: "1.07",
             transition: "all 0.5s ease",
