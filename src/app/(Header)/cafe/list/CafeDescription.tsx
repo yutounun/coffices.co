@@ -24,7 +24,7 @@ const CafeDescription = ({ cafe }: PropTypes) => {
         sx={{
           mb: "4px",
           fontFamily: "monospace",
-          fontWeight: 700,
+          fontWeight: { xs: "bold", md: "normal" },
         }}
       >
         {cafe.title}

@@ -7,19 +7,6 @@ import { ReviewModel } from "../../../libs/models/ReviewModel";
 
 const axios = require("axios");
 
-const whiteListHostName = [
-  "enpaku-jdta",
-  "jalan",
-  "gnavi",
-  "tripadvisor",
-  "tokyometro",
-  "ekispert",
-  "hotpepper",
-  "tokyo-sanpo",
-  "ikyu",
-  "tblg",
-];
-
 /**
  * Searches for an image using the Google Custom Search API.
  *
@@ -37,16 +24,10 @@ async function searchImage(query: string) {
     const response = await axios.get(url);
     const images = response.data.items;
     if (images.length > 0) {
-      const foundImage = images.find((image: any) =>
-        whiteListHostName.some((whitelistItem) =>
-          image.link.includes(whitelistItem)
-        )
-      );
-      return foundImage
-        ? foundImage.link
-        : "https://www.google.com/url?sa=i&url=https%3A%2F%2Ftabelog.com%2Fhokkaido%2FA0108%2FA010802%2F1062580%2Fdtlmenu%2Fphoto%2F&psig=AOvVaw2i7_j7ejSDozMi2GfLd6J5&ust=1702882501101000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCOjmlOfxlYMDFQAAAAAdAAAAABAD";
+      const foundImage = images[0];
+      return foundImage ? foundImage.link : "/coffee.jpg";
     } else {
-      return "https://www.google.com/url?sa=i&url=https%3A%2F%2Ftabelog.com%2Fhokkaido%2FA0108%2FA010802%2F1062580%2Fdtlmenu%2Fphoto%2F&psig=AOvVaw2i7_j7ejSDozMi2GfLd6J5&ust=1702882501101000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCOjmlOfxlYMDFQAAAAAdAAAAABAD";
+      return "/coffee.jpg";
     }
   } catch (error) {
     console.error("Error during image search", error);

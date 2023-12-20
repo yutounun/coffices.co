@@ -97,6 +97,10 @@ const nextConfig = {
         hostname: "tblg.k-img.com",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "**",
+      },
     ],
   },
 };
