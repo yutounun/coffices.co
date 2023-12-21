@@ -50,6 +50,9 @@ export default function Home() {
               onClick={() => signIn("google", { callbackUrl: "/cafe/list" })}
               sx={{
                 backgroundColor: "#EEE4CD",
+                "&:hover": {
+                  backgroundColor: "#EEE4CD",
+                },
                 color: "black",
                 width: "65%",
                 borderRadius: "50px",
@@ -65,6 +68,9 @@ export default function Home() {
               onClick={() => signIn("facebook", { callbackUrl: "/cafe/list" })}
               sx={{
                 backgroundColor: "#EEE4CD",
+                "&:hover": {
+                  backgroundColor: "#EEE4CD",
+                },
                 color: "black",
                 borderRadius: "50px",
                 width: "65%",
@@ -80,6 +86,9 @@ export default function Home() {
               onClick={() => signIn("github", { callbackUrl: "/cafe/list" })}
               sx={{
                 backgroundColor: "#EEE4CD",
+                "&:hover": {
+                  backgroundColor: "#EEE4CD",
+                },
                 color: "black",
                 width: "65%",
                 borderRadius: "50px",
@@ -95,6 +104,9 @@ export default function Home() {
               onClick={() => signIn("line", { callbackUrl: "/cafe/list" })}
               sx={{
                 backgroundColor: "#EEE4CD",
+                "&:hover": {
+                  backgroundColor: "#EEE4CD",
+                },
                 color: "black",
                 width: "65%",
                 borderRadius: "50px",
@@ -163,7 +175,7 @@ export default function Home() {
                   backgroundColor: "#EEE4CD",
                   color: "black",
                   "&:hover": {
-                    backgroundColor: { xs: "#EEE4CD", md: "#D1BBA7" },
+                    backgroundColor: "#D1BBA7",
                   },
                 }}
                 startIcon={<GoogleIcon />}
@@ -184,7 +196,7 @@ export default function Home() {
                   backgroundColor: "#EEE4CD",
                   color: "black",
                   "&:hover": {
-                    backgroundColor: { xs: "#EEE4CD", md: "#D1BBA7" },
+                    backgroundColor: "#D1BBA7",
                   },
                 }}
                 startIcon={<FacebookIcon />}
@@ -202,7 +214,7 @@ export default function Home() {
                   color: "black",
                   fontWeight: "bold",
                   "&:hover": {
-                    backgroundColor: { xs: "#EEE4CD", md: "#D1BBA7" },
+                    backgroundColor: "#D1BBA7",
                   },
                 }}
                 startIcon={<GitHubIcon />}
@@ -221,7 +233,7 @@ export default function Home() {
                   color: "black",
                   fontWeight: "bold",
                   "&:hover": {
-                    backgroundColor: { xs: "#EEE4CD", md: "#D1BBA7" },
+                    backgroundColor: "#D1BBA7",
                   },
                 }}
                 startIcon={<WhatsAppIcon />}
