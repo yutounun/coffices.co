@@ -163,7 +163,7 @@ export default function Home() {
                   backgroundColor: "#EEE4CD",
                   color: "black",
                   "&:hover": {
-                    backgroundColor: "#D1BBA7",
+                    backgroundColor: { xs: "#EEE4CD", md: "#D1BBA7" },
                   },
                 }}
                 startIcon={<GoogleIcon />}
@@ -184,7 +184,7 @@ export default function Home() {
                   backgroundColor: "#EEE4CD",
                   color: "black",
                   "&:hover": {
-                    backgroundColor: "#D1BBA7",
+                    backgroundColor: { xs: "#EEE4CD", md: "#D1BBA7" },
                   },
                 }}
                 startIcon={<FacebookIcon />}
@@ -202,7 +202,7 @@ export default function Home() {
                   color: "black",
                   fontWeight: "bold",
                   "&:hover": {
-                    backgroundColor: "#D1BBA7",
+                    backgroundColor: { xs: "#EEE4CD", md: "#D1BBA7" },
                   },
                 }}
                 startIcon={<GitHubIcon />}
@@ -221,7 +221,7 @@ export default function Home() {
                   color: "black",
                   fontWeight: "bold",
                   "&:hover": {
-                    backgroundColor: "#D1BBA7",
+                    backgroundColor: { xs: "#EEE4CD", md: "#D1BBA7" },
                   },
                 }}
                 startIcon={<WhatsAppIcon />}
