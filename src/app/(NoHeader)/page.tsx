@@ -12,6 +12,8 @@ import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import CoffeeImage from "_commons/CoffeeImage";
+import { NextImage } from "_commons/NextImage";
 
 export default function Home() {
   const theme = useTheme();
@@ -23,36 +25,18 @@ export default function Home() {
           sx={{
             width: "100%",
             height: "100%", // Changed from 100vh to 100%
-            backgroundColor: "white",
             py: "2em",
             justifyContent: "center",
           }}
           spacing={3}
         >
-          <Typography
-            color="#6B4E31"
-            variant="h4"
-            sx={{
-              textAlign: "center",
-              fontWeight: "bold",
-              fontFamily: "monospace",
-            }}
-          >
-            Sign In
-          </Typography>
           <Stack
             sx={{
               justifyContent: "center",
               alignItems: "center",
             }}
           >
-            <Image
-              priority={true}
-              src="/woman.png"
-              alt="image"
-              width={260}
-              height={200}
-            />
+            <CoffeeImage height={200} width={200} />
           </Stack>
           <Stack
             spacing={3}
@@ -62,64 +46,60 @@ export default function Home() {
             }}
           >
             <Button
-              size="small"
               variant="contained"
               onClick={() => signIn("google", { callbackUrl: "/cafe/list" })}
               sx={{
-                width: "45%",
+                backgroundColor: "#EEE4CD",
+                color: "black",
+                width: "65%",
+                borderRadius: "50px",
                 mx: "auto",
                 fontWeight: "bold",
-                backgroundColor: "#4284F3",
-                "&:hover": {
-                  backgroundColor: "#4284F3",
-                },
               }}
               startIcon={<GoogleIcon />}
             >
               Google
             </Button>
             <Button
-              size="small"
               variant="contained"
               onClick={() => signIn("facebook", { callbackUrl: "/cafe/list" })}
               sx={{
-                width: "45%",
+                backgroundColor: "#EEE4CD",
+                color: "black",
+                borderRadius: "50px",
+                width: "65%",
                 mx: "auto",
                 fontWeight: "bold",
-                backgroundColor: "#4867AA",
-                "&:hover": {
-                  backgroundColor: "#4867AA",
-                },
               }}
               startIcon={<FacebookIcon />}
             >
               FaceBook
             </Button>
             <Button
-              size="small"
               variant="contained"
               onClick={() => signIn("github", { callbackUrl: "/cafe/list" })}
               sx={{
-                width: "45%",
+                backgroundColor: "#EEE4CD",
+                color: "black",
+                width: "65%",
+                borderRadius: "50px",
                 mx: "auto",
                 fontWeight: "bold",
-                backgroundColor: "#1F2327",
-                "&:hover": { backgroundColor: "#1F2327" },
               }}
               startIcon={<GitHubIcon />}
             >
               Github
             </Button>
             <Button
-              size="small"
               variant="contained"
               onClick={() => signIn("line", { callbackUrl: "/cafe/list" })}
               sx={{
-                width: "45%",
+                backgroundColor: "#EEE4CD",
+                color: "black",
+                width: "65%",
+                borderRadius: "50px",
                 mx: "auto",
                 fontWeight: "bold",
-                backgroundColor: "#03B602",
-                "&:hover": { backgroundColor: "#03B602" },
               }}
               startIcon={<WhatsAppIcon />}
             >
@@ -129,138 +109,125 @@ export default function Home() {
         </Stack>
       ) : (
         <Stack
-          sx={{
-            justifyContent: "center",
-            alignItems: "center",
-            width: "100vw",
-            height: "100vh",
-            backgroundColor: "primary.light",
-          }}
+          direction="row"
+          sx={{ height: "100vh", backgroundColor: "#F7F1E5" }}
         >
           <Stack
             sx={{
-              borderRadius: "20px",
               width: "50%",
-              height: "50%",
+              height: "100%",
+              justifyContent: "center",
+              alignItems: "center",
             }}
             direction="row"
           >
-            <Stack
+            <NextImage src="/nomad.jpg" alt="coffee-beans" />
+          </Stack>
+          <Stack
+            sx={{
+              width: "50%",
+              height: "100%",
+              borderRadius: "0 20px 20px 0",
+              pt: 26,
+            }}
+            spacing={10}
+          >
+            <Typography
+              color="#6B4E31"
+              variant="h4"
               sx={{
-                width: "55%",
-                height: "100%",
-                justifyContent: "center",
+                textAlign: "center",
+                height: "7%",
+                fontWeight: "bold",
+                fontFamily: "monospace",
+              }}
+            >
+              Welcome Back!!
+            </Typography>
+            <Stack
+              spacing={6}
+              sx={{
                 alignItems: "center",
-                backgroundColor: "white",
-                borderRight: "1px solid  #6B4E31",
-                borderRadius: "20px 0 0 20px",
+                justifyContent: "center",
               }}
             >
-              <Image
-                priority={true}
-                src="/woman.png"
-                alt="image"
-                width={500}
-                height={300}
-              />
-            </Stack>
-            <Stack
-              sx={{
-                width: "45%",
-                height: "100%",
-                backgroundColor: "white",
-                borderRadius: "0 20px 20px 0",
-                py: "3em",
-              }}
-              spacing={4}
-            >
-              <Typography
-                color="#6B4E31"
-                variant="h4"
+              <Button
+                size="large"
+                variant="contained"
+                onClick={() => signIn("google", { callbackUrl: "/cafe/list" })}
                 sx={{
-                  textAlign: "center",
-                  height: "7%",
+                  width: "45%",
+                  borderRadius: "50px",
+                  mx: "auto",
                   fontWeight: "bold",
-                  fontFamily: "monospace",
+                  backgroundColor: "#EEE4CD",
+                  color: "black",
+                  "&:hover": {
+                    backgroundColor: "#D1BBA7",
+                  },
                 }}
+                startIcon={<GoogleIcon />}
               >
-                Sign In
-              </Typography>
-              <Stack
-                spacing={3}
+                Google
+              </Button>
+              <Button
+                size="large"
+                variant="contained"
+                onClick={() =>
+                  signIn("facebook", { callbackUrl: "/cafe/list" })
+                }
                 sx={{
-                  height: "70%",
-                  alignItems: "center",
-                  justifyContent: "center",
+                  width: "45%",
+                  borderRadius: "50px",
+                  mx: "auto",
+                  fontWeight: "bold",
+                  backgroundColor: "#EEE4CD",
+                  color: "black",
+                  "&:hover": {
+                    backgroundColor: "#D1BBA7",
+                  },
                 }}
+                startIcon={<FacebookIcon />}
               >
-                <Button
-                  variant="contained"
-                  onClick={() =>
-                    signIn("google", { callbackUrl: "/cafe/list" })
-                  }
-                  sx={{
-                    width: "45%",
-                    mx: "auto",
-                    fontWeight: "bold",
-                    backgroundColor: "#4284F3",
-                    "&:hover": {
-                      backgroundColor: "#4284F3",
-                    },
-                  }}
-                  startIcon={<GoogleIcon />}
-                >
-                  Google
-                </Button>
-                <Button
-                  variant="contained"
-                  onClick={() =>
-                    signIn("facebook", { callbackUrl: "/cafe/list" })
-                  }
-                  sx={{
-                    width: "45%",
-                    mx: "auto",
-                    fontWeight: "bold",
-                    backgroundColor: "#4867AA",
-                    "&:hover": {
-                      backgroundColor: "#4867AA",
-                    },
-                  }}
-                  startIcon={<FacebookIcon />}
-                >
-                  FaceBook
-                </Button>
-                <Button
-                  variant="contained"
-                  onClick={() =>
-                    signIn("github", { callbackUrl: "/cafe/list" })
-                  }
-                  sx={{
-                    width: "45%",
-                    mx: "auto",
-                    fontWeight: "bold",
-                    backgroundColor: "#1F2327",
-                    "&:hover": { backgroundColor: "#1F2327" },
-                  }}
-                  startIcon={<GitHubIcon />}
-                >
-                  Github
-                </Button>
-                <Button
-                  variant="contained"
-                  onClick={() => signIn("line", { callbackUrl: "/cafe/list" })}
-                  sx={{
-                    width: "45%",
-                    mx: "auto",
-                    fontWeight: "bold",
-                    backgroundColor: "#03B602",
-                    "&:hover": { backgroundColor: "#03B602" },
-                  }}
-                  startIcon={<WhatsAppIcon />}
-                >
-                  LINE
-                </Button>
-              </Stack>
+                FaceBook
+              </Button>
+              <Button
+                size="large"
+                variant="contained"
+                onClick={() => signIn("github", { callbackUrl: "/cafe/list" })}
+                sx={{
+                  width: "45%",
+                  borderRadius: "50px",
+                  backgroundColor: "#EEE4CD",
+                  color: "black",
+                  fontWeight: "bold",
+                  "&:hover": {
+                    backgroundColor: "#D1BBA7",
+                  },
+                }}
+                startIcon={<GitHubIcon />}
+              >
+                Github
+              </Button>
+              <Button
+                size="large"
+                variant="contained"
+                onClick={() => signIn("line", { callbackUrl: "/cafe/list" })}
+                sx={{
+                  width: "45%",
+                  borderRadius: "50px",
+                  mx: "auto",
+                  backgroundColor: "#EEE4CD",
+                  color: "black",
+                  fontWeight: "bold",
+                  "&:hover": {
+                    backgroundColor: "#D1BBA7",
+                  },
+                }}
+                startIcon={<WhatsAppIcon />}
+              >
+                LINE
+              </Button>
             </Stack>
           </Stack>
         </Stack>

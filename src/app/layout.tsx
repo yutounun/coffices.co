@@ -28,7 +28,7 @@ export default function RootLayout({ children }: LayoutProps) {
       <ThemeProvider theme={theme}>
         <html lang="en">
           <body
-            style={{ backgroundColor: "white" }}
+            style={{ backgroundColor: "#F7F1E5" }}
             className={notojp.className}
           >
             {children}
