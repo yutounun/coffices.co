@@ -33,13 +33,21 @@ const Arrow = ({
       {isLeft ? (
         <ArrowBackIosIcon
           sx={{
+            color: hidden ? "#F7F1E5" : "black",
             ":&hover": {
               color: "white",
             },
           }}
         />
       ) : (
-        <ArrowForwardIosIcon />
+        <ArrowForwardIosIcon
+          sx={{
+            color: hidden ? "#F7F1E5" : "black",
+            ":&hover": {
+              color: "white",
+            },
+          }}
+        />
       )}
     </IconButton>
   );
