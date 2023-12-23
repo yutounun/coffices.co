@@ -60,6 +60,10 @@ const ShopsList = () => {
     filterParam ? setStationName(filterParam) : setStationName("");
   }
 
+  const rankedList = useCallback(() => {
+    return cafeList?.sort((a, b) => b.rate - a.rate);
+  }, [cafeList]);
+
   return (
     <>
       <CafeListContext.Provider value={{ cafeList, setCafeList }}>
@@ -81,7 +85,7 @@ const ShopsList = () => {
                 area={
                   stationName ? stationName : "東京都の作業カフェランキング"
                 }
-                cafes={cafeList}
+                cafes={rankedList()}
                 isLoading={isLoading}
               />
               <CafeRow
