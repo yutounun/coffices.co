@@ -16,6 +16,7 @@ const CafeDescription = ({ cafe }: PropTypes) => {
         m: { xs: "10px", md: "10px" },
         position: { sx: "initial", md: "absolute" },
         top: { xs: "10px", md: "220px" },
+        width: "100%",
       }}
       spacing={1}
     >
@@ -26,6 +27,10 @@ const CafeDescription = ({ cafe }: PropTypes) => {
           fontFamily: "monospace",
           fontSize: { xs: "1rem", md: "1.5rem" },
           fontWeight: { xs: "bold", md: "normal" },
+          textOverflow: "ellipsis",
+          overflow: "hidden",
+          whiteSpace: "nowrap",
+          width: "90%",
         }}
       >
         {cafe.title}
