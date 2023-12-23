@@ -206,7 +206,7 @@ export default function Home() {
                 Google
               </Button>
               <Button
-                size=""
+                size="large"
                 variant="contained"
                 onClick={() =>
                   signIn("facebook", { callbackUrl: "/cafe/list" })
