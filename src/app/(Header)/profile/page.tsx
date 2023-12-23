@@ -5,7 +5,6 @@ import { Box, Stack, useMediaQuery, useTheme } from "@mui/material";
 import ProfileDesc from "./ProfileDesc";
 import { useSession } from "next-auth/react";
 import ProfileEditModal from "./ProfileEditModal";
-import meStore from "../../../store/me";
 
 const Profile = () => {
   const { data: session } = useSession();
@@ -16,7 +15,7 @@ const Profile = () => {
     <Stack
       sx={{
         width: "100%",
-        height: "100vh",
+        height: { xs: "94vh", md: "94vh" },
         position: "relative",
         background: "#F6F6F6",
       }}

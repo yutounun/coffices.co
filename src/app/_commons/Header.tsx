@@ -136,9 +136,12 @@ function ResponsiveAppBar() {
             </Menu>
           </Box>
 
-          <CoffeeIcon sx={{ display: { xs: "flex", md: "none" } }} />
+          <CoffeeIcon
+            fontSize="small"
+            sx={{ display: { xs: "flex", md: "none" } }}
+          />
           <Typography
-            variant="h6"
+            variant="subtitle1"
             noWrap
             component="a"
             href="#app-bar-with-responsive-menu"
@@ -215,6 +218,7 @@ function ResponsiveAppBar() {
               <Avatar
                 alt="Remy Sharp"
                 src={session?.user?.image || "/coffee.jpg"}
+                sx={{ width: { xs: 28, md: 38 }, height: { xs: 28, md: 38 } }}
               />
             </IconButton>
           </Stack>

@@ -24,6 +24,7 @@ const CafeDescription = ({ cafe }: PropTypes) => {
         sx={{
           mb: "4px",
           fontFamily: "monospace",
+          fontSize: { xs: "1rem", md: "1.5rem" },
           fontWeight: { xs: "bold", md: "normal" },
         }}
       >
@@ -35,15 +36,31 @@ const CafeDescription = ({ cafe }: PropTypes) => {
         sx={{ display: "flex", alignItems: "center" }}
       >
         {cafe.rate === 0 ? (
-          <Typography variant="h6">評価なし</Typography>
+          <Typography
+            sx={{ fontSize: { xs: "1em", md: "1.3em" } }}
+            variant="h6"
+          >
+            評価なし
+          </Typography>
         ) : (
           <>
             <Stars rate={cafe.rate} />
-            <Typography variant="h6">{cafe.rate}</Typography>
+            <Typography
+              variant="h6"
+              sx={{ fontSize: { xs: "1em", md: "1.3em" } }}
+            >
+              {cafe.rate}
+            </Typography>
           </>
         )}
       </Stack>
-      <Typography variant="body1" sx={{ fontFamily: "monospace" }}>
+      <Typography
+        variant="body1"
+        sx={{
+          fontFamily: "monospace",
+          fontSize: { xs: "1em", md: "1.3em" },
+        }}
+      >
         {cafe.station}
       </Typography>
     </Stack>

@@ -17,7 +17,7 @@ const Arrow = ({
       onClick={onClick}
       sx={{
         color: hidden ? "white" : "black",
-        background: "rgba(255, 255, 255, 0.7)",
+        background: hidden ? "transparent" : "rgba(255, 255, 255, 0.7)",
         borderRadius: "50%",
         padding: "10px",
         transform: "translateY(-50%)",

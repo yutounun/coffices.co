@@ -26,12 +26,12 @@ const CafeCard = ({ cafe }: propTypes) => {
     <>
       <Card
         sx={{
-          minWidth: "290px",
+          minWidth: { xs: "12em", md: "20em" },
           mt: "2em",
           mr: "2em",
           position: "relative",
           overflow: "visible",
-          height: { xs: "266px", md: "360px" },
+          height: { xs: "13em", md: "360px" },
           "&:hover": {
             scale: "1.07",
             transition: "all 0.5s ease",
@@ -39,7 +39,7 @@ const CafeCard = ({ cafe }: propTypes) => {
         }}
         onClick={handleCafeCardClick}
       >
-        <Box sx={{ height: { xs: "140px", md: "55%" }, width: "100%" }}>
+        <Box sx={{ height: { xs: "100px", md: "55%" }, width: "100%" }}>
           <NextImage
             className="row__picture"
             src={cafe.image ? cafe.image : "/coffee.jpg"}
