@@ -1,6 +1,6 @@
 import React from "react";
 import { CafeI } from "types/cafes";
-import { Stack, Typography } from "@mui/material";
+import { Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import TrainIcon from "@mui/icons-material/Train";
 import WifiIcon from "@mui/icons-material/Wifi";
 import PowerIcon from "@mui/icons-material/Power";
@@ -11,84 +11,128 @@ import DoDisturbAltIcon from "@mui/icons-material/DoDisturbAlt";
 import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
 
 const CafeDetailModalOverview = ({ cafe }: { cafe: CafeI }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <>
       <Typography
         variant="h6"
         sx={{
-          fontSize: { xs: "1rem", md: "1.5rem" },
+          fontSize: { xs: "1rem", md: "1.3rem" },
           alignItems: "center",
           display: "flex",
         }}
       >
-        <AlternateEmailIcon color="primary" sx={{ mr: "0.5em" }} />
+        <AlternateEmailIcon
+          fontSize={isMobile ? "small" : "medium"}
+          color="primary"
+          sx={{ mr: "0.5em" }}
+        />
         {cafe.area}
       </Typography>
       <Typography
         variant="h6"
         sx={{
-          fontSize: { xs: "1rem", md: "1.5rem" },
+          fontSize: { xs: "1rem", md: "1.3rem" },
           alignItems: "center",
           display: "flex",
         }}
       >
-        <TrainIcon color="primary" sx={{ mr: "0.5em" }} />
+        <TrainIcon
+          fontSize={isMobile ? "small" : "medium"}
+          color="primary"
+          sx={{ mr: "0.5em" }}
+        />
         {cafe.station}
       </Typography>
       <Typography
         variant="h6"
         sx={{
-          fontSize: { xs: "1rem", md: "1.5rem" },
+          fontSize: { xs: "1rem", md: "1.3rem" },
           alignItems: "center",
           display: "flex",
         }}
       >
-        <StoreMallDirectoryIcon color="primary" sx={{ mr: "0.5em" }} />{" "}
+        <StoreMallDirectoryIcon
+          fontSize={isMobile ? "small" : "medium"}
+          color="primary"
+          sx={{ mr: "0.5em" }}
+        />{" "}
         {cafe.openHour} ~ {cafe.closeHour}
       </Typography>
       <Typography
         variant="h6"
         sx={{
-          fontSize: { xs: "1rem", md: "1.5rem" },
+          fontSize: { xs: "1rem", md: "1.3rem" },
           alignItems: "center",
           display: "flex",
         }}
       >
-        <WifiIcon color="primary" sx={{ mr: "0.5em" }} />{" "}
+        <WifiIcon
+          fontSize={isMobile ? "small" : "medium"}
+          color="primary"
+          sx={{ mr: "0.5em" }}
+        />{" "}
         {cafe.isWifi ? (
-          <PanoramaFishEyeIcon color="success" />
+          <PanoramaFishEyeIcon
+            fontSize={isMobile ? "small" : "medium"}
+            color="success"
+          />
         ) : (
-          <DoDisturbAltIcon color="success" />
+          <DoDisturbAltIcon
+            fontSize={isMobile ? "small" : "medium"}
+            color="success"
+          />
         )}
       </Typography>
       <Typography
         variant="h6"
         sx={{
-          fontSize: { xs: "1rem", md: "1.5rem" },
+          fontSize: { xs: "1rem", md: "1.3rem" },
           alignItems: "center",
           display: "flex",
         }}
       >
-        <PowerIcon color="primary" sx={{ mr: "0.5em" }} />{" "}
+        <PowerIcon
+          color="primary"
+          fontSize={isMobile ? "small" : "medium"}
+          sx={{ mr: "0.5em" }}
+        />{" "}
         {cafe.isOutlet ? (
-          <PanoramaFishEyeIcon color="success" />
+          <PanoramaFishEyeIcon
+            fontSize={isMobile ? "small" : "medium"}
+            color="success"
+          />
         ) : (
-          <DoDisturbAltIcon color="success" />
+          <DoDisturbAltIcon
+            fontSize={isMobile ? "small" : "medium"}
+            color="success"
+          />
         )}
       </Typography>
       <Typography
         variant="h6"
         sx={{
-          fontSize: { xs: "1rem", md: "1.5rem" },
+          fontSize: { xs: "1rem", md: "1.3rem" },
           alignItems: "center",
           display: "flex",
         }}
       >
-        <SmokingRoomsIcon color="primary" sx={{ mr: "0.5em" }} />{" "}
+        <SmokingRoomsIcon
+          fontSize={isMobile ? "small" : "medium"}
+          color="primary"
+          sx={{ mr: "0.5em" }}
+        />{" "}
         {cafe.isSmoking ? (
-          <PanoramaFishEyeIcon color="success" />
+          <PanoramaFishEyeIcon
+            fontSize={isMobile ? "small" : "medium"}
+            color="success"
+          />
         ) : (
-          <DoDisturbAltIcon color="success" />
+          <DoDisturbAltIcon
+            fontSize={isMobile ? "small" : "medium"}
+            color="success"
+          />
         )}
       </Typography>
     </>

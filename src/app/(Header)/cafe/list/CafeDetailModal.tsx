@@ -22,7 +22,7 @@ import CafeDetailModalOverview from "./CafeDetailModalOverview";
 import CafeDetailModalReviews from "./CafeDetailModalReviews";
 import CafePostReviewModal from "(Header)/cafe/_create/CafePostReviewModal";
 import meStore from "../../../../store/me";
-import zIndex from "@mui/material/styles/zIndex";
+
 const modalStyle = {
   position: "absolute",
   top: "50%",
@@ -31,7 +31,7 @@ const modalStyle = {
   width: { xs: 400, md: 800 },
   bgcolor: "background.paper",
   boxShadow: 24,
-  height: "90%",
+  height: "80%",
   display: "flex",
   flexDirection: "column",
   borderRadius: 5,
@@ -141,9 +141,13 @@ const CafeModal = ({
                 <Typography
                   sx={{
                     justifyContent: "center",
-                    mx: "auto",
                     my: 0,
-                    fontSize: { xs: "2em", md: "3em" },
+                    textAlign: "center",
+                    fontSize: { xs: "1.4em", md: "2em" },
+                    textOverflow: "ellipsis",
+                    overflow: "hidden",
+                    whiteSpace: "nowrap",
+                    width: "100%",
                   }}
                   variant="h3"
                 >
@@ -212,7 +216,13 @@ const CafeModal = ({
                 <Button
                   onClick={() => setShowsReviews(!showsReviews)}
                   variant="contained"
-                  sx={{ borderRadius: 5, width: 110, boxShadow: 0 }}
+                  size={isMobile ? "small" : "medium"}
+                  sx={{
+                    fontSize: { xs: "0.7em", md: "1em" },
+                    borderRadius: 5,
+                    width: 110,
+                    boxShadow: 0,
+                  }}
                 >
                   {showsReviews ? "Overview" : "Reviews"}
                 </Button>

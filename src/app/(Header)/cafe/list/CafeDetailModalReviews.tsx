@@ -43,7 +43,9 @@ const CafeDetailModalReviews = ({ cafe }: { cafe: CafeI }) => {
                         height="24"
                         alt="image"
                       />
-                      <Typography variant="h6">{review.name}</Typography>
+                      <Typography variant="h6" sx={{ fontSize: "1em" }}>
+                        {review.name}
+                      </Typography>
                     </Stack>
                     <Typography variant="h6" sx={{ fontSize: "1em" }}>
                       {review.title}
@@ -54,7 +56,9 @@ const CafeDetailModalReviews = ({ cafe }: { cafe: CafeI }) => {
                       sx={{ justifyContent: "right", width: "100%" }}
                     >
                       <Stars rate={review.rate} />
-                      <Typography variant="body1">{review.rate}</Typography>
+                      <Typography variant="body1" sx={{ fontSize: "0.9em" }}>
+                        {review.rate}
+                      </Typography>
                     </Stack>
                   </Stack>
                 </>
@@ -77,7 +81,12 @@ const CafeDetailModalReviews = ({ cafe }: { cafe: CafeI }) => {
                 </>
               )}
             </Stack>
-            <Typography variant="body1">{review.content}</Typography>
+            <Typography
+              variant="body1"
+              sx={{ fontSize: { xs: "0.8em", md: "1em" } }}
+            >
+              {review.content}
+            </Typography>
           </Stack>
         ))}
     </Stack>
