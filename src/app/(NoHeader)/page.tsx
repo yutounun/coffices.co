@@ -26,18 +26,40 @@ export default function Home() {
             width: "100%",
             height: "100%", // Changed from 100vh to 100%
             py: "2em",
+            mt: 20,
             justifyContent: "center",
           }}
-          spacing={3}
+          spacing={4}
         >
+          {/* Background Image */}
           <Stack
             sx={{
+              width: "100%",
+              height: "100%",
               justifyContent: "center",
               alignItems: "center",
+              position: "absolute",
+              top: 0,
+            }}
+            direction="row"
+          >
+            <NextImage src="/coffee-shop.jpg" alt="coffee-beans" />
+          </Stack>
+          <Typography
+            variant="h4"
+            sx={{
+              fontWeight: "bold",
+              fontFamily: "sans-serif",
+              height: "3em",
+              zIndex: 10,
+              color: "white",
+              display: "flex",
+              justifyContent: "center",
+              mb: 3,
             }}
           >
-            <CoffeeImage height={200} width={200} />
-          </Stack>
+            Welcome Back
+          </Typography>
           <Stack
             spacing={3}
             sx={{
@@ -117,6 +139,7 @@ export default function Home() {
             >
               LINE
             </Button>
+            T
           </Stack>
         </Stack>
       ) : (
@@ -146,12 +169,12 @@ export default function Home() {
           >
             <Typography
               color="#6B4E31"
-              variant="h4"
+              variant="h3"
               sx={{
                 textAlign: "center",
                 height: "7%",
                 fontWeight: "bold",
-                fontFamily: "monospace",
+                fontFamily: "sans-serif",
               }}
             >
               Welcome Back!!
@@ -183,7 +206,7 @@ export default function Home() {
                 Google
               </Button>
               <Button
-                size="large"
+                size=""
                 variant="contained"
                 onClick={() =>
                   signIn("facebook", { callbackUrl: "/cafe/list" })
