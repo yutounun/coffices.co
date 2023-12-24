@@ -91,9 +91,8 @@ export async function POST(request: NextRequest) {
     );
     data.image = imageUrl;
 
-    await CafeModel.create(data);
-    const cafes = await CafeModel.find({});
-    return NextResponse.json(cafes);
+    const cafe = await CafeModel.create(data);
+    return NextResponse.json(cafe);
   } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "An unknown error occurred";
