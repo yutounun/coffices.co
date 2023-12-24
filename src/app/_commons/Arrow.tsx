@@ -23,7 +23,7 @@ const Arrow = ({
         transform: "translateY(-50%)",
         zIndex: 10,
         "&:hover": {
-          backgroundColor: hidden ? "white" : "#A9A9A9",
+          backgroundColor: hidden ? "#F7F1E5" : "#A9A9A9",
           transition: "background-color 0.3s",
         },
         // 左側の矢印の場合は左に、そうでない場合は右に配置
@@ -35,7 +35,7 @@ const Arrow = ({
           sx={{
             color: hidden ? "#F7F1E5" : "black",
             ":&hover": {
-              color: "white",
+              color: "#F7F1E5",
             },
           }}
         />
@@ -44,7 +44,7 @@ const Arrow = ({
           sx={{
             color: hidden ? "#F7F1E5" : "black",
             ":&hover": {
-              color: "white",
+              color: "#F7F1E5",
             },
           }}
         />
