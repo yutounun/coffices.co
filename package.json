@@ -19,6 +19,7 @@
     "@mui/lab": "^5.0.0-alpha.154",
     "@mui/material": "^5.14.18",
     "@mui/x-date-pickers": "^7.0.0-alpha.2",
+    "@tanstack/react-query-devtools": "^5.14.7",
     "@vercel/blob": "^0.15.1",
     "axios": "^1.6.2",
     "dayjs": "^1.11.10",
