@@ -1,5 +1,11 @@
 "use client";
-import React, { Suspense, useCallback, useEffect, useState } from "react";
+import React, {
+  Suspense,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import Loading from "../../../loading";
 import { useQuery } from "react-query";
 import { CafeI } from "types/cafes";
@@ -13,17 +19,20 @@ import StationSearch from "./StationSearch";
 import { useMediaQuery, useTheme } from "@mui/material";
 
 const ShopsList = () => {
-  const { stationName } = React.useContext(StationNameContext);
-  const [cafeList, setCafeList] = useState<CafeI[]>([]);
-  const { setStationName } = React.useContext(StationNameContext);
-  const { data, isLoading } = useQuery("cafes", getCafe);
+  const { cafeList, setCafeList } = useContext(CafeListContext);
+  // const { setCafeList, cafeList } = useContext(CafeListContext);
+  const { setStationName, stationName } = useContext(StationNameContext);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
-    if (data) {
-      setCafeList(data);
-    }
-  }, [data]);
+    getCafe().then((cafes) => {
+      setCafeList(cafes);
+      console.log("cafeList :", cafeList);
+      setIsLoading(false);
+    });
+  }, []);
 
   /**
    *  Find cafe in specific area
@@ -51,6 +60,12 @@ const ShopsList = () => {
     });
   }, [cafeList, stationName]);
 
+  /**
+   * Filter cafe
+   *
+   * @param filterParam station name
+   * @returns filtered cafe
+   * */
   function filterByStationName(filterParam?: string) {
     if (!filterParam) {
       // getCafeLocal();
@@ -60,62 +75,63 @@ const ShopsList = () => {
     filterParam ? setStationName(filterParam) : setStationName("");
   }
 
+  /**
+   * Sort cafe
+   *
+   * @return sorted cafe
+   * */
   const rankedList = useCallback(() => {
     return cafeList?.sort((a, b) => b.rate - a.rate);
   }, [cafeList]);
 
   return (
     <>
-      <CafeListContext.Provider value={{ cafeList, setCafeList }}>
-        <Suspense fallback={<Loading />}>
-          {isMobile && (
-            <StationSearch filterByStationName={filterByStationName} />
-          )}
-          {stationName ? (
-            <>
-              <CafeSearchList
-                area={stationName}
-                cafes={filteredCafes()}
-                isLoading={isLoading}
-              />
-            </>
-          ) : (
-            <>
-              <CafeRow
-                area={
-                  stationName ? stationName : "東京都の作業カフェランキング"
-                }
-                cafes={rankedList()}
-                isLoading={isLoading}
-              />
-              <CafeRow
-                area="目黒・代官山エリア"
-                cafes={cafeShopsInSpecificArea(["目黒駅", "代官山駅"])}
-                isLoading={isLoading}
-              />
-              <CafeRow
-                area="吉祥寺エリア"
-                cafes={cafeShopsInSpecificArea(["吉祥寺駅"])}
-                isLoading={isLoading}
-              />
-              <CafeRow
-                area="代々木エリア"
-                cafes={cafeShopsInSpecificArea([
-                  "代々木駅",
-                  "代々木上原駅",
-                  "代々木八幡駅",
-                ])}
-                isLoading={isLoading}
-              />
-              <CafeRow
-                area="渋谷エリア"
-                cafes={cafeShopsInSpecificArea(["神泉駅", "渋谷駅"])}
-                isLoading={isLoading}
-              />
-            </>
-          )}
-        </Suspense>
-      </CafeListContext.Provider>
+      <Suspense fallback={<Loading />}>
+        {isMobile && (
+          <StationSearch filterByStationName={filterByStationName} />
+        )}
+        {stationName ? (
+          <>
+            <CafeSearchList
+              area={stationName}
+              cafes={filteredCafes()}
+              isLoading={isLoading}
+            />
+          </>
+        ) : (
+          <>
+            <CafeRow
+              area={stationName ? stationName : "東京都の作業カフェランキング"}
+              cafes={rankedList()}
+              isLoading={isLoading}
+            />
+            <CafeRow
+              area="目黒・代官山エリア"
+              cafes={cafeShopsInSpecificArea(["目黒駅", "代官山駅"])}
+              isLoading={isLoading}
+            />
+            <CafeRow
+              area="吉祥寺エリア"
+              cafes={cafeShopsInSpecificArea(["吉祥寺駅"])}
+              isLoading={isLoading}
+            />
+            <CafeRow
+              area="代々木エリア"
+              cafes={cafeShopsInSpecificArea([
+                "代々木駅",
+                "代々木上原駅",
+                "代々木八幡駅",
+              ])}
+              isLoading={isLoading}
+            />
+            <CafeRow
+              area="渋谷エリア"
+              cafes={cafeShopsInSpecificArea(["神泉駅", "渋谷駅"])}
+              isLoading={isLoading}
+            />
+          </>
+        )}
+      </Suspense>
     </>
   );
 };

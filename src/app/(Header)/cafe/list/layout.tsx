@@ -6,7 +6,6 @@ import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { getUser } from "_utils/api";
 import meStore from "../../../../store/me";
-import { QueryClient, QueryClientProvider } from "react-query";
 import { StationNameContext } from "../../../../contexts/StationNameContext";
 
 export default function CafeListLayout({
@@ -24,16 +23,13 @@ export default function CafeListLayout({
       });
     }
   }, [session]);
-  const queryClient = new QueryClient();
   const [stationName, setStationName] = useState("");
 
   return (
     <Stack>
       <StationNameContext.Provider value={{ stationName, setStationName }}>
         <Header />
-        <QueryClientProvider client={queryClient}>
-          <Box sx={{ ml: { xs: "0", md: "4rem" }, mt: "2em" }}>{children}</Box>
-        </QueryClientProvider>
+        <Box sx={{ ml: { xs: "0", md: "4rem" }, mt: "2em" }}>{children}</Box>
       </StationNameContext.Provider>
     </Stack>
   );

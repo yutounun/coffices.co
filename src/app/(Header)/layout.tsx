@@ -10,6 +10,8 @@ import { StationNameContext } from "../../contexts/StationNameContext";
 import CafePostModal from "./cafe/_create/CafePostModal";
 import useCreateModalStore from "../../store/openCreateCafeModal";
 import { useRouter } from "next/navigation";
+import { CafeListContext } from "../../contexts/CafeListContext";
+import { CafeI } from "types/cafes";
 
 export default function CafeListLayout({
   children,
@@ -37,21 +39,24 @@ export default function CafeListLayout({
   }, [status]);
 
   const [stationName, setStationName] = useState("");
+  const [cafeList, setCafeList] = useState<CafeI[]>([]);
 
   return (
     <Stack>
-      <StationNameContext.Provider value={{ stationName, setStationName }}>
-        <Header />
-        <Box sx={{ width: "100%" }}>
-          <Box sx={{ mt: "3em" }}>{children}</Box>
-          {showsCreateModal && (
-            <CafePostModal
-              handleModalClose={closeCreateCafeModal}
-              showModal={showsCreateModal}
-            />
-          )}
-        </Box>
-      </StationNameContext.Provider>
+      <CafeListContext.Provider value={{ cafeList, setCafeList }}>
+        <StationNameContext.Provider value={{ stationName, setStationName }}>
+          <Header />
+          <Box sx={{ width: "100%" }}>
+            <Box sx={{ mt: "3em" }}>{children}</Box>
+            {showsCreateModal && (
+              <CafePostModal
+                handleModalClose={closeCreateCafeModal}
+                showModal={showsCreateModal}
+              />
+            )}
+          </Box>
+        </StationNameContext.Provider>
+      </CafeListContext.Provider>
     </Stack>
   );
 }

@@ -35,7 +35,7 @@ const CafeRow = ({ cafes, area, isLoading }: propTypes) => {
   };
 
   useEffect(() => {
-    if (cafes.length < 6) {
+    if (cafes?.length < 6) {
       setShowScroll(false);
     } else {
       setShowScroll(true);
@@ -56,7 +56,7 @@ const CafeRow = ({ cafes, area, isLoading }: propTypes) => {
         currentContainer.removeEventListener("scroll", handleScroll);
       }
     };
-  }, [cafes.length]);
+  }, [cafes?.length]);
   return (
     <>
       <Typography
@@ -98,8 +98,8 @@ const CafeRow = ({ cafes, area, isLoading }: propTypes) => {
         >
           {isLoading && <Loading />}
           {cafes &&
-            cafes.length > 0 &&
-            cafes.map((cafe) => <CafeCard key={cafe._id} cafe={cafe} />)}
+            cafes?.length > 0 &&
+            cafes?.map((cafe) => <CafeCard key={cafe._id} cafe={cafe} />)}
         </Stack>
         {!isMobile && (
           <Arrow
