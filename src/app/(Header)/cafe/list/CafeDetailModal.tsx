@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { CafeI } from "types/cafes";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -22,6 +22,7 @@ import CafeDetailModalOverview from "./CafeDetailModalOverview";
 import CafeDetailModalReviews from "./CafeDetailModalReviews";
 import CafePostReviewModal from "(Header)/cafe/_create/CafePostReviewModal";
 import meStore from "../../../../store/me";
+import { CafeListContext } from "../../../../contexts/CafeListContext";
 
 const modalStyle = {
   position: "absolute",
@@ -54,13 +55,17 @@ const CafeModal = ({
   const [openCafeEditModal, setOpenCafeEditModal] = useState(false);
   const [showsReviews, setShowsReviews] = useState(false);
   const [openCafeReviewModal, setOpenCafeReviewModal] = useState(false);
+  const { setCafeList } = useContext(CafeListContext);
 
   function handleEditClick() {
     setOpenCafeEditModal(true);
   }
 
   function handleDeleteClick() {
-    deleteCafe(cafe._id);
+    deleteCafe(cafe._id).then((res) => {
+      setCafeList(res);
+    });
+
     handleCafeDetailClose();
   }
 
