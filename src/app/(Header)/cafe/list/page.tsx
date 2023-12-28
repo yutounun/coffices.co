@@ -79,7 +79,9 @@ const ShopsList = () => {
    * @return sorted cafe
    * */
   const rankedList = useCallback(() => {
-    return cafeList?.sort((a, b) => b.rate - a.rate);
+    return cafeList.length > 1
+      ? cafeList?.sort((a, b) => b.rate - a.rate)
+      : cafeList;
   }, [cafeList]);
 
   return (
