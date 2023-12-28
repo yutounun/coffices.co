@@ -116,17 +116,12 @@ const ShopsList = () => {
               isLoading={isLoading}
             />
             <CafeRow
-              area="代々木エリア"
+              area="代々木上原エリア"
               cafes={cafeShopsInSpecificArea([
                 "代々木駅",
                 "代々木上原駅",
                 "代々木八幡駅",
               ])}
-              isLoading={isLoading}
-            />
-            <CafeRow
-              area="渋谷エリア"
-              cafes={cafeShopsInSpecificArea(["神泉駅", "渋谷駅"])}
               isLoading={isLoading}
             />
           </>
