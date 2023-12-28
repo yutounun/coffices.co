@@ -20,7 +20,6 @@ import { useMediaQuery, useTheme } from "@mui/material";
 
 const ShopsList = () => {
   const { cafeList, setCafeList } = useContext(CafeListContext);
-  // const { setCafeList, cafeList } = useContext(CafeListContext);
   const { setStationName, stationName } = useContext(StationNameContext);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -29,7 +28,6 @@ const ShopsList = () => {
   useEffect(() => {
     getCafe().then((cafes) => {
       setCafeList(cafes);
-      console.log("cafeList :", cafeList);
       setIsLoading(false);
     });
   }, []);
