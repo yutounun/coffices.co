@@ -14,6 +14,7 @@ import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import CoffeeImage from "_commons/CoffeeImage";
 import { NextImage } from "_commons/NextImage";
+import GoogleAdSense from "_commons/GoogleAdsense";
 
 export default function Home() {
   const theme = useTheme();
@@ -139,7 +140,6 @@ export default function Home() {
             >
               LINE
             </Button>
-            T
           </Stack>
         </Stack>
       ) : (
@@ -147,6 +147,11 @@ export default function Home() {
           direction="row"
           sx={{ height: "100vh", backgroundColor: "#F7F1E5" }}
         >
+          <GoogleAdSense
+            client={process.env.GOOGLE_ADSENSE_CLIENT_ID ?? ""}
+            slot={process.env.GOOGLE_ADSENSE_SLOT_ID ?? ""}
+            style={{ display: "block" }}
+          />
           <Stack
             sx={{
               width: "50%",

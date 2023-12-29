@@ -25,14 +25,6 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps) {
   return (
     <html lang="en">
-      <head>
-        <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1580241070744469"
-          crossOrigin="anonymous"
-          strategy="lazyOnload"
-        />
-      </head>
       <body style={{ backgroundColor: "#F7F1E5" }} className={notojp.className}>
         <GoogleAnalytics GA_MEASUREMENT_ID={process.env.GA_MEASUREMENT_ID} />
         <QueryClientProviderComponent>{children}</QueryClientProviderComponent>
