@@ -6,7 +6,6 @@ import QueryClientProviderComponent from "../contexts/QueryClientProviderCompone
 import GoogleAnalytics from "./(NoHeader)/_GoogleAnalytics";
 import GoogleConcent from "_commons/GoogleConcent";
 import Script from "next/script";
-import AdCode from "_commons/AdCode";
 
 type LayoutProps = {
   children: ReactNode;
@@ -33,22 +32,10 @@ export default function RootLayout({ children }: LayoutProps) {
           crossOrigin="anonymous"
           strategy="lazyOnload"
         />
-        <ins
-          className="adsbygoogle"
-          style={{ display: "inline-block", width: 728, height: 90 }}
-          data-ad-client="ca-pub-1234567890123456"
-          data-ad-slot={1234567890}
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: "(window.adsbygoogle = window.adsbygoogle || []).push({});",
-          }}
-        />
       </head>
       <body style={{ backgroundColor: "#F7F1E5" }} className={notojp.className}>
         <GoogleAnalytics GA_MEASUREMENT_ID={process.env.GA_MEASUREMENT_ID} />
         <QueryClientProviderComponent>{children}</QueryClientProviderComponent>
-        {/* <AdCode /> */}
         <GoogleConcent />
       </body>
     </html>

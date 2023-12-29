@@ -10,39 +10,36 @@ import { getLocalStorage, setLocalStorage } from "../../libs/storageHelper";
 import { useState, useEffect } from "react";
 
 export default function GoogleConcent({}) {
-  const [cookieConsent, setCookieConsent] = useState(false);
+  const [cookieConsent, setCookieConsent] = useState<boolean | null>(null);
 
   useEffect(() => {
     const storedCookieConsent = getLocalStorage("cookie_consent", null);
 
     setCookieConsent(storedCookieConsent);
-  }, [setCookieConsent]);
+  }, []);
 
-  useEffect(() => {
-    const permission = cookieConsent ? "granted" : "denied";
-
+  function setAnalytics(permission: boolean) {
     window.gtag("consent", "update", {
-      analytics_storage: permission,
+      analytics_storage: permission ? "granted" : "denied",
     });
 
-    setLocalStorage("cookie_consent", cookieConsent);
-  }, [cookieConsent]);
+    setLocalStorage("cookie_consent", permission);
+  }
 
   const agree = () => {
     setCookieConsent(true);
+    setAnalytics(true);
   };
 
   const disagree = () => {
     setCookieConsent(false);
+    setAnalytics(false);
   };
 
   return (
-    cookieConsent && (
-      <Dialog
-        open={true}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
+    cookieConsent === null && (
+      <Dialog open={true}>
+        cookieConsent: {cookieConsent}
         <DialogTitle id="alert-dialog-title">
           {"Use Google's location service?"}
         </DialogTitle>
