@@ -12,6 +12,7 @@ import useCreateModalStore from "../../store/openCreateCafeModal";
 import { useRouter } from "next/navigation";
 import { CafeListContext } from "../../contexts/CafeListContext";
 import { CafeI } from "types/cafes";
+import GoogleConcent from "_commons/GoogleConcent";
 
 export default function CafeListLayout({
   children,
@@ -40,6 +41,7 @@ export default function CafeListLayout({
 
   const [stationName, setStationName] = useState("");
   const [cafeList, setCafeList] = useState<CafeI[]>([]);
+  const [isConcentDialogOpened, setIsConcentDialogOpened] = useState(true);
 
   return (
     <Stack>
@@ -55,6 +57,10 @@ export default function CafeListLayout({
               />
             )}
           </Box>
+          <GoogleConcent
+            isConcentDialogOpened={isConcentDialogOpened}
+            setIsConcentDialogOpened={setIsConcentDialogOpened}
+          />
         </StationNameContext.Provider>
       </CafeListContext.Provider>
     </Stack>

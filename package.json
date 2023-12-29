@@ -22,6 +22,7 @@
     "@tanstack/react-query-devtools": "^5.14.7",
     "@vercel/blob": "^0.15.1",
     "axios": "^1.6.2",
+    "client-only": "^0.0.1",
     "dayjs": "^1.11.10",
     "moment": "^2.29.4",
     "mongodb": "^6.3.0",
@@ -37,6 +38,7 @@
   },
   "devDependencies": {
     "@hookform/devtools": "^4.3.1",
+    "@types/gtag.js": "^0.0.18",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
