@@ -4,6 +4,7 @@ import { Noto_Sans_JP } from "next/font/google";
 import { ReactNode } from "react";
 import QueryClientProviderComponent from "../contexts/QueryClientProviderComponent";
 import GoogleAnalytics from "./(NoHeader)/_GoogleAnalytics";
+import GoogleConcent from "_commons/GoogleConcent";
 
 type LayoutProps = {
   children: ReactNode;
@@ -26,6 +27,7 @@ export default function RootLayout({ children }: LayoutProps) {
       <body style={{ backgroundColor: "#F7F1E5" }} className={notojp.className}>
         <GoogleAnalytics GA_MEASUREMENT_ID={process.env.GA_MEASUREMENT_ID} />
         <QueryClientProviderComponent>{children}</QueryClientProviderComponent>
+        <GoogleConcent />
       </body>
     </html>
   );
