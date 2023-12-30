@@ -23,8 +23,13 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: LayoutProps) {
+  const src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.client}`;
+
   return (
     <html lang="en">
+      <head>
+        <script async src={src} crossOrigin="anonymous"></script>
+      </head>
       <body style={{ backgroundColor: "#F7F1E5" }} className={notojp.className}>
         <GoogleAnalytics GA_MEASUREMENT_ID={process.env.GA_MEASUREMENT_ID} />
         <QueryClientProviderComponent>{children}</QueryClientProviderComponent>
