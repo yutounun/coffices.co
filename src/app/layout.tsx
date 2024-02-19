@@ -5,7 +5,6 @@ import { ReactNode } from "react";
 import QueryClientProviderComponent from "../contexts/QueryClientProviderComponent";
 import GoogleAnalytics from "./(NoHeader)/_GoogleAnalytics";
 import GoogleConcent from "_commons/GoogleConcent";
-import Script from "next/script";
 
 type LayoutProps = {
   children: ReactNode;

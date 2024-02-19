@@ -9,7 +9,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { getLocalStorage, setLocalStorage } from "../../libs/storageHelper";
 import { useState, useEffect } from "react";
 
-export default function GoogleConcent({}) {
+export default function GoogleConcent() {
   const [cookieConsent, setCookieConsent] = useState<boolean | null>(null);
 
   useEffect(() => {
@@ -36,25 +36,23 @@ export default function GoogleConcent({}) {
     setAnalytics(false);
   };
 
-  return (
-    cookieConsent === null && (
-      <Dialog open={true}>
-        cookieConsent: {cookieConsent}
-        <DialogTitle id="alert-dialog-title">
-          {"Use Google's location service?"}
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            このサイトではCookieを利用します。
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={disagree}>同意しない</Button>
-          <Button onClick={agree} autoFocus>
-            同意
-          </Button>
-        </DialogActions>
-      </Dialog>
-    )
-  );
+  return cookieConsent === null ? (
+    <Dialog open={true}>
+      cookieConsent: {cookieConsent}
+      <DialogTitle id="alert-dialog-title">
+        {"Use Google's location service?"}
+      </DialogTitle>
+      <DialogContent>
+        <DialogContentText id="alert-dialog-description">
+          このサイトではCookieを利用します。
+        </DialogContentText>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={disagree}>同意しない</Button>
+        <Button onClick={agree} autoFocus>
+          同意
+        </Button>
+      </DialogActions>
+    </Dialog>
+  ) : null;
 }
