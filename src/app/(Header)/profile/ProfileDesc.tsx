@@ -56,9 +56,12 @@ const ProfileDesc = ({
         spacing={5}
       >
         <Stack direction="row" spacing={2}>
+          {/* UserName */}
           <Typography fontWeight="bold" variant="h4">
             {userInfo.name}
           </Typography>
+
+          {/* Admin Chip */}
           {me.isAdmin && (
             <Button
               color="warning"
@@ -70,9 +73,11 @@ const ProfileDesc = ({
           )}
         </Stack>
         <Stack direction="row" spacing={1}>
+          {/* User Detail */}
           <Typography variant="subtitle1">{userInfo.bio}</Typography>
           <EditIcon fontSize="small" onClick={() => setShowModal(true)} />
         </Stack>
+        {/* Icons */}
         <Stack
           direction="row"
           spacing={4}
