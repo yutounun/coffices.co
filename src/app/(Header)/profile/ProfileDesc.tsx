@@ -21,6 +21,7 @@ const ProfileDesc = ({
   const [isProfileComplete, setIsProfileComplete] = useState(false);
 
   useEffect(() => {
+    if (!me) return;
     if (me.bio && me.github && me.twitter && me.linkedIn && me.homepage) {
       setIsProfileComplete(true);
     }
