@@ -85,6 +85,7 @@ const CafeModal = ({ showModal, handleModalClose }: propTypes) => {
           )}
         </Stack>
 
+        {/* input form */}
         <CafeInputForm handleCafePostSubmit={handleCafePostSubmit} />
       </Box>
     </Modal>
