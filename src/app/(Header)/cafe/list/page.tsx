@@ -7,8 +7,7 @@ import React, {
   useState,
 } from "react";
 import Loading from "../../../loading";
-import { useQuery } from "react-query";
-import { CafeI } from "types/cafes";
+import useGetCafe from "../../../_custom/useGetCafe";
 import { filterCafe, getCafe } from "_utils/api";
 import "../../../styles/cafe-list.scss";
 import CafeRow from "./CafeRow";
@@ -23,14 +22,11 @@ const ShopsList = () => {
   const { setStationName, stationName } = useContext(StationNameContext);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const [isLoading, setIsLoading] = useState(true);
+  const { cafes, isLoading } = useGetCafe();
 
   useEffect(() => {
-    getCafe().then((cafes) => {
-      setCafeList(cafes);
-      setIsLoading(false);
-    });
-  }, []);
+    setCafeList(cafes);
+  }, [cafes]);
 
   /**
    *  Find cafe in specific area

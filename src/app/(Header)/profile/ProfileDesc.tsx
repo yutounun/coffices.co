@@ -18,6 +18,7 @@ const ProfileDesc = ({
   const { data: session } = useSession();
   const { me } = meStore();
 
+  // true: if all fields on a profile are filled
   const [isProfileComplete, setIsProfileComplete] = useState(false);
 
   useEffect(() => {
