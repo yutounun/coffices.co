@@ -11,6 +11,7 @@ const Profile = () => {
   const [showModal, setShowModal] = useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
   return (
     <Stack
       sx={{
