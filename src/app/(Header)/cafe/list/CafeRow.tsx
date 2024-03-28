@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { CafeI } from "types/cafes";
 import { Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import CafeCard from "./CafeCard";
@@ -19,44 +19,41 @@ const CafeRow = ({ cafes, area, isLoading }: propTypes) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
-  const checkScrollPosition = () => {
+  /**
+   * - Check if arrows should be shown
+   */
+  const checkScrollPosition = useCallback(() => {
     if (containerRef.current) {
       const { scrollLeft, scrollWidth, clientWidth } = containerRef.current;
       setIsScrollLeft(scrollLeft > 0);
       setIsScrollRight(scrollLeft < scrollWidth - clientWidth - 1);
     }
-  };
+  }, []);
 
-  const scroll = (scrollOffset: number) => {
+  /**
+   * Scroll left or right
+   * @param scrollOffset
+   *   -1800: scroll left
+   *    1800: scroll right
+   */
+  const scroll = useCallback((scrollOffset: number) => {
     if (containerRef.current) {
       containerRef.current.scrollLeft += scrollOffset;
       checkScrollPosition();
     }
-  };
+  }, []);
 
   useEffect(() => {
-    if (cafes?.length < 6) {
-      setShowScroll(false);
-    } else {
-      setShowScroll(true);
-    }
-    checkScrollPosition(); // 初期位置をチェック
+    checkScrollPosition();
+    cafes?.length < 6 ? setShowScroll(false) : setShowScroll(true);
     setIsScrollRight(true);
-    const handleScroll = () => {
-      checkScrollPosition();
-    };
 
     const currentContainer = containerRef.current;
-    if (currentContainer) {
-      currentContainer.addEventListener("scroll", handleScroll);
-    }
-
-    return () => {
-      if (currentContainer) {
-        currentContainer.removeEventListener("scroll", handleScroll);
-      }
-    };
+    currentContainer?.addEventListener("scroll", checkScrollPosition);
+    return () =>
+      currentContainer?.removeEventListener("scroll", checkScrollPosition);
   }, [cafes?.length]);
+
   return (
     <>
       <Typography
@@ -83,6 +80,7 @@ const CafeRow = ({ cafes, area, isLoading }: propTypes) => {
           alignItems: "center",
         }}
       >
+        {/* left arrow */}
         {!isMobile && (
           <Arrow
             hidden={!isScrollLeft || !showScroll || isMobile}
@@ -90,17 +88,38 @@ const CafeRow = ({ cafes, area, isLoading }: propTypes) => {
             onClick={() => scroll(-1800)}
           />
         )}
+
         <Stack
           ref={containerRef}
           direction="row"
           spacing={3}
           className="row__cards"
         >
-          {isLoading && <Loading />}
-          {cafes &&
-            cafes?.length > 0 &&
-            cafes?.map((cafe) => <CafeCard key={cafe._id} cafe={cafe} />)}
+          {isLoading ? (
+            <Loading />
+          ) : (
+            cafes?.map((cafe) => <CafeCard key={cafe._id} cafe={cafe} />)
+          )}
+
+          {!isLoading && cafes?.length === 0 && (
+            <Typography
+              sx={{
+                m: "1em",
+                fontSize: { xs: "1.5em", md: "2em" },
+                fontFamily: "monospace",
+                fontWeight: 700,
+                textAlign: "center",
+                letterSpacing: ".3rem",
+                color: "inherit",
+                textDecoration: "none",
+              }}
+            >
+              Not Found
+            </Typography>
+          )}
         </Stack>
+
+        {/* right arrow */}
         {!isMobile && (
           <Arrow
             hidden={!isScrollRight || !showScroll}
