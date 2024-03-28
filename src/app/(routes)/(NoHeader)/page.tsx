@@ -30,8 +30,6 @@ export default function Home() {
           sx={{
             width: "100%",
             height: "100%", // Changed from 100vh to 100%
-            py: "2em",
-            mt: 20,
             justifyContent: "center",
           }}
           spacing={4}
@@ -50,21 +48,56 @@ export default function Home() {
           >
             <NextImage src="/coffee-shop.jpg" alt="coffee-beans" />
           </Stack>
-          <Typography
-            variant="h4"
+
+          {/* Content */}
+          <Stack
             sx={{
-              fontWeight: "bold",
-              fontFamily: "sans-serif",
-              height: "3em",
-              zIndex: 10,
-              color: "white",
-              display: "flex",
+              py: 10,
+              alignItems: "center",
               justifyContent: "center",
-              mb: 3,
             }}
+            spacing={2}
           >
-            Welcome Back
-          </Typography>
+            <Typography
+              variant="h5"
+              sx={{
+                fontWeight: "bold",
+                fontFamily: "sans-serif",
+                zIndex: 10,
+                color: "white",
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              ノマド・リモートワーカー
+            </Typography>
+            <Typography
+              variant="h5"
+              sx={{
+                fontFamily: "sans-serif",
+                zIndex: 10,
+                color: "white",
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              のための
+            </Typography>
+            <Typography
+              variant="h5"
+              sx={{
+                fontWeight: "bold",
+                fontFamily: "sans-serif",
+                zIndex: 10,
+                color: "white",
+                display: "flex",
+                justifyContent: "center",
+                mb: 3,
+              }}
+            >
+              情報交換プラットフォーム
+            </Typography>
+          </Stack>
           <Stack
             spacing={3}
             sx={{
@@ -147,6 +180,7 @@ export default function Home() {
           </Stack>
         </Stack>
       ) : (
+        // PC
         <Stack
           direction="row"
           sx={{
