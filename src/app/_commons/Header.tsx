@@ -20,7 +20,7 @@ import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
 import StationSearch from "(Header)/cafe/list/StationSearch";
 import { CafeListContext } from "../../contexts/CafeListContext";
-import { filterCafe } from "_utils/api";
+import { filterCafe, getCafe } from "_utils/api";
 import { StationNameContext } from "../../contexts/StationNameContext";
 
 const pages = ["一覧", "作成", "ログアウト"];
@@ -62,11 +62,13 @@ function ResponsiveAppBar() {
     signOut({ callbackUrl: "/" });
   };
 
-  function filterByStationName(filterParam?: string) {
-    if (!filterParam) {
-      // getCafeLocal();
+  async function filterByStationName(filterParam?: string) {
+    if (filterParam) {
+      const filteredCafe = await filterCafe(filterParam);
+      setCafeList(filteredCafe);
     } else {
-      filterCafe(filterParam).then((json) => setCafeList(json));
+      const cafeList = await getCafe();
+      setCafeList(cafeList);
     }
     filterParam ? setStationName(filterParam) : setStationName("");
   }
