@@ -231,7 +231,7 @@ export default function Home() {
               </Typography>
             </Stack>
             <Stack
-              spacing={6}
+              spacing={4}
               sx={{
                 alignItems: "center",
                 justifyContent: "center",
