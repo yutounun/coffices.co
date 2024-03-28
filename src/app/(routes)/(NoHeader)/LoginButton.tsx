@@ -15,7 +15,7 @@ const LoginButton = ({ text, iconComponent, signInUrl }: LoginButtonProps) => {
       variant="contained"
       onClick={() => signIn(signInUrl, { callbackUrl: "/cafe/list" })}
       sx={{
-        width: "40%",
+        width: "50%",
         borderRadius: "50px",
         mx: "auto",
         fontWeight: "bold",

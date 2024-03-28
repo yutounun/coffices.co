@@ -188,7 +188,7 @@ export default function Home() {
           }}
         >
           <Stack sx={{ justifyContent: "center" }}>
-            <Image src={UndrawBarista} alt={""} width={400} height={400} />
+            <Image src={UndrawBarista} alt={""} width={300} height={300} />
           </Stack>
 
           {/* <GoogleAdSense
@@ -196,7 +196,7 @@ export default function Home() {
             slot={process.env.GOOGLE_ADSENSE_SLOT_ID ?? ""}
             style={{ display: "block" }}
           /> */}
-          <Box sx={{ my: 20 }}>
+          <Box sx={{ my: "5%" }}>
             <Stack
               sx={{
                 width: "100%",
@@ -206,15 +206,15 @@ export default function Home() {
               }}
               spacing={3}
             >
-              <Typography variant="h3" sx={{ fontWeight: "bold" }}>
-                ノマドワーカー と リモートワーカー
-              </Typography>
               <Stack
-                direction="row"
                 sx={{ textAlign: "center", justifyContent: "center" }}
+                spacing={2}
               >
-                <Typography variant="h3">のための</Typography>
-                <Typography variant="h3" sx={{ fontWeight: "bold" }}>
+                <Typography variant="h4" sx={{ fontWeight: "bold" }}>
+                  ノマドワーカー と リモートワーカー
+                </Typography>
+                <Typography variant="h4">のための</Typography>
+                <Typography variant="h4" sx={{ fontWeight: "bold" }}>
                   情報交換プラットフォーム
                 </Typography>
               </Stack>
@@ -260,7 +260,7 @@ export default function Home() {
             </Stack>
           </Box>
           <Stack sx={{ justifyContent: "center" }}>
-            <Image src={UndrawDigitalNomad} alt={""} width={500} height={500} />
+            <Image src={UndrawDigitalNomad} alt={""} width={400} height={400} />
           </Stack>
         </Stack>
       )}
