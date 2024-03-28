@@ -11,6 +11,15 @@ interface propTypes {
   isLoading?: boolean;
 }
 
+enum maxCafeCount {
+  desktop = 6,
+}
+
+enum scrollOffset {
+  left = -1800,
+  right = 1800,
+}
+
 const CafeRow = ({ cafes, area, isLoading }: propTypes) => {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const [isScrollLeft, setIsScrollLeft] = useState(false);
@@ -45,7 +54,9 @@ const CafeRow = ({ cafes, area, isLoading }: propTypes) => {
 
   useEffect(() => {
     checkScrollPosition();
-    cafes?.length < 6 ? setShowScroll(false) : setShowScroll(true);
+    cafes?.length < maxCafeCount.desktop
+      ? setShowScroll(false)
+      : setShowScroll(true);
     setIsScrollRight(true);
 
     const currentContainer = containerRef.current;
@@ -85,7 +96,7 @@ const CafeRow = ({ cafes, area, isLoading }: propTypes) => {
           <Arrow
             hidden={!isScrollLeft || !showScroll || isMobile}
             direction="left"
-            onClick={() => scroll(-1800)}
+            onClick={() => scroll(scrollOffset.left)}
           />
         )}
 
@@ -124,7 +135,7 @@ const CafeRow = ({ cafes, area, isLoading }: propTypes) => {
           <Arrow
             hidden={!isScrollRight || !showScroll}
             direction="right"
-            onClick={() => scroll(1800)}
+            onClick={() => scroll(scrollOffset.right)}
           />
         )}
       </Stack>
