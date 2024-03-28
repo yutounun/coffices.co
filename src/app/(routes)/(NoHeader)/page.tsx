@@ -14,9 +14,7 @@ import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import CoffeeImage from "_commons/CoffeeImage";
 import { NextImage } from "_commons/NextImage";
-import GoogleAdSense from "_commons/GoogleAdsense";
 import LoginButton from "./LoginButton";
 import Image from "../../../../node_modules/next/image";
 
