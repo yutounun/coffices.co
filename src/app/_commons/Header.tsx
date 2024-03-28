@@ -23,7 +23,7 @@ import { CafeListContext } from "../../contexts/CafeListContext";
 import { filterCafe, getCafe } from "_utils/api";
 import { StationNameContext } from "../../contexts/StationNameContext";
 
-const pages = ["一覧", "作成", "ログアウト"];
+const pages = ["一覧", "投稿", "ログアウト"];
 
 function ResponsiveAppBar() {
   const { setCafeList } = React.useContext(CafeListContext);
