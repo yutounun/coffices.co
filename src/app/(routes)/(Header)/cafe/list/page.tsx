@@ -6,14 +6,14 @@ import React, {
   useEffect,
   useState,
 } from "react";
-import Loading from "../../../loading";
-import useGetCafe from "../../../_custom/useGetCafe";
+import Loading from "../../../../loading";
+import useGetCafe from "../../../../_custom/useGetCafe";
 import { filterCafe, getCafe } from "_utils/api";
-import "../../../styles/cafe-list.scss";
+import "../../../../_styles/cafe-list.scss";
 import CafeRow from "./CafeRow";
-import { CafeListContext } from "../../../../contexts/CafeListContext";
+import { CafeListContext } from "../../../../../contexts/CafeListContext";
 import CafeSearchList from "./CafeSearchList";
-import { StationNameContext } from "../../../../contexts/StationNameContext";
+import { StationNameContext } from "../../../../../contexts/StationNameContext";
 import StationSearch from "./StationSearch";
 import { useMediaQuery, useTheme } from "@mui/material";
 

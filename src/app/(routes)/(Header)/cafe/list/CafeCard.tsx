@@ -1,8 +1,8 @@
 "use client";
 import React, { useState } from "react";
-import "../../../styles/cafe-list.scss";
+import "../../../../_styles/cafe-list.scss";
 import { Box, Stack } from "@mui/material";
-import { CafeI } from "types/cafes";
+import { CafeI } from "_types/cafes";
 import CafeDescription from "./CafeDescription";
 import { NextImage } from "_commons/NextImage";
 import CafeDetailModal from "./CafeDetailModal";

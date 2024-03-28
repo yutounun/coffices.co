@@ -11,9 +11,9 @@ import {
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import CafeInputForm from "./CafeInputFormPage";
 import { postCafe } from "_utils/api";
-import { CafePostRequestI } from "types/cafes";
+import { CafePostRequestI } from "_types/cafes";
 import { extractHourMinute } from "_utils/commonFn";
-import { CafeListContext } from "../../../../contexts/CafeListContext";
+import { CafeListContext } from "../../../../../contexts/CafeListContext";
 
 interface propTypes {
   showModal: boolean;

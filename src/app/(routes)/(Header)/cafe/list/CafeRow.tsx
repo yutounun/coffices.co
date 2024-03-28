@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { CafeI } from "types/cafes";
+import { CafeI } from "_types/cafes";
 import { Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import CafeCard from "./CafeCard";
-import Loading from "../../../loading";
-import Arrow from "../../../_commons/Arrow";
+import Loading from "../../../../loading";
+import Arrow from "../../../../_commons/Arrow";
 
 interface propTypes {
   cafes: CafeI[];

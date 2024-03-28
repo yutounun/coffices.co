@@ -1,6 +1,6 @@
 import React from "react";
 import { Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
-import { CafeI } from "types/cafes";
+import { CafeI } from "_types/cafes";
 import Stars from "_commons/Stars";
 
 interface PropTypes {

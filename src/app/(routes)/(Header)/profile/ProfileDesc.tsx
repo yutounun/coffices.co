@@ -7,7 +7,7 @@ import LinkIcon from "@mui/icons-material/Link";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
-import meStore from "../../../store/me";
+import meStore from "../../../../store/me";
 import EditIcon from "@mui/icons-material/Edit";
 
 const ProfileDesc = ({

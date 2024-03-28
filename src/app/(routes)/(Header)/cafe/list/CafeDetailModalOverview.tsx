@@ -1,5 +1,5 @@
 import React from "react";
-import { CafeI } from "types/cafes";
+import { CafeI } from "_types/cafes";
 import { Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import TrainIcon from "@mui/icons-material/Train";
 import WifiIcon from "@mui/icons-material/Wifi";

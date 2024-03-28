@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { CafeI } from "types/cafes";
+import { CafeI } from "_types/cafes";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import CafeEditModal from "../_edit/CafeEditModal";
@@ -20,9 +20,9 @@ import { NextImage } from "_commons/NextImage";
 import { deleteCafe } from "_utils/api";
 import CafeDetailModalOverview from "./CafeDetailModalOverview";
 import CafeDetailModalReviews from "./CafeDetailModalReviews";
-import CafePostReviewModal from "(Header)/cafe/_create/CafePostReviewModal";
-import meStore from "../../../../store/me";
-import { CafeListContext } from "../../../../contexts/CafeListContext";
+import CafePostReviewModal from "(routes)/(Header)/cafe/_create/CafePostReviewModal";
+import meStore from "../../../../../store/me";
+import { CafeListContext } from "../../../../../contexts/CafeListContext";
 
 const modalStyle = {
   position: "absolute",

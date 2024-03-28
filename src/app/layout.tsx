@@ -3,7 +3,7 @@ import "./globals.css";
 import { Noto_Sans_JP } from "next/font/google";
 import { ReactNode } from "react";
 import QueryClientProviderComponent from "../contexts/QueryClientProviderComponent";
-import GoogleAnalytics from "./(NoHeader)/_GoogleAnalytics";
+import GoogleAnalytics from "./(routes)/(NoHeader)/_GoogleAnalytics";
 import GoogleConcent from "_commons/GoogleConcent";
 
 type LayoutProps = {

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { CafeI } from "types/cafes";
+import { CafeI } from "_types/cafes";
 import { NextRequest } from "../../../../node_modules/next/server";
 import connectDB from "../../../libs/connectDB";
 import { CafeModel } from "../../../libs/models/CafeModel";

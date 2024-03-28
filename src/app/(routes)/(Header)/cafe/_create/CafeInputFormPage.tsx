@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import Stations from "../../../json/stations.json";
-import Areas from "../../../json/areas.json";
+import Stations from "../../../../_json/stations.json";
+import Areas from "../../../../_json/areas.json";
 import { useForm, Controller, FieldValues } from "react-hook-form";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";

@@ -5,13 +5,13 @@ import { Box, Stack } from "@mui/material";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { getUser } from "_utils/api";
-import meStore from "../../store/me";
-import { StationNameContext } from "../../contexts/StationNameContext";
+import meStore from "../../../store/me";
+import { StationNameContext } from "../../../contexts/StationNameContext";
 import CafePostModal from "./cafe/_create/CafePostModal";
-import useCreateModalStore from "../../store/openCreateCafeModal";
+import useCreateModalStore from "../../../store/openCreateCafeModal";
 import { useRouter } from "next/navigation";
-import { CafeListContext } from "../../contexts/CafeListContext";
-import { CafeI } from "types/cafes";
+import { CafeListContext } from "../../../contexts/CafeListContext";
+import { CafeI } from "_types/cafes";
 
 export default function CafeListLayout({
   children,
