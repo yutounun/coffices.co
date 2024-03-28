@@ -12,7 +12,7 @@ interface propTypes {
 }
 
 enum maxCafeCount {
-  desktop = 6,
+  desktop = 4,
 }
 
 enum scrollOffset {
@@ -23,8 +23,8 @@ enum scrollOffset {
 const CafeRow = ({ cafes, area, isLoading }: propTypes) => {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const [isScrollLeft, setIsScrollLeft] = useState(false);
-  const [isScrollRight, setIsScrollRight] = useState(true);
-  const [showScroll, setShowScroll] = useState(true);
+  const [isScrollRight, setIsScrollRight] = useState(false);
+  const [showScroll, setShowScroll] = useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 

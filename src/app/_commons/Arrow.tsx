@@ -37,6 +37,7 @@ const Arrow = ({
             ":&hover": {
               color: "#F7F1E5",
             },
+            ml: 0.5,
           }}
         />
       ) : (
