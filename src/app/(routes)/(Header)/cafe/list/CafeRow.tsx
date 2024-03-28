@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { CafeI } from "_types/cafes";
 import { Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
-import CafeCard from "./CafeCard";
+import CafeCard from "(routes)/(Header)/cafe/list/CafeCard";
 import Loading from "loading";
 import Arrow from "_commons/Arrow";
 
@@ -82,63 +82,62 @@ const CafeRow = ({ cafes, area, isLoading }: propTypes) => {
         {area}
       </Typography>
 
-      <Stack
-        direction="row"
-        spacing={3}
-        sx={{
-          mx: { xs: 2.5, md: "0" },
-          height: { xs: "19em", md: "30em" },
-          alignItems: "center",
-        }}
-      >
-        {/* left arrow */}
-        {!isMobile && (
-          <Arrow
-            hidden={!isScrollLeft || !showScroll || isMobile}
-            direction="left"
-            onClick={() => scroll(scrollOffset.left)}
-          />
-        )}
-
+      {!isLoading && cafes?.length === 0 ? (
+        <Typography
+          sx={{
+            m: "1em",
+            fontSize: { xs: "1em", md: "1.5em" },
+            fontFamily: "monospace",
+            textAlign: "center",
+            letterSpacing: ".3rem",
+            color: "#666666",
+            textDecoration: "none",
+          }}
+        >
+          このエリアにはカフェが登録されていません
+        </Typography>
+      ) : (
         <Stack
-          ref={containerRef}
           direction="row"
           spacing={3}
-          className="row__cards"
+          sx={{
+            mx: { xs: 2.5, md: "0" },
+            height: { xs: "19em", md: "30em" },
+            alignItems: "center",
+          }}
         >
-          {isLoading ? (
-            <Loading />
-          ) : (
-            cafes?.map((cafe) => <CafeCard key={cafe._id} cafe={cafe} />)
+          {/* left arrow */}
+          {!isMobile && (
+            <Arrow
+              hidden={!isScrollLeft || !showScroll || isMobile}
+              direction="left"
+              onClick={() => scroll(scrollOffset.left)}
+            />
           )}
 
-          {!isLoading && cafes?.length === 0 && (
-            <Typography
-              sx={{
-                m: "1em",
-                fontSize: { xs: "1.5em", md: "2em" },
-                fontFamily: "monospace",
-                fontWeight: 700,
-                textAlign: "center",
-                letterSpacing: ".3rem",
-                color: "inherit",
-                textDecoration: "none",
-              }}
-            >
-              Not Found
-            </Typography>
+          <Stack
+            ref={containerRef}
+            direction="row"
+            spacing={3}
+            className="row__cards"
+          >
+            {isLoading ? (
+              <Loading />
+            ) : (
+              cafes?.map((cafe) => <CafeCard key={cafe._id} cafe={cafe} />)
+            )}
+          </Stack>
+
+          {/* right arrow */}
+          {!isMobile && (
+            <Arrow
+              hidden={!isScrollRight || !showScroll}
+              direction="right"
+              onClick={() => scroll(scrollOffset.right)}
+            />
           )}
         </Stack>
-
-        {/* right arrow */}
-        {!isMobile && (
-          <Arrow
-            hidden={!isScrollRight || !showScroll}
-            direction="right"
-            onClick={() => scroll(scrollOffset.right)}
-          />
-        )}
-      </Stack>
+      )}
     </>
   );
 };

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import "_styles/cafe-list.scss";
 import { Box, Stack } from "@mui/material";
 import { CafeI } from "_types/cafes";
-import CafeDescription from "./CafeDescription";
+import CafeDescription from "(routes)/(Header)/cafe/list/CafeDescription";
 import { NextImage } from "_commons/NextImage";
 import CafeDetailModal from "./CafeDetailModal";
 import Card from "@mui/material/Card";
@@ -15,9 +15,16 @@ interface propTypes {
 const CafeCard = ({ cafe }: propTypes) => {
   const [showCafeDetail, setShowCafeDetail] = useState(false);
 
+  /**
+   * open cafe detail
+   */
   function handleCafeCardClick() {
     setShowCafeDetail(true);
   }
+
+  /**
+   * close cafe detail
+   */
   function handleCafeDetailClose() {
     setShowCafeDetail(false);
   }
@@ -33,8 +40,9 @@ const CafeCard = ({ cafe }: propTypes) => {
           overflow: "visible",
           height: { xs: "13em", md: "360px" },
           "&:hover": {
-            scale: "1.07",
+            scale: "1.1",
             transition: "all 0.5s ease",
+            cursor: "pointer",
           },
         }}
         onClick={handleCafeCardClick}
