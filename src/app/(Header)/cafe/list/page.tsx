@@ -17,6 +17,25 @@ import { StationNameContext } from "../../../../contexts/StationNameContext";
 import StationSearch from "./StationSearch";
 import { useMediaQuery, useTheme } from "@mui/material";
 
+const cafeInfo = [
+  {
+    area: "中目黒・代官山・恵比寿エリア",
+    stations: ["中目黒駅", "代官山駅", "恵比寿駅"],
+  },
+  {
+    area: "代々木上原エリア",
+    stations: ["代々木駅", "代々木上原駅", "代々木八幡駅"],
+  },
+  {
+    area: "表参道エリア",
+    stations: ["外苑前駅", "表参道駅", "原宿駅", "青山一丁目駅"],
+  },
+  {
+    area: "吉祥寺エリア",
+    stations: ["吉祥寺駅", "三鷹駅"],
+  },
+];
+
 const ShopsList = () => {
   const { cafeList, setCafeList } = useContext(CafeListContext);
   const { setStationName, stationName } = useContext(StationNameContext);
@@ -60,12 +79,12 @@ const ShopsList = () => {
    * @param filterParam station name
    * @returns filtered cafe
    * */
-  function filterByStationName(filterParam?: string) {
-    if (!filterParam) {
-      // getCafeLocal();
-    } else {
-      filterCafe(filterParam).then((json) => setCafeList(json));
+  async function filterByStationName(filterParam?: string) {
+    if (filterParam) {
+      const filteredCafe = await filterCafe(filterParam);
+      setCafeList(filteredCafe);
     }
+
     filterParam ? setStationName(filterParam) : setStationName("");
   }
 
@@ -87,13 +106,11 @@ const ShopsList = () => {
           <StationSearch filterByStationName={filterByStationName} />
         )}
         {stationName ? (
-          <>
-            <CafeSearchList
-              area={stationName}
-              cafes={filteredCafes()}
-              isLoading={isLoading}
-            />
-          </>
+          <CafeSearchList
+            area={stationName}
+            cafes={filteredCafes()}
+            isLoading={isLoading}
+          />
         ) : (
           <>
             <CafeRow
@@ -101,39 +118,14 @@ const ShopsList = () => {
               cafes={rankedList()}
               isLoading={isLoading}
             />
-            <CafeRow
-              area="中目黒・代官山・恵比寿エリア"
-              cafes={cafeShopsInSpecificArea([
-                "中目黒駅",
-                "代官山駅",
-                "恵比寿駅",
-              ])}
-              isLoading={isLoading}
-            />
-            <CafeRow
-              area="代々木上原エリア"
-              cafes={cafeShopsInSpecificArea([
-                "代々木駅",
-                "代々木上原駅",
-                "代々木八幡駅",
-              ])}
-              isLoading={isLoading}
-            />
-            <CafeRow
-              area="表参道エリア"
-              cafes={cafeShopsInSpecificArea([
-                "外苑前駅",
-                "表参道駅",
-                "原宿駅",
-                "青山一丁目駅",
-              ])}
-              isLoading={isLoading}
-            />
-            <CafeRow
-              area="吉祥寺エリア"
-              cafes={cafeShopsInSpecificArea(["吉祥寺駅", "三鷹駅"])}
-              isLoading={isLoading}
-            />
+            {cafeInfo.map(({ area, stations }) => (
+              <CafeRow
+                key={area}
+                area={area}
+                cafes={cafeShopsInSpecificArea(stations)}
+                isLoading={isLoading}
+              />
+            ))}
           </>
         )}
       </Suspense>
