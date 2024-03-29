@@ -10,7 +10,7 @@ import Card from "@mui/material/Card";
 
 interface propTypes {
   cafe: CafeI;
-  rank: number;
+  rank?: number;
   isRanking?: boolean;
 }
 
