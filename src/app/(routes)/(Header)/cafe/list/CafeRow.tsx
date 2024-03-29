@@ -20,6 +20,14 @@ enum scrollOffset {
   right = 1800,
 }
 
+const baseTypeStyle = {
+  m: "1em",
+  textDecoration: "none",
+  fontFamily: "monospace",
+  fontWeight: 700,
+  letterSpacing: ".3rem",
+};
+
 const CafeRow = ({ cafes, area, isLoading }: propTypes) => {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const [isScrollLeft, setIsScrollLeft] = useState(false);
@@ -29,7 +37,7 @@ const CafeRow = ({ cafes, area, isLoading }: propTypes) => {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   /**
-   * - Check if arrows should be shown
+   * - Check if arrows should be shown by checking the current position
    */
   const checkScrollPosition = useCallback(() => {
     if (containerRef.current) {
@@ -47,7 +55,11 @@ const CafeRow = ({ cafes, area, isLoading }: propTypes) => {
    */
   const scroll = useCallback((scrollOffset: number) => {
     if (containerRef.current) {
-      containerRef.current.scrollLeft += scrollOffset;
+      // TODO: Should be smooth movement
+      containerRef.current.scrollBy({
+        left: scrollOffset,
+        behavior: "smooth",
+      });
       checkScrollPosition();
     }
   }, []);
@@ -70,13 +82,9 @@ const CafeRow = ({ cafes, area, isLoading }: propTypes) => {
       <Typography
         variant="h5"
         sx={{
-          m: "1em",
-          fontSize: { xs: "1.5em", md: "2em" },
-          fontFamily: "monospace",
-          fontWeight: 700,
-          letterSpacing: ".3rem",
+          ...baseTypeStyle,
           color: "inherit",
-          textDecoration: "none",
+          fontSize: { xs: "1.5em", md: "2em" },
         }}
       >
         {area}
@@ -85,13 +93,10 @@ const CafeRow = ({ cafes, area, isLoading }: propTypes) => {
       {!isLoading && cafes?.length === 0 ? (
         <Typography
           sx={{
-            m: "1em",
+            ...baseTypeStyle,
             fontSize: { xs: "1em", md: "1.5em" },
-            fontFamily: "monospace",
             textAlign: "center",
-            letterSpacing: ".3rem",
             color: "#666666",
-            textDecoration: "none",
           }}
         >
           このエリアにはカフェが登録されていません

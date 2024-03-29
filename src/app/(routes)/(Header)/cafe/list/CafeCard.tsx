@@ -44,6 +44,7 @@ const CafeCard = ({ cafe }: propTypes) => {
             transition: "all 0.5s ease",
             cursor: "pointer",
           },
+          borderRadius: "20px",
         }}
         onClick={handleCafeCardClick}
       >
