@@ -18,6 +18,19 @@ import { NextImage } from "_commons/NextImage";
 import LoginButton from "./LoginButton";
 import Image from "../../../../node_modules/next/image";
 
+const titleStyle = {
+  fontFamily: "sans-serif",
+  zIndex: 10,
+  color: "white",
+  display: "flex",
+  justifyContent: "center",
+};
+
+const boldTitleStyle = {
+  ...titleStyle,
+  fontWeight: "bold",
+};
+
 export default function Home() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -27,7 +40,7 @@ export default function Home() {
         <Stack
           sx={{
             width: "100%",
-            height: "100%", // Changed from 100vh to 100%
+            height: "100%",
             justifyContent: "center",
           }}
           spacing={4}
@@ -56,43 +69,13 @@ export default function Home() {
             }}
             spacing={2}
           >
-            <Typography
-              variant="h5"
-              sx={{
-                fontWeight: "bold",
-                fontFamily: "sans-serif",
-                zIndex: 10,
-                color: "white",
-                display: "flex",
-                justifyContent: "center",
-              }}
-            >
+            <Typography variant="h5" sx={boldTitleStyle}>
               ノマド・リモートワーカー
             </Typography>
-            <Typography
-              variant="h5"
-              sx={{
-                fontFamily: "sans-serif",
-                zIndex: 10,
-                color: "white",
-                display: "flex",
-                justifyContent: "center",
-              }}
-            >
+            <Typography variant="h5" sx={titleStyle}>
               のための
             </Typography>
-            <Typography
-              variant="h5"
-              sx={{
-                fontWeight: "bold",
-                fontFamily: "sans-serif",
-                zIndex: 10,
-                color: "white",
-                display: "flex",
-                justifyContent: "center",
-                mb: 3,
-              }}
-            >
+            <Typography variant="h5" sx={boldTitleStyle}>
               情報交換プラットフォーム
             </Typography>
           </Stack>
@@ -103,78 +86,30 @@ export default function Home() {
               justifyContent: "center",
             }}
           >
-            <Button
-              variant="contained"
-              onClick={() => signIn("google", { callbackUrl: "/cafe/list" })}
-              sx={{
-                backgroundColor: "#EEE4CD",
-                "&:hover": {
-                  backgroundColor: "#EEE4CD",
-                },
-                color: "black",
-                width: "65%",
-                borderRadius: "50px",
-                mx: "auto",
-                fontWeight: "bold",
-              }}
-              startIcon={<GoogleIcon />}
-            >
-              Google
-            </Button>
-            <Button
-              variant="contained"
-              onClick={() => signIn("facebook", { callbackUrl: "/cafe/list" })}
-              sx={{
-                backgroundColor: "#EEE4CD",
-                "&:hover": {
-                  backgroundColor: "#EEE4CD",
-                },
-                color: "black",
-                borderRadius: "50px",
-                width: "65%",
-                mx: "auto",
-                fontWeight: "bold",
-              }}
-              startIcon={<FacebookIcon />}
-            >
-              FaceBook
-            </Button>
-            <Button
-              variant="contained"
-              onClick={() => signIn("github", { callbackUrl: "/cafe/list" })}
-              sx={{
-                backgroundColor: "#EEE4CD",
-                "&:hover": {
-                  backgroundColor: "#EEE4CD",
-                },
-                color: "black",
-                width: "65%",
-                borderRadius: "50px",
-                mx: "auto",
-                fontWeight: "bold",
-              }}
-              startIcon={<GitHubIcon />}
-            >
-              Github
-            </Button>
-            <Button
-              variant="contained"
-              onClick={() => signIn("line", { callbackUrl: "/cafe/list" })}
-              sx={{
-                backgroundColor: "#EEE4CD",
-                "&:hover": {
-                  backgroundColor: "#EEE4CD",
-                },
-                color: "black",
-                width: "65%",
-                borderRadius: "50px",
-                mx: "auto",
-                fontWeight: "bold",
-              }}
-              startIcon={<WhatsAppIcon />}
-            >
-              LINE
-            </Button>
+            <LoginButton
+              text="Google"
+              iconComponent={<GoogleIcon />}
+              signInUrl="google"
+              isMobile
+            />
+            <LoginButton
+              text="FaceBook"
+              iconComponent={<FacebookIcon />}
+              signInUrl="facebook"
+              isMobile
+            />
+            <LoginButton
+              text="GitHub"
+              iconComponent={<GitHubIcon />}
+              signInUrl="github"
+              isMobile
+            />
+            <LoginButton
+              text="LINE"
+              iconComponent={<WhatsAppIcon />}
+              signInUrl="line"
+              isMobile
+            />
           </Stack>
         </Stack>
       ) : (

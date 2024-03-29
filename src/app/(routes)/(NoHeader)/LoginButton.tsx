@@ -6,28 +6,44 @@ type LoginButtonProps = {
   text: string;
   iconComponent: React.ReactNode;
   signInUrl: string;
+  isMobile?: boolean;
 };
 
-const LoginButton = ({ text, iconComponent, signInUrl }: LoginButtonProps) => {
+const mobileStyle = {
+  backgroundColor: "#EEE4CD",
+  color: "black",
+  width: "65%",
+  borderRadius: "50px",
+  mx: "auto",
+  fontWeight: "bold",
+};
+
+const pcStyle = {
+  backgroundColor: "#EEE4CD",
+  color: "black",
+  width: "65%",
+  borderRadius: "50px",
+  mx: "auto",
+  fontWeight: "bold",
+  "&:hover": {
+    backgroundColor: "#D1BBA7",
+  },
+};
+
+const LoginButton = ({
+  text,
+  iconComponent,
+  signInUrl,
+  isMobile,
+}: LoginButtonProps) => {
   return (
     <Button
-      size="large"
       variant="contained"
       onClick={() => signIn(signInUrl, { callbackUrl: "/cafe/list" })}
-      sx={{
-        width: "50%",
-        borderRadius: "50px",
-        mx: "auto",
-        fontWeight: "bold",
-        backgroundColor: "#EEE4CD",
-        color: "black",
-        "&:hover": {
-          backgroundColor: "#D1BBA7",
-        },
-      }}
+      sx={isMobile ? mobileStyle : pcStyle}
       startIcon={iconComponent}
     >
-      {text}でログイン
+      {isMobile ? text : text + "でログイン"}
     </Button>
   );
 };
