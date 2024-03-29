@@ -81,7 +81,8 @@ const CafeModal = ({
         aria-describedby="modal-modal-description"
       >
         <Box sx={modalStyle}>
-          <Box sx={{ height: { xs: "30%", md: "55%" } }}>
+          {/* Cafe Image */}
+          <Box sx={{ height: { xs: "30%", md: "45%" } }}>
             {isMobile && (
               <CancelIcon
                 sx={{
@@ -100,6 +101,8 @@ const CafeModal = ({
               className="top-rounded"
             />
           </Box>
+
+          {/* Description */}
           <Stack
             id="modal-modal-description"
             sx={{ mx: 5, my: 3, pb: "3%", height: { xs: "62%", md: "40%" } }}
@@ -112,6 +115,7 @@ const CafeModal = ({
                 justifyContent: { xs: "center", md: "space-between" },
               }}
             >
+              {/* review button */}
               {!isMobile && (
                 <Stack
                   direction="row"
@@ -137,6 +141,7 @@ const CafeModal = ({
                   )}
                 </Stack>
               )}
+
               <Stack
                 sx={{
                   width: { xs: "90%", md: "50%" },
@@ -169,12 +174,15 @@ const CafeModal = ({
                   </Typography>
                 </Stack>
               </Stack>
+
+              {/* edit / delete icon */}
               {!isMobile && (
                 <Stack
                   direction="row"
                   spacing={2}
                   sx={{ width: "25%", justifyContent: "right" }}
                 >
+                  {/* admin role */}
                   {me.isAdmin ? (
                     <>
                       <Tooltip title="Edit">
@@ -191,6 +199,7 @@ const CafeModal = ({
                       </Tooltip>
                     </>
                   ) : (
+                    // non-admin role
                     <>
                       <Tooltip title="Not allowed">
                         <EditIcon
@@ -209,6 +218,8 @@ const CafeModal = ({
                 </Stack>
               )}
             </Stack>
+
+            {/* review and overview button */}
             {isMobile && (
               <Stack
                 direction="row"
