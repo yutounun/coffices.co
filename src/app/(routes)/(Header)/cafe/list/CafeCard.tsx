@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import "_styles/cafe-list.scss";
-import { Box, Typography, Stack } from "@mui/material";
+import { Box, Typography, Stack, useMediaQuery, useTheme } from "@mui/material";
 import { CafeI } from "_types/cafes";
 import CafeDescription from "(routes)/(Header)/cafe/list/CafeDescription";
 import { NextImage } from "_commons/NextImage";
@@ -15,7 +15,7 @@ interface propTypes {
 }
 
 const cardStyle = {
-  minWidth: { xs: "12em", md: "20em" },
+  width: { xs: "12em", md: "20em" },
   mt: "2em",
   mr: "2em",
   ml: "0px",
@@ -25,13 +25,16 @@ const cardStyle = {
   borderRadius: "20px",
 };
 
-const rankStyle = {
-  fontSize: "20em",
-  mr: -3,
-};
-
 const CafeCard = ({ cafe, rank, isRanking }: propTypes) => {
   const [showCafeDetail, setShowCafeDetail] = useState(false);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
+  const rankStyle = {
+    fontSize: isMobile ? "10em" : "20em",
+    mr: isMobile ? 0 : -3,
+    ml: 0,
+  };
 
   /**
    * open cafe detail
@@ -56,6 +59,7 @@ const CafeCard = ({ cafe, rank, isRanking }: propTypes) => {
             transition: "all 0.5s ease",
             cursor: "pointer",
           },
+          ml: "0px",
         }}
         direction="row"
       >
