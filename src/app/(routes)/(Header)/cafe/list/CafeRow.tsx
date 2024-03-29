@@ -102,7 +102,6 @@ const CafeRow = ({ cafes, area, isLoading }: propTypes) => {
           spacing={3}
           sx={{
             mx: { xs: 2.5, md: "0" },
-            height: { xs: "19em", md: "30em" },
             alignItems: "center",
           }}
         >
