@@ -9,6 +9,7 @@ interface propTypes {
   cafes: CafeI[];
   area: string;
   isLoading?: boolean;
+  isRanking?: boolean;
 }
 
 enum maxCafeCount {
@@ -28,7 +29,7 @@ const baseTypeStyle = {
   letterSpacing: ".3rem",
 };
 
-const CafeRow = ({ cafes, area, isLoading }: propTypes) => {
+const CafeRow = ({ cafes, area, isLoading, isRanking }: propTypes) => {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const [isScrollLeft, setIsScrollLeft] = useState(false);
   const [isScrollRight, setIsScrollRight] = useState(false);
@@ -128,7 +129,14 @@ const CafeRow = ({ cafes, area, isLoading }: propTypes) => {
             {isLoading ? (
               <Loading />
             ) : (
-              cafes?.map((cafe) => <CafeCard key={cafe._id} cafe={cafe} />)
+              cafes?.map((cafe, index) => (
+                <CafeCard
+                  isRanking={isRanking}
+                  key={cafe._id}
+                  rank={index + 1}
+                  cafe={cafe}
+                />
+              ))
             )}
           </Stack>
 

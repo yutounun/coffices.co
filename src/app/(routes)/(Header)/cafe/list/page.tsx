@@ -36,6 +36,10 @@ const cafeInfo = [
   },
 ];
 
+enum maxRanking {
+  count = 10,
+}
+
 const ShopsList = () => {
   const { cafeList, setCafeList } = useContext(CafeListContext);
   const { setStationName, stationName } = useContext(StationNameContext);
@@ -95,7 +99,7 @@ const ShopsList = () => {
    * */
   const rankedList = useCallback(() => {
     return cafeList.length > 1
-      ? cafeList?.sort((a, b) => b.rate - a.rate)
+      ? cafeList?.sort((a, b) => b.rate - a.rate).slice(0, maxRanking.count)
       : cafeList;
   }, [cafeList]);
 
@@ -117,6 +121,7 @@ const ShopsList = () => {
               area={stationName ? stationName : "東京都の作業カフェランキング"}
               cafes={rankedList()}
               isLoading={isLoading}
+              isRanking
             />
             {cafeInfo.map(({ area, stations }) => (
               <CafeRow
