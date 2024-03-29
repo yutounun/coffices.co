@@ -1,15 +1,15 @@
 import React from "react";
-import { Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import { CafeI } from "_types/cafes";
 import Stars from "_commons/Stars";
+import useMobile from "_custom/useMobile";
 
 interface PropTypes {
   cafe: CafeI;
 }
 
 const CafeDescription = ({ cafe }: PropTypes) => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const { isMobile } = useMobile();
   return (
     <Stack
       sx={{

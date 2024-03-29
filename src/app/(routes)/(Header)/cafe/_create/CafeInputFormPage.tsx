@@ -18,9 +18,8 @@ import {
   Stack,
   TextField,
   Typography,
-  useMediaQuery,
-  useTheme,
 } from "@mui/material";
+import useMobile from "_custom/useMobile";
 
 interface propTypes {
   handleCafePostSubmit: any;
@@ -50,8 +49,7 @@ const CafeInputForm = ({ handleCafePostSubmit }: propTypes) => {
       isOutlet: false,
     },
   });
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const { isMobile } = useMobile();
   return (
     <form
       onSubmit={handleSubmit(handleCafePostSubmit)}

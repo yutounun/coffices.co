@@ -1,19 +1,13 @@
 "use client";
 import React, { useContext } from "react";
-import {
-  Box,
-  Modal,
-  Stack,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
+import { Box, Modal, Stack, Typography } from "@mui/material";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import CafeInputForm from "./CafeInputFormPage";
 import { postCafe } from "_utils/api";
 import { CafePostRequestI } from "_types/cafes";
 import { extractHourMinute } from "_utils/commonFn";
 import { CafeListContext } from "../../../../../contexts/CafeListContext";
+import useMobile from "_custom/useMobile";
 
 interface propTypes {
   showModal: boolean;
@@ -22,8 +16,7 @@ interface propTypes {
 
 const CafeModal = ({ showModal, handleModalClose }: propTypes) => {
   const { setCafeList } = useContext(CafeListContext);
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const { isMobile } = useMobile();
   const height = "auto";
   const modalStyle = {
     position: "absolute",

@@ -5,12 +5,12 @@ import { Box, Stack, useMediaQuery, useTheme } from "@mui/material";
 import ProfileDesc from "./ProfileDesc";
 import { useSession } from "next-auth/react";
 import ProfileEditModal from "./ProfileEditModal";
+import useMobile from "_custom/useMobile";
 
 const Profile = () => {
   const { data: session } = useSession();
   const [showModal, setShowModal] = useState(false);
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const { isMobile } = useMobile();
 
   return (
     <Stack

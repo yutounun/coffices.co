@@ -4,6 +4,7 @@ import { Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import CafeCard from "(routes)/(Header)/cafe/list/CafeCard";
 import Loading from "loading";
 import Arrow from "_commons/Arrow";
+import useMobile from "_custom/useMobile";
 
 interface propTypes {
   cafes: CafeI[];
@@ -34,8 +35,7 @@ const CafeRow = ({ cafes, area, isLoading, isRanking }: propTypes) => {
   const [isScrollLeft, setIsScrollLeft] = useState(false);
   const [isScrollRight, setIsScrollRight] = useState(false);
   const [showScroll, setShowScroll] = useState(false);
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const { isMobile } = useMobile();
 
   /**
    * - Check if arrows should be shown by checking the current position

@@ -3,14 +3,14 @@ import StarHalfIcon from "@mui/icons-material/StarHalf";
 import StarIcon from "@mui/icons-material/Star";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import { Stack, useMediaQuery, useTheme } from "@mui/material";
+import useMobile from "_custom/useMobile";
 
 interface propTypes {
   rate: number;
 }
 
 const Stars = ({ rate }: propTypes) => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const { isMobile } = useMobile();
   const stars = [];
   const wholePart = Math.floor(rate); // 整数部分
   const decimalPart = rate - wholePart; // 小数部分

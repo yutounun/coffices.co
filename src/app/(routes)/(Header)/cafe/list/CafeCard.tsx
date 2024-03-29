@@ -7,6 +7,7 @@ import CafeDescription from "(routes)/(Header)/cafe/list/CafeDescription";
 import { NextImage } from "_commons/NextImage";
 import CafeDetailModal from "./CafeDetailModal";
 import Card from "@mui/material/Card";
+import useMobile from "_custom/useMobile";
 
 interface propTypes {
   cafe: CafeI;
@@ -27,8 +28,7 @@ const cardStyle = {
 
 const CafeCard = ({ cafe, rank, isRanking }: propTypes) => {
   const [showCafeDetail, setShowCafeDetail] = useState(false);
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const { isMobile } = useMobile();
 
   const rankStyle = {
     fontSize: isMobile ? "10em" : "20em",

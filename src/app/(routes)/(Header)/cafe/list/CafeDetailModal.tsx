@@ -5,16 +5,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import CafeEditModal from "(routes)/(Header)/cafe/_edit/CafeEditModal";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import CancelIcon from "@mui/icons-material/Cancel";
-import {
-  Box,
-  Button,
-  Modal,
-  Stack,
-  Typography,
-  Tooltip,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
+import { Box, Button, Modal, Stack, Typography, Tooltip } from "@mui/material";
 import Stars from "_commons/Stars";
 import { NextImage } from "_commons/NextImage";
 import { deleteCafe } from "_utils/api";
@@ -23,6 +14,7 @@ import CafeDetailModalReviews from "./CafeDetailModalReviews";
 import CafePostReviewModal from "(routes)/(Header)/cafe/_create/CafePostReviewModal";
 import meStore from "../../../../../store/me";
 import { CafeListContext } from "../../../../../contexts/CafeListContext";
+import useMobile from "_custom/useMobile";
 
 const modalStyle = {
   position: "absolute",
@@ -50,8 +42,7 @@ const CafeModal = ({
   handleCafeDetailClose,
 }: propTypes) => {
   const { me } = meStore();
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const { isMobile } = useMobile();
   const [openCafeEditModal, setOpenCafeEditModal] = useState(false);
   const [showsReviews, setShowsReviews] = useState(false);
   const [openCafeReviewModal, setOpenCafeReviewModal] = useState(false);

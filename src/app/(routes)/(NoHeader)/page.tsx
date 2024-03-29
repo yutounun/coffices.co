@@ -1,12 +1,5 @@
 "use client";
-import {
-  Button,
-  Box,
-  Stack,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import UndrawBarista from "../../../../public/undraw_barista.svg";
 import UndrawDigitalNomad from "../../../../public/undraw_digital_nomad.svg";
 import { signIn } from "next-auth/react";
@@ -17,6 +10,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import { NextImage } from "_commons/NextImage";
 import LoginButton from "./LoginButton";
 import Image from "../../../../node_modules/next/image";
+import useMobile from "_custom/useMobile";
 
 const titleStyle = {
   fontFamily: "sans-serif",
@@ -32,8 +26,7 @@ const boldTitleStyle = {
 };
 
 export default function Home() {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const { isMobile } = useMobile();
   return (
     <>
       {isMobile ? (

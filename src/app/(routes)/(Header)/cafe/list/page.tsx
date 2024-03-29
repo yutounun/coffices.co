@@ -15,7 +15,7 @@ import { CafeListContext } from "../../../../../contexts/CafeListContext";
 import CafeSearchList from "./CafeSearchList";
 import { StationNameContext } from "../../../../../contexts/StationNameContext";
 import StationSearch from "./StationSearch";
-import { useMediaQuery, useTheme } from "@mui/material";
+import useMobile from "_custom/useMobile";
 
 const cafeInfo = [
   {
@@ -43,8 +43,7 @@ enum maxRanking {
 const ShopsList = () => {
   const { cafeList, setCafeList } = useContext(CafeListContext);
   const { setStationName, stationName } = useContext(StationNameContext);
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const { isMobile } = useMobile();
   const { cafes, isLoading } = useGetCafe();
 
   useEffect(() => {

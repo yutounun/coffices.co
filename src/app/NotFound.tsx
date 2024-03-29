@@ -1,9 +1,9 @@
-import { Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import React from "react";
+import useMobile from "_custom/useMobile";
 
 const NotFound = () => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const { isMobile } = useMobile();
   return (
     <Stack
       direction="row"

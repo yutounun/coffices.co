@@ -3,10 +3,10 @@ import { CafeI, ReviewI } from "_types/cafes";
 import Stars from "_commons/Stars";
 import { Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import Image from "next/image";
+import useMobile from "_custom/useMobile";
 
 const CafeDetailModalReviews = ({ cafe }: { cafe: CafeI }) => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const { isMobile } = useMobile();
   return (
     <Stack
       spacing={4}

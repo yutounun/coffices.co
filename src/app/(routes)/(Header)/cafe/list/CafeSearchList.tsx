@@ -4,6 +4,7 @@ import { Box, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import CafeCard from "./CafeCard";
 import Loading from "loading";
 import NotFound from "NotFound";
+import useMobile from "_custom/useMobile";
 
 interface propTypes {
   cafes: CafeI[];
@@ -12,8 +13,7 @@ interface propTypes {
 }
 
 const CafeSearchList = ({ cafes, area, isLoading }: propTypes) => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const { isMobile } = useMobile();
   return (
     <Box sx={{ ml: 3, mt: 5 }}>
       <Typography
