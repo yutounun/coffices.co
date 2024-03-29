@@ -16,6 +16,9 @@ const mobileStyle = {
   borderRadius: "50px",
   mx: "auto",
   fontWeight: "bold",
+  "&:hover": {
+    backgroundColor: "#EEE4CD",
+  },
 };
 
 const pcStyle = {
