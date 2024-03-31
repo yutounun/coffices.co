@@ -64,13 +64,13 @@ export default function Home() {
             spacing={2}
           >
             <Typography variant="h5" sx={boldTitleStyle}>
-              ノマド・リモートワーカー
+              {t && t.home.title[0]}
             </Typography>
             <Typography variant="h5" sx={titleStyle}>
-              のための
+              {t && t.home.title[1]}
             </Typography>
             <Typography variant="h5" sx={boldTitleStyle}>
-              情報交換プラットフォーム
+              {t && t.home.title[2]}
             </Typography>
           </Stack>
           <Stack

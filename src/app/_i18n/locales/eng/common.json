@@ -10,11 +10,7 @@
     "stationName": "station name"
   },
   "home": {
-    "title": [
-      "For Nomads and Remote Workers",
-      "A Platform",
-      "For Sharing Cafés"
-    ],
+    "title": ["For Nomads Workers", "A Platform", "For Sharing Cafés"],
     "subtitle": [
       "Seek cafes for comfy work?",
       "Too silent in libraries?",

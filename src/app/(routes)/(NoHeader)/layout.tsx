@@ -9,11 +9,25 @@ const NoHeaderLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       {lang === "jp" ? (
-        <Button sx={{ position: "absolute" }} onClick={changeToEng}>
+        <Button
+          sx={{
+            position: "absolute",
+            zIndex: 10,
+            color: { xs: "white", md: "black" },
+          }}
+          onClick={changeToEng}
+        >
           English
         </Button>
       ) : (
-        <Button sx={{ position: "absolute" }} onClick={changeToJp}>
+        <Button
+          sx={{
+            position: "absolute",
+            zIndex: 10,
+            color: { xs: "white", md: "black" },
+          }}
+          onClick={changeToJp}
+        >
           日本語
         </Button>
       )}
