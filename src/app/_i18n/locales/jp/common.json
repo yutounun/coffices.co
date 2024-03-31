@@ -2,7 +2,8 @@
   "common": {
     "jp": "日本語",
     "en": "English",
-    "appName": "coffices.co"
+    "appName": "coffices.co",
+    "register": "登録"
   },
   "header": {
     "menus": ["一覧", "投稿", "ログアウト"],
@@ -82,6 +83,38 @@
       "exist": "有",
       "notExist": "無",
       "register": "登録"
+    }
+  },
+  "reviewModal": {
+    "titles": {
+      "add": "レビューを追加"
+    },
+    "form": {
+      "rating": {
+        "label": "評価(1~5)",
+        "required": "評価を入力してください"
+      },
+      "comment": {
+        "label": "コメント",
+        "required": "コメントを入力してください"
+      },
+      "title": {
+        "label": "タイトル",
+        "required": "タイトルを入力してください"
+      }
+    }
+  },
+  "profileModal": {
+    "titles": {
+      "edit": "プロフィール編集"
+    },
+    "form": {
+      "aboutU": "自己紹介",
+      "github": "Github URL",
+      "twitter": "Twitter URL",
+      "linkedIn": "LinkedIn URL",
+      "facebook": "Facebook URL",
+      "portfolio": "Portfolio URL"
     }
   }
 }

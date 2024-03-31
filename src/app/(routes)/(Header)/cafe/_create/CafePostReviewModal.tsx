@@ -14,6 +14,7 @@ import { CafeI } from "_types/cafes";
 import meStore from "../../../../../store/me";
 import { useSession } from "next-auth/react";
 import { CafeListContext } from "../../../../../contexts/CafeListContext";
+import useTranslate from "_custom/useTranslate";
 
 interface propTypes {
   showModal: boolean;
@@ -29,6 +30,7 @@ const CafePostReviewModal = ({
   const { me } = meStore();
   const { data: session } = useSession();
   const { setCafeList } = useContext(CafeListContext);
+  const { t } = useTranslate();
 
   const {
     register,
@@ -88,7 +90,7 @@ const CafePostReviewModal = ({
           }}
         >
           <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
-            レビューを追加
+            {t?.reviewModal.titles.add}
           </Typography>
         </Stack>
 
@@ -113,38 +115,40 @@ const CafePostReviewModal = ({
             >
               <TextField
                 id="outlined-basic"
-                label="タイトル"
+                label={t?.reviewModal.form.title.label}
                 variant="outlined"
                 size="small"
                 sx={{ width: "100%" }}
                 error={!!errors.title}
                 helperText={errors.title?.message?.toString()}
                 {...register("title", {
-                  required: "タイトルを入力してください",
+                  required: t?.reviewModal.form.title.required,
                 })}
               />
 
               <TextField
                 id="outlined-basic"
                 size="small"
-                label="コメント内容"
+                label={t?.reviewModal.form.comment.label}
                 variant="outlined"
                 sx={{ width: "100%" }}
                 error={!!errors.content}
                 helperText={errors.content?.message?.toString()}
                 {...register("content", {
-                  required: "コメント内容を入力してください",
+                  required: t?.reviewModal.form.comment.required,
                 })}
               />
               <TextField
                 id="outlined-basic"
-                label="評価(1 ~ 5)"
+                label={t?.reviewModal.form.rating.label}
                 size="small"
                 type="number"
                 variant="outlined"
                 InputProps={{ inputProps: { min: 0, max: 5 } }}
                 sx={{ width: { xs: "100%", sm: "45%" } }}
-                {...register("rate", { required: "評価を入力してください" })}
+                {...register("rate", {
+                  required: t?.reviewModal.form.rating.required,
+                })}
                 error={!!errors.rate}
                 helperText={errors.rate?.message?.toString()}
               />
@@ -162,7 +166,7 @@ const CafePostReviewModal = ({
                 variant="contained"
                 sx={{ width: "30%", borderRadius: 1 }}
               >
-                登録
+                {t?.common.register}
               </Button>
             </Stack>
           </form>

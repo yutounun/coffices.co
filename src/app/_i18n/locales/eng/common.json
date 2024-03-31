@@ -2,7 +2,8 @@
   "common": {
     "jp": "日本語",
     "en": "English",
-    "appName": "coffices.co"
+    "appName": "coffices.co",
+    "register": "Submit"
   },
   "header": {
     "menus": ["List", "Post", "SignOut"],
@@ -86,8 +87,39 @@
         "label": "smoking area"
       },
       "exist": "Exists",
-      "notExist": "Does Not Exist",
-      "register": "register"
+      "notExist": "Does Not Exist"
+    }
+  },
+  "reviewModal": {
+    "titles": {
+      "add": "Add a Review"
+    },
+    "form": {
+      "rating": {
+        "label": "Rating (1~5)",
+        "required": "Please enter the rating"
+      },
+      "comment": {
+        "label": "Comment",
+        "required": "Please enter the comment"
+      },
+      "title": {
+        "label": "Title",
+        "required": "Please enter the title"
+      }
+    }
+  },
+  "profileModal": {
+    "titles": {
+      "edit": "Edit Profile"
+    },
+    "form": {
+      "aboutU": "Self-Introduction",
+      "github": "Github URL",
+      "twitter": "Twitter URL",
+      "linkedIn": "LinkedIn URL",
+      "facebook": "Facebook URL",
+      "portfolio": "Portfolio URL"
     }
   }
 }

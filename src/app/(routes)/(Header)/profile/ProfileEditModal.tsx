@@ -11,6 +11,7 @@ import {
 import { useForm } from "react-hook-form";
 import meStore from "../../../../store/me";
 import { updateUser } from "_utils/api";
+import useTranslate from "_custom/useTranslate";
 
 interface propTypes {
   showModal: boolean;
@@ -19,7 +20,7 @@ interface propTypes {
 
 const ProfileEditModal = ({ showModal, handleModalClose }: propTypes) => {
   const { me, setMe } = meStore();
-
+  const { t } = useTranslate();
   const {
     register,
     handleSubmit,
@@ -77,7 +78,7 @@ const ProfileEditModal = ({ showModal, handleModalClose }: propTypes) => {
           }}
         >
           <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
-            プロフィールを編集
+            {t?.profileModal.titles.edit}
           </Typography>
         </Stack>
 
@@ -102,7 +103,7 @@ const ProfileEditModal = ({ showModal, handleModalClose }: propTypes) => {
             >
               <TextField
                 id="outlined-basic"
-                label="紹介文"
+                label={t?.profileModal.form.aboutU}
                 variant="outlined"
                 sx={{ width: "100%" }}
                 error={!!errors.bio}
@@ -112,7 +113,7 @@ const ProfileEditModal = ({ showModal, handleModalClose }: propTypes) => {
 
               <TextField
                 id="outlined-basic"
-                label="Github URL"
+                label={t?.profileModal.form.github}
                 variant="outlined"
                 sx={{ width: "100%" }}
                 error={!!errors.github}
@@ -122,7 +123,7 @@ const ProfileEditModal = ({ showModal, handleModalClose }: propTypes) => {
 
               <TextField
                 id="outlined-basic"
-                label="Twitter URL"
+                label={t?.profileModal.form.twitter}
                 variant="outlined"
                 sx={{ width: "100%" }}
                 error={!!errors.twitter}
@@ -132,7 +133,7 @@ const ProfileEditModal = ({ showModal, handleModalClose }: propTypes) => {
 
               <TextField
                 id="outlined-basic"
-                label="LinkedIn URL"
+                label={t?.profileModal.form.linkedIn}
                 variant="outlined"
                 sx={{ width: "100%" }}
                 error={!!errors.linkedIn}
@@ -142,7 +143,7 @@ const ProfileEditModal = ({ showModal, handleModalClose }: propTypes) => {
 
               <TextField
                 id="outlined-basic"
-                label="HomePage URL"
+                label={t?.profileModal.form.homePage}
                 variant="outlined"
                 sx={{ width: "100%" }}
                 error={!!errors.homePage}
@@ -163,7 +164,7 @@ const ProfileEditModal = ({ showModal, handleModalClose }: propTypes) => {
                 variant="contained"
                 sx={{ width: "30%", borderRadius: 1 }}
               >
-                登録
+                {t?.common.register}
               </Button>
             </Stack>
           </form>

@@ -266,7 +266,7 @@ const CafeUpdateForm = ({ handleCafePutSubmit, cafe }: propTypes) => {
             variant="contained"
             sx={{ width: "30%", borderRadius: 1 }}
           >
-            {t?.cafePostModal.form.register}
+            {t?.common.register}
           </Button>
         </Stack>
       </form>
