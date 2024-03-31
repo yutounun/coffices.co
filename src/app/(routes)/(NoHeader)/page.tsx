@@ -11,6 +11,7 @@ import { NextImage } from "_commons/NextImage";
 import LoginButton from "./LoginButton";
 import Image from "../../../../node_modules/next/image";
 import useMobile from "_custom/useMobile";
+import useTranslate from "_custom/useTranslate";
 
 const titleStyle = {
   fontFamily: "sans-serif",
@@ -26,6 +27,7 @@ const boldTitleStyle = {
 };
 
 export default function Home() {
+  const { t } = useTranslate();
   const { isMobile } = useMobile();
   return (
     <>
@@ -155,7 +157,7 @@ export default function Home() {
                 図書館だと静かすぎますよね〜
               </Typography>
               <Typography variant="h6" sx={{ my: 0.5 }}>
-                在宅は飽きますよね〜
+                在宅は飽きますよね〜{t && t.title}
               </Typography>
             </Stack>
             <Stack

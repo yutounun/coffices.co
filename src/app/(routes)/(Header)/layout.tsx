@@ -1,5 +1,8 @@
 "use client";
 
+import { Button } from "@mui/material";
+import useLangStore from "../../../store/lang";
+import useTranslate from "_custom/useTranslate";
 import Header from "_commons/Header";
 import { Box, Stack } from "@mui/material";
 import { useSession } from "next-auth/react";
@@ -22,6 +25,7 @@ export default function CafeListLayout({
   const { setMe, me } = meStore();
   const { data: session, status } = useSession();
   const { showsCreateModal, closeCreateCafeModal } = useCreateModalStore();
+  const { lang, changeToJp, changeToEng } = useLangStore();
 
   useEffect(() => {
     if (session) {
@@ -45,6 +49,15 @@ export default function CafeListLayout({
     <Stack>
       <CafeListContext.Provider value={{ cafeList, setCafeList }}>
         <StationNameContext.Provider value={{ stationName, setStationName }}>
+          {lang === "jp" ? (
+            <Button sx={{ position: "absolute" }} onClick={changeToEng}>
+              English
+            </Button>
+          ) : (
+            <Button sx={{ position: "absolute" }} onClick={changeToJp}>
+              日本語
+            </Button>
+          )}
           <Header />
           <Box sx={{ width: "100%" }}>
             <Box sx={{ mt: "3em" }}>{children}</Box>

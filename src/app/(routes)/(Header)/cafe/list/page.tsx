@@ -16,6 +16,7 @@ import CafeSearchList from "./CafeSearchList";
 import { StationNameContext } from "../../../../../contexts/StationNameContext";
 import StationSearch from "./StationSearch";
 import useMobile from "_custom/useMobile";
+import useTranslate from "_custom/useTranslate";
 
 const cafeInfo = [
   {
@@ -45,6 +46,7 @@ const ShopsList = () => {
   const { setStationName, stationName } = useContext(StationNameContext);
   const { isMobile } = useMobile();
   const { cafes, isLoading } = useGetCafe();
+  const { t } = useTranslate();
 
   useEffect(() => {
     setCafeList(cafes);
@@ -116,6 +118,7 @@ const ShopsList = () => {
           />
         ) : (
           <>
+            {t && t.title}
             <CafeRow
               area={stationName ? stationName : "東京都の作業カフェランキング"}
               cafes={rankedList()}
