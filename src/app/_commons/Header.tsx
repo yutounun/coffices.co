@@ -156,7 +156,7 @@ function ResponsiveAppBar() {
                   {t?.header?.menus[2]}
                 </Typography>
               </MenuItem>
-              <MenuItem onClick={() => signOut({ callbackUrl: "/" })}>
+              <MenuItem>
                 {lang === "jp" ? (
                   <Typography
                     sx={{ letterSpacing: "0.3rem" }}

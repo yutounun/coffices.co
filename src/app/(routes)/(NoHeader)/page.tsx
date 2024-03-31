@@ -11,6 +11,8 @@ import LoginButton from "./LoginButton";
 import Image from "../../../../node_modules/next/image";
 import useMobile from "_custom/useMobile";
 import useTranslate from "_custom/useTranslate";
+import useLangStore from "../../../store/lang";
+import { useEffect } from "react";
 
 const titleStyle = {
   fontFamily: "sans-serif",
@@ -27,7 +29,11 @@ const boldTitleStyle = {
 
 export default function Home() {
   const { t } = useTranslate();
+  const { changeToJp } = useLangStore();
   const { isMobile } = useMobile();
+  useEffect(() => {
+    changeToJp();
+  }, []);
   return (
     <>
       {isMobile ? (

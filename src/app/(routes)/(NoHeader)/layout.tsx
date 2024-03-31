@@ -1,10 +1,25 @@
 "use client";
-import React from "react";
-import { Button } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { Button, CircularProgress } from "@mui/material";
 import useLangStore from "../../../store/lang";
 
 const NoHeaderLayout = ({ children }: { children: React.ReactNode }) => {
   const { lang, changeToJp, changeToEng } = useLangStore();
+  const [isLangReady, setIsLangReady] = useState(false);
+  useEffect(() => {
+    changeToJp();
+  }, []);
+
+  useEffect(() => {
+    if (lang) {
+      setIsLangReady(true);
+    }
+  }, [lang]);
+
+  // 言語がセットされるまでローディングインジケーターを表示
+  if (!isLangReady) {
+    return <CircularProgress />;
+  }
 
   return (
     <>
