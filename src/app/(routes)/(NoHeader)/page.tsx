@@ -131,7 +131,7 @@ export default function Home() {
             slot={process.env.GOOGLE_ADSENSE_SLOT_ID ?? ""}
             style={{ display: "block" }}
           /> */}
-          <Box sx={{ my: "5%" }}>
+          <Box sx={{ my: "5%", width: "40%" }}>
             <Stack
               sx={{
                 width: "100%",
