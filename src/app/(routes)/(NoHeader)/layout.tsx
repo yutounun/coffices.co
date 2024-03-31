@@ -2,7 +2,6 @@
 import React from "react";
 import { Button } from "@mui/material";
 import useLangStore from "../../../store/lang";
-import useTranslate from "_custom/useTranslate";
 
 const NoHeaderLayout = ({ children }: { children: React.ReactNode }) => {
   const { lang, changeToJp, changeToEng } = useLangStore();

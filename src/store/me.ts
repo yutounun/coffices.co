@@ -1,4 +1,3 @@
-import create, { StateCreator, StoreApi } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
 interface meI {
