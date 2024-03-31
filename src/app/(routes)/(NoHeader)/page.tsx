@@ -150,7 +150,7 @@ export default function Home() {
             </Stack>
             <Stack sx={{ color: "#666666", textAlign: "center", mb: 8 }}>
               {t?.home?.subtitle.map((subtitle: string) => (
-                <Typography variant="h6" sx={{ my: 0.5 }}>
+                <Typography key={subtitle} variant="h6" sx={{ my: 0.5 }}>
                   {subtitle}
                 </Typography>
               ))}

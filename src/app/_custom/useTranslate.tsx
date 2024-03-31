@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import useLangStore from "../../store/lang";
 
-const dictionaries: Record<string, () => Promise<Record<string, string>>> = {
+const dictionaries: any = {
   eng: () =>
     import("../_i18n/locales/eng/common.json").then((module) => module.default),
   jp: () =>
