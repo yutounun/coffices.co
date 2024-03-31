@@ -7,6 +7,7 @@ import { CafeI, CafePutRequestI } from "_types/cafes";
 import { extractHourMinute } from "_utils/commonFn";
 import { cafeImageUpload } from "_utils/api";
 import { CafeListContext } from "../../../../../contexts/CafeListContext";
+import useTranslate from "_custom/useTranslate";
 
 interface propTypes {
   showModal: boolean;
@@ -16,6 +17,7 @@ interface propTypes {
 
 const CafeEditModal = ({ showModal, handleModalClose, cafe }: propTypes) => {
   let { setCafeList } = useContext(CafeListContext);
+  const { t } = useTranslate();
 
   const [cafeImageFile, setCafeImageFile] = useState<any>(null);
 
@@ -80,7 +82,7 @@ const CafeEditModal = ({ showModal, handleModalClose, cafe }: propTypes) => {
           }}
         >
           <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
-            カフェ情報を編集
+            {t?.cafePostModal.titles.edit}
           </Typography>
         </Stack>
 

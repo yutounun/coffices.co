@@ -70,7 +70,7 @@ const CafeModal = ({ showModal, handleModalClose }: propTypes) => {
           }}
         >
           <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
-            {t?.cafePostModal.title}
+            {t?.cafePostModal.titles.post}
           </Typography>
           {isMobile && (
             <HighlightOffIcon

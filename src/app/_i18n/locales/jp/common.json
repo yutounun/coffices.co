@@ -47,7 +47,10 @@
     }
   },
   "cafePostModal": {
-    "title": "カフェを新規追加",
+    "titles": {
+      "post": "カフェを新規追加",
+      "edit": "カフェ情報を編集"
+    },
     "form": {
       "cafeName": {
         "label": "カフェ名",
@@ -67,8 +70,18 @@
       "closedTime": {
         "label": "営業終了時間"
       },
+      "wifi": {
+        "label": "Wi-Fi"
+      },
+      "outlet": {
+        "label": "電源席"
+      },
+      "smoking": {
+        "label": "喫煙室"
+      },
       "exist": "有",
-      "notExist": "無"
+      "notExist": "無",
+      "register": "登録"
     }
   }
 }

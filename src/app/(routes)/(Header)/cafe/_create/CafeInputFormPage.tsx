@@ -195,7 +195,9 @@ const CafeInputForm = ({ handleCafePostSubmit }: propTypes) => {
           }}
         >
           <FormControl sx={{ width: { xs: "100%", sm: "30%" } }}>
-            <FormLabel id="demo-row-radio-buttons-group-label">Wifi</FormLabel>
+            <FormLabel id="demo-row-radio-buttons-group-label">
+              {t?.cafePostModal.form.wifi.label}
+            </FormLabel>
             <Controller
               name="isWifi"
               control={control}
@@ -221,7 +223,7 @@ const CafeInputForm = ({ handleCafePostSubmit }: propTypes) => {
           </FormControl>
           <FormControl sx={{ width: { xs: "100%", sm: "30%" } }}>
             <FormLabel id="demo-row-radio-buttons-group-label">
-              電源席
+              {t?.cafePostModal.form.outlet.label}
             </FormLabel>
             <Controller
               name="isOutlet"
@@ -248,7 +250,7 @@ const CafeInputForm = ({ handleCafePostSubmit }: propTypes) => {
           </FormControl>
           <FormControl sx={{ width: { xs: "100%", sm: "30%" } }}>
             <FormLabel id="demo-row-radio-buttons-group-label">
-              喫煙所
+              {t?.cafePostModal.form.smoking.label}
             </FormLabel>
             <Controller
               name="isSmoking"
@@ -284,7 +286,7 @@ const CafeInputForm = ({ handleCafePostSubmit }: propTypes) => {
           variant="contained"
           sx={{ width: "30%", borderRadius: 1 }}
         >
-          登録
+          {t?.cafePostModal.form.register}
         </Button>
       </Stack>
     </form>

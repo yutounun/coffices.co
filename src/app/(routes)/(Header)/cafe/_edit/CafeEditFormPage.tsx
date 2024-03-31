@@ -22,6 +22,7 @@ import {
   Typography,
 } from "@mui/material";
 import { CafeI } from "_types/cafes";
+import useTranslate from "_custom/useTranslate";
 
 interface propTypes {
   handleCafePutSubmit: any;
@@ -29,7 +30,8 @@ interface propTypes {
 }
 
 const CafeUpdateForm = ({ handleCafePutSubmit, cafe }: propTypes) => {
-  const env = process.env.NEXT_PUBLIC_ENV;
+  const { t } = useTranslate();
+
   const {
     register,
     handleSubmit,
@@ -72,12 +74,14 @@ const CafeUpdateForm = ({ handleCafePutSubmit, cafe }: propTypes) => {
         >
           <TextField
             id="outlined-basic"
-            label="店名"
+            label={t?.cafePostModal.form.cafeName.label}
             variant="outlined"
             sx={{ width: "100%" }}
             error={!!errors.title}
             helperText={errors.title?.message?.toString()}
-            {...register("title", { required: "店名を入力してください" })}
+            {...register("title", {
+              required: t?.cafePostModal.form.cafeName.required,
+            })}
           />
           <Stack
             direction="row"
@@ -98,7 +102,7 @@ const CafeUpdateForm = ({ handleCafePutSubmit, cafe }: propTypes) => {
                   renderInput={(params) => (
                     <TextField
                       {...params}
-                      label="エリア"
+                      label={t?.cafePostModal.form.area.label}
                       error={!!errors.area}
                       helperText={errors.area?.message?.toString()}
                     />
@@ -122,7 +126,7 @@ const CafeUpdateForm = ({ handleCafePutSubmit, cafe }: propTypes) => {
                   renderInput={(params) => (
                     <TextField
                       {...params}
-                      label="駅名"
+                      label={t?.cafePostModal.form.station.label}
                       error={!!errors.station}
                       helperText={errors.station?.message?.toString()}
                     />
@@ -141,7 +145,7 @@ const CafeUpdateForm = ({ handleCafePutSubmit, cafe }: propTypes) => {
                 control={control}
                 render={({ field }) => (
                   <TimePicker
-                    label="開店時間"
+                    label={t?.cafePostModal.form.openHour.label}
                     {...field}
                     sx={{ width: "45%" }}
                   />
@@ -155,7 +159,7 @@ const CafeUpdateForm = ({ handleCafePutSubmit, cafe }: propTypes) => {
                 render={({ field }) => (
                   <TimePicker
                     sx={{ width: "45%" }}
-                    label="閉店時間"
+                    label={t?.cafePostModal.form.closedTime.label}
                     {...field}
                   />
                 )}
@@ -168,7 +172,7 @@ const CafeUpdateForm = ({ handleCafePutSubmit, cafe }: propTypes) => {
           >
             <FormControl sx={{ width: "30%" }}>
               <FormLabel id="demo-row-radio-buttons-group-label">
-                Wifi
+                {t?.cafePostModal.form.wifi.label}
               </FormLabel>
               <Controller
                 name="isWifi"
@@ -182,12 +186,12 @@ const CafeUpdateForm = ({ handleCafePutSubmit, cafe }: propTypes) => {
                     <FormControlLabel
                       value={true}
                       control={<Radio />}
-                      label="有"
+                      label={t?.cafePostModal.form.exist}
                     />
                     <FormControlLabel
                       value={false}
                       control={<Radio />}
-                      label="無"
+                      label={t?.cafePostModal.form.notExist}
                     />
                   </RadioGroup>
                 )}
@@ -195,7 +199,7 @@ const CafeUpdateForm = ({ handleCafePutSubmit, cafe }: propTypes) => {
             </FormControl>
             <FormControl sx={{ width: "30%" }}>
               <FormLabel id="demo-row-radio-buttons-group-label">
-                電源席
+                {t?.cafePostModal.form.outlet.label}
               </FormLabel>
               <Controller
                 name="isOutlet"
@@ -209,12 +213,12 @@ const CafeUpdateForm = ({ handleCafePutSubmit, cafe }: propTypes) => {
                     <FormControlLabel
                       value={true}
                       control={<Radio />}
-                      label="有"
+                      label={t?.cafePostModal.form.exist}
                     />
                     <FormControlLabel
                       value={false}
                       control={<Radio />}
-                      label="無"
+                      label={t?.cafePostModal.form.notExist}
                     />
                   </RadioGroup>
                 )}
@@ -222,7 +226,7 @@ const CafeUpdateForm = ({ handleCafePutSubmit, cafe }: propTypes) => {
             </FormControl>
             <FormControl sx={{ width: "30%" }}>
               <FormLabel id="demo-row-radio-buttons-group-label">
-                喫煙所
+                {t?.cafePostModal.form.smoking.label}
               </FormLabel>
               <Controller
                 name="isSmoking"
@@ -236,12 +240,12 @@ const CafeUpdateForm = ({ handleCafePutSubmit, cafe }: propTypes) => {
                     <FormControlLabel
                       value={true}
                       control={<Radio />}
-                      label="有"
+                      label={t?.cafePostModal.form.exist}
                     />
                     <FormControlLabel
                       value={false}
                       control={<Radio />}
-                      label="無"
+                      label={t?.cafePostModal.form.notExist}
                     />
                   </RadioGroup>
                 )}
@@ -262,7 +266,7 @@ const CafeUpdateForm = ({ handleCafePutSubmit, cafe }: propTypes) => {
             variant="contained"
             sx={{ width: "30%", borderRadius: 1 }}
           >
-            登録
+            {t?.cafePostModal.form.register}
           </Button>
         </Stack>
       </form>

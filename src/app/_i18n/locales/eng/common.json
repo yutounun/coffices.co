@@ -53,7 +53,10 @@
     }
   },
   "cafePostModal": {
-    "title": "Add a New Cafe",
+    "titles": {
+      "post": "Add a New Cafe",
+      "edit": "Edit a Cafe"
+    },
     "form": {
       "cafeName": {
         "label": "Cafe Name",
@@ -73,8 +76,18 @@
       "closedTime": {
         "label": "Closing Time"
       },
+      "wifi": {
+        "label": "Wi-Fi"
+      },
+      "outlet": {
+        "label": "outlet"
+      },
+      "smoking": {
+        "label": "smoking area"
+      },
       "exist": "Exists",
-      "notExist": "Does Not Exist"
+      "notExist": "Does Not Exist",
+      "register": "register"
     }
   }
 }
