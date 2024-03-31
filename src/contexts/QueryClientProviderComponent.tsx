@@ -1,10 +1,10 @@
 "use client";
 import { ReactNode } from "react";
 import { NextAuthProvider } from "./SessionProviderContext";
-import theme from "../app/theme";
+import theme from "theme";
 import { ThemeProvider } from "@mui/material";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import CssBaseline from "@mui/material/CssBaseline";
 
 type ClientComponentProps = {
   children: ReactNode;
@@ -16,7 +16,10 @@ export default function ClientComponent({ children }: ClientComponentProps) {
   return (
     <QueryClientProvider client={queryClient}>
       <NextAuthProvider>
-        <ThemeProvider theme={theme}>{children}</ThemeProvider>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          {children}
+        </ThemeProvider>
       </NextAuthProvider>
       {/* <ReactQueryDevtools initialIsOpen={false} /> */}
     </QueryClientProvider>

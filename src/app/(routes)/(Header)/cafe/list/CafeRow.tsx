@@ -27,7 +27,7 @@ enum scrollOffset {
 const baseTypeStyle = {
   m: "1em",
   textDecoration: "none",
-  fontFamily: "monospace",
+
   fontWeight: 700,
   letterSpacing: ".3rem",
 };
@@ -88,7 +88,7 @@ const CafeRow = ({ cafes, area, isLoading, isRanking }: propTypes) => {
         sx={{
           ...baseTypeStyle,
           color: "inherit",
-          fontSize: { xs: "1.5em", md: "2em" },
+          fontSize: { xs: "1.5em", md: "1.7em" },
         }}
       >
         {area}
@@ -98,7 +98,7 @@ const CafeRow = ({ cafes, area, isLoading, isRanking }: propTypes) => {
         <Typography
           sx={{
             ...baseTypeStyle,
-            fontSize: { xs: "1em", md: "1.5em" },
+            fontSize: { xs: "1em", md: "1.3em" },
             textAlign: "center",
             color: "#666666",
           }}

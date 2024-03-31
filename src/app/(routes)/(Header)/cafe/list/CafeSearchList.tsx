@@ -19,7 +19,6 @@ const CafeSearchList = ({ cafes, area, isLoading }: propTypes) => {
       <Typography
         variant="h5"
         sx={{
-          fontFamily: "monospace",
           fontWeight: 700,
           letterSpacing: ".3rem",
           color: "inherit",

@@ -28,6 +28,14 @@ export default function RootLayout({ children }: LayoutProps) {
     <html lang="en">
       <head>
         <script async src={src} crossOrigin="anonymous"></script>
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+        />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap"
+        />
       </head>
       <body style={{ backgroundColor: "#F7F1E5" }} className={notojp.className}>
         <GoogleAnalytics GA_MEASUREMENT_ID={process.env.GA_MEASUREMENT_ID} />

@@ -15,6 +15,15 @@ const theme = createTheme({
     },
     mode: "light", // Sets the theme to light mode
   },
+  typography: {
+    fontFamily: [
+      "Roboto",
+      '"Noto Sans JP"',
+      '"Helvetica"',
+      "Arial",
+      "sans-serif",
+    ].join(","),
+  },
 });
 
 export default theme;

@@ -26,7 +26,7 @@ const CafeDescription = ({ cafe }: PropTypes) => {
         variant="h5"
         sx={{
           mb: "4px",
-          fontFamily: "monospace",
+
           fontSize: { xs: "1rem", md: "1.5rem" },
           fontWeight: { xs: "bold", md: "normal" },
           textOverflow: "ellipsis",
@@ -64,7 +64,6 @@ const CafeDescription = ({ cafe }: PropTypes) => {
       <Typography
         variant="body1"
         sx={{
-          fontFamily: "monospace",
           fontSize: { xs: "1em", md: "1.3em" },
         }}
       >

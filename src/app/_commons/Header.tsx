@@ -36,7 +36,6 @@ const baseMenuStyle = {
 };
 const jpMenuStyle = {
   ...baseMenuStyle,
-  fontFamily: "monospace",
 };
 
 function ResponsiveAppBar() {
@@ -101,7 +100,7 @@ function ResponsiveAppBar() {
             href="#app-bar-with-responsive-menu"
             sx={{
               display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
+
               fontWeight: 700,
               letterSpacing: ".3rem",
               color: "inherit",
@@ -153,7 +152,7 @@ function ResponsiveAppBar() {
                 </Typography>
               </MenuItem>
               <MenuItem onClick={() => signOut({ callbackUrl: "/" })}>
-                <Typography textAlign="center">
+                <Typography sx={{ letterSpacing: "0.3rem" }} textAlign="center">
                   {t?.header?.menus[2]}
                 </Typography>
               </MenuItem>
@@ -172,7 +171,7 @@ function ResponsiveAppBar() {
             sx={{
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
-              fontFamily: "monospace",
+
               fontWeight: 700,
               letterSpacing: ".3rem",
               color: "inherit",
@@ -229,7 +228,7 @@ function ResponsiveAppBar() {
                 display: { xs: "none", md: "flex" },
               }}
             >
-              <Typography sx={{ fontweight: 700, fontFamily: "monospace" }}>
+              <Typography sx={{ ...jpMenuStyle, letterSpacing: "0.1rem" }}>
                 {t?.header?.menus[2]}
               </Typography>
             </Button>

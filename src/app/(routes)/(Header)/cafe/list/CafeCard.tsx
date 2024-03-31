@@ -16,7 +16,7 @@ interface propTypes {
 }
 
 const cardStyle = {
-  width: { xs: "12em", md: "20em" },
+  width: { xs: "12em", md: "17em" },
   mt: "2em",
   mr: "2em",
   ml: "0px",
@@ -31,7 +31,7 @@ const CafeCard = ({ cafe, rank, isRanking }: propTypes) => {
   const { isMobile } = useMobile();
 
   const rankStyle = {
-    fontSize: isMobile ? "10em" : "20em",
+    fontSize: isMobile ? "10em" : "16em",
     mr: isMobile ? 0 : -3,
     ml: 0,
   };
