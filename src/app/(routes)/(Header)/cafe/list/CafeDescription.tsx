@@ -3,13 +3,15 @@ import { Stack, Typography } from "@mui/material";
 import { CafeI } from "_types/cafes";
 import Stars from "_commons/Stars";
 import useMobile from "_custom/useMobile";
+import useTranslate from "_custom/useTranslate";
 
 interface PropTypes {
   cafe: CafeI;
 }
 
 const CafeDescription = ({ cafe }: PropTypes) => {
-  const { isMobile } = useMobile();
+  const { t } = useTranslate();
+
   return (
     <Stack
       sx={{
@@ -45,7 +47,7 @@ const CafeDescription = ({ cafe }: PropTypes) => {
             sx={{ fontSize: { xs: "1em", md: "1.3em" } }}
             variant="h6"
           >
-            評価なし
+            {t?.list.card.noReviews}
           </Typography>
         ) : (
           <>

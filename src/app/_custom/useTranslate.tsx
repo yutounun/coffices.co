@@ -12,7 +12,7 @@ const getDictionary = async (locale: string) => dictionaries[locale]();
 
 const useTranslate = () => {
   const { lang } = useLangStore();
-  const [t, setT] = useState<Record<string, string> | null>(null);
+  const [t, setT] = useState<Record<string, any> | null>(null);
 
   useEffect(() => {
     async function fetchDictionary() {

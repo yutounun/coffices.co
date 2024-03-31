@@ -1,3 +1,4 @@
+"use client";
 import React, { useCallback, useEffect, useState } from "react";
 import { CafeI } from "_types/cafes";
 import { Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
@@ -5,6 +6,7 @@ import CafeCard from "(routes)/(Header)/cafe/list/CafeCard";
 import Loading from "loading";
 import Arrow from "_commons/Arrow";
 import useMobile from "_custom/useMobile";
+import useTranslate from "_custom/useTranslate";
 
 interface propTypes {
   cafes: CafeI[];
@@ -36,6 +38,7 @@ const CafeRow = ({ cafes, area, isLoading, isRanking }: propTypes) => {
   const [isScrollRight, setIsScrollRight] = useState(false);
   const [showScroll, setShowScroll] = useState(false);
   const { isMobile } = useMobile();
+  const { t } = useTranslate();
 
   /**
    * - Check if arrows should be shown by checking the current position
@@ -100,7 +103,7 @@ const CafeRow = ({ cafes, area, isLoading, isRanking }: propTypes) => {
             color: "#666666",
           }}
         >
-          このエリアにはカフェが登録されていません
+          {t?.list.noData}
         </Typography>
       ) : (
         <Stack

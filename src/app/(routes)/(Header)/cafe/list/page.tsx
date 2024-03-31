@@ -18,25 +18,6 @@ import StationSearch from "./StationSearch";
 import useMobile from "_custom/useMobile";
 import useTranslate from "_custom/useTranslate";
 
-const cafeInfo = [
-  {
-    area: "中目黒・代官山・恵比寿エリア",
-    stations: ["中目黒駅", "代官山駅", "恵比寿駅"],
-  },
-  {
-    area: "代々木上原エリア",
-    stations: ["代々木駅", "代々木上原駅", "代々木八幡駅"],
-  },
-  {
-    area: "表参道エリア",
-    stations: ["外苑前駅", "表参道駅", "原宿駅", "青山一丁目駅"],
-  },
-  {
-    area: "吉祥寺エリア",
-    stations: ["吉祥寺駅", "三鷹駅"],
-  },
-];
-
 enum maxRanking {
   count = 10,
 }
@@ -120,12 +101,12 @@ const ShopsList = () => {
           <>
             {t && t.title}
             <CafeRow
-              area={stationName ? stationName : "東京都の作業カフェランキング"}
+              area={stationName ? stationName : t?.list?.rankingInTokyo}
               cafes={rankedList()}
               isLoading={isLoading}
               isRanking
             />
-            {cafeInfo.map(({ area, stations }) => (
+            {t?.list?.titles?.map(({ area, stations }) => (
               <CafeRow
                 key={area}
                 area={area}

@@ -1,3 +1,55 @@
 {
-  "title": "English Title"
+  "common": {
+    "jp": "日本語",
+    "en": "English",
+    "appName": "coffices.co"
+  },
+  "header": {
+    "menus": ["List", "Post", "SignOut"],
+    "stationName": "station name"
+  },
+  "home": {
+    "title": [
+      "For Nomads and Remote Workers",
+      "A Platform",
+      "For Sharing Cafés"
+    ],
+    "subtitle": [
+      "Seek cafes for comfy work?",
+      "Too silent in libraries?",
+      "Weary of home office?"
+    ],
+    "buttons": {
+      "google": "Sign in with Google",
+      "github": "Sign in with GitHub",
+      "facebook": "Sign in with Facebook",
+      "line": "Sign in with Line"
+    },
+    "login": "Login"
+  },
+  "list": {
+    "rankingInTokyo": "Work cafe ranking in Tokyo",
+    "titles": [
+      {
+        "area": "Nakameguro, Daikanyama, Ebisu Area",
+        "stations": ["中目黒駅", "代官山駅", "恵比寿駅"]
+      },
+      {
+        "area": "Kichijoji Area",
+        "stations": ["吉祥寺駅", "三鷹駅"]
+      },
+      {
+        "area": "Omotesando Area",
+        "stations": ["外苑前駅", "表参道駅", "原宿駅", "青山一丁目駅"]
+      },
+      {
+        "area": "Yoyogi-Uehara Area",
+        "stations": ["代々木駅", "代々木上原駅", "代々木八幡駅"]
+      }
+    ],
+    "noData": "There are no cafes registered in this area",
+    "card": {
+      "noReviews": "No reviews"
+    }
+  }
 }

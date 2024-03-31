@@ -1,6 +1,8 @@
+"use client";
 import React from "react";
 import { Button } from "@mui/material";
 import { signIn } from "next-auth/react";
+import useTranslate from "_custom/useTranslate";
 
 type LoginButtonProps = {
   text: string;
@@ -39,6 +41,7 @@ const LoginButton = ({
   signInUrl,
   isMobile,
 }: LoginButtonProps) => {
+  const { t } = useTranslate();
   return (
     <Button
       variant="contained"
@@ -46,7 +49,7 @@ const LoginButton = ({
       sx={isMobile ? mobileStyle : pcStyle}
       startIcon={iconComponent}
     >
-      {isMobile ? text : text + "でログイン"}
+      {isMobile ? text : text + " " + t?.home.login}
     </Button>
   );
 };

@@ -2,7 +2,6 @@
 import { Box, Stack, Typography } from "@mui/material";
 import UndrawBarista from "../../../../public/undraw_barista.svg";
 import UndrawDigitalNomad from "../../../../public/undraw_digital_nomad.svg";
-import { signIn } from "next-auth/react";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
@@ -141,24 +140,20 @@ export default function Home() {
                 spacing={2}
               >
                 <Typography variant="h4" sx={{ fontWeight: "bold" }}>
-                  ノマドワーカー と リモートワーカー
+                  {t && t.home.title[0]}
                 </Typography>
-                <Typography variant="h4">のための</Typography>
+                <Typography variant="h4">{t && t.home.title[1]}</Typography>
                 <Typography variant="h4" sx={{ fontWeight: "bold" }}>
-                  情報交換プラットフォーム
+                  {t && t.home.title[2]}
                 </Typography>
               </Stack>
             </Stack>
             <Stack sx={{ color: "#666666", textAlign: "center", mb: 8 }}>
-              <Typography variant="h6" sx={{ my: 0.5 }}>
-                一緒に心地よく仕事ができるカフェを探しませんか？？
-              </Typography>
-              <Typography variant="h6" sx={{ my: 0.5 }}>
-                図書館だと静かすぎますよね〜
-              </Typography>
-              <Typography variant="h6" sx={{ my: 0.5 }}>
-                在宅は飽きますよね〜{t && t.title}
-              </Typography>
+              {t?.home?.subtitle.map((subtitle: string) => (
+                <Typography variant="h6" sx={{ my: 0.5 }}>
+                  {subtitle}
+                </Typography>
+              ))}
             </Stack>
             <Stack
               spacing={4}

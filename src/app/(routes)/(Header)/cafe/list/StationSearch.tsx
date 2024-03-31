@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import { Autocomplete, Box, Stack, TextField } from "@mui/material";
 import Stations from "_json/stations.json";
+import useTranslate from "_custom/useTranslate";
 
 interface propTypes {
   filterByStationName: (stationName: string) => void;
@@ -9,6 +10,7 @@ interface propTypes {
 
 const StationSearch = ({ filterByStationName }: propTypes) => {
   const [stationName, setStationName] = useState("");
+  const { t } = useTranslate();
 
   const handleAutocompleteChange = (_: any, value: string | null) => {
     if (value) setStationName(value); // Autocomplete からの値
@@ -49,7 +51,7 @@ const StationSearch = ({ filterByStationName }: propTypes) => {
           <TextField
             {...params}
             onChange={handleTextFieldChange} // TextField 用の別の関数
-            label="駅名"
+            label={t?.header.stationName}
             sx={{
               "& .MuiInputLabel-outlined": {
                 color: "secondary.main",

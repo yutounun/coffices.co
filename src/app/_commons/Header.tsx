@@ -1,20 +1,22 @@
-"use client";
-
 import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
+import {
+  AppBar,
+  Box,
+  Button,
+  Container,
+  IconButton,
+  Menu,
+  MenuItem,
+  Stack,
+  Toolbar,
+  Typography,
+  Avatar,
+} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import Stack from "@mui/material/Stack";
-import MenuItem from "@mui/material/MenuItem";
 import CoffeeIcon from "@mui/icons-material/Coffee";
+import useLangStore from "../../store/lang";
 import useCreateModalStore from "../../store/openCreateCafeModal";
+
 import { useRouter } from "../../../node_modules/next/navigation";
 import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
@@ -22,8 +24,20 @@ import StationSearch from "(routes)/(Header)/cafe/list/StationSearch";
 import { CafeListContext } from "../../contexts/CafeListContext";
 import { filterCafe, getCafe } from "_utils/api";
 import { StationNameContext } from "../../contexts/StationNameContext";
+import useTranslate from "_custom/useTranslate";
 
-const pages = ["一覧", "投稿", "ログアウト"];
+const baseMenuStyle = {
+  my: 2,
+  color: "white",
+  display: "block",
+  fontWeight: 700,
+  letterSpacing: ".3rem",
+  textDecoration: "none",
+};
+const jpMenuStyle = {
+  ...baseMenuStyle,
+  fontFamily: "monospace",
+};
 
 function ResponsiveAppBar() {
   const { setCafeList } = React.useContext(CafeListContext);
@@ -31,6 +45,8 @@ function ResponsiveAppBar() {
   const router = useRouter();
   const { data: session } = useSession();
   const { openCreateCafeModal } = useCreateModalStore();
+  const { lang, changeToJp, changeToEng } = useLangStore();
+  const { t } = useTranslate();
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
@@ -127,13 +143,19 @@ function ResponsiveAppBar() {
               }}
             >
               <MenuItem onClick={onClickListButton}>
-                <Typography textAlign="center">{pages[0]}</Typography>
+                <Typography textAlign="center">
+                  {t?.header?.menus[0]}
+                </Typography>
               </MenuItem>
               <MenuItem onClick={onClickCreateButton}>
-                <Typography textAlign="center">{pages[1]}</Typography>
+                <Typography textAlign="center">
+                  {t?.header?.menus[1]}
+                </Typography>
               </MenuItem>
               <MenuItem onClick={() => signOut({ callbackUrl: "/" })}>
-                <Typography textAlign="center">{pages[2]}</Typography>
+                <Typography textAlign="center">
+                  {t?.header?.menus[2]}
+                </Typography>
               </MenuItem>
             </Menu>
           </Box>
@@ -157,8 +179,9 @@ function ResponsiveAppBar() {
               textDecoration: "none",
             }}
           >
-            coffices.co
+            {t?.common.appName}
           </Typography>
+
           <Box
             sx={{
               flexGrow: 1,
@@ -166,45 +189,39 @@ function ResponsiveAppBar() {
               alignItems: "center",
             }}
           >
+            {lang === "jp" ? (
+              <Button sx={jpMenuStyle} onClick={changeToEng}>
+                {t?.common.en}
+              </Button>
+            ) : (
+              <Button sx={jpMenuStyle} onClick={changeToJp}>
+                {t?.common.jp}
+              </Button>
+            )}
+
             {/* List */}
             <Button
-              key={pages[0]}
+              key={t?.header?.menus[0]}
               onClick={onClickListButton}
-              sx={{
-                my: 2,
-                color: "white",
-                display: "block",
-                fontFamily: "monospace",
-                fontWeight: 700,
-                letterSpacing: ".3rem",
-                textDecoration: "none",
-              }}
+              sx={jpMenuStyle}
             >
-              {pages[0]}
+              {t?.header?.menus[0]}
             </Button>
 
             {/* Create */}
             <Button
-              key={pages[1]}
+              key={t?.header?.menus[1]}
               onClick={onClickCreateButton}
-              sx={{
-                my: 2,
-                color: "white",
-                display: "block",
-                fontFamily: "monospace",
-                fontWeight: 700,
-                letterSpacing: ".3rem",
-                textDecoration: "none",
-              }}
+              sx={jpMenuStyle}
             >
-              {pages[1]}
+              {t?.header?.menus[1]}
             </Button>
             <StationSearch filterByStationName={filterByStationName} />
           </Box>
 
           <Stack direction="row" sx={{ flexGrow: 0 }} spacing={2}>
             <Button
-              key={pages[1]}
+              key={t?.header?.menus[1]}
               onClick={onClickLogoutButton}
               sx={{
                 my: 2,
@@ -213,7 +230,7 @@ function ResponsiveAppBar() {
               }}
             >
               <Typography sx={{ fontweight: 700, fontFamily: "monospace" }}>
-                ログアウト
+                {t?.header?.menus[2]}
               </Typography>
             </Button>
             <IconButton onClick={handleOpenProfile} sx={{ p: 0 }}>
