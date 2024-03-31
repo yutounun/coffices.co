@@ -8,6 +8,7 @@ import { CafePostRequestI } from "_types/cafes";
 import { extractHourMinute } from "_utils/commonFn";
 import { CafeListContext } from "../../../../../contexts/CafeListContext";
 import useMobile from "_custom/useMobile";
+import useTranslate from "_custom/useTranslate";
 
 interface propTypes {
   showModal: boolean;
@@ -17,6 +18,7 @@ interface propTypes {
 const CafeModal = ({ showModal, handleModalClose }: propTypes) => {
   const { setCafeList } = useContext(CafeListContext);
   const { isMobile } = useMobile();
+  const { t } = useTranslate();
   const height = "auto";
   const modalStyle = {
     position: "absolute",
@@ -68,7 +70,7 @@ const CafeModal = ({ showModal, handleModalClose }: propTypes) => {
           }}
         >
           <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
-            カフェを新規追加
+            {t?.cafePostModal.title}
           </Typography>
           {isMobile && (
             <HighlightOffIcon

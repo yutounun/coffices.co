@@ -28,7 +28,7 @@
     "login": "Login"
   },
   "list": {
-    "rankingInTokyo": "Work cafe ranking in Tokyo",
+    "rankingInTokyo": "Nomad cafe ranking in Tokyo",
     "titles": [
       {
         "area": "Nakameguro, Daikanyama, Ebisu Area",
@@ -50,6 +50,31 @@
     "noData": "There are no cafes registered in this area",
     "card": {
       "noReviews": "No reviews"
+    }
+  },
+  "cafePostModal": {
+    "title": "Add a New Cafe",
+    "form": {
+      "cafeName": {
+        "label": "Cafe Name",
+        "required": "Please enter the cafe name"
+      },
+      "area": {
+        "label": "Area",
+        "required": "Please enter the area"
+      },
+      "station": {
+        "label": "Station Name",
+        "required": "Please enter the station name"
+      },
+      "openHour": {
+        "label": "Opening Hour"
+      },
+      "closedTime": {
+        "label": "Closing Time"
+      },
+      "exist": "Exists",
+      "notExist": "Does Not Exist"
     }
   }
 }

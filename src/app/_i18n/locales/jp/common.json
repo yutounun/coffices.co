@@ -45,5 +45,30 @@
     "card": {
       "noReviews": "評価なし"
     }
+  },
+  "cafePostModal": {
+    "title": "カフェを新規追加",
+    "form": {
+      "cafeName": {
+        "label": "カフェ名",
+        "required": "店名を入力してください"
+      },
+      "area": {
+        "label": "エリア",
+        "required": "エリアを入力してください"
+      },
+      "station": {
+        "label": "駅名",
+        "required": "駅名を入力してください"
+      },
+      "openHour": {
+        "label": "営業開始時間"
+      },
+      "closedTime": {
+        "label": "営業終了時間"
+      },
+      "exist": "有",
+      "notExist": "無"
+    }
   }
 }

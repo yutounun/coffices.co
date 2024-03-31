@@ -106,14 +106,16 @@ const ShopsList = () => {
               isLoading={isLoading}
               isRanking
             />
-            {t?.list?.titles?.map(({ area, stations }) => (
-              <CafeRow
-                key={area}
-                area={area}
-                cafes={cafeShopsInSpecificArea(stations)}
-                isLoading={isLoading}
-              />
-            ))}
+            {t?.list?.titles?.map(
+              ({ area, stations }: { area: string; stations: string[] }) => (
+                <CafeRow
+                  key={area}
+                  area={area}
+                  cafes={cafeShopsInSpecificArea(stations)}
+                  isLoading={isLoading}
+                />
+              )
+            )}
           </>
         )}
       </Suspense>
