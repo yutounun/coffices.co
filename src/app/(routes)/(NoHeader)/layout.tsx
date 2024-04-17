@@ -16,9 +16,8 @@ const NoHeaderLayout = ({ children }: { children: React.ReactNode }) => {
     }
   }, [lang]);
 
-  // 言語がセットされるまでローディングインジケーターを表示
   if (!isLangReady) {
-    return <CircularProgress />;
+    return null;
   }
 
   return (
