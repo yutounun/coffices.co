@@ -7,6 +7,7 @@ declare module "@mui/material/styles/createPalette" {
   interface PaletteOptions {
     custom?: {
       white?: string;
+      hoveredWhite?: string;
       lightGray?: string;
       gray?: string;
       darkGray?: string;
@@ -48,6 +49,7 @@ const theme = createTheme({
     // カスタムカラー変数
     custom: {
       white: "#FFFFFF",
+      hoveredWhite: "#EFECEC",
       lightGray: "#F8F8F8",
       gray: "#D2D2D2",
       darkGray: "#A9A9A9",
@@ -62,6 +64,7 @@ const theme = createTheme({
       fontSize: "3rem", // 48px
       fontWeight: "extraBold",
       color: "black",
+      lineHeight: 1,
     },
     h2: {
       fontFamily:
@@ -94,7 +97,7 @@ const theme = createTheme({
     body1: {
       fontFamily:
         "Open Sans, Roboto, 'Noto Sans JP', 'Helvetica', Arial, sans-serif",
-      fontSize: "1.125rem", // 18px
+      fontSize: "1rem", // 16px
       lineHeight: 1.63, // 163.2%
       color: "rgb(0,0,0,62%)",
     },

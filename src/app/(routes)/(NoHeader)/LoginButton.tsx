@@ -13,11 +13,12 @@ type LoginButtonProps = {
 
 const LoginButtonStyle = {
   backgroundColor: "white",
-  width: "60%",
+  width: "100%",
   "&:hover": {
-    backgroundColor: "rgba(0, 0, 0, 0.05)",
+    backgroundColor: "custom.hoveredWhite",
   },
-  borderRadius: "4",
+  borderRadius: "10",
+  boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
 };
 
 const LoginButton = ({ text, signInUrl, iconUrl }: LoginButtonProps) => {
