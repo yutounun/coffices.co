@@ -10,13 +10,9 @@
     "stationName": "駅名"
   },
   "home": {
-    "title": ["ノマドワーカー", "のための", "カフェ情報交換プラットフォーム"],
-    "subtitle": [
-      "一緒に心地よく仕事ができるカフェを探しませんか？？",
-      "図書館だと静かすぎますよね〜",
-      "在宅は飽きますよね〜"
-    ],
-    "login": "でログイン"
+    "title": "Welcome",
+    "subtitle": ["Find your perfect remote work cafe"],
+    "login": "login"
   },
   "list": {
     "rankingInTokyo": "東京都の作業カフェランキング",

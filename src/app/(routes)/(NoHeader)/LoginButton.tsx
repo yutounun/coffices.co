@@ -1,55 +1,37 @@
 "use client";
 import React from "react";
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import { signIn } from "next-auth/react";
 import useTranslate from "_custom/useTranslate";
+import Image from "next/image";
 
 type LoginButtonProps = {
   text: string;
-  iconComponent: React.ReactNode;
   signInUrl: string;
-  isMobile?: boolean;
+  iconUrl: string;
 };
 
-const mobileStyle = {
-  backgroundColor: "#EEE4CD",
-  color: "black",
-  width: "65%",
-  borderRadius: "50px",
-  mx: "auto",
-  fontWeight: "bold",
+const LoginButtonStyle = {
+  backgroundColor: "white",
+  width: "60%",
   "&:hover": {
-    backgroundColor: "#EEE4CD",
+    backgroundColor: "rgba(0, 0, 0, 0.05)",
   },
+  borderRadius: "4",
 };
 
-const pcStyle = {
-  backgroundColor: "#EEE4CD",
-  color: "black",
-  width: "65%",
-  borderRadius: "50px",
-  mx: "auto",
-  fontWeight: "bold",
-  "&:hover": {
-    backgroundColor: "#D1BBA7",
-  },
-};
-
-const LoginButton = ({
-  text,
-  iconComponent,
-  signInUrl,
-  isMobile,
-}: LoginButtonProps) => {
+const LoginButton = ({ text, signInUrl, iconUrl }: LoginButtonProps) => {
   const { t } = useTranslate();
+
   return (
     <Button
-      variant="contained"
       onClick={() => signIn(signInUrl, { callbackUrl: "/cafe/list" })}
-      sx={isMobile ? mobileStyle : pcStyle}
-      startIcon={iconComponent}
+      startIcon={
+        <Image src={iconUrl} alt={`${text} icon`} width={24} height={24} />
+      }
+      sx={LoginButtonStyle}
     >
-      {isMobile ? text : text + " " + t?.home.login}
+      <Typography variant="body1">{text + " " + t?.home.login}</Typography>
     </Button>
   );
 };

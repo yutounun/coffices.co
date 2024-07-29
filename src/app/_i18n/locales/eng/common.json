@@ -10,19 +10,15 @@
     "stationName": "station name"
   },
   "home": {
-    "title": ["For Nomads Workers", "A Platform", "For Sharing Cafés"],
-    "subtitle": [
-      "Seek cafes for comfy work?",
-      "Too silent in libraries?",
-      "Weary of home office?"
-    ],
+    "title": "Welcome",
+    "subtitle": ["Find your perfect remote work cafe"],
     "buttons": {
       "google": "Sign in with Google",
       "github": "Sign in with GitHub",
       "facebook": "Sign in with Facebook",
       "line": "Sign in with Line"
     },
-    "login": "Login"
+    "login": "login"
   },
   "list": {
     "rankingInTokyo": "Nomad cafe ranking in Tokyo",
