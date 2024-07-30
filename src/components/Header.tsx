@@ -30,10 +30,9 @@ const ResponsiveAppBar = () => {
   };
 
   return (
-    <AppBar sx={{ mb: 4 }}>
+    <AppBar sx={{ mb: 4, px: 16.25 }}>
       <Container maxWidth="xl">
-        <Toolbar>
-          <Image src="/logo.svg" alt="logo" width="80" height="40" />
+        <Toolbar disableGutters>
           <Box
             sx={{
               flexGrow: 1,
