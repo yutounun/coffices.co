@@ -16,15 +16,17 @@ const LoginContent = () => {
 
   return (
     <Stack sx={loginContentStyle}>
-      <Typography variant="h1">{t?.home.title}</Typography>
+      <Typography variant="h1" sx={{ letterSpacing: 1.2 }}>
+        {t?.home.title}
+      </Typography>
       <Typography
         variant="h4"
-        sx={{ color: "custom.darkGray", fontWeight: "semibold" }}
+        sx={{ color: "custom.darkGray", fontWeight: "medium", mt: 0.3 }}
       >
         {t?.home.subtitle}
       </Typography>
 
-      <Stack spacing={3} sx={{ my: 8, width: "50%" }}>
+      <Stack spacing={3} sx={{ my: 5, width: "50%" }}>
         {loginProviders.map((provider) => (
           <LoginButton
             key={provider.text}

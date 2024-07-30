@@ -46,7 +46,13 @@ export default function CafeListLayout({
       <CafeListContext.Provider value={{ cafeList, setCafeList }}>
         <StationNameContext.Provider value={{ stationName, setStationName }}>
           <Header />
-          <Box sx={{ px: 16.25, backgroundColor: "primary.main" }}>
+          <Box
+            sx={{
+              px: 25,
+              backgroundColor: "primary.main",
+              minHeight: "100vh",
+            }}
+          >
             <Box sx={{ mt: "3em" }}>{children}</Box>
             {showsCreateModal && (
               <CafePostModal

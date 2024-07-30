@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Stack } from "@mui/material";
 
 const loginImageStyle = {
-  width: "50%",
+  width: "60%",
   height: "100%",
   justifyContent: "center",
 };

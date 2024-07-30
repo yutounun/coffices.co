@@ -7,7 +7,7 @@ import Image from "next/image";
 import NavBar from "@/components/ui/NavBar";
 import UserActions from "@/components/ui/UserActions";
 import LanguageToggle from "@/components/ui/LanguageToggle";
-import StationSearch from "#/cafe/list/StationSearch";
+import StationSearch from "@/app/cafe/list/SearchBar";
 import { CafeListContext } from "@/contexts/CafeListContext";
 import { filterCafe, getCafe } from "@/utils/api";
 import { StationNameContext } from "@/contexts/StationNameContext";
@@ -30,26 +30,26 @@ const ResponsiveAppBar = () => {
   };
 
   return (
-    <AppBar sx={{ mb: 4, px: 16.25 }}>
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <Box
-            sx={{
-              flexGrow: 1,
-              display: { xs: "none", md: "flex" },
-              alignItems: "center",
-            }}
-          >
-            <Image src="/logo/logo.png" alt="logo" width={70} height={20} />
-            <LanguageToggle sx={{ mx: 5, position: "static" }} />
-            <NavBar />
-            <StationSearch filterByStationName={filterByStationName} />
-          </Box>
-          <Stack direction="row" sx={{ flexGrow: 0 }} spacing={2}>
-            <UserActions session={session} router={router} />
-          </Stack>
-        </Toolbar>
-      </Container>
+    <AppBar sx={{ mb: 4, px: 25, backgroundColor: "secondary.main" }}>
+      <Toolbar disableGutters>
+        <Stack
+          direction="row"
+          sx={{
+            flexGrow: 1,
+            display: { xs: "none", md: "flex" },
+            alignItems: "center",
+            gap: 4,
+          }}
+        >
+          <Image src="/logo/white.png" alt="logo" width={80} height={40} />
+          <LanguageToggle sx={{ position: "static" }} />
+          <NavBar />
+          <StationSearch filterByStationName={filterByStationName} />
+        </Stack>
+        <Stack direction="row" sx={{ flexGrow: 0 }} spacing={2}>
+          <UserActions session={session} router={router} />
+        </Stack>
+      </Toolbar>
     </AppBar>
   );
 };

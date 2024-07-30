@@ -14,7 +14,7 @@ import CafeRow from "./CafeRow";
 import { CafeListContext } from "@/contexts/CafeListContext";
 import CafeSearchList from "./CafeSearchList";
 import { StationNameContext } from "@/contexts/StationNameContext";
-import StationSearch from "./StationSearch";
+import StationSearch from "./SearchBar";
 import useMobile from "@/hooks/useMobile";
 import useTranslate from "@/hooks/useTranslate";
 

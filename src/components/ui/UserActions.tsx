@@ -15,6 +15,7 @@ const UserActions = ({ session, router }) => {
   };
   const baseMenuStyle = {
     my: 2,
+    color: "white",
     display: "block",
     fontWeight: 700,
     letterSpacing: ".3rem",

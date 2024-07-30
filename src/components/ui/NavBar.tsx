@@ -5,13 +5,13 @@ import { useRouter } from "next/navigation";
 import useTranslate from "@/hooks/useTranslate";
 
 const baseMenuStyle = {
-  my: 2,
-  mx: 3,
-  color: "black",
+  py: 2,
+  color: "white",
   display: "block",
   fontWeight: 700,
   letterSpacing: ".3rem",
   textDecoration: "none",
+  cursor: "pointer",
 };
 
 const NavBar = () => {

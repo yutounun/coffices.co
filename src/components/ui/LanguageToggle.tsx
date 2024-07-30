@@ -16,7 +16,7 @@ const LanguageToggle = ({ sx }: { sx: Object }) => {
       alt="flag"
       sx={{
         ...sx,
-        left: "140px",
+        left: "200px",
         top: "15px",
         width: 30,
         height: 30,
