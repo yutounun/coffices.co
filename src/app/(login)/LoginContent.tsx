@@ -9,7 +9,6 @@ const loginContentStyle = {
   width: "50%",
   height: "100%",
   justifyContent: "center",
-  pl: 20,
 };
 
 const LoginContent = () => {

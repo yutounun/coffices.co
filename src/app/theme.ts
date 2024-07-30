@@ -46,7 +46,7 @@ const theme = createTheme({
       main: "#D2D2D2",
       contrastText: "#25313C",
     },
-    // カスタムカラー変数
+    // New color can be added
     custom: {
       white: "#FFFFFF",
       hoveredWhite: "#EFECEC",
@@ -61,7 +61,7 @@ const theme = createTheme({
     h1: {
       fontFamily:
         "Lato, 'Open Sans', Roboto, 'Noto Sans JP', 'Helvetica', Arial, sans-serif",
-      fontSize: "4rem", // 48px
+      fontSize: "3rem", // 48px
       fontWeight: "extraBold",
       color: "black",
       lineHeight: 1,
