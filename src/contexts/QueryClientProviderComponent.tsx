@@ -1,7 +1,7 @@
 "use client";
 import { ReactNode } from "react";
 import { NextAuthProvider } from "./SessionProviderContext";
-import theme from "theme";
+import theme from "#/theme";
 import { ThemeProvider } from "@mui/material";
 import { QueryClient, QueryClientProvider } from "react-query";
 import CssBaseline from "@mui/material/CssBaseline";
