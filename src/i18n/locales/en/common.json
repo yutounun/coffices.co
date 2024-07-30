@@ -7,9 +7,9 @@
   },
   "header": {
     "menus": {
-      "list": "List",
-      "post": "post",
-      "signout": "signout"
+      "list": "LIST",
+      "post": "POST",
+      "signout": "SIGNOUT"
     },
     "stationName": "station name"
   },

@@ -35,7 +35,7 @@ const StationSearch = ({ filterByStationName }: propTypes) => {
         height: "2.5em",
         ml: { xs: "2em", sm: "5em" },
         mb: { xs: "1em", sm: "0" },
-        backgroundColor: "primary.main",
+        backgroundColor: "white",
         borderRadius: "4px",
       }}
     >
@@ -62,7 +62,7 @@ const StationSearch = ({ filterByStationName }: propTypes) => {
               "& .MuiInputLabel-outlined.MuiInputLabel-shrink": {
                 color: "secondary.main",
               },
-              backgroundColor: "primary.contrastText",
+              backgroundColor: "white",
               borderRadius: "4px",
             }}
             InputProps={{
@@ -74,7 +74,7 @@ const StationSearch = ({ filterByStationName }: propTypes) => {
       />
       <Box
         sx={{
-          backgroundColor: "secondary.main",
+          backgroundColor: "custom.gray",
           height: "100%",
           width: "2.9em",
           borderRadius: "0 4px 4px 0",

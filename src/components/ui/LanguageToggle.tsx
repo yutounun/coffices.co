@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import useLangStore from "@/store/lang";
 import { Avatar } from "@mui/material";
 
-const LanguageToggle = () => {
+const LanguageToggle = ({ sx }: { sx: Object }) => {
   const { lang, changeToJp, changeToEng } = useLangStore();
 
   useEffect(() => {
@@ -15,11 +15,11 @@ const LanguageToggle = () => {
       src={lang === "eng" ? "/flags/japan.png" : "/flags/england.png"}
       alt="flag"
       sx={{
-        position: "fixed",
+        ...sx,
         left: "140px",
-        top: "10px",
-        width: 40,
-        height: 40,
+        top: "15px",
+        width: 30,
+        height: 30,
         cursor: "pointer",
       }}
       onClick={lang === "eng" ? changeToJp : changeToEng}

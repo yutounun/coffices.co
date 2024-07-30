@@ -1,81 +1,24 @@
-import * as React from "react";
-import {
-  AppBar,
-  Box,
-  Button,
-  Container,
-  IconButton,
-  Menu,
-  MenuItem,
-  Stack,
-  Toolbar,
-  Typography,
-  Avatar,
-} from "@mui/material";
-import useLangStore from "@/store/lang";
-import useCreateModalStore from "@/store/openCreateCafeModal";
-import { useRouter } from "$/node_modules/next/navigation";
-import { signOut } from "next-auth/react";
+"use client";
+import React from "react";
+import { AppBar, Container, Toolbar, Box, Stack } from "@mui/material";
+import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
+import Image from "next/image";
+import NavBar from "@/components/ui/NavBar";
+import UserActions from "@/components/ui/UserActions";
+import LanguageToggle from "@/components/ui/LanguageToggle";
 import StationSearch from "#/cafe/list/StationSearch";
 import { CafeListContext } from "@/contexts/CafeListContext";
 import { filterCafe, getCafe } from "@/utils/api";
 import { StationNameContext } from "@/contexts/StationNameContext";
-import useTranslate from "@/hooks/useTranslate";
-import Image from "next/image";
 
-const baseMenuStyle = {
-  my: 2,
-  color: "white",
-  display: "block",
-  fontWeight: 700,
-  letterSpacing: ".3rem",
-  textDecoration: "none",
-};
-const jpMenuStyle = {
-  ...baseMenuStyle,
-};
-
-function ResponsiveAppBar() {
+const ResponsiveAppBar = () => {
   const { setCafeList } = React.useContext(CafeListContext);
   const { setStationName } = React.useContext(StationNameContext);
   const router = useRouter();
   const { data: session } = useSession();
-  const { openCreateCafeModal } = useCreateModalStore();
-  const { lang, changeToJp, changeToEng } = useLangStore();
-  const { t } = useTranslate();
 
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
-    null
-  );
-
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenProfile = (event: React.MouseEvent<HTMLElement>) => {
-    router.push("/profile");
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const onClickListButton = () => {
-    handleCloseNavMenu();
-    router.push("/cafe/list");
-  };
-
-  const onClickCreateButton = () => {
-    handleCloseNavMenu();
-    openCreateCafeModal();
-  };
-
-  const onClickLogoutButton = () => {
-    handleCloseNavMenu();
-    signOut({ callbackUrl: "/" });
-  };
-
-  async function filterByStationName(filterParam?: string) {
+  const filterByStationName = async (filterParam?: string) => {
     if (filterParam) {
       const filteredCafe = await filterCafe(filterParam);
       setCafeList(filteredCafe);
@@ -84,101 +27,13 @@ function ResponsiveAppBar() {
       setCafeList(cafeList);
     }
     filterParam ? setStationName(filterParam) : setStationName("");
-  }
+  };
 
   return (
     <AppBar sx={{ mb: 4 }}>
       <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <Image src="/logo.svg" alt="logo" width="80" height={"40"} />
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            {/* <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton> */}
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: "block", md: "none" },
-              }}
-            >
-              {/* <MenuItem onClick={onClickListButton}>
-                <Typography textAlign="center">
-                  {t?.header?.menus[0]}
-                </Typography>
-              </MenuItem>
-              <MenuItem onClick={onClickCreateButton}>
-                <Typography textAlign="center">
-                  {t?.header?.menus.post}
-                </Typography>
-              </MenuItem>
-              <MenuItem onClick={() => signOut({ callbackUrl: "/" })}>
-                <Typography sx={{ letterSpacing: "0.3rem" }} textAlign="center">
-                  {t?.header?.menus.signout}
-                </Typography>
-              </MenuItem> */}
-              {/* <MenuItem>
-                {lang === "jp" ? (
-                  <Typography
-                    sx={{ letterSpacing: "0.3rem" }}
-                    textAlign="center"
-                    onClick={changeToEng}
-                  >
-                    {t?.common.en}
-                  </Typography>
-                ) : (
-                  <Typography
-                    sx={{ letterSpacing: "0.3rem" }}
-                    textAlign="center"
-                    onClick={changeToJp}
-                  >
-                    {t?.common.jp}
-                  </Typography>
-                )}
-              </MenuItem> */}
-            </Menu>
-          </Box>
-
-          {/* <CoffeeIcon
-            fontSize="small"
-            sx={{ display: { xs: "flex", md: "none" } }}
-          />
-          <Typography
-            variant="subtitle1"
-            noWrap
-            component="a"
-            href="#/_app-bar-with-responsive-menu"
-            sx={{
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            {t?.common.appName}
-          </Typography> */}
-
+        <Toolbar>
+          <Image src="/logo.svg" alt="logo" width="80" height="40" />
           <Box
             sx={{
               flexGrow: 1,
@@ -186,61 +41,18 @@ function ResponsiveAppBar() {
               alignItems: "center",
             }}
           >
-            {lang === "jp" ? (
-              <Button sx={jpMenuStyle} onClick={changeToEng}>
-                {t?.common.en}
-              </Button>
-            ) : (
-              <Button sx={jpMenuStyle} onClick={changeToJp}>
-                {t?.common.jp}
-              </Button>
-            )}
-
-            {/* List */}
-            <Button
-              key={t?.header?.menus[0]}
-              onClick={onClickListButton}
-              sx={jpMenuStyle}
-            >
-              {t?.header?.menus.list}
-            </Button>
-
-            {/* Create */}
-            <Button
-              key={t?.header?.post}
-              onClick={onClickCreateButton}
-              sx={jpMenuStyle}
-            >
-              {t?.header?.menus.post}
-            </Button>
+            <Image src="/logo/logo.png" alt="logo" width={70} height={20} />
+            <LanguageToggle sx={{ mx: 5, position: "static" }} />
+            <NavBar />
             <StationSearch filterByStationName={filterByStationName} />
           </Box>
-
           <Stack direction="row" sx={{ flexGrow: 0 }} spacing={2}>
-            <Button
-              key={t?.header?.menus.post}
-              onClick={onClickLogoutButton}
-              sx={{
-                my: 2,
-                color: "white",
-                display: { xs: "none", md: "flex" },
-              }}
-            >
-              <Typography sx={{ ...jpMenuStyle, letterSpacing: "0.1rem" }}>
-                {t?.header?.menus.signout}
-              </Typography>
-            </Button>
-            <IconButton onClick={handleOpenProfile} sx={{ p: 0 }}>
-              <Avatar
-                alt="Remy Sharp"
-                src={session?.user?.image || "/coffee.jpg"}
-                sx={{ width: { xs: 28, md: 38 }, height: { xs: 28, md: 38 } }}
-              />
-            </IconButton>
+            <UserActions session={session} router={router} />
           </Stack>
         </Toolbar>
       </Container>
     </AppBar>
   );
-}
+};
+
 export default ResponsiveAppBar;

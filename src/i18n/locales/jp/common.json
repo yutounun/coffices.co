@@ -6,7 +6,11 @@
     "register": "登録"
   },
   "header": {
-    "menus": ["一覧", "投稿", "ログアウト"],
+    "menus": {
+      "list": "LIST",
+      "post": "POST",
+      "signout": "SIGNOUT"
+    },
     "stationName": "駅名"
   },
   "home": {

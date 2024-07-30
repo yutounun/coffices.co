@@ -20,15 +20,16 @@ const theme = createTheme({
   palette: {
     mode: "light", // Sets the theme to light mode
     primary: {
+      main: "#F8F8F8",
+      light: "white",
+      dark: "#EFECEC",
+      contrastText: "#1D1915",
+    },
+    secondary: {
       main: "#FFD8B5",
       light: "#FF8F2A",
       dark: "#FF8F2A",
       contrastText: "#25313C",
-    },
-    secondary: {
-      dark: "#FF8F2A",
-      main: "#FFD8B5",
-      light: "#FF8F2A",
     },
     error: {
       main: "#FF8F2A",
