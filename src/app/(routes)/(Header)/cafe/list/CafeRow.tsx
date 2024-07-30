@@ -5,8 +5,8 @@ import { Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import CafeCard from "#/(routes)/(Header)/cafe/list/CafeCard";
 import Loading from "loading";
 import Arrow from "@/components/Arrow";
-import useMobile from "#/_custom/useMobile";
-import useTranslate from "#/_custom/useTranslate";
+import useMobile from "@/hooks/useMobile";
+import useTranslate from "@/hooks/useTranslate";
 
 interface propTypes {
   cafes: CafeI[];

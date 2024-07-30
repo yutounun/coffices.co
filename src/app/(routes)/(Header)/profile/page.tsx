@@ -5,7 +5,7 @@ import { Box, Stack, useMediaQuery, useTheme } from "@mui/material";
 import ProfileDesc from "./ProfileDesc";
 import { useSession } from "next-auth/react";
 import ProfileEditModal from "./ProfileEditModal";
-import useMobile from "#/_custom/useMobile";
+import useMobile from "@/hooks/useMobile";
 
 const Profile = () => {
   const { data: session } = useSession();

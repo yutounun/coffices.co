@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getCafe } from "#/_utils/api";
+import { getCafe } from "@/utils/api";
 
 const useGetCafe = () => {
   const [cafes, setCafes] = useState([]);

@@ -9,7 +9,7 @@ import SmokingRoomsIcon from "@mui/icons-material/SmokingRooms";
 import PanoramaFishEyeIcon from "@mui/icons-material/PanoramaFishEye";
 import DoDisturbAltIcon from "@mui/icons-material/DoDisturbAlt";
 import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
-import useMobile from "#/_custom/useMobile";
+import useMobile from "@/hooks/useMobile";
 
 const CafeDetailModalOverview = ({ cafe }: { cafe: CafeI }) => {
   const { isMobile } = useMobile();

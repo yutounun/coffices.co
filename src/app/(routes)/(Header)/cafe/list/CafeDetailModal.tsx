@@ -8,13 +8,13 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import { Box, Button, Modal, Stack, Typography, Tooltip } from "@mui/material";
 import Stars from "@/components/Stars";
 import { NextImage } from "@/components/NextImage";
-import { deleteCafe } from "#/_utils/api";
+import { deleteCafe } from "@/utils/api";
 import CafeDetailModalOverview from "./CafeDetailModalOverview";
 import CafeDetailModalReviews from "./CafeDetailModalReviews";
 import CafePostReviewModal from "#/(routes)/(Header)/cafe/_create/CafePostReviewModal";
 import meStore from "@/store/me";
 import { CafeListContext } from "@/contexts/CafeListContext";
-import useMobile from "#/_custom/useMobile";
+import useMobile from "@/hooks/useMobile";
 
 const modalStyle = {
   position: "absolute",

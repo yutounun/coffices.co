@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import { Autocomplete, Box, Stack, TextField } from "@mui/material";
 import Stations from "#/_json/stations.json";
-import useTranslate from "#/_custom/useTranslate";
+import useTranslate from "@/hooks/useTranslate";
 
 interface propTypes {
   filterByStationName: (stationName: string) => void;

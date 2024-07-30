@@ -7,7 +7,7 @@ import CafeDescription from "#/(routes)/(Header)/cafe/list/CafeDescription";
 import { NextImage } from "@/components/NextImage";
 import CafeDetailModal from "./CafeDetailModal";
 import Card from "@mui/material/Card";
-import useMobile from "#/_custom/useMobile";
+import useMobile from "@/hooks/useMobile";
 
 interface propTypes {
   cafe: CafeI;

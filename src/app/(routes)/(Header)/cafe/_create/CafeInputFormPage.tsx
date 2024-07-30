@@ -19,8 +19,8 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import useMobile from "#/_custom/useMobile";
-import useTranslate from "#/_custom/useTranslate";
+import useMobile from "@/hooks/useMobile";
+import useTranslate from "@/hooks/useTranslate";
 
 interface propTypes {
   handleCafePostSubmit: any;

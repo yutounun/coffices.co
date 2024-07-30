@@ -8,13 +8,13 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { addReview, putCafe } from "#/_utils/api";
+import { addReview, putCafe } from "@/utils/api";
 import { useForm } from "react-hook-form";
 import { CafeI } from "#/_types/cafes";
 import meStore from "@/store/me";
 import { useSession } from "next-auth/react";
 import { CafeListContext } from "@/contexts/CafeListContext";
-import useTranslate from "#/_custom/useTranslate";
+import useTranslate from "@/hooks/useTranslate";
 
 interface propTypes {
   showModal: boolean;

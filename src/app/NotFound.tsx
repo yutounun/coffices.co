@@ -1,6 +1,6 @@
 import { Stack, Typography } from "@mui/material";
 import React from "react";
-import useMobile from "#/_custom/useMobile";
+import useMobile from "@/hooks/useMobile";
 
 const NotFound = () => {
   const { isMobile } = useMobile();

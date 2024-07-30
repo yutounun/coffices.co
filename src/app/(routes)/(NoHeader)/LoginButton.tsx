@@ -2,7 +2,7 @@
 import React from "react";
 import { Button, Typography } from "@mui/material";
 import { signIn } from "next-auth/react";
-import useTranslate from "#/_custom/useTranslate";
+import useTranslate from "@/hooks/useTranslate";
 import Image from "next/image";
 
 type LoginButtonProps = {

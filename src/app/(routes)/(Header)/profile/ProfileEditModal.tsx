@@ -10,8 +10,8 @@ import {
 } from "@mui/material";
 import { useForm } from "react-hook-form";
 import meStore from "@/store/me";
-import { updateUser } from "#/_utils/api";
-import useTranslate from "#/_custom/useTranslate";
+import { updateUser } from "@/utils/api";
+import useTranslate from "@/hooks/useTranslate";
 
 interface propTypes {
   showModal: boolean;

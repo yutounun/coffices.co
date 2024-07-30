@@ -22,7 +22,7 @@ import {
   Typography,
 } from "@mui/material";
 import { CafeI } from "#/_types/cafes";
-import useTranslate from "#/_custom/useTranslate";
+import useTranslate from "@/hooks/useTranslate";
 
 interface propTypes {
   handleCafePutSubmit: any;

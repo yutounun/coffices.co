@@ -21,9 +21,9 @@ import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
 import StationSearch from "#/(routes)/(Header)/cafe/list/StationSearch";
 import { CafeListContext } from "@/contexts/CafeListContext";
-import { filterCafe, getCafe } from "#/_utils/api";
+import { filterCafe, getCafe } from "@/utils/api";
 import { StationNameContext } from "@/contexts/StationNameContext";
-import useTranslate from "#/_custom/useTranslate";
+import useTranslate from "@/hooks/useTranslate";
 import Image from "next/image";
 
 const baseMenuStyle = {

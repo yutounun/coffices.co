@@ -4,7 +4,7 @@ import Header from "@/components/Header";
 import { Box, Stack } from "@mui/material";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-import { getUser } from "#/_utils/api";
+import { getUser } from "@/utils/api";
 import meStore from "@/store/me";
 import { StationNameContext } from "@/contexts/StationNameContext";
 import CafePostModal from "./cafe/_create/CafePostModal";
