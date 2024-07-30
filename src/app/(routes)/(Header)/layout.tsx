@@ -11,7 +11,7 @@ import CafePostModal from "./cafe/_create/CafePostModal";
 import useCreateModalStore from "@/store/openCreateCafeModal";
 import { useRouter } from "next/navigation";
 import { CafeListContext } from "@/contexts/CafeListContext";
-import { CafeI } from "#/_types/cafes";
+import { CafeI } from "@/_types/cafes";
 
 export default function CafeListLayout({
   children,

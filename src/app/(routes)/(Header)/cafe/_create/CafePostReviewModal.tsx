@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { addReview, putCafe } from "@/utils/api";
 import { useForm } from "react-hook-form";
-import { CafeI } from "#/_types/cafes";
+import { CafeI } from "@/_types/cafes";
 import meStore from "@/store/me";
 import { useSession } from "next-auth/react";
 import { CafeListContext } from "@/contexts/CafeListContext";

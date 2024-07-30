@@ -5,9 +5,9 @@ import useLangStore from "@/store/lang";
 
 const dictionaries: any = {
   eng: () =>
-    import("#/_i18n/locales/eng/common.json").then((module) => module.default),
+    import("@/i18n/locales/eng/common.json").then((module) => module.default),
   jp: () =>
-    import("#/_i18n//locales/jp/common.json").then((module) => module.default),
+    import("@/i18n//locales/jp/common.json").then((module) => module.default),
 };
 
 const getDictionary = async (locale: string) => dictionaries[locale]();

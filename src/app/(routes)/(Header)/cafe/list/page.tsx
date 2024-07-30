@@ -9,7 +9,7 @@ import React, {
 import Loading from "loading";
 import useGetCafe from "@/hooks/useGetCafe";
 import { filterCafe, getCafe } from "@/utils/api";
-import "#/_styles/cafe-list.scss";
+import "@/styles/cafe-list.scss";
 import CafeRow from "./CafeRow";
 import { CafeListContext } from "@/contexts/CafeListContext";
 import CafeSearchList from "./CafeSearchList";

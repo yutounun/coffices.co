@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { CafeI } from "#/_types/cafes";
+import { CafeI } from "@/_types/cafes";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import CafeEditModal from "#/(routes)/(Header)/cafe/_edit/CafeEditModal";

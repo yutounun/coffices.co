@@ -1,6 +1,6 @@
 "use client";
 import React, { useCallback, useEffect, useState } from "react";
-import { CafeI } from "#/_types/cafes";
+import { CafeI } from "@/_types/cafes";
 import { Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import CafeCard from "#/(routes)/(Header)/cafe/list/CafeCard";
 import Loading from "loading";

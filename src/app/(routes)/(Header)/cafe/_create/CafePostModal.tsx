@@ -4,7 +4,7 @@ import { Box, Modal, Stack, Typography } from "@mui/material";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import CafeInputForm from "./CafeInputFormPage";
 import { postCafe } from "@/utils/api";
-import { CafePostRequestI } from "#/_types/cafes";
+import { CafePostRequestI } from "@/_types/cafes";
 import { extractHourMinute } from "@/utils/commonFn";
 import { CafeListContext } from "@/contexts/CafeListContext";
 import useMobile from "@/hooks/useMobile";

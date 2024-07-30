@@ -35,7 +35,8 @@
     "src/libs/connectDB.js",
     "src/libs/models/CafeModel.js",
     "src/utils",
-    "src/hooks"
+    "src/hooks",
+    "src/types"
   ],
   "exclude": ["node_modules"],
   "moduleResolution": "node"
