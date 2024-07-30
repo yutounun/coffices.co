@@ -1,9 +1,9 @@
 "use client";
 import { useEffect } from "react";
 import useLangStore from "@/store/lang";
-import Image from "next/image";
+import { Avatar } from "@mui/material";
 
-const LanguageToggle = ({}: {}) => {
+const LanguageToggle = () => {
   const { lang, changeToJp, changeToEng } = useLangStore();
 
   useEffect(() => {
@@ -11,12 +11,17 @@ const LanguageToggle = ({}: {}) => {
   }, [changeToJp]);
 
   return (
-    <Image
+    <Avatar
       src={lang === "eng" ? "/flags/japan.png" : "/flags/england.png"}
-      style={{ position: "fixed", left: "140px", top: "10px" }}
       alt="flag"
-      height="30"
-      width="40"
+      sx={{
+        position: "fixed",
+        left: "140px",
+        top: "10px",
+        width: 40,
+        height: 40,
+        cursor: "pointer",
+      }}
       onClick={lang === "eng" ? changeToJp : changeToEng}
     />
   );
