@@ -28,11 +28,6 @@ export default function RootLayout({ children }: LayoutProps) {
     <html lang="en">
       <head>
         {/* <script async src={src} crossOrigin="anonymous"></script> */}
-        <style>{`
-          body {
-            background-color: #F8F8F8;
-          }
-        `}</style>
       </head>
       <body className={notojp.className}>
         {/* <GoogleAnalytics

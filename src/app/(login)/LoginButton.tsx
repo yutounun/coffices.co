@@ -17,7 +17,7 @@ const LoginButtonStyle = {
   "&:hover": {
     backgroundColor: "custom.hoveredWhite",
   },
-  borderRadius: "10",
+  borderRadius: "10px", // fixed to 'px' for consistency
   boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
 };
 
@@ -25,15 +25,19 @@ const LoginButton = ({ text, signInUrl, iconUrl }: LoginButtonProps) => {
   const { t } = useTranslate();
 
   return (
-    <Button
-      onClick={() => signIn(signInUrl, { callbackUrl: "/cafe/list" })}
-      startIcon={
-        <Image src={iconUrl} alt={`${text} icon`} width={24} height={24} />
-      }
-      sx={LoginButtonStyle}
-    >
-      <Typography variant="body1">{text + " " + t?.home.login}</Typography>
-    </Button>
+    <>
+      <Button
+        onClick={() => signIn(signInUrl, { callbackUrl: "/cafe/list" })}
+        startIcon={
+          <Image src={iconUrl} alt={`${text} icon`} width={24} height={24} />
+        }
+        sx={LoginButtonStyle}
+      >
+        <Typography variant="body1">
+          {text + (t ? " " + t.home.login : "")}
+        </Typography>
+      </Button>
+    </>
   );
 };
 
