@@ -21,21 +21,22 @@ export default function Home() {
       background:
         "radial-gradient(circle at 50% 90%, rgba(255, 227, 194, 1) 0%, rgba(255, 227, 194, 1) 50%, rgba(255, 182, 138, 1) 70%, #FE912D 100%)",
       justifyContent: "center",
-      alignItems: "center",
       overflow: "hidden",
+      px: 16.25,
     },
     left: {
       py: "5%",
       width: "50%",
       height: "100%",
       justifyContent: "center",
-      alignItems: "center",
     },
     right: {
       py: "5%",
       width: "50%",
       height: "100%",
       justifyContent: "center",
+      alignItems: "flex-end", // 追加: 垂直方向の右揃え
+      display: "flex", // 追加: 水平方向の揃えを有効にするために必要
     },
     loginButtons: {
       my: 8,
@@ -68,8 +69,9 @@ export default function Home() {
         <Image
           src="/login/background/background.png"
           alt="bg"
-          width={600}
+          width={700}
           height={1400}
+          style={{ marginRight: "-20px" }} // 画像を右に5ピクセル寄せる
         />
       </Stack>
     </Stack>
