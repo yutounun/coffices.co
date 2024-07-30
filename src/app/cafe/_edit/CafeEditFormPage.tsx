@@ -21,7 +21,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { CafeI } from "@/_types/cafes";
+import { CafeI } from "@/types/cafes";
 import useTranslate from "@/hooks/useTranslate";
 
 interface propTypes {

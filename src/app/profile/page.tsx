@@ -18,7 +18,7 @@ const Profile = () => {
         width: "100%",
         height: { xs: "94vh", md: "94vh" },
         position: "relative",
-        background: "#/_F6F6F6",
+        background: "#F6F6F6",
       }}
     >
       {/* Background Image */}

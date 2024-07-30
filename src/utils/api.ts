@@ -3,7 +3,7 @@ import {
   CafePostRequestI,
   CafePutRequestI,
   CreateReviewRequestI,
-} from "@/_types/cafes";
+} from "@/types/cafes";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 

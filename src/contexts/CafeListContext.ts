@@ -1,5 +1,5 @@
 import { createContext, Dispatch, SetStateAction } from "react";
-import { CafeI } from "@/_types/cafes";
+import { CafeI } from "@/types/cafes";
 
 export interface CafeListContextType {
   cafeList: CafeI[];

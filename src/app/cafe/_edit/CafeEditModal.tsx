@@ -1,31 +1,33 @@
 "use client";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Box, Modal, Stack, Typography } from "@mui/material";
-import HighlightOffIcon from "@mui/icons-material/HighlightOff";
-import CafeInputForm from "./CafeInputFormPage";
-import { postCafe } from "@/utils/api";
-import { CafePostRequestI } from "@/_types/cafes";
+import CafeEditForm from "./CafeEditFormPage";
+import { putCafe } from "@/utils/api";
+import { CafeI, CafePutRequestI } from "@/types/cafes";
 import { extractHourMinute } from "@/utils/commonFn";
+import { cafeImageUpload } from "@/utils/api";
 import { CafeListContext } from "@/contexts/CafeListContext";
-import useMobile from "@/hooks/useMobile";
 import useTranslate from "@/hooks/useTranslate";
 
 interface propTypes {
   showModal: boolean;
   handleModalClose: () => void;
+  cafe: CafeI;
 }
 
-const CafeModal = ({ showModal, handleModalClose }: propTypes) => {
-  const { setCafeList } = useContext(CafeListContext);
-  const { isMobile } = useMobile();
+const CafeEditModal = ({ showModal, handleModalClose, cafe }: propTypes) => {
+  let { setCafeList } = useContext(CafeListContext);
   const { t } = useTranslate();
+
+  const [cafeImageFile, setCafeImageFile] = useState<any>(null);
+
   const height = "auto";
   const modalStyle = {
     position: "absolute",
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: { xs: 400, md: 800 },
+    width: 800,
     bgcolor: "background.paper",
     boxShadow: 24,
     pb: 5,
@@ -36,7 +38,7 @@ const CafeModal = ({ showModal, handleModalClose }: propTypes) => {
   };
 
   /** Submit action */
-  async function handleCafePostSubmit(data: CafePostRequestI) {
+  async function handleCafePutSubmit(data: CafePutRequestI) {
     data.isWifi = data.isWifi === "true";
     data.isOutlet = data.isOutlet === "true";
     data.isSmoking = data.isSmoking === "true";
@@ -44,11 +46,21 @@ const CafeModal = ({ showModal, handleModalClose }: propTypes) => {
     data.closeHour = extractHourMinute(data.closeHour);
 
     // Upload image and retrieve url
-    data.reviews = [];
-    postCafe(data).then((res) => {
-      setCafeList((prev) => [...prev, res]);
-      handleModalClose();
-    });
+    if (cafeImageFile) {
+      await cafeImageUpload(cafeImageFile).then((res: any) => {
+        data.image = res.url || "";
+        // And then, update detailed cafe data
+        putCafe(data).then((res) => {
+          setCafeList(res);
+          handleModalClose();
+        });
+      });
+    } else {
+      await putCafe(data).then((res) => {
+        setCafeList(res);
+        handleModalClose();
+      });
+    }
   }
   return (
     <Modal
@@ -70,21 +82,14 @@ const CafeModal = ({ showModal, handleModalClose }: propTypes) => {
           }}
         >
           <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
-            {t?.cafePostModal.titles.post}
+            {t?.cafePostModal.titles.edit}
           </Typography>
-          {isMobile && (
-            <HighlightOffIcon
-              sx={{ position: "absolute", right: 30 }}
-              onClick={handleModalClose}
-            />
-          )}
         </Stack>
 
-        {/* input form */}
-        <CafeInputForm handleCafePostSubmit={handleCafePostSubmit} />
+        <CafeEditForm cafe={cafe} handleCafePutSubmit={handleCafePutSubmit} />
       </Box>
     </Modal>
   );
 };
 
-export default CafeModal;
+export default CafeEditModal;

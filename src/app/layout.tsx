@@ -3,7 +3,7 @@ import "./globals.css";
 import { Noto_Sans_JP } from "next/font/google";
 import { ReactNode } from "react";
 import QueryClientProviderComponent from "@/contexts/QueryClientProviderComponent";
-import GoogleAnalytics from "./(routes)/(NoHeader)/_GoogleAnalytics";
+import GoogleAnalytics from "#/(login)/_GoogleAnalytics";
 import GoogleConcent from "@/components/GoogleConcent";
 
 type LayoutProps = {
@@ -17,31 +17,27 @@ const notojp = Noto_Sans_JP({
 });
 
 export const metadata: Metadata = {
-  title: "Coffices.co",
-  description: "Coffee shops for nomad workers",
+  title: "Coffices.",
+  description: "Find your perfect remote work cafe",
 };
 
 export default function RootLayout({ children }: LayoutProps) {
-  const src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.client}`;
+  const src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID}`;
 
   return (
     <html lang="en">
       <head>
         <script async src={src} crossOrigin="anonymous"></script>
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-        />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap"
-        />
+        <style>{`
+          body {
+            background-color: #F8F8F8;
+          }
+        `}</style>
       </head>
-      <body
-        style={{ backgroundColor: "#/_F8F8F8" }}
-        className={notojp.className}
-      >
-        <GoogleAnalytics GA_MEASUREMENT_ID={process.env.GA_MEASUREMENT_ID} />
+      <body className={notojp.className}>
+        <GoogleAnalytics
+          GA_MEASUREMENT_ID={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}
+        />
         <QueryClientProviderComponent>{children}</QueryClientProviderComponent>
         <GoogleConcent />
       </body>

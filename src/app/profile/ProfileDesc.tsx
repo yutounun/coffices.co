@@ -46,7 +46,7 @@ const ProfileDesc = ({
         width: "100%",
         minHeight: "55%",
         mt: { xs: 1, md: 2 },
-        background: "#/_F6F6F6",
+        background: "#F6F6F6",
       }}
     >
       <Stack

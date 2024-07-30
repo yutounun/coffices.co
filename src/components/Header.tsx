@@ -12,14 +12,12 @@ import {
   Typography,
   Avatar,
 } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
-import CoffeeIcon from "@mui/icons-material/Coffee";
 import useLangStore from "@/store/lang";
 import useCreateModalStore from "@/store/openCreateCafeModal";
 import { useRouter } from "$/node_modules/next/navigation";
 import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
-import StationSearch from "#/(routes)/(Header)/cafe/list/StationSearch";
+import StationSearch from "#/cafe/list/StationSearch";
 import { CafeListContext } from "@/contexts/CafeListContext";
 import { filterCafe, getCafe } from "@/utils/api";
 import { StationNameContext } from "@/contexts/StationNameContext";

@@ -1,8 +1,8 @@
 "use client";
 import React, { useCallback, useEffect, useState } from "react";
-import { CafeI } from "@/_types/cafes";
+import { CafeI } from "@/types/cafes";
 import { Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
-import CafeCard from "#/(routes)/(Header)/cafe/list/CafeCard";
+import CafeCard from "#/cafe/list/CafeCard";
 import Loading from "loading";
 import Arrow from "@/components/Arrow";
 import useMobile from "@/hooks/useMobile";
@@ -100,7 +100,7 @@ const CafeRow = ({ cafes, area, isLoading, isRanking }: propTypes) => {
             ...baseTypeStyle,
             fontSize: { xs: "1em", md: "1.3em" },
             textAlign: "center",
-            color: "#/_666666",
+            color: "#666666",
           }}
         >
           {t?.list.noData}

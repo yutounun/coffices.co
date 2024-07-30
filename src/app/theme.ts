@@ -20,40 +20,40 @@ const theme = createTheme({
   palette: {
     mode: "light", // Sets the theme to light mode
     primary: {
-      main: "#/_FFD8B5",
-      light: "#/_FF8F2A",
-      dark: "#/_FF8F2A",
-      contrastText: "#/_25313C",
+      main: "#FFD8B5",
+      light: "#FF8F2A",
+      dark: "#FF8F2A",
+      contrastText: "#25313C",
     },
     secondary: {
-      dark: "#/_FF8F2A",
-      main: "#/_FFD8B5",
-      light: "#/_FF8F2A",
+      dark: "#FF8F2A",
+      main: "#FFD8B5",
+      light: "#FF8F2A",
     },
     error: {
-      main: "#/_FF8F2A",
-      contrastText: "#/_FFFFFF",
+      main: "#FF8F2A",
+      contrastText: "#FFFFFF",
     },
     warning: {
-      main: "#/_FFD8B5",
-      contrastText: "#/_25313C",
+      main: "#FFD8B5",
+      contrastText: "#25313C",
     },
     info: {
-      main: "#/_DAE3EA",
-      contrastText: "#/_25313C",
+      main: "#DAE3EA",
+      contrastText: "#25313C",
     },
     success: {
-      main: "#/_D2D2D2",
-      contrastText: "#/_25313C",
+      main: "#D2D2D2",
+      contrastText: "#25313C",
     },
     // カスタムカラー変数
     custom: {
-      white: "#/_FFFFFF",
-      hoveredWhite: "#/_EFECEC",
-      lightGray: "#/_F8F8F8",
-      gray: "#/_D2D2D2",
-      darkGray: "#/_A9A9A9",
-      black: "#/_000000",
+      white: "#FFFFFF",
+      hoveredWhite: "#EFECEC",
+      lightGray: "#F8F8F8",
+      gray: "#D2D2D2",
+      darkGray: "#A9A9A9",
+      black: "#000000",
     },
   },
 

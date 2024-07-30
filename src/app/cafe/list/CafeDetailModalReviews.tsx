@@ -1,5 +1,5 @@
 import React from "react";
-import { CafeI, ReviewI } from "@/_types/cafes";
+import { CafeI, ReviewI } from "@/types/cafes";
 import Stars from "@/components/Stars";
 import { Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import Image from "next/image";

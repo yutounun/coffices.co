@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
-import { CafeI } from "@/_types/cafes";
+import { CafeI } from "@/types/cafes";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import CafeEditModal from "#/(routes)/(Header)/cafe/_edit/CafeEditModal";
+import CafeEditModal from "#/cafe/_edit/CafeEditModal";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { Box, Button, Modal, Stack, Typography, Tooltip } from "@mui/material";
@@ -11,7 +11,7 @@ import { NextImage } from "@/components/NextImage";
 import { deleteCafe } from "@/utils/api";
 import CafeDetailModalOverview from "./CafeDetailModalOverview";
 import CafeDetailModalReviews from "./CafeDetailModalReviews";
-import CafePostReviewModal from "#/(routes)/(Header)/cafe/_create/CafePostReviewModal";
+import CafePostReviewModal from "#/cafe/_create/CafePostReviewModal";
 import meStore from "@/store/me";
 import { CafeListContext } from "@/contexts/CafeListContext";
 import useMobile from "@/hooks/useMobile";
@@ -194,13 +194,13 @@ const CafeModal = ({
                     <>
                       <Tooltip title="Not allowed">
                         <EditIcon
-                          sx={{ color: "#/_CCCCCC" }}
+                          sx={{ color: "#CCCCCC" }}
                           onClick={handleEditClick}
                         />
                       </Tooltip>
                       <Tooltip title="Not allowed">
                         <DeleteIcon
-                          sx={{ color: "#/_CCCCCC" }}
+                          sx={{ color: "#CCCCCC" }}
                           onClick={handleDeleteClick}
                         />
                       </Tooltip>
