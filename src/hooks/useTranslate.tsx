@@ -5,7 +5,7 @@ import useLangStore from "@/store/lang";
 
 const dictionaries: any = {
   eng: () =>
-    import("@/i18n/locales/eng/common.json").then((module) => module.default),
+    import("@/i18n/locales/en/common.json").then((module) => module.default),
   jp: () =>
     import("@/i18n//locales/jp/common.json").then((module) => module.default),
 };

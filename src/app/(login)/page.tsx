@@ -5,26 +5,7 @@ import useTranslate from "@/hooks/useTranslate";
 import useLangStore from "@/store/lang";
 import { useEffect } from "react";
 import Image from "next/image";
-
-// アイコンとURLの情報をまとめる
-const loginProviders = [
-  {
-    text: "Google",
-    iconUrl: "/login/loginIcon/google.svg",
-    signInUrl: "google",
-  },
-  {
-    text: "FaceBook",
-    iconUrl: "/login/loginIcon/facebook.svg",
-    signInUrl: "facebook",
-  },
-  {
-    text: "GitHub",
-    iconUrl: "/login/loginIcon/github.svg",
-    signInUrl: "github",
-  },
-  { text: "LINE", iconUrl: "/login/loginIcon/line.svg", signInUrl: "line" },
-];
+import { loginProviders } from "@/data/buttons";
 
 export default function Home() {
   const { t } = useTranslate();
@@ -67,7 +48,7 @@ export default function Home() {
       <Stack sx={stackStyles.left}>
         <Typography variant="h1">{t?.home.title}</Typography>
         <Typography variant="body1" sx={{}}>
-          {t?.home?.subtitle}
+          {t?.home.subtitle}
         </Typography>
 
         {/* Login Buttons */}
