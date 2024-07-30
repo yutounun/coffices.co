@@ -1,12 +1,12 @@
 "use client";
 import React, { useCallback, useEffect, useState } from "react";
-import { CafeI } from "_types/cafes";
+import { CafeI } from "#/_types/cafes";
 import { Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
-import CafeCard from "(routes)/(Header)/cafe/list/CafeCard";
+import CafeCard from "#/(routes)/(Header)/cafe/list/CafeCard";
 import Loading from "loading";
-import Arrow from "_commons/Arrow";
-import useMobile from "_custom/useMobile";
-import useTranslate from "_custom/useTranslate";
+import Arrow from "@/components/Arrow";
+import useMobile from "#/_custom/useMobile";
+import useTranslate from "#/_custom/useTranslate";
 
 interface propTypes {
   cafes: CafeI[];
@@ -100,7 +100,7 @@ const CafeRow = ({ cafes, area, isLoading, isRanking }: propTypes) => {
             ...baseTypeStyle,
             fontSize: { xs: "1em", md: "1.3em" },
             textAlign: "center",
-            color: "#666666",
+            color: "#/_666666",
           }}
         >
           {t?.list.noData}

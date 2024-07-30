@@ -3,7 +3,7 @@ import StarHalfIcon from "@mui/icons-material/StarHalf";
 import StarIcon from "@mui/icons-material/Star";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import { Stack, useMediaQuery, useTheme } from "@mui/material";
-import useMobile from "_custom/useMobile";
+import useMobile from "#/_custom/useMobile";
 
 interface propTypes {
   rate: number;

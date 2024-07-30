@@ -1,10 +1,10 @@
 import React from "react";
-import { CafeI } from "_types/cafes";
+import { CafeI } from "#/_types/cafes";
 import { Box, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import CafeCard from "./CafeCard";
 import Loading from "loading";
 import NotFound from "NotFound";
-import useMobile from "_custom/useMobile";
+import useMobile from "#/_custom/useMobile";
 
 interface propTypes {
   cafes: CafeI[];

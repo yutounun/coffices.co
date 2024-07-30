@@ -1,13 +1,13 @@
 "use client";
 import React, { useState } from "react";
-import "_styles/cafe-list.scss";
+import "#/_styles/cafe-list.scss";
 import { Box, Typography, Stack, useMediaQuery, useTheme } from "@mui/material";
-import { CafeI } from "_types/cafes";
-import CafeDescription from "(routes)/(Header)/cafe/list/CafeDescription";
-import { NextImage } from "_commons/NextImage";
+import { CafeI } from "#/_types/cafes";
+import CafeDescription from "#/(routes)/(Header)/cafe/list/CafeDescription";
+import { NextImage } from "@/components/NextImage";
 import CafeDetailModal from "./CafeDetailModal";
 import Card from "@mui/material/Card";
-import useMobile from "_custom/useMobile";
+import useMobile from "#/_custom/useMobile";
 
 interface propTypes {
   cafe: CafeI;

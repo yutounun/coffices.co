@@ -2,12 +2,12 @@
 import React, { useContext, useState } from "react";
 import { Box, Modal, Stack, Typography } from "@mui/material";
 import CafeEditForm from "./CafeEditFormPage";
-import { putCafe } from "_utils/api";
-import { CafeI, CafePutRequestI } from "_types/cafes";
-import { extractHourMinute } from "_utils/commonFn";
-import { cafeImageUpload } from "_utils/api";
-import { CafeListContext } from "../../../../../contexts/CafeListContext";
-import useTranslate from "_custom/useTranslate";
+import { putCafe } from "#/_utils/api";
+import { CafeI, CafePutRequestI } from "#/_types/cafes";
+import { extractHourMinute } from "#/_utils/commonFn";
+import { cafeImageUpload } from "#/_utils/api";
+import { CafeListContext } from "@/contexts/CafeListContext";
+import useTranslate from "#/_custom/useTranslate";
 
 interface propTypes {
   showModal: boolean;

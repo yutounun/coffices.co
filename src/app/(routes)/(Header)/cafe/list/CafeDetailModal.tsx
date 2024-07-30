@@ -1,20 +1,20 @@
 import React, { useContext, useState } from "react";
-import { CafeI } from "_types/cafes";
+import { CafeI } from "#/_types/cafes";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import CafeEditModal from "(routes)/(Header)/cafe/_edit/CafeEditModal";
+import CafeEditModal from "#/(routes)/(Header)/cafe/_edit/CafeEditModal";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { Box, Button, Modal, Stack, Typography, Tooltip } from "@mui/material";
-import Stars from "_commons/Stars";
-import { NextImage } from "_commons/NextImage";
-import { deleteCafe } from "_utils/api";
+import Stars from "@/components/Stars";
+import { NextImage } from "@/components/NextImage";
+import { deleteCafe } from "#/_utils/api";
 import CafeDetailModalOverview from "./CafeDetailModalOverview";
 import CafeDetailModalReviews from "./CafeDetailModalReviews";
-import CafePostReviewModal from "(routes)/(Header)/cafe/_create/CafePostReviewModal";
-import meStore from "../../../../../store/me";
-import { CafeListContext } from "../../../../../contexts/CafeListContext";
-import useMobile from "_custom/useMobile";
+import CafePostReviewModal from "#/(routes)/(Header)/cafe/_create/CafePostReviewModal";
+import meStore from "@/store/me";
+import { CafeListContext } from "@/contexts/CafeListContext";
+import useMobile from "#/_custom/useMobile";
 
 const modalStyle = {
   position: "absolute",
@@ -194,13 +194,13 @@ const CafeModal = ({
                     <>
                       <Tooltip title="Not allowed">
                         <EditIcon
-                          sx={{ color: "#CCCCCC" }}
+                          sx={{ color: "#/_CCCCCC" }}
                           onClick={handleEditClick}
                         />
                       </Tooltip>
                       <Tooltip title="Not allowed">
                         <DeleteIcon
-                          sx={{ color: "#CCCCCC" }}
+                          sx={{ color: "#/_CCCCCC" }}
                           onClick={handleDeleteClick}
                         />
                       </Tooltip>

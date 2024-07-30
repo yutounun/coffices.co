@@ -1,8 +1,8 @@
 "use client";
-import { Box, Stack, Typography } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import LoginButton from "./LoginButton";
-import useTranslate from "_custom/useTranslate";
-import useLangStore from "../../../store/lang";
+import useTranslate from "#/_custom/useTranslate";
+import useLangStore from "@/store/lang";
 import { useEffect } from "react";
 import Image from "next/image";
 

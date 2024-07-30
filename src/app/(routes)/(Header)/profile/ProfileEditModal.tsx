@@ -9,9 +9,9 @@ import {
   Typography,
 } from "@mui/material";
 import { useForm } from "react-hook-form";
-import meStore from "../../../../store/me";
-import { updateUser } from "_utils/api";
-import useTranslate from "_custom/useTranslate";
+import meStore from "@/store/me";
+import { updateUser } from "#/_utils/api";
+import useTranslate from "#/_custom/useTranslate";
 
 interface propTypes {
   showModal: boolean;

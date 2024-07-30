@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import PanoramaIcon from "@mui/icons-material/Panorama";
 import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
 import { Box, Button, Stack, Typography } from "@mui/material";
-import { NextImage } from "../../../../_commons/NextImage";
+import { NextImage } from "@/components/NextImage";
 
 const SelectImagePage = ({
   inputFileRef,

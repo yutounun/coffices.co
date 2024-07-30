@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import { NextRequest } from "../../../../node_modules/next/server";
-import connectDB from "../../../libs/connectDB";
-import UserModel from "../../../libs/models/UserModel";
+import { NextRequest } from "node_modules/next/server";
+import connectDB from "@/libs/connectDB";
+import UserModel from "@/libs/models/UserModel";
 /**
  * Handles the HTTP POST request.
  *

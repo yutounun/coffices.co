@@ -1,5 +1,5 @@
 import React from "react";
-import { CafeI } from "_types/cafes";
+import { CafeI } from "#/_types/cafes";
 import { Typography } from "@mui/material";
 import TrainIcon from "@mui/icons-material/Train";
 import WifiIcon from "@mui/icons-material/Wifi";
@@ -9,7 +9,7 @@ import SmokingRoomsIcon from "@mui/icons-material/SmokingRooms";
 import PanoramaFishEyeIcon from "@mui/icons-material/PanoramaFishEye";
 import DoDisturbAltIcon from "@mui/icons-material/DoDisturbAlt";
 import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
-import useMobile from "_custom/useMobile";
+import useMobile from "#/_custom/useMobile";
 
 const CafeDetailModalOverview = ({ cafe }: { cafe: CafeI }) => {
   const { isMobile } = useMobile();

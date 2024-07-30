@@ -6,7 +6,11 @@
     "register": "Submit"
   },
   "header": {
-    "menus": ["List", "Post", "SignOut"],
+    "menus": {
+      "list": "List",
+      "post": "post",
+      "signout": "signout"
+    },
     "stationName": "station name"
   },
   "home": {

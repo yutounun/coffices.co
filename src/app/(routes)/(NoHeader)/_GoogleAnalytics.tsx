@@ -3,7 +3,7 @@
 import Script from "next/script";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
-import { pageView } from "../../../libs/gtagHelper";
+import { pageView } from "@/libs/gtagHelper";
 
 export default function GoogleAnalytics({
   GA_MEASUREMENT_ID,

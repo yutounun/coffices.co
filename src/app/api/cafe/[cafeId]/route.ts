@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import { NextRequest } from "../../../../../node_modules/next/server";
-import connectDB from "../../../../libs/connectDB";
-import { CafeModel } from "../../../../libs/models/CafeModel";
+import { NextRequest } from "$/node_modules/next/server";
+import connectDB from "@/libs/connectDB";
+import { CafeModel } from "@/libs/models/CafeModel";
 
 export async function PUT(request: NextRequest) {
   await connectDB();

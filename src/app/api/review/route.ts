@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
-import { NextRequest } from "../../../../node_modules/next/server";
-import connectDB from "../../../libs/connectDB";
-import { ReviewModel } from "../../../libs/models/ReviewModel";
-import UserModel from "../../../libs/models/UserModel";
-import { CafeModel } from "../../../libs/models/CafeModel";
+import { NextRequest } from "node_modules/next/server";
+import connectDB from "@/libs/connectDB";
+import { ReviewModel } from "@/libs/models/ReviewModel";
+import UserModel from "@/libs/models/UserModel";
+import { CafeModel } from "@/libs/models/CafeModel";
 /**
  * Handles the HTTP POST request.
  *

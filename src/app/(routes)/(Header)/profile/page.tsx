@@ -5,7 +5,7 @@ import { Box, Stack, useMediaQuery, useTheme } from "@mui/material";
 import ProfileDesc from "./ProfileDesc";
 import { useSession } from "next-auth/react";
 import ProfileEditModal from "./ProfileEditModal";
-import useMobile from "_custom/useMobile";
+import useMobile from "#/_custom/useMobile";
 
 const Profile = () => {
   const { data: session } = useSession();
@@ -18,7 +18,7 @@ const Profile = () => {
         width: "100%",
         height: { xs: "94vh", md: "94vh" },
         position: "relative",
-        background: "#F6F6F6",
+        background: "#/_F6F6F6",
       }}
     >
       {/* Background Image */}

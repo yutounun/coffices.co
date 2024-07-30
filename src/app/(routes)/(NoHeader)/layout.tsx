@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { Button, CircularProgress } from "@mui/material";
-import useLangStore from "../../../store/lang";
+import useLangStore from "@/store/lang";
 
 const NoHeaderLayout = ({ children }: { children: React.ReactNode }) => {
   const { lang, changeToJp, changeToEng } = useLangStore();

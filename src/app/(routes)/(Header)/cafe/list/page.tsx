@@ -7,16 +7,16 @@ import React, {
   useState,
 } from "react";
 import Loading from "loading";
-import useGetCafe from "../../../../_custom/useGetCafe";
-import { filterCafe, getCafe } from "_utils/api";
-import "_styles/cafe-list.scss";
+import useGetCafe from "#/_custom/useGetCafe";
+import { filterCafe, getCafe } from "#/_utils/api";
+import "#/_styles/cafe-list.scss";
 import CafeRow from "./CafeRow";
-import { CafeListContext } from "../../../../../contexts/CafeListContext";
+import { CafeListContext } from "@/contexts/CafeListContext";
 import CafeSearchList from "./CafeSearchList";
-import { StationNameContext } from "../../../../../contexts/StationNameContext";
+import { StationNameContext } from "@/contexts/StationNameContext";
 import StationSearch from "./StationSearch";
-import useMobile from "_custom/useMobile";
-import useTranslate from "_custom/useTranslate";
+import useMobile from "#/_custom/useMobile";
+import useTranslate from "#/_custom/useTranslate";
 
 enum maxRanking {
   count = 10,

@@ -7,7 +7,7 @@ import LinkIcon from "@mui/icons-material/Link";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
-import meStore from "../../../../store/me";
+import meStore from "@/store/me";
 import EditIcon from "@mui/icons-material/Edit";
 
 const ProfileDesc = ({
@@ -46,7 +46,7 @@ const ProfileDesc = ({
         width: "100%",
         minHeight: "55%",
         mt: { xs: 1, md: 2 },
-        background: "#F6F6F6",
+        background: "#/_F6F6F6",
       }}
     >
       <Stack

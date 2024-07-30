@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Noto_Sans_JP } from "next/font/google";
 import { ReactNode } from "react";
-import QueryClientProviderComponent from "../contexts/QueryClientProviderComponent";
+import QueryClientProviderComponent from "@/contexts/QueryClientProviderComponent";
 import GoogleAnalytics from "./(routes)/(NoHeader)/_GoogleAnalytics";
-import GoogleConcent from "_commons/GoogleConcent";
+import GoogleConcent from "@/components/GoogleConcent";
 
 type LayoutProps = {
   children: ReactNode;
@@ -37,7 +37,10 @@ export default function RootLayout({ children }: LayoutProps) {
           href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap"
         />
       </head>
-      <body style={{ backgroundColor: "#F7F1E5" }} className={notojp.className}>
+      <body
+        style={{ backgroundColor: "#/_F8F8F8" }}
+        className={notojp.className}
+      >
         <GoogleAnalytics GA_MEASUREMENT_ID={process.env.GA_MEASUREMENT_ID} />
         <QueryClientProviderComponent>{children}</QueryClientProviderComponent>
         <GoogleConcent />

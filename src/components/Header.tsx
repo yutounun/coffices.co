@@ -14,17 +14,17 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CoffeeIcon from "@mui/icons-material/Coffee";
-import useLangStore from "../../store/lang";
-import useCreateModalStore from "../../store/openCreateCafeModal";
-
-import { useRouter } from "../../../node_modules/next/navigation";
+import useLangStore from "@/store/lang";
+import useCreateModalStore from "@/store/openCreateCafeModal";
+import { useRouter } from "$/node_modules/next/navigation";
 import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
-import StationSearch from "(routes)/(Header)/cafe/list/StationSearch";
-import { CafeListContext } from "../../contexts/CafeListContext";
-import { filterCafe, getCafe } from "_utils/api";
-import { StationNameContext } from "../../contexts/StationNameContext";
-import useTranslate from "_custom/useTranslate";
+import StationSearch from "#/(routes)/(Header)/cafe/list/StationSearch";
+import { CafeListContext } from "@/contexts/CafeListContext";
+import { filterCafe, getCafe } from "#/_utils/api";
+import { StationNameContext } from "@/contexts/StationNameContext";
+import useTranslate from "#/_custom/useTranslate";
+import Image from "next/image";
 
 const baseMenuStyle = {
   my: 2,
@@ -92,28 +92,9 @@ function ResponsiveAppBar() {
     <AppBar sx={{ mb: 4 }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <CoffeeIcon sx={{ display: { xs: "none", md: "flex" } }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              display: { xs: "none", md: "flex" },
-
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-              mr: 2,
-            }}
-            onClick={onClickListButton}
-          >
-            coffices.co
-          </Typography>
-
+          <Image src="/logo.svg" alt="logo" width="80" height={"40"} />
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
+            {/* <IconButton
               size="large"
               aria-label="account of current user"
               aria-controls="menu-appbar"
@@ -122,7 +103,7 @@ function ResponsiveAppBar() {
               color="inherit"
             >
               <MenuIcon />
-            </IconButton>
+            </IconButton> */}
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
@@ -141,22 +122,22 @@ function ResponsiveAppBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              <MenuItem onClick={onClickListButton}>
+              {/* <MenuItem onClick={onClickListButton}>
                 <Typography textAlign="center">
                   {t?.header?.menus[0]}
                 </Typography>
               </MenuItem>
               <MenuItem onClick={onClickCreateButton}>
                 <Typography textAlign="center">
-                  {t?.header?.menus[1]}
+                  {t?.header?.menus.post}
                 </Typography>
               </MenuItem>
               <MenuItem onClick={() => signOut({ callbackUrl: "/" })}>
                 <Typography sx={{ letterSpacing: "0.3rem" }} textAlign="center">
-                  {t?.header?.menus[2]}
+                  {t?.header?.menus.signout}
                 </Typography>
-              </MenuItem>
-              <MenuItem>
+              </MenuItem> */}
+              {/* <MenuItem>
                 {lang === "jp" ? (
                   <Typography
                     sx={{ letterSpacing: "0.3rem" }}
@@ -174,11 +155,11 @@ function ResponsiveAppBar() {
                     {t?.common.jp}
                   </Typography>
                 )}
-              </MenuItem>
+              </MenuItem> */}
             </Menu>
           </Box>
 
-          <CoffeeIcon
+          {/* <CoffeeIcon
             fontSize="small"
             sx={{ display: { xs: "flex", md: "none" } }}
           />
@@ -186,7 +167,7 @@ function ResponsiveAppBar() {
             variant="subtitle1"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href="#/_app-bar-with-responsive-menu"
             sx={{
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
@@ -198,7 +179,7 @@ function ResponsiveAppBar() {
             }}
           >
             {t?.common.appName}
-          </Typography>
+          </Typography> */}
 
           <Box
             sx={{
@@ -223,23 +204,23 @@ function ResponsiveAppBar() {
               onClick={onClickListButton}
               sx={jpMenuStyle}
             >
-              {t?.header?.menus[0]}
+              {t?.header?.menus.list}
             </Button>
 
             {/* Create */}
             <Button
-              key={t?.header?.menus[1]}
+              key={t?.header?.post}
               onClick={onClickCreateButton}
               sx={jpMenuStyle}
             >
-              {t?.header?.menus[1]}
+              {t?.header?.menus.post}
             </Button>
             <StationSearch filterByStationName={filterByStationName} />
           </Box>
 
           <Stack direction="row" sx={{ flexGrow: 0 }} spacing={2}>
             <Button
-              key={t?.header?.menus[1]}
+              key={t?.header?.menus.post}
               onClick={onClickLogoutButton}
               sx={{
                 my: 2,
@@ -248,7 +229,7 @@ function ResponsiveAppBar() {
               }}
             >
               <Typography sx={{ ...jpMenuStyle, letterSpacing: "0.1rem" }}>
-                {t?.header?.menus[2]}
+                {t?.header?.menus.signout}
               </Typography>
             </Button>
             <IconButton onClick={handleOpenProfile} sx={{ p: 0 }}>
