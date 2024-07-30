@@ -22,12 +22,12 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: LayoutProps) {
-  const src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID}`;
+  // const src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID}`;
 
   return (
     <html lang="en">
       <head>
-        <script async src={src} crossOrigin="anonymous"></script>
+        {/* <script async src={src} crossOrigin="anonymous"></script> */}
         <style>{`
           body {
             background-color: #F8F8F8;
@@ -35,11 +35,11 @@ export default function RootLayout({ children }: LayoutProps) {
         `}</style>
       </head>
       <body className={notojp.className}>
-        <GoogleAnalytics
+        {/* <GoogleAnalytics
           GA_MEASUREMENT_ID={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}
-        />
+        /> */}
         <QueryClientProviderComponent>{children}</QueryClientProviderComponent>
-        <GoogleConcent />
+        {/* <GoogleConcent /> */}
       </body>
     </html>
   );
