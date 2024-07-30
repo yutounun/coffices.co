@@ -6,7 +6,7 @@ import React, {
   useEffect,
   useState,
 } from "react";
-import Loading from "loading";
+import Loading from "#/loading";
 import useGetCafe from "@/hooks/useGetCafe";
 import { filterCafe, getCafe } from "@/utils/api";
 import "@/styles/cafe-list.scss";
