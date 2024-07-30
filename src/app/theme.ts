@@ -52,7 +52,7 @@ const theme = createTheme({
       hoveredWhite: "#EFECEC",
       lightGray: "#F8F8F8",
       gray: "#D2D2D2",
-      darkGray: "#A9A9A9",
+      darkGray: "#585858",
       black: "#000000",
     },
   },
@@ -61,7 +61,7 @@ const theme = createTheme({
     h1: {
       fontFamily:
         "Lato, 'Open Sans', Roboto, 'Noto Sans JP', 'Helvetica', Arial, sans-serif",
-      fontSize: "3rem", // 48px
+      fontSize: "4rem", // 48px
       fontWeight: "extraBold",
       color: "black",
       lineHeight: 1,

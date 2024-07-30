@@ -9,6 +9,7 @@ const loginContentStyle = {
   width: "50%",
   height: "100%",
   justifyContent: "center",
+  pl: 20,
 };
 
 const LoginContent = () => {
@@ -17,7 +18,12 @@ const LoginContent = () => {
   return (
     <Stack sx={loginContentStyle}>
       <Typography variant="h1">{t?.home.title}</Typography>
-      <Typography variant="body1">{t?.home.subtitle}</Typography>
+      <Typography
+        variant="h4"
+        sx={{ color: "custom.darkGray", fontWeight: "semibold" }}
+      >
+        {t?.home.subtitle}
+      </Typography>
 
       <Stack spacing={3} sx={{ my: 8, width: "50%" }}>
         {loginProviders.map((provider) => (

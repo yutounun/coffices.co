@@ -6,7 +6,7 @@ const loginImageStyle = {
   width: "50%",
   height: "100%",
   justifyContent: "center",
-  alignItems: "flex-end", // 追加: 垂直方向の右揃え
+  alignItems: "left", // 追加: 垂直方向の右揃え
   display: "flex", // 追加: 水平方向の揃えを有効にするために必要
 };
 
@@ -18,7 +18,7 @@ const LoginImage = () => {
         alt="bg"
         width={700}
         height={1400}
-        style={{ marginRight: "-20px" }}
+        style={{ paddingRight: "-20px" }}
       />
     </Stack>
   );
