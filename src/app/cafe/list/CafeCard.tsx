@@ -4,7 +4,7 @@ import "@/styles/cafe-list.scss";
 import { Box, Typography, Stack, useMediaQuery, useTheme } from "@mui/material";
 import { CafeI } from "@/types/cafes";
 import CafeDescription from "#/cafe/list/CafeDescription";
-import { NextImage } from "@/components/NextImage";
+import { NextImage } from "@/components/ui/NextImage";
 import CafeDetailModal from "./CafeDetailModal";
 import Card from "@mui/material/Card";
 import useMobile from "@/hooks/useMobile";

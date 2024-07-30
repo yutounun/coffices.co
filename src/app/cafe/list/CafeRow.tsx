@@ -4,7 +4,7 @@ import { CafeI } from "@/types/cafes";
 import { Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import CafeCard from "#/cafe/list/CafeCard";
 import Loading from "#/loading";
-import Arrow from "@/components/Arrow";
+import Arrow from "@/components/ui/Arrow";
 import useMobile from "@/hooks/useMobile";
 import useTranslate from "@/hooks/useTranslate";
 

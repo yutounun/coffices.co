@@ -1,7 +1,7 @@
 import React from "react";
 import { Stack, Typography } from "@mui/material";
 import { CafeI } from "@/types/cafes";
-import Stars from "@/components/Stars";
+import Stars from "@/components/ui/Stars";
 import useMobile from "@/hooks/useMobile";
 import useTranslate from "@/hooks/useTranslate";
 

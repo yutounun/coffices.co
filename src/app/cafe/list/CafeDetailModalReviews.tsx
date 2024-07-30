@@ -1,6 +1,6 @@
 import React from "react";
 import { CafeI, ReviewI } from "@/types/cafes";
-import Stars from "@/components/Stars";
+import Stars from "@/components/ui/Stars";
 import { Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import Image from "next/image";
 import useMobile from "@/hooks/useMobile";

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Stack } from "@mui/material";
-import { NextImage } from "@/components/NextImage";
+import { NextImage } from "@/components/ui/NextImage";
 
 const SelectImagePage = ({
   inputFileRef,

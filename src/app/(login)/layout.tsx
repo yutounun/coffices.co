@@ -1,4 +1,4 @@
-import LanguageToggle from "@/components/LanguageToggle";
+import LanguageToggle from "@/components/ui/LanguageToggle";
 
 const loginLayout = ({ children }: { children: React.ReactNode }) => {
   return (

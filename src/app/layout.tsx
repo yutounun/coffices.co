@@ -4,7 +4,7 @@ import { Noto_Sans_JP } from "next/font/google";
 import { ReactNode } from "react";
 import QueryClientProviderComponent from "@/contexts/QueryClientProviderComponent";
 import GoogleAnalytics from "#/(login)/_GoogleAnalytics";
-import GoogleConcent from "@/components/GoogleConcent";
+import GoogleConcent from "@/components/ui/GoogleConcent";
 
 type LayoutProps = {
   children: ReactNode;
