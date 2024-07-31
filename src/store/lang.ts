@@ -1,5 +1,5 @@
 import { persist, createJSONStorage } from "zustand/middleware";
-import create from "zustand";
+import { create } from "zustand";
 
 interface langState {
   lang: string;

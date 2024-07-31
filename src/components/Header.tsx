@@ -7,7 +7,7 @@ import Image from "next/image";
 import NavBar from "@/components/ui/NavBar";
 import UserActions from "@/components/ui/UserActions";
 import LanguageToggle from "@/components/ui/LanguageToggle";
-import StationSearch from "@/app/cafe/list/SearchBar";
+import SearchBar from "@/app/cafe/list/SearchBar";
 import { CafeListContext } from "@/contexts/CafeListContext";
 import { filterCafe, getCafe } from "@/utils/api";
 import { StationNameContext } from "@/contexts/StationNameContext";
@@ -44,10 +44,10 @@ const ResponsiveAppBar = () => {
           <Image src="/logo/white.png" alt="logo" width={80} height={40} />
           <LanguageToggle sx={{ position: "static" }} />
           <NavBar />
-          <StationSearch filterByStationName={filterByStationName} />
+          <SearchBar filterByStationName={filterByStationName} />
         </Stack>
         <Stack direction="row" sx={{ flexGrow: 0 }} spacing={2}>
-          <UserActions session={session} router={router} />
+          <UserActions />
         </Stack>
       </Toolbar>
     </AppBar>

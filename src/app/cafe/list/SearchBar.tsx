@@ -21,7 +21,7 @@ const CustomTextField = styled(TextField)(({ theme }) => ({
 
 interface propTypes {
   filterByStationName: (stationName: string) => void;
-  sx: Object;
+  sx?: Object;
 }
 
 const SearchBar = ({ filterByStationName, sx }: propTypes) => {

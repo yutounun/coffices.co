@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import useLangStore from "@/store/lang";
 import { Avatar } from "@mui/material";
 
-const LanguageToggle = ({ sx }: { sx: Object }) => {
+const LanguageToggle = ({ sx }: { sx?: Object }) => {
   const { lang, changeToJp, changeToEng } = useLangStore();
 
   useEffect(() => {

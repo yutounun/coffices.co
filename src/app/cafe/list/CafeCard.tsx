@@ -72,7 +72,7 @@ const CafeCard = ({ cafe, rank, isTokyoRanking }: propTypes) => {
           <Box sx={{ height: { xs: "100px", md: "55%" }, width: "100%" }}>
             <NextImage
               className="row__picture"
-              src={cafe.image ? cafe.image : "/coffee.jpg"}
+              src={"/coffee.jpg"}
               alt="cafe1"
             />
             <CafeDescription cafe={cafe} />

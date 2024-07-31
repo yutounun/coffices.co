@@ -17,7 +17,7 @@ import useCreateModalStore from "@/store/openCreateCafeModal";
 import { useRouter } from "$/node_modules/next/navigation";
 import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
-import StationSearch from "@/app/cafe/list/SearchBar";
+import SearchBar from "@/app/cafe/list/SearchBar";
 import { CafeListContext } from "@/contexts/CafeListContext";
 import { filterCafe, getCafe } from "@/utils/api";
 import { StationNameContext } from "@/contexts/StationNameContext";
@@ -213,7 +213,7 @@ function ResponsiveAppBar() {
             >
               {t?.header?.menus.post}
             </Button>
-            <StationSearch filterByStationName={filterByStationName} />
+            <SearchBar filterByStationName={filterByStationName} />
           </Box>
 
           <Stack direction="row" sx={{ flexGrow: 0 }} spacing={2}>
