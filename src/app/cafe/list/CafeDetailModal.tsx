@@ -159,7 +159,7 @@ const CafeModal = ({
                   sx={{ alignItems: "center", justifyContent: "center" }}
                   spacing={1}
                 >
-                  <Stars rate={cafe.rate} />
+                  <Stars size={{ sm: "small", md: "large" }} rate={cafe.rate} />
                   <Typography variant="subtitle1" color="text.secondary">
                     {cafe.rate}
                   </Typography>

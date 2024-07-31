@@ -27,7 +27,7 @@ export interface CafeI {
   station: string;
   openHour: string;
   closeHour: string;
-  isWifi: boolean | string;
+  isWifi: boolean;
   isSmoking: boolean;
   isOutlet: boolean;
   reviews: ReviewI[];

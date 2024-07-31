@@ -57,12 +57,11 @@ const theme = createTheme({
       black: "#000000",
     },
   },
-
   typography: {
     h1: {
       fontFamily:
         "Lato, 'Open Sans', Roboto, 'Noto Sans JP', 'Helvetica', Arial, sans-serif",
-      fontSize: "3rem", // 48px
+      fontSize: "2.5rem", // 48px
       fontWeight: "extraBold",
       color: "black",
       lineHeight: 1,

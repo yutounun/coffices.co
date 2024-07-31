@@ -6,13 +6,14 @@ import { Stack } from "@mui/material";
 
 interface propTypes {
   rate: number;
+  size: Object;
 }
 
-const starStyle = {
-  fontSize: { sm: "small", md: "large" },
-};
+const Stars = ({ rate, size }: propTypes) => {
+  const starStyle = {
+    fontSize: size,
+  };
 
-const Stars = ({ rate }: propTypes) => {
   const stars = [];
   const wholePart = Math.floor(rate); // 整数部分
   const decimalPart = rate - wholePart; // 小数部分

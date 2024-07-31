@@ -42,7 +42,9 @@ const CafeDescription = ({ cafe }: PropTypes) => {
         )}
 
         {/* Stars */}
-        {cafe.rate !== 0 && <Stars rate={cafe.rate} />}
+        {cafe.rate !== 0 && (
+          <Stars size={{ sm: "small", md: "large" }} rate={cafe.rate} />
+        )}
       </Stack>
 
       {/* Station Name */}
