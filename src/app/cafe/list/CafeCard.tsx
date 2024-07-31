@@ -16,26 +16,26 @@ interface propTypes {
 }
 
 const cardStyle = {
-  width: { xs: "12em", md: "17em" },
+  width: { xs: "12em", md: "250px" },
   mt: "2em",
   mr: "2em",
   ml: "0px",
   position: "relative",
   overflow: "visible",
-  height: { xs: "13em", md: "360px" },
+  height: { xs: "13em", md: "370px" },
   borderRadius: "20px",
+};
+
+const rankStyle = {
+  color: "custom.darkGray",
+  fontSize: { sm: "10em", md: "16em" },
+  letterSpacing: "-20px",
+  mr: { sm: 0, md: -1 },
+  ml: 0,
 };
 
 const CafeCard = ({ cafe, rank, isTokyoRanking }: propTypes) => {
   const [showCafeDetail, setShowCafeDetail] = useState(false);
-
-  const rankStyle = {
-    color: "custom.darkGray",
-    fontSize: { sm: "10em", md: "16em" },
-    letterSpacing: "-20px",
-    mr: { sm: 0, md: -1 },
-    ml: 0,
-  };
 
   /**
    * open cafe detail
@@ -69,14 +69,16 @@ const CafeCard = ({ cafe, rank, isTokyoRanking }: propTypes) => {
 
         {/* Card */}
         <Card sx={cardStyle} onClick={handleCafeCardClick}>
-          <Box sx={{ height: { xs: "100px", md: "55%" }, width: "100%" }}>
+          {/* Cafe Photo */}
+          <Box sx={{ height: { xs: "100px", md: "45%" }, width: "100%" }}>
             <NextImage
               className="row__picture"
               src={cafe.image ? cafe.image : "/coffee.jpg"}
               alt="cafe1"
             />
-            <CafeDescription cafe={cafe} />
           </Box>
+          {/* Cafe Description */}
+          <CafeDescription cafe={cafe} />
         </Card>
       </Stack>
 

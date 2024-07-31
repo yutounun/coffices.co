@@ -36,7 +36,7 @@ const theme = createTheme({
       contrastText: "#FFFFFF",
     },
     warning: {
-      main: "#FFD8B5",
+      main: "#FFBB00",
       contrastText: "#25313C",
     },
     info: {
@@ -84,7 +84,14 @@ const theme = createTheme({
     h4: {
       fontFamily:
         "Lato, 'Open Sans', Roboto, 'Noto Sans JP', 'Helvetica', Arial, sans-serif",
-      fontSize: "1rem", // 16px
+      fontSize: "1.3rem", // 16px
+      fontWeight: "regurar",
+      color: "black",
+    },
+    h5: {
+      fontFamily:
+        "Lato, 'Open Sans', Roboto, 'Noto Sans JP', 'Helvetica', Arial, sans-serif",
+      fontSize: "0.7rem", // 14px
       fontWeight: "regurar",
       color: "black",
     },
@@ -99,6 +106,13 @@ const theme = createTheme({
       fontFamily:
         "Open Sans, Roboto, 'Noto Sans JP', 'Helvetica', Arial, sans-serif",
       fontSize: "1rem", // 16px
+      lineHeight: 1.63, // 163.2%
+      color: "rgb(0,0,0,62%)",
+    },
+    body2: {
+      fontFamily:
+        "Open Sans, Roboto, 'Noto Sans JP', 'Helvetica', Arial, sans-serif",
+      fontSize: "0.8rem", // 16px
       lineHeight: 1.63, // 163.2%
       color: "rgb(0,0,0,62%)",
     },

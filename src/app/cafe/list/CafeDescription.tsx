@@ -1,13 +1,19 @@
-import React from "react";
 import { Stack, Typography } from "@mui/material";
 import { CafeI } from "@/types/cafes";
 import Stars from "@/components/ui/Stars";
-import useMobile from "@/hooks/useMobile";
 import useTranslate from "@/hooks/useTranslate";
 
 interface PropTypes {
   cafe: CafeI;
 }
+
+const cardTitleStyle = {
+  fontWeight: { xs: "bold", md: "semibold" },
+  textOverflow: "ellipsis",
+  overflow: "hidden",
+  whiteSpace: "nowrap",
+  lineHeight: "20px",
+};
 
 const CafeDescription = ({ cafe }: PropTypes) => {
   const { t } = useTranslate();
@@ -15,60 +21,29 @@ const CafeDescription = ({ cafe }: PropTypes) => {
   return (
     <Stack
       sx={{
-        m: { xs: "10px", md: "10px" },
-        position: { sx: "initial", md: "absolute" },
-        top: { xs: "10px", md: "220px" },
-        width: "100%",
+        m: { xs: "10px", md: "20px" },
       }}
-      spacing={1}
     >
-      <Typography
-        variant="h5"
-        sx={{
-          mb: "4px",
-
-          fontSize: { xs: "1rem", md: "1.5rem" },
-          fontWeight: { xs: "bold", md: "normal" },
-          textOverflow: "ellipsis",
-          overflow: "hidden",
-          whiteSpace: "nowrap",
-          width: "90%",
-        }}
-      >
+      {/* Cafe Title */}
+      <Typography variant="h4" sx={cardTitleStyle}>
         {cafe.title}
       </Typography>
-      <Stack
-        direction="row"
-        spacing={1}
-        sx={{ display: "flex", alignItems: "center" }}
-      >
-        {cafe.rate === 0 ? (
-          <Typography
-            sx={{ fontSize: { xs: "1em", md: "1.3em" } }}
-            variant="h6"
-          >
+
+      {/* Review Stars */}
+      <Stack direction="row" sx={{ display: "flex", alignItems: "center" }}>
+        {/* No Review */}
+        {cafe.rate === 0 && (
+          <Typography variant="body1" sx={{ lineHeight: "24px" }}>
             {t?.list.card.noReviews}
           </Typography>
-        ) : (
-          <>
-            <Stars rate={cafe.rate} />
-            <Typography
-              variant="h6"
-              sx={{ fontSize: { xs: "1em", md: "1.3em" } }}
-            >
-              {cafe.rate}
-            </Typography>
-          </>
         )}
+
+        {/* Stars */}
+        {cafe.rate !== 0 && <Stars rate={cafe.rate} />}
       </Stack>
-      <Typography
-        variant="body1"
-        sx={{
-          fontSize: { xs: "1em", md: "1.3em" },
-        }}
-      >
-        {cafe.station}
-      </Typography>
+
+      {/* Station Name */}
+      <Typography variant="body1">{cafe.station}</Typography>
     </Stack>
   );
 };
