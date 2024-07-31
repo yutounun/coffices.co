@@ -1,13 +1,12 @@
 "use client";
 import React, { useState } from "react";
 import "@/styles/cafe-list.scss";
-import { Box, Typography, Stack, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Typography, Stack } from "@mui/material";
 import { CafeI } from "@/types/cafes";
 import CafeDescription from "#/cafe/list/CafeDescription";
 import { NextImage } from "@/components/ui/NextImage";
-import CafeDetailModal from "./CafeDetailModal";
 import Card from "@mui/material/Card";
-import useMobile from "@/hooks/useMobile";
+import { useRouter } from "next/navigation";
 
 interface propTypes {
   cafe: CafeI;
@@ -37,20 +36,12 @@ const rankStyle = {
 const cardPhotoStyle = { height: { xs: "100px", md: "150px" }, width: "100%" };
 
 const CafeCard = ({ cafe, rank, isTokyoRanking }: propTypes) => {
-  const [showCafeDetail, setShowCafeDetail] = useState(false);
-
+  const router = useRouter();
   /**
    * open cafe detail
    */
-  function handleCafeCardClick() {
-    setShowCafeDetail(true);
-  }
-
-  /**
-   * close cafe detail
-   */
-  function handleCafeDetailClose() {
-    setShowCafeDetail(false);
+  function onClickCafeCard() {
+    router.push(`list/${cafe._id}`);
   }
 
   return (
@@ -70,7 +61,7 @@ const CafeCard = ({ cafe, rank, isTokyoRanking }: propTypes) => {
         {isTokyoRanking && <Typography sx={rankStyle}>{rank}</Typography>}
 
         {/* Card */}
-        <Card sx={cardStyle} onClick={handleCafeCardClick}>
+        <Card sx={cardStyle} onClick={onClickCafeCard}>
           {/* Cafe Photo */}
           <Box sx={cardPhotoStyle}>
             <NextImage
@@ -83,15 +74,6 @@ const CafeCard = ({ cafe, rank, isTokyoRanking }: propTypes) => {
           <CafeDescription cafe={cafe} />
         </Card>
       </Stack>
-
-      {/* Cafe Detail Modal */}
-      {showCafeDetail && (
-        <CafeDetailModal
-          handleCafeDetailClose={handleCafeDetailClose}
-          showCafeDetail
-          cafe={cafe}
-        />
-      )}
     </>
   );
 };
