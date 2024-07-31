@@ -1,7 +1,6 @@
 "use client";
 
-import React, { Suspense, useContext, useCallback, useState } from "react";
-import Loading from "#/loading";
+import React, { useContext, useCallback, useState } from "react";
 import { filterCafe } from "@/utils/api";
 import "@/styles/cafe-list.scss";
 import CafeRow from "./CafeRow";
@@ -18,7 +17,6 @@ enum maxRanking {
 const ShopsList = ({ initialCafes }: { initialCafes: CafeI[] }) => {
   const { setStationName, stationName } = useContext(StationNameContext);
   const [cafes, setCafes] = useState(initialCafes);
-  const isLoading = false;
 
   /**
    * Filter cafes by station name
@@ -85,12 +83,7 @@ const ShopsList = ({ initialCafes }: { initialCafes: CafeI[] }) => {
       {!stationName && (
         <>
           {/* All cities in Tokyo */}
-          <CafeRow
-            titleType="Tokyo"
-            cafes={rankedList()}
-            isLoading={isLoading}
-            isRanking
-          />
+          <CafeRow titleType="Tokyo" cafes={rankedList()} isRanking />
 
           {/* Other Areas, Not ranking style */}
           {areaInfo.map(
@@ -99,7 +92,6 @@ const ShopsList = ({ initialCafes }: { initialCafes: CafeI[] }) => {
                 key={title}
                 titleType={title}
                 cafes={cafeShopsInSpecificArea(stations)}
-                isLoading={isLoading}
               />
             )
           )}
@@ -108,11 +100,7 @@ const ShopsList = ({ initialCafes }: { initialCafes: CafeI[] }) => {
 
       {/* Search Result Page */}
       {stationName && (
-        <CafeSearchResultList
-          area={stationName}
-          cafes={filteredCafes()}
-          isLoading={isLoading}
-        />
+        <CafeSearchResultList area={stationName} cafes={filteredCafes()} />
       )}
     </>
   );

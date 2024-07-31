@@ -3,7 +3,6 @@ import React, { useCallback, useEffect, useState, useRef } from "react";
 import { CafeI } from "@/types/cafes";
 import { Box, Stack, Typography } from "@mui/material";
 import CafeCard from "#/cafe/list/CafeCard";
-import Loading from "#/loading";
 import Arrow from "@/components/ui/Arrow";
 import useMobile from "@/hooks/useMobile";
 import useTranslate from "@/hooks/useTranslate";
@@ -11,7 +10,6 @@ import useTranslate from "@/hooks/useTranslate";
 interface propTypes {
   cafes: CafeI[];
   titleType: string;
-  isLoading?: boolean;
   isRanking?: boolean;
 }
 
@@ -29,7 +27,7 @@ const baseTypeStyle = {
   textDecoration: "none",
 };
 
-const CafeRow = ({ cafes, titleType, isLoading, isRanking }: propTypes) => {
+const CafeRow = ({ cafes, titleType, isRanking }: propTypes) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [showLeftScrollBtn, setShowLeftScrollBtn] = useState(false);
   const [showRightScrollBtn, setShowRightScrollBtn] = useState(false);
@@ -81,7 +79,7 @@ const CafeRow = ({ cafes, titleType, isLoading, isRanking }: propTypes) => {
         {titleType}
       </Typography>
 
-      {!isLoading && cafes?.length === 0 ? (
+      {cafes?.length === 0 ? (
         <Typography
           sx={{
             ...baseTypeStyle,
@@ -95,20 +93,16 @@ const CafeRow = ({ cafes, titleType, isLoading, isRanking }: propTypes) => {
       ) : (
         <Stack>
           <Stack ref={containerRef} direction="row" className="row__cards">
-            {isLoading ? (
-              <Loading />
-            ) : (
-              cafes?.map((cafe, index) => (
-                <Box key={cafe._id} sx={index === 0 ? { pl: 23 } : {}}>
-                  <CafeCard
-                    isRanking={isRanking}
-                    key={cafe._id}
-                    rank={index + 1}
-                    cafe={cafe}
-                  />
-                </Box>
-              ))
-            )}
+            {cafes?.map((cafe, index) => (
+              <Box key={cafe._id} sx={index === 0 ? { pl: 23 } : {}}>
+                <CafeCard
+                  isRanking={isRanking}
+                  key={cafe._id}
+                  rank={index + 1}
+                  cafe={cafe}
+                />
+              </Box>
+            ))}
           </Stack>
 
           <Stack
