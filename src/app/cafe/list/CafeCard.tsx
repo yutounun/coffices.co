@@ -39,7 +39,7 @@ const CafeCard = ({ cafe, rank, isTokyoRanking }: propTypes) => {
    * open cafe detail
    */
   function onClickCafeCard() {
-    router.push(`list/${cafe._id}`);
+    router.push(`${cafe._id}`);
   }
 
   return (
