@@ -48,7 +48,6 @@ export default function CafeListLayout({
           <Header />
           <Box
             sx={{
-              px: 25,
               backgroundColor: "primary.main",
               minHeight: "100vh",
             }}

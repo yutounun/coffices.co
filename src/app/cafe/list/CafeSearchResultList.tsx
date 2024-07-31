@@ -12,7 +12,7 @@ interface propTypes {
   isLoading?: boolean;
 }
 
-const CafeSearchList = ({ cafes, area, isLoading }: propTypes) => {
+const CafeSearchResultList = ({ cafes, area, isLoading }: propTypes) => {
   const { isMobile } = useMobile();
   return (
     <Box sx={{ ml: 3, mt: 5 }}>
@@ -46,4 +46,4 @@ const CafeSearchList = ({ cafes, area, isLoading }: propTypes) => {
   );
 };
 
-export default CafeSearchList;
+export default CafeSearchResultList;

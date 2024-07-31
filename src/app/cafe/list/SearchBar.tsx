@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import { TextField, InputAdornment } from "@mui/material";
@@ -20,9 +21,10 @@ const CustomTextField = styled(TextField)(({ theme }) => ({
 
 interface propTypes {
   filterByStationName: (stationName: string) => void;
+  sx: Object;
 }
 
-const StationSearch = ({ filterByStationName }: propTypes) => {
+const SearchBar = ({ filterByStationName, sx }: propTypes) => {
   const [stationName, setStationName] = useState("");
 
   const handleTextFieldChange = (
@@ -43,6 +45,7 @@ const StationSearch = ({ filterByStationName }: propTypes) => {
 
   return (
     <CustomTextField
+      sx={sx}
       variant="outlined"
       placeholder="Type area, station..."
       onChange={handleTextFieldChange}
@@ -58,4 +61,4 @@ const StationSearch = ({ filterByStationName }: propTypes) => {
   );
 };
 
-export default StationSearch;
+export default SearchBar;
