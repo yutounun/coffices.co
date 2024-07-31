@@ -9,7 +9,7 @@ import UserActions from "@/components/ui/UserActions";
 import LanguageToggle from "@/components/ui/LanguageToggle";
 import SearchBar from "@/app/cafe/list/SearchBar";
 import { CafeListContext } from "@/contexts/CafeListContext";
-import { filterCafe, getCafe } from "@/utils/api";
+import { filterCafe, fetchAllCafes } from "@/utils/api";
 import { StationNameContext } from "@/contexts/StationNameContext";
 
 const ResponsiveAppBar = () => {
@@ -23,7 +23,7 @@ const ResponsiveAppBar = () => {
       const filteredCafe = await filterCafe(filterParam);
       setCafeList(filteredCafe);
     } else {
-      const cafeList = await getCafe();
+      const cafeList = await fetchAllCafes();
       setCafeList(cafeList);
     }
     filterParam ? setStationName(filterParam) : setStationName("");

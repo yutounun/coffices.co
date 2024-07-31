@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import { getCafe } from "@/utils/api";
+import { fetchAllCafes } from "@/utils/api";
 
-const useGetCafe = () => {
+const usefetchAllCafes = () => {
   const [cafes, setCafes] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const fetchCafes = async () => {
-    const fetchedCafes = await getCafe();
+    const fetchedCafes = await fetchAllCafes();
     setCafes(fetchedCafes);
     setLoading(false);
   };
@@ -18,4 +18,4 @@ const useGetCafe = () => {
   return { cafes, isLoading: loading };
 };
 
-export default useGetCafe;
+export default usefetchAllCafes;

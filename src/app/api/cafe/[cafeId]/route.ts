@@ -3,6 +3,37 @@ import { NextRequest } from "$/node_modules/next/server";
 import connectDB from "@/libs/connectDB";
 import { CafeModel } from "@/libs/models/CafeModel";
 
+export async function GET(
+  request: NextRequest,
+  { params }: { params: { cafeId: string } }
+) {
+  await connectDB();
+
+  try {
+    if (!params.cafeId) {
+      return new NextResponse(
+        JSON.stringify({ error: "Cafe ID is required" }),
+        { status: 400 }
+      );
+    }
+
+    const cafe = await CafeModel.findById(params.cafeId);
+    if (!cafe) {
+      return new NextResponse(JSON.stringify({ error: "Cafe not found" }), {
+        status: 404,
+      });
+    }
+
+    return NextResponse.json(cafe);
+  } catch (error) {
+    const errorMessage =
+      error instanceof Error ? error.message : "An unknown error occurred";
+    return new NextResponse(JSON.stringify({ error: errorMessage }), {
+      status: 500,
+    });
+  }
+}
+
 export async function PUT(request: NextRequest) {
   await connectDB();
 

@@ -1,10 +1,10 @@
 import React from "react";
-import { getCafe } from "@/utils/api";
+import { fetchAllCafes } from "@/utils/api";
 import { CafeI } from "@/types/cafes";
 import CafeListContent from "#/cafe/list/CafeListContent";
 
 const ServerShopsList = async () => {
-  const cafes: CafeI[] = await getCafe();
+  const cafes: CafeI[] = await fetchAllCafes();
 
   return <CafeListContent initialCafes={cafes} />;
 };

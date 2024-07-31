@@ -8,11 +8,11 @@ import {
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 /**
- * Retrieves cafe data from the server.
+ * Retrieves all cafe information from the server.
  *
- * @return {Promise<any>} A promise that resolves to the cafe data.
+ * @return {Promise<any[]>} A promise that resolves to the array of cafe data.
  */
-export async function getCafe() {
+export async function fetchAllCafes() {
   return await fetch(`${API_URL}/api/cafe`, {
     method: "GET",
     headers: {
@@ -21,6 +21,25 @@ export async function getCafe() {
   })
     .then((res) => res.json())
     .catch((err) => console.log(err));
+}
+
+/**
+ * Retrieves information for a specific cafe by ID from the server.
+ *
+ * @param {string} cafeId - The ID of the cafe to retrieve.
+ * @return {Promise<any>} A promise that resolves to the cafe data.
+ */
+export async function fetchCafeById(cafeId: string) {
+  const rtn = await fetch(`${API_URL}/api/cafe/${cafeId}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((res) => res.json())
+    .catch((err) => console.log(err));
+
+  return rtn;
 }
 
 /**

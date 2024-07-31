@@ -19,7 +19,7 @@ import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
 import SearchBar from "@/app/cafe/list/SearchBar";
 import { CafeListContext } from "@/contexts/CafeListContext";
-import { filterCafe, getCafe } from "@/utils/api";
+import { filterCafe, fetchAllCafes } from "@/utils/api";
 import { StationNameContext } from "@/contexts/StationNameContext";
 import useTranslate from "@/hooks/useTranslate";
 import Image from "next/image";
@@ -80,7 +80,7 @@ function ResponsiveAppBar() {
       const filteredCafe = await filterCafe(filterParam);
       setCafeList(filteredCafe);
     } else {
-      const cafeList = await getCafe();
+      const cafeList = await fetchAllCafes();
       setCafeList(cafeList);
     }
     filterParam ? setStationName(filterParam) : setStationName("");
