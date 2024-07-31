@@ -1,9 +1,11 @@
+// Server Component
+
 import { CafeI } from "@/types/cafes";
 import { fetchCafeById } from "@/utils/api";
 import Image from "next/image";
-import CafeDetailContent from "./CafeDetailContent";
+import CafeDetailContent from "#/cafe/[...id]/CafeDetailContent";
+import CafeDetailReview from "#/cafe/[...id]/CafeDetailReview";
 
-// Server Component
 const CafeDetailPage = async () => {
   const cafe: CafeI = await fetchCafeById("66aa0148bedde5ee532b7be1");
   return (
@@ -24,6 +26,7 @@ const CafeDetailPage = async () => {
       <Image src="/googlemap.jpg" alt="googlemap" width={1070} height={513} />
 
       {/* Review */}
+      <CafeDetailReview />
 
       {/* Rec */}
     </>
