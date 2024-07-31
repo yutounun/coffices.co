@@ -83,7 +83,11 @@ const ShopsList = ({ initialCafes }: { initialCafes: CafeI[] }) => {
       {!stationName && (
         <>
           {/* All cities in Tokyo */}
-          <CafeRow titleType="Tokyo" cafes={rankedList()} isTokyoRanking />
+          <CafeRow
+            titleType="Tokyo Cafe Ranking"
+            cafes={rankedList()}
+            isTokyoRanking
+          />
 
           {/* Other Areas, Not ranking style */}
           {areaInfo.map(

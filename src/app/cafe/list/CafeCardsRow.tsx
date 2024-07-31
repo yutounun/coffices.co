@@ -65,8 +65,8 @@ const CafeCardRow = ({ cafes, titleType, isTokyoRanking }: propTypes) => {
   }, [cafes?.length, checkScrollPosition]);
 
   const firstCardStyle = (index: number) => {
-    if (titleType === "Tokyo") {
-      return index === 0 ? { pl: 21 } : {};
+    if (titleType === "Tokyo Cafe Ranking") {
+      return index === 0 ? { pl: 23 } : {};
     } else {
       return index === 0 ? { pl: 25 } : {};
     }
