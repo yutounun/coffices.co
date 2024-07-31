@@ -28,11 +28,12 @@ const cardStyle = {
 
 const CafeCard = ({ cafe, rank, isTokyoRanking }: propTypes) => {
   const [showCafeDetail, setShowCafeDetail] = useState(false);
-  const { isMobile } = useMobile();
 
   const rankStyle = {
-    fontSize: isMobile ? "10em" : "16em",
-    mr: isMobile ? 0 : -3,
+    color: "custom.darkGray",
+    fontSize: { sm: "10em", md: "16em" },
+    letterSpacing: "-20px",
+    mr: { sm: 0, md: -1 },
     ml: 0,
   };
 
@@ -63,7 +64,10 @@ const CafeCard = ({ cafe, rank, isTokyoRanking }: propTypes) => {
         }}
         direction="row"
       >
+        {/* Ranking Number */}
         {isTokyoRanking && <Typography sx={rankStyle}>{rank}</Typography>}
+
+        {/* Card */}
         <Card sx={cardStyle} onClick={handleCafeCardClick}>
           <Box sx={{ height: { xs: "100px", md: "55%" }, width: "100%" }}>
             <NextImage

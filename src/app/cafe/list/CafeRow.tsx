@@ -104,7 +104,6 @@ const CafeRow = ({ cafes, titleType, isTokyoRanking }: propTypes) => {
               </Box>
             ))}
           </Stack>
-
           {/* Arrows */}
           <Stack
             direction="row"
@@ -129,9 +128,8 @@ const CafeRow = ({ cafes, titleType, isTokyoRanking }: propTypes) => {
               />
             )}
           </Stack>
-
           {/* Not Found */}
-          {cafes?.length === 0 && (
+          {cafes.length === 0 && (
             <Typography
               sx={{
                 ...baseTypeStyle,
