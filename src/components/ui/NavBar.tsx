@@ -29,10 +29,10 @@ const NavBar = () => {
 
   return (
     <>
-      <Typography variant="h4" onClick={onClickListButton} sx={baseMenuStyle}>
+      <Typography variant="h5" onClick={onClickListButton} sx={baseMenuStyle}>
         {t?.header?.menus.list}
       </Typography>
-      <Typography variant="h4" onClick={onClickCreateButton} sx={baseMenuStyle}>
+      <Typography variant="h5" onClick={onClickCreateButton} sx={baseMenuStyle}>
         {t?.header?.menus.post}
       </Typography>
     </>
