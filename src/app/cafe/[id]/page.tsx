@@ -1,20 +1,27 @@
-// Server Component
-
 import { CafeI } from "@/types/cafes";
 import { fetchAllCafes, fetchCafeById } from "@/utils/api";
 import Image from "next/image";
-import CafeDetailContent from "#/cafe/[...id]/CafeDetailContent";
-import CafeDetailReview from "#/cafe/[...id]/CafeDetailReview";
+import CafeDetailContent from "./CafeDetailContent";
+import CafeDetailReview from "./CafeDetailReview";
 import CafeCardRow from "../list/CafeCardsRow";
 
-const CafeDetailPage = async () => {
-  const cafe: CafeI = await fetchCafeById("66aa0148bedde5ee532b7be1");
+interface CafeDetailPageProps {
+  params: {
+    id: string;
+  };
+}
+
+const CafeDetailPage = async ({ params }: CafeDetailPageProps) => {
+  const cafeId = params.id;
+
+  const cafe: CafeI = await fetchCafeById(cafeId);
   const cafes: CafeI[] = await fetchAllCafes();
+
   return (
     <>
       {/* Cafe Photo */}
       <Image
-        src={cafe.image}
+        src={cafe.image ? cafe.image : "/logo/orange.png"}
         alt="image"
         width={1070}
         height={413}
