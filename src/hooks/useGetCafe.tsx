@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { fetchAllCafes } from "@/utils/api";
 
-const usefetchAllCafes = () => {
+const useGetCafe = () => {
   const [cafes, setCafes] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -13,9 +13,10 @@ const usefetchAllCafes = () => {
 
   useEffect(() => {
     fetchCafes();
+    setCafes(cafes);
   }, []);
 
   return { cafes, isLoading: loading };
 };
 
-export default usefetchAllCafes;
+export default useGetCafe;
