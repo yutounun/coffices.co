@@ -27,7 +27,7 @@ const baseTypeStyle = {
   textDecoration: "none",
 };
 
-const CafeRow = ({ cafes, titleType, isTokyoRanking }: propTypes) => {
+const CafeCardRow = ({ cafes, titleType, isTokyoRanking }: propTypes) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [showLeftScrollBtn, setShowLeftScrollBtn] = useState(false);
   const [showRightScrollBtn, setShowRightScrollBtn] = useState(false);
@@ -147,4 +147,4 @@ const CafeRow = ({ cafes, titleType, isTokyoRanking }: propTypes) => {
   );
 };
 
-export default CafeRow;
+export default CafeCardRow;

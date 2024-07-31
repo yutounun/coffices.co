@@ -3,7 +3,7 @@
 import React, { useContext, useCallback, useState } from "react";
 import { filterCafe } from "@/utils/api";
 import "@/styles/cafe-list.scss";
-import CafeRow from "./CafeRow";
+import CafeRow from "./CafeCardsRow";
 import CafeSearchResultList from "#/cafe/list/CafeSearchResultList";
 import { StationNameContext } from "@/contexts/StationNameContext";
 import { areaInfo } from "@/data/areas.js";
