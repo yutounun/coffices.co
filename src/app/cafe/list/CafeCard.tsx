@@ -1,5 +1,3 @@
-"use client";
-import React, { useState } from "react";
 import "@/styles/cafe-list.scss";
 import { Box, Typography, Stack } from "@mui/material";
 import { CafeI } from "@/types/cafes";
