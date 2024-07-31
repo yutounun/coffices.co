@@ -6,10 +6,6 @@ import { Avatar } from "@mui/material";
 const LanguageToggle = ({ sx }: { sx?: Object }) => {
   const { lang, changeToJp, changeToEng } = useLangStore();
 
-  useEffect(() => {
-    changeToJp();
-  }, [changeToJp]);
-
   return (
     <Avatar
       src={lang === "eng" ? "/flags/japan.png" : "/flags/england.png"}

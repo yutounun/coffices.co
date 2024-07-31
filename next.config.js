@@ -79,7 +79,7 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "tokyo-sanpo.com",
+        hostname: "www.roju.jp",
         port: "",
       },
       {
@@ -100,6 +100,11 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "**",
+      },
+      {
+        protocol: "http",
+        hostname: "www.roju.jp",
+        port: "",
       },
     ],
   },

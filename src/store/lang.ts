@@ -10,7 +10,7 @@ interface langState {
 const useLangStore = create<langState, [["zustand/persist", unknown]]>(
   persist(
     (set: any) => ({
-      lang: "jp",
+      lang: "eng",
       changeToJp: () => set({ lang: "jp" }),
       changeToEng: () => set({ lang: "eng" }),
     }),
