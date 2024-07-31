@@ -12,7 +12,7 @@ import useMobile from "@/hooks/useMobile";
 interface propTypes {
   cafe: CafeI;
   rank?: number;
-  isRanking?: boolean;
+  isTokyoRanking?: boolean;
 }
 
 const cardStyle = {
@@ -26,7 +26,7 @@ const cardStyle = {
   borderRadius: "20px",
 };
 
-const CafeCard = ({ cafe, rank, isRanking }: propTypes) => {
+const CafeCard = ({ cafe, rank, isTokyoRanking }: propTypes) => {
   const [showCafeDetail, setShowCafeDetail] = useState(false);
   const { isMobile } = useMobile();
 
@@ -63,7 +63,7 @@ const CafeCard = ({ cafe, rank, isRanking }: propTypes) => {
         }}
         direction="row"
       >
-        {isRanking && <Typography sx={rankStyle}>{rank}</Typography>}
+        {isTokyoRanking && <Typography sx={rankStyle}>{rank}</Typography>}
         <Card sx={cardStyle} onClick={handleCafeCardClick}>
           <Box sx={{ height: { xs: "100px", md: "55%" }, width: "100%" }}>
             <NextImage
@@ -76,6 +76,7 @@ const CafeCard = ({ cafe, rank, isRanking }: propTypes) => {
         </Card>
       </Stack>
 
+      {/* Cafe Detail Modal */}
       {showCafeDetail && (
         <CafeDetailModal
           handleCafeDetailClose={handleCafeDetailClose}

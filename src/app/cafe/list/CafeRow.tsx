@@ -10,7 +10,7 @@ import useTranslate from "@/hooks/useTranslate";
 interface propTypes {
   cafes: CafeI[];
   titleType: string;
-  isRanking?: boolean;
+  isTokyoRanking?: boolean;
 }
 
 enum maxCafeDisplayCount {
@@ -27,7 +27,7 @@ const baseTypeStyle = {
   textDecoration: "none",
 };
 
-const CafeRow = ({ cafes, titleType, isRanking }: propTypes) => {
+const CafeRow = ({ cafes, titleType, isTokyoRanking }: propTypes) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [showLeftScrollBtn, setShowLeftScrollBtn] = useState(false);
   const [showRightScrollBtn, setShowRightScrollBtn] = useState(false);
@@ -64,8 +64,17 @@ const CafeRow = ({ cafes, titleType, isRanking }: propTypes) => {
       currentContainer?.removeEventListener("scroll", checkScrollPosition);
   }, [cafes?.length, checkScrollPosition]);
 
+  const firstCardStyle = (index: number) => {
+    if (titleType === "Tokyo") {
+      return index === 0 ? { pl: 21 } : {};
+    } else {
+      return index === 0 ? { pl: 25 } : {};
+    }
+  };
+
   return (
     <>
+      {/* Title */}
       <Typography
         variant="h2"
         sx={{
@@ -79,24 +88,15 @@ const CafeRow = ({ cafes, titleType, isRanking }: propTypes) => {
         {titleType}
       </Typography>
 
-      {cafes?.length === 0 ? (
-        <Typography
-          sx={{
-            ...baseTypeStyle,
-            fontSize: { xs: "1em", md: "1.3em" },
-            textAlign: "center",
-            color: "#666666",
-          }}
-        >
-          {t?.list.noData}
-        </Typography>
-      ) : (
+      {/* Default CardList */}
+      {cafes?.length > 0 && (
         <Stack>
+          {/* Cards */}
           <Stack ref={containerRef} direction="row" className="row__cards">
             {cafes?.map((cafe, index) => (
-              <Box key={cafe._id} sx={index === 0 ? { pl: 23 } : {}}>
+              <Box key={cafe._id} sx={firstCardStyle(index)}>
                 <CafeCard
-                  isRanking={isRanking}
+                  isTokyoRanking={isTokyoRanking}
                   key={cafe._id}
                   rank={index + 1}
                   cafe={cafe}
@@ -105,6 +105,7 @@ const CafeRow = ({ cafes, titleType, isRanking }: propTypes) => {
             ))}
           </Stack>
 
+          {/* Arrows */}
           <Stack
             direction="row"
             gap="10"
@@ -128,6 +129,20 @@ const CafeRow = ({ cafes, titleType, isRanking }: propTypes) => {
               />
             )}
           </Stack>
+
+          {/* Not Found */}
+          {cafes?.length === 0 && (
+            <Typography
+              sx={{
+                ...baseTypeStyle,
+                fontSize: { xs: "1em", md: "1.3em" },
+                textAlign: "center",
+                color: "#666666",
+              }}
+            >
+              {t?.list.noData}
+            </Typography>
+          )}
         </Stack>
       )}
     </>

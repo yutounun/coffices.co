@@ -2,10 +2,11 @@
   overflow-x: scroll;
   overflow-y: hidden;
   // モニター
-  width: 130em;
+  // width: 130em;
+  height: 27em;
   // PC
   @media screen and (max-width: 2200px) {
-    width: 115em;
+    // width: 115em;
   }
   // mobile
   @media screen and (max-width: 1200px) {
