@@ -5,5 +5,5 @@ export default function CafeListLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <Box sx={{ mt: 16, px: 25 }}>{children}</Box>;
+  return <Box sx={{ mt: 16, px: 25, mb: 6 }}>{children}</Box>;
 }

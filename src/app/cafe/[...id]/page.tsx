@@ -1,13 +1,15 @@
 // Server Component
 
 import { CafeI } from "@/types/cafes";
-import { fetchCafeById } from "@/utils/api";
+import { fetchAllCafes, fetchCafeById } from "@/utils/api";
 import Image from "next/image";
 import CafeDetailContent from "#/cafe/[...id]/CafeDetailContent";
 import CafeDetailReview from "#/cafe/[...id]/CafeDetailReview";
+import CafeCardRow from "../list/CafeCardsRow";
 
 const CafeDetailPage = async () => {
   const cafe: CafeI = await fetchCafeById("66aa0148bedde5ee532b7be1");
+  const cafes: CafeI[] = await fetchAllCafes();
   return (
     <>
       {/* Cafe Photo */}
@@ -29,6 +31,7 @@ const CafeDetailPage = async () => {
       <CafeDetailReview />
 
       {/* Rec */}
+      <CafeCardRow titleType="You also might like..." cafes={cafes} />
     </>
   );
 };

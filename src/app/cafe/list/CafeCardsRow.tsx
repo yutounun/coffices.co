@@ -67,6 +67,8 @@ const CafeCardRow = ({ cafes, titleType, isTokyoRanking }: propTypes) => {
   const firstCardStyle = (index: number) => {
     if (titleType === "Tokyo Cafe Ranking") {
       return index === 0 ? { pl: 23 } : {};
+    } else if (titleType === "You also might like...") {
+      return index === 0 ? { pl: 0 } : {};
     } else {
       return index === 0 ? { pl: 25 } : {};
     }
@@ -80,7 +82,7 @@ const CafeCardRow = ({ cafes, titleType, isTokyoRanking }: propTypes) => {
         sx={{
           ...baseTypeStyle,
           color: "inherit",
-          px: 25,
+          px: titleType === "You also might like..." ? 0 : 25,
           fontWeight: "medium",
           fontSize: { xs: "1.5em", md: "1.7em" },
         }}
