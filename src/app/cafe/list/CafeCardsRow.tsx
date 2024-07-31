@@ -107,7 +107,6 @@ const CafeCardRow = ({ cafes, titleType, isTokyoRanking }: propTypes) => {
           {/* Arrows */}
           <Stack
             direction="row"
-            gap="10"
             sx={{ justifyContent: "right", px: 22, mt: 2 }}
           >
             {/* Left arrow */}

@@ -22,7 +22,7 @@ const cardStyle = {
   ml: "0px",
   position: "relative",
   overflow: "visible",
-  height: { xs: "13em", md: "370px" },
+  height: { xs: "13em", md: "270px" },
   borderRadius: "20px",
 };
 
@@ -33,6 +33,8 @@ const rankStyle = {
   mr: { sm: 0, md: -1 },
   ml: 0,
 };
+
+const cardPhotoStyle = { height: { xs: "100px", md: "150px" }, width: "100%" };
 
 const CafeCard = ({ cafe, rank, isTokyoRanking }: propTypes) => {
   const [showCafeDetail, setShowCafeDetail] = useState(false);
@@ -70,7 +72,7 @@ const CafeCard = ({ cafe, rank, isTokyoRanking }: propTypes) => {
         {/* Card */}
         <Card sx={cardStyle} onClick={handleCafeCardClick}>
           {/* Cafe Photo */}
-          <Box sx={{ height: { xs: "100px", md: "45%" }, width: "100%" }}>
+          <Box sx={cardPhotoStyle}>
             <NextImage
               className="row__picture"
               src={cafe.image ? cafe.image : "/coffee.jpg"}

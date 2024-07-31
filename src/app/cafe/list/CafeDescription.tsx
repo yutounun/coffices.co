@@ -2,6 +2,7 @@ import { Stack, Typography } from "@mui/material";
 import { CafeI } from "@/types/cafes";
 import Stars from "@/components/ui/Stars";
 import useTranslate from "@/hooks/useTranslate";
+import Image from "next/image";
 
 interface PropTypes {
   cafe: CafeI;
@@ -21,7 +22,9 @@ const CafeDescription = ({ cafe }: PropTypes) => {
   return (
     <Stack
       sx={{
-        m: { xs: "10px", md: "20px" },
+        mx: { xs: "10px", md: "20px" },
+        justifyContent: "center",
+        height: "120px",
       }}
     >
       {/* Cafe Title */}
@@ -44,6 +47,19 @@ const CafeDescription = ({ cafe }: PropTypes) => {
 
       {/* Station Name */}
       <Typography variant="body1">{cafe.station}</Typography>
+
+      {/* Icons */}
+      <Stack direction="row" sx={{ gap: 1, mt: 0.4, ml: 0.1 }}>
+        {cafe.isWifi && (
+          <Image src="/card/wifi.svg" alt="wifi" height="17" width="17" />
+        )}
+        {cafe.isOutlet && (
+          <Image src="/card/outlet.svg" alt="wifi" height="17" width="17" />
+        )}
+        {cafe.isSmoking && (
+          <Image src="/card/cigarette.svg" alt="wifi" height="17" width="17" />
+        )}
+      </Stack>
     </Stack>
   );
 };
