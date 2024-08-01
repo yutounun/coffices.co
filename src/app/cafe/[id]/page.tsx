@@ -22,13 +22,15 @@ const CafeDetailPage = async ({ params }: CafeDetailPageProps) => {
     <>
       <Box sx={{ px: 25 }}>
         {/* Cafe Photo */}
-        <Image
-          src={cafe.image ? cafe.image : "/logo/orange.png"}
-          alt="image"
-          width={1070}
-          height={413}
-          style={{ borderRadius: "20px" }}
-        />
+        <Box sx={{ height: "30em", width: "100%", position: "relative" }}>
+          <Image
+            src={cafe.image ? cafe.image : "/logo/orange.png"}
+            alt="image"
+            layout="fill"
+            objectFit="cover"
+            style={{ borderRadius: "20px" }}
+          />
+        </Box>
 
         {/* Content */}
         <CafeDetailContent cafe={cafe} />
