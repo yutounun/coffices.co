@@ -1,3 +1,4 @@
+"use client";
 import "@/styles/cafe-list.scss";
 import { Box, Typography, Stack } from "@mui/material";
 import { CafeI } from "@/types/cafes";
@@ -10,18 +11,8 @@ interface propTypes {
   cafe: CafeI;
   rank?: number;
   isTokyoRanking?: boolean;
+  index: number;
 }
-
-const cardStyle = {
-  width: { xs: "12em", md: "250px" },
-  mt: "2em",
-  mr: "2em",
-  ml: "0px",
-  position: "relative",
-  overflow: "visible",
-  height: { xs: "13em", md: "270px" },
-  borderRadius: "20px",
-};
 
 const rankStyle = {
   color: "custom.darkGray",
@@ -33,8 +24,20 @@ const rankStyle = {
 
 const cardPhotoStyle = { height: { xs: "100px", md: "150px" }, width: "100%" };
 
-const CafeCard = ({ cafe, rank, isTokyoRanking }: propTypes) => {
+const CafeCard = ({ cafe, rank, isTokyoRanking, index }: propTypes) => {
   const router = useRouter();
+
+  const cardStyle = {
+    width: { xs: "12em", md: "250px" },
+    mt: "2em",
+    mr: "2em",
+    ml: index === 0 && !isTokyoRanking ? 25 : "0px",
+    position: "relative",
+    overflow: "visible",
+    height: { xs: "13em", md: "270px" },
+    borderRadius: "20px",
+  };
+
   /**
    * open cafe detail
    */
@@ -51,7 +54,7 @@ const CafeCard = ({ cafe, rank, isTokyoRanking }: propTypes) => {
             transition: "all 0.5s ease",
             cursor: "pointer",
           },
-          ml: "0px",
+          ml: index === 0 && isTokyoRanking ? 22 : "0px",
         }}
         direction="row"
       >

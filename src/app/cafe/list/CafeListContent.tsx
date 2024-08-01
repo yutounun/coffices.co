@@ -84,7 +84,7 @@ const ShopsList = ({ initialCafes }: { initialCafes: CafeI[] }) => {
         <>
           {/* All cities in Tokyo */}
           <CafeRow
-            titleType="Tokyo Cafe Ranking"
+            title="Tokyo Cafe Ranking"
             cafes={rankedList()}
             isTokyoRanking
           />
@@ -94,7 +94,7 @@ const ShopsList = ({ initialCafes }: { initialCafes: CafeI[] }) => {
             ({ title, stations }: { title: string; stations: string[] }) => (
               <CafeRow
                 key={title}
-                titleType={title}
+                title={title}
                 cafes={cafeShopsInSpecificArea(stations)}
               />
             )
