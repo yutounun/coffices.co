@@ -11,9 +11,7 @@ import { ReviewI } from "@/types/cafes";
  * @param {NextRequest} request - The request object.
  * @return {Promise<NextResponse>} A JSON response containing the cafe details or an error message.
  */
-export async function GET(request: Request, context: any) {
-  const { params } = context;
-  const cafeId = params.cafeId.toString();
+export async function GET(request: Request) {
   await connectDB();
 
   try {
@@ -41,7 +39,8 @@ export async function GET(request: Request, context: any) {
     const reviewsWithUsers = await Promise.all(
       reviews.map(async (review: ReviewI) => {
         const user = await UserModel.findById(review.userId);
-        return { ...review.toJSON(), user };
+        const reviewObject = (review as any).toObject(); // 型アサーションを使用
+        return { ...reviewObject, user };
       })
     );
 
