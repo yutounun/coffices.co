@@ -45,10 +45,10 @@ const CafeModal = ({ showModal, handleModalClose }: propTypes) => {
 
     // Upload image and retrieve url
     data.reviews = [];
-    postCafe(data).then((res) => {
-      setCafeList((prev) => [...prev, res]);
-      handleModalClose();
-    });
+    // postCafe(data).then((res) => {
+    //   setCafeList((prev) => [...prev, res]);
+    //   handleModalClose();
+    // });
   }
   return (
     <Modal

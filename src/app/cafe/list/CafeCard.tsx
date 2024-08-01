@@ -11,7 +11,7 @@ interface propTypes {
   cafe: CafeI;
   rank?: number;
   isTokyoRanking?: boolean;
-  index: number;
+  index?: number;
 }
 
 const rankStyle = {
