@@ -32,6 +32,7 @@ const CafeDetailReview = ({ reviews }: { reviews: ReviewI[] }) => {
         </Typography>
       )}
 
+      {/* Leading to Add review modal */}
       <CustomButton sx={{ mx: 25, my: 3 }}>Leave a review</CustomButton>
     </Stack>
   );

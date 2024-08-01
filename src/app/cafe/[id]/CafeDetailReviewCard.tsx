@@ -3,6 +3,14 @@ import Image from "next/image";
 import Stars from "@/components/ui/Stars";
 import { ReviewI } from "@/types/cafes";
 
+const metaInfoStyle = {
+  alignItems: "center",
+  color: "custom.grey",
+  position: "absolute" as "absolute", // 修正
+  bottom: 20,
+  left: 30,
+};
+
 const CafeDetailReviewCard = ({
   review,
   index,
@@ -17,7 +25,9 @@ const CafeDetailReviewCard = ({
     backgroundColor: "secondary.light",
     borderRadius: "10px",
     px: "30px",
-    py: "20px",
+    pt: "20px",
+    pb: 20,
+    position: "relative",
   };
 
   return (
@@ -37,10 +47,7 @@ const CafeDetailReviewCard = ({
         </Typography>
 
         {/* Meta */}
-        <Stack
-          direction="row"
-          sx={{ alignItems: "center", color: "custom.grey" }}
-        >
+        <Stack direction="row" sx={metaInfoStyle}>
           {/* Profile Image */}
           <Image
             src={"/coffee.jpg"}
@@ -54,7 +61,7 @@ const CafeDetailReviewCard = ({
 
           {/* Name */}
           <Typography variant="body1" sx={{ ml: 1.5 }}>
-            Josh Micheal
+            {review.user.username}
           </Typography>
 
           <Typography variant="body1" sx={{ mx: 1.5 }}>
@@ -63,7 +70,7 @@ const CafeDetailReviewCard = ({
 
           {/* Published At */}
           <Typography variant="body1" sx={{ mr: 1.5 }}>
-            2022.03.22
+            {review.user.updatedAt}
           </Typography>
         </Stack>
       </Stack>

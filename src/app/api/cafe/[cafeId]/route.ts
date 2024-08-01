@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import connectDB from "@/libs/connectDB";
 import { CafeModel } from "@/libs/models/CafeModel";
 import { ReviewModel } from "@/libs/models/ReviewModel";
+import UserModel from "@/libs/models/UserModel";
+import { ReviewI } from "@/types/cafes";
 
 /**
  * Handles the HTTP GET request for a specific cafe.
@@ -15,6 +17,8 @@ export async function GET(request: Request, context: any) {
   await connectDB();
 
   try {
+    await connectDB();
+
     const url = new URL(request.url);
     const id = url.pathname.split("/").pop();
 
@@ -32,18 +36,26 @@ export async function GET(request: Request, context: any) {
       });
     }
 
-    const reviews = await ReviewModel.find({ cafeId });
+    const reviews = await ReviewModel.find({ cafeId: id });
+
+    const reviewsWithUsers = await Promise.all(
+      reviews.map(async (review: ReviewI) => {
+        const user = await UserModel.findById(review.userId);
+        return { ...review.toJSON(), user };
+      })
+    );
+
     const averageRate =
       reviews.reduce((acc, review) => acc + review.rate, 0) / reviews.length ||
       0;
 
     const cafeWithReviews = {
       ...cafe.toJSON(),
-      reviews: reviews,
+      reviews: reviewsWithUsers,
       averageRate: averageRate,
     };
 
-    return NextResponse.json(cafeWithReviews, {
+    return new NextResponse(JSON.stringify(cafeWithReviews), {
       headers: {
         "Cache-Control": "no-store",
       },

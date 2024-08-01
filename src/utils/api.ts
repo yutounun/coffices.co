@@ -46,6 +46,7 @@ export async function fetchCafeById(cafeId: string) {
     }
 
     const data = await response.json();
+    console.log("🚀 ~ fetchCafeById ~ data:", data);
     return data;
   } catch (error) {
     console.error("🚀 ~ fetchCafeById ~ error:", error);

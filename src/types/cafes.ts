@@ -1,3 +1,19 @@
+export interface UserI {
+  _id: string;
+  sessionId: string;
+  username: string;
+  email: string;
+  isAdmin: boolean;
+  bio: string;
+  twitter: string;
+  github: string;
+  linkedIn: string;
+  homepage: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+}
+
 export interface ReviewI {
   id: string;
   title: string;
@@ -8,6 +24,7 @@ export interface ReviewI {
   updatedAt: string;
   image: string;
   name: string;
+  user: UserI;
 }
 
 export interface CreateReviewRequestI {
