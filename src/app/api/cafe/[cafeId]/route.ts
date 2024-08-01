@@ -1,78 +1,61 @@
 import { NextResponse } from "next/server";
-import { NextRequest } from "$/node_modules/next/server";
 import connectDB from "@/libs/connectDB";
 import { CafeModel } from "@/libs/models/CafeModel";
+import { ReviewModel } from "@/libs/models/ReviewModel";
 
-export async function GET(
-  request: NextRequest,
-  { params }: { params: { cafeId: string } }
-) {
+/**
+ * Handles the HTTP GET request for a specific cafe.
+ *
+ * @param {NextRequest} request - The request object.
+ * @return {Promise<NextResponse>} A JSON response containing the cafe details or an error message.
+ */
+export async function GET(request: Request, context: any) {
+  const { params } = context;
+  const cafeId = params.cafeId.toString();
   await connectDB();
 
   try {
-    if (!params.cafeId) {
+    const url = new URL(request.url);
+    const id = url.pathname.split("/").pop();
+
+    if (!id) {
       return new NextResponse(
         JSON.stringify({ error: "Cafe ID is required" }),
         { status: 400 }
       );
     }
 
-    const cafe = await CafeModel.findById(params.cafeId);
+    const cafe = await CafeModel.findById(id);
     if (!cafe) {
       return new NextResponse(JSON.stringify({ error: "Cafe not found" }), {
         status: 404,
       });
     }
 
-    return NextResponse.json(cafe);
+    const reviews = await ReviewModel.find({ cafeId });
+    const averageRate =
+      reviews.reduce((acc, review) => acc + review.rate, 0) / reviews.length ||
+      0;
+
+    const cafeWithReviews = {
+      ...cafe.toJSON(),
+      reviews: reviews,
+      averageRate: averageRate,
+    };
+
+    return NextResponse.json(cafeWithReviews, {
+      headers: {
+        "Cache-Control": "no-store",
+      },
+    });
   } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "An unknown error occurred";
     return new NextResponse(JSON.stringify({ error: errorMessage }), {
       status: 500,
-    });
-  }
-}
-
-export async function PUT(request: NextRequest) {
-  await connectDB();
-
-  try {
-    const data = await request.json();
-    await CafeModel.findByIdAndUpdate(data._id, data, {
-      new: true,
-    });
-    // return all cafes after updating to refresh the page
-    const cafes = await CafeModel.find({});
-    return NextResponse.json(cafes);
-  } catch (error) {
-    const errorMessage =
-      error instanceof Error ? error.message : "An unknown error occurred";
-    return new NextResponse(JSON.stringify({ error: errorMessage }), {
-      status: 500,
-    });
-  }
-}
-
-/**
- * Deletes a cafe from the database based on the given request.
- *
- * @param {NextRequest} request - The request object containing information about the cafe to be deleted.
- * @return {NextResponse} A response object containing the deleted cafe if successful, or an error message if an error occurs.
- */
-export async function DELETE(request: NextRequest) {
-  await connectDB();
-
-  try {
-    const cafeId = request.nextUrl.pathname.split("/").pop();
-    await CafeModel.findByIdAndDelete(cafeId);
-    const cafes = await CafeModel.find({});
-    return NextResponse.json(cafes);
-  } catch (error) {
-    const errorMessage =
-      error instanceof Error ? error.message : "An unknown error occurred";
-    return new NextResponse(JSON.stringify({ error: errorMessage }), {
-      status: 500,
+      headers: {
+        "Cache-Control": "no-store",
+      },
     });
   }
 }

@@ -35,7 +35,7 @@ const CafeDetailPage = async ({ params }: CafeDetailPageProps) => {
       <Image src="/googlemap.jpg" alt="googlemap" width={1070} height={513} />
 
       {/* Review */}
-      <CafeDetailReview />
+      <CafeDetailReview reviews={cafe.reviews} />
 
       {/* Rec */}
       <CafeCardRow titleType="You also might like..." cafes={cafes} />

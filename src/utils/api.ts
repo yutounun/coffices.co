@@ -30,16 +30,27 @@ export async function fetchAllCafes() {
  * @return {Promise<any>} A promise that resolves to the cafe data.
  */
 export async function fetchCafeById(cafeId: string) {
-  const rtn = await fetch(`${API_URL}/api/cafe/${cafeId}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-    .then((res) => res.json())
-    .catch((err) => console.log(err));
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/cafe/${cafeId}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
-  return rtn;
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("🚀 ~ fetchCafeById ~ error:", error);
+    return null;
+  }
 }
 
 /**
@@ -62,14 +73,16 @@ export function filterCafe(stationName: string) {
  * @throws - error
  */
 export async function postCafe(data: CafePostRequestI) {
-  return await fetch(`${API_URL}/api/cafe`, {
+  await fetch(`${API_URL}/api/cafe`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(data),
   })
-    .then((res) => res.json())
+    .then((res) => {
+      res.json();
+    })
     .catch((err) => console.log(err));
 }
 
