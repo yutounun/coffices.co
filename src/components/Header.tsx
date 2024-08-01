@@ -11,6 +11,7 @@ import SearchBar from "@/app/cafe/list/SearchBar";
 import { CafeListContext } from "@/contexts/CafeListContext";
 import { filterCafe, fetchAllCafes } from "@/utils/api";
 import { StationNameContext } from "@/contexts/StationNameContext";
+import { space } from "@/utils/const";
 
 const ResponsiveAppBar = () => {
   const { setCafeList } = React.useContext(CafeListContext);
@@ -30,7 +31,7 @@ const ResponsiveAppBar = () => {
   };
 
   return (
-    <AppBar sx={{ mb: 4, px: 25, backgroundColor: "secondary.main" }}>
+    <AppBar sx={{ mb: 4, px: space.around, backgroundColor: "secondary.main" }}>
       <Toolbar disableGutters>
         <Stack
           direction="row"

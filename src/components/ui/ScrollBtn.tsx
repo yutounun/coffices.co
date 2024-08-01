@@ -1,11 +1,7 @@
 import { Stack } from "@mui/material";
 import React from "react";
 import Arrow from "./Arrow";
-
-enum scrollOffset {
-  left = -1300,
-  right = 1300,
-}
+import { scrollOffset, space } from "@/utils/const";
 
 interface ScrollBtnProps {
   showScroll: boolean;
@@ -21,7 +17,10 @@ const ScrollBtn: React.FC<ScrollBtnProps> = ({
   scroll,
 }) => {
   return (
-    <Stack direction="row" sx={{ justifyContent: "right", px: 25, mt: 0 }}>
+    <Stack
+      direction="row"
+      sx={{ justifyContent: "right", px: space.around, mt: 0 }}
+    >
       {/* Left arrow */}
       <Arrow
         hidden={!showLeftScrollBtn || !showScroll}

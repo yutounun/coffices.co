@@ -2,14 +2,11 @@
 import React, { useCallback, useEffect, useState, useRef } from "react";
 import { Stack, StackProps } from "@mui/material";
 import ScrollBtn from "@/components/ui/ScrollBtn";
+import { maxCafeDisplayCount } from "@/utils/const";
 
 interface CustomButtonProps extends StackProps {
   children: React.ReactNode;
   cardCount: number;
-}
-
-enum maxCafeDisplayCount {
-  desktop = 4,
 }
 
 // Cards wrapped by this component can be scrolled horizontally

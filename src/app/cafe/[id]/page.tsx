@@ -5,6 +5,7 @@ import CafeDetailContent from "#/cafe/[id]/CafeDetailContent";
 import CafeDetailReview from "#/cafe/[id]/CafeDetailReview";
 import Recommndation from "@/app/cafe/[id]/Recommndation";
 import { Box } from "@mui/material";
+import { space } from "@/utils/const";
 
 interface CafeDetailPageProps {
   params: {
@@ -20,7 +21,7 @@ const CafeDetailPage = async ({ params }: CafeDetailPageProps) => {
 
   return (
     <>
-      <Box sx={{ px: 25 }}>
+      <Box sx={{ px: space.around }}>
         {/* Cafe Photo */}
         <Box sx={{ height: "30em", width: "100%", position: "relative" }}>
           <Image
