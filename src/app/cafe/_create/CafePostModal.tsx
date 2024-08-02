@@ -1,12 +1,18 @@
 "use client";
 import React, { useContext } from "react";
-import { Box, Modal, Stack, Typography } from "@mui/material";
+
+import CloseIcon from "@mui/icons-material/Close";
+import {
+  Box,
+  Modal,
+  Stack,
+  Typography,
+  Fade,
+  Backdrop,
+  IconButton,
+} from "@mui/material";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import CafeInputForm from "./CafeInputFormPage";
-import { postCafe } from "@/utils/api";
-import { CafePostRequestI } from "@/types/cafes";
-import { extractHourMinute } from "@/utils/commonFn";
-import { CafeListContext } from "@/contexts/CafeListContext";
 import useMobile from "@/hooks/useMobile";
 import useTranslate from "@/hooks/useTranslate";
 
@@ -16,73 +22,60 @@ interface propTypes {
 }
 
 const CafeModal = ({ showModal, handleModalClose }: propTypes) => {
-  const { setCafeList } = useContext(CafeListContext);
-  const { isMobile } = useMobile();
   const { t } = useTranslate();
   const height = "auto";
   const modalStyle = {
-    position: "absolute",
+    position: "absolute" as "absolute",
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: { xs: 400, md: 800 },
+    width: { xs: 400, md: 400 },
     bgcolor: "background.paper",
     boxShadow: 24,
-    pb: 5,
+    py: 3,
+    px: 4,
     height: height,
     display: "flex",
     flexDirection: "column",
     borderRadius: 5,
   };
 
-  /** Submit action */
-  async function handleCafePostSubmit(data: CafePostRequestI) {
-    data.isWifi = data.isWifi === "true";
-    data.isOutlet = data.isOutlet === "true";
-    data.isSmoking = data.isSmoking === "true";
-    data.openHour = extractHourMinute(data.openHour);
-    data.closeHour = extractHourMinute(data.closeHour);
-
-    // Upload image and retrieve url
-    data.reviews = [];
-    // postCafe(data).then((res) => {
-    //   setCafeList((prev) => [...prev, res]);
-    //   handleModalClose();
-    // });
-  }
   return (
     <Modal
       open={showModal}
       onClose={handleModalClose}
+      closeAfterTransition
+      BackdropComponent={Backdrop}
+      BackdropProps={{
+        timeout: 500,
+      }}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <Box sx={modalStyle}>
-        {/* Modal Header */}
-        <Stack
-          direction="row"
-          sx={{
-            borderBottom: "solid 1px",
-            px: 5,
-            py: 2,
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
-            {t?.cafePostModal.titles.post}
-          </Typography>
-          {isMobile && (
-            <HighlightOffIcon
-              sx={{ position: "absolute", right: 30 }}
-              onClick={handleModalClose}
-            />
-          )}
-        </Stack>
+      <Fade in={showModal}>
+        <Box sx={modalStyle}>
+          {/* Close Icon */}
+          <Box sx={{ position: "absolute", top: 16, right: 20 }}>
+            <IconButton onClick={handleModalClose}>
+              <CloseIcon />
+            </IconButton>
+          </Box>
 
-        {/* input form */}
-        <CafeInputForm handleCafePostSubmit={handleCafePostSubmit} />
-      </Box>
+          {/* Modal Header */}
+          <Stack
+            direction="row"
+            sx={{
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <Typography variant="h3">{t?.cafePostModal.titles.post}</Typography>
+          </Stack>
+
+          {/* Input form */}
+          <CafeInputForm handleModalClose={handleModalClose} />
+        </Box>
+      </Fade>
     </Modal>
   );
 };

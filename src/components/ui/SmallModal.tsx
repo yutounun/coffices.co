@@ -14,7 +14,6 @@ import { useForm, Controller } from "react-hook-form";
 import CustomButton from "./CustomButton";
 import { CreateReviewRequestI } from "@/types/cafes";
 import { addReview, getUser as fetchUser } from "@/utils/api";
-import { useSession } from "next-auth/react";
 import userStore from "@/store/me";
 
 interface SmallModalProps {

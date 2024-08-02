@@ -1,36 +1,30 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Stations from "@/data/stations.json";
+import Icons from "#/cafe/_create/Icons";
 import Areas from "@/data/areas.json";
 import { useForm, Controller, FieldValues } from "react-hook-form";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import {
-  Autocomplete,
-  Button,
-  FormControl,
-  FormControlLabel,
-  FormLabel,
-  Radio,
-  RadioGroup,
-  Stack,
-  TextField,
-  Typography,
-} from "@mui/material";
-import useMobile from "@/hooks/useMobile";
+import { Autocomplete, Box, Stack, TextField, Typography } from "@mui/material";
 import useTranslate from "@/hooks/useTranslate";
+import CustomButton from "@/components/ui/CustomButton";
+import { postCafe } from "@/utils/api";
+import { extractHourMinute } from "@/utils/commonFn";
+import { CafePostRequestI } from "@/types/cafes";
 
 interface propTypes {
-  handleCafePostSubmit: any;
+  handleModalClose: () => void;
 }
 
 interface CafeFormInput extends FieldValues {
   openHour: Date | null;
   closeHour: Date | null;
 }
-const CafeInputForm = ({ handleCafePostSubmit }: propTypes) => {
+
+const CafeInputForm = ({ handleModalClose }: propTypes) => {
   const { t } = useTranslate();
   const {
     register,
@@ -40,7 +34,7 @@ const CafeInputForm = ({ handleCafePostSubmit }: propTypes) => {
   } = useForm<CafeFormInput>({
     mode: "onChange",
     defaultValues: {
-      title: null,
+      title: "",
       image: "",
       area: "",
       station: "",
@@ -51,7 +45,25 @@ const CafeInputForm = ({ handleCafePostSubmit }: propTypes) => {
       isOutlet: false,
     },
   });
-  const { isMobile } = useMobile();
+
+  /** Submit action */
+  async function handleCafePostSubmit(data: CafePostRequestI) {
+    data.openHour = extractHourMinute(data.openHour);
+    data.closeHour = extractHourMinute(data.closeHour);
+    data.reviews = [];
+
+    // Upload image and retrieve url
+    postCafe({ ...data, ...selectedIcons }).then((res) => {
+      handleModalClose();
+    });
+  }
+
+  const [selectedIcons, setSelectedIcons] = useState({
+    isWifi: false,
+    isOutlet: false,
+    isSmoking: false,
+  });
+
   return (
     <form
       onSubmit={handleSubmit(handleCafePostSubmit)}
@@ -63,42 +75,40 @@ const CafeInputForm = ({ handleCafePostSubmit }: propTypes) => {
     >
       <Stack
         sx={{
-          height: "100%",
-          display: "flex",
-          px: { xs: "3em", sm: "5em" },
-          py: "3em",
-          gap: { xs: 2, sm: 4 },
+          py: 3,
+          gap: 2,
         }}
       >
-        <TextField
-          size={isMobile ? "small" : "medium"}
-          id="outlined-basic"
-          label={t?.cafePostModal.form.cafeName.label}
-          variant="outlined"
-          sx={{ width: "100%" }}
-          error={!!errors.title}
-          helperText={errors.title?.message?.toString()}
-          {...register("title", {
-            required: t?.cafePostModal.form.cafeName.required,
-          })}
-        />
-        <Stack
-          sx={{
-            flexDirection: { xs: "column", sm: "row" },
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
+        {/* Name */}
+        <Box>
+          <Typography variant="body1">Name</Typography>
+          <TextField
+            sx={{ width: "100%" }}
+            label={t?.cafePostModal.form.cafeName.label}
+            error={!!errors.title}
+            helperText={errors.title?.message?.toString()}
+            size="small"
+            {...register("title", {
+              required: t?.cafePostModal.form.cafeName.required,
+            })}
+            InputLabelProps={{
+              shrink: false,
+            }}
+          />
+        </Box>
+
+        {/* Area */}
+        <Box>
+          <Typography variant="body1">Area</Typography>
           <Autocomplete
-            sx={{ width: { xs: "100%", sm: "45%" }, mb: { xs: "1em", md: 0 } }}
             freeSolo
             id="free-solo-2-demo"
             disableClearable
-            size={isMobile ? "small" : "medium"}
+            size="small"
             options={Areas.map((area) => area.name)}
             renderInput={(params: any) => (
               <TextField
-                size={isMobile ? "small" : "medium"}
+                size="small"
                 {...params}
                 error={!!errors.area}
                 helperText={errors.area?.message?.toString()}
@@ -110,19 +120,24 @@ const CafeInputForm = ({ handleCafePostSubmit }: propTypes) => {
                   ...params.InputProps,
                   type: "search",
                 }}
+                InputLabelProps={{ shrink: false }}
               />
             )}
           />
+        </Box>
+
+        {/* Station */}
+        <Box>
+          <Typography variant="body1">Station</Typography>
           <Autocomplete
-            sx={{ width: { xs: "100%", sm: "45%" } }}
             freeSolo
             id="free-solo-2-demo"
             disableClearable
             options={Stations.map((station) => station.name)}
-            size={isMobile ? "small" : "medium"}
+            size="small"
             renderInput={(params: any) => (
               <TextField
-                size={isMobile ? "small" : "medium"}
+                size="small"
                 {...params}
                 {...register("station", {
                   required: t?.cafePostModal.form.station.required,
@@ -134,18 +149,16 @@ const CafeInputForm = ({ handleCafePostSubmit }: propTypes) => {
                   ...params.InputProps,
                   type: "search",
                 }}
+                InputLabelProps={{ shrink: false }}
               />
             )}
           />
-        </Stack>
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <Stack
-            sx={{
-              flexDirection: { xs: "column", sm: "row", md: "row" },
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}
-          >
+        </Box>
+
+        {/* Opening Hour */}
+        <Box>
+          <Typography variant="body1">Opening Hours</Typography>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
             <Controller
               name="openHour"
               control={control}
@@ -154,140 +167,50 @@ const CafeInputForm = ({ handleCafePostSubmit }: propTypes) => {
                   label={t?.cafePostModal.form.openHour.label}
                   {...field}
                   sx={{
-                    mb: { xs: "1em", md: 0 },
-                    width: { xs: "100%", sm: "45%" },
+                    width: "100%",
+                    mb: "1em",
                   }}
                   slotProps={{
-                    textField: { size: isMobile ? "small" : "medium" },
+                    textField: { size: "small" },
                   }}
                 />
               )}
             />
-            {!isMobile && (
-              <Typography
-                sx={{ display: { sx: "none", sm: "block" } }}
-                variant="h5"
-              >
-                ~
-              </Typography>
-            )}
-            <Controller
-              name="closeHour"
-              control={control}
-              render={({ field }) => (
-                <TimePicker
-                  sx={{ width: { xs: "100%", sm: "45%" } }}
-                  label={t?.cafePostModal.form.closedTime.label}
-                  {...field}
-                  slotProps={{
-                    textField: { size: isMobile ? "small" : "medium" },
-                  }}
-                />
-              )}
-            />
-          </Stack>
-        </LocalizationProvider>
+          </LocalizationProvider>
+        </Box>
+
+        {/* Icons */}
+        <Icons
+          selectedIcons={selectedIcons}
+          setSelectedIcons={setSelectedIcons}
+        />
+
+        {/* Submit */}
         <Stack
           sx={{
-            flexDirection: { xs: "column", sm: "row", md: "row" },
-            alignItems: "center",
-            justifyContent: "space-between",
+            justifyContent: "flex-end",
+            mt: 2,
+            flexDirection: "row",
           }}
         >
-          <FormControl sx={{ width: { xs: "100%", sm: "30%" } }}>
-            <FormLabel id="demo-row-radio-buttons-group-label">
-              {t?.cafePostModal.form.wifi.label}
-            </FormLabel>
-            <Controller
-              name="isWifi"
-              control={control}
-              render={({ field }) => (
-                <RadioGroup
-                  row
-                  aria-labelledby="demo-row-radio-buttons-group-label"
-                  {...field}
-                >
-                  <FormControlLabel
-                    value={true}
-                    control={<Radio />}
-                    label={t?.cafePostModal.form.exist}
-                  />
-                  <FormControlLabel
-                    value={false}
-                    control={<Radio />}
-                    label={t?.cafePostModal.form.notExist}
-                  />
-                </RadioGroup>
-              )}
-            />
-          </FormControl>
-          <FormControl sx={{ width: { xs: "100%", sm: "30%" } }}>
-            <FormLabel id="demo-row-radio-buttons-group-label">
-              {t?.cafePostModal.form.outlet.label}
-            </FormLabel>
-            <Controller
-              name="isOutlet"
-              control={control}
-              render={({ field }) => (
-                <RadioGroup
-                  row
-                  aria-labelledby="demo-row-radio-buttons-group-label"
-                  {...field}
-                >
-                  <FormControlLabel
-                    value={true}
-                    control={<Radio />}
-                    label={t?.cafePostModal.form.exist}
-                  />
-                  <FormControlLabel
-                    value={false}
-                    control={<Radio />}
-                    label={t?.cafePostModal.form.notExist}
-                  />
-                </RadioGroup>
-              )}
-            />
-          </FormControl>
-          <FormControl sx={{ width: { xs: "100%", sm: "30%" } }}>
-            <FormLabel id="demo-row-radio-buttons-group-label">
-              {t?.cafePostModal.form.smoking.label}
-            </FormLabel>
-            <Controller
-              name="isSmoking"
-              control={control}
-              render={({ field }) => (
-                <RadioGroup
-                  row
-                  aria-labelledby="demo-row-radio-buttons-group-label"
-                  {...field}
-                >
-                  <FormControlLabel
-                    value={true}
-                    control={<Radio />}
-                    label={t?.cafePostModal.form.exist}
-                  />
-                  <FormControlLabel
-                    value={false}
-                    control={<Radio />}
-                    label={t?.cafePostModal.form.notExist}
-                  />
-                </RadioGroup>
-              )}
-            />
-          </FormControl>
+          <CustomButton
+            onClick={handleModalClose}
+            sx={{
+              mr: 2,
+              width: 120,
+              backgroundColor: "primary.main",
+              color: "custom.grey",
+              ":hover": {
+                backgroundColor: "primary.dark",
+              },
+            }}
+          >
+            Cancel
+          </CustomButton>
+          <CustomButton type="submit" variant="contained" sx={{ width: 120 }}>
+            Submit
+          </CustomButton>
         </Stack>
-      </Stack>
-      <Stack
-        sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
-      >
-        <Button
-          type="submit"
-          color="primary"
-          variant="contained"
-          sx={{ width: "30%", borderRadius: 1 }}
-        >
-          {t?.common.register}
-        </Button>
       </Stack>
     </form>
   );
