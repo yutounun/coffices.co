@@ -1,7 +1,7 @@
 import { Stack } from "@mui/material";
 import Image from "next/image";
 
-const equipmentIcons: string[] = ["wifi", "outlet", "cigarette"];
+const equipmentIcons: string[] = ["isWifi", "isOutlet", "isSmoking"];
 
 const IconComponent = ({
   selectedIcons,

@@ -74,6 +74,7 @@ export function filterCafe(stationName: string) {
  * @throws - error
  */
 export async function postCafe(data: CafePostRequestI) {
+  console.log("🚀 ~ postCafe ~ data:", data);
   await fetch(`${API_URL}/api/cafe`, {
     method: "POST",
     headers: {

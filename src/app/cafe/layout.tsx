@@ -19,7 +19,7 @@ export default function CafeListLayout({
   children: React.ReactNode;
 }) {
   const router = useRouter();
-  const { setUser, user } = userStore();
+  const { setUser } = userStore();
   const { data: session, status } = useSession();
   const { showsCreateModal, closeCreateCafeModal } = useCreateModalStore();
 
@@ -53,6 +53,8 @@ export default function CafeListLayout({
             }}
           >
             <Box sx={{ mt: "3em" }}>{children}</Box>
+
+            {/* Post Modal */}
             {showsCreateModal && (
               <CafePostModal
                 handleModalClose={closeCreateCafeModal}

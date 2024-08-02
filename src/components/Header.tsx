@@ -1,8 +1,6 @@
 "use client";
 import React from "react";
-import { AppBar, Container, Toolbar, Box, Stack } from "@mui/material";
-import { useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
+import { AppBar, Toolbar, Stack } from "@mui/material";
 import Image from "next/image";
 import NavBar from "@/components/ui/NavBar";
 import UserActions from "@/components/ui/UserActions";
@@ -16,8 +14,6 @@ import { space } from "@/utils/const";
 const ResponsiveAppBar = () => {
   const { setCafeList } = React.useContext(CafeListContext);
   const { setStationName } = React.useContext(StationNameContext);
-  const router = useRouter();
-  const { data: session } = useSession();
 
   const filterByStationName = async (filterParam?: string) => {
     if (filterParam) {

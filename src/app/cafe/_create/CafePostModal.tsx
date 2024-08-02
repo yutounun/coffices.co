@@ -11,10 +11,9 @@ import {
   Backdrop,
   IconButton,
 } from "@mui/material";
-import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import CafeInputForm from "./CafeInputFormPage";
-import useMobile from "@/hooks/useMobile";
 import useTranslate from "@/hooks/useTranslate";
+import useCreateModalStore from "@/store/openCreateCafeModal";
 
 interface propTypes {
   showModal: boolean;
@@ -23,6 +22,8 @@ interface propTypes {
 
 const CafeModal = ({ showModal, handleModalClose }: propTypes) => {
   const { t } = useTranslate();
+  const { closeCreateCafeModal } = useCreateModalStore();
+
   const height = "auto";
   const modalStyle = {
     position: "absolute" as "absolute",
@@ -43,7 +44,7 @@ const CafeModal = ({ showModal, handleModalClose }: propTypes) => {
   return (
     <Modal
       open={showModal}
-      onClose={handleModalClose}
+      onClose={closeCreateCafeModal}
       closeAfterTransition
       BackdropComponent={Backdrop}
       BackdropProps={{

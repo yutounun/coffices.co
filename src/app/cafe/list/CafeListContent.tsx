@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useContext, useCallback, useState } from "react";
-import { filterCafe } from "@/utils/api";
+import React, { useContext, useCallback, useState, useEffect } from "react";
+import { fetchAllCafes, filterCafe } from "@/utils/api";
 import "@/styles/cafe-list.scss";
 import CafeRow from "./CafeCardsRow";
 import CafeSearchResultList from "#/cafe/list/CafeSearchResultList";
@@ -9,6 +9,7 @@ import { StationNameContext } from "@/contexts/StationNameContext";
 import { areaInfo } from "@/data/areas.js";
 import SearchBar from "./SearchBar";
 import { CafeI } from "@/types/cafes";
+import useCreateModalStore from "@/store/openCreateCafeModal";
 
 enum maxRanking {
   count = 10,
@@ -17,6 +18,17 @@ enum maxRanking {
 const ShopsList = ({ initialCafes }: { initialCafes: CafeI[] }) => {
   const { setStationName, stationName } = useContext(StationNameContext);
   const [cafes, setCafes] = useState(initialCafes);
+  const { showsCreateModal } = useCreateModalStore();
+
+  useEffect(() => {
+    refetchData();
+  }, [showsCreateModal]);
+
+  /** Update cafe list after posting cafe */
+  const refetchData = async () => {
+    const updatedCafes = await fetchAllCafes();
+    setCafes(updatedCafes);
+  };
 
   /**
    * Filter cafes by station name

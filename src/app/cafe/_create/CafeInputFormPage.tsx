@@ -53,6 +53,8 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
     data.reviews = [];
 
     // Upload image and retrieve url
+    console.log("🚀 ~ postCafe ~ data:", data);
+    console.log("🚀 ~ postCafe ~ selectedIcons:", selectedIcons);
     postCafe({ ...data, ...selectedIcons }).then((res) => {
       handleModalClose();
     });
@@ -63,6 +65,11 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
     isOutlet: false,
     isSmoking: false,
   });
+
+  const [inputName, setInputName] = useState("");
+  const [inputArea, setInputArea] = useState("");
+  const [inputStation, setInputStation] = useState("");
+  const [inputOpenHour, setInputOpenHour] = useState("");
 
   return (
     <form
@@ -84,7 +91,7 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
           <Typography variant="body1">Name</Typography>
           <TextField
             sx={{ width: "100%" }}
-            label={t?.cafePostModal.form.cafeName.label}
+            label={inputName ? "" : t?.cafePostModal.form.cafeName.label}
             error={!!errors.title}
             helperText={errors.title?.message?.toString()}
             size="small"
@@ -94,6 +101,7 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
             InputLabelProps={{
               shrink: false,
             }}
+            onChange={(e) => setInputName(e.target.value)}
           />
         </Box>
 
@@ -115,12 +123,13 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
                 {...register("area", {
                   required: t?.cafePostModal.form.area.required,
                 })}
-                label={t?.cafePostModal.form.area.label}
+                label={inputArea ? "" : t?.cafePostModal.form.area.label}
                 InputProps={{
                   ...params.InputProps,
                   type: "search",
                 }}
                 InputLabelProps={{ shrink: false }}
+                onChange={(e) => setInputArea(e.target.value)}
               />
             )}
           />
@@ -144,12 +153,13 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
                 })}
                 error={!!errors.station}
                 helperText={errors.station?.message?.toString()}
-                label={t?.cafePostModal.form.station.label}
+                label={inputStation ? "" : t?.cafePostModal.form.station.label}
                 InputProps={{
                   ...params.InputProps,
                   type: "search",
                 }}
                 InputLabelProps={{ shrink: false }}
+                onChange={(e) => setInputStation(e.target.value)}
               />
             )}
           />
@@ -164,7 +174,9 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
               control={control}
               render={({ field }) => (
                 <TimePicker
-                  label={t?.cafePostModal.form.openHour.label}
+                  label={
+                    inputOpenHour ? "" : t?.cafePostModal.form.openHour.label
+                  }
                   {...field}
                   sx={{
                     width: "100%",
@@ -172,6 +184,13 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
                   }}
                   slotProps={{
                     textField: { size: "small" },
+                  }}
+                  onChange={(newValue) => {
+                    field.onChange(newValue);
+                    setInputOpenHour(newValue ? newValue.toString() : "");
+                  }}
+                  InputLabelProps={{
+                    shrink: false,
                   }}
                 />
               )}
