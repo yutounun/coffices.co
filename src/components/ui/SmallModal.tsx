@@ -1,5 +1,4 @@
-// Server Component
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Modal,
   Box,
@@ -7,14 +6,15 @@ import {
   IconButton,
   TextField,
   Rating,
+  Fade,
+  Backdrop,
 } from "@mui/material";
 import { Close, Star, StarBorder } from "@mui/icons-material";
 import { useForm, Controller } from "react-hook-form";
 import CustomButton from "./CustomButton";
 import { CreateReviewRequestI } from "@/types/cafes";
-import { addReview } from "@/utils/api";
+import { addReview, getUser as fetchUser } from "@/utils/api";
 import { useSession } from "next-auth/react";
-import userStore from "@/store/me";
 
 interface SmallModalProps {
   open: boolean;
@@ -37,7 +37,20 @@ const SmallModal: React.FC<SmallModalProps> = ({
   description,
   cafeId,
 }) => {
-  const { user } = userStore();
+  const { data: session } = useSession();
+  const [user, setUser] = useState(null);
+
+  const fetchUserData = async () => {
+    if (session?.user?.id) {
+      const newUser = await fetchUser(session.user.id);
+      setUser(newUser);
+      console.log("🚀 ~ user:", newUser);
+    }
+  };
+
+  useEffect(() => {
+    fetchUserData();
+  }, [session]);
 
   const {
     control,
@@ -51,95 +64,111 @@ const SmallModal: React.FC<SmallModalProps> = ({
     reset();
   };
 
-  const onSubmit = async (data: FormValues) => {
+  const onSubmit = (data: FormValues) => {
     const reviewData: CreateReviewRequestI = {
       ...data,
       cafeId,
-      userId: user._id,
+      userId: session?.user?.id || "",
     };
-    await addReview(reviewData);
+    console.log("🚀 ~ onSubmit ~ session:", session);
+    addReview(reviewData);
+    console.log(reviewData);
     handleClose();
     reset();
   };
 
   return (
-    <Modal open={open} onClose={handleClose}>
-      <Box sx={modalStyle}>
-        <IconButton
-          aria-label="close"
-          onClick={handleClose}
-          sx={{ position: "absolute", right: 8, top: 8 }}
-        >
-          <Close />
-        </IconButton>
+    <Modal
+      open={open}
+      onClose={handleClose}
+      closeAfterTransition
+      BackdropComponent={Backdrop}
+      BackdropProps={{
+        timeout: 500,
+      }}
+    >
+      <Fade in={open}>
+        <Box sx={modalStyle}>
+          <IconButton
+            aria-label="close"
+            onClick={handleClose}
+            sx={{ position: "absolute", right: 8, top: 8 }}
+          >
+            <Close />
+          </IconButton>
 
-        <Typography variant="h4">{title}</Typography>
-        <Typography variant="body1">{description}</Typography>
+          <Typography variant="h4">{title}</Typography>
+          <Typography variant="body1">{description}</Typography>
 
-        <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={{ p: 2 }}>
-          <Typography variant="body1" sx={{ mt: 1 }}>
-            Review Score
-          </Typography>
-          <Controller
-            name="rate"
-            control={control}
-            defaultValue={0}
-            rules={{ required: true }}
-            render={({ field }) => (
-              <Rating
-                {...field}
-                onChange={(event, value) => field.onChange(value)}
-                precision={1}
-                icon={<Star fontSize="medium" />}
-                emptyIcon={<StarBorder fontSize="medium" />}
-              />
+          <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={{ p: 2 }}>
+            <Typography variant="body1" sx={{ mt: 1 }}>
+              Review Score
+            </Typography>
+            <Controller
+              name="rate"
+              control={control}
+              defaultValue={0}
+              rules={{ required: true }}
+              render={({ field }) => (
+                <Rating
+                  {...field}
+                  onChange={(event, value) => field.onChange(value)}
+                  precision={1}
+                  icon={<Star fontSize="medium" />}
+                  emptyIcon={<StarBorder fontSize="medium" />}
+                />
+              )}
+            />
+            {errors.rate && (
+              <Typography color="error">Score is required</Typography>
             )}
-          />
-          {errors.rate && (
-            <Typography color="error">Score is required</Typography>
-          )}
 
-          <TextField
-            label="Review Title"
-            fullWidth
-            sx={{ mt: 1 }}
-            {...control.register("title", { required: true })}
-            error={!!errors.title}
-            helperText={errors.title ? "Title is required" : ""}
-          />
+            <TextField
+              label="Review Title"
+              fullWidth
+              sx={{ mt: 1 }}
+              {...control.register("title", { required: true })}
+              error={!!errors.title}
+              helperText={errors.title ? "Title is required" : ""}
+            />
 
-          <TextField
-            label="Review Description"
-            fullWidth
-            multiline
-            rows={4}
-            sx={{ mt: 2 }}
-            {...control.register("content", { required: true })}
-            error={!!errors.content}
-            helperText={errors.content ? "Description is required" : ""}
-          />
+            <TextField
+              label="Review Description"
+              fullWidth
+              multiline
+              rows={4}
+              sx={{ mt: 2 }}
+              {...control.register("content", { required: true })}
+              error={!!errors.content}
+              helperText={errors.content ? "Description is required" : ""}
+            />
 
-          <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 2 }}>
-            <CustomButton
-              onClick={handleCancel}
-              sx={{
-                mr: 2,
-                width: 120,
-                backgroundColor: "primary.main",
-                color: "custom.grey",
-                ":hover": {
-                  backgroundColor: "primary.dark",
-                },
-              }}
-            >
-              Cancel
-            </CustomButton>
-            <CustomButton type="submit" variant="contained" sx={{ width: 120 }}>
-              Submit
-            </CustomButton>
+            <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 2 }}>
+              <CustomButton
+                onClick={handleCancel}
+                sx={{
+                  mr: 2,
+                  width: 120,
+                  backgroundColor: "primary.main",
+                  color: "custom.grey",
+                  ":hover": {
+                    backgroundColor: "primary.dark",
+                  },
+                }}
+              >
+                Cancel
+              </CustomButton>
+              <CustomButton
+                type="submit"
+                variant="contained"
+                sx={{ width: 120 }}
+              >
+                Submit
+              </CustomButton>
+            </Box>
           </Box>
         </Box>
-      </Box>
+      </Fade>
     </Modal>
   );
 };
