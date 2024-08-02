@@ -6,6 +6,7 @@ import CafeDetailReview from "#/cafe/[id]/CafeDetailReview";
 import Recommndation from "@/app/cafe/[id]/Recommndation";
 import { Box } from "@mui/material";
 import { space } from "@/utils/const";
+import GoogleMap from "@/components/ui/GoogleMap";
 
 interface CafeDetailPageProps {
   params: {
@@ -37,7 +38,7 @@ const CafeDetailPage = async ({ params }: CafeDetailPageProps) => {
         <CafeDetailContent cafe={cafe} />
 
         {/* Google Map */}
-        <Image src="/googlemap.jpg" alt="googlemap" width={1070} height={513} />
+        <GoogleMap locationName={cafe.title} />
       </Box>
 
       {/* Review */}
