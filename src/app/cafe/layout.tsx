@@ -5,7 +5,7 @@ import { Box, Stack } from "@mui/material";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { getUser } from "@/utils/api";
-import meStore from "@/store/me";
+import userStore from "@/store/me";
 import { StationNameContext } from "@/contexts/StationNameContext";
 import CafePostModal from "#/cafe/_create/CafePostModal";
 import useCreateModalStore from "@/store/openCreateCafeModal";
@@ -19,7 +19,7 @@ export default function CafeListLayout({
   children: React.ReactNode;
 }) {
   const router = useRouter();
-  const { setMe, me } = meStore();
+  const { setUser, user } = userStore();
   const { data: session, status } = useSession();
   const { showsCreateModal, closeCreateCafeModal } = useCreateModalStore();
 
@@ -27,7 +27,7 @@ export default function CafeListLayout({
     if (session) {
       // @ts-ignore
       getUser(session?.user?.id).then((user) => {
-        setMe(user);
+        setUser(user);
       });
     }
   }, [session]);

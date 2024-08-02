@@ -5,7 +5,7 @@ import { Box, Stack } from "@mui/material";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { getUser } from "@/utils/api";
-import meStore from "@/store/me";
+import userStore from "@/store/me";
 import { StationNameContext } from "@/contexts/StationNameContext";
 
 export default function CafeListLayout({
@@ -13,13 +13,13 @@ export default function CafeListLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { setMe, me } = meStore();
+  const { setUser, user } = userStore();
   const { data: session } = useSession();
   useEffect(() => {
     if (session) {
       // @ts-ignore
       getUser(session?.user?.id).then((user) => {
-        setMe(user);
+        setUser(user);
       });
     }
   }, [session]);

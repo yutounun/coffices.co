@@ -11,7 +11,7 @@ import {
 import { addReview, putCafe } from "@/utils/api";
 import { useForm } from "react-hook-form";
 import { CafeI } from "@/types/cafes";
-import meStore from "@/store/me";
+import userStore from "@/store/me";
 import { useSession } from "next-auth/react";
 import { CafeListContext } from "@/contexts/CafeListContext";
 import useTranslate from "@/hooks/useTranslate";
@@ -27,7 +27,7 @@ const CafePostReviewModal = ({
   handleModalClose,
   cafe,
 }: propTypes) => {
-  const { me } = meStore();
+  const { user } = userStore();
   const { data: session } = useSession();
   const { setCafeList } = useContext(CafeListContext);
   const { t } = useTranslate();
@@ -63,7 +63,7 @@ const CafePostReviewModal = ({
 
   /** Submit action */
   async function handleCafeReviewPostSubmit(data: any) {
-    data.userId = me._id;
+    data.userId = user._id;
     data.image = session?.user?.image;
     await addReview(data).then((res) => {
       handleModalClose();

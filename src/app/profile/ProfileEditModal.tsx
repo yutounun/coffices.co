@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useForm } from "react-hook-form";
-import meStore from "@/store/me";
+import userStore from "@/store/me";
 import { updateUser } from "@/utils/api";
 import useTranslate from "@/hooks/useTranslate";
 
@@ -19,7 +19,7 @@ interface propTypes {
 }
 
 const ProfileEditModal = ({ showModal, handleModalClose }: propTypes) => {
-  const { me, setMe } = meStore();
+  const { user, setUser } = userStore();
   const { t } = useTranslate();
   const {
     register,
@@ -28,12 +28,12 @@ const ProfileEditModal = ({ showModal, handleModalClose }: propTypes) => {
   } = useForm({
     mode: "onChange",
     defaultValues: {
-      _id: me._id,
-      bio: me.bio,
-      github: me.github,
-      twitter: me.twitter,
-      linkedIn: me.linkedIn,
-      homePage: me.homepage,
+      _id: user._id,
+      bio: user.bio,
+      github: user.github,
+      twitter: user.twitter,
+      linkedIn: user.linkedIn,
+      homePage: user.homepage,
     },
   });
 
@@ -55,7 +55,7 @@ const ProfileEditModal = ({ showModal, handleModalClose }: propTypes) => {
   /** Submit action */
   async function handleProfileUpdateSubmit(data: any) {
     const user = await updateUser(data);
-    setMe(user);
+    setUser(user);
     handleModalClose();
   }
   return (

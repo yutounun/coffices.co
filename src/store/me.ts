@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
-interface meI {
+interface userI {
   _id: string;
   sessionId: string;
   username: string;
@@ -16,15 +16,15 @@ interface meI {
   homepage?: string;
 }
 
-interface meState {
-  me: meI;
-  setMe: (me: meI) => void;
+interface userState {
+  user: userI;
+  setUser: (user: userI) => void;
 }
 
-const useCreateModalStore = create<meState, [["zustand/persist", unknown]]>(
+const userStore = create<userState, [["zustand/persist", unknown]]>(
   persist(
-    (set: (f: (state: meState) => meState) => void) => ({
-      me: {
+    (set: (f: (state: userState) => userState) => void) => ({
+      user: {
         sessionId: "",
         username: "",
         email: "",
@@ -38,7 +38,7 @@ const useCreateModalStore = create<meState, [["zustand/persist", unknown]]>(
         homepage: "",
         _id: "",
       },
-      setMe: (newMe: meI) => set((state) => ({ ...state, me: newMe })),
+      setUser: (newMe: userI) => set((state) => ({ ...state, user: newMe })),
     }),
     {
       name: "me-storage",
@@ -47,4 +47,4 @@ const useCreateModalStore = create<meState, [["zustand/persist", unknown]]>(
   )
 );
 
-export default useCreateModalStore;
+export default userStore;

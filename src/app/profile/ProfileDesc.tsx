@@ -7,7 +7,7 @@ import LinkIcon from "@mui/icons-material/Link";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
-import meStore from "@/store/me";
+import userStore from "@/store/me";
 import EditIcon from "@mui/icons-material/Edit";
 
 const ProfileDesc = ({
@@ -16,28 +16,34 @@ const ProfileDesc = ({
   setShowModal: (showModal: boolean) => void;
 }) => {
   const { data: session } = useSession();
-  const { me } = meStore();
+  const { user } = userStore();
 
   // true: if all fields on a profile are filled
   const [isProfileComplete, setIsProfileComplete] = useState(false);
 
   useEffect(() => {
-    if (!me) return;
-    if (me.bio && me.github && me.twitter && me.linkedIn && me.homepage) {
+    if (!user) return;
+    if (
+      user.bio &&
+      user.github &&
+      user.twitter &&
+      user.linkedIn &&
+      user.homepage
+    ) {
       setIsProfileComplete(true);
     }
-  }, [me]);
+  }, [user]);
 
   if (!isProfileComplete) return null;
 
   const userInfo = {
     name: session?.user?.name || "Unknown",
     email: session?.user?.email || "unknown@gmail.com",
-    bio: me.bio,
-    github: me.github || "https://github.com",
-    twitter: me.twitter || "https://twitter.com",
-    linkedin: me.linkedIn || "https://linkedin.com",
-    homepage: me.homepage || "https://homepage.com",
+    bio: user.bio,
+    github: user.github || "https://github.com",
+    twitter: user.twitter || "https://twitter.com",
+    linkedin: user.linkedIn || "https://linkedin.com",
+    homepage: user.homepage || "https://homepage.com",
   };
   return (
     <Stack
@@ -64,7 +70,7 @@ const ProfileDesc = ({
           </Typography>
 
           {/* Admin Chip */}
-          {me.isAdmin && (
+          {user.isAdmin && (
             <Button
               color="warning"
               variant="contained"

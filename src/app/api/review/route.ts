@@ -15,9 +15,12 @@ export async function POST(request: NextRequest) {
 
   try {
     let data = await request.json();
+    console.log("🚀 ~ POST ~ data:", data);
 
     // Add username to review
+    // ここで詰まってる
     const user = await UserModel.findOne({ _id: data.userId });
+    console.log("🚀 ~ POST ~ user:", user);
     if (!user) {
       throw new Error("User not found");
     }
@@ -27,6 +30,7 @@ export async function POST(request: NextRequest) {
 
     // update review score on Cafe Model
     const cafe = await CafeModel.findOne({ _id: data.cafeId });
+    console.log("🚀 ~ POST ~ cafe:", cafe);
     if (!cafe) {
       throw new Error("Cafe not found");
     }

@@ -32,6 +32,7 @@ export interface CreateReviewRequestI {
   content: string;
   rate: number;
   cafeId: string;
+  userId: string;
 }
 
 export interface CafeI {

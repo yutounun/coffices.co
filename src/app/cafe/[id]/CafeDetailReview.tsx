@@ -1,10 +1,30 @@
+"use client";
+
 import { Stack, Typography } from "@mui/material";
 import CustomButton from "@/components/ui/CustomButton";
 import { ReviewI } from "@/types/cafes";
 import ScrollCardRow from "@/components/ui/ScrollCardRow";
 import CafeDetailReviewCard from "./CafeDetailReviewCard";
+import { useState } from "react";
+import SmallModal from "@/components/ui/SmallModal";
 
-const CafeDetailReview = ({ reviews }: { reviews: ReviewI[] }) => {
+const CafeDetailReview = ({
+  reviews,
+  cafeId,
+}: {
+  reviews: ReviewI[];
+  cafeId: string;
+}) => {
+  const [open, setOpen] = useState(false);
+
+  const openCreateReview = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <Stack sx={{ my: 7 }}>
       {/* Title */}
@@ -16,11 +36,7 @@ const CafeDetailReview = ({ reviews }: { reviews: ReviewI[] }) => {
       {reviews.length !== 0 && (
         <ScrollCardRow cardCount={reviews.length}>
           {reviews.map((review: ReviewI, index) => (
-            <CafeDetailReviewCard
-              key={review.id}
-              review={review}
-              index={index}
-            />
+            <CafeDetailReviewCard key={index} review={review} index={index} />
           ))}
         </ScrollCardRow>
       )}
@@ -33,7 +49,18 @@ const CafeDetailReview = ({ reviews }: { reviews: ReviewI[] }) => {
       )}
 
       {/* Leading to Add review modal */}
-      <CustomButton sx={{ mx: 25, my: 3 }}>Leave a review</CustomButton>
+      <CustomButton onClick={openCreateReview} sx={{ mx: 25, my: 3 }}>
+        Leave a review
+      </CustomButton>
+
+      {/* Simple Modal */}
+      <SmallModal
+        cafeId={cafeId}
+        open={open}
+        handleClose={handleClose}
+        title="Add a Review"
+        description="Please enter your review below:"
+      />
     </Stack>
   );
 };

@@ -41,7 +41,7 @@ const CafeDetailPage = async ({ params }: CafeDetailPageProps) => {
       </Box>
 
       {/* Review */}
-      <CafeDetailReview reviews={cafe.reviews} />
+      <CafeDetailReview cafeId={cafe._id} reviews={cafe.reviews} />
 
       {/* Recommndation */}
       <Recommndation cafes={cafes} />

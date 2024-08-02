@@ -146,6 +146,7 @@ export async function cafeImageUpload(cafeImageFile: any) {
 }
 
 export async function addReview(data: CreateReviewRequestI) {
+  console.log("🚀 ~ addReview ~ data:", data);
   return await fetch(`${API_URL}/api/review`, {
     method: "POST",
     headers: {

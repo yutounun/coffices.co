@@ -12,7 +12,7 @@ import { deleteCafe } from "@/utils/api";
 import CafeDetailModalOverview from "./CafeDetailModalOverview";
 import CafeDetailModalReviews from "./CafeDetailModalReviews";
 import CafePostReviewModal from "#/cafe/_create/CafePostReviewModal";
-import meStore from "@/store/me";
+import userStore from "@/store/me";
 import { CafeListContext } from "@/contexts/CafeListContext";
 import useMobile from "@/hooks/useMobile";
 
@@ -41,7 +41,7 @@ const CafeModal = ({
   showCafeDetail,
   handleCafeDetailClose,
 }: propTypes) => {
-  const { me } = meStore();
+  const { user } = userStore();
   const { isMobile } = useMobile();
   const [openCafeEditModal, setOpenCafeEditModal] = useState(false);
   const [showsReviews, setShowsReviews] = useState(false);
@@ -174,7 +174,7 @@ const CafeModal = ({
                   sx={{ width: "25%", justifyContent: "right" }}
                 >
                   {/* admin role */}
-                  {me.isAdmin ? (
+                  {user.isAdmin ? (
                     <>
                       <Tooltip title="Edit">
                         <EditIcon
