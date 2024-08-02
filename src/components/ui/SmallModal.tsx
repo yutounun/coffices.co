@@ -15,6 +15,7 @@ import CustomButton from "./CustomButton";
 import { CreateReviewRequestI } from "@/types/cafes";
 import { addReview, getUser as fetchUser } from "@/utils/api";
 import { useSession } from "next-auth/react";
+import userStore from "@/store/me";
 
 interface SmallModalProps {
   open: boolean;
@@ -37,20 +38,7 @@ const SmallModal: React.FC<SmallModalProps> = ({
   description,
   cafeId,
 }) => {
-  const { data: session } = useSession();
-  const [user, setUser] = useState(null);
-
-  const fetchUserData = async () => {
-    if (session?.user?.id) {
-      const newUser = await fetchUser(session.user.id);
-      setUser(newUser);
-      console.log("🚀 ~ user:", newUser);
-    }
-  };
-
-  useEffect(() => {
-    fetchUserData();
-  }, [session]);
+  const { user } = userStore();
 
   const {
     control,
@@ -68,11 +56,9 @@ const SmallModal: React.FC<SmallModalProps> = ({
     const reviewData: CreateReviewRequestI = {
       ...data,
       cafeId,
-      userId: session?.user?.id || "",
+      userId: user._id,
     };
-    console.log("🚀 ~ onSubmit ~ session:", session);
     addReview(reviewData);
-    console.log(reviewData);
     handleClose();
     reset();
   };

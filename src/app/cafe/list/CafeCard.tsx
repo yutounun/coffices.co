@@ -6,12 +6,14 @@ import CafeDescription from "#/cafe/list/CafeDescription";
 import { NextImage } from "@/components/ui/NextImage";
 import Card from "@mui/material/Card";
 import { useRouter } from "next/navigation";
+import { space } from "@/utils/const";
 
 interface propTypes {
   cafe: CafeI;
   rank?: number;
   isTokyoRanking?: boolean;
   index?: number;
+  lastIndex?: number;
 }
 
 const rankStyle = {
@@ -24,14 +26,20 @@ const rankStyle = {
 
 const cardPhotoStyle = { height: { xs: "100px", md: "150px" }, width: "100%" };
 
-const CafeCard = ({ cafe, rank, isTokyoRanking, index }: propTypes) => {
+const CafeCard = ({
+  cafe,
+  rank,
+  isTokyoRanking,
+  index,
+  lastIndex,
+}: propTypes) => {
   const router = useRouter();
 
   const cardStyle = {
     width: { xs: "12em", md: "250px" },
     mt: "2em",
-    mr: "2em",
-    ml: index === 0 && !isTokyoRanking ? 25 : "0px",
+    mr: index === lastIndex ? space.around : "2em",
+    ml: index === 0 && !isTokyoRanking ? space.around : "0px",
     position: "relative",
     overflow: "visible",
     height: { xs: "13em", md: "270px" },

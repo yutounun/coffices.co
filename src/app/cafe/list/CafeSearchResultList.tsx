@@ -35,7 +35,9 @@ const CafeSearchResultList = ({ cafes, area }: propTypes) => {
       >
         {cafes &&
           cafes.length > 0 &&
-          cafes.map((cafe) => <CafeCard key={cafe._id} cafe={cafe} />)}
+          cafes.map((cafe) => (
+            <CafeCard lastIndex={cafes.length - 1} key={cafe._id} cafe={cafe} />
+          ))}
 
         {cafes.length === 0 && <NotFound />}
       </Stack>

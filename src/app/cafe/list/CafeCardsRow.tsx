@@ -34,6 +34,7 @@ const CafeCardRow = ({ cafes, title, isTokyoRanking }: propTypes) => {
       <ScrollCardRow cardCount={cafes.length}>
         {cafes?.map((cafe, index) => (
           <CafeCard
+            lastIndex={cafes.length - 1}
             isTokyoRanking={isTokyoRanking}
             key={cafe._id}
             rank={index + 1}
