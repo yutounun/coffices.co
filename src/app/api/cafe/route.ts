@@ -45,9 +45,15 @@ export async function GET(request: NextRequest) {
   await connectDB();
 
   try {
-    const stationQuery = request.nextUrl.searchParams.get("station");
-    const query = stationQuery ? { station: stationQuery } : {};
-    const cafes = await CafeModel.find(query);
+    const searchQuery = request.nextUrl.searchParams.get("q");
+    const areaQuery = searchQuery ? { area: searchQuery } : {};
+    const stationQuery = searchQuery ? { station: searchQuery } : {};
+
+    // search by area or station
+    let cafes = null;
+    cafes = await CafeModel.find(areaQuery);
+    console.log("🚀 ~ GET ~ cafes:", cafes);
+    if (!cafes) cafes = await CafeModel.find(stationQuery);
 
     const cafesWithReviews = await Promise.all(
       cafes.map(async (cafe: any) => {

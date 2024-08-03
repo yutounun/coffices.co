@@ -11,7 +11,7 @@ const CustomTextField = styled(TextField)(({ theme }) => ({
     borderRadius: "50px",
     backgroundColor: "white",
     padding: "0 0.7em 0 1em",
-    width: "100%", // 追加
+    width: "100%",
   },
   "& .MuiInputAdornment-root": {
     color: theme.palette.text.secondary,
@@ -23,7 +23,7 @@ const CustomTextField = styled(TextField)(({ theme }) => ({
 }));
 
 const CustomAutocomplete = styled(Autocomplete)(({ theme }) => ({
-  width: "100%", // 追加
+  width: "100%",
   "& .MuiAutocomplete-inputRoot": {
     borderRadius: "50px",
     backgroundColor: "white",
@@ -39,11 +39,10 @@ const CustomAutocomplete = styled(Autocomplete)(({ theme }) => ({
 }));
 
 interface propTypes {
-  filterByStationName: (stationName: string) => void;
   sx?: Object;
 }
 
-const SearchBar = ({ filterByStationName, sx }: propTypes) => {
+const SearchBar = ({ sx }: propTypes) => {
   const [keyword, setKeyword] = useState("");
   const [inputValue, setInputValue] = useState("");
   const router = useRouter();
@@ -71,7 +70,7 @@ const SearchBar = ({ filterByStationName, sx }: propTypes) => {
       freeSolo
       options={stationsArea.map((station) => station.name)}
       inputValue={inputValue}
-      sx={{ width: "30%", ...sx }} // 追加
+      sx={{ width: "30%", ...sx }}
       onInputChange={(event, newInputValue) => {
         setInputValue(newInputValue);
         setKeyword(newInputValue);
@@ -79,7 +78,7 @@ const SearchBar = ({ filterByStationName, sx }: propTypes) => {
       renderInput={(params) => (
         <CustomTextField
           {...params}
-          sx={{ width: "100%", ...sx }} // 追加
+          sx={{ width: "100%", ...sx }}
           variant="outlined"
           placeholder="Type area, station..."
           onChange={handleTextFieldChange}

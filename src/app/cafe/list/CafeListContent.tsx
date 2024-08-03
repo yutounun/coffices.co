@@ -43,24 +43,6 @@ const ShopsList = ({ initialCafes }: { initialCafes: CafeI[] }) => {
   }, [showsCafeModal, searchParams, refetchData]);
 
   /**
-   * Filter cafes by station name
-   *
-   * @param filterParam - The name of the station to filter by
-   */
-  const filterByStationName = useCallback(
-    async (filterParam?: string) => {
-      if (filterParam) {
-        const filteredCafe = await filterCafe(filterParam);
-        setCafes(filteredCafe);
-        setStationName(filterParam);
-      } else {
-        setStationName("");
-      }
-    },
-    [setCafes, setStationName]
-  );
-
-  /**
    * Get the top ranked cafes
    *
    * @return The top ranked cafes, limited by maxRanking.count
@@ -89,10 +71,7 @@ const ShopsList = ({ initialCafes }: { initialCafes: CafeI[] }) => {
   return (
     <>
       {/* Search Bar only for mobile */}
-      <SearchBar
-        filterByStationName={filterByStationName}
-        sx={{ display: { xs: "static", md: "none" } }}
-      />
+      <SearchBar sx={{ display: { xs: "static", md: "none" } }} />
 
       {/* Default Page */}
       {!q && (

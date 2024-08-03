@@ -60,8 +60,8 @@ export async function fetchCafeById(cafeId: string) {
  * @param {string} stationName - The name of the station to filter cafe data by.
  * @return {Promise} A Promise that resolves to the cafe data fetched from the server.
  */
-export function filterCafe(stationName: string) {
-  return fetch(`${API_URL}/api/cafe?station=${stationName}`)
+export function filterCafe(q: string) {
+  return fetch(`${API_URL}/api/cafe?q=${q}`)
     .then((res) => res.json())
     .catch((err) => console.log(err));
 }
