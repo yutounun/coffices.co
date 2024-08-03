@@ -232,6 +232,7 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
           </LocalizationProvider>
         </Box>
 
+        {/* Closing Hour */}
         <Box sx={{ mt: -2 }}>
           <Typography variant="body1">Closing Hours</Typography>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
