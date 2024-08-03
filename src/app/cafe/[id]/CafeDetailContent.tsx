@@ -1,10 +1,12 @@
+"use client";
+
 import EditDeleteMenu from "@/components/ui/EditDeleteMenu";
 import Stars from "@/components/ui/Stars";
 import WifiOutletCigar from "@/components/ui/WifiOutletCigar";
+import useSelectedCafeStore from "@/store/selectedCafe";
 import { CafeI } from "@/types/cafes";
 import { Box, Stack, Typography } from "@mui/material";
-import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 
 const detailInfoTitleStyle = {
   width: "20%",
@@ -18,6 +20,10 @@ const detailInfoContentStyle = {
 };
 
 const CafeDetailContent = ({ cafe }: { cafe: CafeI }) => {
+  const { setSelectedCafeData } = useSelectedCafeStore();
+  useEffect(() => {
+    setSelectedCafeData(cafe);
+  }, [setSelectedCafeData, cafe]);
   return (
     <Stack sx={{ my: 5 }}>
       {/* Title Line */}

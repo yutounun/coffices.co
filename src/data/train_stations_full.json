@@ -1,0 +1,68 @@
+[
+    {
+        "name": "稲毛海岸",
+        "reading": "イナゲカイガン",
+        "postal_code": "261-0004",
+        "address": "千葉市美浜区高洲3丁目"
+    },
+    {
+        "name": "市川塩浜",
+        "reading": "イチカワシオハマ",
+        "postal_code": "272-0127",
+        "address": "市川市塩浜2丁目"
+    },
+    {
+        "name": "海浜幕張",
+        "reading": "カイヒンマクハリ",
+        "postal_code": "261-0021",
+        "address": "千葉市美浜区ひび野2丁目"
+    },
+    {
+        "name": "葛西臨海公園",
+        "reading": "カサイリンカイコウエン",
+        "postal_code": "134-0086",
+        "address": "東京都江戸川区臨海町6丁目"
+    },
+    {
+        "name": "検見川浜",
+        "reading": "ケミガワハマ",
+        "postal_code": "261-0011",
+        "address": "千葉市美浜区真砂4丁目"
+    },
+    {
+        "name": "新習志野",
+        "reading": "シンナラシノ",
+        "postal_code": "275-0024",
+        "address": "習志野市茜浜2丁目"
+    },
+    {
+        "name": "千葉みなと",
+        "reading": "チバミナト",
+        "postal_code": "260-0024",
+        "address": "千葉市中央区中央港1丁目"
+    },
+    {
+        "name": "東京",
+        "reading": "トウキョウ",
+        "postal_code": "100-0005",
+        "address": "東京都千代田区丸の内1丁目"
+    },
+    {
+        "name": "西船橋",
+        "reading": "ニシフナバシ",
+        "postal_code": "273-0031",
+        "address": "船橋市西船4丁目"
+    },
+    {
+        "name": "二俣新町",
+        "reading": "フタマタシンマチ",
+        "postal_code": "272-0001",
+        "address": "市川市二俣新町"
+    },
+    {
+        "name": "南船橋",
+        "reading": "ミナミフナバシ",
+        "postal_code": "273-0013",
+        "address": "船橋市若松2丁目"
+    }
+]

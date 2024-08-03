@@ -21,7 +21,6 @@ export default function CafeListLayout({
   const router = useRouter();
   const { setUser } = userStore();
   const { data: session, status } = useSession();
-  const { showsCafeModal, closeCafeModal } = useCafeModalStore();
 
   useEffect(() => {
     if (session) {
@@ -55,12 +54,7 @@ export default function CafeListLayout({
             <Box sx={{ mt: "3em" }}>{children}</Box>
 
             {/* Post Modal */}
-            {showsCafeModal && (
-              <CafePostModal
-                handleModalClose={closeCafeModal}
-                showModal={showsCafeModal}
-              />
-            )}
+            <CafePostModal />
           </Box>
         </StationNameContext.Provider>
       </CafeListContext.Provider>

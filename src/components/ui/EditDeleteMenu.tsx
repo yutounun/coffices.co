@@ -12,13 +12,13 @@ const EditDeleteMenu = ({ cafeId }: { cafeId: string }) => {
   const open = Boolean(anchorEl);
   const router = useRouter();
 
-  const { openCafeModal } = useCafeModalStore();
+  const { openCafeModal, setModalType } = useCafeModalStore();
 
   const handleClose = () => setAnchorEl(null);
 
   const handleEdit = () => {
     openCafeModal();
-    console.log("Edit clicked");
+    setModalType("edit");
     handleClose();
   };
 

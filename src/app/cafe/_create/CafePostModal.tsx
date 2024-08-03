@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext } from "react";
+import React, { useMemo } from "react";
 
 import CloseIcon from "@mui/icons-material/Close";
 import {
@@ -15,36 +15,42 @@ import CafeInputForm from "./CafeInputFormPage";
 import useTranslate from "@/hooks/useTranslate";
 import useCafeModalStore from "@/store/openCafeModal";
 
-interface propTypes {
-  showModal: boolean;
-  handleModalClose: () => void;
-}
+const modalStyle = {
+  position: "absolute" as "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: { xs: 400, md: 400 },
+  bgcolor: "background.paper",
+  boxShadow: 24,
+  py: 3,
+  px: 4,
+  height: "auto",
+  display: "flex",
+  flexDirection: "column",
+  borderRadius: 5,
+};
 
-const CafeModal = ({ showModal, handleModalClose }: propTypes) => {
+const CafeModal = () => {
   const { t } = useTranslate();
-  const { closeCafeModal } = useCafeModalStore();
+  const { closeCafeModal, modalType, showsCafeModal, setModalType } =
+    useCafeModalStore();
 
-  const height = "auto";
-  const modalStyle = {
-    position: "absolute" as "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: { xs: 400, md: 400 },
-    bgcolor: "background.paper",
-    boxShadow: 24,
-    py: 3,
-    px: 4,
-    height: height,
-    display: "flex",
-    flexDirection: "column",
-    borderRadius: 5,
+  const heading = useMemo(() => {
+    return modalType === "edit"
+      ? t?.cafePostModal.titles.edit
+      : t?.cafePostModal.titles.post;
+  }, [modalType, t]);
+
+  const handleCloseModal = () => {
+    setModalType("post");
+    closeCafeModal();
   };
 
   return (
     <Modal
-      open={showModal}
-      onClose={closeCafeModal}
+      open={showsCafeModal}
+      onClose={handleCloseModal}
       closeAfterTransition
       BackdropComponent={Backdrop}
       BackdropProps={{
@@ -53,11 +59,11 @@ const CafeModal = ({ showModal, handleModalClose }: propTypes) => {
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <Fade in={showModal}>
+      <Fade in={showsCafeModal}>
         <Box sx={modalStyle}>
           {/* Close Icon */}
           <Box sx={{ position: "absolute", top: 16, right: 20 }}>
-            <IconButton onClick={handleModalClose}>
+            <IconButton onClick={handleCloseModal}>
               <CloseIcon />
             </IconButton>
           </Box>
@@ -70,11 +76,11 @@ const CafeModal = ({ showModal, handleModalClose }: propTypes) => {
               alignItems: "center",
             }}
           >
-            <Typography variant="h3">{t?.cafePostModal.titles.post}</Typography>
+            <Typography variant="h3">{heading}</Typography>
           </Stack>
 
           {/* Input form */}
-          <CafeInputForm handleModalClose={handleModalClose} />
+          <CafeInputForm handleModalClose={handleCloseModal} />
         </Box>
       </Fade>
     </Modal>
