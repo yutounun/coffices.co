@@ -3,55 +3,43 @@
     "jp": "日本語",
     "en": "English",
     "appName": "coffices.co",
-    "register": "登録"
+    "register": "送信"
   },
   "header": {
     "menus": {
-      "list": "LIST",
-      "post": "POST",
-      "signout": "SIGNOUT"
+      "list": "リスト",
+      "post": "投稿",
+      "signout": "サインアウト"
     },
     "stationName": "駅名"
   },
   "home": {
     "title": "ようこそ",
-    "subtitle": ["Find your perfect remote work cafe"],
-    "login": "login"
+    "subtitle": ["完璧なリモートワークカフェを見つけましょう"],
+    "buttons": {
+      "google": "Googleでサインイン",
+      "github": "GitHubでサインイン",
+      "facebook": "Facebookでサインイン",
+      "line": "Lineでサインイン"
+    },
+    "login": "ログイン"
   },
   "list": {
-    "rankingInTokyo": "東京都の作業カフェランキング",
-    "titles": [
-      {
-        "area": "中目黒・代官山・恵比寿エリア",
-        "stations": ["中目黒駅", "代官山駅", "恵比寿駅"]
-      },
-      {
-        "area": "吉祥寺エリア",
-        "stations": ["吉祥寺駅", "三鷹駅"]
-      },
-      {
-        "area": "表参道エリア",
-        "stations": ["外苑前駅", "表参道駅", "原宿駅", "青山一丁目駅"]
-      },
-      {
-        "area": "代々木上原エリア",
-        "stations": ["代々木駅", "代々木上原駅", "代々木八幡駅"]
-      }
-    ],
-    "noData": "このエリアにはカフェが登録されていません",
+    "rankingInTokyo": "東京のノマドカフェランキング",
+    "noData": "このエリアには登録されているカフェがありません",
     "card": {
-      "noReviews": "評価なし"
+      "noReviews": "レビューなし"
     }
   },
   "cafePostModal": {
     "titles": {
-      "post": "カフェを新規追加",
-      "edit": "カフェ情報を編集"
+      "post": "新しいカフェを追加",
+      "edit": "カフェを編集"
     },
     "form": {
       "cafeName": {
         "label": "カフェ名",
-        "required": "店名を入力してください"
+        "required": "カフェ名を入力してください"
       },
       "area": {
         "label": "エリア",
@@ -62,23 +50,22 @@
         "required": "駅名を入力してください"
       },
       "openHour": {
-        "label": "営業開始時間"
+        "label": "開店時間"
       },
       "closedTime": {
-        "label": "営業終了時間"
+        "label": "閉店時間"
       },
       "wifi": {
         "label": "Wi-Fi"
       },
       "outlet": {
-        "label": "電源席"
+        "label": "コンセント"
       },
       "smoking": {
-        "label": "喫煙室"
+        "label": "喫煙エリア"
       },
-      "exist": "有",
-      "notExist": "無",
-      "register": "登録"
+      "exist": "あり",
+      "notExist": "なし"
     }
   },
   "reviewModal": {
@@ -87,7 +74,7 @@
     },
     "form": {
       "rating": {
-        "label": "評価(1~5)",
+        "label": "評価（1〜5）",
         "required": "評価を入力してください"
       },
       "comment": {
@@ -102,15 +89,15 @@
   },
   "profileModal": {
     "titles": {
-      "edit": "プロフィール編集"
+      "edit": "プロフィールを編集"
     },
     "form": {
       "aboutU": "自己紹介",
-      "github": "Github URL",
+      "github": "GitHub URL",
       "twitter": "Twitter URL",
       "linkedIn": "LinkedIn URL",
       "facebook": "Facebook URL",
-      "portfolio": "Portfolio URL"
+      "portfolio": "ポートフォリオ URL"
     }
   }
 }
