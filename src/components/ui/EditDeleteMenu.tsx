@@ -8,12 +8,13 @@ import { useRouter } from "next/navigation";
 import useCafeModalStore from "@/store/openCafeModal";
 
 const EditDeleteMenu = ({ cafeId }: { cafeId: string }) => {
-  const [showMenu, setShowMenu] = useState(false);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
   const router = useRouter();
 
   const { openCafeModal } = useCafeModalStore();
 
-  const handleClose = () => setShowMenu(false);
+  const handleClose = () => setAnchorEl(null);
 
   const handleEdit = () => {
     openCafeModal();
@@ -27,18 +28,23 @@ const EditDeleteMenu = ({ cafeId }: { cafeId: string }) => {
     router.push("/cafe/list");
   };
 
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
   return (
     <div>
       <IconButton
         aria-label="more"
         aria-controls="long-menu"
         aria-haspopup="true"
-        onClick={() => setShowMenu(true)}
+        onClick={handleClick}
       >
         <MoreVertIcon />
       </IconButton>
       <Menu
-        open={showMenu}
+        anchorEl={anchorEl}
+        open={open}
         onClose={handleClose}
         PaperProps={{
           style: {
