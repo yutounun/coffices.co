@@ -36,7 +36,7 @@ const CafeCard = ({
   const router = useRouter();
 
   const cardStyle = {
-    width: { xs: "12em", md: "250px" },
+    width: { xs: "12em", md: "235px" },
     mt: "2em",
     mr: index === lastIndex ? space.around : "2em",
     ml: index === 0 && !isTokyoRanking ? space.around : "0px",
