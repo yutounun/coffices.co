@@ -1,34 +1,33 @@
-import React from "react";
 import { CafeI } from "@/types/cafes";
 import { Box, Stack, Typography } from "@mui/material";
 import CafeCard from "./CafeCard";
 import NotFound from "#/NotFound";
-import useMobile from "@/hooks/useMobile";
+import { space } from "@/utils/const";
 
 interface propTypes {
   cafes: CafeI[];
-  area: string;
+  q: string;
 }
 
-const CafeSearchResultList = ({ cafes, area }: propTypes) => {
-  const { isMobile } = useMobile();
+const CafeSearchResultList = ({ cafes, q }: propTypes) => {
   return (
-    <Box sx={{ ml: 3, mt: 5 }}>
+    <Box sx={{ px: space.around, py: 3 }}>
+      {/* Search Keyword */}
       <Typography
-        variant="h5"
+        variant="h2"
         sx={{
-          fontWeight: 700,
-          letterSpacing: ".3rem",
-          color: "inherit",
           textDecoration: "none",
-          fontSize: { xs: "1.2rem", md: "2rem" },
+          color: "inherit",
+          fontSize: { xs: "1.5em", md: "1.7em" },
         }}
       >
-        {area}
+        {q}
       </Typography>
+
+      {/* Card Grid */}
       <Stack
         sx={{
-          flexDirection: isMobile ? "column" : "row",
+          flexDirection: { sm: "column", md: "row" },
           width: "100%",
           flexWrap: "wrap",
         }}

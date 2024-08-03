@@ -10,7 +10,7 @@ interface propTypes {
 }
 
 const baseTypeStyle = {
-  mt: "1em",
+  mt: 3,
   textDecoration: "none",
 };
 

@@ -17,7 +17,6 @@ enum maxRanking {
 }
 
 const ShopsList = ({ initialCafes }: { initialCafes: CafeI[] }) => {
-  const { setStationName, stationName } = useContext(StationNameContext);
   const [cafes, setCafes] = useState(initialCafes);
   const { showsCafeModal } = useCafeModalStore();
   const searchParams = useSearchParams();
@@ -97,7 +96,7 @@ const ShopsList = ({ initialCafes }: { initialCafes: CafeI[] }) => {
       )}
 
       {/* Search Result Page */}
-      {q && <CafeSearchResultList area={q} cafes={cafes} />}
+      {q && <CafeSearchResultList q={q} cafes={cafes} />}
     </>
   );
 };
