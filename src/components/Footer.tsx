@@ -13,7 +13,7 @@ import {
   Avatar,
 } from "@mui/material";
 import useLangStore from "@/store/lang";
-import useCreateModalStore from "@/store/openCreateCafeModal";
+import useCafeModalStore from "@/store/openCafeModal";
 import { useRouter } from "$/node_modules/next/navigation";
 import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
@@ -41,7 +41,7 @@ function ResponsiveAppBar() {
   const { setStationName } = React.useContext(StationNameContext);
   const router = useRouter();
   const { data: session } = useSession();
-  const { openCreateCafeModal } = useCreateModalStore();
+  const { openCafeModal } = useCafeModalStore();
   const { lang, changeToJp, changeToEng } = useLangStore();
   const { t } = useTranslate();
 
@@ -67,7 +67,7 @@ function ResponsiveAppBar() {
 
   const onClickCreateButton = () => {
     handleCloseNavMenu();
-    openCreateCafeModal();
+    openCafeModal();
   };
 
   const onClickLogoutButton = () => {

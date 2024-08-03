@@ -9,7 +9,7 @@ import { StationNameContext } from "@/contexts/StationNameContext";
 import { areaInfo } from "@/data/areas.js";
 import SearchBar from "./SearchBar";
 import { CafeI } from "@/types/cafes";
-import useCreateModalStore from "@/store/openCreateCafeModal";
+import useCafeModalStore from "@/store/openCafeModal";
 
 enum maxRanking {
   count = 10,
@@ -18,11 +18,11 @@ enum maxRanking {
 const ShopsList = ({ initialCafes }: { initialCafes: CafeI[] }) => {
   const { setStationName, stationName } = useContext(StationNameContext);
   const [cafes, setCafes] = useState(initialCafes);
-  const { showsCreateModal } = useCreateModalStore();
+  const { showsCafeModal } = useCafeModalStore();
 
   useEffect(() => {
     refetchData();
-  }, [showsCreateModal]);
+  }, [showsCafeModal]);
 
   /** Update cafe list after posting cafe */
   const refetchData = async () => {

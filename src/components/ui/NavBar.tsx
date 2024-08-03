@@ -1,6 +1,6 @@
 import React from "react";
 import { Typography } from "@mui/material";
-import useCreateModalStore from "@/store/openCreateCafeModal";
+import useCafeModalStore from "@/store/openCafeModal";
 import { useRouter } from "next/navigation";
 import useTranslate from "@/hooks/useTranslate";
 
@@ -15,7 +15,7 @@ const baseMenuStyle = {
 };
 
 const NavBar = () => {
-  const { openCreateCafeModal } = useCreateModalStore();
+  const { openCafeModal } = useCafeModalStore();
   const router = useRouter();
   const { t } = useTranslate();
 
@@ -24,7 +24,7 @@ const NavBar = () => {
   };
 
   const onClickCreateButton = () => {
-    openCreateCafeModal();
+    openCafeModal();
   };
 
   return (

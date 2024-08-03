@@ -8,7 +8,7 @@ import { getUser } from "@/utils/api";
 import userStore from "@/store/me";
 import { StationNameContext } from "@/contexts/StationNameContext";
 import CafePostModal from "#/cafe/_create/CafePostModal";
-import useCreateModalStore from "@/store/openCreateCafeModal";
+import useCafeModalStore from "@/store/openCafeModal";
 import { useRouter } from "next/navigation";
 import { CafeListContext } from "@/contexts/CafeListContext";
 import { CafeI } from "@/types/cafes";
@@ -21,7 +21,7 @@ export default function CafeListLayout({
   const router = useRouter();
   const { setUser } = userStore();
   const { data: session, status } = useSession();
-  const { showsCreateModal, closeCreateCafeModal } = useCreateModalStore();
+  const { showsCafeModal, closeCafeModal } = useCafeModalStore();
 
   useEffect(() => {
     if (session) {
@@ -55,10 +55,10 @@ export default function CafeListLayout({
             <Box sx={{ mt: "3em" }}>{children}</Box>
 
             {/* Post Modal */}
-            {showsCreateModal && (
+            {showsCafeModal && (
               <CafePostModal
-                handleModalClose={closeCreateCafeModal}
-                showModal={showsCreateModal}
+                handleModalClose={closeCafeModal}
+                showModal={showsCafeModal}
               />
             )}
           </Box>

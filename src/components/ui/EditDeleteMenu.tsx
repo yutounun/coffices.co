@@ -5,18 +5,18 @@ import { IconButton, Menu, MenuItem } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { deleteCafe } from "@/utils/api";
 import { useRouter } from "next/navigation";
-import useCreateModalStore from "@/store/openCreateCafeModal";
+import useCafeModalStore from "@/store/openCafeModal";
 
 const EditDeleteMenu = ({ cafeId }: { cafeId: string }) => {
   const [showMenu, setShowMenu] = useState(false);
   const router = useRouter();
 
-  const { openCreateCafeModal } = useCreateModalStore();
+  const { openCafeModal } = useCafeModalStore();
 
   const handleClose = () => setShowMenu(false);
 
   const handleEdit = () => {
-    openCreateCafeModal();
+    openCafeModal();
     console.log("Edit clicked");
     handleClose();
   };

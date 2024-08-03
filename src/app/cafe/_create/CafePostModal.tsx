@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import CafeInputForm from "./CafeInputFormPage";
 import useTranslate from "@/hooks/useTranslate";
-import useCreateModalStore from "@/store/openCreateCafeModal";
+import useCafeModalStore from "@/store/openCafeModal";
 
 interface propTypes {
   showModal: boolean;
@@ -22,7 +22,7 @@ interface propTypes {
 
 const CafeModal = ({ showModal, handleModalClose }: propTypes) => {
   const { t } = useTranslate();
-  const { closeCreateCafeModal } = useCreateModalStore();
+  const { closeCafeModal } = useCafeModalStore();
 
   const height = "auto";
   const modalStyle = {
@@ -44,7 +44,7 @@ const CafeModal = ({ showModal, handleModalClose }: propTypes) => {
   return (
     <Modal
       open={showModal}
-      onClose={closeCreateCafeModal}
+      onClose={closeCafeModal}
       closeAfterTransition
       BackdropComponent={Backdrop}
       BackdropProps={{
