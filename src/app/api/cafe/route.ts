@@ -47,13 +47,13 @@ export async function GET(request: NextRequest) {
   try {
     const searchQuery = request.nextUrl.searchParams.get("q");
     const areaQuery = searchQuery ? { area: searchQuery } : {};
+
     const stationQuery = searchQuery ? { station: searchQuery } : {};
 
     // search by area or station
     let cafes = null;
     cafes = await CafeModel.find(areaQuery);
-    console.log("🚀 ~ GET ~ cafes:", cafes);
-    if (!cafes) cafes = await CafeModel.find(stationQuery);
+    if (cafes.length === 0) cafes = await CafeModel.find(stationQuery);
 
     const cafesWithReviews = await Promise.all(
       cafes.map(async (cafe: any) => {
