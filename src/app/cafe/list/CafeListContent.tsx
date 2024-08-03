@@ -10,6 +10,7 @@ import { areaInfo } from "@/data/areas.js";
 import SearchBar from "./SearchBar";
 import { CafeI } from "@/types/cafes";
 import useCafeModalStore from "@/store/openCafeModal";
+import { useSearchParams } from "next/navigation";
 
 enum maxRanking {
   count = 10,
@@ -19,16 +20,27 @@ const ShopsList = ({ initialCafes }: { initialCafes: CafeI[] }) => {
   const { setStationName, stationName } = useContext(StationNameContext);
   const [cafes, setCafes] = useState(initialCafes);
   const { showsCafeModal } = useCafeModalStore();
+  const searchParams = useSearchParams();
+
+  /** search keyword */
+  const q = searchParams.get("q");
+
+  /** Update cafe list after posting cafe */
+  const refetchData = useCallback(async () => {
+    let updatedCafes = initialCafes;
+
+    if (q) {
+      updatedCafes = await filterCafe(q);
+    } else {
+      updatedCafes = await fetchAllCafes();
+    }
+
+    setCafes(updatedCafes);
+  }, [q, initialCafes]);
 
   useEffect(() => {
     refetchData();
-  }, [showsCafeModal]);
-
-  /** Update cafe list after posting cafe */
-  const refetchData = async () => {
-    const updatedCafes = await fetchAllCafes();
-    setCafes(updatedCafes);
-  };
+  }, [showsCafeModal, searchParams, refetchData]);
 
   /**
    * Filter cafes by station name
@@ -47,15 +59,6 @@ const ShopsList = ({ initialCafes }: { initialCafes: CafeI[] }) => {
     },
     [setCafes, setStationName]
   );
-
-  /**
-   * Get cafes filtered by the selected station name
-   *
-   * @return The list of cafes filtered by the selected station name
-   */
-  const filteredCafes = useCallback(() => {
-    return cafes.filter((cafe) => cafe.station === stationName);
-  }, [cafes, stationName]);
 
   /**
    * Get the top ranked cafes
@@ -92,7 +95,7 @@ const ShopsList = ({ initialCafes }: { initialCafes: CafeI[] }) => {
       />
 
       {/* Default Page */}
-      {!stationName && (
+      {!q && (
         <>
           {/* All cities in Tokyo */}
           <CafeRow
@@ -115,9 +118,7 @@ const ShopsList = ({ initialCafes }: { initialCafes: CafeI[] }) => {
       )}
 
       {/* Search Result Page */}
-      {stationName && (
-        <CafeSearchResultList area={stationName} cafes={filteredCafes()} />
-      )}
+      {q && <CafeSearchResultList area={q} cafes={cafes} />}
     </>
   );
 };
