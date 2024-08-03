@@ -7,11 +7,11 @@ const IconComponent = ({
   selectedIcons,
   setSelectedIcons,
 }: {
-  selectedIcons: any;
+  selectedIcons: { [key: string]: boolean };
   setSelectedIcons: any;
 }) => {
   const handleIconClick = (icon: string) => {
-    setSelectedIcons((prevState: string[]) => ({
+    setSelectedIcons((prevState: any) => ({
       ...prevState,
       [icon]: !prevState[icon],
     }));

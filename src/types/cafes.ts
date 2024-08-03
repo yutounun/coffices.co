@@ -53,7 +53,7 @@ export interface CafeI {
 
 export interface CafePostRequestI {
   title: string;
-  image: string;
+  image?: string;
   area: string;
   openHour: string;
   closeHour: string;

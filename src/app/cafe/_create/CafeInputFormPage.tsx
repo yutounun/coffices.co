@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Stations from "@/data/stations.json";
 import Icons from "#/cafe/_create/Icons";
 import Areas from "@/data/areas.json";
-import { useForm, Controller, FieldValues } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -13,15 +13,11 @@ import useTranslate from "@/hooks/useTranslate";
 import CustomButton from "@/components/ui/CustomButton";
 import { postCafe } from "@/utils/api";
 import { extractHourMinute } from "@/utils/commonFn";
-import { CafePostRequestI } from "@/types/cafes";
+import { CreateReviewRequestI } from "@/types/cafes";
+import { Dayjs } from "dayjs";
 
 interface propTypes {
   handleModalClose: () => void;
-}
-
-interface CafeFormInput extends FieldValues {
-  openHour: Date | null;
-  closeHour: Date | null;
 }
 
 const CafeInputForm = ({ handleModalClose }: propTypes) => {
@@ -31,7 +27,7 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm<CafeFormInput>({
+  } = useForm<CafePostRequestI>({
     mode: "onChange",
     defaultValues: {
       title: "",
@@ -48,14 +44,16 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
 
   /** Submit action */
   async function handleCafePostSubmit(data: CafePostRequestI) {
-    data.openHour = extractHourMinute(data.openHour);
-    data.closeHour = extractHourMinute(data.closeHour);
-    data.reviews = [];
+    const postData = {
+      ...data,
+      ...selectedIcons,
+      openHour: extractHourMinute(data.openHour),
+      closeHour: extractHourMinute(data.closeHour),
+      reviews: [],
+    };
 
     // Upload image and retrieve url
-    console.log("🚀 ~ postCafe ~ data:", data);
-    console.log("🚀 ~ postCafe ~ selectedIcons:", selectedIcons);
-    postCafe({ ...data, ...selectedIcons }).then((res) => {
+    postCafe(postData).then((res) => {
       handleModalClose();
     });
   }
@@ -69,7 +67,7 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
   const [inputName, setInputName] = useState("");
   const [inputArea, setInputArea] = useState("");
   const [inputStation, setInputStation] = useState("");
-  const [inputOpenHour, setInputOpenHour] = useState("");
+  const [inputOpenHour, setInputOpenHour] = useState<Dayjs | null>(null);
 
   return (
     <form
@@ -187,10 +185,7 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
                   }}
                   onChange={(newValue) => {
                     field.onChange(newValue);
-                    setInputOpenHour(newValue ? newValue.toString() : "");
-                  }}
-                  InputLabelProps={{
-                    shrink: false,
+                    setInputOpenHour(newValue);
                   }}
                 />
               )}
@@ -236,3 +231,16 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
 };
 
 export default CafeInputForm;
+
+export interface CafePostRequestI {
+  title: string;
+  image?: string;
+  area: string;
+  openHour: Dayjs | null;
+  closeHour: Dayjs | null;
+  isWifi: boolean | string;
+  isSmoking: boolean | string;
+  isOutlet: boolean | string;
+  station: string;
+  reviews?: CreateReviewRequestI[];
+}
