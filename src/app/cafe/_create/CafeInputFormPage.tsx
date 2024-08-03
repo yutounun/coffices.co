@@ -69,10 +69,12 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
       reviews: [],
     };
 
-    if (modalType === "edit") {
-      putCafe(postData).then((res) => {
-        handleModalClose();
-      });
+    if (modalType === "edit" && initialData) {
+      putCafe({ ...postData, _id: initialData._id, id: initialData.id }).then(
+        (res) => {
+          handleModalClose();
+        }
+      );
     } else {
       postCafe(postData).then((res) => {
         handleModalClose();

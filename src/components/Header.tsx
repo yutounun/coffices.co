@@ -44,7 +44,7 @@ const ResponsiveAppBar = () => {
           </Link>
           <LanguageToggle sx={{ position: "static" }} />
           <NavBar />
-          <SearchBar filterByStationName={filterByStationName} />
+          <SearchBar />
         </Stack>
         <Stack direction="row" sx={{ flexGrow: 0 }} spacing={2}>
           <UserActions />

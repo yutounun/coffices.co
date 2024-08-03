@@ -68,7 +68,7 @@ export interface CafePutRequestI {
   _id: string;
   id: string | number;
   title: string;
-  image: string;
+  image?: string;
   area: string;
   openHour: string;
   closeHour: string;
