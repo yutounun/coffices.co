@@ -10,6 +10,7 @@ import { CafeListContext } from "@/contexts/CafeListContext";
 import { filterCafe, fetchAllCafes } from "@/utils/api";
 import { StationNameContext } from "@/contexts/StationNameContext";
 import { space } from "@/utils/const";
+import Link from "next/link";
 
 const ResponsiveAppBar = () => {
   const { setCafeList } = React.useContext(CafeListContext);
@@ -38,7 +39,9 @@ const ResponsiveAppBar = () => {
             gap: 4,
           }}
         >
-          <Image src="/logo/white.png" alt="logo" width={80} height={40} />
+          <Link href="/cafe/list">
+            <Image src="/logo/white.png" alt="logo" width={80} height={40} />
+          </Link>
           <LanguageToggle sx={{ position: "static" }} />
           <NavBar />
           <SearchBar filterByStationName={filterByStationName} />
