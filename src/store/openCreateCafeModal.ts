@@ -1,12 +1,12 @@
 import { create } from "zustand";
 
-interface openCreateModalState {
+interface modalStateI {
   showsCreateModal: boolean;
   openCreateCafeModal: () => void;
   closeCreateCafeModal: () => void;
 }
 
-const useCreateModalStore = create<openCreateModalState>((set: any) => ({
+const useCreateModalStore = create<modalStateI>((set: any) => ({
   showsCreateModal: false,
   openCreateCafeModal: () => set({ showsCreateModal: true }),
   closeCreateCafeModal: () => set({ showsCreateModal: false }),

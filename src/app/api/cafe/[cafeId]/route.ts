@@ -5,6 +5,11 @@ import { ReviewModel } from "@/libs/models/ReviewModel";
 import UserModel from "@/libs/models/UserModel";
 import { ReviewI } from "@/types/cafes";
 
+function getId(request: Request) {
+  const url = new URL(request.url);
+  return url.pathname.split("/").pop();
+}
+
 /**
  * Handles the HTTP GET request for a specific cafe.
  *
@@ -12,14 +17,10 @@ import { ReviewI } from "@/types/cafes";
  * @return {Promise<NextResponse>} A JSON response containing the cafe details or an error message.
  */
 export async function GET(request: Request) {
-  await connectDB();
-
   try {
     await connectDB();
 
-    const url = new URL(request.url);
-    const id = url.pathname.split("/").pop();
-
+    const id = getId(request);
     if (!id) {
       return new NextResponse(
         JSON.stringify({ error: "Cafe ID is required" }),
@@ -55,6 +56,43 @@ export async function GET(request: Request) {
     };
 
     return new NextResponse(JSON.stringify(cafeWithReviews), {
+      headers: {
+        "Cache-Control": "no-store",
+      },
+    });
+  } catch (error) {
+    const errorMessage =
+      error instanceof Error ? error.message : "An unknown error occurred";
+    return new NextResponse(JSON.stringify({ error: errorMessage }), {
+      status: 500,
+      headers: {
+        "Cache-Control": "no-store",
+      },
+    });
+  }
+}
+
+export async function DELETE(request: Request) {
+  try {
+    await connectDB();
+
+    const id = getId(request);
+    if (!id) {
+      return new NextResponse(
+        JSON.stringify({ error: "Cafe ID is required" }),
+        { status: 400 }
+      );
+    }
+
+    const cafe = await CafeModel.findByIdAndDelete(id);
+    if (!cafe) {
+      return new NextResponse(JSON.stringify({ error: "Cafe not found" }), {
+        status: 404,
+      });
+    }
+
+    return new NextResponse(JSON.stringify(cafe), {
+      status: 200,
       headers: {
         "Cache-Control": "no-store",
       },

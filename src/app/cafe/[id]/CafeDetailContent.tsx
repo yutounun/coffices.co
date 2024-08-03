@@ -1,3 +1,4 @@
+import EditDeleteMenu from "@/components/ui/EditDeleteMenu";
 import Stars from "@/components/ui/Stars";
 import WifiOutletCigar from "@/components/ui/WifiOutletCigar";
 import { CafeI } from "@/types/cafes";
@@ -35,13 +36,7 @@ const CafeDetailContent = ({ cafe }: { cafe: CafeI }) => {
         </Box>
 
         {/* Setting Button */}
-        <Image
-          src="/setting/setting.svg"
-          height="30"
-          width="30"
-          alt="settings"
-          style={{ cursor: "pointer" }}
-        />
+        <EditDeleteMenu cafeId={cafe._id} />
       </Stack>
 
       {/* Stars Review */}
