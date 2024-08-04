@@ -69,7 +69,7 @@ const CafeDetailReviewCard = ({
 
           {/* Name */}
           <Typography variant="body1" sx={{ ml: 1.5 }}>
-            {review.user.username}
+            {review?.user?.username}
           </Typography>
 
           <Typography variant="body1" sx={{ mx: 1.5 }}>
@@ -78,7 +78,7 @@ const CafeDetailReviewCard = ({
 
           {/* Published At */}
           <Typography variant="body1" sx={{ mr: 1.5 }}>
-            {review.user.updatedAt}
+            {review?.user?.updatedAt}
           </Typography>
         </Stack>
       </Stack>

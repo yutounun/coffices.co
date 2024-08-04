@@ -26,7 +26,6 @@ async function searchImage(query: any) {
       // Find cafe image
       for (let image of images) {
         if (isCafeImage(image)) {
-          console.log("🚀 ~ searchImage ~ image.link:", image.link);
           return image.link;
         }
       }

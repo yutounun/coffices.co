@@ -78,15 +78,19 @@ const CafeDetailContent = ({ cafe }: { cafe: CafeI }) => {
           <Typography variant="h4" sx={detailInfoTitleStyle}>
             Opening Hours:
           </Typography>
-          <Typography variant="body1" sx={{ detailInfoContentStyle }}>
-            {cafe.openHour}
-          </Typography>
-          <Typography variant="body1" sx={{ detailInfoContentStyle }}>
-            ~
-          </Typography>
-          <Typography variant="body1" sx={{ detailInfoContentStyle }}>
-            {cafe.closeHour}
-          </Typography>
+          {cafe.openHour && cafe.closeHour && (
+            <>
+              <Typography variant="body1" sx={{ detailInfoContentStyle }}>
+                {cafe.openHour}
+              </Typography>
+              <Typography variant="body1" sx={{ detailInfoContentStyle }}>
+                ~
+              </Typography>
+              <Typography variant="body1" sx={{ detailInfoContentStyle }}>
+                {cafe.closeHour}
+              </Typography>
+            </>
+          )}
         </Stack>
       </Stack>
     </Stack>
