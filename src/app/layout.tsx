@@ -5,6 +5,7 @@ import { ReactNode } from "react";
 import QueryClientProviderComponent from "@/contexts/QueryClientProviderComponent";
 import GoogleAnalytics from "#/(login)/_GoogleAnalytics";
 import GoogleConcent from "@/components/ui/GoogleConcent";
+import Snackbar from "@/components/ui/Snackbar";
 
 type LayoutProps = {
   children: ReactNode;
@@ -35,6 +36,7 @@ export default function RootLayout({ children }: LayoutProps) {
         /> */}
         <QueryClientProviderComponent>{children}</QueryClientProviderComponent>
         {/* <GoogleConcent /> */}
+        <Snackbar />
       </body>
     </html>
   );

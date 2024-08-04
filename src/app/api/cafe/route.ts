@@ -123,12 +123,12 @@ export async function POST(request: NextRequest) {
 
     // Check cafes with similar names and same address
     if (existingCafe) {
-      // すでに存在していれば、name+areaで詳細の住所をgoogleで調べて、住所も同じか確認
+      // すでに存在していれば、area+name+stationで詳細の住所をgoogleで調べて、住所も同じか確認
       const postingCafeAddress = await searchAddress(
-        `${data.area} ${data.title}`
+        `${data.area} ${data.station} ${data.title}`
       );
       const existingCafeAddress = await searchAddress(
-        `${existingCafe.area} ${existingCafe.title}`
+        `${existingCafe.area} ${existingCafe.station} ${existingCafe.title}`
       );
 
       if (postingCafeAddress === existingCafeAddress) {

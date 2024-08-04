@@ -18,6 +18,7 @@ import dayjs, { Dayjs } from "dayjs";
 import useSelectedCafeStore from "@/store/selectedCafe";
 import useCafeModalStore from "@/store/openCafeModal";
 import { useRouter } from "next/navigation";
+import useSnackbarStore from "@/store/snackbar";
 
 interface propTypes {
   handleModalClose: () => void;
@@ -26,8 +27,13 @@ interface propTypes {
 const CafeInputForm = ({ handleModalClose }: propTypes) => {
   const { t } = useTranslate();
   const { selectedCafe: initialData } = useSelectedCafeStore();
+  const { openSnackbar } = useSnackbarStore();
   const { modalType } = useCafeModalStore();
   const router = useRouter();
+
+  const [inputName, setInputName] = useState("");
+  const [inputArea, setInputArea] = useState("");
+  const [inputStation, setInputStation] = useState("");
 
   const isEdit = modalType === "edit";
 
@@ -92,10 +98,15 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
         }
       );
     } else {
-      postCafe(postData).then((res: CafeI) => {
+      try {
+        const cafe = await postCafe(postData);
         handleModalClose();
-        router.push(`/cafe/${res._id}`);
-      });
+        openSnackbar("success", "Cafe is just posted!!");
+        router.push(`/cafe/${cafe._id}`);
+      } catch (err: any) {
+        const errorMessage = err.message || "An unknown error occurred";
+        openSnackbar("error", errorMessage);
+      }
     }
   }
 
@@ -104,10 +115,6 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
     isOutlet: isEdit && initialData ? initialData.isOutlet : false,
     isSmoking: isEdit && initialData ? initialData.isSmoking : false,
   });
-
-  const [inputName, setInputName] = useState("");
-  const [inputArea, setInputArea] = useState("");
-  const [inputStation, setInputStation] = useState("");
 
   return (
     <form

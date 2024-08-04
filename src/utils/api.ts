@@ -84,12 +84,13 @@ export async function postCafe(data: CafePostRequestI) {
     });
 
     if (!response.ok) {
-      throw new Error("Network response was not ok");
+      const errorData = await response.json();
+      throw new Error(`Error ${response.status}: ${errorData.error}`);
     }
 
     return await response.json();
   } catch (err) {
-    console.log(err);
+    console.log("err: ", err);
     throw err;
   }
 }
