@@ -112,6 +112,34 @@ export async function POST(request: NextRequest) {
     let data = await request.json();
     data.rate = 0;
 
+    // カフェ全体を取得
+    const allCafes = await CafeModel.find();
+
+    // 名前とエリアで部分一致を確認
+    // 引数のdataのnameを取得し、部分一致しているか確認
+    const existingCafe = allCafes.find(
+      (cafe) => cafe.title.includes(data.title) && cafe.area.includes(data.area)
+    );
+
+    // Check cafes with similar names and same address
+    if (existingCafe) {
+      // すでに存在していれば、name+areaで詳細の住所をgoogleで調べて、住所も同じか確認
+      const postingCafeAddress = await searchAddress(
+        `${data.area} ${data.title}`
+      );
+      const existingCafeAddress = await searchAddress(
+        `${existingCafe.area} ${existingCafe.title}`
+      );
+
+      if (postingCafeAddress === existingCafeAddress) {
+        console.error("A cafe with exact same address exsists already");
+        return new NextResponse(
+          JSON.stringify({ error: "Cafe already exists" }),
+          { status: 409 }
+        );
+      }
+    }
+
     const imageUrl = await searchImage(`${data.station} ${data.title}`).then(
       (url) => url
     );
@@ -125,5 +153,31 @@ export async function POST(request: NextRequest) {
     return new NextResponse(JSON.stringify({ error: errorMessage }), {
       status: 500,
     });
+  }
+}
+
+/**
+ * Searches for an address using the Google Geocoding API.
+ *
+ * @param {string} query - The search query (area + title).
+ * @returns {Promise<string>} The formatted address.
+ */
+async function searchAddress(query: string) {
+  const apiKey = process.env.NEXT_PUBLIC_ADDRESS_CHECK_API_KEY;
+  const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
+    query
+  )}&key=${apiKey}`;
+
+  try {
+    const response = await axios.get(url);
+    const results = response.data.results;
+    if (results && results.length > 0) {
+      return results[0].formatted_address;
+    } else {
+      return "";
+    }
+  } catch (error) {
+    console.error("Error during address search", error);
+    return "";
   }
 }
