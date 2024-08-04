@@ -30,7 +30,7 @@ const Stars = ({ rate, size }: propTypes) => {
   }
 
   return (
-    <Stack direction="row" sx={{ alignItems: "center", mt: 0.5, ml: -0.3 }}>
+    <Stack direction="row" sx={{ alignItems: "center", ml: -0.3 }}>
       {stars}
     </Stack>
   );

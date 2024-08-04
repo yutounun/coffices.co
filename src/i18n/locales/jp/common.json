@@ -27,9 +27,7 @@
   "list": {
     "rankingInTokyo": "東京のノマドカフェランキング",
     "noData": "このエリアには登録されているカフェがありません",
-    "card": {
-      "noReviews": "レビューなし"
-    }
+    "card": {}
   },
   "cafePostModal": {
     "titles": {

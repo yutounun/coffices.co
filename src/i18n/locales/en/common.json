@@ -27,9 +27,7 @@
   "list": {
     "rankingInTokyo": "Nomad cafe ranking in Tokyo",
     "noData": "There are no cafes registered in this area",
-    "card": {
-      "noReviews": "No review"
-    }
+    "card": {}
   },
   "cafePostModal": {
     "titles": {

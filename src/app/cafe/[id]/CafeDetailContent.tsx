@@ -46,7 +46,10 @@ const CafeDetailContent = ({ cafe }: { cafe: CafeI }) => {
       </Stack>
 
       {/* Stars Review */}
-      <Stars size={{ sm: "large", md: "x-large" }} rate={cafe.rate} />
+      <Stack direction="row" sx={{ alignItems: "center", gap: 0.5 }}>
+        <Stars size={{ sm: "large", md: "x-large" }} rate={cafe.rate} />
+        <Typography>{cafe.rate}</Typography>
+      </Stack>
 
       {/* Wifi / Outlet Smoking / Area */}
       <Box sx={{ my: 1 }}>
