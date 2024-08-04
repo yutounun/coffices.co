@@ -1,6 +1,6 @@
 "use client";
 import { CafeI } from "@/types/cafes";
-import { fetchAllCafes, fetchCafeById } from "@/utils/api";
+import { fetchCafeById } from "@/utils/api";
 import Image from "next/image";
 import CafeDetailContent from "#/cafe/[id]/CafeDetailContent";
 import CafeDetailReview from "#/cafe/[id]/CafeDetailReview";
@@ -10,6 +10,7 @@ import { space } from "@/utils/const";
 import GoogleMap from "@/components/ui/GoogleMap";
 import { useEffect, useState, useCallback } from "react";
 import useCafeModalStore from "@/store/openCafeModal";
+import useReviewModalStore from "@/store/reviewModal";
 
 const CafeDetailPage = ({
   initialCafeData,
@@ -19,8 +20,8 @@ const CafeDetailPage = ({
   initialCafesData: CafeI[];
 }) => {
   const [cafe, setCafe] = useState(initialCafeData);
-  const [cafes, setCafes] = useState(initialCafesData);
   const { showsCafeModal } = useCafeModalStore();
+  const { showsReviewModal } = useReviewModalStore();
 
   const refetchCafeData = useCallback(async () => {
     const fetchedCafe = await fetchCafeById(cafe._id);
@@ -29,7 +30,7 @@ const CafeDetailPage = ({
 
   useEffect(() => {
     refetchCafeData();
-  }, [showsCafeModal, refetchCafeData]);
+  }, [showsCafeModal, showsReviewModal, refetchCafeData]);
 
   return (
     <>
@@ -56,7 +57,7 @@ const CafeDetailPage = ({
       <CafeDetailReview cafeId={cafe._id} reviews={cafe.reviews} />
 
       {/* Recommndation */}
-      <Recommndation cafes={cafes} />
+      <Recommndation cafes={initialCafesData} />
     </>
   );
 };

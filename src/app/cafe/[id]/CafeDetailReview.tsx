@@ -8,6 +8,7 @@ import CafeDetailReviewCard from "./CafeDetailReviewCard";
 import { useState } from "react";
 import SmallModal from "@/components/ui/SmallModal";
 import { space } from "@/utils/const";
+import useReviewModalStore from "@/store/reviewModal";
 
 const CafeDetailReview = ({
   reviews,
@@ -17,13 +18,15 @@ const CafeDetailReview = ({
   cafeId: string;
 }) => {
   const [open, setOpen] = useState(false);
+  const { openReviewModal, closeReviewModal } = useReviewModalStore();
 
   const openCreateReview = () => {
-    setOpen(true);
+    openReviewModal();
   };
 
   const handleClose = () => {
     setOpen(false);
+    closeReviewModal();
   };
 
   return (
@@ -62,8 +65,6 @@ const CafeDetailReview = ({
       {/* Simple Modal */}
       <SmallModal
         cafeId={cafeId}
-        open={open}
-        handleClose={handleClose}
         title="Add a Review"
         description="Please enter your review below:"
       />
