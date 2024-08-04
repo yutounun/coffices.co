@@ -33,7 +33,7 @@ const EditDeleteMenu = ({ cafeId }: { cafeId: string }) => {
   };
 
   return (
-    <div>
+    <>
       <IconButton
         aria-label="more"
         aria-controls="long-menu"
@@ -56,7 +56,7 @@ const EditDeleteMenu = ({ cafeId }: { cafeId: string }) => {
         <MenuItem onClick={handleEdit}>Edit</MenuItem>
         <MenuItem onClick={handleDelete}>Delete</MenuItem>
       </Menu>
-    </div>
+    </>
   );
 };
 
