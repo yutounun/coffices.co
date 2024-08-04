@@ -1,10 +1,10 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import { TextField, InputAdornment, Autocomplete } from "@mui/material";
 import { styled } from "@mui/system";
 import stationsArea from "@/data/stationsArea.json";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const CustomTextField = styled(TextField)(({ theme }) => ({
   "& .MuiOutlinedInput-root": {
@@ -50,6 +50,12 @@ const SearchBar = ({ sx }: propTypes) => {
   const [keyword, setKeyword] = useState("");
   const [inputValue, setInputValue] = useState("");
   const router = useRouter();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const q = searchParams.get("q");
+    if (!q) setInputValue("");
+  }, [searchParams]);
 
   const handleTextFieldChange = (
     event: React.ChangeEvent<HTMLInputElement>
