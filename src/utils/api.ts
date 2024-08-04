@@ -74,18 +74,24 @@ export function filterCafe(q: string) {
  * @throws - error
  */
 export async function postCafe(data: CafePostRequestI) {
-  console.log("🚀 ~ postCafe ~ data:", data);
-  await fetch(`${API_URL}/api/cafe`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  })
-    .then((res) => {
-      res.json();
-    })
-    .catch((err) => console.log(err));
+  try {
+    const response = await fetch(`${API_URL}/api/cafe`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+
+    return await response.json();
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
 }
 
 /**

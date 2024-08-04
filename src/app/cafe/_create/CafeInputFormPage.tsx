@@ -13,10 +13,11 @@ import useTranslate from "@/hooks/useTranslate";
 import CustomButton from "@/components/ui/CustomButton";
 import { postCafe, putCafe } from "@/utils/api";
 import { extractHourMinute } from "@/utils/commonFn";
-import { CreateReviewRequestI } from "@/types/cafes";
+import { CafeI, CreateReviewRequestI } from "@/types/cafes";
 import dayjs, { Dayjs } from "dayjs";
 import useSelectedCafeStore from "@/store/selectedCafe";
 import useCafeModalStore from "@/store/openCafeModal";
+import { useRouter } from "next/navigation";
 
 interface propTypes {
   handleModalClose: () => void;
@@ -26,6 +27,7 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
   const { t } = useTranslate();
   const { selectedCafe: initialData } = useSelectedCafeStore();
   const { modalType } = useCafeModalStore();
+  const router = useRouter();
 
   const isEdit = modalType === "edit";
 
@@ -89,8 +91,9 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
         }
       );
     } else {
-      postCafe(postData).then((res) => {
+      postCafe(postData).then((res: CafeI) => {
         handleModalClose();
+        router.push(`/cafe/${res._id}`);
       });
     }
   }
