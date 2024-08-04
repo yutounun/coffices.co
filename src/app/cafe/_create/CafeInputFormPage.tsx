@@ -51,6 +51,7 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
     handleSubmit,
     control,
     formState: { errors },
+    setValue,
   } = useForm<CafePostRequestI>({
     mode: "onChange",
     defaultValues: {
@@ -107,8 +108,6 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
   const [inputName, setInputName] = useState("");
   const [inputArea, setInputArea] = useState("");
   const [inputStation, setInputStation] = useState("");
-  const [inputOpenHour, setInputOpenHour] = useState<Dayjs | null>(null);
-  const [inputCloseHour, setInputCloseHour] = useState<Dayjs | null>(null);
 
   return (
     <form
@@ -157,17 +156,23 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
                 disableClearable
                 options={Areas.map((area) => area.name)}
                 value={value}
+                onChange={(event, newValue) => {
+                  onChange(newValue); // フォームの値を更新
+                  setValue("area", newValue); // useFormの値も更新
+                  setInputArea(newValue);
+                }}
                 size="small"
-                onInputChange={(event, newValue) => onChange(newValue)}
+                onInputChange={(event, newValue) => {
+                  onChange(newValue); // フォームの値を更新
+                  setValue("area", newValue); // useFormの値も更新
+                  setInputArea(newValue);
+                }}
                 renderInput={(params) => (
                   <TextField
                     color="secondary"
                     {...params}
                     error={!!errors.area}
                     helperText={errors.area?.message?.toString()}
-                    {...register("area", {
-                      required: t?.cafePostModal.form.area.required,
-                    })}
                     label={inputArea ? "" : t?.cafePostModal.form.area.label}
                     InputProps={{
                       ...params.InputProps,
@@ -191,20 +196,26 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
               <Autocomplete
                 size="small"
                 freeSolo
-                id="area-autocomplete"
+                id="station-autocomplete"
                 disableClearable
                 options={Stations.map((station) => station.name)}
                 value={value}
-                onInputChange={(event, newValue) => onChange(newValue)}
+                onChange={(event, newValue) => {
+                  onChange(newValue); // フォームの値を更新
+                  setValue("station", newValue); // useFormの値も更新
+                  setInputStation(newValue);
+                }}
+                onInputChange={(event, newValue) => {
+                  onChange(newValue); // フォームの値を更新
+                  setValue("station", newValue); // useFormの値も更新
+                  setInputStation(newValue);
+                }}
                 renderInput={(params) => (
                   <TextField
                     color="secondary"
                     {...params}
                     error={!!errors.station}
                     helperText={errors.station?.message?.toString()}
-                    {...register("station", {
-                      required: t?.cafePostModal.form.station.required,
-                    })}
                     label={
                       inputStation ? "" : t?.cafePostModal.form.station.label
                     }
@@ -243,16 +254,14 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
                   }}
                   onChange={(newValue) => {
                     field.onChange(newValue);
-                    setInputOpenHour(newValue);
                   }}
                 />
               )}
             />
           </LocalizationProvider>
         </Box>
-        {/* inputOpenHour:{inputOpenHour} */}
         {/* Closing Hour */}
-        <Box sx={{ mt: -2 }}>
+        <Box>
           <Typography variant="body1">Closing Hours</Typography>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <Controller
@@ -264,6 +273,7 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
                   sx={{
                     width: "100%",
                     mb: "1em",
+                    borderColor: "red",
                   }}
                   slotProps={{
                     textField: {
@@ -274,7 +284,6 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
                   }}
                   onChange={(newValue) => {
                     field.onChange(newValue);
-                    setInputCloseHour(newValue);
                   }}
                 />
               )}
