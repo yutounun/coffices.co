@@ -7,6 +7,7 @@ import { maxCafeDisplayCount } from "@/utils/const";
 interface CustomButtonProps extends StackProps {
   children: React.ReactNode;
   cardCount: number;
+  type?: string;
 }
 
 // Cards wrapped by this component can be scrolled horizontally
@@ -14,12 +15,13 @@ interface CustomButtonProps extends StackProps {
 const ScrollCardRow: React.FC<CustomButtonProps> = ({
   cardCount,
   children,
+  type = "cafe",
   ...props
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [showLeftScrollBtn, setShowLeftScrollBtn] = useState(false);
   const [showRightScrollBtn, setShowRightScrollBtn] = useState(false);
-  const [showScroll, setShowScroll] = useState(false);
+  const [showScroll, setShowScroll] = useState(true);
 
   const checkScrollPosition = useCallback(() => {
     if (containerRef.current) {
@@ -41,7 +43,9 @@ const ScrollCardRow: React.FC<CustomButtonProps> = ({
 
   useEffect(() => {
     checkScrollPosition();
-    setShowScroll(cardCount >= maxCafeDisplayCount.desktop);
+    if (type === "cafe") {
+      setShowScroll(cardCount >= maxCafeDisplayCount.desktop);
+    }
     setShowRightScrollBtn(true);
 
     const currentContainer = containerRef.current;

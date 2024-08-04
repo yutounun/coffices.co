@@ -27,7 +27,6 @@ const ScrollBtn: React.FC<ScrollBtnProps> = ({
         direction="left"
         onClickArrow={() => scroll(scrollOffset.left)}
       />
-
       {/* Right arrow */}
       <Arrow
         hidden={!showRightScrollBtn || !showScroll}

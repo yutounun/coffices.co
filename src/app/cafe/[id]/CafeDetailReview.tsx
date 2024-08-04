@@ -38,7 +38,7 @@ const CafeDetailReview = ({
 
       {/* Review Box */}
       {reviews.length !== 0 && (
-        <ScrollCardRow cardCount={reviews.length}>
+        <ScrollCardRow cardCount={reviews.length} type="review">
           {reviews.map((review: ReviewI, index) => (
             <CafeDetailReviewCard
               lastIndex={reviews.length - 1}
