@@ -82,7 +82,7 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
   }, [isEdit, initialData]);
 
   /** Submit action */
-  async function handleCafePostSubmit(data: CafePostRequestI) {
+  async function handleCafeSubmit(data: CafePostRequestI) {
     const postData = {
       ...data,
       ...selectedIcons,
@@ -91,22 +91,24 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
       reviews: [],
     };
 
-    if (modalType === "edit" && initialData) {
-      putCafe({ ...postData, _id: initialData._id, id: initialData.id }).then(
-        (res) => {
-          handleModalClose();
-        }
-      );
-    } else {
-      try {
-        const cafe = await postCafe(postData);
+    try {
+      if (modalType === "edit" && initialData) {
+        const cafe: CafeI = await putCafe({
+          ...postData,
+          _id: initialData._id,
+          id: initialData.id,
+        });
+        openSnackbar("success", `${cafe.title} is just edited!!`);
         handleModalClose();
-        openSnackbar("success", "Cafe is just posted!!");
+      } else {
+        const cafe: CafeI = await postCafe(postData);
+        handleModalClose();
+        openSnackbar("success", `${cafe.title} is just posted!!`);
         router.push(`/cafe/${cafe._id}`);
-      } catch (err: any) {
-        const errorMessage = err.message || "An unknown error occurred";
-        openSnackbar("error", errorMessage);
       }
+    } catch (err: any) {
+      const errorMessage = err.message || "An unknown error occurred";
+      openSnackbar("error", errorMessage);
     }
   }
 
@@ -118,7 +120,7 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
 
   return (
     <form
-      onSubmit={handleSubmit(handleCafePostSubmit)}
+      onSubmit={handleSubmit(handleCafeSubmit)}
       style={{
         display: "flex",
         flexDirection: "column",

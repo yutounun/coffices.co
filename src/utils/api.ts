@@ -102,20 +102,23 @@ export async function postCafe(data: CafePostRequestI) {
  * @return {Promise<any>} A Promise that resolves to the JSON response from the server, or logs an error if the request fails.
  */
 export async function putCafe(data: CafePutRequestI) {
-  return await fetch(`${API_URL}/api/cafe/${data._id}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  })
-    .then((res) => {
-      if (!res.ok) {
-        throw new Error(`Error: ${res.status}`);
-      }
-      return res.json();
-    })
-    .catch((err) => console.log(err));
+  try {
+    const response = await fetch(`${API_URL}/api/cafe/${data._id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(`Error ${response.status}: ${errorData.error}`);
+    }
+    return await response.json();
+  } catch (err) {
+    throw err;
+  }
 }
 
 export async function deleteCafe(cafeId: string | number) {
