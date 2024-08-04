@@ -113,6 +113,7 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
         <Box>
           <Typography variant="body1">Name</Typography>
           <TextField
+            color="secondary"
             sx={{ width: "100%" }}
             label={inputName ? "" : t?.cafePostModal.form.cafeName.label}
             error={!!errors.title}
@@ -127,7 +128,6 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
             onChange={(e) => setInputName(e.target.value)}
           />
         </Box>
-
         {/* Area */}
         <Box>
           <Typography variant="body1">Area</Typography>
@@ -145,6 +145,7 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
                 onInputChange={(event, newValue) => onChange(newValue)}
                 renderInput={(params) => (
                   <TextField
+                    color="secondary"
                     {...params}
                     error={!!errors.area}
                     helperText={errors.area?.message?.toString()}
@@ -164,7 +165,6 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
             )}
           />
         </Box>
-
         {/* Station */}
         <Box>
           <Typography variant="body1">Station</Typography>
@@ -182,6 +182,7 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
                 onInputChange={(event, newValue) => onChange(newValue)}
                 renderInput={(params) => (
                   <TextField
+                    color="secondary"
                     {...params}
                     error={!!errors.station}
                     helperText={errors.station?.message?.toString()}
@@ -203,7 +204,6 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
             )}
           />
         </Box>
-
         {/* Opening Hour */}
         <Box>
           <Typography variant="body1">Opening Hours</Typography>
@@ -222,7 +222,11 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
                     mb: "1em",
                   }}
                   slotProps={{
-                    textField: { size: "small" },
+                    textField: {
+                      size: "small",
+                      color: "secondary",
+                      InputLabelProps: { shrink: false },
+                    },
                   }}
                   onChange={(newValue) => {
                     field.onChange(newValue);
@@ -233,7 +237,7 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
             />
           </LocalizationProvider>
         </Box>
-
+        {/* inputOpenHour:{inputOpenHour} */}
         {/* Closing Hour */}
         <Box sx={{ mt: -2 }}>
           <Typography variant="body1">Closing Hours</Typography>
@@ -252,7 +256,11 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
                     mb: "1em",
                   }}
                   slotProps={{
-                    textField: { size: "small" },
+                    textField: {
+                      size: "small",
+                      color: "secondary",
+                      InputLabelProps: { shrink: false },
+                    },
                   }}
                   onChange={(newValue) => {
                     field.onChange(newValue);
@@ -263,13 +271,11 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
             />
           </LocalizationProvider>
         </Box>
-
         {/* Icons */}
         <Icons
           selectedIcons={selectedIcons}
           setSelectedIcons={setSelectedIcons}
         />
-
         {/* Submit */}
         <Stack
           sx={{
