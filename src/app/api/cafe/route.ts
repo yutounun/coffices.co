@@ -3,7 +3,7 @@ import { NextRequest } from "node_modules/next/server";
 import connectDB from "@/libs/connectDB";
 import { CafeModel } from "@/libs/models/CafeModel";
 import { ReviewModel } from "@/libs/models/ReviewModel";
-
+import { cafeKeywords } from "@/data/cafeCheckKeyword";
 const axios = require("axios");
 
 /**
@@ -12,7 +12,7 @@ const axios = require("axios");
  * @param query search keyword
  * @returns image url
  */
-async function searchImage(query: string) {
+async function searchImage(query: any) {
   const apiKey = process.env.GOOGLE_SEARCH_API_KEY;
   const cx = process.env.GOOGLE_SEARCH_ID;
   const url = `https://www.googleapis.com/customsearch/v1?q=${encodeURIComponent(
@@ -22,17 +22,39 @@ async function searchImage(query: string) {
   try {
     const response = await axios.get(url);
     const images = response.data.items;
-    if (images.length > 0) {
-      const foundImage = images[0];
-      return foundImage ? foundImage.link : "/coffee.jpg";
+    if (images && images.length > 0) {
+      // Find cafe image
+      for (let image of images) {
+        if (isCafeImage(image)) {
+          console.log("🚀 ~ searchImage ~ image.link:", image.link);
+          return image.link;
+        }
+      }
+      // if it doesn't hit the related image, return default image
+      return "/coffee.jpg";
     } else {
       return "/coffee.jpg";
     }
   } catch (error) {
     console.error("Error during image search", error);
+    return "/coffee.jpg";
+  }
+}
+
+function isCafeImage(image: any) {
+  const title = image.title.toLowerCase();
+  const snippet = image.snippet.toLowerCase();
+  const link = image.link.toLowerCase();
+
+  // Ensure it doesn't include "lookaside" which is image on facebook
+  if (link.includes("lookaside")) {
+    return false;
   }
 
-  return null;
+  // Ensure it includes related words such as "cafe"
+  return cafeKeywords.some(
+    (keyword) => title.includes(keyword) || snippet.includes(keyword)
+  );
 }
 
 /**
