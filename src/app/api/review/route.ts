@@ -15,14 +15,12 @@ export async function POST(request: NextRequest) {
 
   try {
     let data = await request.json();
-    console.log("🚀 ~ POST ~ data:", data);
 
-    // Add username to review
-    // ここで詰まってる
     const user = await UserModel.findOne({ _id: data.userId });
-    console.log("🚀 ~ POST ~ user:", user);
     if (!user) {
-      throw new Error("User not found");
+      return new NextResponse(JSON.stringify({ error: "User not found" }), {
+        status: 404,
+      });
     }
     data.name = user.username;
 
@@ -30,20 +28,24 @@ export async function POST(request: NextRequest) {
 
     // update review score on Cafe Model
     const cafe = await CafeModel.findOne({ _id: data.cafeId });
-    console.log("🚀 ~ POST ~ cafe:", cafe);
     if (!cafe) {
-      throw new Error("Cafe not found");
+      return new NextResponse(JSON.stringify({ error: "Cafe not found" }), {
+        status: 404,
+      });
     }
+
+    // Find all reviews related to the cafe
     const reviews = await ReviewModel.find({ cafeId: data.cafeId });
+
     const averageRate =
       reviews.reduce((prev, curr) => prev + curr.rate, 0) / reviews.length;
     cafe.rate = parseFloat(averageRate.toFixed(1));
+
     await cafe.save();
 
     // return all cafe after updating to refresh the page
-    const cafeList = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/cafe`
-    ).then((res) => res.json());
+    const cafeList = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/cafe`);
+
     return NextResponse.json(cafeList);
   } catch (error) {
     const errorMessage =

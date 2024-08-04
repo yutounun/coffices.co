@@ -98,12 +98,12 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
           _id: initialData._id,
           id: initialData.id,
         });
-        openSnackbar("success", `${cafe.title} is just edited!!`);
+        openSnackbar("success", `${cafe.title} is just edited`);
         handleModalClose();
       } else {
         const cafe: CafeI = await postCafe(postData);
         handleModalClose();
-        openSnackbar("success", `${cafe.title} is just posted!!`);
+        openSnackbar("success", `${cafe.title} is just posted`);
         router.push(`/cafe/${cafe._id}`);
       }
     } catch (err: any) {

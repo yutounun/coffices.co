@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import {
   Modal,
   Box,
@@ -16,6 +15,7 @@ import { CreateReviewRequestI } from "@/types/cafes";
 import { addReview, getUser as fetchUser } from "@/utils/api";
 import userStore from "@/store/me";
 import useReviewModalStore from "@/store/reviewModal";
+import useSnackbarStore from "@/store/snackbar";
 
 interface SmallModalProps {
   title: string;
@@ -36,6 +36,7 @@ const SmallModal: React.FC<SmallModalProps> = ({
 }) => {
   const { user } = userStore();
   const { showsReviewModal, closeReviewModal } = useReviewModalStore();
+  const { openSnackbar } = useSnackbarStore();
 
   const {
     control,
@@ -55,9 +56,15 @@ const SmallModal: React.FC<SmallModalProps> = ({
       cafeId,
       userId: user._id,
     };
-    addReview(reviewData);
-    closeReviewModal();
-    reset();
+    try {
+      addReview(reviewData);
+      openSnackbar("success", "review is posted");
+      closeReviewModal();
+      reset();
+    } catch (err: any) {
+      const errorMessage = err.message || "An unknown error occurred";
+      openSnackbar("error", errorMessage);
+    }
   };
 
   return (
