@@ -108,3 +108,42 @@ export async function DELETE(request: Request) {
     });
   }
 }
+
+export async function PUT(request: Request) {
+  try {
+    await connectDB();
+
+    const id = getId(request);
+    if (!id) {
+      return new NextResponse(
+        JSON.stringify({ error: "Cafe ID is required" }),
+        { status: 400 }
+      );
+    }
+
+    const data = await request.json();
+
+    const cafe = await CafeModel.findByIdAndUpdate(id, data);
+    if (!cafe) {
+      return new NextResponse(JSON.stringify({ error: "Cafe not found" }), {
+        status: 404,
+      });
+    }
+
+    return new NextResponse(JSON.stringify(cafe), {
+      status: 200,
+      headers: {
+        "Cache-Control": "no-store",
+      },
+    });
+  } catch (error) {
+    const errorMessage =
+      error instanceof Error ? error.message : "An unknown error occurred";
+    return new NextResponse(JSON.stringify({ error: errorMessage }), {
+      status: 500,
+      headers: {
+        "Cache-Control": "no-store",
+      },
+    });
+  }
+}
