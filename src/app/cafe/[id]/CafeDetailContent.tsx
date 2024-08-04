@@ -32,7 +32,7 @@ const CafeDetailContent = ({ cafe }: { cafe: CafeI }) => {
         <Typography variant="h1">{cafe.title}</Typography>
 
         {/* Area */}
-        <Box sx={{ position: "relative", minWidth: 50 }}>
+        <Box sx={{ position: "relative", minWidth: 70 }}>
           <Typography
             variant="body1"
             sx={{ position: "absolute", bottom: -20 }}
@@ -54,9 +54,9 @@ const CafeDetailContent = ({ cafe }: { cafe: CafeI }) => {
       {/* Wifi / Outlet Smoking / Area */}
       <Box sx={{ my: 1 }}>
         <WifiOutletCigar
-          isWifi={!cafe.isWifi}
-          isOutlet={!cafe.isOutlet}
-          isSmoking={!cafe.isSmoking}
+          isWifi={cafe.isWifi}
+          isOutlet={cafe.isOutlet}
+          isSmoking={cafe.isSmoking}
           size={20}
         />
       </Box>

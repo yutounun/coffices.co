@@ -28,9 +28,22 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
   const { modalType } = useCafeModalStore();
 
   const isEdit = modalType === "edit";
-  const initialOpenHour = isEdit ? dayjs(initialData?.openHour) : null;
-  const initialCloseHour = isEdit ? dayjs(initialData?.closeHour) : null;
-  console.log("initialData?.area", initialData?.area);
+
+  const today = dayjs().startOf("day"); // 現在の日付の 00:00:00.000 を取得
+
+  const initialOpenHour =
+    isEdit && initialData?.openHour
+      ? dayjs(
+          `${today.format("YYYY-MM-DD")}T${initialData.openHour}:00.000Z`
+        ).subtract(9, "hour")
+      : null;
+  const initialCloseHour =
+    isEdit && initialData?.openHour
+      ? dayjs(
+          `${today.format("YYYY-MM-DD")}T${initialData.closeHour}:00.000Z`
+        ).subtract(9, "hour")
+      : null;
+
   const {
     register,
     handleSubmit,
@@ -44,7 +57,7 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
       area: isEdit ? initialData?.area : "",
       station: isEdit ? initialData?.station : "",
       openHour: initialOpenHour,
-      closeHour: initialCloseHour,
+      closeHour: dayjs(initialCloseHour),
       isWifi: isEdit ? initialData?.isWifi : false,
       isSmoking: isEdit ? initialData?.isSmoking : false,
       isOutlet: isEdit ? initialData?.isOutlet : false,
@@ -83,9 +96,9 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
   }
 
   const [selectedIcons, setSelectedIcons] = useState({
-    isWifi: false,
-    isOutlet: false,
-    isSmoking: false,
+    isWifi: isEdit && initialData ? initialData.isWifi : false,
+    isOutlet: isEdit && initialData ? initialData.isOutlet : false,
+    isSmoking: isEdit && initialData ? initialData.isSmoking : false,
   });
 
   const [inputName, setInputName] = useState("");
@@ -213,9 +226,6 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
               control={control}
               render={({ field }) => (
                 <TimePicker
-                  label={
-                    inputOpenHour ? "" : t?.cafePostModal.form.openHour.label
-                  }
                   {...field}
                   sx={{
                     width: "100%",
@@ -247,9 +257,6 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
               control={control}
               render={({ field }) => (
                 <TimePicker
-                  label={
-                    inputCloseHour ? "" : t?.cafePostModal.form.closedTime.label
-                  }
                   {...field}
                   sx={{
                     width: "100%",
