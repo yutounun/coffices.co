@@ -11,6 +11,7 @@ const CustomTextField = styled(TextField)(({ theme }) => ({
     borderRadius: "50px",
     backgroundColor: "white",
     width: "100%",
+    paddingRight: "1.2em !important", // Force reset the padding-right
   },
   "& .MuiInputAdornment-root": {
     color: theme.palette.text.secondary,
@@ -27,6 +28,10 @@ const CustomAutocomplete = styled(Autocomplete)(({ theme }) => ({
     borderRadius: "50px",
     backgroundColor: "white",
     padding: "0 0.7em 0 1em",
+    "&.MuiAutocomplete-hasPopupIcon .MuiOutlinedInput-root, &.MuiAutocomplete-hasClearIcon .MuiOutlinedInput-root":
+      {
+        paddingRight: "0px", // Reset the padding-right
+      },
   },
   "& .MuiAutocomplete-endAdornment": {
     color: theme.palette.text.secondary,
@@ -54,11 +59,9 @@ const SearchBar = ({ sx }: propTypes) => {
 
   const onClickSearch = () => {
     router.push(`/cafe/list?q=${keyword}`);
-    console.log("2");
   };
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    console.log("1");
     if (event.key === "Enter") {
       onClickSearch();
     }
@@ -77,7 +80,7 @@ const SearchBar = ({ sx }: propTypes) => {
       renderInput={(params) => (
         <CustomTextField
           {...params}
-          sx={{ width: "100%", ...sx }}
+          sx={{ ...sx }}
           variant="outlined"
           placeholder="Type area, station..."
           onChange={handleTextFieldChange}

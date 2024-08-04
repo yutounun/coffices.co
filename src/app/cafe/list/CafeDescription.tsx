@@ -33,9 +33,7 @@ const CafeDescription = ({ cafe }: PropTypes) => {
       <Stack direction="row" sx={{ alignItems: "center", gap: 0.5 }}>
         {/* No Review */}
         {cafe.rate === 0 && (
-          <Typography variant="body1" sx={{ lineHeight: "24px" }}>
-            <Stars size={{ sm: "small", md: "large" }} rate={cafe.rate} />
-          </Typography>
+          <Stars size={{ sm: "small", md: "large" }} rate={cafe.rate} />
         )}
         {/* Stars */}
         {cafe.rate !== 0 && (
