@@ -26,7 +26,7 @@ const CafeDetailPage = ({
   const refetchCafeData = useCallback(async () => {
     const fetchedCafe = await fetchCafeById(cafe._id);
     setCafe(fetchedCafe);
-  }, [cafe._id]);
+  }, [cafe?._id]);
 
   useEffect(() => {
     refetchCafeData();

@@ -42,7 +42,7 @@ const CafeDetailContent = ({ cafe }: { cafe: CafeI }) => {
         </Box>
 
         {/* Setting Button */}
-        <EditDeleteMenu cafeId={cafe._id} />
+        <EditDeleteMenu cafe={cafe} />
       </Stack>
 
       {/* Stars Review */}
