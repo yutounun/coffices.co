@@ -20,7 +20,7 @@ const ShopsList = ({ initialCafes }: { initialCafes: CafeI[] }) => {
   const [cafes, setCafes] = useState(initialCafes);
   const { showsCafeModal } = useCafeModalStore();
   const searchParams = useSearchParams();
-
+  const [isUpdated, setIsUpdated] = useState(false);
   /** search keyword */
   const q = searchParams.get("q");
 
@@ -33,6 +33,7 @@ const ShopsList = ({ initialCafes }: { initialCafes: CafeI[] }) => {
     } else {
       updatedCafes = await fetchAllCafes();
     }
+    setIsUpdated(true);
 
     setCafes(updatedCafes);
   }, [q, initialCafes]);
@@ -96,7 +97,7 @@ const ShopsList = ({ initialCafes }: { initialCafes: CafeI[] }) => {
       )}
 
       {/* Search Result Page */}
-      {q && <CafeSearchResultList q={q} cafes={cafes} />}
+      {isUpdated && q && <CafeSearchResultList q={q} cafes={cafes} />}
     </>
   );
 };

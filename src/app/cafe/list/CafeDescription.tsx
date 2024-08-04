@@ -1,7 +1,6 @@
 import { Stack, Typography } from "@mui/material";
 import { CafeI } from "@/types/cafes";
 import Stars from "@/components/ui/Stars";
-import useTranslate from "@/hooks/useTranslate";
 import Image from "next/image";
 
 interface PropTypes {
@@ -17,8 +16,6 @@ const cardTitleStyle = {
 };
 
 const CafeDescription = ({ cafe }: PropTypes) => {
-  const { t } = useTranslate();
-
   return (
     <Stack
       sx={{
