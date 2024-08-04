@@ -15,10 +15,9 @@ import CustomButton from "./CustomButton";
 import { CreateReviewRequestI } from "@/types/cafes";
 import { addReview, getUser as fetchUser } from "@/utils/api";
 import userStore from "@/store/me";
+import useReviewModalStore from "@/store/reviewModal";
 
 interface SmallModalProps {
-  open: boolean;
-  handleClose: () => void;
   title: string;
   description: string;
   cafeId: string;
@@ -31,13 +30,12 @@ interface FormValues {
 }
 
 const SmallModal: React.FC<SmallModalProps> = ({
-  open,
-  handleClose,
   title,
   description,
   cafeId,
 }) => {
   const { user } = userStore();
+  const { showsReviewModal, closeReviewModal } = useReviewModalStore();
 
   const {
     control,
@@ -47,7 +45,7 @@ const SmallModal: React.FC<SmallModalProps> = ({
   } = useForm<FormValues>();
 
   const handleCancel = () => {
-    handleClose();
+    closeReviewModal();
     reset();
   };
 
@@ -58,25 +56,25 @@ const SmallModal: React.FC<SmallModalProps> = ({
       userId: user._id,
     };
     addReview(reviewData);
-    handleClose();
+    closeReviewModal();
     reset();
   };
 
   return (
     <Modal
-      open={open}
-      onClose={handleClose}
+      open={showsReviewModal}
+      onClose={closeReviewModal}
       closeAfterTransition
       BackdropComponent={Backdrop}
       BackdropProps={{
         timeout: 500,
       }}
     >
-      <Fade in={open}>
+      <Fade in={showsReviewModal}>
         <Box sx={modalStyle}>
           <IconButton
             aria-label="close"
-            onClick={handleClose}
+            onClick={closeReviewModal}
             sx={{ position: "absolute", right: 8, top: 8 }}
           >
             <Close />
@@ -85,7 +83,7 @@ const SmallModal: React.FC<SmallModalProps> = ({
           <Typography variant="h4">{title}</Typography>
           <Typography variant="body1">{description}</Typography>
 
-          <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={{ p: 2 }}>
+          <Box component="form" onSubmit={handleSubmit(onSubmit)}>
             <Typography variant="body1" sx={{ mt: 1 }}>
               Review Score
             </Typography>
