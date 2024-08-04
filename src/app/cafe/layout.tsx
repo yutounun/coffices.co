@@ -8,7 +8,6 @@ import { getUser } from "@/utils/api";
 import userStore from "@/store/me";
 import { StationNameContext } from "@/contexts/StationNameContext";
 import CafePostModal from "#/cafe/_create/CafePostModal";
-import useCafeModalStore from "@/store/openCafeModal";
 import { useRouter } from "next/navigation";
 import { CafeListContext } from "@/contexts/CafeListContext";
 import { CafeI } from "@/types/cafes";
