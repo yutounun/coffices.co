@@ -24,7 +24,7 @@ const rankStyle = {
   ml: 0,
 };
 
-const cardPhotoStyle = { height: { xs: "100px", md: "150px" }, width: "100%" };
+const cardPhotoStyle = { height: { xs: "70px", md: "150px" }, width: "100%" };
 
 const CafeCard = ({
   cafe,
@@ -38,14 +38,14 @@ const CafeCard = ({
   const cardStyle = {
     width: { xs: "12em", md: "235px" },
     mt: "2em",
-    mr: index === lastIndex ? { xs: 6, md: desktop.space.around } : "2em",
+    mr: index === lastIndex ? { xs: 6, md: desktop.space.aroundX } : "2em",
     ml:
       index === 0 && !isTokyoRanking
-        ? { xs: mobile.space.around, md: desktop.space.around }
+        ? { xs: mobile.space.aroundX, md: desktop.space.aroundX }
         : "0px",
     position: "relative",
     overflow: "visible",
-    height: { xs: "13em", md: "270px" },
+    height: { xs: "15em", md: "270px" },
     borderRadius: "20px",
   };
 

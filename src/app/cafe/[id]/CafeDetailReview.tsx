@@ -36,7 +36,7 @@ const CafeDetailReview = ({
         variant="h2"
         sx={{
           mb: 3,
-          mx: { xs: mobile.space.around, md: desktop.space.around },
+          mx: { xs: mobile.space.aroundX, md: desktop.space.aroundX },
         }}
       >
         Review
@@ -44,7 +44,11 @@ const CafeDetailReview = ({
 
       {/* Review Box */}
       {reviews.length !== 0 && (
-        <ScrollCardRow cardCount={reviews.length} type="review">
+        <ScrollCardRow
+          height={{ xs: "30em", md: "350px" }}
+          cardCount={reviews.length}
+          type="review"
+        >
           {reviews.map((review: ReviewI, index) => (
             <CafeDetailReviewCard
               lastIndex={reviews.length - 1}
@@ -62,7 +66,7 @@ const CafeDetailReview = ({
           variant="body1"
           sx={{
             mb: 1,
-            ml: { xs: mobile.space.around, md: desktop.space.around },
+            ml: { xs: mobile.space.aroundX, md: desktop.space.aroundX },
           }}
         >
           Please leave your review
@@ -73,7 +77,7 @@ const CafeDetailReview = ({
       <CustomButton
         onClick={openCreateReview}
         sx={{
-          mx: { xs: mobile.space.around, md: desktop.space.around },
+          mx: { xs: mobile.space.aroundX, md: desktop.space.aroundX },
           my: 3,
         }}
       >

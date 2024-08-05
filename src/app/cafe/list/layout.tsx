@@ -29,7 +29,7 @@ export default function CafeListLayout({
     <Stack>
       <StationNameContext.Provider value={{ stationName, setStationName }}>
         <Header />
-        <Box sx={{ mt: "2em" }}>{children}</Box>
+        <Box sx={{ mt: { xs: 2, md: 5 } }}>{children}</Box>
       </StationNameContext.Provider>
     </Stack>
   );

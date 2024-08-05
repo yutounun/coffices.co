@@ -9,7 +9,7 @@ export default function Home() {
     background: "white",
     justifyContent: "center",
     overflow: "hidden",
-    px: { xs: mobile.space.around, md: 10 },
+    px: { xs: mobile.space.aroundX, md: 10 },
   };
 
   return (

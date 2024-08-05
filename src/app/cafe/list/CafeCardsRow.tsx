@@ -24,8 +24,7 @@ const CafeCardRow = ({ cafes, title, isTokyoRanking }: propTypes) => {
         sx={{
           ...baseTypeStyle,
           color: "inherit",
-          px: { xs: mobile.space.around, md: desktop.space.around },
-          fontSize: { xs: "1.5em", md: "1.7em" },
+          px: { xs: mobile.space.aroundX, md: desktop.space.aroundX },
         }}
       >
         {title}

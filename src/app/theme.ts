@@ -105,7 +105,7 @@ let theme = createTheme({
     },
     h5: {
       fontFamily: "Lato, 'Open Sans', Roboto, 'Helvetica', Arial, sans-serif",
-      fontSize: "0.7rem", // 14px
+      fontSize: "0.9rem", // 14px
       fontWeight: "regurar",
       color: "black",
       "@media (max-width:600px)": {
@@ -117,18 +117,27 @@ let theme = createTheme({
       fontSize: "0.5rem", // 10px
       lineHeight: 1.5, // 150.6%
       color: "rgb(0,0,0,62%)",
+      "@media (max-width:600px)": {
+        fontSize: "0.5rem",
+      },
     },
     body1: {
       fontFamily: "Open Sans, Roboto, 'Helvetica', Arial, sans-serif",
       fontSize: "0.7", // 16px
       lineHeight: 1.63, // 163.2%
       color: "rgb(0,0,0,62%)",
+      "@media (max-width:600px)": {
+        fontSize: "0.7rem",
+      },
     },
     body2: {
       fontFamily: "Open Sans, Roboto, 'Helvetica', Arial, sans-serif",
       fontSize: "0.5rem", // 16px
       lineHeight: 1.63, // 163.2%
       color: "rgb(0,0,0,62%)",
+      "@media (max-width:600px)": {
+        fontSize: "0.5rem",
+      },
     },
     button: {
       fontFamily: "Open Sans, Roboto, 'Helvetica', Arial, sans-serif",

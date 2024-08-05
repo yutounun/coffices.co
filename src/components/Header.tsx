@@ -31,7 +31,7 @@ const ResponsiveAppBar = () => {
     <AppBar
       sx={{
         mb: 4,
-        px: { xs: mobile.space.around, md: desktop.space.around },
+        px: { xs: mobile.space.aroundX, md: desktop.space.aroundX },
         backgroundColor: "secondary.main",
       }}
     >

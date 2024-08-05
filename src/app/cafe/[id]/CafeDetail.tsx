@@ -34,7 +34,7 @@ const CafeDetailPage = ({
 
   return (
     <>
-      <Box sx={{ px: { xs: mobile.space.around, md: desktop.space.around } }}>
+      <Box sx={{ px: { xs: mobile.space.aroundX, md: desktop.space.aroundX } }}>
         {/* Cafe Photo */}
         <Box
           sx={{

@@ -13,7 +13,7 @@ const CafeSearchResultList = ({ cafes, q }: propTypes) => {
   return (
     <Box
       sx={{
-        px: { xs: mobile.space.around, md: desktop.space.around },
+        px: { xs: mobile.space.aroundX, md: desktop.space.aroundX },
         py: { xs: 1, md: 3 },
       }}
     >

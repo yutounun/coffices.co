@@ -2,12 +2,13 @@
 import React, { useCallback, useEffect, useState, useRef } from "react";
 import { Stack, StackProps } from "@mui/material";
 import ScrollBtn from "@/components/ui/ScrollBtn";
-import { mobile, desktop } from "@/utils/const";
+import { desktop } from "@/utils/const";
 
 interface CustomButtonProps extends StackProps {
   children: React.ReactNode;
   cardCount: number;
   type?: string;
+  height?: Object;
 }
 
 // Cards wrapped by this component can be scrolled horizontally
@@ -16,6 +17,7 @@ const ScrollCardRow: React.FC<CustomButtonProps> = ({
   cardCount,
   children,
   type = "cafe",
+  height = { xs: "19em", md: "350px" },
   ...props
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -63,7 +65,7 @@ const ScrollCardRow: React.FC<CustomButtonProps> = ({
           overflowX: "scroll",
           overflowY: "hidden",
           width: "100vw",
-          height: { xs: "19em", md: "350px" },
+          height,
         }}
       >
         {children}

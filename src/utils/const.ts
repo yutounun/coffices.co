@@ -14,7 +14,8 @@ export const desktop = {
   },
 
   space: {
-    around: 25,
+    aroundX: 25,
+    aroundY: 16,
   },
 };
 
@@ -34,6 +35,7 @@ export const mobile = {
   },
 
   space: {
-    around: 4,
+    aroundX: 4,
+    aroundY: 12,
   },
 };

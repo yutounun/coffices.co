@@ -21,7 +21,7 @@ const ScrollBtn: React.FC<ScrollBtnProps> = ({
       direction="row"
       sx={{
         justifyContent: "right",
-        px: { xs: mobile.space.around, md: desktop.space.around },
+        px: { xs: mobile.space.aroundX, md: desktop.space.aroundX },
         mt: 0,
         display: { xs: "none", md: "flex" },
       }}

@@ -9,7 +9,7 @@ import { Box, Stack, Typography } from "@mui/material";
 import React, { useEffect } from "react";
 
 const detailInfoTitleStyle = {
-  width: "20%",
+  width: { xs: "40%", md: "20%" },
   color: "black",
   fontWeight: "medium",
 };
@@ -27,22 +27,20 @@ const CafeDetailContent = ({ cafe }: { cafe: CafeI }) => {
   return (
     <Stack sx={{ my: 5 }}>
       {/* Title Line */}
-      <Stack direction="row" sx={{ gap: 2, alignItems: "center" }}>
+      <Stack
+        direction={{ xs: "column", md: "row" }}
+        sx={{ gap: { xs: 0, md: 2 }, alignItems: { xs: "left", md: "center" } }}
+      >
         {/* Title */}
         <Typography variant="h1">{cafe.title}</Typography>
 
-        {/* Area */}
-        <Box sx={{ position: "relative", minWidth: 70 }}>
-          <Typography
-            variant="body1"
-            sx={{ position: "absolute", bottom: -20 }}
-          >
-            {cafe.area}
-          </Typography>
-        </Box>
+        <Stack direction="row" sx={{ alignItems: "center", minWidth: 70 }}>
+          {/* Area */}
+          <Typography variant="body1">{cafe.area}</Typography>
 
-        {/* Setting Button */}
-        <EditDeleteMenu cafe={cafe} />
+          {/* Setting Button */}
+          <EditDeleteMenu cafe={cafe} />
+        </Stack>
       </Stack>
 
       {/* Stars Review */}
@@ -62,7 +60,7 @@ const CafeDetailContent = ({ cafe }: { cafe: CafeI }) => {
       </Box>
 
       {/* Detail Info */}
-      <Stack sx={{ my: 2 }}>
+      <Stack sx={{ my: { xs: 0, md: 2 } }}>
         {/* Station */}
         <Stack direction="row">
           <Typography variant="h4" sx={detailInfoTitleStyle}>
