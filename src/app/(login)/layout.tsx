@@ -10,7 +10,6 @@ const loginLayout = ({ children }: { children: React.ReactNode }) => {
           position: "fixed",
           top: "2em",
           left: { xs: "1.5em", md: "4em" },
-          backgroundColor: "primary.main",
           gap: 5,
         }}
         direction="row"
