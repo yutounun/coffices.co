@@ -1,8 +1,9 @@
 import { CafeI } from "@/types/cafes";
 import { Box, Stack, Typography } from "@mui/material";
 import CafeCard from "./CafeCard";
-import NotFound from "#/NotFound";
+import NotFound from "@/app/not-found.jsx";
 import { mobile, desktop } from "@/utils/const";
+import { notFound } from "next/navigation";
 
 interface propTypes {
   cafes: CafeI[];
@@ -43,7 +44,7 @@ const CafeSearchResultList = ({ cafes, q }: propTypes) => {
             <CafeCard lastIndex={cafes.length - 1} key={cafe._id} cafe={cafe} />
           ))}
 
-        {cafes.length === 0 && <NotFound />}
+        {cafes.length === 0 && notFound()}
       </Stack>
     </Box>
   );

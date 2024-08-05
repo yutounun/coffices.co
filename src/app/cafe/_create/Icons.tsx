@@ -1,4 +1,4 @@
-import { Stack } from "@mui/material";
+import { Stack, Box } from "@mui/material";
 import Image from "next/image";
 
 const equipmentIcons: string[] = ["isWifi", "isOutlet", "isSmoking"];
@@ -20,18 +20,24 @@ const IconComponent = ({
   return (
     <Stack direction="row" sx={{ gap: 2 }}>
       {equipmentIcons.map((icon: string) => (
-        <Image
+        <Box
           key={icon}
-          src={`/card/${icon}.svg`}
-          alt={icon}
-          height="25"
-          width="25"
-          onClick={() => handleIconClick(icon)}
-          style={{
+          sx={{
+            width: { xs: 20, sm: 25 },
+            height: { xs: 20, sm: 25 },
+            position: "relative",
             cursor: "pointer",
             filter: selectedIcons[icon] ? "invert(0)" : "invert(1)",
           }}
-        />
+          onClick={() => handleIconClick(icon)}
+        >
+          <Image
+            src={`/card/${icon}.svg`}
+            alt={icon}
+            layout="fill"
+            objectFit="contain"
+          />
+        </Box>
       ))}
     </Stack>
   );
