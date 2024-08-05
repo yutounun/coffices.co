@@ -2,6 +2,7 @@ import { CafeI } from "@/types/cafes";
 import { Typography } from "@mui/material";
 import CafeCard from "#/cafe/list/CafeCard";
 import ScrollCardRow from "@/components/ui/ScrollCardRow";
+import { desktop, mobile } from "@/utils/const";
 
 interface propTypes {
   cafes: CafeI[];
@@ -23,7 +24,7 @@ const CafeCardRow = ({ cafes, title, isTokyoRanking }: propTypes) => {
         sx={{
           ...baseTypeStyle,
           color: "inherit",
-          px: 25,
+          px: { xs: mobile.space.around, md: desktop.space.around },
           fontSize: { xs: "1.5em", md: "1.7em" },
         }}
       >

@@ -47,7 +47,7 @@ const CafeDetailContent = ({ cafe }: { cafe: CafeI }) => {
 
       {/* Stars Review */}
       <Stack direction="row" sx={{ alignItems: "center", gap: 0.5 }}>
-        <Stars size={{ sm: "large", md: "x-large" }} rate={cafe.rate} />
+        <Stars size={{ xs: "large", md: "x-large" }} rate={cafe.rate} />
         <Typography>{cafe.rate}</Typography>
       </Stack>
 

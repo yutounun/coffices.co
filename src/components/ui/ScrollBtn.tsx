@@ -1,7 +1,7 @@
 import { Stack } from "@mui/material";
 import React from "react";
 import Arrow from "./Arrow";
-import { desktop } from "@/utils/const";
+import { mobile, desktop } from "@/utils/const";
 
 interface ScrollBtnProps {
   showScroll: boolean;
@@ -19,7 +19,11 @@ const ScrollBtn: React.FC<ScrollBtnProps> = ({
   return (
     <Stack
       direction="row"
-      sx={{ justifyContent: "right", px: desktop.space.around, mt: 0 }}
+      sx={{
+        justifyContent: "right",
+        px: { xs: mobile.space.around, md: desktop.space.around },
+        mt: 0,
+      }}
     >
       {/* Left arrow */}
       <Arrow

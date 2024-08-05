@@ -7,7 +7,7 @@ import ScrollCardRow from "@/components/ui/ScrollCardRow";
 import CafeDetailReviewCard from "./CafeDetailReviewCard";
 import { useState } from "react";
 import SmallModal from "@/components/ui/SmallModal";
-import { desktop } from "@/utils/const";
+import { mobile, desktop } from "@/utils/const";
 import useReviewModalStore from "@/store/reviewModal";
 
 const CafeDetailReview = ({
@@ -52,7 +52,13 @@ const CafeDetailReview = ({
 
       {/* No Review */}
       {reviews.length === 0 && (
-        <Typography variant="body1" sx={{ mb: 1, ml: desktop.space.around }}>
+        <Typography
+          variant="body1"
+          sx={{
+            mb: 1,
+            ml: { xs: mobile.space.around, md: desktop.space.around },
+          }}
+        >
           Please leave your review
         </Typography>
       )}

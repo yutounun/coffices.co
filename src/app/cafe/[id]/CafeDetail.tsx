@@ -6,7 +6,7 @@ import CafeDetailContent from "#/cafe/[id]/CafeDetailContent";
 import CafeDetailReview from "#/cafe/[id]/CafeDetailReview";
 import Recommndation from "@/app/cafe/[id]/Recommndation";
 import { Box } from "@mui/material";
-import { desktop } from "@/utils/const";
+import { mobile, desktop } from "@/utils/const";
 import GoogleMap from "@/components/ui/GoogleMap";
 import { useEffect, useState, useCallback } from "react";
 import useCafeModalStore from "@/store/openCafeModal";

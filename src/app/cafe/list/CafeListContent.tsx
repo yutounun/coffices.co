@@ -11,7 +11,7 @@ import SearchBar from "./SearchBar";
 import { CafeI } from "@/types/cafes";
 import useCafeModalStore from "@/store/openCafeModal";
 import { useSearchParams } from "next/navigation";
-import { desktop } from "@/utils/const";
+import { mobile, desktop } from "@/utils/const";
 
 const ShopsList = ({ initialCafes }: { initialCafes: CafeI[] }) => {
   const [cafes, setCafes] = useState(initialCafes);

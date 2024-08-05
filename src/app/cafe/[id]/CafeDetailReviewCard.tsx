@@ -2,7 +2,7 @@ import { Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import Stars from "@/components/ui/Stars";
 import { ReviewI } from "@/types/cafes";
-import { desktop } from "@/utils/const";
+import { mobile, desktop } from "@/utils/const";
 
 const metaInfoStyle = {
   alignItems: "center",

@@ -34,6 +34,6 @@ export const mobile = {
   },
 
   space: {
-    around: 0,
+    around: 4,
   },
 };

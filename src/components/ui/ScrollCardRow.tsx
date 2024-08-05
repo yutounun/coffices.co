@@ -2,7 +2,7 @@
 import React, { useCallback, useEffect, useState, useRef } from "react";
 import { Stack, StackProps } from "@mui/material";
 import ScrollBtn from "@/components/ui/ScrollBtn";
-import { desktop } from "@/utils/const";
+import { mobile, desktop } from "@/utils/const";
 
 interface CustomButtonProps extends StackProps {
   children: React.ReactNode;
