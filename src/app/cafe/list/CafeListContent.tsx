@@ -12,6 +12,7 @@ import { CafeI } from "@/types/cafes";
 import useCafeModalStore from "@/store/openCafeModal";
 import { useSearchParams } from "next/navigation";
 import { mobile, desktop } from "@/utils/const";
+import { Box } from "@mui/material";
 
 const ShopsList = ({ initialCafes }: { initialCafes: CafeI[] }) => {
   const [cafes, setCafes] = useState(initialCafes);
@@ -69,7 +70,7 @@ const ShopsList = ({ initialCafes }: { initialCafes: CafeI[] }) => {
     <>
       {/* Default Page */}
       {!q && (
-        <>
+        <Box sx={{ mt: { xs: 8, md: 0 } }}>
           {/* All cities in Tokyo */}
           <CafeRow
             title="Tokyo Cafe Ranking"
@@ -87,7 +88,7 @@ const ShopsList = ({ initialCafes }: { initialCafes: CafeI[] }) => {
               />
             )
           )}
-        </>
+        </Box>
       )}
 
       {/* Search Result Page */}

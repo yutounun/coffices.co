@@ -14,7 +14,7 @@ const CafeSearchResultList = ({ cafes, q }: propTypes) => {
     <Box
       sx={{
         px: { xs: mobile.space.aroundX, md: desktop.space.aroundX },
-        py: { xs: 4, md: 3 },
+        py: { xs: 8, md: 3 },
       }}
     >
       {/* Search Keyword */}
@@ -23,7 +23,6 @@ const CafeSearchResultList = ({ cafes, q }: propTypes) => {
         sx={{
           textDecoration: "none",
           color: "inherit",
-          fontSize: { xs: "1.5em", md: "1.7em" },
         }}
       >
         {q}

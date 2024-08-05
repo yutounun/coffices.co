@@ -79,7 +79,7 @@ let theme = createTheme({
     h2: {
       fontFamily: "Lato, 'Open Sans', Roboto, 'Helvetica', Arial, sans-serif",
       fontSize: "2rem", // 32px
-      fontWeight: "regurar",
+      fontWeight: 500,
       color: "black",
       "@media (max-width:600px)": {
         fontSize: "1.5rem",
@@ -123,7 +123,7 @@ let theme = createTheme({
     },
     body1: {
       fontFamily: "Open Sans, Roboto, 'Helvetica', Arial, sans-serif",
-      fontSize: "0.7", // 16px
+      fontSize: "0.9rem", // 16px
       lineHeight: 1.63, // 163.2%
       color: "rgb(0,0,0,62%)",
       "@media (max-width:600px)": {

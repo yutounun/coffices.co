@@ -16,7 +16,7 @@ const ScrollCardRow: React.FC<CustomButtonProps> = ({
   cardCount,
   children,
   type = "cafe",
-  height = { xs: "19em", md: "350px" },
+  height = { xs: "22em", md: "350px" },
   ...props
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -65,6 +65,11 @@ const ScrollCardRow: React.FC<CustomButtonProps> = ({
           overflowY: "hidden",
           width: "100vw",
           height,
+          "&::-webkit-scrollbar": {
+            display: "none",
+          },
+          msOverflowStyle: "none", // IE and Edge
+          scrollbarWidth: "none", // Firefox
         }}
         {...props}
       >

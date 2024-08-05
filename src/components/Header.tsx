@@ -59,7 +59,7 @@ const ResponsiveAppBar = () => {
             }}
           >
             <IconButton
-              color="inherit"
+              color="primary"
               edge="start"
               onClick={toggleDrawer(true)}
               sx={{ ml: 2 }}

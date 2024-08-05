@@ -15,7 +15,6 @@ const Recommndation = ({ cafes }: { cafes: CafeI[] }) => {
           textDecoration: "none",
           color: "inherit",
           px: { xs: mobile.space.aroundX, md: desktop.space.aroundX },
-          fontSize: { xs: "1.5em", md: "1.7em" },
         }}
       >
         You also might like...

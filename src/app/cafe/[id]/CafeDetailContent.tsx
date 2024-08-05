@@ -2,11 +2,11 @@
 
 import EditDeleteMenu from "@/components/ui/EditDeleteMenu";
 import Stars from "@/components/ui/Stars";
-import WifiOutletCigar from "@/components/ui/WifiOutletCigar";
 import useSelectedCafeStore from "@/store/selectedCafe";
 import { CafeI } from "@/types/cafes";
 import { Box, Stack, Typography } from "@mui/material";
 import React, { useEffect } from "react";
+import CardIcons from "../list/CardIcons";
 
 const detailInfoTitleStyle = {
   width: { xs: "40%", md: "20%" },
@@ -51,12 +51,7 @@ const CafeDetailContent = ({ cafe }: { cafe: CafeI }) => {
 
       {/* Wifi / Outlet Smoking / Area */}
       <Box sx={{ my: 1 }}>
-        <WifiOutletCigar
-          isWifi={cafe.isWifi}
-          isOutlet={cafe.isOutlet}
-          isSmoking={cafe.isSmoking}
-          size={20}
-        />
+        <CardIcons cafe={cafe} />
       </Box>
 
       {/* Detail Info */}

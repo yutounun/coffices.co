@@ -41,8 +41,16 @@ const EditDeleteMenu = ({ cafe }: { cafe: CafeI }) => {
         aria-controls="long-menu"
         aria-haspopup="true"
         onClick={handleClick}
+        sx={{
+          width: { xs: 24, sm: 40 },
+          height: { xs: 24, sm: 40 },
+        }}
       >
-        <MoreVertIcon />
+        <MoreVertIcon
+          sx={{
+            fontSize: { xs: 20, sm: 24 },
+          }}
+        />
       </IconButton>
       <Menu
         anchorEl={anchorEl}

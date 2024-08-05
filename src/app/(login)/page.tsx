@@ -1,7 +1,7 @@
 import { Stack } from "@mui/material";
 import LoginContent from "./LoginContent";
 import LoginImage from "./LoginImage";
-import { mobile, desktop } from "@/utils/const";
+import { mobile } from "@/utils/const";
 
 export default function Home() {
   const loginStyles = {
