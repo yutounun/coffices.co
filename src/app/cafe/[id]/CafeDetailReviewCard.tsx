@@ -22,8 +22,11 @@ const CafeDetailReviewCard = ({
   lastIndex: number;
 }) => {
   const reviewBoxStyle = {
-    ml: index === 0 ? desktop.space.around : 0,
-    mr: index === lastIndex ? desktop.space.around : 0,
+    ml: index === 0 ? { xs: mobile.space.around, md: desktop.space.around } : 0,
+    mr:
+      index === lastIndex
+        ? { xs: mobile.space.around, md: desktop.space.around }
+        : 0,
     width: "743px",
     height: "300px",
     backgroundColor: "secondary.light",

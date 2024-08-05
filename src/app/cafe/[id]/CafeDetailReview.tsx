@@ -30,9 +30,15 @@ const CafeDetailReview = ({
   };
 
   return (
-    <Stack sx={{ my: 7 }}>
+    <Stack sx={{ my: 7, mx: 0, py: 0 }}>
       {/* Title */}
-      <Typography variant="h2" sx={{ mb: 3, mx: desktop.space.around }}>
+      <Typography
+        variant="h2"
+        sx={{
+          mb: 3,
+          mx: { xs: mobile.space.around, md: desktop.space.around },
+        }}
+      >
         Review
       </Typography>
 
@@ -66,7 +72,10 @@ const CafeDetailReview = ({
       {/* Leading to Add review modal */}
       <CustomButton
         onClick={openCreateReview}
-        sx={{ mx: desktop.space.around, my: 3 }}
+        sx={{
+          mx: { xs: mobile.space.around, md: desktop.space.around },
+          my: 3,
+        }}
       >
         Leave a review
       </CustomButton>

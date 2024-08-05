@@ -12,7 +12,10 @@ interface propTypes {
 const CafeSearchResultList = ({ cafes, q }: propTypes) => {
   return (
     <Box
-      sx={{ px: { xs: mobile.space.around, md: desktop.space.around }, py: 3 }}
+      sx={{
+        px: { xs: mobile.space.around, md: desktop.space.around },
+        py: { xs: 1, md: 3 },
+      }}
     >
       {/* Search Keyword */}
       <Typography

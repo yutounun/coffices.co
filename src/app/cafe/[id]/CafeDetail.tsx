@@ -34,9 +34,15 @@ const CafeDetailPage = ({
 
   return (
     <>
-      <Box sx={{ px: desktop.space.around }}>
+      <Box sx={{ px: { xs: mobile.space.around, md: desktop.space.around } }}>
         {/* Cafe Photo */}
-        <Box sx={{ height: "30em", width: "100%", position: "relative" }}>
+        <Box
+          sx={{
+            height: { xs: "15em", md: "30em" },
+            width: "100%",
+            position: "relative",
+          }}
+        >
           <Image
             src={cafe.image ? cafe.image : "/logo/orange.png"}
             alt="image"

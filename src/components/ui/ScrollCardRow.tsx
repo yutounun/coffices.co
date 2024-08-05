@@ -63,7 +63,7 @@ const ScrollCardRow: React.FC<CustomButtonProps> = ({
           overflowX: "scroll",
           overflowY: "hidden",
           width: "100vw",
-          height: { xs: "17em", md: "350px" },
+          height: { xs: "19em", md: "350px" },
         }}
       >
         {children}

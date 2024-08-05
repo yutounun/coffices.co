@@ -6,7 +6,7 @@ import useLangStore from "@/store/lang";
 import Image from "next/image";
 
 const languages = [
-  { code: "en", label: "English", img: "/flags/england.png" },
+  { code: "eng", label: "English", img: "/flags/england.png" },
   { code: "ja", label: "日本語", img: "/flags/japan.png" },
 ];
 
@@ -31,29 +31,23 @@ const MenuItemContent = styled(Box)({
   gap: "10px",
 });
 
-const LanguageSelect = () => {
-  const { changeToJp, changeToEng } = useLangStore();
-  const [language, setLanguage] = useState("en");
+const LanguageSelect = ({ onClose }: { onClose?: () => void }) => {
+  const { lang, changeToJp, changeToEng } = useLangStore();
+  const [language, setLanguage] = useState(lang);
 
   const handleChange = (event) => {
     const selectedLang = event.target.value;
     setLanguage(selectedLang);
     if (selectedLang === "ja") {
       changeToJp();
-    } else if (selectedLang === "en") {
+    } else if (selectedLang === "eng") {
       changeToEng();
     }
+    if (onClose) onClose();
   };
 
   return (
-    <CustomSelect
-      size="small"
-      value={language}
-      onChange={handleChange}
-      sx={{
-        display: { xs: "none", md: "block" },
-      }}
-    >
+    <CustomSelect size="small" value={language} onChange={handleChange} sx={{}}>
       {languages.map((lang) => (
         <MenuItem key={lang.code} value={lang.code}>
           <MenuItemContent>
