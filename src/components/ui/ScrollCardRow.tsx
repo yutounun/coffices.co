@@ -2,7 +2,7 @@
 import React, { useCallback, useEffect, useState, useRef } from "react";
 import { Stack, StackProps } from "@mui/material";
 import ScrollBtn from "@/components/ui/ScrollBtn";
-import { maxCafeDisplayCount } from "@/utils/const";
+import { desktop } from "@/utils/const";
 
 interface CustomButtonProps extends StackProps {
   children: React.ReactNode;
@@ -44,7 +44,7 @@ const ScrollCardRow: React.FC<CustomButtonProps> = ({
   useEffect(() => {
     checkScrollPosition();
     if (type === "cafe") {
-      setShowScroll(cardCount >= maxCafeDisplayCount.desktop);
+      setShowScroll(cardCount >= desktop.maxCafeDisplayCount);
     }
     setShowRightScrollBtn(true);
 

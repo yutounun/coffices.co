@@ -2,7 +2,7 @@ import { CafeI } from "@/types/cafes";
 import { Box, Stack, Typography } from "@mui/material";
 import CafeCard from "./CafeCard";
 import NotFound from "#/NotFound";
-import { space } from "@/utils/const";
+import { desktop } from "@/utils/const";
 
 interface propTypes {
   cafes: CafeI[];
@@ -11,7 +11,7 @@ interface propTypes {
 
 const CafeSearchResultList = ({ cafes, q }: propTypes) => {
   return (
-    <Box sx={{ px: space.around, py: 3 }}>
+    <Box sx={{ px: desktop.space.around, py: 3 }}>
       {/* Search Keyword */}
       <Typography
         variant="h2"

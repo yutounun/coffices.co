@@ -9,7 +9,7 @@ import SearchBar from "@/app/cafe/list/SearchBar";
 import { CafeListContext } from "@/contexts/CafeListContext";
 import { filterCafe, fetchAllCafes } from "@/utils/api";
 import { StationNameContext } from "@/contexts/StationNameContext";
-import { space } from "@/utils/const";
+import { desktop } from "@/utils/const";
 import Link from "next/link";
 
 const ResponsiveAppBar = () => {
@@ -28,7 +28,13 @@ const ResponsiveAppBar = () => {
   };
 
   return (
-    <AppBar sx={{ mb: 4, px: space.around, backgroundColor: "secondary.main" }}>
+    <AppBar
+      sx={{
+        mb: 4,
+        px: desktop.space.around,
+        backgroundColor: "secondary.main",
+      }}
+    >
       <Toolbar disableGutters>
         <Stack
           direction="row"

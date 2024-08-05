@@ -2,7 +2,7 @@ import { Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import Stars from "@/components/ui/Stars";
 import { ReviewI } from "@/types/cafes";
-import { space } from "@/utils/const";
+import { desktop } from "@/utils/const";
 
 const metaInfoStyle = {
   alignItems: "center",
@@ -22,8 +22,8 @@ const CafeDetailReviewCard = ({
   lastIndex: number;
 }) => {
   const reviewBoxStyle = {
-    ml: index === 0 ? space.around : 0,
-    mr: index === lastIndex ? space.around : 0,
+    ml: index === 0 ? desktop.space.around : 0,
+    mr: index === lastIndex ? desktop.space.around : 0,
     width: "743px",
     height: "300px",
     backgroundColor: "secondary.light",

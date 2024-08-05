@@ -6,7 +6,7 @@ import CafeDetailContent from "#/cafe/[id]/CafeDetailContent";
 import CafeDetailReview from "#/cafe/[id]/CafeDetailReview";
 import Recommndation from "@/app/cafe/[id]/Recommndation";
 import { Box } from "@mui/material";
-import { space } from "@/utils/const";
+import { desktop } from "@/utils/const";
 import GoogleMap from "@/components/ui/GoogleMap";
 import { useEffect, useState, useCallback } from "react";
 import useCafeModalStore from "@/store/openCafeModal";
@@ -34,7 +34,7 @@ const CafeDetailPage = ({
 
   return (
     <>
-      <Box sx={{ px: space.around }}>
+      <Box sx={{ px: desktop.space.around }}>
         {/* Cafe Photo */}
         <Box sx={{ height: "30em", width: "100%", position: "relative" }}>
           <Image

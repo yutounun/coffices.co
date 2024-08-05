@@ -6,7 +6,7 @@ import CafeDescription from "#/cafe/list/CafeDescription";
 import { NextImage } from "@/components/ui/NextImage";
 import Card from "@mui/material/Card";
 import { useRouter } from "next/navigation";
-import { space } from "@/utils/const";
+import { desktop } from "@/utils/const";
 
 interface propTypes {
   cafe: CafeI;
@@ -38,8 +38,8 @@ const CafeCard = ({
   const cardStyle = {
     width: { xs: "12em", md: "235px" },
     mt: "2em",
-    mr: index === lastIndex ? space.around : "2em",
-    ml: index === 0 && !isTokyoRanking ? space.around : "0px",
+    mr: index === lastIndex ? desktop.space.around : "2em",
+    ml: index === 0 && !isTokyoRanking ? desktop.space.around : "0px",
     position: "relative",
     overflow: "visible",
     height: { xs: "13em", md: "270px" },
