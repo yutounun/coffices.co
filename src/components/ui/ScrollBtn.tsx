@@ -23,6 +23,7 @@ const ScrollBtn: React.FC<ScrollBtnProps> = ({
         justifyContent: "right",
         px: { xs: mobile.space.around, md: desktop.space.around },
         mt: 0,
+        display: { xs: "none", md: "flex" },
       }}
     >
       {/* Left arrow */}

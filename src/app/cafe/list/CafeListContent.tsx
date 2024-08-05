@@ -67,9 +67,6 @@ const ShopsList = ({ initialCafes }: { initialCafes: CafeI[] }) => {
 
   return (
     <>
-      {/* Search Bar only for mobile */}
-      <SearchBar sx={{ display: { xs: "static", md: "none" } }} />
-
       {/* Default Page */}
       {!q && (
         <>

@@ -55,6 +55,9 @@ const ResponsiveAppBar = () => {
         <Stack direction="row" sx={{ flexGrow: 0 }} spacing={2}>
           <UserActions />
         </Stack>
+
+        {/* Search Bar only for mobile */}
+        <SearchBar sx={{ display: { xs: "static", md: "none" } }} />
       </Toolbar>
     </AppBar>
   );
