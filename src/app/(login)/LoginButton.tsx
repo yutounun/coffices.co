@@ -15,7 +15,7 @@ type LoginButtonProps = {
 const LoginButtonStyle = {
   backgroundColor: "white",
   border: "2px solid #D3D3D3",
-  width: "340px",
+  width: { xs: "100%", md: "80%" },
   "&:hover": {
     backgroundColor: "custom.hoveredWhite",
   },

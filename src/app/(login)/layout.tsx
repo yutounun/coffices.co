@@ -5,12 +5,11 @@ import Image from "next/image";
 const loginLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
-      {/* <LanguageToggle sx={{ position: "fixed" }} /> */}
       <Stack
         sx={{
           position: "fixed",
           top: "2em",
-          left: "4em",
+          left: { xs: "1.5em", md: "4em" },
           backgroundColor: "primary.main",
           gap: 5,
         }}

@@ -46,7 +46,14 @@ const LanguageSelect = () => {
   };
 
   return (
-    <CustomSelect size="small" value={language} onChange={handleChange}>
+    <CustomSelect
+      size="small"
+      value={language}
+      onChange={handleChange}
+      sx={{
+        display: { xs: "none", md: "block" },
+      }}
+    >
       {languages.map((lang) => (
         <MenuItem key={lang.code} value={lang.code}>
           <MenuItemContent>
