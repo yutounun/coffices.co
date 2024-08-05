@@ -8,7 +8,7 @@ const metaInfoStyle = {
   alignItems: "center",
   color: "custom.grey",
   position: "absolute",
-  bottom: { xs: 10, md: 20 },
+  bottom: { xs: 10, md: 100 },
   left: { xs: 15, md: 26 },
   width: "calc(100% - 60px)", // Ensures the content fits within the box padding
 };
@@ -31,7 +31,7 @@ const CafeDetailReviewCard = ({
         ? { xs: mobile.space.aroundX, md: desktop.space.aroundX }
         : 0,
     width: { xs: "25em", md: "40em" },
-    height: { xs: "30em", md: "20em" }, // Ensure the box has a defined height
+    height: { xs: "30em", md: "30em" }, // Ensure the box has a defined height
     backgroundColor: "secondary.light",
     borderRadius: "10px",
     px: { xs: "1.4em", md: "30px" },
