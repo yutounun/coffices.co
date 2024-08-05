@@ -14,7 +14,7 @@ const CafeSearchResultList = ({ cafes, q }: propTypes) => {
     <Box
       sx={{
         px: { xs: mobile.space.aroundX, md: desktop.space.aroundX },
-        py: { xs: 1, md: 3 },
+        py: { xs: 4, md: 3 },
       }}
     >
       {/* Search Keyword */}
@@ -32,9 +32,10 @@ const CafeSearchResultList = ({ cafes, q }: propTypes) => {
       {/* Card Grid */}
       <Stack
         sx={{
-          flexDirection: { xs: "column", md: "row" },
+          flexDirection: { xs: "row", md: "row" },
           width: "100%",
           flexWrap: "wrap",
+          gap: { xs: 1.4, md: 0 },
         }}
       >
         {cafes &&

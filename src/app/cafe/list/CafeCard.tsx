@@ -61,8 +61,8 @@ const CafeCard = ({
       <Stack
         sx={{
           "&:hover": {
-            scale: "1.1",
-            transition: "all 0.5s ease",
+            scale: { xs: "1", md: "1.1" },
+            transition: { xs: "none", md: "all 0.5s ease" },
             cursor: "pointer",
           },
           ml: index === 0 && isTokyoRanking ? { xs: 2, md: 22 } : "0px",
