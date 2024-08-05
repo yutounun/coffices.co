@@ -1,15 +1,16 @@
-import { Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import Stars from "@/components/ui/Stars";
 import { ReviewI } from "@/types/cafes";
-import { space } from "@/utils/const";
+import { mobile, desktop } from "@/utils/const";
 
 const metaInfoStyle = {
   alignItems: "center",
   color: "custom.grey",
-  position: "absolute" as "absolute", // 修正
-  bottom: 20,
-  left: 30,
+  position: "absolute",
+  bottom: { xs: 10, md: 20 },
+  left: { xs: 15, md: 26 },
+  width: "calc(100% - 60px)", // Ensures the content fits within the box padding
 };
 
 const CafeDetailReviewCard = ({
@@ -22,66 +23,94 @@ const CafeDetailReviewCard = ({
   lastIndex: number;
 }) => {
   const reviewBoxStyle = {
-    ml: index === 0 ? space.around : 0,
-    mr: index === lastIndex ? space.around : 0,
-    width: "743px",
-    height: "300px",
+    position: "relative", // This makes the absolute positioning relative to this box
+    ml:
+      index === 0 ? { xs: mobile.space.aroundX, md: desktop.space.aroundX } : 0,
+    mr:
+      index === lastIndex
+        ? { xs: mobile.space.aroundX, md: desktop.space.aroundX }
+        : 0,
+    width: { xs: "25em", md: "40em" },
+    height: { xs: "30em", md: "20em" }, // Ensure the box has a defined height
     backgroundColor: "secondary.light",
     borderRadius: "10px",
-    px: "30px",
+    px: { xs: "1.4em", md: "30px" },
     pt: "20px",
     pb: 20,
-    position: "relative",
+    display: "flex",
+    flexDirection: "column",
   };
 
   return (
     <Stack
       key={review.id}
       direction="row"
-      sx={{ mr: index === lastIndex ? 0 : 3 }}
+      sx={{ mr: index === lastIndex ? 0 : 3, height: "100%" }}
     >
-      <Stack sx={reviewBoxStyle}>
-        {/* Rate */}
-        <Stars size="6" rate={review.rate} />
+      <Box sx={reviewBoxStyle}>
+        <Box sx={{ flexGrow: 1 }}>
+          {/* Rate */}
+          <Stars size={{ xs: 16, md: 24 }} rate={review.rate} />
 
-        {/* Title */}
-        <Typography variant="h4" sx={{ mt: 1 }}>
-          {review.title}
-        </Typography>
+          {/* Title */}
+          <Typography variant="h4" sx={{ mt: 1, wordWrap: "break-word" }}>
+            {review.title}
+          </Typography>
 
-        {/* Comment */}
-        <Typography variant="body1" sx={{ my: 3 }}>
-          {review.content}
-        </Typography>
+          {/* Comment */}
+          <Typography
+            variant="body1"
+            sx={{ my: { xs: 1.4, md: 3 }, wordWrap: "break-word" }}
+          >
+            {review.content}
+          </Typography>
+        </Box>
 
         {/* Meta */}
         <Stack direction="row" sx={metaInfoStyle}>
           {/* Profile Image */}
-          <Image
-            src={"/coffee.jpg"}
-            alt="profile"
-            width={40}
-            height={40}
-            style={{
-              borderRadius: "50%",
+          <Box
+            sx={{
+              width: { xs: 25, md: 40 },
+              height: { xs: 25, md: 40 },
+              position: "relative",
             }}
-          />
+          >
+            <Image
+              src={"/coffee.jpg"}
+              alt="profile"
+              layout="fill"
+              objectFit="cover"
+              style={{
+                borderRadius: "50%",
+              }}
+            />
+          </Box>
 
           {/* Name */}
-          <Typography variant="body1" sx={{ ml: 1.5 }}>
+          <Typography
+            variant="body1"
+            sx={{ width: "auto", ml: { xs: 0.5, md: 1.5 } }}
+          >
             {review?.user?.username}
           </Typography>
 
-          <Typography variant="body1" sx={{ mx: 1.5 }}>
+          <Typography
+            variant="body1"
+            sx={{ width: "auto", mx: { xs: 0.5, md: 1.5 } }}
+          >
             |
           </Typography>
 
           {/* Published At */}
-          <Typography variant="body1" sx={{ mr: 1.5 }}>
+          <Typography
+            variant="body1"
+            sx={{ width: "auto", mr: { xs: 0.5, md: 1.5 } }}
+          >
             {review?.user?.updatedAt}
           </Typography>
         </Stack>
-      </Stack>
+      </Box>
     </Stack>
   );
 };

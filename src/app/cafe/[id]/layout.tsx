@@ -1,3 +1,4 @@
+import { desktop, mobile } from "@/utils/const";
 import { Box } from "@mui/material";
 
 export default function CafeListLayout({
@@ -5,5 +6,14 @@ export default function CafeListLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <Box sx={{ mt: 16, mb: 6 }}>{children}</Box>;
+  return (
+    <Box
+      sx={{
+        mt: { xs: mobile.space.aroundY, md: desktop.space.aroundY },
+        mb: 6,
+      }}
+    >
+      {children}
+    </Box>
+  );
 }

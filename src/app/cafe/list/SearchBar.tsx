@@ -44,9 +44,10 @@ const CustomAutocomplete = styled(Autocomplete)(({ theme }) => ({
 
 interface propTypes {
   sx?: Object;
+  onClose?: () => void;
 }
 
-const SearchBar = ({ sx }: propTypes) => {
+const SearchBar = ({ sx, onClose }: propTypes) => {
   const [keyword, setKeyword] = useState("");
   const [inputValue, setInputValue] = useState("");
   const router = useRouter();
@@ -65,6 +66,7 @@ const SearchBar = ({ sx }: propTypes) => {
 
   const onClickSearch = () => {
     router.push(`/cafe/list?q=${keyword}`);
+    if (onClose) onClose();
   };
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -78,7 +80,7 @@ const SearchBar = ({ sx }: propTypes) => {
       freeSolo
       options={stationsArea.map((station) => station.name)}
       inputValue={inputValue}
-      sx={{ width: "30%", ...sx }}
+      sx={{ width: { xs: "100%", md: "30%" }, ...sx }}
       onInputChange={(event, newInputValue) => {
         setInputValue(newInputValue);
         setKeyword(newInputValue);

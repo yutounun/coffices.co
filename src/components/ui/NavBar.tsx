@@ -5,8 +5,8 @@ import { useRouter } from "next/navigation";
 import useTranslate from "@/hooks/useTranslate";
 
 const baseMenuStyle = {
-  py: 2,
-  color: "white",
+  py: { xs: 1, md: 2 },
+  color: { xs: "custom.grey", md: "white" },
   display: "block",
   fontWeight: 700,
   letterSpacing: ".3rem",
@@ -14,17 +14,19 @@ const baseMenuStyle = {
   cursor: "pointer",
 };
 
-const NavBar = () => {
+const NavBar = ({ onClose }: { onClose?: () => void }) => {
   const { openCafeModal } = useCafeModalStore();
   const router = useRouter();
   const { t } = useTranslate();
 
   const onClickListButton = () => {
     router.push("/cafe/list");
+    if (onClose) onClose();
   };
 
   const onClickCreateButton = () => {
     openCafeModal();
+    if (onClose) onClose();
   };
 
   return (

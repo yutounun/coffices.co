@@ -56,7 +56,7 @@ const CafeDetailModalReviews = ({ cafe }: { cafe: CafeI }) => {
                       sx={{ justifyContent: "right", width: "100%" }}
                     >
                       <Stars
-                        size={{ sm: "small", md: "large" }}
+                        size={{ xs: "small", md: "large" }}
                         rate={review.rate}
                       />
                       <Typography variant="body1" sx={{ fontSize: "0.9em" }}>
@@ -79,7 +79,7 @@ const CafeDetailModalReviews = ({ cafe }: { cafe: CafeI }) => {
                   </Stack>
                   <Stack direction="row" spacing={1}>
                     <Stars
-                      size={{ sm: "small", md: "large" }}
+                      size={{ xs: "small", md: "large" }}
                       rate={review.rate}
                     />
                     <Typography variant="body1">{review.rate}</Typography>

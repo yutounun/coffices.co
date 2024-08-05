@@ -1,13 +1,13 @@
 import { Stack } from "@mui/material";
 import React from "react";
 import Arrow from "./Arrow";
-import { scrollOffset, space } from "@/utils/const";
+import { mobile, desktop } from "@/utils/const";
 
 interface ScrollBtnProps {
   showScroll: boolean;
   showLeftScrollBtn: boolean;
   showRightScrollBtn: boolean;
-  scroll: (offset: scrollOffset) => void;
+  scroll: (offset: number) => void;
 }
 
 const ScrollBtn: React.FC<ScrollBtnProps> = ({
@@ -19,19 +19,24 @@ const ScrollBtn: React.FC<ScrollBtnProps> = ({
   return (
     <Stack
       direction="row"
-      sx={{ justifyContent: "right", px: space.around, mt: 0 }}
+      sx={{
+        justifyContent: "right",
+        px: { xs: mobile.space.aroundX, md: desktop.space.aroundX },
+        mt: 0,
+        display: { xs: "none", md: "flex" },
+      }}
     >
       {/* Left arrow */}
       <Arrow
         hidden={!showLeftScrollBtn || !showScroll}
         direction="left"
-        onClickArrow={() => scroll(scrollOffset.left)}
+        onClickArrow={() => scroll(desktop.scrollOffset.left)}
       />
       {/* Right arrow */}
       <Arrow
         hidden={!showRightScrollBtn || !showScroll}
         direction="right"
-        onClickArrow={() => scroll(scrollOffset.right)}
+        onClickArrow={() => scroll(desktop.scrollOffset.right)}
       />
     </Stack>
   );

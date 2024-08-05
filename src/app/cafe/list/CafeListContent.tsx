@@ -11,10 +11,7 @@ import SearchBar from "./SearchBar";
 import { CafeI } from "@/types/cafes";
 import useCafeModalStore from "@/store/openCafeModal";
 import { useSearchParams } from "next/navigation";
-
-enum maxRanking {
-  count = 10,
-}
+import { mobile, desktop } from "@/utils/const";
 
 const ShopsList = ({ initialCafes }: { initialCafes: CafeI[] }) => {
   const [cafes, setCafes] = useState(initialCafes);
@@ -49,7 +46,7 @@ const ShopsList = ({ initialCafes }: { initialCafes: CafeI[] }) => {
    */
   const rankedList = useCallback(() => {
     return cafes.length > 1
-      ? cafes.sort((a, b) => b.rate - a.rate).slice(0, maxRanking.count)
+      ? cafes.sort((a, b) => b.rate - a.rate).slice(0, desktop.maxRanking.count)
       : cafes;
   }, [cafes]);
 
@@ -70,9 +67,6 @@ const ShopsList = ({ initialCafes }: { initialCafes: CafeI[] }) => {
 
   return (
     <>
-      {/* Search Bar only for mobile */}
-      <SearchBar sx={{ display: { xs: "static", md: "none" } }} />
-
       {/* Default Page */}
       {!q && (
         <>

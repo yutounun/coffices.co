@@ -6,7 +6,7 @@ import CafeDescription from "#/cafe/list/CafeDescription";
 import { NextImage } from "@/components/ui/NextImage";
 import Card from "@mui/material/Card";
 import { useRouter } from "next/navigation";
-import { space } from "@/utils/const";
+import { mobile, desktop } from "@/utils/const";
 
 interface propTypes {
   cafe: CafeI;
@@ -18,13 +18,13 @@ interface propTypes {
 
 const rankStyle = {
   color: "custom.darkGray",
-  fontSize: { sm: "10em", md: "16em" },
+  fontSize: { xs: "12em", md: "16em" },
   letterSpacing: "-20px",
-  mr: { sm: 0, md: -1 },
+  mr: { xs: 0, md: -1 },
   ml: 0,
 };
 
-const cardPhotoStyle = { height: { xs: "100px", md: "150px" }, width: "100%" };
+const cardPhotoStyle = { height: { xs: "70px", md: "150px" }, width: "100%" };
 
 const CafeCard = ({
   cafe,
@@ -38,11 +38,14 @@ const CafeCard = ({
   const cardStyle = {
     width: { xs: "12em", md: "235px" },
     mt: "2em",
-    mr: index === lastIndex ? space.around : "2em",
-    ml: index === 0 && !isTokyoRanking ? space.around : "0px",
+    mr: index === lastIndex ? { xs: 6, md: desktop.space.aroundX } : "2em",
+    ml:
+      index === 0 && !isTokyoRanking
+        ? { xs: mobile.space.aroundX, md: desktop.space.aroundX }
+        : "0px",
     position: "relative",
     overflow: "visible",
-    height: { xs: "13em", md: "270px" },
+    height: { xs: "15em", md: "270px" },
     borderRadius: "20px",
   };
 
@@ -58,11 +61,11 @@ const CafeCard = ({
       <Stack
         sx={{
           "&:hover": {
-            scale: "1.1",
-            transition: "all 0.5s ease",
+            scale: { xs: "1", md: "1.1" },
+            transition: { xs: "none", md: "all 0.5s ease" },
             cursor: "pointer",
           },
-          ml: index === 0 && isTokyoRanking ? 22 : "0px",
+          ml: index === 0 && isTokyoRanking ? { xs: 2, md: 22 } : "0px",
         }}
         direction="row"
       >

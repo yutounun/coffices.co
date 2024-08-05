@@ -4,6 +4,7 @@ import { Button, Typography } from "@mui/material";
 import { signIn } from "next-auth/react";
 import useTranslate from "@/hooks/useTranslate";
 import Image from "next/image";
+import { BorderColor } from "@mui/icons-material";
 
 type LoginButtonProps = {
   text: string;
@@ -13,12 +14,13 @@ type LoginButtonProps = {
 
 const LoginButtonStyle = {
   backgroundColor: "white",
-  width: "340px",
+  border: "2px solid #D3D3D3",
+  width: { xs: "100%", md: "80%" },
   "&:hover": {
     backgroundColor: "custom.hoveredWhite",
   },
   borderRadius: "10px",
-  boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+  textTransform: "none",
 };
 
 const LoginButton = ({ text, signInUrl, iconUrl }: LoginButtonProps) => {
@@ -33,7 +35,8 @@ const LoginButton = ({ text, signInUrl, iconUrl }: LoginButtonProps) => {
         }
         sx={LoginButtonStyle}
       >
-        <Typography variant="body1">
+        <Typography variant="body1" sx={{ color: "black", fontWeight: 500 }}>
+          {/* {(t ? " " + t.home.login : "") + text} */}
           {text + (t ? " " + t.home.login : "")}
         </Typography>
       </Button>

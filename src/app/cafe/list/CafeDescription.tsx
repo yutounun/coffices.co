@@ -21,7 +21,8 @@ const CafeDescription = ({ cafe }: PropTypes) => {
       sx={{
         mx: { xs: "10px", md: "20px" },
         justifyContent: "center",
-        height: "120px",
+        height: { xs: "auto", md: "120px" },
+        my: { xs: 1, md: 0 },
       }}
     >
       {/* Cafe Title */}
@@ -33,11 +34,11 @@ const CafeDescription = ({ cafe }: PropTypes) => {
       <Stack direction="row" sx={{ alignItems: "center", gap: 0.5 }}>
         {/* No Review */}
         {cafe.rate === 0 && (
-          <Stars size={{ sm: "small", md: "large" }} rate={cafe.rate} />
+          <Stars size={{ xs: "small", md: "large" }} rate={cafe.rate} />
         )}
         {/* Stars */}
         {cafe.rate !== 0 && (
-          <Stars size={{ sm: "small", md: "large" }} rate={cafe.rate} />
+          <Stars size={{ xs: "small", md: "large" }} rate={cafe.rate} />
         )}
 
         {/* Review Score */}

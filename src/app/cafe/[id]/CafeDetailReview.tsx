@@ -7,7 +7,7 @@ import ScrollCardRow from "@/components/ui/ScrollCardRow";
 import CafeDetailReviewCard from "./CafeDetailReviewCard";
 import { useState } from "react";
 import SmallModal from "@/components/ui/SmallModal";
-import { space } from "@/utils/const";
+import { mobile, desktop } from "@/utils/const";
 import useReviewModalStore from "@/store/reviewModal";
 
 const CafeDetailReview = ({
@@ -30,15 +30,25 @@ const CafeDetailReview = ({
   };
 
   return (
-    <Stack sx={{ my: 7 }}>
+    <Stack sx={{ my: 7, mx: 0, py: 0 }}>
       {/* Title */}
-      <Typography variant="h2" sx={{ mb: 3, mx: space.around }}>
+      <Typography
+        variant="h2"
+        sx={{
+          mb: 3,
+          mx: { xs: mobile.space.aroundX, md: desktop.space.aroundX },
+        }}
+      >
         Review
       </Typography>
 
       {/* Review Box */}
       {reviews.length !== 0 && (
-        <ScrollCardRow cardCount={reviews.length} type="review">
+        <ScrollCardRow
+          height={{ xs: "30em", md: "350px" }}
+          cardCount={reviews.length}
+          type="review"
+        >
           {reviews.map((review: ReviewI, index) => (
             <CafeDetailReviewCard
               lastIndex={reviews.length - 1}
@@ -52,13 +62,25 @@ const CafeDetailReview = ({
 
       {/* No Review */}
       {reviews.length === 0 && (
-        <Typography variant="body1" sx={{ mb: 1, ml: space.around }}>
+        <Typography
+          variant="body1"
+          sx={{
+            mb: 1,
+            ml: { xs: mobile.space.aroundX, md: desktop.space.aroundX },
+          }}
+        >
           Please leave your review
         </Typography>
       )}
 
       {/* Leading to Add review modal */}
-      <CustomButton onClick={openCreateReview} sx={{ mx: space.around, my: 3 }}>
+      <CustomButton
+        onClick={openCreateReview}
+        sx={{
+          mx: { xs: mobile.space.aroundX, md: desktop.space.aroundX },
+          my: 3,
+        }}
+      >
         Leave a review
       </CustomButton>
 

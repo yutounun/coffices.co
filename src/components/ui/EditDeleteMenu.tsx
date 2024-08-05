@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { IconButton, Menu, MenuItem } from "@mui/material";
+import { Box, IconButton, Menu, MenuItem } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { deleteCafe } from "@/utils/api";
 import { useRouter } from "next/navigation";
@@ -35,7 +35,7 @@ const EditDeleteMenu = ({ cafe }: { cafe: CafeI }) => {
   };
 
   return (
-    <>
+    <Box>
       <IconButton
         aria-label="more"
         aria-controls="long-menu"
@@ -68,7 +68,7 @@ const EditDeleteMenu = ({ cafe }: { cafe: CafeI }) => {
           <MenuItem>Find on Google Map</MenuItem>
         </Link>
       </Menu>
-    </>
+    </Box>
   );
 };
 
