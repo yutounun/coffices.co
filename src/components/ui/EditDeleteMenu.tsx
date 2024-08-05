@@ -51,7 +51,7 @@ const EditDeleteMenu = ({ cafe }: { cafe: CafeI }) => {
         PaperProps={{
           style: {
             maxHeight: 48 * 4.5,
-            width: { xs: "33em", md: "20ch" },
+            width: "20ch",
           },
         }}
       >

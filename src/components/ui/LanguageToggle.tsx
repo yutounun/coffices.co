@@ -35,7 +35,7 @@ const LanguageSelect = ({ onClose }: { onClose?: () => void }) => {
   const { lang, changeToJp, changeToEng } = useLangStore();
   const [language, setLanguage] = useState(lang);
 
-  const handleChange = (event) => {
+  const handleChange = (event: any) => {
     const selectedLang = event.target.value;
     setLanguage(selectedLang);
     if (selectedLang === "ja") {

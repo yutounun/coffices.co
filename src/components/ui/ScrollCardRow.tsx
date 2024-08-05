@@ -8,11 +8,10 @@ interface CustomButtonProps extends StackProps {
   children: React.ReactNode;
   cardCount: number;
   type?: string;
-  height?: Object;
+  height?: Record<string, string | number>;
 }
 
 // Cards wrapped by this component can be scrolled horizontally
-// My Fav component
 const ScrollCardRow: React.FC<CustomButtonProps> = ({
   cardCount,
   children,
@@ -67,6 +66,7 @@ const ScrollCardRow: React.FC<CustomButtonProps> = ({
           width: "100vw",
           height,
         }}
+        {...props}
       >
         {children}
       </Stack>
