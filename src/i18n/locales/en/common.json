@@ -126,5 +126,8 @@
       "facebook": "Facebook URL",
       "portfolio": "Portfolio URL"
     }
+  },
+  "area": {
+    "港区": "minato district"
   }
 }

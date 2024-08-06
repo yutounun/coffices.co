@@ -1,504 +1,285 @@
 [
   {
-    "name": "千代田区"
+    "name": "千代田区",
+    "code": 1,
+    "kana": "ちよだく",
+    "en": "chiyoda district"
   },
 
   {
-    "name": "中央区"
+    "name": "中央区",
+    "code": 2,
+    "kana": "ちゅうおうく",
+    "en": "chuou district"
   },
   {
-    "name": "港区"
+    "name": "港区",
+    "code": 3,
+    "kana": "みなとく",
+    "en": "minato district"
   },
   {
-    "name": "新宿区"
+    "name": "新宿区",
+    "code": 4,
+    "kana": "しんじゅくく",
+    "en": "sinjyuku district"
   },
   {
-    "name": "文京区"
+    "name": "文京区",
+    "code": 5,
+    "kana": "ぶんきょうく",
+    "en": "bunkyou district"
   },
   {
-    "name": "台東区"
+    "name": "台東区",
+    "code": 6,
+    "kana": "だいとうく",
+    "en": "daitou district"
   },
   {
-    "name": "墨田区"
+    "name": "墨田区",
+    "code": 7,
+    "kana": "すみだく",
+    "en": "sumida district"
   },
   {
-    "name": "江東区"
+    "name": "江東区",
+    "code": 8,
+    "kana": "こうとうく",
+    "en": "koutou district"
   },
   {
-    "name": "品川区"
+    "name": "品川区",
+    "code": 9,
+    "kana": "しながわく",
+    "en": "shinagawa district"
   },
   {
-    "name": "目黒区"
+    "name": "目黒区",
+    "code": 10,
+    "kana": "めぐろく",
+    "en": "meguro district"
   },
   {
-    "name": "大田区"
+    "name": "大田区",
+    "code": 11,
+    "kana": "おおたく",
+    "en": "oota district"
   },
   {
-    "name": "世田谷区"
+    "name": "世田谷区",
+    "code": 12,
+    "kana": "せたがやく",
+    "en": "setagaya district"
   },
   {
-    "name": "渋谷区"
+    "name": "渋谷区",
+    "code": 13,
+    "kana": "しぶやく",
+    "en": "sibuya district"
   },
   {
-    "name": "中野区"
-  },
-  {
-    "name": "杉並区"
-  },
-  {
-    "name": "豊島区"
-  },
-  {
-    "name": "北区"
-  },
-  {
-    "name": "荒川区"
-  },
-  {
-    "name": "板橋区"
-  },
-  {
-    "name": "練馬区"
-  },
-  {
-    "name": "足立区"
-  },
-  {
-    "name": "葛飾区"
-  },
-  {
-    "name": "江戸川区"
-  },
-  {
-    "name": "東京駅"
-  },
-  {
-    "name": "新橋駅"
-  },
-  {
-    "name": "品川駅"
-  },
-  {
-    "name": "大崎駅"
-  },
-  {
-    "name": "五反田駅"
-  },
-  {
-    "name": "目黒駅"
-  },
-  {
-    "name": "恵比寿駅"
-  },
-  {
-    "name": "代々木上原駅"
-  },
-  {
-    "name": "渋谷駅"
-  },
-  {
-    "name": "原宿駅"
-  },
-  {
-    "name": "代々木駅"
-  },
-  {
-    "name": "新宿駅"
-  },
-  {
-    "name": "新大久保駅"
-  },
-  {
-    "name": "高田馬場駅"
-  },
-  {
-    "name": "目白駅"
-  },
-  {
-    "name": "池袋駅"
-  },
-  {
-    "name": "大塚駅"
-  },
-  {
-    "name": "巣鴨駅"
-  },
-  {
-    "name": "駒込駅"
-  },
-  {
-    "name": "田端駅"
-  },
-  {
-    "name": "西日暮里駅"
-  },
-  {
-    "name": "日暮里駅"
-  },
-  {
-    "name": "鶯谷駅"
-  },
-  {
-    "name": "上野駅"
-  },
-  {
-    "name": "御徒町駅"
-  },
-  {
-    "name": "秋葉原駅"
-  },
-  {
-    "name": "神田駅"
-  },
-  {
-    "name": "有楽町駅"
-  },
-  {
-    "name": "浜松町駅"
-  },
-  {
-    "name": "田町駅"
-  },
-  {
-    "name": "高輪ゲートウェイ駅"
-  },
-  {
-    "name": "中目黒駅"
-  },
-  {
-    "name": "矢野口駅"
-  },
-  {
-    "name": "稲城長沼駅"
-  },
-  {
-    "name": "南多摩駅"
-  },
-  {
-    "name": "府中本町駅"
-  },
-  {
-    "name": "分倍河原駅"
-  },
-  {
-    "name": "西府駅"
-  },
-  {
-    "name": "谷保駅"
-  },
-  {
-    "name": "矢川駅"
-  },
-  {
-    "name": "西国立駅"
-  },
-  {
-    "name": "立川駅"
-  },
-  {
-    "name": "北府中駅"
-  },
-  {
-    "name": "西国分寺駅"
-  },
-  {
-    "name": "新小平駅"
-  },
-  {
-    "name": "新秋津駅"
-  },
-  {
-    "name": "成瀬駅"
-  },
-  {
-    "name": "町田駅"
-  },
-  {
-    "name": "相原駅"
-  },
-  {
-    "name": "八王子みなみ野駅"
-  },
-  {
-    "name": "片倉駅"
-  },
-  {
-    "name": "八王子駅"
-  },
-  {
-    "name": "西大井駅"
-  },
-  {
-    "name": "四ツ谷駅"
-  },
-  {
-    "name": "吉祥寺駅"
-  },
-  {
-    "name": "三鷹駅"
-  },
-  {
-    "name": "国分寺駅"
-  },
-  {
-    "name": "日野駅"
-  },
-  {
-    "name": "豊田駅"
-  },
-  {
-    "name": "西八王子駅"
-  },
-  {
-    "name": "高尾駅"
-  },
-  {
-    "name": "御茶ノ水駅"
-  },
-  {
-    "name": "中野駅"
-  },
-  {
-    "name": "高円寺駅"
-  },
-  {
-    "name": "阿佐ケ谷駅"
-  },
-  {
-    "name": "荻窪駅"
-  },
-  {
-    "name": "西荻窪駅"
-  },
-  {
-    "name": "武蔵境駅"
-  },
-  {
-    "name": "東小金井駅"
-  },
-  {
-    "name": "武蔵小金井駅"
-  },
-  {
-    "name": "国立駅"
-  },
-  {
-    "name": "東中野駅"
-  },
-  {
-    "name": "大久保駅"
-  },
-  {
-    "name": "千駄ケ谷駅"
-  },
-  {
-    "name": "信濃町駅"
-  },
-  {
-    "name": "市ケ谷駅"
-  },
-  {
-    "name": "飯田橋駅"
-  },
-  {
-    "name": "水道橋駅"
-  },
-  {
-    "name": "浅草橋駅"
-  },
-  {
-    "name": "両国駅"
-  },
-  {
-    "name": "錦糸町駅"
-  },
-  {
-    "name": "亀戸駅"
-  },
-  {
-    "name": "平井駅"
-  },
-  {
-    "name": "新小岩駅"
-  },
-  {
-    "name": "小岩駅"
-  },
-  {
-    "name": "新日本橋駅"
-  },
-  {
-    "name": "馬喰町駅"
-  },
-  {
-    "name": "西立川駅"
-  },
-  {
-    "name": "東中神駅"
-  },
-  {
-    "name": "中神駅"
-  },
-  {
-    "name": "昭島駅"
-  },
-  {
-    "name": "拝島駅"
-  },
-  {
-    "name": "牛浜駅"
-  },
-  {
-    "name": "福生駅"
-  },
-  {
-    "name": "羽村駅"
-  },
-  {
-    "name": "小作駅"
-  },
-  {
-    "name": "河辺駅"
-  },
-  {
-    "name": "東青梅駅"
-  },
-  {
-    "name": "青梅駅"
-  },
-  {
-    "name": "宮ノ平駅"
-  },
-  {
-    "name": "日向和田駅"
-  },
-  {
-    "name": "石神前駅"
-  },
-  {
-    "name": "二俣尾駅"
-  },
-  {
-    "name": "軍畑駅"
-  },
-  {
-    "name": "沢井駅"
-  },
-  {
-    "name": "御嶽駅"
-  },
-  {
-    "name": "川井駅"
-  },
-  {
-    "name": "古里駅"
-  },
-  {
-    "name": "鳩ノ巣駅"
-  },
-  {
-    "name": "白丸駅"
-  },
-  {
-    "name": "奥多摩駅"
-  },
-  {
-    "name": "熊川駅"
-  },
-  {
-    "name": "東秋留駅"
-  },
-  {
-    "name": "秋川駅"
-  },
-  {
-    "name": "武蔵引田駅"
-  },
-  {
-    "name": "武蔵増戸駅"
-  },
-  {
-    "name": "武蔵五日市駅"
-  },
-  {
-    "name": "北八王子駅"
-  },
-  {
-    "name": "小宮駅"
-  },
-  {
-    "name": "東福生駅"
-  },
-  {
-    "name": "箱根ケ崎駅"
-  },
-  {
-    "name": "尾久駅"
-  },
-  {
-    "name": "赤羽駅"
-  },
-  {
-    "name": "三河島駅"
-  },
-  {
-    "name": "南千住駅"
-  },
-  {
-    "name": "北千住駅"
-  },
-  {
-    "name": "綾瀬駅"
-  },
-  {
-    "name": "亀有駅"
-  },
-  {
-    "name": "金町駅"
-  },
-  {
-    "name": "板橋駅"
-  },
-  {
-    "name": "十条駅"
-  },
-  {
-    "name": "北赤羽駅"
-  },
-  {
-    "name": "浮間舟渡駅"
-  },
-  {
-    "name": "八丁堀駅"
-  },
-  {
-    "name": "越中島駅"
-  },
-  {
-    "name": "潮見駅"
-  },
-  {
-    "name": "新木場駅"
-  },
-  {
-    "name": "葛西臨海公園駅"
-  },
-  {
-    "name": "東十条駅"
-  },
-  {
-    "name": "王子駅"
-  },
-  {
-    "name": "上中里駅"
-  },
-  {
-    "name": "大井町駅"
-  },
-  {
-    "name": "大森駅"
-  },
+    "name": "中野区",
+    "code": 14,
+    "kana": "なかのく",
+    "en": "nakano district"
+  },
+  {
+    "name": "杉並区",
+    "code": 15,
+    "kana": "すぎなみく",
+    "en": "suginami district"
+  },
+  {
+    "name": "豊島区",
+    "code": 16,
+    "kana": "としまく",
+    "en": "toshima district"
+  },
+  {
+    "name": "北区",
+    "code": 17,
+    "kana": "きたく",
+    "en": "kita district"
+  },
+  {
+    "name": "荒川区",
+    "code": 18,
+    "kana": "あらかわく",
+    "en": "arakawa district"
+  },
   {
-    "name": "蒲田駅"
-  }
+    "name": "板橋区",
+    "code": 19,
+    "kana": "いたばしく",
+    "en": "itabashi district"
+  },
+  {
+    "name": "練馬区",
+    "code": 20,
+    "kana": "ねりまく",
+    "en": "nerima district"
+  },
+  {
+    "name": "足立区",
+    "code": 21,
+    "kana": "あだちく",
+    "en": "adachi district"
+  },
+  {
+    "name": "葛飾区",
+    "code": 22,
+    "kana": "かつしかく",
+    "en": "katushika district"
+  },
+  {
+    "name": "江戸川区",
+    "code": 23,
+    "kana": "えどがわく",
+    "en": "edogawa district"
+  },
+  { "name": "東京駅", "en": "Tokyo Station" },
+  { "name": "新橋駅", "en": "Shimbashi Station" },
+  { "name": "品川駅", "en": "Shinagawa Station" },
+  { "name": "代々木上原駅", "en": "Yoyogi-Uehara Station" },
+  { "name": "中目黒駅", "en": "Nakameguro Station" },
+  { "name": "大崎駅", "en": "Osaki Station" },
+  { "name": "五反田駅", "en": "Gotanda Station" },
+  { "name": "目黒駅", "en": "Meguro Station" },
+  { "name": "恵比寿駅", "en": "Ebisu Station" },
+  { "name": "渋谷駅", "en": "Shibuya Station" },
+  { "name": "原宿駅", "en": "Harajuku Station" },
+  { "name": "代々木駅", "en": "Yoyogi Station" },
+  { "name": "新宿駅", "en": "Shinjuku Station" },
+  { "name": "新大久保駅", "en": "Shin-Okubo Station" },
+  { "name": "高田馬場駅", "en": "Takadanobaba Station" },
+  { "name": "目白駅", "en": "Mejiro Station" },
+  { "name": "池袋駅", "en": "Ikebukuro Station" },
+  { "name": "大塚駅", "en": "Otsuka Station" },
+  { "name": "巣鴨駅", "en": "Sugamo Station" },
+  { "name": "駒込駅", "en": "Komagome Station" },
+  { "name": "田端駅", "en": "Tabata Station" },
+  { "name": "西日暮里駅", "en": "Nishi-Nippori Station" },
+  { "name": "日暮里駅", "en": "Nippori Station" },
+  { "name": "鶯谷駅", "en": "Uguisudani Station" },
+  { "name": "上野駅", "en": "Ueno Station" },
+  { "name": "御徒町駅", "en": "Okachimachi Station" },
+  { "name": "秋葉原駅", "en": "Akihabara Station" },
+  { "name": "神田駅", "en": "Kanda Station" },
+  { "name": "有楽町駅", "en": "Yurakucho Station" },
+  { "name": "浜松町駅", "en": "Hamamatsucho Station" },
+  { "name": "田町駅", "en": "Tamachi Station" },
+  { "name": "高輪ゲートウェイ駅", "en": "Takanawa Gateway Station" },
+  { "name": "矢野口駅", "en": "Yanokuchi Station" },
+  { "name": "稲城長沼駅", "en": "Inagi-Naganuma Station" },
+  { "name": "南多摩駅", "en": "Minami-Tama Station" },
+  { "name": "府中本町駅", "en": "Fuchu-Hommachi Station" },
+  { "name": "分倍河原駅", "en": "Bubaigawara Station" },
+  { "name": "西府駅", "en": "Nishi-Fuchu Station" },
+  { "name": "谷保駅", "en": "Yaho Station" },
+  { "name": "矢川駅", "en": "Yagawa Station" },
+  { "name": "西国立駅", "en": "Nishi-Kunitachi Station" },
+  { "name": "立川駅", "en": "Tachikawa Station" },
+  { "name": "北府中駅", "en": "Kita-Fuchu Station" },
+  { "name": "西国分寺駅", "en": "Nishi-Kokubunji Station" },
+  { "name": "新小平駅", "en": "Shin-Kodaira Station" },
+  { "name": "新秋津駅", "en": "Shin-Akitsu Station" },
+  { "name": "成瀬駅", "en": "Naruse Station" },
+  { "name": "町田駅", "en": "Machida Station" },
+  { "name": "相原駅", "en": "Aihara Station" },
+  { "name": "八王子みなみ野駅", "en": "Hachioji-Minami Station" },
+  { "name": "片倉駅", "en": "Katakura Station" },
+  { "name": "八王子駅", "en": "Hachioji Station" },
+  { "name": "西大井駅", "en": "Nishi-Oi Station" },
+  { "name": "四ツ谷駅", "en": "Yotsuya Station" },
+  { "name": "吉祥寺駅", "en": "Kichijoji Station" },
+  { "name": "三鷹駅", "en": "Mitaka Station" },
+  { "name": "国分寺駅", "en": "Kokubunji Station" },
+  { "name": "日野駅", "en": "Hino Station" },
+  { "name": "豊田駅", "en": "Toyoda Station" },
+  { "name": "西八王子駅", "en": "Nishi-Hachioji Station" },
+  { "name": "高尾駅", "en": "Takao Station" },
+  { "name": "御茶ノ水駅", "en": "Ochanomizu Station" },
+  { "name": "中野駅", "en": "Nakano Station" },
+  { "name": "高円寺駅", "en": "Koenji Station" },
+  { "name": "阿佐ケ谷駅", "en": "Asagaya Station" },
+  { "name": "荻窪駅", "en": "Ogikubo Station" },
+  { "name": "西荻窪駅", "en": "Nishi-Ogikubo Station" },
+  { "name": "武蔵境駅", "en": "Musashi-Sakai Station" },
+  { "name": "東小金井駅", "en": "Higashi-Koganei Station" },
+  { "name": "武蔵小金井駅", "en": "Musashi-Koganei Station" },
+  { "name": "国立駅", "en": "Kunitachi Station" },
+  { "name": "東中野駅", "en": "Higashi-Nakano Station" },
+  { "name": "大久保駅", "en": "Okubo Station" },
+  { "name": "千駄ケ谷駅", "en": "Sendagaya Station" },
+  { "name": "信濃町駅", "en": "Shinanomachi Station" },
+  { "name": "市ケ谷駅", "en": "Ichigaya Station" },
+  { "name": "飯田橋駅", "en": "Iidabashi Station" },
+  { "name": "水道橋駅", "en": "Suidobashi Station" },
+  { "name": "浅草橋駅", "en": "Asakusabashi Station" },
+  { "name": "両国駅", "en": "Ryogoku Station" },
+  { "name": "錦糸町駅", "en": "Kinshicho Station" },
+  { "name": "亀戸駅", "en": "Kameido Station" },
+  { "name": "平井駅", "en": "Hirai Station" },
+  { "name": "新小岩駅", "en": "Shin-Koiwa Station" },
+  { "name": "小岩駅", "en": "Koiwa Station" },
+  { "name": "新日本橋駅", "en": "Shin-Nihombashi Station" },
+  { "name": "馬喰町駅", "en": "Bakurocho Station" },
+  { "name": "西立川駅", "en": "Nishi-Tachikawa Station" },
+  { "name": "東中神駅", "en": "Higashi-Nakagami Station" },
+  { "name": "中神駅", "en": "Nakagami Station" },
+  { "name": "昭島駅", "en": "Akishima Station" },
+  { "name": "拝島駅", "en": "Haijima Station" },
+  { "name": "牛浜駅", "en": "Ushihama Station" },
+  { "name": "福生駅", "en": "Fussa Station" },
+  { "name": "羽村駅", "en": "Hamura Station" },
+  { "name": "小作駅", "en": "Ozaku Station" },
+  { "name": "河辺駅", "en": "Kabe Station" },
+  { "name": "東青梅駅", "en": "Higashi-Ome Station" },
+  { "name": "青梅駅", "en": "Ome Station" },
+  { "name": "宮ノ平駅", "en": "Miyanohira Station" },
+  { "name": "日向和田駅", "en": "Hinatawada Station" },
+  { "name": "石神前駅", "en": "Ishigami Station" },
+  { "name": "二俣尾駅", "en": "Futamatao Station" },
+  { "name": "軍畑駅", "en": "Gunji Station" },
+  { "name": "沢井駅", "en": "Sawai Station" },
+  { "name": "御嶽駅", "en": "Mitake Station" },
+  { "name": "川井駅", "en": "Kawai Station" },
+  { "name": "古里駅", "en": "Furusato Station" },
+  { "name": "鳩ノ巣駅", "en": "Hatono Station" },
+  { "name": "白丸駅", "en": "Shiromaru Station" },
+  { "name": "奥多摩駅", "en": "Okutama Station" },
+  { "name": "熊川駅", "en": "Kumagawa Station" },
+  { "name": "東秋留駅", "en": "Higashi-Akiru Station" },
+  { "name": "秋川駅", "en": "Akikawa Station" },
+  { "name": "武蔵引田駅", "en": "Musashi-Hikida Station" },
+  { "name": "武蔵増戸駅", "en": "Musashi-Masuko Station" },
+  { "name": "武蔵五日市駅", "en": "Musashi-Itsukaichi Station" },
+  { "name": "北八王子駅", "en": "Kita-Hachioji Station" },
+  { "name": "小宮駅", "en": "Komiya Station" },
+  { "name": "東福生駅", "en": "Higashi-Fussa Station" },
+  { "name": "箱根ケ崎駅", "en": "Hakonegasaki Station" },
+  { "name": "尾久駅", "en": "Oku Station" },
+  { "name": "赤羽駅", "en": "Akabane Station" },
+  { "name": "三河島駅", "en": "Mikawashima Station" },
+  { "name": "南千住駅", "en": "Minami-Senju Station" },
+  { "name": "北千住駅", "en": "Kita-Senju Station" },
+  { "name": "綾瀬駅", "en": "Ayase Station" },
+  { "name": "亀有駅", "en": "Kameari Station" },
+  { "name": "金町駅", "en": "Kanamachi Station" },
+  { "name": "板橋駅", "en": "Itabashi Station" },
+  { "name": "十条駅", "en": "Jujo Station" },
+  { "name": "北赤羽駅", "en": "Kita-Akabane Station" },
+  { "name": "浮間舟渡駅", "en": "Ukima-Funado Station" },
+  { "name": "八丁堀駅", "en": "Hatchobori Station" },
+  { "name": "越中島駅", "en": "Etchujima Station" },
+  { "name": "潮見駅", "en": "Shiomi Station" },
+  { "name": "新木場駅", "en": "Shinkiba Station" },
+  { "name": "葛西臨海公園駅", "en": "Kasai-Rinkai Park Station" },
+  { "name": "東十条駅", "en": "Higashi-Jujo Station" },
+  { "name": "王子駅", "en": "Oji Station" },
+  { "name": "上中里駅", "en": "Kami-Nakazato Station" },
+  { "name": "大井町駅", "en": "Oimachi Station" },
+  { "name": "大森駅", "en": "Omori Station" },
+  { "name": "蒲田駅", "en": "Kamata Station" }
 ]

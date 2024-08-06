@@ -78,7 +78,7 @@ const SearchBar = ({ sx, onClose }: propTypes) => {
   return (
     <CustomAutocomplete
       freeSolo
-      options={stationsArea.map((station) => station.name)}
+      options={stationsArea.map((station) => station.en)}
       inputValue={inputValue}
       sx={{ width: { xs: "100%", md: "30%" }, ...sx }}
       onInputChange={(event, newInputValue) => {

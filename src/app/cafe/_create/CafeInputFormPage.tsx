@@ -167,7 +167,7 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
                 freeSolo
                 id="area-autocomplete"
                 disableClearable
-                options={Areas.map((area) => area.name)}
+                options={Areas.map((area) => area.en)}
                 value={value}
                 onChange={(event, newValue) => {
                   onChange(newValue); // フォームの値を更新
@@ -213,7 +213,7 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
                 freeSolo
                 id="station-autocomplete"
                 disableClearable
-                options={Stations.map((station) => station.name)}
+                options={Stations.map((station) => station.en)}
                 value={value}
                 onChange={(event, newValue) => {
                   onChange(newValue); // フォームの値を更新
