@@ -92,18 +92,7 @@
       },
       "closedTime": {
         "label": "閉店時間"
-      },
-      "wifi": {
-        "label": "Wi-Fi"
-      },
-      "outlet": {
-        "label": "コンセント"
-      },
-      "smoking": {
-        "label": "喫煙エリア"
-      },
-      "exist": "あり",
-      "notExist": "なし"
+      }
     }
   },
   "reviewModal": {

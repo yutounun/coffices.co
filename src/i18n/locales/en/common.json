@@ -76,7 +76,7 @@
     },
     "form": {
       "cafeName": {
-        "label": "Cafe Name",
+        "label": "Name",
         "required": "Please enter the cafe name"
       },
       "area": {
@@ -84,26 +84,15 @@
         "required": "Please enter the area"
       },
       "station": {
-        "label": "Station Name",
+        "label": "Station",
         "required": "Please enter the station name"
       },
       "openHour": {
         "label": "Opening Hour"
       },
       "closedTime": {
-        "label": "Closing Time"
-      },
-      "wifi": {
-        "label": "Wi-Fi"
-      },
-      "outlet": {
-        "label": "outlet"
-      },
-      "smoking": {
-        "label": "smoking area"
-      },
-      "exist": "Exists",
-      "notExist": "Does Not Exist"
+        "label": "Closing Hour"
+      }
     }
   },
   "reviewModal": {
