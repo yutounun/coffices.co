@@ -12,6 +12,12 @@ const baseMenuStyle = {
   letterSpacing: ".3rem",
   textDecoration: "none",
   cursor: "pointer",
+  "&:hover": {
+    color: "#ffffff",
+    textDecoration: "underline",
+    textDecorationThickness: "4px",
+    textDecorationColor: "#ffffff",
+  },
 };
 
 const NavBar = ({ onClose }: { onClose?: () => void }) => {

@@ -23,6 +23,12 @@ const UserActions = ({}) => {
     fontWeight: 700,
     letterSpacing: ".3rem",
     textDecoration: "none",
+    "&:hover": {
+      color: "#ffffff",
+      textDecoration: "underline",
+      textDecorationThickness: "4px",
+      textDecorationColor: "#ffffff",
+    },
   };
 
   return (
