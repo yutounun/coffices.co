@@ -9,6 +9,7 @@ import { useState } from "react";
 import SmallModal from "@/components/ui/SmallModal";
 import { mobile, desktop } from "@/utils/const";
 import useReviewModalStore from "@/store/reviewModal";
+import useTranslate from "@/hooks/useTranslate";
 
 const CafeDetailReview = ({
   reviews,
@@ -17,16 +18,11 @@ const CafeDetailReview = ({
   reviews: ReviewI[];
   cafeId: string;
 }) => {
-  const [open, setOpen] = useState(false);
-  const { openReviewModal, closeReviewModal } = useReviewModalStore();
+  const { t } = useTranslate();
+  const { openReviewModal } = useReviewModalStore();
 
   const openCreateReview = () => {
     openReviewModal();
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-    closeReviewModal();
   };
 
   return (
@@ -39,7 +35,7 @@ const CafeDetailReview = ({
           mx: { xs: mobile.space.aroundX, md: desktop.space.aroundX },
         }}
       >
-        Review
+        {t?.detail.review.title}
       </Typography>
 
       {/* Review Box */}
@@ -69,7 +65,7 @@ const CafeDetailReview = ({
             ml: { xs: mobile.space.aroundX, md: desktop.space.aroundX },
           }}
         >
-          Please leave your review
+          {t?.detail.review.noReview}
         </Typography>
       )}
 
@@ -81,7 +77,7 @@ const CafeDetailReview = ({
           my: 3,
         }}
       >
-        Leave a review
+        {t?.detail.review.postBtn}
       </CustomButton>
 
       {/* Simple Modal */}

@@ -6,13 +6,14 @@ import "@/styles/cafe-list.scss";
 import CafeRow from "./CafeCardsRow";
 import CafeSearchResultList from "#/cafe/list/CafeSearchResultList";
 import { StationNameContext } from "@/contexts/StationNameContext";
-import { areaInfo } from "@/data/areas.js";
+// import { areaInfo } from "@/data/areas.js";
 import SearchBar from "./SearchBar";
 import { CafeI } from "@/types/cafes";
 import useCafeModalStore from "@/store/openCafeModal";
 import { useSearchParams } from "next/navigation";
 import { mobile, desktop } from "@/utils/const";
 import { Box } from "@mui/material";
+import useTranslate from "@/hooks/useTranslate";
 
 const ShopsList = ({ initialCafes }: { initialCafes: CafeI[] }) => {
   const [cafes, setCafes] = useState(initialCafes);
@@ -21,6 +22,8 @@ const ShopsList = ({ initialCafes }: { initialCafes: CafeI[] }) => {
   const [isUpdated, setIsUpdated] = useState(false);
   /** search keyword */
   const q = searchParams.get("q");
+  const { t } = useTranslate();
+  const areaInfo = t?.list.areaInfo;
 
   /** Update cafe list after posting cafe */
   const refetchData = useCallback(async () => {
@@ -73,13 +76,13 @@ const ShopsList = ({ initialCafes }: { initialCafes: CafeI[] }) => {
         <Box sx={{ mt: { xs: 8, md: 0 } }}>
           {/* All cities in Tokyo */}
           <CafeRow
-            title="Tokyo Cafe Ranking"
+            title={t?.list?.rankingInTokyo}
             cafes={rankedList()}
             isTokyoRanking
           />
 
           {/* Other Areas, Not ranking style */}
-          {areaInfo.map(
+          {areaInfo?.map(
             ({ title, stations }: { title: string; stations: string[] }) => (
               <CafeRow
                 key={title}

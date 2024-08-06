@@ -7,6 +7,7 @@ import { CafeI } from "@/types/cafes";
 import { Box, Stack, Typography } from "@mui/material";
 import React, { useEffect } from "react";
 import CardIcons from "../list/CardIcons";
+import useTranslate from "@/hooks/useTranslate";
 
 const detailInfoTitleStyle = {
   width: { xs: "40%", md: "20%" },
@@ -20,6 +21,7 @@ const detailInfoContentStyle = {
 };
 
 const CafeDetailContent = ({ cafe }: { cafe: CafeI }) => {
+  const { t } = useTranslate();
   const { setSelectedCafeData } = useSelectedCafeStore();
   useEffect(() => {
     setSelectedCafeData(cafe);
@@ -59,7 +61,7 @@ const CafeDetailContent = ({ cafe }: { cafe: CafeI }) => {
         {/* Station */}
         <Stack direction="row">
           <Typography variant="h4" sx={detailInfoTitleStyle}>
-            Station:
+            {t?.detail.content.station}
           </Typography>
           <Typography variant="body1" sx={{ detailInfoContentStyle }}>
             {cafe.station}
@@ -69,7 +71,7 @@ const CafeDetailContent = ({ cafe }: { cafe: CafeI }) => {
         {/* Hours */}
         <Stack direction="row">
           <Typography variant="h4" sx={detailInfoTitleStyle}>
-            Opening Hours:
+            {t?.detail.content.openingHours}
           </Typography>
           {cafe.openHour && cafe.closeHour && (
             <>

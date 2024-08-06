@@ -3,8 +3,10 @@ import { CafeI } from "@/types/cafes";
 import CafeCard from "#/cafe/list/CafeCard";
 import { Typography } from "@mui/material";
 import { mobile, desktop } from "@/utils/const";
+import useTranslate from "@/hooks/useTranslate";
 
 const Recommndation = ({ cafes }: { cafes: CafeI[] }) => {
+  const { t } = useTranslate();
   return (
     <>
       {/* Title */}
@@ -17,7 +19,7 @@ const Recommndation = ({ cafes }: { cafes: CafeI[] }) => {
           px: { xs: mobile.space.aroundX, md: desktop.space.aroundX },
         }}
       >
-        You also might like...
+        {t?.detail.recommendation.title}
       </Typography>
 
       <ScrollCardRow cardCount={cafes.length}>
