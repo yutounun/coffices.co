@@ -4,10 +4,10 @@ import React, { useEffect, useState } from "react";
 import useLangStore from "@/store/lang";
 
 const dictionaries: any = {
-  eng: () =>
+  en: () =>
     import("@/i18n/locales/en/common.json").then((module) => module.default),
-  jp: () =>
-    import("@/i18n//locales/jp/common.json").then((module) => module.default),
+  ja: () =>
+    import("@/i18n//locales/ja/common.json").then((module) => module.default),
 };
 
 const getDictionary = async (locale: string) => dictionaries[locale]();
@@ -18,6 +18,7 @@ const useTranslate = () => {
 
   useEffect(() => {
     async function fetchDictionary() {
+      console.log("🚀 ~ fetchDictionary ~ lang:", lang);
       const dictionary = await getDictionary(lang);
       setT(dictionary);
     }

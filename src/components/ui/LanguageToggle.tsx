@@ -1,12 +1,12 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Select, MenuItem, Box, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 import useLangStore from "@/store/lang";
 import Image from "next/image";
 
 const languages = [
-  { code: "eng", label: "English", img: "/flags/england.png" },
+  { code: "en", label: "English", img: "/flags/england.png" },
   { code: "ja", label: "日本語", img: "/flags/japan.png" },
 ];
 
@@ -33,14 +33,18 @@ const MenuItemContent = styled(Box)({
 
 const LanguageSelect = ({ onClose }: { onClose?: () => void }) => {
   const { lang, changeToJp, changeToEng } = useLangStore();
-  const [language, setLanguage] = useState(lang);
+  const [language, setLanguage] = useState<string>(lang);
+
+  useEffect(() => {
+    setLanguage(lang);
+  }, [lang, language]);
 
   const handleChange = (event: any) => {
     const selectedLang = event.target.value;
     setLanguage(selectedLang);
     if (selectedLang === "ja") {
       changeToJp();
-    } else if (selectedLang === "eng") {
+    } else if (selectedLang === "en") {
       changeToEng();
     }
     if (onClose) onClose();
