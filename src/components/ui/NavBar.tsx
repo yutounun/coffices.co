@@ -1,44 +1,36 @@
 import React from "react";
 import { Typography } from "@mui/material";
 import useCafeModalStore from "@/store/openCafeModal";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import useTranslate from "@/hooks/useTranslate";
 
 const baseMenuStyle = {
-  py: { xs: 1, md: 2 },
-  color: { xs: "custom.grey", md: "custom.white" },
+  py: { xs: 1, md: 1 },
+  color: { xs: "custom.grey", md: "white" },
   display: "block",
   fontWeight: 700,
   letterSpacing: ".3rem",
   textDecoration: "none",
   cursor: "pointer",
-  position: "relative",
   "&:hover": {
-    color: "custom.white",
+    color: "#E7E7E7",
     textDecoration: "none",
     opacity: 0.5,
   },
-  "&::after": {
-    content: '""',
-    position: "absolute",
-    left: 0,
-    bottom: "10px",
-    width: "100%",
-    height: "2px",
-    backgroundColor: "custom.white",
-    transform: "scaleX(0)",
-    transformOrigin: "bottom left",
-    transition: "transform 0.3s ease",
-  },
-  "&:hover::after": {
-    transform: "scaleX(1)",
-  },
+};
+
+const activeMenuStyle = {
+  ...baseMenuStyle,
+  borderBottom: "solid 2px #fff",
+  paddingBottom: "0.5px",
+  py: { xs: 1, md: 1 },
 };
 
 const NavBar = ({ onClose }: { onClose?: () => void }) => {
   const { openCafeModal } = useCafeModalStore();
   const router = useRouter();
   const { t } = useTranslate();
+  const pathname = usePathname();
 
   const onClickListButton = () => {
     router.push("/cafe/list");
@@ -52,10 +44,18 @@ const NavBar = ({ onClose }: { onClose?: () => void }) => {
 
   return (
     <>
-      <Typography variant="h5" onClick={onClickListButton} sx={baseMenuStyle}>
+      <Typography
+        variant="h5"
+        onClick={onClickListButton}
+        sx={pathname === "/cafe/list" ? activeMenuStyle : baseMenuStyle}
+      >
         {t?.header?.menus.list}
       </Typography>
-      <Typography variant="h5" onClick={onClickCreateButton} sx={baseMenuStyle}>
+      <Typography
+        variant="h5"
+        onClick={onClickCreateButton}
+        sx={pathname === "/cafe/create" ? activeMenuStyle : baseMenuStyle}
+      >
         {t?.header?.menus.post}
       </Typography>
     </>
