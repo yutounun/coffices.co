@@ -12,10 +12,11 @@ const baseMenuStyle = {
   letterSpacing: ".3rem",
   textDecoration: "none",
   cursor: "pointer",
+  borderBottom: "none",
   "&:hover": {
     color: "#E7E7E7",
     textDecoration: "none",
-    opacity: 0.5,
+    borderBottom: "none",
   },
 };
 
