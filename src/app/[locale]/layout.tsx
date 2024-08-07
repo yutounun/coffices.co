@@ -3,8 +3,8 @@ import "./globals.css";
 import { Noto_Sans_JP } from "next/font/google";
 import { Stack } from "@mui/material";
 import Image from "next/image";
-// import LanguageToggle from "@/components/ui/LanguageToggle";
-// import Snackbar from "@/components/ui/Snackbar";
+import LanguageToggle from "@/components/ui/LanguageToggle";
+import Snackbar from "@/components/ui/Snackbar";
 
 const notojp = Noto_Sans_JP({
   weight: ["400", "500"],
@@ -37,9 +37,10 @@ export default function RootLayout({
           direction="row"
         >
           <Image src={"/logo/orange.png"} alt="image" height="40" width="100" />
-          {/* <LanguageToggle /> */}
+          <LanguageToggle />
         </Stack>
         {children}
+        <Snackbar />
       </body>
     </html>
   );
