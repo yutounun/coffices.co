@@ -52,11 +52,7 @@ const NavBar = ({ onClose }: { onClose?: () => void }) => {
       >
         {t?.header?.menus.list}
       </Typography>
-      <Typography
-        variant="h5"
-        onClick={onClickCreateButton}
-        sx={pathname === "/cafe/create" ? activeMenuStyle : baseMenuStyle}
-      >
+      <Typography variant="h5" onClick={onClickCreateButton} sx={baseMenuStyle}>
         {t?.header?.menus.post}
       </Typography>
     </>
