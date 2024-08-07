@@ -1,0 +1,130 @@
+{
+  "common": {
+    "jp": "日本語",
+    "en": "English",
+    "appName": "coffices.co",
+    "register": "送信"
+  },
+  "header": {
+    "menus": {
+      "list": "リスト",
+      "post": "投稿",
+      "signout": "サインアウト"
+    },
+    "stationName": "駅名"
+  },
+  "home": {
+    "title": "Welcome",
+    "subtitle": "リモートワークに最適なカフェを見つけましょう",
+    "buttons": {
+      "google": "Googleでサインイン",
+      "github": "GitHubでサインイン",
+      "facebook": "Facebookでサインイン",
+      "line": "Lineでサインイン"
+    },
+    "login": "ログイン"
+  },
+  "list": {
+    "rankingInTokyo": "東京全体ランキング",
+    "noData": "このエリアには登録されているカフェがありません",
+    "areaInfo": [
+      {
+        "title": "中目黒・代官山・恵比寿周辺",
+        "stations": ["中目黒駅", "代官山駅", "恵比寿駅"]
+      },
+      {
+        "title": "吉祥寺周辺",
+        "stations": ["吉祥寺駅", "三鷹駅"]
+      },
+      {
+        "title": "表参道周辺",
+        "stations": ["外苑前駅", "表参道駅", "原宿駅", "青山一丁目駅"]
+      },
+      {
+        "title": "代々木周辺",
+        "stations": ["代々木駅", "代々木上原駅", "代々木八幡駅"]
+      }
+    ]
+  },
+  "detail": {
+    "content": {
+      "station": "駅名:",
+      "openingHours": "営業時間"
+    },
+    "map": {
+      "explanation": "⚠️ コスト削減のためローカル環境ではGoogleMapを表示できません",
+      "check": "下記の本番環境をご確認ください"
+    },
+    "review": {
+      "title": "レビュー",
+      "postBtn": "投稿",
+      "noReview": "レビュー投稿のご協力感謝します"
+    },
+    "recommendation": {
+      "title": "あなたへのおすすめ"
+    },
+    "menu": {
+      "edit": "編集",
+      "delete": "削除",
+      "find": "Google Mapで確認"
+    }
+  },
+  "cafePostModal": {
+    "titles": {
+      "post": "新しいカフェを追加",
+      "edit": "カフェを編集"
+    },
+    "form": {
+      "cafeName": {
+        "label": "カフェ名",
+        "required": "カフェ名を入力してください"
+      },
+      "area": {
+        "label": "エリア",
+        "required": "エリアを入力してください"
+      },
+      "station": {
+        "label": "駅名",
+        "required": "駅名を入力してください"
+      },
+      "openHour": {
+        "label": "開店時間"
+      },
+      "closedTime": {
+        "label": "閉店時間"
+      }
+    }
+  },
+  "reviewModal": {
+    "titles": {
+      "add": "レビューを追加"
+    },
+    "form": {
+      "rating": {
+        "label": "評価（1〜5）",
+        "required": "評価を入力してください"
+      },
+      "comment": {
+        "label": "コメント",
+        "required": "コメントを入力してください"
+      },
+      "title": {
+        "label": "タイトル",
+        "required": "タイトルを入力してください"
+      }
+    }
+  },
+  "profileModal": {
+    "titles": {
+      "edit": "プロフィールを編集"
+    },
+    "form": {
+      "aboutU": "自己紹介",
+      "github": "GitHub URL",
+      "twitter": "Twitter URL",
+      "linkedIn": "LinkedIn URL",
+      "facebook": "Facebook URL",
+      "portfolio": "ポートフォリオ URL"
+    }
+  }
+}

@@ -15,7 +15,7 @@
   },
   "home": {
     "title": "Welcome",
-    "subtitle": ["Find your perfect remote work cafe"],
+    "subtitle": "Find your perfect remote work cafe",
     "buttons": {
       "google": "Sign in with Google",
       "github": "Sign in with GitHub",

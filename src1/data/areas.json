@@ -1,0 +1,141 @@
+[
+  {
+    "name": "千代田区",
+    "code": 1,
+    "kana": "ちよだく",
+    "en": "chiyoda"
+  },
+
+  {
+    "name": "中央区",
+    "code": 2,
+    "kana": "ちゅうおうく",
+    "en": "chuou"
+  },
+  {
+    "name": "港区",
+    "code": 3,
+    "kana": "みなとく",
+    "en": "minato"
+  },
+  {
+    "name": "新宿区",
+    "code": 4,
+    "kana": "しんじゅくく",
+    "en": "sinjyuku"
+  },
+  {
+    "name": "文京区",
+    "code": 5,
+    "kana": "ぶんきょうく",
+    "en": "bunkyou"
+  },
+  {
+    "name": "台東区",
+    "code": 6,
+    "kana": "だいとうく",
+    "en": "daitou"
+  },
+  {
+    "name": "墨田区",
+    "code": 7,
+    "kana": "すみだく",
+    "en": "sumida"
+  },
+  {
+    "name": "江東区",
+    "code": 8,
+    "kana": "こうとうく",
+    "en": "koutou"
+  },
+  {
+    "name": "品川区",
+    "code": 9,
+    "kana": "しながわく",
+    "en": "shinagawa"
+  },
+  {
+    "name": "目黒区",
+    "code": 10,
+    "kana": "めぐろく",
+    "en": "meguro"
+  },
+  {
+    "name": "大田区",
+    "code": 11,
+    "kana": "おおたく",
+    "en": "oota"
+  },
+  {
+    "name": "世田谷区",
+    "code": 12,
+    "kana": "せたがやく",
+    "en": "setagaya"
+  },
+  {
+    "name": "渋谷区",
+    "code": 13,
+    "kana": "しぶやく",
+    "en": "sibuya"
+  },
+  {
+    "name": "中野区",
+    "code": 14,
+    "kana": "なかのく",
+    "en": "nakano"
+  },
+  {
+    "name": "杉並区",
+    "code": 15,
+    "kana": "すぎなみく",
+    "en": "suginami"
+  },
+  {
+    "name": "豊島区",
+    "code": 16,
+    "kana": "としまく",
+    "en": "toshima"
+  },
+  {
+    "name": "北区",
+    "code": 17,
+    "kana": "きたく",
+    "en": "kita"
+  },
+  {
+    "name": "荒川区",
+    "code": 18,
+    "kana": "あらかわく",
+    "en": "arakawa"
+  },
+  {
+    "name": "板橋区",
+    "code": 19,
+    "kana": "いたばしく",
+    "en": "itabashi"
+  },
+  {
+    "name": "練馬区",
+    "code": 20,
+    "kana": "ねりまく",
+    "en": "nerima"
+  },
+  {
+    "name": "足立区",
+    "code": 21,
+    "kana": "あだちく",
+    "en": "adachi"
+  },
+  {
+    "name": "葛飾区",
+    "code": 22,
+    "kana": "かつしかく",
+    "en": "katushika"
+  },
+  {
+    "name": "江戸川区",
+    "code": 23,
+    "kana": "えどがわく",
+    "en": "edogawa"
+  }
+]
