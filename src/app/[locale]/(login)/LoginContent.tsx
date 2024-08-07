@@ -19,7 +19,7 @@ const LoginContent = () => {
     <Stack sx={loginContentStyle}>
       <Typography
         variant="h2"
-        sx={{ fontWeight: "bold", letterSpacing: 1.2, mt: { xs: 4, md: 0 } }}
+        sx={{ letterSpacing: 1.2, mt: { xs: 4, md: 0 } }}
       >
         {t("title")}
       </Typography>
