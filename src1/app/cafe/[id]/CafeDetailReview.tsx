@@ -9,7 +9,7 @@ import { useState } from "react";
 import SmallModal from "@/components/ui/SmallModal";
 import { mobile, desktop } from "@/utils/const";
 import useReviewModalStore from "@/store/reviewModal";
-import useTranslate from "@/hooks/useTranslate";
+import { useTranslations } from "next-intl";
 
 const CafeDetailReview = ({
   reviews,
@@ -18,7 +18,7 @@ const CafeDetailReview = ({
   reviews: ReviewI[];
   cafeId: string;
 }) => {
-  const { t } = useTranslate();
+  const t = useTranslations("home");
   const { openReviewModal } = useReviewModalStore();
 
   const openCreateReview = () => {

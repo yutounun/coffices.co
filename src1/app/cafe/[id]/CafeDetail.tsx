@@ -2,9 +2,9 @@
 import { CafeI } from "@/types/cafes";
 import { fetchCafeById } from "@/utils/api";
 import Image from "next/image";
-import CafeDetailContent from "#/cafe/[id]/CafeDetailContent";
-import CafeDetailReview from "#/cafe/[id]/CafeDetailReview";
-import Recommndation from "@/app/cafe/[id]/Recommndation";
+import CafeDetailContent from "#/[locale]/cafe/[id]/CafeDetailContent";
+import CafeDetailReview from "#/[locale]/cafe/[id]/CafeDetailReview";
+import Recommndation from "#/[locale]/cafe/[id]/Recommndation";
 import { Box } from "@mui/material";
 import { mobile, desktop } from "@/utils/const";
 import GoogleMap from "@/components/ui/GoogleMap";

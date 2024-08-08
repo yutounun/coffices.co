@@ -2,7 +2,7 @@ import React from "react";
 import { Typography } from "@mui/material";
 import useCafeModalStore from "@/store/openCafeModal";
 import { useRouter } from "next/navigation";
-import useTranslate from "@/hooks/useTranslate";
+import { useTranslations } from "next-intl";
 
 const baseMenuStyle = {
   py: { xs: 1, md: 2 },
@@ -17,7 +17,7 @@ const baseMenuStyle = {
 const NavBar = ({ onClose }: { onClose?: () => void }) => {
   const { openCafeModal } = useCafeModalStore();
   const router = useRouter();
-  const { t } = useTranslate();
+  const t = useTranslations("home");
 
   const onClickListButton = () => {
     router.push("/cafe/list");

@@ -25,7 +25,7 @@ interface propTypes {
 }
 
 const CafeInputForm = ({ handleModalClose }: propTypes) => {
-  const t = useTranslations("home");
+  const t = useTranslations("cafePostModal");
   const { selectedCafe: initialData } = useSelectedCafeStore();
   const { openSnackbar } = useSnackbarStore();
   const { modalType } = useCafeModalStore();
@@ -135,18 +135,16 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
       >
         {/* Name */}
         <Box>
-          <Typography variant="body1">
-            {t?.cafePostModal.form.cafeName.label}
-          </Typography>
+          <Typography variant="body1">{t("form.cafeName.label")}</Typography>
           <TextField
             color="secondary"
             sx={{ width: "100%" }}
-            label={inputName ? "" : t?.cafePostModal.form.cafeName.label}
+            label={inputName ? "" : t("form.cafeName.label")}
             error={!!errors.title}
             helperText={errors.title?.message?.toString()}
             size="small"
             {...register("title", {
-              required: t?.cafePostModal.form.cafeName.label.required,
+              required: t("form.cafeName.label.required"),
             })}
             InputLabelProps={{
               shrink: false,
@@ -156,9 +154,7 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
         </Box>
         {/* Area */}
         <Box>
-          <Typography variant="body1">
-            {t?.cafePostModal.form.area.label}
-          </Typography>
+          <Typography variant="body1">{t("form.area.label")}</Typography>
           <Controller
             name="area"
             control={control}
@@ -186,7 +182,7 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
                     {...params}
                     error={!!errors.area}
                     helperText={errors.area?.message?.toString()}
-                    label={inputArea ? "" : t?.cafePostModal.form.area.label}
+                    label={inputArea ? "" : t("form.area.label")}
                     InputProps={{
                       ...params.InputProps,
                       type: "search",
@@ -201,9 +197,7 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
         </Box>
         {/* Station */}
         <Box>
-          <Typography variant="body1">
-            {t?.cafePostModal.form.station.label}
-          </Typography>
+          <Typography variant="body1">{t("form.station.label")}</Typography>
           <Controller
             name="station"
             control={control}
@@ -231,9 +225,7 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
                     {...params}
                     error={!!errors.station}
                     helperText={errors.station?.message?.toString()}
-                    label={
-                      inputStation ? "" : t?.cafePostModal.form.station.label
-                    }
+                    label={inputStation ? "" : t("form.station.label")}
                     InputProps={{
                       ...params.InputProps,
                       type: "search",
@@ -248,9 +240,7 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
         </Box>
         {/* Opening Hour */}
         <Box>
-          <Typography variant="body1">
-            {t?.cafePostModal.form.openHour.label}
-          </Typography>
+          <Typography variant="body1">{t("form.openHour.label")}</Typography>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <Controller
               name="openHour"
@@ -279,9 +269,7 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
         </Box>
         {/* Closing Hour */}
         <Box>
-          <Typography variant="body1">
-            {t?.cafePostModal.form.closedTime.label}
-          </Typography>
+          <Typography variant="body1">{t("form.closedTime.label")}</Typography>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <Controller
               name="closeHour"

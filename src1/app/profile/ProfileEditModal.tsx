@@ -11,7 +11,7 @@ import {
 import { useForm } from "react-hook-form";
 import userStore from "@/store/me";
 import { updateUser } from "@/utils/api";
-import useTranslate from "@/hooks/useTranslate";
+import { useTranslations } from "next-intl";
 
 interface propTypes {
   showModal: boolean;
@@ -20,7 +20,7 @@ interface propTypes {
 
 const ProfileEditModal = ({ showModal, handleModalClose }: propTypes) => {
   const { user, setUser } = userStore();
-  const { t } = useTranslate();
+  const t = useTranslations("home");
   const {
     register,
     handleSubmit,

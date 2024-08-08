@@ -1,6 +1,6 @@
 import { CafeI } from "@/types/cafes";
 import { fetchAllCafes, fetchCafeById } from "@/utils/api";
-import CafeDetail from "#/cafe/[id]/CafeDetail";
+import CafeDetail from "#/[locale]/cafe/[id]/CafeDetail";
 
 interface CafeDetailPageProps {
   params: {

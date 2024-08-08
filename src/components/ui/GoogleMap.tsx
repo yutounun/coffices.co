@@ -1,10 +1,10 @@
-import useTranslate from "@/hooks/useTranslate";
+import { useTranslations } from "next-intl";
 import { Typography } from "@mui/material";
 import { GoogleMapsEmbed } from "@next/third-parties/google";
 import Link from "next/link";
 
 const GoogleMap = ({ locationName }: { locationName: string }) => {
-  const { t } = useTranslate();
+  const t = useTranslations("home");
 
   if (process.env.NODE_ENV === "development")
     return (

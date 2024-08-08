@@ -22,8 +22,26 @@ const ShopsList = ({ initialCafes }: { initialCafes: CafeI[] }) => {
   const [isUpdated, setIsUpdated] = useState(false);
   /** search keyword */
   const q = searchParams.get("q");
-  const t = useTranslations("home");
-  const areaInfo = t?.list.areaInfo;
+  const t = useTranslations("list");
+  // const areaInfo = t("areaInfo");
+  const areaInfo = [
+    {
+      title: "中目黒・代官山・恵比寿周辺",
+      stations: ["中目黒駅", "代官山駅", "恵比寿駅"],
+    },
+    {
+      title: "吉祥寺周辺",
+      stations: ["吉祥寺駅", "三鷹駅"],
+    },
+    {
+      title: "表参道周辺",
+      stations: ["外苑前駅", "表参道駅", "原宿駅", "青山一丁目駅"],
+    },
+    {
+      title: "代々木周辺",
+      stations: ["代々木駅", "代々木上原駅", "代々木八幡駅"],
+    },
+  ];
 
   /** Update cafe list after posting cafe */
   const refetchData = useCallback(async () => {
@@ -76,13 +94,13 @@ const ShopsList = ({ initialCafes }: { initialCafes: CafeI[] }) => {
         <Box sx={{ mt: { xs: 8, md: 0 } }}>
           {/* All cities in Tokyo */}
           <CafeRow
-            title={t?.list?.rankingInTokyo}
+            title={t("rankingInTokyo")}
             cafes={rankedList()}
             isTokyoRanking
           />
 
           {/* Other Areas, Not ranking style */}
-          {areaInfo?.map(
+          {areaInfo.map(
             ({ title, stations }: { title: string; stations: string[] }) => (
               <CafeRow
                 key={title}

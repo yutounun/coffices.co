@@ -1,11 +1,11 @@
 import { Button, Typography, IconButton, Avatar } from "@mui/material";
 import { signOut } from "next-auth/react";
-import useTranslate from "@/hooks/useTranslate";
+import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 
 const UserActions = ({}) => {
-  const { t } = useTranslate();
+  const t = useTranslations("home");
   const router = useRouter();
   const { data: session } = useSession();
 

@@ -5,6 +5,7 @@ import { Stack } from "@mui/material";
 import Image from "next/image";
 import LanguageToggle from "@/components/ui/LanguageToggle";
 import Snackbar from "@/components/ui/Snackbar";
+import QueryClientProviderComponent from "@/contexts/QueryClientProviderComponent";
 
 const notojp = Noto_Sans_JP({
   weight: ["400", "500"],
@@ -39,7 +40,7 @@ export default function RootLayout({
           <Image src={"/logo/orange.png"} alt="image" height="40" width="100" />
           <LanguageToggle />
         </Stack>
-        {children}
+        <QueryClientProviderComponent>{children}</QueryClientProviderComponent>
         <Snackbar />
       </body>
     </html>

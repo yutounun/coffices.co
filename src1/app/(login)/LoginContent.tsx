@@ -2,7 +2,7 @@
 import { Stack, Typography } from "@mui/material";
 import LoginButton from "./LoginButton";
 import { loginProviders } from "@/data/buttons";
-import useTranslate from "@/hooks/useTranslate";
+import { useTranslations } from "next-intl";
 
 const loginContentStyle = {
   py: "5%",
@@ -13,7 +13,7 @@ const loginContentStyle = {
 };
 
 const LoginContent = () => {
-  const { t } = useTranslate();
+  const t = useTranslations("home");
 
   return (
     <Stack sx={loginContentStyle}>

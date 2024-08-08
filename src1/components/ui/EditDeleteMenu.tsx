@@ -8,13 +8,13 @@ import { useRouter } from "next/navigation";
 import useCafeModalStore from "@/store/openCafeModal";
 import Link from "next/link";
 import { CafeI } from "@/types/cafes";
-import useTranslate from "@/hooks/useTranslate";
+import { useTranslations } from "next-intl";
 
 const EditDeleteMenu = ({ cafe }: { cafe: CafeI }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const router = useRouter();
-  const { t } = useTranslate();
+  const t = useTranslations("home");
 
   const { openCafeModal, setModalType } = useCafeModalStore();
 

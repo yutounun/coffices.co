@@ -6,7 +6,7 @@ import Image from "next/image";
 import NavBar from "@/components/ui/NavBar";
 import UserActions from "@/components/ui/UserActions";
 import LanguageToggle from "@/components/ui/LanguageToggle";
-import SearchBar from "@/app/cafe/list/SearchBar";
+import SearchBar from "#/[locale]/cafe/list/SearchBar";
 import { mobile, desktop } from "@/utils/const";
 import Link from "next/link";
 

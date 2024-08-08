@@ -1,5 +1,6 @@
 "use client";
-
+import { useMessages, NextIntlClientProvider } from "next-intl";
+import pick from "lodash/pick";
 import Header from "@/components/Header";
 import { Box, Stack } from "@mui/material";
 import { useSession } from "next-auth/react";
@@ -8,7 +9,7 @@ import { getUser } from "@/utils/api";
 import userStore from "@/store/me";
 import { StationNameContext } from "@/contexts/StationNameContext";
 import CafePostModal from "#/[locale]/cafe/_create/CafePostModal";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { CafeListContext } from "@/contexts/CafeListContext";
 import { CafeI } from "@/types/cafes";
 
@@ -30,20 +31,19 @@ export default function CafeListLayout({
     }
   }, [session]);
 
-  useEffect(() => {
-    if (status === "unauthenticated") {
-      router.push("/");
-    }
-  }, [status]);
+  if (status === "unauthenticated") {
+    redirect("/");
+  }
 
   const [stationName, setStationName] = useState("");
   const [cafeList, setCafeList] = useState<CafeI[]>([]);
+  const messages = useMessages();
 
   return (
     <Stack>
       <CafeListContext.Provider value={{ cafeList, setCafeList }}>
         <StationNameContext.Provider value={{ stationName, setStationName }}>
-          <Header />
+          {/* <Header /> */}
           <Box
             sx={{
               backgroundColor: "primary.main",
@@ -53,7 +53,9 @@ export default function CafeListLayout({
             <Box sx={{ mt: "3em" }}>{children}</Box>
 
             {/* Post Modal */}
-            <CafePostModal />
+            <NextIntlClientProvider messages={pick(messages, "home")}>
+              <CafePostModal />
+            </NextIntlClientProvider>
           </Box>
         </StationNameContext.Provider>
       </CafeListContext.Provider>

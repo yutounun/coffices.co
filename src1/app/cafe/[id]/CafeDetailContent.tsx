@@ -7,7 +7,7 @@ import { CafeI } from "@/types/cafes";
 import { Box, Stack, Typography } from "@mui/material";
 import React, { useEffect } from "react";
 import CardIcons from "../list/CardIcons";
-import useTranslate from "@/hooks/useTranslate";
+import { useTranslations } from "next-intl";
 
 const detailInfoTitleStyle = {
   width: { xs: "40%", md: "20%" },
@@ -21,7 +21,7 @@ const detailInfoContentStyle = {
 };
 
 const CafeDetailContent = ({ cafe }: { cafe: CafeI }) => {
-  const { t } = useTranslate();
+  const t = useTranslations("home");
   const { setSelectedCafeData } = useSelectedCafeStore();
   useEffect(() => {
     setSelectedCafeData(cafe);

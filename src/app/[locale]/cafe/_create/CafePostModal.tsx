@@ -32,14 +32,12 @@ const modalStyle = {
 };
 
 const CafeModal = () => {
-  const t = useTranslations("home");
+  const t = useTranslations("homecafePostModal");
   const { closeCafeModal, modalType, showsCafeModal, setModalType } =
     useCafeModalStore();
 
   const heading = useMemo(() => {
-    return modalType === "edit"
-      ? t?.cafePostModal.titles.edit
-      : t?.cafePostModal.titles.post;
+    return modalType === "edit" ? t("titles.edit") : t("titles.post");
   }, [modalType, t]);
 
   const handleCloseModal = () => {

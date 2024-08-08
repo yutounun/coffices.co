@@ -1,12 +1,12 @@
 import ScrollCardRow from "@/components/ui/ScrollCardRow";
 import { CafeI } from "@/types/cafes";
-import CafeCard from "#/cafe/list/CafeCard";
+import CafeCard from "#/[locale]/cafe/list/CafeCard";
 import { Typography } from "@mui/material";
 import { mobile, desktop } from "@/utils/const";
-import useTranslate from "@/hooks/useTranslate";
+import { useTranslations } from "next-intl";
 
 const Recommndation = ({ cafes }: { cafes: CafeI[] }) => {
-  const { t } = useTranslate();
+  const t = useTranslations("home");
   return (
     <>
       {/* Title */}

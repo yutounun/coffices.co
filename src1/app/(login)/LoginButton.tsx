@@ -2,7 +2,7 @@
 import React from "react";
 import { Button, Typography } from "@mui/material";
 import { signIn } from "next-auth/react";
-import useTranslate from "@/hooks/useTranslate";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { BorderColor } from "@mui/icons-material";
 
@@ -24,7 +24,7 @@ const LoginButtonStyle = {
 };
 
 const LoginButton = ({ text, signInUrl, iconUrl }: LoginButtonProps) => {
-  const { t } = useTranslate();
+  const t = useTranslations("home");
 
   return (
     <>
