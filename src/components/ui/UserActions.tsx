@@ -24,7 +24,7 @@ const UserActions = ({}) => {
     letterSpacing: ".3rem",
     textDecoration: "none",
     "&:hover": {
-      color: "#E7E7E7",
+      color: "primary.dark",
       textDecoration: "none",
       borderBottom: "none",
     },
