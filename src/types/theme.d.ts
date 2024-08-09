@@ -1,3 +1,5 @@
+import "@mui/material/styles";
+
 interface CustomPalette {
   custom: {
     white: string;

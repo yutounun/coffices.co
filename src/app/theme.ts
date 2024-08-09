@@ -1,8 +1,6 @@
 "use client";
-// import { createTheme } from "@mui/material/styles/createTheme";
-// import { PaletteOptions } from "@mui/material/styles/createPalette";
 import { createTheme } from "@mui/material/styles";
-import { PaletteOptions } from "@mui/material/styles";
+import { PaletteOptions } from "@mui/material/styles/createPalette";
 
 // 型定義の拡張
 declare module "@mui/material/styles/createPalette" {
