@@ -3,6 +3,7 @@ import { Typography } from "@mui/material";
 import useCafeModalStore from "@/store/openCafeModal";
 import { useRouter, usePathname } from "next/navigation";
 import useTranslate from "@/hooks/useTranslate";
+import theme from "#/theme";
 
 const baseMenuStyle = {
   py: { xs: 1, md: 1 },
@@ -14,7 +15,7 @@ const baseMenuStyle = {
   cursor: "pointer",
   borderBottom: "none",
   "&:hover": {
-    color: "#E7E7E7",
+    color: "primary.dark",
     textDecoration: "none",
     borderBottom: "none",
   },
@@ -22,7 +23,7 @@ const baseMenuStyle = {
 
 const activeMenuStyle = {
   ...baseMenuStyle,
-  borderBottom: "solid 2px #fff",
+  borderBottom: `solid 2px ${theme.palette.custom.white}`,
   paddingBottom: "0.5px",
   py: { xs: 1, md: 1 },
 };
