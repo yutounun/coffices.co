@@ -4,7 +4,6 @@ import { Button, Typography } from "@mui/material";
 import { signIn } from "next-auth/react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import { BorderColor } from "@mui/icons-material";
 
 type LoginButtonProps = {
   text: string;
@@ -26,10 +25,18 @@ const LoginButtonStyle = {
 const LoginButton = ({ text, signInUrl, iconUrl }: LoginButtonProps) => {
   const t = useTranslations("home");
 
+  const handleSignIn = () => {
+    const currentPath = window.location.pathname;
+    const pathLanguage = currentPath.split("/")[1]; // enやjaを取得
+    const callbackUrl = `/${pathLanguage}/cafe/list`;
+
+    signIn(signInUrl, { callbackUrl });
+  };
+
   return (
     <>
       <Button
-        onClick={() => signIn(signInUrl, { callbackUrl: "/en/cafe/list" })}
+        onClick={handleSignIn}
         startIcon={
           <Image src={iconUrl} alt={`${text} icon`} width={24} height={24} />
         }
