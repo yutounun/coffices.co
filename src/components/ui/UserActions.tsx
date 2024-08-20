@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 
 const UserActions = ({}) => {
-  const t = useTranslations("home");
+  const t = useTranslations("header");
   const router = useRouter();
   const { data: session } = useSession();
 
@@ -36,7 +36,7 @@ const UserActions = ({}) => {
         }}
       >
         <Typography sx={{ ...baseMenuStyle, letterSpacing: "0.1rem" }}>
-          {t?.header?.menus.signout}
+          {t("menus.signout")}
         </Typography>
       </Button>
       <IconButton onClick={handleOpenProfile} sx={{ p: 0 }}>

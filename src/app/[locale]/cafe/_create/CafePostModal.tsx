@@ -32,7 +32,7 @@ const modalStyle = {
 };
 
 const CafeModal = () => {
-  const t = useTranslations("homecafePostModal");
+  const t = useTranslations("cafePostModal");
   const { closeCafeModal, modalType, showsCafeModal, setModalType } =
     useCafeModalStore();
 

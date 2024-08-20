@@ -40,19 +40,21 @@ export default function CafeListLayout({
   return (
     <Stack>
       <Header />
-      <NextIntlClientProvider messages={pick(messages, "list")}>
-        <Box
-          sx={{
-            backgroundColor: "primary.main",
-            minHeight: "100vh",
-          }}
-        >
+      <Box
+        sx={{
+          backgroundColor: "primary.main",
+          minHeight: "100vh",
+        }}
+      >
+        <NextIntlClientProvider messages={pick(messages, "list")}>
           <Box sx={{ mt: "3em" }}>{children}</Box>
+        </NextIntlClientProvider>
 
-          {/* Post Modal */}
+        {/* Post Modal */}
+        <NextIntlClientProvider messages={pick(messages, "cafePostModal")}>
           <CafePostModal />
-        </Box>
-      </NextIntlClientProvider>
+        </NextIntlClientProvider>
+      </Box>
     </Stack>
   );
 }

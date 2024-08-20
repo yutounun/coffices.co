@@ -11,7 +11,6 @@ import SearchBar from "#/[locale]/cafe/list/SearchBar";
 import Link from "next/link";
 
 const HeaderContent = () => {
-  const t = useTranslations("home");
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const toggleDrawer = (open: any) => (event: any) => {
