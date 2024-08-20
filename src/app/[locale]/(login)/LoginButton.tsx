@@ -27,7 +27,7 @@ const LoginButton = ({ text, signInUrl, iconUrl }: LoginButtonProps) => {
 
   const handleSignIn = () => {
     const currentPath = window.location.pathname;
-    const pathLanguage = currentPath.split("/")[1]; // enやjaを取得
+    const pathLanguage = currentPath.split("/")[1]; // get [locale]
     const callbackUrl = `/${pathLanguage}/cafe/list`;
 
     signIn(signInUrl, { callbackUrl });

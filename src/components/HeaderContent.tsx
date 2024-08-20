@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Stack, Drawer, IconButton, Box } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -26,6 +26,12 @@ const HeaderContent = () => {
   const closeDrawer = () => {
     setDrawerOpen(false);
   };
+
+  const homeLink = useMemo(() => {
+    const currentPath = window.location.pathname;
+    const pathLanguage = currentPath.split("/")[1]; // get [locale]
+    return `/${pathLanguage}/cafe/list`;
+  }, []);
   return (
     <>
       <Stack
@@ -38,7 +44,7 @@ const HeaderContent = () => {
         }}
       >
         {/* Logo */}
-        <Link href="/cafe/list">
+        <Link href={homeLink}>
           <Image src="/logo/white.png" alt="logo" width={80} height={40} />
         </Link>
 
