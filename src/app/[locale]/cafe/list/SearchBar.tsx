@@ -5,6 +5,7 @@ import { TextField, InputAdornment, Autocomplete } from "@mui/material";
 import { styled } from "@mui/system";
 import stationsArea from "@/data/stationsArea.json";
 import { useRouter, useSearchParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 const CustomTextField = styled(TextField)(({ theme }) => ({
   "& .MuiOutlinedInput-root": {
@@ -52,6 +53,7 @@ const SearchBar = ({ sx, onClose }: propTypes) => {
   const [inputValue, setInputValue] = useState("");
   const router = useRouter();
   const searchParams = useSearchParams();
+  const t = useTranslations("header");
 
   useEffect(() => {
     const q = searchParams.get("q");
@@ -90,7 +92,7 @@ const SearchBar = ({ sx, onClose }: propTypes) => {
           {...params}
           sx={{ ...sx }}
           variant="outlined"
-          placeholder="Type area, station..."
+          placeholder={t("searchBar.placeholder")}
           onChange={handleTextFieldChange}
           onKeyPress={handleKeyPress}
           InputProps={{

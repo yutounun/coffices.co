@@ -11,7 +11,10 @@
       "post": "投稿",
       "signout": "サインアウト"
     },
-    "stationName": "駅名"
+    "stationName": "駅名",
+    "searchBar": {
+      "placeholder": "駅名・区を入力してください"
+    }
   },
   "home": {
     "title": "Welcome",
@@ -27,24 +30,24 @@
   "list": {
     "rankingInTokyo": "東京全体ランキング",
     "noData": "このエリアには登録されているカフェがありません",
-    "areaInfo": [
-      {
+    "areaInfo": {
+      "nakameguro": {
         "title": "中目黒・代官山・恵比寿周辺",
         "stations": ["中目黒駅", "代官山駅", "恵比寿駅"]
       },
-      {
+      "kichijoji": {
         "title": "吉祥寺周辺",
         "stations": ["吉祥寺駅", "三鷹駅"]
       },
-      {
+      "omotesando": {
         "title": "表参道周辺",
         "stations": ["外苑前駅", "表参道駅", "原宿駅", "青山一丁目駅"]
       },
-      {
+      "yoyogi": {
         "title": "代々木周辺",
         "stations": ["代々木駅", "代々木上原駅", "代々木八幡駅"]
       }
-    ]
+    }
   },
   "detail": {
     "content": {

@@ -11,7 +11,10 @@
       "post": "POST",
       "signout": "SIGNOUT"
     },
-    "stationName": "station name"
+    "stationName": "station name",
+    "searchBar": {
+      "placeholder": "Type area, station..."
+    }
   },
   "home": {
     "title": "Welcome",
@@ -27,24 +30,24 @@
   "list": {
     "rankingInTokyo": "Ranking in Tokyo",
     "noData": "There are no cafes registered in this area",
-    "areaInfo": [
-      {
+    "areaInfo": {
+      "nakameguro": {
         "title": "Nakameguro, Daikanyama, Ebisu Area",
         "stations": ["中目黒駅", "代官山駅", "恵比寿駅"]
       },
-      {
+      "kichijoji": {
         "title": "Kichijoji Area",
         "stations": ["吉祥寺駅", "三鷹駅"]
       },
-      {
+      "omotesando": {
         "title": "Omotesando Area",
         "stations": ["外苑前駅", "表参道駅", "原宿駅", "青山一丁目駅"]
       },
-      {
+      "yoyogi": {
         "title": "Yoyogi-Uehara Area",
         "stations": ["代々木駅", "代々木上原駅", "代々木八幡駅"]
       }
-    ]
+    }
   },
   "detail": {
     "content": {

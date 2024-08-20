@@ -1,4 +1,3 @@
-"use client";
 import { useMessages, NextIntlClientProvider } from "next-intl";
 import pick from "lodash/pick";
 import Header from "@/components/Header";
@@ -9,7 +8,7 @@ import { getUser } from "@/utils/api";
 import userStore from "@/store/me";
 import { StationNameContext } from "@/contexts/StationNameContext";
 import CafePostModal from "#/[locale]/cafe/_create/CafePostModal";
-import { redirect, useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 import { CafeListContext } from "@/contexts/CafeListContext";
 import { CafeI } from "@/types/cafes";
 
@@ -18,47 +17,42 @@ export default function CafeListLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const router = useRouter();
-  const { setUser } = userStore();
-  const { data: session, status } = useSession();
+  // const { setUser } = userStore();
+  // const { data: session, status } = useSession();
 
-  useEffect(() => {
-    if (session) {
-      // @ts-ignore
-      getUser(session?.user?.id).then((user) => {
-        setUser(user);
-      });
-    }
-  }, [session]);
+  // useEffect(() => {
+  //   if (session) {
+  //     // @ts-ignore
+  //     getUser(session?.user?.id).then((user) => {
+  //       setUser(user);
+  //     });
+  //   }
+  // }, [session]);
 
-  if (status === "unauthenticated") {
-    redirect("/");
-  }
+  // if (status === "unauthenticated") {
+  //   redirect("/");
+  // }
 
-  const [stationName, setStationName] = useState("");
-  const [cafeList, setCafeList] = useState<CafeI[]>([]);
+  // const [stationName, setStationName] = useState("");
+  // const [cafeList, setCafeList] = useState<CafeI[]>([]);
   const messages = useMessages();
 
   return (
     <Stack>
-      <CafeListContext.Provider value={{ cafeList, setCafeList }}>
-        <StationNameContext.Provider value={{ stationName, setStationName }}>
-          {/* <Header /> */}
-          <Box
-            sx={{
-              backgroundColor: "primary.main",
-              minHeight: "100vh",
-            }}
-          >
-            <Box sx={{ mt: "3em" }}>{children}</Box>
+      <Header />
+      <NextIntlClientProvider messages={pick(messages, "list")}>
+        <Box
+          sx={{
+            backgroundColor: "primary.main",
+            minHeight: "100vh",
+          }}
+        >
+          <Box sx={{ mt: "3em" }}>{children}</Box>
 
-            {/* Post Modal */}
-            <NextIntlClientProvider messages={pick(messages, "home")}>
-              <CafePostModal />
-            </NextIntlClientProvider>
-          </Box>
-        </StationNameContext.Provider>
-      </CafeListContext.Provider>
+          {/* Post Modal */}
+          <CafePostModal />
+        </Box>
+      </NextIntlClientProvider>
     </Stack>
   );
 }

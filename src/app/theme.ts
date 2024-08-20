@@ -78,7 +78,7 @@ let theme = createTheme({
     },
     h2: {
       fontFamily: "Lato, 'Open Sans', Roboto, 'Helvetica', Arial, sans-serif",
-      fontSize: "6rem", // 32px
+      fontSize: "2rem", // 32px
       fontWeight: 500,
       color: "black",
       "@media (max-width:600px)": {

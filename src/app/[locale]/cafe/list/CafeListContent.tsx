@@ -23,22 +23,21 @@ const ShopsList = ({ initialCafes }: { initialCafes: CafeI[] }) => {
   /** search keyword */
   const q = searchParams.get("q");
   const t = useTranslations("list");
-  // const areaInfo = t("areaInfo");
   const areaInfo = [
     {
-      title: "中目黒・代官山・恵比寿周辺",
+      title: t("areaInfo.nakameguro.title"),
       stations: ["中目黒駅", "代官山駅", "恵比寿駅"],
     },
     {
-      title: "吉祥寺周辺",
+      title: t("areaInfo.kichijoji.title"),
       stations: ["吉祥寺駅", "三鷹駅"],
     },
     {
-      title: "表参道周辺",
+      title: t("areaInfo.omotesando.title"),
       stations: ["外苑前駅", "表参道駅", "原宿駅", "青山一丁目駅"],
     },
     {
-      title: "代々木周辺",
+      title: t("areaInfo.yoyogi.title"),
       stations: ["代々木駅", "代々木上原駅", "代々木八幡駅"],
     },
   ];
