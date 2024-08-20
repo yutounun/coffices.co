@@ -4,13 +4,13 @@ import { GoogleMapsEmbed } from "@next/third-parties/google";
 import Link from "next/link";
 
 const GoogleMap = ({ locationName }: { locationName: string }) => {
-  const t = useTranslations("home");
+  const t = useTranslations("detail");
 
   if (process.env.NODE_ENV === "development")
     return (
       <>
-        <Typography variant="body1">{t?.detail.map.explanation}</Typography>
-        <Typography variant="body1">{t?.detail.map.check} </Typography>
+        <Typography variant="body1">{t("map.explanation")}</Typography>
+        <Typography variant="body1">{t("map.check")} </Typography>
         <Link href="https://coffices-co.vercel.app/">
           https://coffices-co.vercel.app/
         </Link>
