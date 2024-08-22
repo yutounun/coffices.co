@@ -1,6 +1,5 @@
 "use client";
 import React, { useMemo, useState } from "react";
-import { useTranslations } from "next-intl";
 import { Stack, Drawer, IconButton, Box } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import Image from "next/image";
@@ -9,9 +8,11 @@ import UserActions from "@/components/ui/UserActions";
 import LanguageToggle from "@/components/ui/LanguageToggle";
 import SearchBar from "#/[locale]/cafe/list/SearchBar";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const HeaderContent = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const pathname = usePathname();
 
   const toggleDrawer = (open: any) => (event: any) => {
     if (
@@ -28,10 +29,10 @@ const HeaderContent = () => {
   };
 
   const homeLink = useMemo(() => {
-    const currentPath = window.location.pathname;
-    const pathLanguage = currentPath.split("/")[1]; // get [locale]
+    const pathLanguage = pathname.split("/")[1]; // get [locale]
     return `/${pathLanguage}/cafe/list`;
-  }, []);
+  }, [pathname]);
+
   return (
     <>
       <Stack
