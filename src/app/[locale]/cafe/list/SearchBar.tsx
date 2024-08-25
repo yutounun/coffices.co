@@ -6,6 +6,7 @@ import { styled } from "@mui/system";
 import stationsArea from "@/data/stationsArea.json";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
+import { usePathname } from "next/navigation";
 
 const CustomTextField = styled(TextField)(({ theme }) => ({
   "& .MuiOutlinedInput-root": {
@@ -52,6 +53,7 @@ const SearchBar = ({ sx, onClose }: propTypes) => {
   const [keyword, setKeyword] = useState("");
   const [inputValue, setInputValue] = useState("");
   const router = useRouter();
+  const pathname = usePathname();
   const searchParams = useSearchParams();
   const t = useTranslations("header");
 
@@ -67,7 +69,8 @@ const SearchBar = ({ sx, onClose }: propTypes) => {
   };
 
   const onClickSearch = () => {
-    router.push(`/cafe/list?q=${keyword}`);
+    const pathLanguage = pathname.split("/")[1]; // get [locale]
+    router.push(`/${pathLanguage}/cafe/list?q=${keyword}`);
     if (onClose) onClose();
   };
 

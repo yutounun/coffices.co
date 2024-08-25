@@ -2,6 +2,7 @@ import { Typography } from "@mui/material";
 import useCafeModalStore from "@/store/openCafeModal";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
+import { usePathname } from "next/navigation";
 
 const baseMenuStyle = {
   py: { xs: 1, md: 2 },
@@ -17,9 +18,11 @@ const NavBar = ({ onClose }: { onClose?: () => void }) => {
   const { openCafeModal } = useCafeModalStore();
   const router = useRouter();
   const t = useTranslations("header");
+  const pathname = usePathname();
 
   const onClickListButton = () => {
-    router.push("/cafe/list");
+    const pathLanguage = pathname.split("/")[1]; // get [locale]
+    router.push(`/${pathLanguage}/cafe/list`);
     if (onClose) onClose();
   };
 
