@@ -1,17 +1,15 @@
 "use client";
 
-import React, { useContext, useCallback, useState, useEffect } from "react";
+import React, { useCallback, useState, useEffect } from "react";
+import stationsArea from "@/data/stationsArea.json";
 import { fetchAllCafes, filterCafe } from "@/utils/api";
 import "@/styles/cafe-list.scss";
 import CafeRow from "./CafeCardsRow";
 import CafeSearchResultList from "#/[locale]/cafe/list/CafeSearchResultList";
-import { StationNameContext } from "@/contexts/StationNameContext";
-// import { areaInfo } from "@/data/areas.js";
-import SearchBar from "./SearchBar";
 import { CafeI } from "@/types/cafes";
 import useCafeModalStore from "@/store/openCafeModal";
 import { useSearchParams } from "next/navigation";
-import { mobile, desktop } from "@/utils/const";
+import { desktop } from "@/utils/const";
 import { Box } from "@mui/material";
 import { useTranslations } from "next-intl";
 
@@ -47,12 +45,22 @@ const ShopsList = ({ initialCafes }: { initialCafes: CafeI[] }) => {
     let updatedCafes = initialCafes;
 
     if (q) {
-      updatedCafes = await filterCafe(q);
+      // Find place object with keyword
+      const matchingArea = stationsArea.find(
+        (area) => area.en === q || area.ja === q
+      );
+      if (matchingArea) {
+        const nameToSearch = matchingArea.ja;
+        updatedCafes = await filterCafe(nameToSearch);
+      } else {
+        updatedCafes = await fetchAllCafes();
+      }
     } else {
+      // qがない場合、全カフェを取得
       updatedCafes = await fetchAllCafes();
     }
-    setIsUpdated(true);
 
+    setIsUpdated(true);
     setCafes(updatedCafes);
   }, [q, initialCafes]);
 

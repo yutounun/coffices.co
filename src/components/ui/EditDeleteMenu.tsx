@@ -14,7 +14,7 @@ const EditDeleteMenu = ({ cafe }: { cafe: CafeI }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const router = useRouter();
-  const t = useTranslations("home");
+  const t = useTranslations("detail");
 
   const { openCafeModal, setModalType } = useCafeModalStore();
 

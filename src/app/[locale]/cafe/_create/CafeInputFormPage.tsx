@@ -17,7 +17,7 @@ import { CafeI, CreateReviewRequestI } from "@/types/cafes";
 import dayjs, { Dayjs } from "dayjs";
 import useSelectedCafeStore from "@/store/selectedCafe";
 import useCafeModalStore from "@/store/openCafeModal";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import useSnackbarStore from "@/store/snackbar";
 
 interface propTypes {
@@ -30,6 +30,8 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
   const { openSnackbar } = useSnackbarStore();
   const { modalType } = useCafeModalStore();
   const router = useRouter();
+  const pathname = usePathname();
+  const pathLanguage = pathname.split("/")[1]; // get [locale]
 
   const [inputName, setInputName] = useState("");
   const [inputArea, setInputArea] = useState("");
@@ -163,7 +165,11 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
                 freeSolo
                 id="area-autocomplete"
                 disableClearable
-                options={Areas.map((area) => area.en)}
+                options={
+                  pathLanguage === "ja"
+                    ? Areas.map((station) => station.ja)
+                    : Areas.map((station) => station.en)
+                }
                 value={value}
                 onChange={(event, newValue) => {
                   onChange(newValue); // フォームの値を更新
@@ -207,7 +213,11 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
                 freeSolo
                 id="station-autocomplete"
                 disableClearable
-                options={Stations.map((station) => station.en)}
+                options={
+                  pathLanguage === "ja"
+                    ? Stations.map((station) => station.ja)
+                    : Stations.map((station) => station.en)
+                }
                 value={value}
                 onChange={(event, newValue) => {
                   onChange(newValue); // フォームの値を更新

@@ -54,6 +54,7 @@ const SearchBar = ({ sx, onClose }: propTypes) => {
   const [inputValue, setInputValue] = useState("");
   const router = useRouter();
   const pathname = usePathname();
+  const pathLanguage = pathname.split("/")[1]; // get [locale]
   const searchParams = useSearchParams();
   const t = useTranslations("header");
 
@@ -69,7 +70,6 @@ const SearchBar = ({ sx, onClose }: propTypes) => {
   };
 
   const onClickSearch = () => {
-    const pathLanguage = pathname.split("/")[1]; // get [locale]
     router.push(`/${pathLanguage}/cafe/list?q=${keyword}`);
     if (onClose) onClose();
   };
@@ -83,7 +83,11 @@ const SearchBar = ({ sx, onClose }: propTypes) => {
   return (
     <CustomAutocomplete
       freeSolo
-      options={stationsArea.map((station) => station.en)}
+      options={
+        pathLanguage === "ja"
+          ? stationsArea.map((station) => station.ja)
+          : stationsArea.map((station) => station.en)
+      }
       inputValue={inputValue}
       sx={{ width: { xs: "100%", md: "30%" }, ...sx }}
       onInputChange={(event, newInputValue) => {
