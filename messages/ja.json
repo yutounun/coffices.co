@@ -117,7 +117,7 @@
       }
     }
   },
-  "profileModal": {
+  "profile": {
     "titles": {
       "edit": "プロフィールを編集"
     },
@@ -128,6 +128,7 @@
       "linkedIn": "LinkedIn URL",
       "facebook": "Facebook URL",
       "portfolio": "ポートフォリオ URL"
-    }
+    },
+    "register": "送信"
   }
 }

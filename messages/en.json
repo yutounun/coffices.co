@@ -98,7 +98,7 @@
       }
     }
   },
-  "reviewModal": {
+  "review": {
     "titles": {
       "add": "Add a Review"
     },
@@ -115,9 +115,10 @@
         "label": "Title",
         "required": "Please enter the title"
       }
-    }
+    },
+    "register": "Submit"
   },
-  "profileModal": {
+  "profile": {
     "titles": {
       "edit": "Edit Profile"
     },
@@ -128,7 +129,8 @@
       "linkedIn": "LinkedIn URL",
       "facebook": "Facebook URL",
       "portfolio": "Portfolio URL"
-    }
+    },
+    "register": "Submit"
   },
   "area": {
     "港区": "minato district"

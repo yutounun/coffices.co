@@ -20,7 +20,7 @@ interface propTypes {
 
 const ProfileEditModal = ({ showModal, handleModalClose }: propTypes) => {
   const { user, setUser } = userStore();
-  const t = useTranslations("home");
+  const t = useTranslations("profile");
   const {
     register,
     handleSubmit,
@@ -78,7 +78,7 @@ const ProfileEditModal = ({ showModal, handleModalClose }: propTypes) => {
           }}
         >
           <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
-            {t?.profileModal.titles.edit}
+            {t("titles.edit")}
           </Typography>
         </Stack>
 
@@ -103,7 +103,7 @@ const ProfileEditModal = ({ showModal, handleModalClose }: propTypes) => {
             >
               <TextField
                 id="outlined-basic"
-                label={t?.profileModal.form.aboutU}
+                label={t("form.aboutU")}
                 variant="outlined"
                 sx={{ width: "100%" }}
                 error={!!errors.bio}
@@ -113,7 +113,7 @@ const ProfileEditModal = ({ showModal, handleModalClose }: propTypes) => {
 
               <TextField
                 id="outlined-basic"
-                label={t?.profileModal.form.github}
+                label={t("form.github")}
                 variant="outlined"
                 sx={{ width: "100%" }}
                 error={!!errors.github}
@@ -123,7 +123,7 @@ const ProfileEditModal = ({ showModal, handleModalClose }: propTypes) => {
 
               <TextField
                 id="outlined-basic"
-                label={t?.profileModal.form.twitter}
+                label={t("form.twitter")}
                 variant="outlined"
                 sx={{ width: "100%" }}
                 error={!!errors.twitter}
@@ -133,7 +133,7 @@ const ProfileEditModal = ({ showModal, handleModalClose }: propTypes) => {
 
               <TextField
                 id="outlined-basic"
-                label={t?.profileModal.form.linkedIn}
+                label={t("form.linkedIn")}
                 variant="outlined"
                 sx={{ width: "100%" }}
                 error={!!errors.linkedIn}
@@ -143,7 +143,7 @@ const ProfileEditModal = ({ showModal, handleModalClose }: propTypes) => {
 
               <TextField
                 id="outlined-basic"
-                label={t?.profileModal.form.homePage}
+                label={t("form.homePage")}
                 variant="outlined"
                 sx={{ width: "100%" }}
                 error={!!errors.homePage}
