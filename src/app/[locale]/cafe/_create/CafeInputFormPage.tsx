@@ -106,7 +106,7 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
         const cafe: CafeI = await postCafe(postData);
         handleModalClose();
         openSnackbar("success", `${cafe.title} is just posted`);
-        router.push(`/cafe/${cafe._id}`);
+        router.push(`/${pathLanguage}/cafe/${cafe._id}`);
       }
     } catch (err: any) {
       const errorMessage = err.message || "An unknown error occurred";
