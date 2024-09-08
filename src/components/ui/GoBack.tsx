@@ -10,7 +10,7 @@ const GoBack = () => {
 
   const handleGoBack = async () => {
     // クエリパラメータを除去してURLを構築
-    await router.push("/en/cafe/list?q=aa");
+    await router.push("/en/cafe/list");
   };
 
   return (
