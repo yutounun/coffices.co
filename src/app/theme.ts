@@ -96,7 +96,7 @@ let theme = createTheme({
     },
     h4: {
       fontFamily: "Lato, 'Open Sans', Roboto, 'Helvetica', Arial, sans-serif",
-      fontSize: "1.3rem", // 16px
+      fontSize: "1.1rem", // 16px
       fontWeight: "regurar",
       color: "black",
       "@media (max-width:600px)": {

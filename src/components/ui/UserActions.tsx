@@ -1,16 +1,18 @@
 import { Button, Typography, IconButton, Avatar } from "@mui/material";
 import { signOut } from "next-auth/react";
-import useTranslate from "@/hooks/useTranslate";
-import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
+import { usePathname, useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 
 const UserActions = ({}) => {
-  const { t } = useTranslate();
+  const t = useTranslations("header");
   const router = useRouter();
   const { data: session } = useSession();
+  const pathname = usePathname();
 
   const handleOpenProfile = () => {
-    router.push("/profile");
+    const pathLanguage = pathname.split("/")[1]; // get [locale]
+    router.push(`/${pathLanguage}/profile`);
   };
 
   const onClickLogoutButton = () => {
@@ -36,7 +38,7 @@ const UserActions = ({}) => {
         }}
       >
         <Typography sx={{ ...baseMenuStyle, letterSpacing: "0.1rem" }}>
-          {t?.header?.menus.signout}
+          {t("menus.signout")}
         </Typography>
       </Button>
       <IconButton onClick={handleOpenProfile} sx={{ p: 0 }}>

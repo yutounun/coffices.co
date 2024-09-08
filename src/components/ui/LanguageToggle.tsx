@@ -1,12 +1,13 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Select, MenuItem, Box, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 import useLangStore from "@/store/lang";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const languages = [
-  { code: "eng", label: "English", img: "/flags/england.png" },
+  { code: "en", label: "English", img: "/flags/england.png" },
   { code: "ja", label: "日本語", img: "/flags/japan.png" },
 ];
 
@@ -32,31 +33,42 @@ const MenuItemContent = styled(Box)({
 });
 
 const LanguageSelect = ({ onClose }: { onClose?: () => void }) => {
-  const { lang, changeToJp, changeToEng } = useLangStore();
-  const [language, setLanguage] = useState(lang);
+  const [language, setLanguage] = useState<string>("en");
+  const router = useRouter();
+
+  useEffect(() => {
+    // URLのパスから言語コードを取得
+    const pathLanguage = window.location.pathname.split("/")[1];
+    if (pathLanguage === "ja" || pathLanguage === "en") {
+      setLanguage(pathLanguage);
+    }
+  }, []);
 
   const handleChange = (event: any) => {
     const selectedLang = event.target.value;
     setLanguage(selectedLang);
-    if (selectedLang === "ja") {
-      changeToJp();
-    } else if (selectedLang === "eng") {
-      changeToEng();
-    }
+
+    // URLの言語部分を更新して遷移
+    const currentPath = window.location.pathname;
+    const newPath = currentPath.replace(/^\/(en|ja)/, `/${selectedLang}`);
+    router.push(newPath);
+
     if (onClose) onClose();
   };
 
   return (
-    <CustomSelect size="small" value={language} onChange={handleChange} sx={{}}>
-      {languages.map((lang) => (
-        <MenuItem key={lang.code} value={lang.code}>
-          <MenuItemContent>
-            <Image src={lang.img} alt={lang.label} width={24} height={20} />
-            <Typography>{lang.label}</Typography>
-          </MenuItemContent>
-        </MenuItem>
-      ))}
-    </CustomSelect>
+    <>
+      <CustomSelect size="small" value={language} onChange={handleChange}>
+        {languages.map((lang) => (
+          <MenuItem key={lang.code} value={lang.code}>
+            <MenuItemContent>
+              <Image src={lang.img} alt={lang.label} width={24} height={20} />
+              <Typography>{lang.label}</Typography>
+            </MenuItemContent>
+          </MenuItem>
+        ))}
+      </CustomSelect>
+    </>
   );
 };
 

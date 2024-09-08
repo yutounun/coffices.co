@@ -8,11 +8,13 @@ import { useRouter } from "next/navigation";
 import useCafeModalStore from "@/store/openCafeModal";
 import Link from "next/link";
 import { CafeI } from "@/types/cafes";
+import { useTranslations } from "next-intl";
 
 const EditDeleteMenu = ({ cafe }: { cafe: CafeI }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const router = useRouter();
+  const t = useTranslations("detail");
 
   const { openCafeModal, setModalType } = useCafeModalStore();
 
@@ -63,8 +65,8 @@ const EditDeleteMenu = ({ cafe }: { cafe: CafeI }) => {
           },
         }}
       >
-        <MenuItem onClick={handleEdit}>Edit</MenuItem>
-        <MenuItem onClick={handleDelete}>Delete</MenuItem>
+        <MenuItem onClick={handleEdit}>{t("menu.edit")}</MenuItem>
+        <MenuItem onClick={handleDelete}>{t("menu.delete")}</MenuItem>
         <Link
           href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
             cafe.area + " " + cafe.title
@@ -73,7 +75,7 @@ const EditDeleteMenu = ({ cafe }: { cafe: CafeI }) => {
           rel="noopener"
           onClick={handleClose}
         >
-          <MenuItem>Find on Google Map</MenuItem>
+          <MenuItem>{t("menu.find")}</MenuItem>
         </Link>
       </Menu>
     </Box>
