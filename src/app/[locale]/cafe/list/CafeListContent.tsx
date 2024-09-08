@@ -42,6 +42,7 @@ const ShopsList = ({ initialCafes }: { initialCafes: CafeI[] }) => {
 
   /** Update cafe list after posting cafe */
   const refetchData = useCallback(async () => {
+    console.log("refetchData");
     let updatedCafes = initialCafes;
 
     if (q) {

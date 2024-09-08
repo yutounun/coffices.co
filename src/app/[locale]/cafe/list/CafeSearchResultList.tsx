@@ -1,7 +1,6 @@
 import { CafeI } from "@/types/cafes";
 import { Box, Stack, Typography } from "@mui/material";
 import CafeCard from "./CafeCard";
-import NotFound from "@/app/not-found.jsx";
 import { mobile, desktop } from "@/utils/const";
 import { notFound } from "next/navigation";
 

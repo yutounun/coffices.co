@@ -49,6 +49,10 @@
       }
     }
   },
+  "notFound": {
+    "errorCode": "404",
+    "goBack": "一覧に戻る"
+  },
   "detail": {
     "content": {
       "station": "駅名:",

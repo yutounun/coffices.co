@@ -49,6 +49,10 @@
       }
     }
   },
+  "notFound": {
+    "errorCode": "404",
+    "goBack": "Go Back to List Page"
+  },
   "detail": {
     "content": {
       "station": "Station:",
