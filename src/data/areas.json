@@ -3,139 +3,139 @@
     "ja": "千代田区",
     "code": 1,
     "kana": "ちよだく",
-    "en": "chiyoda"
+    "en": "chiyoda district"
   },
 
   {
     "ja": "中央区",
     "code": 2,
     "kana": "ちゅうおうく",
-    "en": "chuou"
+    "en": "chuou district"
   },
   {
     "ja": "港区",
     "code": 3,
     "kana": "みなとく",
-    "en": "minato"
+    "en": "minato district"
   },
   {
     "ja": "新宿区",
     "code": 4,
     "kana": "しんじゅくく",
-    "en": "sinjyuku"
+    "en": "sinjyuku district"
   },
   {
     "ja": "文京区",
     "code": 5,
     "kana": "ぶんきょうく",
-    "en": "bunkyou"
+    "en": "bunkyou district"
   },
   {
     "ja": "台東区",
     "code": 6,
     "kana": "だいとうく",
-    "en": "daitou"
+    "en": "daitou district"
   },
   {
     "ja": "墨田区",
     "code": 7,
     "kana": "すみだく",
-    "en": "sumida"
+    "en": "sumida district"
   },
   {
     "ja": "江東区",
     "code": 8,
     "kana": "こうとうく",
-    "en": "koutou"
+    "en": "koutou district"
   },
   {
     "ja": "品川区",
     "code": 9,
     "kana": "しながわく",
-    "en": "shinagawa"
+    "en": "shinagawa district"
   },
   {
     "ja": "目黒区",
     "code": 10,
     "kana": "めぐろく",
-    "en": "meguro"
+    "en": "meguro district"
   },
   {
     "ja": "大田区",
     "code": 11,
     "kana": "おおたく",
-    "en": "oota"
+    "en": "oota district"
   },
   {
     "ja": "世田谷区",
     "code": 12,
     "kana": "せたがやく",
-    "en": "setagaya"
+    "en": "setagaya district"
   },
   {
     "ja": "渋谷区",
     "code": 13,
     "kana": "しぶやく",
-    "en": "sibuya"
+    "en": "sibuya district"
   },
   {
     "ja": "中野区",
     "code": 14,
     "kana": "なかのく",
-    "en": "nakano"
+    "en": "nakano district"
   },
   {
     "ja": "杉並区",
     "code": 15,
     "kana": "すぎなみく",
-    "en": "suginami"
+    "en": "suginami district"
   },
   {
     "ja": "豊島区",
     "code": 16,
     "kana": "としまく",
-    "en": "toshima"
+    "en": "toshima district"
   },
   {
     "ja": "北区",
     "code": 17,
     "kana": "きたく",
-    "en": "kita"
+    "en": "kita district"
   },
   {
     "ja": "荒川区",
     "code": 18,
     "kana": "あらかわく",
-    "en": "arakawa"
+    "en": "arakawa district"
   },
   {
     "ja": "板橋区",
     "code": 19,
     "kana": "いたばしく",
-    "en": "itabashi"
+    "en": "itabashi district"
   },
   {
     "ja": "練馬区",
     "code": 20,
     "kana": "ねりまく",
-    "en": "nerima"
+    "en": "nerima district"
   },
   {
     "ja": "足立区",
     "code": 21,
     "kana": "あだちく",
-    "en": "adachi"
+    "en": "adachi district"
   },
   {
     "ja": "葛飾区",
     "code": 22,
     "kana": "かつしかく",
-    "en": "katushika"
+    "en": "katushika district"
   },
   {
     "ja": "江戸川区",
     "code": 23,
     "kana": "えどがわく",
-    "en": "edogawa"
+    "en": "edogawa district"
   }
 ]

@@ -19,6 +19,7 @@ import useSelectedCafeStore from "@/store/selectedCafe";
 import useCafeModalStore from "@/store/openCafeModal";
 import { usePathname, useRouter } from "next/navigation";
 import useSnackbarStore from "@/store/snackbar";
+import stationsArea from "@/data/stationsArea.json";
 
 interface propTypes {
   handleModalClose: () => void;
@@ -85,9 +86,21 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
 
   /** Submit action */
   async function handleCafeSubmit(data: CafePostRequestI) {
+    const jaStation =
+      pathLanguage === "en"
+        ? stationsArea.find((station) => data.station === station.en)?.ja
+        : stationsArea.find((station) => data.station === station.ja)?.ja;
+
+    const jaArea =
+      pathLanguage === "en"
+        ? stationsArea.find((area) => data.area === area.en)?.ja
+        : stationsArea.find((area) => data.area === area.ja)?.ja;
+
     const postData = {
       ...data,
       ...selectedIcons,
+      station: jaStation ?? "",
+      area: jaArea ?? "",
       openHour: extractHourMinute(data.openHour),
       closeHour: extractHourMinute(data.closeHour),
       reviews: [],
@@ -146,7 +159,7 @@ const CafeInputForm = ({ handleModalClose }: propTypes) => {
             helperText={errors.title?.message?.toString()}
             size="small"
             {...register("title", {
-              required: t("form.cafeName.label.required"),
+              required: t("form.cafeName.required"),
             })}
             InputLabelProps={{
               shrink: false,

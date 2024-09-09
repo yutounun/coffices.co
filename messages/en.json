@@ -107,6 +107,10 @@
       "add": "Add a Review"
     },
     "form": {
+      "cafeName": {
+        "label": "cafe name",
+        "required": "Please enter the cafe name"
+      },
       "rating": {
         "label": "Rating (1~5)",
         "required": "Please enter the rating"
