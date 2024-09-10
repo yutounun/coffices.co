@@ -8,6 +8,8 @@ import { Box, Stack, Typography } from "@mui/material";
 import React, { useEffect } from "react";
 import CardIcons from "../list/CardIcons";
 import { useTranslations } from "next-intl";
+import { usePathname } from "next/navigation";
+import stationsArea from "@/data/stationsArea.json";
 
 const detailInfoTitleStyle = {
   width: { xs: "40%", md: "20%" },
@@ -22,10 +24,25 @@ const detailInfoContentStyle = {
 
 const CafeDetailContent = ({ cafe }: { cafe: CafeI }) => {
   const t = useTranslations("detail");
+  const pathname = usePathname();
+  const pathLanguage = pathname.split("/")[1];
   const { setSelectedCafeData } = useSelectedCafeStore();
+
   useEffect(() => {
     setSelectedCafeData(cafe);
   }, [setSelectedCafeData, cafe]);
+
+  const translatedArea = () => {
+    return pathLanguage === "en"
+      ? stationsArea.find((area) => cafe.area === area.ja)?.en
+      : stationsArea.find((area) => cafe.area === area.ja)?.ja;
+  };
+
+  const translatedStation = () => {
+    return pathLanguage === "en"
+      ? stationsArea.find((station) => cafe.station === station.ja)?.en
+      : stationsArea.find((station) => cafe.station === station.ja)?.ja;
+  };
   return (
     <Stack sx={{ my: 5 }}>
       {/* Title Line */}
@@ -38,7 +55,7 @@ const CafeDetailContent = ({ cafe }: { cafe: CafeI }) => {
 
         <Stack direction="row" sx={{ alignItems: "center", minWidth: 70 }}>
           {/* Area */}
-          <Typography variant="body1">{cafe.area}</Typography>
+          <Typography variant="body1">{translatedArea()}</Typography>
 
           {/* Setting Button */}
           <EditDeleteMenu cafe={cafe} />
@@ -64,7 +81,7 @@ const CafeDetailContent = ({ cafe }: { cafe: CafeI }) => {
             {t("content.station")}
           </Typography>
           <Typography variant="body1" sx={{ detailInfoContentStyle }}>
-            {cafe.station}
+            {translatedStation()}
           </Typography>
         </Stack>
 

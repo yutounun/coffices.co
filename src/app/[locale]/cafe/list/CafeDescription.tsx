@@ -2,6 +2,8 @@ import { Stack, Typography } from "@mui/material";
 import { CafeI } from "@/types/cafes";
 import Stars from "@/components/ui/Stars";
 import CardIcons from "./CardIcons";
+import { usePathname } from "next/navigation";
+import stationsArea from "@/data/stationsArea.json";
 
 interface PropTypes {
   cafe: CafeI;
@@ -16,6 +18,15 @@ const cardTitleStyle = {
 };
 
 const CafeDescription = ({ cafe }: PropTypes) => {
+  const pathname = usePathname();
+  const pathLanguage = pathname.split("/")[1];
+
+  const translatedStation = () => {
+    return pathLanguage === "en"
+      ? stationsArea.find((station) => cafe.station === station.ja)?.en
+      : stationsArea.find((station) => cafe.station === station.ja)?.ja;
+  };
+
   return (
     <Stack
       sx={{
@@ -46,7 +57,7 @@ const CafeDescription = ({ cafe }: PropTypes) => {
       </Stack>
 
       {/* Station Name */}
-      <Typography variant="body1">{cafe.station}</Typography>
+      <Typography variant="body1">{translatedStation()}</Typography>
 
       {/* Icons */}
       <CardIcons cafe={cafe} />

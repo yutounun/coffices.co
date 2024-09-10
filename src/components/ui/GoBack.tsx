@@ -1,7 +1,6 @@
 "use client";
 import { Button, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 const GoBack = () => {
@@ -9,7 +8,6 @@ const GoBack = () => {
   const router = useRouter();
 
   const handleGoBack = async () => {
-    // クエリパラメータを除去してURLを構築
     await router.push("/en/cafe/list");
   };
 
