@@ -2,18 +2,18 @@
 import React, { useEffect, useState } from "react";
 import { Select, MenuItem, Box, Typography } from "@mui/material";
 import { styled } from "@mui/system";
-import useLangStore from "@/store/lang";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 const languages = [
-  { code: "en", label: "English", img: "/flags/england.png" },
+  { code: "en", label: "English", img: "/flags/uk.jpg" },
   { code: "ja", label: "日本語", img: "/flags/japan.png" },
 ];
 
 const CustomSelect = styled(Select)({
-  width: "200px",
-  borderRadius: "10px",
+  width: 70, // Keep the button small and round
+  borderRadius: 30,
+  height: 38,
   backgroundColor: "#f9f9f9",
   "& .MuiOutlinedInput-notchedOutline": {
     borderColor: "#D3D3D3",
@@ -34,6 +34,7 @@ const MenuItemContent = styled(Box)({
 
 const LanguageSelect = ({ onClose }: { onClose?: () => void }) => {
   const [language, setLanguage] = useState<string>("en");
+  const [open, setOpen] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -58,12 +59,38 @@ const LanguageSelect = ({ onClose }: { onClose?: () => void }) => {
 
   return (
     <>
-      <CustomSelect size="small" value={language} onChange={handleChange}>
+      <CustomSelect
+        size="small"
+        value={language}
+        onChange={handleChange}
+        onOpen={() => setOpen(true)}
+        onClose={() => setOpen(false)}
+        MenuProps={{
+          PaperProps: {
+            style: {
+              marginTop: "10px", // Adjust this value to move the dropdown lower
+            },
+          },
+        }}
+        renderValue={(selected) => (
+          // This is the rendering logic for the closed select button
+          <Box display="flex" alignItems="center" gap="10px">
+            <Image
+              src={languages.find((lang) => lang.code === selected)?.img || ""}
+              alt={
+                languages.find((lang) => lang.code === selected)?.label || ""
+              }
+              width={24}
+              height={20}
+            />
+          </Box>
+        )}
+      >
         {languages.map((lang) => (
           <MenuItem key={lang.code} value={lang.code}>
             <MenuItemContent>
               <Image src={lang.img} alt={lang.label} width={24} height={20} />
-              <Typography>{lang.label}</Typography>
+              <Typography variant="body1">{lang.label}</Typography>
             </MenuItemContent>
           </MenuItem>
         ))}

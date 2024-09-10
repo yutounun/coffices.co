@@ -1,4 +1,12 @@
-import { Button, Typography, IconButton, Avatar } from "@mui/material";
+import {
+  Button,
+  Typography,
+  IconButton,
+  Avatar,
+  Stack,
+  Box,
+} from "@mui/material";
+import LanguageToggle from "@/components/ui/LanguageToggle";
 import { signOut } from "next-auth/react";
 import { useTranslations } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
@@ -28,7 +36,10 @@ const UserActions = ({}) => {
   };
 
   return (
-    <>
+    <Stack direction="row" sx={{ alignItems: "center", height: 20 }} gap={2}>
+      <Box sx={{ display: { xs: "none", md: "flex" } }}>
+        <LanguageToggle />
+      </Box>
       <Button
         onClick={onClickLogoutButton}
         sx={{
@@ -48,7 +59,7 @@ const UserActions = ({}) => {
           sx={{ width: { xs: 28, md: 38 }, height: { xs: 28, md: 38 } }}
         />
       </IconButton>
-    </>
+    </Stack>
   );
 };
 
