@@ -51,6 +51,7 @@
   },
   "notFound": {
     "errorCode": "404",
+    "message": "お探しのページは見つかりませんでした",
     "goBack": "一覧に戻る"
   },
   "detail": {

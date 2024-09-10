@@ -51,6 +51,7 @@
   },
   "notFound": {
     "errorCode": "404",
+    "message": "The page you're looking for doesn't exist.",
     "goBack": "Go Back to List Page"
   },
   "detail": {
