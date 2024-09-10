@@ -47,12 +47,12 @@
         "title": "Yoyogi-Uehara Area",
         "stations": ["代々木駅", "代々木上原駅", "代々木八幡駅"]
       }
+    },
+    "notFound": {
+      "errorCode": "404",
+      "message": "The page you're looking for doesn't exist.",
+      "goBack": "Go Back to List Page"
     }
-  },
-  "notFound": {
-    "errorCode": "404",
-    "message": "The page you're looking for doesn't exist.",
-    "goBack": "Go Back to List Page"
   },
   "detail": {
     "content": {

@@ -47,12 +47,12 @@
         "title": "代々木周辺",
         "stations": ["代々木駅", "代々木上原駅", "代々木八幡駅"]
       }
+    },
+    "notFound": {
+      "errorCode": "404",
+      "message": "お探しのページは見つかりませんでした",
+      "goBack": "一覧に戻る"
     }
-  },
-  "notFound": {
-    "errorCode": "404",
-    "message": "お探しのページは見つかりませんでした",
-    "goBack": "一覧に戻る"
   },
   "detail": {
     "content": {

@@ -75,8 +75,10 @@ const ShopsList = ({ initialCafes }: { initialCafes: CafeI[] }) => {
    * @return The top ranked cafes, limited by maxRanking.count
    */
   const rankedList = useCallback(() => {
-    return cafes.length > 1
-      ? cafes.sort((a, b) => b.rate - a.rate).slice(0, desktop.maxRanking.count)
+    return cafes?.length > 1
+      ? cafes
+          ?.sort((a, b) => b.rate - a.rate)
+          .slice(0, desktop.maxRanking.count)
       : cafes;
   }, [cafes]);
 
@@ -88,7 +90,7 @@ const ShopsList = ({ initialCafes }: { initialCafes: CafeI[] }) => {
    */
   const cafeShopsInSpecificArea = useCallback(
     (stations: string[]) => {
-      return cafes.filter((cafe) =>
+      return cafes?.filter((cafe) =>
         stations.some((station) => cafe.station === station)
       );
     },

@@ -22,10 +22,10 @@ const Recommndation = ({ cafes }: { cafes: CafeI[] }) => {
         {t("recommendation.title")}
       </Typography>
 
-      <ScrollCardRow cardCount={cafes.length}>
-        {cafes.map((cafe: CafeI, index: number) => (
+      <ScrollCardRow cardCount={cafes?.length}>
+        {cafes?.map((cafe: CafeI, index: number) => (
           <CafeCard
-            lastIndex={cafes.length - 1}
+            lastIndex={cafes?.length - 1}
             index={index}
             key={cafe._id}
             cafe={cafe}
