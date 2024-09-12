@@ -91,9 +91,6 @@ const HeaderContent = () => {
             gap: 4,
           }}
         >
-          <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            <LanguageToggle />
-          </Box>
           <NavBar />
           <SearchBar />
         </Stack>
