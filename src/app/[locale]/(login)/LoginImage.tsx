@@ -19,6 +19,7 @@ const LoginImage = () => {
         layout="fill"
         objectFit="cover"
         style={{ borderRadius: 15 }}
+        priority
       />
     </Stack>
   );
