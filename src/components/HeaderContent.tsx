@@ -57,12 +57,7 @@ const HeaderContent = () => {
             justifyContent: "flex-end",
           }}
         >
-          <IconButton
-            color="primary"
-            edge="start"
-            onClick={toggleDrawer(true)}
-            sx={{ ml: 2 }}
-          >
+          <IconButton edge="start" onClick={toggleDrawer(true)} sx={{ ml: 2 }}>
             <MenuIcon />
           </IconButton>
           <Drawer

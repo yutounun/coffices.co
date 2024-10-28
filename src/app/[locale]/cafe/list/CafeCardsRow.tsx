@@ -27,7 +27,7 @@ const CafeCardRow = ({ cafes, title, isTokyoRanking }: propTypes) => {
           px: { xs: mobile.space.aroundX, md: desktop.space.aroundX },
         }}
       >
-        {title}
+        Cafe Ranking
       </Typography>
 
       {/* Default CardList */}

@@ -110,7 +110,7 @@ const ShopsList = ({ initialCafes }: { initialCafes: CafeI[] }) => {
           />
 
           {/* Other Areas, Not ranking style */}
-          {areaInfo?.map(
+          {/* {areaInfo?.map(
             ({ title, stations }: { title: string; stations: string[] }) => (
               <CafeRow
                 key={title}
@@ -118,7 +118,7 @@ const ShopsList = ({ initialCafes }: { initialCafes: CafeI[] }) => {
                 cafes={cafeShopsInSpecificArea(stations)}
               />
             )
-          )}
+          )} */}
         </Box>
       )}
 
