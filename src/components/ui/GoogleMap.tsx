@@ -5,17 +5,14 @@ import Image from "next/image";
 import { locationObjI } from "@/types/GooglePlacesTypes";
 
 const GoogleMap = ({
-  locationName,
+  locationKeyword,
+  currentLocation,
   clickedName,
 }: {
-  locationName: string | locationObjI;
+  locationKeyword: string | null;
+  currentLocation: locationObjI | null;
   clickedName: string;
 }) => {
-  console.log(
-    "🚀 ~ locationName:",
-    locationName,
-    `${locationName.lat},${locationName.lng}`
-  );
   const showMap = true;
 
   // Production Mode
@@ -33,13 +30,26 @@ const GoogleMap = ({
         />
       );
     } else {
+      if (locationKeyword) {
+        return (
+          <GoogleMapsEmbed
+            loading="lazy"
+            allowfullscreen={true}
+            apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ""}
+            height={850}
+            width="100%"
+            mode="search"
+            q={`coffee shops in ${locationKeyword}`}
+          />
+        );
+      }
       return (
         <GoogleMapsEmbed
           loading="lazy"
           allowfullscreen={true}
           apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ""}
           height={850}
-          center={`${locationName.lat},${locationName.lng}`}
+          center={`${currentLocation.lat},${currentLocation.lng}`}
           zoom={"15"}
           width="100%"
           mode="search"

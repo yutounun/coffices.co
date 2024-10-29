@@ -105,7 +105,8 @@ const Search = () => {
         {/* TODO:LocationNameに現在地を入れる */}
         <GoogleMap
           clickedName={clickedName}
-          locationName={currentLocationMap}
+          locationKeyword={location}
+          currentLocation={currentLocationMap}
         />
       </Box>
     </Stack>

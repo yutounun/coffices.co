@@ -11,8 +11,8 @@ export async function POST(request: NextRequest) {
   const req = await request.json();
 
   const url = req.location
-    ? `https://maps.googleapis.com/maps/api/place/textsearch/json?query="cafe+in+${req.location}"&radius=1500&key=${apiKey}` // search
-    : `https://maps.googleapis.com/maps/api/place/textsearch/json?query="cafe"&location=${req.currentLocation.lat},${req.currentLocation.lng}&radius=1500&key=${apiKey}`; // current location
+    ? `https://maps.googleapis.com/maps/api/place/textsearch/json?query="coffee shops in "${req.location}"&radius=1500&key=${apiKey}` // search
+    : `https://maps.googleapis.com/maps/api/place/textsearch/json?query="coffee shops"&location=${req.currentLocation.lat},${req.currentLocation.lng}&radius=1500&key=${apiKey}`; // current location
 
   console.log("🚀 ~ POST ~ req:", req);
   console.log("🚀 ~ POST ~ url:", url);
