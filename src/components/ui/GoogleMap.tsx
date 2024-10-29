@@ -1,51 +1,50 @@
 "use client";
 
-import { useTranslations } from "next-intl";
-import { Box, Typography } from "@mui/material";
 import { GoogleMapsEmbed } from "@next/third-parties/google";
-import Link from "next/link";
-import { useEffect } from "react";
-import { searchCafeOnGoogle } from "@/utils/api";
+import Image from "next/image";
+import { locationObjI } from "@/types/GooglePlacesTypes";
 
-const GoogleMap = ({ locationName }: { locationName: string }) => {
-  // const t = useTranslations("detail");
+const GoogleMap = ({
+  locationName,
+  clickedName,
+}: {
+  locationName: string | locationObjI;
+  clickedName: string;
+}) => {
+  const showMap = true;
 
-  useEffect(() => {
-    searchCafeOnGoogle(locationName);
-  }, [locationName]);
+  // Production Mode
+  if (showMap) {
+    if (clickedName) {
+      return (
+        <GoogleMapsEmbed
+          loading="lazy"
+          allowfullscreen={true}
+          apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ""}
+          height={850}
+          width="100%"
+          mode="place"
+          q={clickedName}
+        />
+      );
+    } else {
+      return (
+        <GoogleMapsEmbed
+          loading="lazy"
+          allowfullscreen={true}
+          apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ""}
+          height={850}
+          center={(locationName.lat, locationName.lng)}
+          width="100%"
+          mode="search"
+          q={`coffee shops `}
+        />
+      );
+    }
+  }
 
-  // if (process.env.NODE_ENV === "development")
-  // return (
-  //   <>
-  //     <Typography variant="body1">{t("map.explanation")}</Typography>
-  //     <Typography variant="body1">{t("map.check")} </Typography>
-  //     <Link href="https://coffices-co.vercel.app/">
-  //       <Typography
-  //         variant="body1"
-  //         sx={{
-  //           "&:hover": {
-  //             cursor: "pointer",
-  //             color: "black",
-  //           },
-  //         }}
-  //       >
-  //         https://coffices-co.vercel.app/{" "}
-  //       </Typography>
-  //     </Link>
-  //   </>
-  // );
-  return (
-    // <GoogleMapsEmbed
-    //   loading="lazy"
-    //   allowfullscreen={true}
-    //   apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ""}
-    //   height={850}
-    //   width="100%"
-    //   mode="search"
-    //   q={locationName}
-    // />
-    <Box>Fake Map Screen</Box>
-  );
+  // Dummy Mode
+  return <Image src="/dummy/gmap.png" alt="coffee" width={800} height={800} />;
 };
 
 export default GoogleMap;

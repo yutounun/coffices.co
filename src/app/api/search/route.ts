@@ -19,7 +19,21 @@ export async function POST(request: NextRequest) {
       `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${query}&key=${apiKey}`
     );
     console.log("🚀 ~ searchCafeInTokyo ~ res:", res.data.results);
-    return NextResponse.json(res.data.results);
+    const placesResults = res.data.results;
+    // const photoRef = placesResults[0].photos[0].photo_reference;
+    // console.log("🚀 ~ searchCafeInTokyo ~ photoRef:", photoRef);
+
+    // const photo = await axios.get(
+    //   `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photoRef}&key=${apiKey}`
+    // );
+    // const photoUrl = photo.url;
+
+    // console.log("🚀 ~ searchCafeInTokyo ~ photoUrl:", photo.url);
+    // const rtn = {
+    //   ...placesResults,
+    //   photoUrl: photoUrl,
+    // };
+    return NextResponse.json(placesResults);
   } catch (error) {
     console.error(
       "🚀 ~ searchCafeInTokyo ~ error:",

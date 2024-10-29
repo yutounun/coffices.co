@@ -1,19 +1,49 @@
 "use client";
 import GoogleMap from "@/components/ui/GoogleMap";
-import { searchCafeOnGoogle } from "@/utils/api";
-import { Box, Grid, Stack, Typography } from "@mui/material";
-import Image from "next/image";
+import { Box, Grid, Stack } from "@mui/material";
 import React, { useEffect, useState } from "react";
+import Store from "./Store";
+import { dummyStores, StoreI } from "@/types/GooglePlacesTypes";
+import { searchCafeOnGoogle } from "@/utils/api";
 
-const page = () => {
-  // const stores = await searchCafeOnGoogle("Vancouver");
-  const [stores, setStores] = useState([]);
+const Search = () => {
+  const [stores, setStores] = useState<StoreI[]>([]);
+  const [clickedName, setClickedName] = useState<string>("");
+  const [currentLocation, setCurrentLocation] = useState({ lat: 0, lng: 0 });
+
   useEffect(() => {
-    // await実装
-    searchCafeOnGoogle().then((data) => {
+    const fetchStores = async () => {
+      // const data = await searchCafeOnGoogle();
+      const data = dummyStores;
       setStores(data);
-      console.log("🚀 ~ searchCafeOnGoogle ~ data:", data);
-    });
+    };
+    fetchStores();
+  }, []);
+
+  function handleClickStore(name: string) {
+    setClickedName(name);
+  }
+
+  useEffect(() => {
+    console.log("🚀 ~ useEffect ~ navigator:", navigator);
+    if (typeof navigator !== "undefined" && navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setCurrentLocation({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          });
+
+          console.log({
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+          });
+        },
+        (error) => {
+          console.error("Error obtaining location:", error);
+        }
+      );
+    }
   }, []);
 
   return (
@@ -24,30 +54,21 @@ const page = () => {
         sx={{
           overflow: "auto",
           width: "50%",
-          pt: 2,
           py: 2,
+          px: 1,
           backgroundColor: "secondary.light",
         }}
       >
         {stores?.map((store) => (
-          <Grid
+          <Store
             key={store.place_id}
-            item
-            xs={4}
-            sx={{ height: "auto", alignItems: "stretch" }}
-          >
-            <Image src="/coffee.jpg" alt="coffee" width={240} height={130} />
-            <Stack sx={{ p: 1, height: "auto" }}>
-              <Typography variant="h5">
-                {store.name}: {store.place_id}
-              </Typography>
-              <Typography variant="body1">{store.formatted_address}</Typography>
-              <Typography variant="body1">
-                opening_hours:{" "}
-                {store.opening_hours.opening_hours ? "open" : "closed"}
-              </Typography>
-            </Stack>
-          </Grid>
+            placeId={store.place_id}
+            photoRef={store.photos?.[0]?.photo_reference}
+            name={store.name}
+            formatted_address={store.formatted_address}
+            open_now={store.opening_hours?.open_now}
+            handleClickStore={handleClickStore}
+          />
         ))}
       </Grid>
 
@@ -60,10 +81,11 @@ const page = () => {
           width: "100%",
         }}
       >
-        <GoogleMap locationName="coffee shops in Vancouver" />
+        {/* TODO:LocationNameに現在地を入れる */}
+        <GoogleMap clickedName={clickedName} locationName={currentLocation} />
       </Box>
     </Stack>
   );
 };
 
-export default page;
+export default Search;
