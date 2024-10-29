@@ -11,6 +11,11 @@ const GoogleMap = ({
   locationName: string | locationObjI;
   clickedName: string;
 }) => {
+  console.log(
+    "🚀 ~ locationName:",
+    locationName,
+    `${locationName.lat},${locationName.lng}`
+  );
   const showMap = true;
 
   // Production Mode
@@ -34,7 +39,8 @@ const GoogleMap = ({
           allowfullscreen={true}
           apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ""}
           height={850}
-          center={(locationName.lat, locationName.lng)}
+          center={`${locationName.lat},${locationName.lng}`}
+          zoom={"15"}
           width="100%"
           mode="search"
           q={`coffee shops `}

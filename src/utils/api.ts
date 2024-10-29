@@ -193,13 +193,16 @@ export async function updateUser(data: string) {
     .then((res) => res.json())
     .catch((err) => console.log(err));
 }
-export async function searchCafeOnGoogle(currentLocation: locationObjI) {
+export async function searchCafeOnGoogle(
+  currentLocation?: null | locationObjI,
+  location?: string
+) {
   return await fetch(`${API_URL}/api/search`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(currentLocation),
+    body: JSON.stringify({ currentLocation, location }),
   })
     .then((res) => res.json())
     .catch((err) => console.log(err));

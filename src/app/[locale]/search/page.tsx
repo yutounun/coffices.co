@@ -5,18 +5,24 @@ import React, { useEffect, useState } from "react";
 import Store from "./Store";
 import { dummyStores, StoreI } from "@/types/GooglePlacesTypes";
 import { searchCafeOnGoogle } from "@/utils/api";
+import { useSearchParams } from "next/navigation";
 
 const Search = () => {
+  const searchParams = useSearchParams();
+  const location = searchParams.get("location");
   const [stores, setStores] = useState<StoreI[]>([]);
   const [clickedName, setClickedName] = useState<string>("");
-  const [currentLocation, setCurrentLocation] = useState({ lat: 0, lng: 0 });
+  const [currentLocationMap, setCurrentLocationMap] = useState({
+    lat: 0,
+    lng: 0,
+  });
 
   function handleClickStore(name: string) {
     setClickedName(name);
   }
 
   useEffect(() => {
-    const fetchStores = async () => {
+    const fetchStoresNearby = async () => {
       if (typeof navigator !== "undefined" && navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           async (position) => {
@@ -24,6 +30,7 @@ const Search = () => {
               lat: position.coords.latitude,
               lng: position.coords.longitude,
             };
+            setCurrentLocationMap(currentLocation);
 
             try {
               // 位置情報を取得した後にカフェを検索する
@@ -46,7 +53,18 @@ const Search = () => {
       }
     };
 
-    fetchStores();
+    const fetchStoresByKeyword = async (location: string) => {
+      try {
+        // 位置情報を取得した後にカフェを検索する
+        const data = await searchCafeOnGoogle(null, location);
+        setStores(data);
+      } catch (error) {
+        console.error("Error fetching cafes:", error);
+      }
+    };
+    // fetchStoresNearby();
+
+    location ? fetchStoresByKeyword(location) : fetchStoresNearby();
   }, []);
 
   return (
@@ -85,7 +103,10 @@ const Search = () => {
         }}
       >
         {/* TODO:LocationNameに現在地を入れる */}
-        <GoogleMap clickedName={clickedName} locationName={currentLocation} />
+        <GoogleMap
+          clickedName={clickedName}
+          locationName={currentLocationMap}
+        />
       </Box>
     </Stack>
   );

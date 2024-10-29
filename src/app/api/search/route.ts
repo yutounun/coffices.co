@@ -9,7 +9,10 @@ const axios = require("axios");
 export async function POST(request: NextRequest) {
   const apiKey = process.env.NEXT_PUBLIC_GOOGLE_SEARCH_API_KEY;
   const req = await request.json();
-  const url = `https://maps.googleapis.com/maps/api/place/textsearch/json?query="cafe"&location=${req.lat},${req.lng}&radius=1500&key=${apiKey}`;
+
+  const url = req.location
+    ? `https://maps.googleapis.com/maps/api/place/textsearch/json?query="cafe+in+${req.location}"&radius=1500&key=${apiKey}` // search
+    : `https://maps.googleapis.com/maps/api/place/textsearch/json?query="cafe"&location=${req.currentLocation.lat},${req.currentLocation.lng}&radius=1500&key=${apiKey}`; // current location
 
   console.log("🚀 ~ POST ~ req:", req);
   console.log("🚀 ~ POST ~ url:", url);
