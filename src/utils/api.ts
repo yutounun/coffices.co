@@ -4,6 +4,7 @@ import {
   CafePutRequestI,
   CreateReviewRequestI,
 } from "@/types/cafes";
+import axios from "axios";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -187,6 +188,17 @@ export async function updateUser(data: string) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(data),
+  })
+    .then((res) => res.json())
+    .catch((err) => console.log(err));
+}
+export async function searchCafeOnGoogle() {
+  console.log("knock!");
+  return await fetch(`${API_URL}/api/search`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
   })
     .then((res) => res.json())
     .catch((err) => console.log(err));

@@ -1,9 +1,21 @@
+"use client";
 import GoogleMap from "@/components/ui/GoogleMap";
+import { searchCafeOnGoogle } from "@/utils/api";
 import { Box, Grid, Stack, Typography } from "@mui/material";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const page = () => {
+  // const stores = await searchCafeOnGoogle("Vancouver");
+  const [stores, setStores] = useState([]);
+  useEffect(() => {
+    // await実装
+    searchCafeOnGoogle().then((data) => {
+      setStores(data);
+      console.log("🚀 ~ searchCafeOnGoogle ~ data:", data);
+    });
+  }, []);
+
   return (
     <Stack direction="row" sx={{ height: "90vh", width: "100%" }}>
       <Grid
@@ -11,106 +23,32 @@ const page = () => {
         spacing={1}
         sx={{
           overflow: "auto",
-          width: "40%",
+          width: "50%",
+          pt: 2,
+          py: 2,
           backgroundColor: "secondary.light",
         }}
       >
-        <Grid item xs={4} sx={{ height: "auto", alignItems: "stretch" }}>
-          <Image src="/coffee.jpg" alt="coffee" width={240} height={180} />
-          <Stack sx={{ p: 1, height: "auto" }}>
-            <Typography variant="h5">Starbucks</Typography>
-            <Typography variant="body1">2022 Avenue</Typography>
-            <Typography variant="body1">today - 5:30 ~ 19:00</Typography>
-          </Stack>
-        </Grid>
-        <Grid item xs={4} sx={{ height: "auto" }}>
-          <Image src="/coffee.jpg" alt="coffee" width={240} height={180} />
-          <Stack sx={{ p: 1, height: "auto" }}>
-            <Typography variant="h5">Starbucks</Typography>
-            <Typography variant="body1">2022 Avenue</Typography>
-            <Typography variant="body1">today - 5:30 ~ 19:00</Typography>
-          </Stack>
-        </Grid>
-        <Grid item xs={4} sx={{ height: "auto" }}>
-          <Image src="/coffee.jpg" alt="coffee" width={240} height={180} />
-          <Stack sx={{ p: 1, height: "auto" }}>
-            <Typography variant="h5">Starbucks</Typography>
-            <Typography variant="body1">2022 Avenue</Typography>
-            <Typography variant="body1">today - 5:30 ~ 19:00</Typography>
-          </Stack>
-        </Grid>
-        <Grid item xs={4} sx={{ height: "auto" }}>
-          <Image src="/coffee.jpg" alt="coffee" width={240} height={180} />
-          <Stack sx={{ p: 1, height: "auto" }}>
-            <Typography variant="h5">Starbucks</Typography>
-            <Typography variant="body1">2022 Avenue</Typography>
-            <Typography variant="body1">today - 5:30 ~ 19:00</Typography>
-          </Stack>
-        </Grid>
-        <Grid item xs={4} sx={{ height: "auto", alignItems: "stretch" }}>
-          <Image src="/coffee.jpg" alt="coffee" width={240} height={180} />
-          <Stack sx={{ p: 1, height: "auto" }}>
-            <Typography variant="h5">Starbucks</Typography>
-            <Typography variant="body1">2022 Avenue</Typography>
-            <Typography variant="body1">today - 5:30 ~ 19:00</Typography>
-          </Stack>
-        </Grid>
-        <Grid item xs={4} sx={{ height: "auto" }}>
-          <Image src="/coffee.jpg" alt="coffee" width={240} height={180} />
-          <Stack sx={{ p: 1, height: "auto" }}>
-            <Typography variant="h5">Starbucks</Typography>
-            <Typography variant="body1">2022 Avenue</Typography>
-            <Typography variant="body1">today - 5:30 ~ 19:00</Typography>
-          </Stack>
-        </Grid>
-        <Grid item xs={4} sx={{ height: "auto" }}>
-          <Image src="/coffee.jpg" alt="coffee" width={240} height={180} />
-          <Stack sx={{ p: 1, height: "auto" }}>
-            <Typography variant="h5">Starbucks</Typography>
-            <Typography variant="body1">2022 Avenue</Typography>
-            <Typography variant="body1">today - 5:30 ~ 19:00</Typography>
-          </Stack>
-        </Grid>
-        <Grid item xs={4} sx={{ height: "auto" }}>
-          <Image src="/coffee.jpg" alt="coffee" width={240} height={180} />
-          <Stack sx={{ p: 1, height: "auto" }}>
-            <Typography variant="h5">Starbucks</Typography>
-            <Typography variant="body1">2022 Avenue</Typography>
-            <Typography variant="body1">today - 5:30 ~ 19:00</Typography>
-          </Stack>
-        </Grid>
-        <Grid item xs={4} sx={{ height: "auto", alignItems: "stretch" }}>
-          <Image src="/coffee.jpg" alt="coffee" width={240} height={180} />
-          <Stack sx={{ p: 1, height: "auto" }}>
-            <Typography variant="h5">Starbucks</Typography>
-            <Typography variant="body1">2022 Avenue</Typography>
-            <Typography variant="body1">today - 5:30 ~ 19:00</Typography>
-          </Stack>
-        </Grid>
-        <Grid item xs={4} sx={{ height: "auto" }}>
-          <Image src="/coffee.jpg" alt="coffee" width={240} height={180} />
-          <Stack sx={{ p: 1, height: "auto" }}>
-            <Typography variant="h5">Starbucks</Typography>
-            <Typography variant="body1">2022 Avenue</Typography>
-            <Typography variant="body1">today - 5:30 ~ 19:00</Typography>
-          </Stack>
-        </Grid>
-        <Grid item xs={4} sx={{ height: "auto" }}>
-          <Image src="/coffee.jpg" alt="coffee" width={240} height={180} />
-          <Stack sx={{ p: 1, height: "auto" }}>
-            <Typography variant="h5">Starbucks</Typography>
-            <Typography variant="body1">2022 Avenue</Typography>
-            <Typography variant="body1">today - 5:30 ~ 19:00</Typography>
-          </Stack>
-        </Grid>
-        <Grid item xs={4} sx={{ height: "auto" }}>
-          <Image src="/coffee.jpg" alt="coffee" width={240} height={180} />
-          <Stack sx={{ p: 1, height: "auto" }}>
-            <Typography variant="h5">Starbucks</Typography>
-            <Typography variant="body1">2022 Avenue</Typography>
-            <Typography variant="body1">today - 5:30 ~ 19:00</Typography>
-          </Stack>
-        </Grid>
+        {stores?.map((store) => (
+          <Grid
+            key={store.place_id}
+            item
+            xs={4}
+            sx={{ height: "auto", alignItems: "stretch" }}
+          >
+            <Image src="/coffee.jpg" alt="coffee" width={240} height={130} />
+            <Stack sx={{ p: 1, height: "auto" }}>
+              <Typography variant="h5">
+                {store.name}: {store.place_id}
+              </Typography>
+              <Typography variant="body1">{store.formatted_address}</Typography>
+              <Typography variant="body1">
+                opening_hours:{" "}
+                {store.opening_hours.opening_hours ? "open" : "closed"}
+              </Typography>
+            </Stack>
+          </Grid>
+        ))}
       </Grid>
 
       {/* Map */}
@@ -122,7 +60,7 @@ const page = () => {
           width: "100%",
         }}
       >
-        <GoogleMap locationName="coffee shops" />
+        <GoogleMap locationName="coffee shops in Vancouver" />
       </Box>
     </Stack>
   );

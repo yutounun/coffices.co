@@ -149,7 +149,7 @@ export default function Home() {
                 src="/landingpage/icons/wifi.svg"
                 alt="coffee"
                 width={150}
-                height={100}
+                height={80}
               />
               <Typography variant="h4">Wifi</Typography>
             </Stack>
