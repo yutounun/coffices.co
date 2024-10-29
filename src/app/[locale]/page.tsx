@@ -231,9 +231,9 @@ export default function Home() {
         </Stack>
 
         {/* Cafe Section */}
-        <Box sx={{ px: 10, py: 5 }}>
+        {/* <Box sx={{ px: 10, py: 5 }}>
           <CafeListContent />
-        </Box>
+        </Box> */}
 
         {/* Footer Section */}
         <Stack
