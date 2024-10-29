@@ -8,31 +8,15 @@ const axios = require("axios");
  */
 export async function POST(request: NextRequest) {
   const apiKey = process.env.NEXT_PUBLIC_GOOGLE_SEARCH_API_KEY;
-  console.log("🚀 ~ POST ~ apiKey:", apiKey);
-  // Google Places APIのText Searchのエンドポイント
+  const req = await request.json();
+  const url = `https://maps.googleapis.com/maps/api/place/textsearch/json?query="cafe"&location=${req.lat},${req.lng}&radius=1500&key=${apiKey}`;
 
-  // リクエストパラメータを設定
-  const query = "cafes in Vancouver";
+  console.log("🚀 ~ POST ~ req:", req);
+  console.log("🚀 ~ POST ~ url:", url);
 
   try {
-    const res = await axios.post(
-      `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${query}&key=${apiKey}`
-    );
-    console.log("🚀 ~ searchCafeInTokyo ~ res:", res.data.results);
+    const res = await axios.get(url);
     const placesResults = res.data.results;
-    // const photoRef = placesResults[0].photos[0].photo_reference;
-    // console.log("🚀 ~ searchCafeInTokyo ~ photoRef:", photoRef);
-
-    // const photo = await axios.get(
-    //   `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photoRef}&key=${apiKey}`
-    // );
-    // const photoUrl = photo.url;
-
-    // console.log("🚀 ~ searchCafeInTokyo ~ photoUrl:", photo.url);
-    // const rtn = {
-    //   ...placesResults,
-    //   photoUrl: photoUrl,
-    // };
     return NextResponse.json(placesResults);
   } catch (error) {
     console.error(

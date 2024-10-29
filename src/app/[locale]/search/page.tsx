@@ -1,6 +1,6 @@
 "use client";
 import GoogleMap from "@/components/ui/GoogleMap";
-import { Box, Grid, Stack } from "@mui/material";
+import { Box, Button, Grid, Stack } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Store from "./Store";
 import { dummyStores, StoreI } from "@/types/GooglePlacesTypes";
@@ -11,39 +11,42 @@ const Search = () => {
   const [clickedName, setClickedName] = useState<string>("");
   const [currentLocation, setCurrentLocation] = useState({ lat: 0, lng: 0 });
 
-  useEffect(() => {
-    const fetchStores = async () => {
-      // const data = await searchCafeOnGoogle();
-      const data = dummyStores;
-      setStores(data);
-    };
-    fetchStores();
-  }, []);
-
   function handleClickStore(name: string) {
     setClickedName(name);
   }
 
   useEffect(() => {
-    console.log("🚀 ~ useEffect ~ navigator:", navigator);
-    if (typeof navigator !== "undefined" && navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          setCurrentLocation({
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
-          });
+    const fetchStores = async () => {
+      if (typeof navigator !== "undefined" && navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          async (position) => {
+            const currentLocation = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude,
+            };
 
-          console.log({
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
-          });
-        },
-        (error) => {
-          console.error("Error obtaining location:", error);
-        }
-      );
-    }
+            try {
+              // 位置情報を取得した後にカフェを検索する
+              const data = await searchCafeOnGoogle(currentLocation);
+              console.log("🚀 ~ currentLocation:", currentLocation);
+              setStores(data);
+            } catch (error) {
+              console.error("Error fetching cafes:", error);
+            }
+          },
+          (error) => {
+            console.error("Error obtaining location:", error);
+          },
+          {
+            enableHighAccuracy: true,
+            timeout: 5000,
+            maximumAge: 0,
+          }
+        );
+      }
+    };
+
+    fetchStores();
   }, []);
 
   return (

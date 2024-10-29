@@ -38,8 +38,8 @@ const Store = ({
     >
       <Stack sx={{ alignItems: "center", p: 1 }}>
         <Image
-          // src={photoUrl(photoRef)}
-          src="https://www.luxcafeclub.com/cdn/shop/articles/Minimalist_Modern_Coffee_Shop_1_1100x.png?v=1713243107"
+          src={photoUrl(photoRef)}
+          // src="https://www.luxcafeclub.com/cdn/shop/articles/Minimalist_Modern_Coffee_Shop_1_1100x.png?v=1713243107"
           alt="coffee"
           width={200}
           height={130}

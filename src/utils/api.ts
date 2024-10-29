@@ -5,6 +5,7 @@ import {
   CreateReviewRequestI,
 } from "@/types/cafes";
 import axios from "axios";
+import { locationObjI } from "@/types/GooglePlacesTypes";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -192,13 +193,13 @@ export async function updateUser(data: string) {
     .then((res) => res.json())
     .catch((err) => console.log(err));
 }
-export async function searchCafeOnGoogle() {
-  console.log("knock!");
+export async function searchCafeOnGoogle(currentLocation: locationObjI) {
   return await fetch(`${API_URL}/api/search`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
+    body: JSON.stringify(currentLocation),
   })
     .then((res) => res.json())
     .catch((err) => console.log(err));
