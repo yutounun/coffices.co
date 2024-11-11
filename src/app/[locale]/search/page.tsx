@@ -1,11 +1,14 @@
 "use client";
 import GoogleMap from "@/components/ui/GoogleMap";
-import { Box, Button, Grid, Stack } from "@mui/material";
+import { Box, Button, Grid, Stack, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Store from "./Store";
 import { dummyStores, StoreI } from "@/types/GooglePlacesTypes";
 import { searchCafeOnGoogle } from "@/utils/api";
 import { useSearchParams } from "next/navigation";
+import Stars from "@/components/ui/Stars";
+import Image from "next/image";
+import useSelectedStoreStore from "@/store/selectedStore";
 
 const Search = () => {
   const searchParams = useSearchParams();
@@ -16,8 +19,21 @@ const Search = () => {
     lat: 0,
     lng: 0,
   });
+  const { setSelectedStoreData } = useSelectedStoreStore();
 
-  function handleClickStore(name: string) {
+  function handleClickStore(
+    name: string,
+    formatted_address: string,
+    open_now: boolean,
+    photoRef?: string
+  ) {
+    setSelectedStoreData({
+      id: name,
+      name: name,
+      address: formatted_address,
+      isOpen: open_now,
+      photoRef: photoRef,
+    });
     setClickedName(name);
   }
 
@@ -35,6 +51,7 @@ const Search = () => {
             try {
               // 位置情報を取得した後にカフェを検索する
               const data = await searchCafeOnGoogle(currentLocation);
+              // const data = dummyStores;
               console.log("🚀 ~ currentLocation:", currentLocation);
               setStores(data);
             } catch (error) {
@@ -68,7 +85,8 @@ const Search = () => {
   }, []);
 
   return (
-    <Stack direction="row" sx={{ height: "90vh", width: "100%" }}>
+    <Stack direction="row" sx={{ height: "100%", width: "100%" }}>
+      {/* Stores */}
       <Grid
         container
         spacing={1}
@@ -98,11 +116,9 @@ const Search = () => {
         sx={{
           flexGrow: 1,
           flexBasis: 0,
-          height: "100vh",
           width: "100%",
         }}
       >
-        {/* TODO:LocationNameに現在地を入れる */}
         <GoogleMap
           clickedName={clickedName}
           locationKeyword={location}

@@ -1,7 +1,6 @@
-import { Box, Button, Stack } from "@mui/material";
+import { Stack } from "@mui/material";
 import { TextField } from "@mui/material";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 const SearchBar = () => {

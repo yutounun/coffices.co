@@ -207,3 +207,17 @@ export async function searchCafeOnGoogle(
     .then((res) => res.json())
     .catch((err) => console.log(err));
 }
+
+export async function SearchCafeDetail(placeId) {
+  console.log("🚀 ~ SearchCafeDetail ~ placeId:", placeId);
+  // TODO: Get the following data
+  // - Name (props)
+  // - Address (props)
+  // - Rate (props)
+  // - Image (props)
+  // - Open hours (props?)
+  // - Wifi (MongoDB)
+  // - Washroom (MongoDB)
+  // - Outlet (MongoDB)
+  // - Coffee Price (MongoDB)
+}
