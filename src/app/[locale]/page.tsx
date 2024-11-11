@@ -173,12 +173,12 @@ export default function Home() {
             </Stack>
             <Stack direction="column" sx={featureStyle}>
               <Image
-                src="/landingpage/icons/washroom.svg"
-                alt="coffee"
+                src="/landingpage/icons/engineer.svg"
+                alt="work friendly"
                 width={150}
                 height={100}
               />
-              <Typography variant="h4">Washroom</Typography>
+              <Typography variant="h4">Work Friendly</Typography>
             </Stack>
           </Stack>
         </Stack>

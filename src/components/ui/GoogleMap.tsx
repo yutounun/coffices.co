@@ -3,17 +3,18 @@
 import { GoogleMapsEmbed } from "@next/third-parties/google";
 import Image from "next/image";
 import { locationObjI } from "@/types/GooglePlacesTypes";
+import { Box, Typography } from "@mui/material";
 
 const GoogleMap = ({
   locationKeyword,
   currentLocation,
   clickedName,
 }: {
-  locationKeyword: string | null;
-  currentLocation: locationObjI | null;
-  clickedName: string;
+  locationKeyword?: string;
+  currentLocation?: locationObjI;
+  clickedName?: string;
 }) => {
-  const showMap = true;
+  const showMap = false;
 
   // Production Mode
   if (showMap) {
@@ -49,7 +50,7 @@ const GoogleMap = ({
           allowfullscreen={true}
           apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ""}
           height={850}
-          center={`${currentLocation.lat},${currentLocation.lng}`}
+          center={`${currentLocation?.lat},${currentLocation?.lng}`}
           zoom={"15"}
           width="100%"
           mode="search"
@@ -60,7 +61,22 @@ const GoogleMap = ({
   }
 
   // Dummy Mode
-  return <Image src="/dummy/gmap.png" alt="coffee" width={800} height={800} />;
+  return (
+    <Box
+      sx={{
+        position: "relative",
+        width: "100%",
+        height: "100%",
+      }}
+    >
+      <Image
+        src="/dummy/gmap.png"
+        alt="coffee"
+        fill
+        style={{ objectFit: "cover" }}
+      />
+    </Box>
+  );
 };
 
 export default GoogleMap;
