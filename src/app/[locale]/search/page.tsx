@@ -85,7 +85,7 @@ const Search = () => {
   }, []);
 
   return (
-    <Stack direction="row" sx={{ height: "100%", width: "100%" }}>
+    <Stack direction="row" sx={{ height: "90vh", width: "100%" }}>
       {/* Stores */}
       <Grid
         container
