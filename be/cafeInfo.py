@@ -5,11 +5,12 @@ import google.generativeai as genai
 from pymongo import MongoClient
 
 def get_cafes_in_vancouver(api_key, min_rating=4.5):
-    url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
+    url = "https://maps.googleapis.com/maps/api/place/textsearch/json"
+
     params = {
         "location": "49.2827,-123.1207",  # Vancouverの緯度・経度
         "radius": 1000,                   # 半径1km
-        "type": "cafe",                   # タイプはカフェ
+        "query": "coffee shop",                          # タイプはカフェ
         "key": api_key,
     }
 
@@ -138,8 +139,8 @@ def update_cafe_info_in_mongodb(mongo_uri, total_cafe_results):
     # MongoDB クライアントのセットアップ
     client = MongoClient(mongo_uri)
     
-    # cafe_database_dev データベースの cafe_dev コレクションを取得
-    db = client['cafe_database_dev']
+    # co-office データベースの cafe_dev コレクションを取得
+    db = client['co-office']
     collection = db['cafe_dev']
     
     print("🚀 total_cafe_results: ", total_cafe_results)
@@ -153,12 +154,12 @@ def update_cafe_info_in_mongodb(mongo_uri, total_cafe_results):
 def get_wifi_status_for_cafes(api_key, gemini_api_key, mongo_uri):
     # MongoDB クライアントのセットアップ
     client = MongoClient(mongo_uri)
-    db = client['cafe_database_dev']
+    db = client['co-office']
     collection = db['cafe_dev']
 
     # コレクション内のすべてのデータを一括削除
-    collection.delete_many({})
-    print("All documents in the 'cafe_dev' collection have been deleted.")
+    # collection.delete_many({})
+    # print("All documents in the 'cafe_dev' collection have been deleted.")
     
     cafes = get_cafes_in_vancouver(api_key)
     print("🚀 cafes: ", cafes)

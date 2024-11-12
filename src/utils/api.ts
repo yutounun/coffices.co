@@ -221,3 +221,18 @@ export async function SearchCafeDetail(placeId) {
   // - Outlet (MongoDB)
   // - Coffee Price (MongoDB)
 }
+
+export const getAnalytics = async (placeId: string) => {
+  try {
+    const response = await fetch(`${API_URL}/api/analytics/${placeId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return response.json();
+  } catch (error) {
+    console.error("Error fetching analytics data:", error);
+    throw error;
+  }
+};

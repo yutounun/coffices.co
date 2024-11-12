@@ -22,13 +22,14 @@ const Search = () => {
   const { setSelectedStoreData } = useSelectedStoreStore();
 
   function handleClickStore(
+    placeId: string,
     name: string,
     formatted_address: string,
     open_now: boolean,
     photoRef?: string
   ) {
     setSelectedStoreData({
-      id: name,
+      id: placeId,
       name: name,
       address: formatted_address,
       isOpen: open_now,
@@ -82,7 +83,15 @@ const Search = () => {
     // fetchStoresNearby();
 
     location ? fetchStoresByKeyword(location) : fetchStoresNearby();
-  }, []);
+  }, [location]);
+
+  if (!stores) {
+    return (
+      <Typography variant="h6" sx={{ mt: 2 }}>
+        Loading...
+      </Typography>
+    );
+  }
 
   return (
     <Stack direction="row" sx={{ height: "90vh", width: "100%" }}>
