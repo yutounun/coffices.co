@@ -8,6 +8,7 @@ import { useParams } from "next/navigation";
 import { getAnalytics } from "@/utils/api";
 import { CafeDetailI } from "@/types/cafe/detail";
 import { dummyCafeAnalysisData } from "@/const/dummyData";
+import Link from "next/link";
 
 const featureStyle = {
   alignItems: "center",
@@ -94,6 +95,24 @@ const SearchByName = () => {
               <Typography variant="body1">
                 {selectedStoreData?.address}
               </Typography>
+
+              <Link
+                href={`https://www.google.com/maps/search/?api=1&query=${detailInfo?.name}`}
+                target="_blank"
+              >
+                <Typography
+                  variant="body1"
+                  sx={{
+                    cursor: "pointer",
+                    borderBottom: "1px solid blue",
+                    display: "inline",
+                    paddingBottom: 0.25,
+                    color: "blue",
+                  }}
+                >
+                  Open in Google Maps
+                </Typography>
+              </Link>
 
               {/* Analytics */}
               {detailInfo && (
@@ -219,6 +238,7 @@ const SearchByName = () => {
                       backgroundColor: "white",
                       minWidth: "300px",
                       maxWidth: "400px",
+                      minHeight: "150px",
                       boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.1)",
                       borderRadius: 2,
                     }}

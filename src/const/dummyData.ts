@@ -1,6 +1,6 @@
 export const dummyCafeAnalysisData = {
   _id: "cafe123",
-  name: "Sample Cafe",
+  name: "Cafe Loft",
   open_now: true,
   place_id: "ChIJN1t_tDeuEmsRUsoyG83frY4",
   address: "123 Coffee St, Vancouver, BC",
