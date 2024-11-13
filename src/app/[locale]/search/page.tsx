@@ -6,8 +6,6 @@ import Store from "./Store";
 import { dummyStores, StoreI } from "@/types/GooglePlacesTypes";
 import { searchCafeOnGoogle } from "@/utils/api";
 import { useSearchParams } from "next/navigation";
-import Stars from "@/components/ui/Stars";
-import Image from "next/image";
 import useSelectedStoreStore from "@/store/selectedStore";
 
 const Search = () => {
@@ -51,8 +49,10 @@ const Search = () => {
 
             try {
               // 位置情報を取得した後にカフェを検索する
-              const data = await searchCafeOnGoogle(currentLocation);
-              // const data = dummyStores;
+              const data =
+                process.env.NEXT_PUBLIC_SHOW_STORE_LIST === "true"
+                  ? await searchCafeOnGoogle(currentLocation)
+                  : dummyStores;
               console.log("🚀 ~ currentLocation:", currentLocation);
               setStores(data);
             } catch (error) {

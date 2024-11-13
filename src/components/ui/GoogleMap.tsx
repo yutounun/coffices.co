@@ -14,10 +14,8 @@ const GoogleMap = ({
   currentLocation?: locationObjI;
   clickedName?: string;
 }) => {
-  const showMap = false;
-
   // Production Mode
-  if (showMap) {
+  if (process.env.NEXT_PUBLIC_SHOW_GOOGLE_MAP === "true") {
     if (clickedName) {
       return (
         <GoogleMapsEmbed

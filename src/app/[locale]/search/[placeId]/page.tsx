@@ -1,13 +1,13 @@
 "use client";
 import GoogleMap from "@/components/ui/GoogleMap";
-import { Box, Button, Grid, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import useSelectedStoreStore from "@/store/selectedStore";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { useParams } from "next/navigation";
 import { getAnalytics } from "@/utils/api";
 import { CafeDetailI } from "@/types/cafe/detail";
+import { dummyCafeAnalysisData } from "@/const/dummyData";
 
 const featureStyle = {
   alignItems: "center",
@@ -29,7 +29,10 @@ const SearchByName = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const analytics: CafeDetailI = await getAnalytics(placeId);
+      const analytics: CafeDetailI =
+        process.env.NEXT_PUBLIC_SHOW_DETAIL_STORE === "true"
+          ? await getAnalytics(placeId)
+          : dummyCafeAnalysisData;
       setDetailInfo(analytics);
       console.log(" :", analytics?.coffee_price.min_coffee_price);
       console.log("🚀 ~ fetchData ~ analytics:", analytics);
@@ -73,7 +76,11 @@ const SearchByName = () => {
               }}
             >
               <Image
-                src={photoUrl(selectedStoreData?.photoRef)}
+                src={
+                  process.env.NEXT_PUBLIC_SHOW_STORE_IMAGE_DETAIL === "true"
+                    ? selectedStoreData?.photoRef
+                    : "https://www.luxcafeclub.com/cdn/shop/articles/Minimalist_Modern_Coffee_Shop_1_1100x.png?v=1713243107"
+                }
                 alt={selectedStoreData?.name || ""}
                 fill // 親要素を埋める
                 style={{ objectFit: "cover" }} // "cover" でコンテンツ全体を表示
