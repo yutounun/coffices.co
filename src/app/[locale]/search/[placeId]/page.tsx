@@ -93,33 +93,35 @@ const SearchByName = () => {
               {/* Title */}
               <Typography variant="h1">{selectedStoreData?.name}</Typography>
               {/* Area */}
-              <Typography variant="body1">
-                {selectedStoreData?.address}
-              </Typography>
+              <Stack direction="row" gap={1} sx={{ alignItems: "center" }}>
+                <Typography variant="body1">
+                  {selectedStoreData?.address}
+                </Typography>
+                <Link
+                  href={`https://www.google.com/maps/search/?api=1&query=${detailInfo?.name}`}
+                  target="_blank"
+                  style={{
+                    height: "20px",
+                    width: "20px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center", // 水平方向にも中央揃え
+                  }}
+                >
+                  <Image
+                    src="/detail/map.svg"
+                    alt="map"
+                    width={20}
+                    height={20}
+                  />
+                </Link>
+              </Stack>
 
               {/* Rating */}
               <Stack direction="row" gap={1}>
-                <Stars rate={detailInfo?.rating || 0} size="1.5rem" />
+                <Stars rate={detailInfo?.rating || 0} size="1rem" />
                 <Typography variant="body1">{detailInfo?.rating}</Typography>
               </Stack>
-
-              <Link
-                href={`https://www.google.com/maps/search/?api=1&query=${detailInfo?.name}`}
-                target="_blank"
-              >
-                <Typography
-                  variant="body1"
-                  sx={{
-                    cursor: "pointer",
-                    borderBottom: "1px solid blue",
-                    display: "inline",
-                    paddingBottom: 0.25,
-                    color: "blue",
-                  }}
-                >
-                  Open in Google Maps
-                </Typography>
-              </Link>
 
               {/* Analytics */}
               {detailInfo && (
@@ -128,6 +130,7 @@ const SearchByName = () => {
                   gap={4}
                   sx={{ alignItems: "center", justifyContent: "center", my: 4 }}
                 >
+                  {/* Wifi */}
                   <Stack direction="column" sx={featureStyle}>
                     <Image
                       src="/landingpage/icons/wifi.svg"
@@ -153,6 +156,7 @@ const SearchByName = () => {
                     </Stack>
                   </Stack>
 
+                  {/* Plug */}
                   <Stack direction="column" sx={featureStyle}>
                     <Image
                       src="/landingpage/icons/plug.svg"
@@ -178,6 +182,33 @@ const SearchByName = () => {
                     </Stack>
                   </Stack>
 
+                  {/* Work Friendly */}
+                  <Stack direction="column" sx={featureStyle}>
+                    <Image
+                      src="/landingpage/icons/comfort.svg"
+                      alt="comfort"
+                      width={150}
+                      height={70}
+                    />
+                    <Stack
+                      direction="column"
+                      gap={1}
+                      sx={{ justifyContent: "center", alignItems: "center" }}
+                    >
+                      <Typography variant="h4">work friendly</Typography>
+                      <Stack direction="row" gap={1}>
+                        <Typography variant="h5">
+                          {detailInfo?.work.suitable_for_work}
+                        </Typography>
+                        <Typography variant="h5">
+                          {detailInfo?.work.confidence}%
+                        </Typography>
+                      </Stack>
+                      <Typography variant="body1">by Gemini 🤖</Typography>
+                    </Stack>
+                  </Stack>
+
+                  {/* Coffee */}
                   <Stack direction="column" sx={featureStyle}>
                     <Image
                       src="/landingpage/icons/coffee.svg"
