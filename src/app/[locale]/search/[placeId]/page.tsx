@@ -9,6 +9,7 @@ import { getAnalytics } from "@/utils/api";
 import { CafeDetailI } from "@/types/cafe/detail";
 import { dummyCafeAnalysisData } from "@/const/dummyData";
 import Link from "next/link";
+import Stars from "@/components/ui/Stars";
 
 const featureStyle = {
   alignItems: "center",
@@ -95,6 +96,12 @@ const SearchByName = () => {
               <Typography variant="body1">
                 {selectedStoreData?.address}
               </Typography>
+
+              {/* Rating */}
+              <Stack direction="row" gap={1}>
+                <Stars rate={detailInfo?.rating || 0} size="1.5rem" />
+                <Typography variant="body1">{detailInfo?.rating}</Typography>
+              </Stack>
 
               <Link
                 href={`https://www.google.com/maps/search/?api=1&query=${detailInfo?.name}`}
@@ -186,7 +193,7 @@ const SearchByName = () => {
                       <Typography variant="h4">coffee</Typography>
                       <Stack direction="row" gap={1}>
                         <Typography variant="h5">
-                          {detailInfo?.coffee_price.min_coffee_price}
+                          ${detailInfo?.coffee_price.min_coffee_price}
                         </Typography>
                         <Typography variant="h5">
                           {detailInfo?.coffee_price.confidence}%
