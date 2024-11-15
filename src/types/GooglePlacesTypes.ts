@@ -38,7 +38,8 @@ export const dummyStores: StoreI[] = [
     },
     photos: [
       {
-        photo_reference: "photo_ref_1",
+        photo_reference:
+          "https://www.luxcafeclub.com/cdn/shop/articles/Minimalist_Modern_Coffee_Shop_1_1100x.png?v=1713243107",
         height: 400,
         width: 600,
         html_attributions: ["Photo by Coffee Paradise"],
@@ -63,7 +64,8 @@ export const dummyStores: StoreI[] = [
     },
     photos: [
       {
-        photo_reference: "photo_ref_2",
+        photo_reference:
+          "https://www.luxcafeclub.com/cdn/shop/articles/Minimalist_Modern_Coffee_Shop_1_1100x.png?v=1713243107",
         height: 300,
         width: 500,
         html_attributions: ["Photo by Brewed Awakening"],
@@ -88,7 +90,8 @@ export const dummyStores: StoreI[] = [
     },
     photos: [
       {
-        photo_reference: "photo_ref_3",
+        photo_reference:
+          "https://www.luxcafeclub.com/cdn/shop/articles/Minimalist_Modern_Coffee_Shop_1_1100x.png?v=1713243107",
         height: 450,
         width: 600,
         html_attributions: ["Photo by Latte Land"],
@@ -113,7 +116,8 @@ export const dummyStores: StoreI[] = [
     },
     photos: [
       {
-        photo_reference: "photo_ref_4",
+        photo_reference:
+          "https://www.luxcafeclub.com/cdn/shop/articles/Minimalist_Modern_Coffee_Shop_1_1100x.png?v=1713243107",
         height: 500,
         width: 700,
         html_attributions: ["Photo by Espresso Express"],
@@ -138,7 +142,8 @@ export const dummyStores: StoreI[] = [
     },
     photos: [
       {
-        photo_reference: "photo_ref_5",
+        photo_reference:
+          "https://www.luxcafeclub.com/cdn/shop/articles/Minimalist_Modern_Coffee_Shop_1_1100x.png?v=1713243107",
         height: 350,
         width: 550,
         html_attributions: ["Photo by Mocha Moments"],
@@ -163,7 +168,8 @@ export const dummyStores: StoreI[] = [
     },
     photos: [
       {
-        photo_reference: "photo_ref_1",
+        photo_reference:
+          "https://www.luxcafeclub.com/cdn/shop/articles/Minimalist_Modern_Coffee_Shop_1_1100x.png?v=1713243107",
         height: 400,
         width: 600,
         html_attributions: ["Photo by Coffee Paradise"],
@@ -188,7 +194,8 @@ export const dummyStores: StoreI[] = [
     },
     photos: [
       {
-        photo_reference: "photo_ref_2",
+        photo_reference:
+          "https://www.luxcafeclub.com/cdn/shop/articles/Minimalist_Modern_Coffee_Shop_1_1100x.png?v=1713243107",
         height: 300,
         width: 500,
         html_attributions: ["Photo by Brewed Awakening"],
@@ -213,7 +220,8 @@ export const dummyStores: StoreI[] = [
     },
     photos: [
       {
-        photo_reference: "photo_ref_3",
+        photo_reference:
+          "https://www.luxcafeclub.com/cdn/shop/articles/Minimalist_Modern_Coffee_Shop_1_1100x.png?v=1713243107",
         height: 450,
         width: 600,
         html_attributions: ["Photo by Latte Land"],
@@ -238,7 +246,8 @@ export const dummyStores: StoreI[] = [
     },
     photos: [
       {
-        photo_reference: "photo_ref_4",
+        photo_reference:
+          "https://www.luxcafeclub.com/cdn/shop/articles/Minimalist_Modern_Coffee_Shop_1_1100x.png?v=1713243107",
         height: 500,
         width: 700,
         html_attributions: ["Photo by Espresso Express"],
@@ -263,7 +272,8 @@ export const dummyStores: StoreI[] = [
     },
     photos: [
       {
-        photo_reference: "photo_ref_5",
+        photo_reference:
+          "https://www.luxcafeclub.com/cdn/shop/articles/Minimalist_Modern_Coffee_Shop_1_1100x.png?v=1713243107",
         height: 350,
         width: 550,
         html_attributions: ["Photo by Mocha Moments"],
@@ -288,7 +298,8 @@ export const dummyStores: StoreI[] = [
     },
     photos: [
       {
-        photo_reference: "photo_ref_1",
+        photo_reference:
+          "https://www.luxcafeclub.com/cdn/shop/articles/Minimalist_Modern_Coffee_Shop_1_1100x.png?v=1713243107",
         height: 400,
         width: 600,
         html_attributions: ["Photo by Coffee Paradise"],
@@ -313,7 +324,8 @@ export const dummyStores: StoreI[] = [
     },
     photos: [
       {
-        photo_reference: "photo_ref_2",
+        photo_reference:
+          "https://www.luxcafeclub.com/cdn/shop/articles/Minimalist_Modern_Coffee_Shop_1_1100x.png?v=1713243107",
         height: 300,
         width: 500,
         html_attributions: ["Photo by Brewed Awakening"],
@@ -338,7 +350,8 @@ export const dummyStores: StoreI[] = [
     },
     photos: [
       {
-        photo_reference: "photo_ref_3",
+        photo_reference:
+          "https://www.luxcafeclub.com/cdn/shop/articles/Minimalist_Modern_Coffee_Shop_1_1100x.png?v=1713243107",
         height: 450,
         width: 600,
         html_attributions: ["Photo by Latte Land"],
@@ -363,7 +376,8 @@ export const dummyStores: StoreI[] = [
     },
     photos: [
       {
-        photo_reference: "photo_ref_4",
+        photo_reference:
+          "https://www.luxcafeclub.com/cdn/shop/articles/Minimalist_Modern_Coffee_Shop_1_1100x.png?v=1713243107",
         height: 500,
         width: 700,
         html_attributions: ["Photo by Espresso Express"],
@@ -388,7 +402,8 @@ export const dummyStores: StoreI[] = [
     },
     photos: [
       {
-        photo_reference: "photo_ref_5",
+        photo_reference:
+          "https://www.luxcafeclub.com/cdn/shop/articles/Minimalist_Modern_Coffee_Shop_1_1100x.png?v=1713243107",
         height: 350,
         width: 550,
         html_attributions: ["Photo by Mocha Moments"],

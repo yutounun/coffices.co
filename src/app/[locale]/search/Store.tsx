@@ -1,3 +1,4 @@
+import { photoUrl } from "@/libs/commons";
 import { Grid, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
@@ -23,10 +24,6 @@ const Store = ({
     photoRef?: string
   ) => void;
 }) => {
-  const photoUrl = (photoRef?: string) => {
-    // console.log("🚀 ~ photoUrl ~ photoRef:", photoRef);
-    return `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photoRef}&key=${process.env.NEXT_PUBLIC_GOOGLE_SEARCH_API_KEY}`;
-  };
   return (
     <Grid
       key={placeId}

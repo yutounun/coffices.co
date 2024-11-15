@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-type selectedStoreI = {
+export type selectedStoreI = {
   id: string;
   name: string;
   address: string;

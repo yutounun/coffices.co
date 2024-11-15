@@ -20,9 +20,9 @@ export interface CafeDetailI {
   };
 
   // コーヒーの価格情報
-  coffee_price: {
-    min_coffee_price: string; // 最低価格（"not sure" などの文字列）
-    confidence: number; // 価格情報の確信度
+  coffee_price?: {
+    min_coffee_price?: string; // 最低価格（"not sure" などの文字列）
+    confidence?: number; // 価格情報の確信度
   };
 
   // コンセントに関する情報
