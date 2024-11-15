@@ -1,30 +1,47 @@
 import requests
 import json    
-import os
+import re
 import google.generativeai as genai
+from dotenv import load_dotenv
+import os
+import time
 from pymongo import MongoClient
 
-def get_cafes_in_vancouver(api_key, min_rating=4.5):
+load_dotenv()
+
+def get_cafes_in_vancouver(api_key, min_rating=3.5):
     url = "https://maps.googleapis.com/maps/api/place/textsearch/json"
 
     params = {
         "location": "49.2827,-123.1207",  # Vancouverの緯度・経度
-        "radius": 1000,                   # 半径1km
-        "query": "coffee shop",                          # タイプはカフェ
+        "radius": 15000, # 15km
+        "query": "coffee shop",
         "key": api_key,
     }
 
-    response = requests.get(url, params=params)
-    if response.status_code == 200:
-        cafes = response.json().get('results', [])
-        # min_rating 以上のカフェのみを抽出
-        top_cafes = [cafe for cafe in cafes if cafe.get('rating', 0) >= min_rating]
-        return top_cafes
-    else:
-        print("Error fetching data from Google Places API")
-        return []
+    all_cafes = []
+    while True:
+        response = requests.get(url, params=params)
+        if response.status_code == 200:
+            cafes = response.json().get('results', [])
+            all_cafes.extend([cafe for cafe in cafes if cafe.get('rating', 0) >= min_rating])
 
-# Step 2: "wifi"が含まれるレビューのみを抽出
+            # 次のページがある場合、next_page_tokenを取得
+            next_page_token = response.json().get('next_page_token')
+            if next_page_token:
+                # 次のリクエストのために、ページトークンを設定し少し待機（トークンが有効になるまで少し時間が必要なことがあります）
+                params['pagetoken'] = next_page_token
+                time.sleep(2)  # トークンが有効になるまで少し待機（2秒くらい）
+            else:
+                # 次のページがない場合はループを終了
+                break
+        else:
+            print("Error fetching data from Google Places API")
+            break
+
+    return all_cafes
+
+# Step 2: Google Places APIでレビューのみを抽出
 def get_reviews_for_cafe(api_key, place_id):
     url = "https://maps.googleapis.com/maps/api/place/details/json"
     params = {
@@ -48,55 +65,58 @@ def analyze_reviews_with_gemini(gemini_api_key, reviews):
 
     # Create the model
     generation_config = {
-    "temperature": 1,
-    "top_p": 0.95,
-    "top_k": 40,
-    "max_output_tokens": 8192,
-    "response_mime_type": "text/plain",
+        "temperature": 1,
+        "top_p": 0.95,
+        "top_k": 40,
+        "max_output_tokens": 8192,
+        "response_mime_type": "text/plain",
     }
 
     model = genai.GenerativeModel(
-    model_name="gemini-1.5-flash",
-    generation_config=generation_config,
+        model_name="gemini-1.5-flash",
+        generation_config=generation_config,
     )
 
     chat_session = model.start_chat(
-    history=[
-    ]
+        history=[
+        ]
     )
 
     reviews_text = "\n".join([review['text'] for review in reviews])
     prompt = (
-        "I have collected multiple reviews for a cafe. Based on these reviews, analyze if the cafe has WiFi available, "
-        "if it is suitable for working, the minimum price for a coffee, and if power outlets are available. "
-        "Respond in JSON format with the following keys:\n"
-        "- wifi_available: a boolean value or 'not sure'\n"
-        "- wifi_confidence: a percentage indicating the confidence level\n"
-        "- suitable_for_work: a boolean value or 'not sure'\n"
-        "- work_confidence: a percentage indicating the confidence level\n"
-        "- min_coffee_price: the minimum price for coffee in numerical format, or 'not sure'\n"
-        "- max_coffee_price_confidence: a percentage indicating the confidence level\n"
-        "- plug_available: a boolean value or 'not sure'\n"
-        "- plug_confidence: a percentage indicating the confidence level\n"
-        "- ai_analysis: a string with a summary of the analysis of the reviews\n"
-        "- important_reviews: an array of up to 10 review texts that were most relevant for this analysis\n\n"
-        "Please include only JSON format.\n\n"
+        "Analyze the following reviews and determine specific information about the cafe. Respond strictly in JSON format with the following structure:\n\n"
+        "{\n"
+        '  "wifi_available": boolean, // true if any review mentions WiFi positively, otherwise false or "not sure"\n'
+        '  "wifi_confidence": integer, // percentage confidence based on the number of mentions (0-100)\n'
+        '  "suitable_for_work": boolean, // true if any review indicates it is good for work, otherwise false or "not sure"\n'
+        '  "work_confidence": integer, // percentage confidence based on the number of mentions (0-100)\n'
+        '  "min_coffee_price": number | string, // minimum price for coffee, or "not sure" if not enough information\n'
+        '  "max_coffee_price_confidence": integer, // percentage confidence based on the number of mentions (0-100)\n'
+        '  "plug_available": boolean, // true if any review mentions plugs or power outlets, otherwise false or "not sure"\n'
+        '  "plug_confidence": integer, // percentage confidence based on the number of mentions (0-100)\n'
+        '  "ai_analysis": string, // summary of the analysis of the reviews\n'
+        '  "important_reviews": [string] // up to 10 review texts that were most relevant for this analysis\n'
+        "}\n\n"
         f"Reviews:\n{reviews_text}"
     )
-    
+
 
     # プロンプトを送信してレスポンスを取得
     response = chat_session.send_message(prompt)
 
     # レスポンス内容を出力して確認
     print("Gemini API Response:", response.text)
+    response_text = response.text.strip('```json').strip('```').strip('```').strip()
+    
+    # 正規表現を使ってレスポンスから余分な文字を取り除く
+    response_text_cleaned = re.sub(r'```\w*|```', '', response_text).strip()
 
-    # バッククォートを取り除く
-    response_text = response.text.strip('```json').strip('```').strip()
-    print("Gemini API Response Text:", response_text)
-
-    # JSONとしてレスポンスをパース
-    analysis_result = json.loads(response_text)
+    try:
+        # JSONをロード
+        analysis_result = json.loads(response_text_cleaned)
+    except json.JSONDecodeError as e:
+        print("JSONDecodeError:", e)
+        return {}
 
     # 分析結果を取り出す
     wifi_available = analysis_result.get("wifi_available")
@@ -137,7 +157,7 @@ def analyze_reviews_with_gemini(gemini_api_key, reviews):
 # Step 4: MongoDBにWiFi情報を保存
 def update_cafe_info_in_mongodb(mongo_uri, total_cafe_results):
     # MongoDB クライアントのセットアップ
-    client = MongoClient(mongo_uri)
+    client = MongoClient(mongo_uri, serverSelectionTimeoutMS=10000000, socketTimeoutMS=10000000)
     
     # co-office データベースの cafe_dev コレクションを取得
     db = client['co-office']
@@ -153,13 +173,13 @@ def update_cafe_info_in_mongodb(mongo_uri, total_cafe_results):
 # Step 5: メイン処理
 def get_wifi_status_for_cafes(api_key, gemini_api_key, mongo_uri):
     # MongoDB クライアントのセットアップ
-    client = MongoClient(mongo_uri)
+    client = MongoClient(mongo_uri, serverSelectionTimeoutMS=1000000, socketTimeoutMS=1000000)
     db = client['co-office']
     collection = db['cafe_dev']
 
     # コレクション内のすべてのデータを一括削除
-    # collection.delete_many({})
-    # print("All documents in the 'cafe_dev' collection have been deleted.")
+    collection.delete_many({})
+    print("All documents in the 'cafe_dev' collection have been deleted.")
     
     cafes = get_cafes_in_vancouver(api_key)
     print("🚀 cafes: ", cafes)
@@ -200,8 +220,8 @@ def get_wifi_status_for_cafes(api_key, gemini_api_key, mongo_uri):
 
 # Step 6: 実行
 if __name__ == "__main__":
-    GOOGLE_API_KEY = ""
-    GEMINI_API_KEY = ""
-    MONGO_URI = ""
+    GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+    GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+    MONGO_URI = os.getenv("MONGO_URI")
 
     get_wifi_status_for_cafes(GOOGLE_API_KEY, GEMINI_API_KEY, MONGO_URI)
