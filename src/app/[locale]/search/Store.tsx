@@ -1,7 +1,13 @@
+import useFetchCafeDetail from "@/hooks/useFetchCafeDetail";
 import { photoUrl } from "@/libs/commons";
 import { Grid, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
+import Loading from "../loading";
+
+const Icon = ({ src, alt }: { src: string; alt: string }) => {
+  return <Image src={src} alt={alt} width={15} height={15} />;
+};
 
 const Store = ({
   placeId,
@@ -24,6 +30,12 @@ const Store = ({
     photoRef?: string
   ) => void;
 }) => {
+  // const { detailInfo, loading } = useFetchCafeDetail(placeId);
+  // if (loading) {
+  //   return <Loading />;
+  // }
+
+  const showIcons = process.env.NEXT_PUBLIC_SHOW_DETAIL_INFO_ON_LIST;
   return (
     <Grid
       key={placeId}
@@ -46,7 +58,7 @@ const Store = ({
       }
     >
       <Link href={`/ja/search/${placeId}`}>
-        <Stack sx={{ alignItems: "center", p: 1 }}>
+        <Stack sx={{ p: 1 }}>
           <Image
             src={
               process.env.NEXT_PUBLIC_SHOW_STORE_IMAGES_ON_LIST === "true"
@@ -60,7 +72,30 @@ const Store = ({
           />
           <Stack sx={{ p: 1, height: "auto" }}>
             <Typography variant="h5">{name}</Typography>
-            <Typography variant="body1">{formatted_address}</Typography>
+            {/* <Typography variant="body1">{formatted_address}</Typography> */}
+            <Stack direction="row" sx={{ alignItems: "center" }} gap={0.2}>
+              {showIcons && (
+                <Icon src="/landingpage/icons/wifi.svg" alt="wifi" />
+              )}
+
+              {showIcons && (
+                <Icon src="/landingpage/icons/plug.svg" alt="plug" />
+              )}
+
+              {showIcons && (
+                <Icon
+                  src="/landingpage/icons/comfort.svg"
+                  alt="work friendly"
+                />
+              )}
+
+              {showIcons && (
+                <Stack direction="row" sx={{ alignItems: "center" }} gap={0.1}>
+                  <Icon src="/landingpage/icons/coffee.svg" alt="coffee" />
+                  <Typography variant="body1">$2</Typography>
+                </Stack>
+              )}
+            </Stack>
             <Typography variant="body1">
               open_now: {open_now ? "open" : "closed"}
             </Typography>
