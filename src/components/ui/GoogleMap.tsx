@@ -10,7 +10,7 @@ const GoogleMap = ({
   currentLocation,
   clickedName,
 }: {
-  locationKeyword?: string;
+  locationKeyword: string | null;
   currentLocation?: locationObjI;
   clickedName?: string;
 }) => {
