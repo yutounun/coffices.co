@@ -4,6 +4,7 @@ import { Grid, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 import Loading from "../loading";
+import Stars from "@/components/ui/Stars";
 
 const Icon = ({ src, alt }: { src: string; alt: string }) => {
   return <Image src={src} alt={alt} width={15} height={15} />;
@@ -15,6 +16,7 @@ const Store = ({
   formatted_address,
   open_now,
   photoRef,
+  rating,
   handleClickStore,
 }: {
   placeId: string;
@@ -27,6 +29,7 @@ const Store = ({
     name: string,
     formatted_address: string,
     open_now: boolean,
+    rating?: number,
     photoRef?: string
   ) => void;
 }) => {
@@ -74,6 +77,10 @@ const Store = ({
             <Typography variant="h5">{name}</Typography>
             {/* <Typography variant="body1">{formatted_address}</Typography> */}
             <Stack direction="row" sx={{ alignItems: "center" }} gap={0.2}>
+              <Stars rate={rating} size={{ xs: "small", md: "large" }} />
+              {rating}
+            </Stack>
+            <Stack direction="row" sx={{ alignItems: "center" }} gap={0.2}>
               {showIcons && (
                 <Icon src="/landingpage/icons/wifi.svg" alt="wifi" />
               )}
@@ -96,9 +103,9 @@ const Store = ({
                 </Stack>
               )}
             </Stack>
-            <Typography variant="body1">
+            {/* <Typography variant="body1">
               open_now: {open_now ? "open" : "closed"}
-            </Typography>
+            </Typography> */}
           </Stack>
         </Stack>
       </Link>

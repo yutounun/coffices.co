@@ -31,6 +31,7 @@ const Stores = ({
         <Store
           key={store.place_id}
           placeId={store.place_id}
+          rating={store.rating}
           photoRef={store.photos?.[0]?.photo_reference}
           name={store.name}
           formatted_address={store.formatted_address}
