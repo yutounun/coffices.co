@@ -12,9 +12,9 @@ const ResponsiveAppBar = () => {
     <NextIntlClientProvider messages={pick(messages, "header")}>
       <AppBar
         sx={{
-          mb: 4,
-          px: { xs: mobile.space.aroundX, md: desktop.space.aroundX },
           backgroundColor: "#161422",
+          px: { xs: 4, md: 16 },
+          height: "10vh !important",
         }}
       >
         <Toolbar disableGutters>

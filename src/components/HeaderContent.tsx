@@ -75,22 +75,21 @@ const HeaderContent = () => {
             </Box>
           </Drawer>
         </Box>
+      </Stack>
 
-        {/* Language Switch, NavBar, Search for md */}
+      {/* Language Switch, NavBar, Search for md */}
+      <Stack direction="row" sx={{ flexGrow: 0, alignItems: "center" }} gap={2}>
         <Stack
           direction="row"
           sx={{
             flexGrow: 1,
             display: { xs: "none", md: "flex" },
             alignItems: "center",
-            gap: 4,
           }}
         >
-          <NavBar />
+          {/* <NavBar /> */}
           <SearchBar />
         </Stack>
-      </Stack>
-      <Stack direction="row" sx={{ flexGrow: 0 }} spacing={2}>
         <UserActions />
       </Stack>
     </>

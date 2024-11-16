@@ -2,6 +2,7 @@ import { Stack } from "@mui/material";
 import { TextField } from "@mui/material";
 import { useState } from "react";
 import Link from "next/link";
+import SearchIcon from "@mui/icons-material/Search";
 
 const SearchBar = () => {
   const [keyword, setKeyword] = useState("");
@@ -16,14 +17,31 @@ const SearchBar = () => {
           borderRadius: "12px",
         }}
       >
-        <TextField
-          size="small"
-          variant="outlined"
-          placeholder="Type area..."
+        <input
+          type="text"
           onChange={(e) => setKeyword(e.target.value)}
-          sx={{ backgroundColor: "#fff", width: 150, borderRadius: "12px" }}
+          value={keyword}
+          placeholder="Search"
+          style={{
+            border: "none",
+            outline: "none",
+            padding: "0 0.8em",
+            width: "100%",
+            height: "80%",
+            borderRadius: "12px",
+            paddingLeft: "0.5em",
+            fontSize: "0.8rem",
+          }}
         />
-        <Link href={`/en/search?location=${keyword}`}>🔍</Link>
+        <Link
+          href={`/en/search?location=${keyword}`}
+          style={{ display: "flex", alignItems: "center" }}
+        >
+          <SearchIcon
+            fontSize="small"
+            sx={{ cursor: "pointer", color: "white" }}
+          />
+        </Link>
       </Stack>
     </>
   );

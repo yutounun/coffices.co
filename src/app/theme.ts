@@ -112,6 +112,15 @@ let theme = createTheme({
         fontSize: "0.8rem",
       },
     },
+    nav: {
+      fontFamily: "Lato, 'Open Sans', Roboto, 'Helvetica', Arial, sans-serif",
+      fontSize: "0.8rem",
+      fontWeight: "bold",
+      color: "black",
+      "@media (max-width:600px)": {
+        fontSize: "0.6rem",
+      },
+    },
     caption: {
       fontFamily: "Open Sans, Roboto, 'Helvetica', Arial, sans-serif",
       fontSize: "0.5rem", // 10px
@@ -132,7 +141,7 @@ let theme = createTheme({
     },
     body2: {
       fontFamily: "Open Sans, Roboto, 'Helvetica', Arial, sans-serif",
-      fontSize: "0.5rem", // 16px
+      fontSize: "0.7rem", // 16px
       lineHeight: 1.63, // 163.2%
       color: "rgb(0,0,0,62%)",
       "@media (max-width:600px)": {
@@ -144,6 +153,17 @@ let theme = createTheme({
       fontSize: "1rem", // 18px
       lineHeight: 1.63, // 163.2%
       color: "rgb(0,0,0,62%)",
+    },
+  },
+  components: {
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          "&.MuiOutlinedInput-sizeSmall": {
+            height: "10px",
+          },
+        },
+      },
     },
   },
 });
