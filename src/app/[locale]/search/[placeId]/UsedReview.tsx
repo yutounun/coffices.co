@@ -17,7 +17,7 @@ const UsedReview = ({ review, index }: { review: string; index: number }) => {
         borderRadius: 2,
       }}
     >
-      <Typography variant="h4" sx={{ whiteSpace: "normal" }}>
+      <Typography variant="body1" sx={{ whiteSpace: "normal" }}>
         {review}
       </Typography>
     </Stack>

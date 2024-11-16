@@ -1,6 +1,6 @@
 import useFetchCafeDetail from "@/hooks/useFetchCafeDetail";
 import { photoUrl } from "@/libs/commons";
-import { Grid, Stack, Typography } from "@mui/material";
+import { Grid, IconButton, Stack, Tooltip, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 import Loading from "../loading";
@@ -87,26 +87,38 @@ const Store = ({
               <Typography variant="body1">{rating}</Typography>
               <Typography variant="body2">({useRatingsTotal})</Typography>
             </Stack>
-            <Stack direction="row" sx={{ alignItems: "center" }} gap={0.2}>
+            <Stack direction="row" sx={{ alignItems: "center" }}>
               {showIcons &&
                 !detailInfo?.error &&
                 detailInfo?.wifi.wifi_available === "true" && (
-                  <Icon src="/landingpage/icons/wifi.svg" alt="wifi" />
+                  <Tooltip title="Wifi">
+                    <IconButton>
+                      <Icon src="/landingpage/icons/wifi.svg" alt="wifi" />
+                    </IconButton>
+                  </Tooltip>
                 )}
 
               {showIcons &&
                 !detailInfo?.error &&
                 detailInfo?.plug.plug_available === "true" && (
-                  <Icon src="/landingpage/icons/plug.svg" alt="plug" />
+                  <Tooltip title="Plug">
+                    <IconButton>
+                      <Icon src="/landingpage/icons/plug.svg" alt="plug" />
+                    </IconButton>
+                  </Tooltip>
                 )}
 
               {showIcons &&
                 !detailInfo?.error &&
                 detailInfo?.work.suitable_for_work === "true" && (
-                  <Icon
-                    src="/landingpage/icons/comfort.svg"
-                    alt="work friendly"
-                  />
+                  <Tooltip title="Work Friendly">
+                    <IconButton>
+                      <Icon
+                        src="/landingpage/icons/comfort.svg"
+                        alt="work friendly"
+                      />
+                    </IconButton>
+                  </Tooltip>
                 )}
 
               {showIcons &&
@@ -117,13 +129,28 @@ const Store = ({
                     sx={{ alignItems: "center" }}
                     gap={0.1}
                   >
-                    <Icon src="/landingpage/icons/coffee.svg" alt="coffee" />
-                    <Typography variant="body1">$2</Typography>
+                    <Tooltip title="Coffee Price">
+                      <IconButton>
+                        <Icon
+                          src="/landingpage/icons/coffee.svg"
+                          alt="coffee"
+                        />
+                        <Typography variant="body1">
+                          {detailInfo?.coffee_price?.min_coffee_price !==
+                            "not sure" &&
+                            detailInfo?.coffee_price?.min_coffee_price}
+                        </Typography>
+                      </IconButton>
+                    </Tooltip>
                   </Stack>
                 )}
 
               {showIcons && !detailInfo?.error && (
-                <Typography variant="body1">🤖</Typography>
+                <Tooltip title="Analyzed by Gemini">
+                  <IconButton>
+                    <Icon src="/robot.svg" alt="work friendly" />
+                  </IconButton>
+                </Tooltip>
               )}
             </Stack>
             {/* <Typography variant="body1">
