@@ -1,4 +1,4 @@
-import { CafeDetailI } from "@/types/cafe/detail";
+import { CafeDetailI } from "@/types/CafeDetail";
 import { Stack, Typography } from "@mui/material";
 import UsedReview from "./UsedReview";
 

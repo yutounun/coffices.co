@@ -1,5 +1,6 @@
+import { dummyStores } from "@/const/dummyData";
 import useSelectedStoreStore from "@/store/selectedStore";
-import { dummyStores, StoreI } from "@/types/GooglePlacesTypes";
+import { StoreI } from "@/types/GooglePlacesTypes";
 import { searchCafeOnGoogle } from "@/utils/api";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";

@@ -1,4 +1,4 @@
-import { CafeDetailI } from "@/types/cafe/detail";
+import { CafeDetailI } from "@/types/CafeDetail";
 import { Box, Stack, Typography } from "@mui/material";
 
 const AiAnalisisMsg = ({ detailInfo }: { detailInfo?: CafeDetailI }) => {

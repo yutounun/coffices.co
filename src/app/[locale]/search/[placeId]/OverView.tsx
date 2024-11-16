@@ -1,6 +1,6 @@
 import Stars from "@/components/ui/Stars";
 import { selectedStoreI } from "@/store/selectedStore";
-import { CafeDetailI } from "@/types/cafe/detail";
+import { CafeDetailI } from "@/types/CafeDetail";
 import { Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";

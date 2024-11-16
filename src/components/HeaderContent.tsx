@@ -28,11 +28,6 @@ const HeaderContent = () => {
     setDrawerOpen(false);
   };
 
-  const homeLink = useMemo(() => {
-    const pathLanguage = pathname.split("/")[1]; // get [locale]
-    return `/${pathLanguage}/cafe/list`;
-  }, [pathname]);
-
   return (
     <>
       <Stack
@@ -45,7 +40,7 @@ const HeaderContent = () => {
         }}
       >
         {/* Logo */}
-        <Link href={homeLink}>
+        <Link href="/">
           <Image src="/logo/white.png" alt="logo" width={80} height={40} />
         </Link>
 

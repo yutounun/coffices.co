@@ -1,5 +1,5 @@
 import { dummyCafeAnalysisData } from "@/const/dummyData";
-import { CafeDetailI } from "@/types/cafe/detail";
+import { CafeDetailI } from "@/types/CafeDetail";
 import { getAnalytics } from "@/utils/api";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
