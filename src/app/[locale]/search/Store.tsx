@@ -155,7 +155,7 @@ const Store = ({
                 !detailInfo?.error &&
                 detailInfo?.coffee_price?.min_coffee_price !== "not sure" && (
                   <Stack direction="row" sx={{ alignItems: "center" }}>
-                    <Tooltip title="Coffee Price">
+                    <Tooltip title="Min Coffee Price">
                       <IconButton sx={{ p: "3px !important" }}>
                         <Icon
                           src="/landingpage/icons/coffee.svg"

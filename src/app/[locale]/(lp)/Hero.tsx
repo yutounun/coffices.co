@@ -52,27 +52,17 @@ const Hero = () => {
           variant="h1"
           sx={{ fontWeight: "bold", color: "white", fontSize: "3rem" }}
         >
-          Find a cafes for your work
+          Find Your Perfect <br /> Work-Friendly Cafe
         </Typography>
         <Typography
-          variant="h3"
+          variant="h5"
           sx={{
-            fontWeight: "medium",
-            color: "white",
-            fontSize: "1.4rem",
-            display: "flex",
-            alignItems: "center",
+            fontWeight: "regular",
+            color: "#ebebeb",
           }}
         >
-          <span
-            style={{
-              width: "100px",
-              height: "1px",
-              backgroundColor: "white",
-              marginRight: 16,
-            }}
-          ></span>
-          Boost your productivity
+          Find cafes with WiFi, power outlets, and a comfy space to work,
+          boosting your productivity
         </Typography>
       </Stack>
       <Stack
@@ -85,7 +75,7 @@ const Hero = () => {
       >
         <Link href="/ja/search">
           <Button size="large" variant="contained">
-            With your location
+            Explore Cafes
           </Button>
         </Link>
       </Stack>

@@ -12,7 +12,7 @@ const ResponsiveAppBar = () => {
     <NextIntlClientProvider messages={pick(messages, "header")}>
       <AppBar
         sx={{
-          backgroundColor: "#161422",
+          backgroundColor: "secondary.main",
           px: { xs: 4, md: 16 },
           height: "10vh !important",
         }}

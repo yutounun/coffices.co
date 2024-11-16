@@ -1,4 +1,4 @@
-import Header from "@/components/Header";
+import Header from "@/components/ResponsiveAppBar";
 
 export default function CafeListLayout({
   children,

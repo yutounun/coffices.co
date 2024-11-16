@@ -3,8 +3,9 @@ import Image from "next/image";
 
 const featureStyle = {
   alignItems: "center",
-  borderRadius: "10%",
+  borderRadius: "3%",
   border: "1px solid gray",
+  width: "17em",
   px: 2,
   gap: 1,
   py: 2,
@@ -21,12 +22,12 @@ const Features = () => {
         gap: 5,
       }}
     >
-      <Typography variant="h2">What you can know about.</Typography>
+      <Typography variant="h2">Why Choose Our App?</Typography>
 
       <Stack
         direction="row"
         sx={{
-          gap: 16,
+          gap: 7,
           justifyContent: "space-between",
         }}
       >
@@ -34,37 +35,53 @@ const Features = () => {
           <Image
             src="/landingpage/icons/wifi.svg"
             alt="coffee"
-            width={150}
+            width={130}
             height={80}
           />
-          <Typography variant="h4">Wifi</Typography>
+          <Typography variant="h4">WiFi Availability</Typography>
+          <Typography variant="body1">
+            Find cafes with reliable and fast WiFi so you can stay connected and
+            get things done.
+          </Typography>
         </Stack>
         <Stack direction="column" sx={featureStyle}>
           <Image
             src="/landingpage/icons/plug.svg"
             alt="coffee"
-            width={150}
-            height={100}
+            width={130}
+            height={80}
           />
-          <Typography variant="h4">Plug</Typography>
+          <Typography variant="h4">Power Outlets Information</Typography>
+          <Typography variant="body1">
+            Never worry about running out of battery! Check cafes with
+            accessible power plugs for uninterrupted work.
+          </Typography>
         </Stack>
         <Stack direction="column" sx={featureStyle}>
           <Image
             src="/landingpage/icons/coffee.svg"
             alt="coffee"
-            width={150}
-            height={100}
+            width={130}
+            height={80}
           />
-          <Typography variant="h4">Min-Coffee Price</Typography>
+          <Typography variant="h4">Coffee Price Transparency</Typography>
+          <Typography variant="body1">
+            Discover cafes tailored for remote work, with suitable seating,
+            quiet spaces, and a focused atmosphere.
+          </Typography>
         </Stack>
         <Stack direction="column" sx={featureStyle}>
           <Image
             src="/landingpage/icons/engineer.svg"
             alt="work friendly"
-            width={150}
-            height={100}
+            width={130}
+            height={80}
           />
-          <Typography variant="h4">Work Friendly</Typography>
+          <Typography variant="h4">Comfortable Work Environment</Typography>
+          <Typography variant="body1">
+            Discover cafes tailored for remote work, with suitable seating,
+            quiet spaces, and a focused atmosphere
+          </Typography>
         </Stack>
       </Stack>
     </Stack>

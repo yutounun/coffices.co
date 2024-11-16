@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "@/components/Header";
+import Header from "@/components/ResponsiveAppBar";
 import { Noto_Sans_JP } from "next/font/google";
 import Snackbar from "@/components/ui/Snackbar";
 import QueryClientProviderComponent from "@/contexts/QueryClientProviderComponent";

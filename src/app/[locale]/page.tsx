@@ -1,7 +1,7 @@
 import pick from "lodash/pick";
 import { useMessages, NextIntlClientProvider } from "next-intl";
 import { Box } from "@mui/material";
-import ResponsiveAppBar from "@/components/Header";
+import ResponsiveAppBar from "@/components/ResponsiveAppBar";
 import Footer from "./(lp)/Footer";
 import Reviews from "./(lp)/Reviews";
 import Features from "./(lp)/Features";
