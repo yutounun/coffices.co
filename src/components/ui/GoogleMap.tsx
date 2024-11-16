@@ -1,78 +1,44 @@
 "use client";
 
-import { GoogleMapsEmbed } from "@next/third-parties/google";
-import Image from "next/image";
-import { locationObjI } from "@/types/GooglePlacesTypes";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 
 const GoogleMap = ({
   locationKeyword,
-  currentLocation,
   clickedName,
 }: {
-  locationKeyword: string | null;
-  currentLocation?: locationObjI;
+  locationKeyword?: string;
   clickedName?: string;
 }) => {
-  // Production Mode
-  if (process.env.NEXT_PUBLIC_SHOW_GOOGLE_MAP === "true") {
-    if (clickedName) {
-      return (
-        <GoogleMapsEmbed
-          loading="lazy"
-          allowfullscreen={true}
-          apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ""}
-          height={850}
-          width="100%"
-          mode="place"
-          q={clickedName}
-        />
-      );
-    } else {
-      if (locationKeyword) {
-        return (
-          <GoogleMapsEmbed
-            loading="lazy"
-            allowfullscreen={true}
-            apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ""}
-            height={850}
-            width="100%"
-            mode="search"
-            q={`coffee shops in ${locationKeyword}`}
-          />
-        );
-      }
-      return (
-        <GoogleMapsEmbed
-          loading="lazy"
-          allowfullscreen={true}
-          apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ""}
-          height={850}
-          center={`${currentLocation?.lat},${currentLocation?.lng}`}
-          zoom={"15"}
-          width="100%"
-          mode="search"
-          q={`coffee shops `}
-        />
-      );
-    }
-  }
+  const mapQuery = clickedName
+    ? `https://www.google.com/maps/embed/v1/place?q=${encodeURIComponent(
+        clickedName
+      )}&key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`
+    : `https://www.google.com/maps/embed/v1/search?q=${encodeURIComponent(
+        `coffee shops in ${locationKeyword || "current location"}`
+      )}&key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`;
 
-  // Dummy Mode
   return (
     <Box
       sx={{
         position: "relative",
-        width: "100%",
-        height: "100%",
+        paddingBottom: "100%", // Aspect Ratio: 16:9
+        height: 0,
+        overflow: "hidden",
       }}
     >
-      <Image
-        src="/dummy/gmap.png"
-        alt="coffee"
-        fill
-        style={{ objectFit: "cover" }}
-      />
+      <iframe
+        src={mapQuery}
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          border: 0,
+        }}
+        allowFullScreen
+        loading="lazy"
+      ></iframe>
     </Box>
   );
 };

@@ -1,6 +1,7 @@
 "use client";
-import React, { useMemo, useState } from "react";
-import { Stack, Drawer, IconButton, Box } from "@mui/material";
+import { useState } from "react";
+import MyLocationIcon from "@mui/icons-material/MyLocation";
+import { Stack, Drawer, IconButton, Box, Tooltip } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import Image from "next/image";
 import NavBar from "@/components/ui/NavBar";
@@ -80,9 +81,17 @@ const HeaderContent = () => {
             flexGrow: 1,
             display: { xs: "none", md: "flex" },
             alignItems: "center",
+            gap: 2,
           }}
         >
+          <Tooltip title="Search Nearby">
+            <IconButton href="/en/search">
+              <MyLocationIcon fontSize="small" sx={{ color: "white" }} />
+            </IconButton>
+          </Tooltip>
+
           {/* <NavBar /> */}
+
           <SearchBar />
         </Stack>
         <UserActions />

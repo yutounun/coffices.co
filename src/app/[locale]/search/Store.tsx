@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Loading from "../loading";
 import Stars from "@/components/ui/Stars";
+import IconSet from "./IconSet";
 
 const Icon = ({ src, alt }: { src: string; alt: string }) => {
   return <Image src={src} alt={alt} width={15} height={15} />;
@@ -106,71 +107,7 @@ const Store = ({
               direction="row"
               sx={{ alignItems: "center", marginLeft: "-3px" }}
             >
-              {/* Robot */}
-              {showIcons && !detailInfo?.error && (
-                <Tooltip title="Analyzed by Gemini">
-                  <IconButton sx={{ p: "3px !important" }}>
-                    <Icon src="/robot.svg" alt="work friendly" />
-                  </IconButton>
-                </Tooltip>
-              )}
-
-              {/* Wifi */}
-              {showIcons &&
-                !detailInfo?.error &&
-                detailInfo?.wifi.wifi_available === "true" && (
-                  <Tooltip title="Wifi">
-                    <IconButton sx={{ p: "3px !important" }}>
-                      <Icon src="/landingpage/icons/wifi.svg" alt="wifi" />
-                    </IconButton>
-                  </Tooltip>
-                )}
-
-              {/* Plug */}
-              {showIcons &&
-                !detailInfo?.error &&
-                detailInfo?.plug.plug_available === "true" && (
-                  <Tooltip title="Plug">
-                    <IconButton sx={{ p: "3px !important" }}>
-                      <Icon src="/landingpage/icons/plug.svg" alt="plug" />
-                    </IconButton>
-                  </Tooltip>
-                )}
-
-              {/* Work Friendly */}
-              {showIcons &&
-                !detailInfo?.error &&
-                detailInfo?.work.suitable_for_work === "true" && (
-                  <Tooltip title="Work Friendly">
-                    <IconButton sx={{ p: "3px !important" }}>
-                      <Icon
-                        src="/landingpage/icons/comfort.svg"
-                        alt="work friendly"
-                      />
-                    </IconButton>
-                  </Tooltip>
-                )}
-
-              {showIcons &&
-                !detailInfo?.error &&
-                detailInfo?.coffee_price?.min_coffee_price !== "not sure" && (
-                  <Stack direction="row" sx={{ alignItems: "center" }}>
-                    <Tooltip title="Min Coffee Price">
-                      <IconButton sx={{ p: "3px !important" }}>
-                        <Icon
-                          src="/landingpage/icons/coffee.svg"
-                          alt="coffee"
-                        />
-                      </IconButton>
-                    </Tooltip>
-                    <Typography variant="body2">
-                      $
-                      {detailInfo?.coffee_price?.min_coffee_price !==
-                        "not sure" &&
-                        detailInfo?.coffee_price?.min_coffee_price}
-                    </Typography>
-                  </Stack>
-                )}
+              <IconSet detailInfo={detailInfo} showIcons={showIcons} />
             </Stack>
             {/* <Typography variant="body1">
               open_now: {open_now ? "open" : "closed"}

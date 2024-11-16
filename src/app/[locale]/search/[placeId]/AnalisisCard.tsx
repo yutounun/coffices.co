@@ -10,6 +10,19 @@ const featureStyle = {
   px: 1,
 };
 
+const formatLabel = (label?: string): string => {
+  switch (label) {
+    case "true":
+      return "Available";
+    case "false":
+      return "Not Available";
+    case "not sure":
+      return "Unknown";
+    default:
+      return "Unknown";
+  }
+};
+
 const AnalisisCard = ({
   label,
   confidence,
@@ -32,9 +45,13 @@ const AnalisisCard = ({
         sx={{ justifyContent: "center", alignItems: "center" }}
       >
         <Typography variant="h4">{title}</Typography>
-        <Stack direction="row" gap={1}>
-          <Typography variant="h5">{label}</Typography>
-          <Typography variant="h5">{confidence}%</Typography>
+        <Stack sx={{ justifyContent: "center", alignItems: "center" }}>
+          <Typography variant="h5" sx={{ fontWeight: "regular" }}>
+            {formatLabel(label)}
+          </Typography>
+          {confidence !== undefined && (
+            <Typography variant="body1">{confidence}%</Typography>
+          )}
         </Stack>
         <Typography variant="body1">by Gemini 🤖</Typography>
       </Stack>

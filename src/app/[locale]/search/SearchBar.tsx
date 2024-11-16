@@ -1,49 +1,59 @@
 import { Stack } from "@mui/material";
-import { TextField } from "@mui/material";
 import { useState } from "react";
-import Link from "next/link";
 import SearchIcon from "@mui/icons-material/Search";
+import { useRouter } from "next/navigation";
 
 const SearchBar = () => {
   const [keyword, setKeyword] = useState("");
+  const router = useRouter();
+
+  const handleChangeText = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setKeyword(e.target.value);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter" && keyword.trim()) {
+      router.push(`/en/search?location=${encodeURIComponent(keyword.trim())}`);
+    }
+  };
+
   return (
-    <>
-      <Stack
-        direction="row"
-        sx={{
-          gap: 2,
-          alignItems: "center",
-          height: 30,
+    <Stack
+      direction="row"
+      sx={{
+        gap: 1,
+        alignItems: "center",
+        height: 30,
+        borderRadius: "12px",
+      }}
+    >
+      <input
+        type="text"
+        onChange={handleChangeText}
+        onKeyDown={handleKeyDown}
+        value={keyword}
+        placeholder="Search"
+        style={{
+          border: "none",
+          outline: "none",
+          padding: "0 0.8em",
+          width: "100%",
+          height: "80%",
           borderRadius: "12px",
+          paddingLeft: "0.5em",
+          fontSize: "0.8rem",
         }}
+      />
+      <a
+        href={`/en/search?location=${encodeURIComponent(keyword.trim())}`}
+        style={{ display: "flex", alignItems: "center" }}
       >
-        <input
-          type="text"
-          onChange={(e) => setKeyword(e.target.value)}
-          value={keyword}
-          placeholder="Search"
-          style={{
-            border: "none",
-            outline: "none",
-            padding: "0 0.8em",
-            width: "100%",
-            height: "80%",
-            borderRadius: "12px",
-            paddingLeft: "0.5em",
-            fontSize: "0.8rem",
-          }}
+        <SearchIcon
+          fontSize="small"
+          sx={{ cursor: "pointer", color: "white" }}
         />
-        <Link
-          href={`/en/search?location=${keyword}`}
-          style={{ display: "flex", alignItems: "center" }}
-        >
-          <SearchIcon
-            fontSize="small"
-            sx={{ cursor: "pointer", color: "white" }}
-          />
-        </Link>
-      </Stack>
-    </>
+      </a>
+    </Stack>
   );
 };
 
