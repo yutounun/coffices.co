@@ -51,6 +51,7 @@ const useFetchCafeList = () => {
                 process.env.NEXT_PUBLIC_SHOW_STORE_LIST === "true"
                   ? await searchCafeOnGoogle(currentLocation)
                   : dummyStores;
+
               console.log("🚀 ~ currentLocation:", currentLocation);
               setStores(data);
               setLoading(false);

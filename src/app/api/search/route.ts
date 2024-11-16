@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
 
   const url = req.location
     ? `https://maps.googleapis.com/maps/api/place/textsearch/json?query="coffee shop in "${req.location}"&radius=1500&key=${apiKey}` // search
-    : `https://maps.googleapis.com/maps/api/place/textsearch/json?query="coffee shop"&location=49.2827,-123.1207&radius=1000&key=${apiKey}`; // current location
+    : `https://maps.googleapis.com/maps/api/place/textsearch/json?query="coffee shops"&location=${req.currentLocation.lat},${req.currentLocation.lng}&radius=1500&key=${apiKey}`; // current location
 
   console.log("🚀 ~ POST ~ req:", req);
   console.log("🚀 ~ POST ~ url:", url);

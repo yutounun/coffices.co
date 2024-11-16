@@ -4,10 +4,10 @@ import { getAnalytics } from "@/utils/api";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const useFetchCafeDetail = (props: any) => {
+const useFetchCafeDetail = (argPlaceId?: string) => {
   const params = useParams();
   // Retrieve the placeId from the URL or props
-  const placeId = props?.placeId || (params.placeId as string);
+  const placeId = argPlaceId || (params.placeId as string);
   const [loading, setLoading] = useState(true);
   const [detailInfo, setDetailInfo] = useState<CafeDetailI>();
 

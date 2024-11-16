@@ -16,6 +16,7 @@ const Store = ({
   formatted_address,
   open_now,
   photoRef,
+  useRatingsTotal,
   rating,
   handleClickStore,
 }: {
@@ -30,15 +31,20 @@ const Store = ({
     formatted_address: string,
     open_now: boolean,
     rating?: number,
+    useRatingsTotal: number,
     photoRef?: string
   ) => void;
 }) => {
-  // const { detailInfo, loading } = useFetchCafeDetail(placeId);
+  const { detailInfo, loading } = useFetchCafeDetail(placeId);
   // if (loading) {
   //   return <Loading />;
   // }
 
   const showIcons = process.env.NEXT_PUBLIC_SHOW_DETAIL_INFO_ON_LIST;
+
+  // Don't show the store if there is an error fetching the details
+  // if (detailInfo?.error) return;
+
   return (
     <Grid
       key={placeId}
@@ -61,7 +67,7 @@ const Store = ({
       }
     >
       <Link href={`/ja/search/${placeId}`}>
-        <Stack sx={{ p: 1 }}>
+        <Stack sx={{ p: 1, height: "auto" }}>
           <Image
             src={
               process.env.NEXT_PUBLIC_SHOW_STORE_IMAGES_ON_LIST === "true"
@@ -76,31 +82,48 @@ const Store = ({
           <Stack sx={{ p: 1, height: "auto" }}>
             <Typography variant="h5">{name}</Typography>
             {/* <Typography variant="body1">{formatted_address}</Typography> */}
-            <Stack direction="row" sx={{ alignItems: "center" }} gap={0.2}>
+            <Stack direction="row" sx={{ alignItems: "center" }} gap={0.3}>
               <Stars rate={rating} size={{ xs: "small", md: "large" }} />
-              {rating}
+              <Typography variant="body1">{rating}</Typography>
+              <Typography variant="body2">({useRatingsTotal})</Typography>
             </Stack>
             <Stack direction="row" sx={{ alignItems: "center" }} gap={0.2}>
-              {showIcons && (
-                <Icon src="/landingpage/icons/wifi.svg" alt="wifi" />
-              )}
+              {showIcons &&
+                !detailInfo?.error &&
+                detailInfo?.wifi.wifi_available === "true" && (
+                  <Icon src="/landingpage/icons/wifi.svg" alt="wifi" />
+                )}
 
-              {showIcons && (
-                <Icon src="/landingpage/icons/plug.svg" alt="plug" />
-              )}
+              {showIcons &&
+                !detailInfo?.error &&
+                detailInfo?.plug.plug_available === "true" && (
+                  <Icon src="/landingpage/icons/plug.svg" alt="plug" />
+                )}
 
-              {showIcons && (
-                <Icon
-                  src="/landingpage/icons/comfort.svg"
-                  alt="work friendly"
-                />
-              )}
+              {showIcons &&
+                !detailInfo?.error &&
+                detailInfo?.work.suitable_for_work === "true" && (
+                  <Icon
+                    src="/landingpage/icons/comfort.svg"
+                    alt="work friendly"
+                  />
+                )}
 
-              {showIcons && (
-                <Stack direction="row" sx={{ alignItems: "center" }} gap={0.1}>
-                  <Icon src="/landingpage/icons/coffee.svg" alt="coffee" />
-                  <Typography variant="body1">$2</Typography>
-                </Stack>
+              {showIcons &&
+                !detailInfo?.error &&
+                detailInfo?.coffee_price?.min_coffee_price !== "not sure" && (
+                  <Stack
+                    direction="row"
+                    sx={{ alignItems: "center" }}
+                    gap={0.1}
+                  >
+                    <Icon src="/landingpage/icons/coffee.svg" alt="coffee" />
+                    <Typography variant="body1">$2</Typography>
+                  </Stack>
+                )}
+
+              {showIcons && !detailInfo?.error && (
+                <Typography variant="body1">🤖</Typography>
               )}
             </Stack>
             {/* <Typography variant="body1">
