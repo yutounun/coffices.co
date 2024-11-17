@@ -19,23 +19,11 @@ const IconWithCondition = ({
     <IconButton sx={{ p: "1px !important" }}>
       {!condition && errorIconSrc ? (
         <>
-          <Image
-            src={iconSrc}
-            alt={title}
-            style={{ width: "15px", height: "15px" }}
-          />
-          <Image
-            src={errorIconSrc}
-            alt="error"
-            style={{ width: "15px", height: "15px" }}
-          />
+          <Image src={iconSrc} alt={title} width={15} height={15} />
+          <Image src={errorIconSrc} alt="error" width={15} height={15} />
         </>
       ) : (
-        <Image
-          src={iconSrc}
-          alt={title}
-          style={{ width: "15px", height: "15px" }}
-        />
+        <Image src={iconSrc} alt={title} width={15} height={15} />
       )}
       {!condition && !errorIconSrc && showQuestionMark && (
         <Typography
@@ -109,7 +97,8 @@ const IconSet = ({
           <Image
             src="/landingpage/icons/coffee.svg"
             alt="coffee price"
-            style={{ width: "15px", height: "15px" }}
+            width={15}
+            height={15}
           />
           {(detailInfo?.error ||
             detailInfo?.coffee_price?.min_coffee_price === "not sure") && (
