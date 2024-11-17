@@ -7,20 +7,25 @@ import mongoose from "mongoose";
  * @throws {Error} - If the connection to the database fails.
  */
 const connectDB = async () => {
-  if (mongoose.connection.readyState) {
-    console.log("Already connected to MongoDB");
-    return;
-  }
-
   try {
+    if (mongoose.connection && mongoose.connection.readyState !== 0) {
+      console.log("Already connected to MongoDB");
+      return;
+    }
+
     console.log(
       "🚀 ~ connectDB ~ process.env.DB_API_KEY:",
       process.env.DB_API_KEY
     );
-    await mongoose.connect(process.env.DB_API_KEY);
+
+    await mongoose.connect(process.env.DB_API_KEY, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+
     console.log("Successfully connected to MongoDB");
   } catch (err) {
-    console.log("Failed to connect to MongoDB");
+    console.error("Failed to connect to MongoDB", err);
     throw new Error(err.message);
   }
 };
