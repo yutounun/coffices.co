@@ -1,39 +1,45 @@
-import { useTranslations } from "next-intl";
-import { Typography } from "@mui/material";
-import { GoogleMapsEmbed } from "@next/third-parties/google";
-import Link from "next/link";
+"use client";
 
-const GoogleMap = ({ locationName }: { locationName: string }) => {
-  const t = useTranslations("detail");
+import { Box } from "@mui/material";
 
-  if (process.env.NODE_ENV === "development")
-    return (
-      <>
-        <Typography variant="body1">{t("map.explanation")}</Typography>
-        <Typography variant="body1">{t("map.check")} </Typography>
-        <Link href="https://coffices-co.vercel.app/">
-          <Typography
-            variant="body1"
-            sx={{
-              "&:hover": {
-                cursor: "pointer",
-                color: "black",
-              },
-            }}
-          >
-            https://coffices-co.vercel.app/{" "}
-          </Typography>
-        </Link>
-      </>
-    );
+const GoogleMap = ({
+  locationKeyword,
+  clickedName,
+}: {
+  locationKeyword?: string | null;
+  clickedName?: string;
+}) => {
+  const mapQuery = clickedName
+    ? `https://www.google.com/maps/embed/v1/place?q=${encodeURIComponent(
+        clickedName
+      )}&key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`
+    : `https://www.google.com/maps/embed/v1/search?q=${encodeURIComponent(
+        `coffee shops in ${locationKeyword || "current location"}`
+      )}&key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`;
+
   return (
-    <GoogleMapsEmbed
-      apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ""}
-      height={400}
-      width="100%"
-      mode="place"
-      q={locationName}
-    />
+    <Box
+      sx={{
+        position: "relative",
+        paddingBottom: "100%",
+        height: 0,
+        overflow: "hidden",
+      }}
+    >
+      <iframe
+        src={mapQuery}
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          border: 0,
+        }}
+        allowFullScreen
+        loading="lazy"
+      ></iframe>
+    </Box>
   );
 };
 

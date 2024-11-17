@@ -1,0 +1,25 @@
+import { CafeDetailI } from "@/types/CafeDetail";
+import { Stack, Typography } from "@mui/material";
+import UsedReview from "./UsedReview";
+
+const UsedReviews = ({ detailInfo }: { detailInfo?: CafeDetailI }) => {
+  return (
+    <Stack direction="column" gap={2} sx={{ pt: 2, pb: 6 }}>
+      <Typography variant="h2">Important Reviews used by AI</Typography>
+      <Stack
+        direction="row"
+        gap={3}
+        sx={{
+          overflowX: "auto",
+          px: 1,
+        }}
+      >
+        {detailInfo?.important_reviews.map((review, index) => (
+          <UsedReview key={index} review={review} index={index} />
+        ))}
+      </Stack>
+    </Stack>
+  );
+};
+
+export default UsedReviews;

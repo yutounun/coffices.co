@@ -11,6 +11,7 @@ import { signOut } from "next-auth/react";
 import { useTranslations } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 const UserActions = ({}) => {
   const t = useTranslations("header");
@@ -37,10 +38,10 @@ const UserActions = ({}) => {
 
   return (
     <Stack direction="row" sx={{ alignItems: "center", height: 20 }} gap={2}>
-      <Box sx={{ display: { xs: "none", md: "flex" } }}>
+      {/* <Box sx={{ display: { xs: "none", md: "flex" } }}>
         <LanguageToggle />
-      </Box>
-      <Button
+      </Box> */}
+      {/*<Button
         onClick={onClickLogoutButton}
         sx={{
           my: 2,
@@ -48,16 +49,12 @@ const UserActions = ({}) => {
           display: { xs: "none", md: "flex" },
         }}
       >
-        <Typography sx={{ ...baseMenuStyle, letterSpacing: "0.1rem" }}>
+         <Typography variant="nav" sx={{ color: "white" }}>
           {t("menus.signout")}
-        </Typography>
-      </Button>
+        </Typography> 
+      </Button>*/}
       <IconButton onClick={handleOpenProfile} sx={{ p: 0 }}>
-        <Avatar
-          alt="User Avatar"
-          src={session?.user?.image || "/coffee.jpg"}
-          sx={{ width: { xs: 28, md: 38 }, height: { xs: 28, md: 38 } }}
-        />
+        <AccountCircleIcon sx={{ color: "white" }} />
       </IconButton>
     </Stack>
   );

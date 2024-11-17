@@ -1,26 +1,28 @@
 import pick from "lodash/pick";
 import { useMessages, NextIntlClientProvider } from "next-intl";
-import { Stack } from "@mui/material";
-import LoginContent from "#/[locale]/(login)/LoginContent";
-import LoginImage from "#/[locale]/(login)/LoginImage";
-import { mobile } from "@/utils/const";
+import { Box } from "@mui/material";
+import ResponsiveAppBar from "@/components/ResponsiveAppBar";
+import Footer from "./(lp)/Footer";
+import Reviews from "./(lp)/Reviews";
+import Features from "./(lp)/Features";
+import Hero from "./(lp)/Hero";
 
 export default function Home() {
-  const loginStyles = {
-    height: "100vh",
-    background: "white",
-    justifyContent: "center",
-    overflow: "hidden",
-    px: { xs: mobile.space.aroundX, md: 10 },
-  };
   const messages = useMessages();
 
   return (
     <NextIntlClientProvider messages={pick(messages, "home")}>
-      <Stack direction="row" sx={loginStyles}>
-        <LoginContent />
-        <LoginImage />
-      </Stack>
+      <Box>
+        <ResponsiveAppBar />
+
+        <Hero />
+
+        <Features />
+
+        <Reviews />
+
+        <Footer />
+      </Box>
     </NextIntlClientProvider>
   );
 }

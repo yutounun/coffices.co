@@ -16,6 +16,22 @@ declare module "@mui/material/styles/createPalette" {
   }
 }
 
+declare module "@mui/material/styles" {
+  interface TypographyVariants {
+    nav: React.CSSProperties;
+  }
+
+  interface TypographyVariantsOptions {
+    nav?: React.CSSProperties;
+  }
+}
+
+declare module "@mui/material/Typography" {
+  interface TypographyPropsVariantOverrides {
+    nav: true;
+  }
+}
+
 let theme = createTheme({
   breakpoints: {
     values: {
@@ -35,7 +51,7 @@ let theme = createTheme({
       contrastText: "#1D1915",
     },
     secondary: {
-      main: "#FF8F2A",
+      main: "#161422",
       light: "#FCF4ED",
       dark: "#DC7C25",
       contrastText: "#25313C",
@@ -105,12 +121,18 @@ let theme = createTheme({
     },
     h5: {
       fontFamily: "Lato, 'Open Sans', Roboto, 'Helvetica', Arial, sans-serif",
-      fontSize: "0.9rem", // 14px
+      fontSize: "1rem", // 14px
       fontWeight: "regurar",
       color: "black",
       "@media (max-width:600px)": {
         fontSize: "0.8rem",
       },
+    },
+    nav: {
+      fontFamily: "Lato, 'Open Sans', Roboto, 'Helvetica', Arial, sans-serif",
+      fontSize: "0.8rem",
+      fontWeight: "bold",
+      color: "black",
     },
     caption: {
       fontFamily: "Open Sans, Roboto, 'Helvetica', Arial, sans-serif",
@@ -132,7 +154,7 @@ let theme = createTheme({
     },
     body2: {
       fontFamily: "Open Sans, Roboto, 'Helvetica', Arial, sans-serif",
-      fontSize: "0.5rem", // 16px
+      fontSize: "0.7rem", // 16px
       lineHeight: 1.63, // 163.2%
       color: "rgb(0,0,0,62%)",
       "@media (max-width:600px)": {
@@ -144,6 +166,17 @@ let theme = createTheme({
       fontSize: "1rem", // 18px
       lineHeight: 1.63, // 163.2%
       color: "rgb(0,0,0,62%)",
+    },
+  },
+  components: {
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          "&.MuiOutlinedInput-sizeSmall": {
+            height: "10px",
+          },
+        },
+      },
     },
   },
 });

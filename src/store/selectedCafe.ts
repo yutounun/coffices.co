@@ -1,4 +1,4 @@
-import { CafeI } from "@/types/cafes";
+import { CafeI } from "@/types/CafeList";
 import { create } from "zustand";
 
 interface selectedCafeStateI {

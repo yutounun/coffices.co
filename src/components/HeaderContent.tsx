@@ -1,12 +1,13 @@
 "use client";
-import React, { useMemo, useState } from "react";
-import { Stack, Drawer, IconButton, Box } from "@mui/material";
+import { useState } from "react";
+import MyLocationIcon from "@mui/icons-material/MyLocation";
+import { Stack, Drawer, IconButton, Box, Tooltip } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import Image from "next/image";
 import NavBar from "@/components/ui/NavBar";
 import UserActions from "@/components/ui/UserActions";
 import LanguageToggle from "@/components/ui/LanguageToggle";
-import SearchBar from "#/[locale]/cafe/list/SearchBar";
+import SearchBar from "#/[locale]/search/SearchBar";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -28,11 +29,6 @@ const HeaderContent = () => {
     setDrawerOpen(false);
   };
 
-  const homeLink = useMemo(() => {
-    const pathLanguage = pathname.split("/")[1]; // get [locale]
-    return `/${pathLanguage}/cafe/list`;
-  }, [pathname]);
-
   return (
     <>
       <Stack
@@ -45,7 +41,7 @@ const HeaderContent = () => {
         }}
       >
         {/* Logo */}
-        <Link href={homeLink}>
+        <Link href="/">
           <Image src="/logo/white.png" alt="logo" width={80} height={40} />
         </Link>
 
@@ -57,12 +53,7 @@ const HeaderContent = () => {
             justifyContent: "flex-end",
           }}
         >
-          <IconButton
-            color="primary"
-            edge="start"
-            onClick={toggleDrawer(true)}
-            sx={{ ml: 2 }}
-          >
+          <IconButton edge="start" onClick={toggleDrawer(true)} sx={{ ml: 2 }}>
             <MenuIcon />
           </IconButton>
           <Drawer
@@ -75,27 +66,34 @@ const HeaderContent = () => {
               <Stack direction="column" spacing={2} sx={{ p: 2 }}>
                 <LanguageToggle onClose={closeDrawer} />
                 <NavBar onClose={closeDrawer} />
-                <SearchBar onClose={closeDrawer} />
+                <SearchBar />
               </Stack>
             </Box>
           </Drawer>
         </Box>
+      </Stack>
 
-        {/* Language Switch, NavBar, Search for md */}
+      {/* Language Switch, NavBar, Search for md */}
+      <Stack direction="row" sx={{ flexGrow: 0, alignItems: "center" }} gap={2}>
         <Stack
           direction="row"
           sx={{
             flexGrow: 1,
             display: { xs: "none", md: "flex" },
             alignItems: "center",
-            gap: 4,
+            gap: 2,
           }}
         >
-          <NavBar />
+          <Tooltip title="Search Nearby">
+            <IconButton href="/en/search">
+              <MyLocationIcon fontSize="small" sx={{ color: "white" }} />
+            </IconButton>
+          </Tooltip>
+
+          {/* <NavBar /> */}
+
           <SearchBar />
         </Stack>
-      </Stack>
-      <Stack direction="row" sx={{ flexGrow: 0 }} spacing={2}>
         <UserActions />
       </Stack>
     </>

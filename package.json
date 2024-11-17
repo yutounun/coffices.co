@@ -15,6 +15,7 @@
     "@emotion/cache": "^11.11.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@googlemaps/js-api-loader": "^1.16.8",
     "@mui/icons-material": "^5.14.18",
     "@mui/lab": "^5.0.0-alpha.154",
     "@mui/material": "^5.14.18",
@@ -22,10 +23,12 @@
     "@next/third-parties": "^14.2.5",
     "@tanstack/react-query-devtools": "^5.14.7",
     "@vercel/blob": "^0.15.1",
-    "axios": "^1.6.2",
+    "axios": "^1.7.7",
     "client-only": "^0.0.1",
     "dayjs": "^1.11.10",
+    "from": "^0.1.7",
     "i18next": "^23.12.2",
+    "import": "^0.0.6",
     "moment": "^2.29.4",
     "mongodb": "^6.3.0",
     "mongoose": "^8.0.3",
@@ -51,6 +54,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.0.3",
     "json-server": "^0.17.4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "watch": "^1.0.2"
   }
 }
