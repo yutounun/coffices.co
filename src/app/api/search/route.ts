@@ -1,3 +1,5 @@
+"use server";
+
 import { NextRequest, NextResponse } from "node_modules/next/server";
 const axios = require("axios");
 /**
