@@ -21,7 +21,7 @@ const useFetchCafeList = () => {
     placeId: string,
     name: string,
     formatted_address: string,
-    open_now: boolean,
+    open_now?: boolean,
     photoRef?: string
   ) {
     setSelectedStoreData({

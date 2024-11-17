@@ -3,7 +3,7 @@ import { useTranslations } from "next-intl";
 import LanguageToggle from "@/components/ui/LanguageToggle";
 import { Stack, Typography } from "@mui/material";
 import LoginButton from "./LoginButton";
-import { loginProviders } from "@/data/buttons";
+// import { loginProviders } from "@/data/buttons";
 import Image from "next/image";
 
 const loginContentStyle = {
@@ -57,14 +57,14 @@ const LoginContent = () => {
             width: { xs: "100%", md: "100%", gap: { xs: 5, md: 0 } },
           }}
         >
-          {loginProviders.map((provider) => (
+          {/* {loginProviders.map((provider) => (
             <LoginButton
               key={provider.text}
               text={provider.text}
               iconUrl={provider.iconUrl}
               signInUrl={provider.signInUrl}
             />
-          ))}
+          ))} */}
         </Stack>
       </Stack>
     </>

@@ -66,7 +66,7 @@ const HeaderContent = () => {
               <Stack direction="column" spacing={2} sx={{ p: 2 }}>
                 <LanguageToggle onClose={closeDrawer} />
                 <NavBar onClose={closeDrawer} />
-                <SearchBar onClose={closeDrawer} />
+                <SearchBar />
               </Stack>
             </Box>
           </Drawer>

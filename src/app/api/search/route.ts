@@ -22,9 +22,6 @@ export async function POST(request: NextRequest) {
     const placesResults = res.data.results;
     return NextResponse.json(placesResults);
   } catch (error) {
-    console.error(
-      "🚀 ~ searchCafeInTokyo ~ error:",
-      error.response?.data || error.message
-    );
+    console.log("🚀 ~ POST ~ error:", error);
   }
 }

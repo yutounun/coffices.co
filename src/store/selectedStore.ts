@@ -5,7 +5,7 @@ export type selectedStoreI = {
   id: string;
   name: string;
   address: string;
-  isOpen: boolean;
+  isOpen?: boolean;
   photoRef?: string;
 } | null;
 

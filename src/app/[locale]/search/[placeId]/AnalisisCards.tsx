@@ -38,8 +38,8 @@ const AnalisisCards = ({ detailInfo }: { detailInfo?: CafeDetailI }) => {
 
       {/* Coffee */}
       <AnalisisCard
-        label={detailInfo?.coffee_price.min_coffee_price}
-        confidence={detailInfo?.coffee_price.confidence}
+        label={detailInfo?.coffee_price?.min_coffee_price}
+        confidence={detailInfo?.coffee_price?.confidence}
         title="coffee"
         src="/landingpage/icons/coffee.svg"
         alt="coffee"

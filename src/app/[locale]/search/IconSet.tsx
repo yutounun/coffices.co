@@ -1,5 +1,6 @@
 import { CafeDetailI } from "@/types/CafeDetail";
 import { Stack, Tooltip, IconButton, Typography } from "@mui/material";
+import Image from "next/image";
 
 const IconWithCondition = ({
   title,
@@ -18,19 +19,19 @@ const IconWithCondition = ({
     <IconButton sx={{ p: "1px !important" }}>
       {!condition && errorIconSrc ? (
         <>
-          <img
+          <Image
             src={iconSrc}
             alt={title}
             style={{ width: "15px", height: "15px" }}
           />
-          <img
+          <Image
             src={errorIconSrc}
             alt="error"
             style={{ width: "15px", height: "15px" }}
           />
         </>
       ) : (
-        <img
+        <Image
           src={iconSrc}
           alt={title}
           style={{ width: "15px", height: "15px" }}
@@ -58,7 +59,7 @@ const IconSet = ({
   showIcons,
 }: {
   detailInfo?: CafeDetailI;
-  showIcons?: boolean;
+  showIcons?: string;
 }) => {
   const showQuestionMark = !showIcons || detailInfo?.error;
 
@@ -105,7 +106,7 @@ const IconSet = ({
       {/* Coffee Price */}
       <Tooltip title="Min Coffee Price">
         <IconButton sx={{ p: "3px !important" }}>
-          <img
+          <Image
             src="/landingpage/icons/coffee.svg"
             alt="coffee price"
             style={{ width: "15px", height: "15px" }}

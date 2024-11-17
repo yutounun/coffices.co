@@ -54,6 +54,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.0.3",
     "json-server": "^0.17.4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "watch": "^1.0.2"
   }
 }

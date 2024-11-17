@@ -6,7 +6,7 @@ const GoogleMap = ({
   locationKeyword,
   clickedName,
 }: {
-  locationKeyword?: string;
+  locationKeyword?: string | null;
   clickedName?: string;
 }) => {
   const mapQuery = clickedName
@@ -21,7 +21,7 @@ const GoogleMap = ({
     <Box
       sx={{
         position: "relative",
-        paddingBottom: "100%", // Aspect Ratio: 16:9
+        paddingBottom: "100%",
         height: 0,
         overflow: "hidden",
       }}

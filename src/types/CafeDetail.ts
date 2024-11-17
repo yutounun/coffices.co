@@ -1,4 +1,6 @@
 export interface CafeDetailI {
+  error: any;
+
   _id: string; // Document ID
   name: string; // Name of the cafe
   open_now: boolean; // Indicates whether the cafe is currently open

@@ -79,7 +79,10 @@ const SearchByName = () => {
           width: "100%",
         }}
       >
-        <GoogleMap clickedName={selectedStoreData?.name} />
+        <GoogleMap
+          locationKeyword={null}
+          clickedName={selectedStoreData?.name}
+        />
       </Box>
     </Stack>
   );

@@ -1,15 +1,10 @@
 import useFetchCafeDetail from "@/hooks/useFetchCafeDetail";
 import { photoUrl } from "@/libs/commons";
-import { Grid, IconButton, Stack, Tooltip, Typography } from "@mui/material";
+import { Grid, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-import Loading from "../loading";
 import Stars from "@/components/ui/Stars";
 import IconSet from "./IconSet";
-
-const Icon = ({ src, alt }: { src: string; alt: string }) => {
-  return <Image src={src} alt={alt} width={15} height={15} />;
-};
 
 const Store = ({
   placeId,
@@ -24,15 +19,15 @@ const Store = ({
   placeId: string;
   name: string;
   formatted_address: string;
-  open_now: boolean;
+  open_now?: boolean;
   photoRef?: string;
+  useRatingsTotal?: number;
+  rating?: number;
   handleClickStore: (
     placeId: string,
     name: string,
     formatted_address: string,
-    open_now: boolean,
-    rating?: number,
-    useRatingsTotal: number,
+    open_now?: boolean,
     photoRef?: string
   ) => void;
 }) => {
@@ -91,7 +86,6 @@ const Store = ({
                 objectFit: "cover",
                 objectPosition: "center",
               }}
-              onError={(e) => (e.target.src = "/default-coffee-image.jpg")}
             />
           </Stack>
 
@@ -99,7 +93,7 @@ const Store = ({
             <Typography variant="h5">{name}</Typography>
             {/* <Typography variant="body1">{formatted_address}</Typography> */}
             <Stack direction="row" sx={{ alignItems: "center" }} gap={0.3}>
-              <Stars rate={rating} size={{ xs: "small", md: "large" }} />
+              <Stars rate={rating || 0} size={{ xs: "small", md: "large" }} />
               <Typography variant="body1">{rating}</Typography>
               <Typography variant="body2">({useRatingsTotal})</Typography>
             </Stack>

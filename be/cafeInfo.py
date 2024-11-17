@@ -86,19 +86,27 @@ def analyze_reviews_with_gemini(gemini_api_key, reviews):
     prompt = (
         "Analyze the following reviews and determine specific information about the cafe. Respond strictly in JSON format with the following structure:\n\n"
         "{\n"
-        '  "wifi_available": boolean, // true if any review mentions WiFi positively, otherwise false or "not sure"\n'
+        '  "wifi_available": boolean, // true if no negative mentions about WiFi exist, assume wifi_available is true, otherwise false or "not sure"\n'
         '  "wifi_confidence": integer, // percentage confidence based on the number of mentions (0-100)\n'
-        '  "suitable_for_work": boolean, // true if any review indicates it is good for work, otherwise false or "not sure"\n'
-        '  "work_confidence": integer, // percentage confidence based on the number of mentions (0-100)\n'
-        '  "min_coffee_price": number | string, // minimum price for coffee, or "not sure" if not enough information\n'
-        '  "max_coffee_price_confidence": integer, // percentage confidence based on the number of mentions (0-100)\n'
-        '  "plug_available": boolean, // true if any review mentions plugs or power outlets, otherwise false or "not sure"\n'
+        '  "plug_available": boolean, // true if any review mentions plugs, power outlets, sockets, or charging stations positively, otherwise false or "not sure"\n'
         '  "plug_confidence": integer, // percentage confidence based on the number of mentions (0-100)\n'
+        '  "suitable_for_work": boolean, // true if any review indicates it is good for work (e.g., quiet, comfortable seating, good lighting, spacious, not crowded, people working on laptops), otherwise false or "not sure"\n'
+        '  "work_confidence": integer, // percentage confidence based on the number of mentions (0-100)\n'
+        '  "min_coffee_price": number | string, // minimum price of any drink (not limited to coffee), or "not sure" if no drink prices are mentioned\n'
+        '  "min_coffee_price_confidence": integer, // percentage confidence based on the number of mentions (0-100)\n'
         '  "ai_analysis": string, // summary of the analysis of the reviews\n'
         '  "important_reviews": [string] // up to 10 review texts that were most relevant for this analysis\n'
         "}\n\n"
+        "Special rules:\n"
+        "- If no negative mentions about WiFi exist, assume wifi_available is true.\n"
+        "- If no negative mentions about plugs (e.g., 'no plugs', 'plugs not available') exist, assume plug_available is true.\n"
+        "- For suitable_for_work, consider the following phrases: 'quiet', 'comfortable seating', 'good lighting', 'spacious', 'not crowded', 'people working on laptops', or similar expressions. If multiple indicators suggest suitability, set suitable_for_work to true; otherwise, set it to false or 'not sure'.\n"
+        "- For min_coffee_price, look for the lowest price of any drink (e.g., tea, juice, coffee). If no drink prices are mentioned, return 'not sure'.\n"
+        "- For plug mentions, include words such as 'plug', 'power outlet', 'socket', 'charging station', or similar terms.\n"
+        "- For WiFi mentions, look for terms such as 'WiFi', 'internet', or similar.\n\n"
         f"Reviews:\n{reviews_text}"
     )
+
 
 
     # プロンプトを送信してレスポンスを取得

@@ -16,6 +16,22 @@ declare module "@mui/material/styles/createPalette" {
   }
 }
 
+declare module "@mui/material/styles" {
+  interface TypographyVariants {
+    nav: React.CSSProperties;
+  }
+
+  interface TypographyVariantsOptions {
+    nav?: React.CSSProperties;
+  }
+}
+
+declare module "@mui/material/Typography" {
+  interface TypographyPropsVariantOverrides {
+    nav: true;
+  }
+}
+
 let theme = createTheme({
   breakpoints: {
     values: {
@@ -117,9 +133,6 @@ let theme = createTheme({
       fontSize: "0.8rem",
       fontWeight: "bold",
       color: "black",
-      "@media (max-width:600px)": {
-        fontSize: "0.6rem",
-      },
     },
     caption: {
       fontFamily: "Open Sans, Roboto, 'Helvetica', Arial, sans-serif",

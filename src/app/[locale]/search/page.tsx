@@ -32,11 +32,7 @@ const Search = () => {
           width: "100%",
         }}
       >
-        <GoogleMap
-          clickedName={clickedName}
-          locationKeyword={location}
-          currentLocation={currentLocationMap}
-        />
+        <GoogleMap clickedName={clickedName} locationKeyword={location} />
       </Box>
     </Stack>
   );
