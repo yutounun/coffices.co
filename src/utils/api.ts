@@ -13,7 +13,11 @@ export async function searchCafeOnGoogle(
     },
     body: JSON.stringify({ currentLocation, location }),
   })
-    .then((res) => res.json())
+    .then((res) => {
+      const data = res.json();
+      console.log("🚀 ~ .then ~ data:", data);
+      return data;
+    })
     .catch((err) => console.log(err));
 }
 

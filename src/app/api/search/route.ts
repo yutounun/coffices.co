@@ -20,6 +20,7 @@ export async function POST(request: NextRequest) {
   try {
     const res = await axios.get(url);
     const placesResults = res.data.results;
+    console.log("🚀 ~ POST ~ placesResults:", placesResults);
     return NextResponse.json(placesResults);
   } catch (error) {
     console.log("🚀 ~ POST ~ error:", error);
