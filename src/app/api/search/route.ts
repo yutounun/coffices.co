@@ -8,8 +8,8 @@ const axios = require("axios");
  */
 export async function POST(request: NextRequest) {
   console.log(
-    "🚀 ~ connectDB ~ process.env.DB_API_KEY:",
-    process.env.DB_API_KEY
+    "🚀 ~ connectDB ~ process.env.NEXT_PUBLIC_DB_API_KEY:",
+    process.env.NEXT_PUBLIC_DB_API_KEY
   );
   const apiKey = process.env.NEXT_PUBLIC_GOOGLE_SEARCH_API_KEY;
   console.log("🚀 ~ POST ~ apiKey:", apiKey);

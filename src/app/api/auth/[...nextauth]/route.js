@@ -29,7 +29,7 @@ const authOptions = {
       clientSecret: process.env.LINE_CLIENT_SECRET,
     }),
   ],
-  database: process.env.DB_API_KEY,
+  database: process.env.NEXT_PUBLIC_DB_API_KEY,
   secret: process.env.SECRET,
   callbacks: {
     async signIn({ user }) {

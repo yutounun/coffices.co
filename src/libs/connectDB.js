@@ -14,11 +14,11 @@ const connectDB = async () => {
     }
 
     console.log(
-      "🚀 ~ connectDB ~ process.env.DB_API_KEY:",
-      process.env.DB_API_KEY
+      "🚀 ~ connectDB ~ process.env.NEXT_PUBLIC_DB_API_KEY:",
+      process.env.NEXT_PUBLIC_DB_API_KEY
     );
 
-    await mongoose.connect(process.env.DB_API_KEY, {
+    await mongoose.connect(process.env.NEXT_PUBLIC_DB_API_KEY, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
