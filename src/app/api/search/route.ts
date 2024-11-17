@@ -7,7 +7,12 @@ const axios = require("axios");
  * @return {Promise<NextResponse>} A JSON response containing all cafe records including the created cafe object or an error message.
  */
 export async function POST(request: NextRequest) {
+  console.log(
+    "🚀 ~ connectDB ~ process.env.DB_API_KEY:",
+    process.env.DB_API_KEY
+  );
   const apiKey = process.env.NEXT_PUBLIC_GOOGLE_SEARCH_API_KEY;
+  console.log("🚀 ~ POST ~ apiKey:", apiKey);
   const req = await request.json();
 
   const url = req.location
