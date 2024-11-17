@@ -14,15 +14,7 @@ const connectDB = async () => {
       return;
     }
 
-    console.log(
-      "🚀 ~ connectDB ~ process.env.NEXT_PUBLIC_DB_API_KEY:",
-      process.env.NEXT_PUBLIC_DB_API_KEY
-    );
-
-    await mongoose.connect(process.env.NEXT_PUBLIC_DB_API_KEY, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(process.env.NEXT_PUBLIC_DB_API_KEY);
 
     console.log("Successfully connected to MongoDB");
   } catch (err) {
