@@ -13,6 +13,10 @@ const connectDB = async () => {
   }
 
   try {
+    console.log(
+      "🚀 ~ connectDB ~ process.env.DB_API_KEY:",
+      process.env.DB_API_KEY
+    );
     await mongoose.connect(process.env.DB_API_KEY);
     console.log("Successfully connected to MongoDB");
   } catch (err) {
