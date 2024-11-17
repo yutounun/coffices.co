@@ -1,3 +1,4 @@
+import connectDB from "@/libs/connectDB";
 import { locationObjI } from "@/types/GooglePlacesTypes";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
@@ -6,6 +7,7 @@ export async function searchCafeOnGoogle(
   currentLocation?: null | locationObjI,
   location?: string
 ) {
+  await connectDB();
   return await fetch(`${API_URL}/api/search`, {
     method: "POST",
     headers: {
@@ -22,6 +24,7 @@ export async function searchCafeOnGoogle(
 }
 
 export const getAnalytics = async (placeId: string) => {
+  await connectDB();
   try {
     const response = await fetch(`${API_URL}/api/analytics/${placeId}`, {
       method: "GET",
