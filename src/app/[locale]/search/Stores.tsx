@@ -1,6 +1,7 @@
-import { Grid } from "@mui/material";
+import { Grid, Stack, Typography } from "@mui/material";
 import Store from "./Store";
 import { StoreI } from "@/types/GooglePlacesTypes";
+import useSearchKeywordStore from "@/store/searchKeywordStore";
 
 const Stores = ({
   stores,
@@ -15,10 +16,9 @@ const Stores = ({
     photoRef?: string
   ) => void;
 }) => {
+  const searchKeyword = useSearchKeywordStore((state) => state.searchKeyword);
   return (
-    <Grid
-      container
-      spacing={1}
+    <Stack
       sx={{
         overflow: "auto",
         width: "50%",
@@ -27,20 +27,29 @@ const Stores = ({
         backgroundColor: "secondary.light",
       }}
     >
-      {stores?.map((store) => (
-        <Store
-          key={store.place_id}
-          placeId={store.place_id}
-          rating={store.rating}
-          useRatingsTotal={store.user_ratings_total}
-          photoRef={store.photos?.[0]?.photo_reference}
-          name={store.name}
-          formatted_address={store.formatted_address}
-          open_now={store.opening_hours?.open_now}
-          handleClickStore={handleClickStore}
-        />
-      ))}
-    </Grid>
+      {/* Title */}
+      <Typography variant="h3" sx={{ padding: "1em" }}>
+        {searchKeyword
+          ? `Search results for "${searchKeyword}"`
+          : "Search results"}
+      </Typography>
+
+      <Grid container spacing={1}>
+        {stores?.map((store) => (
+          <Store
+            key={store.place_id}
+            placeId={store.place_id}
+            rating={store.rating}
+            useRatingsTotal={store.user_ratings_total}
+            photoRef={store.photos?.[0]?.photo_reference}
+            name={store.name}
+            formatted_address={store.formatted_address}
+            open_now={store.opening_hours?.open_now}
+            handleClickStore={handleClickStore}
+          />
+        ))}
+      </Grid>
+    </Stack>
   );
 };
 

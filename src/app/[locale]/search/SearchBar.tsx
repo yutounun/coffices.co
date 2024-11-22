@@ -1,11 +1,16 @@
+"use client";
 import { Stack } from "@mui/material";
 import { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import { useRouter } from "next/navigation";
+import useSearchKeywordStore from "@/store/searchKeywordStore";
 
 const SearchBar = () => {
   const [keyword, setKeyword] = useState("");
   const router = useRouter();
+  const setSearchKeyword = useSearchKeywordStore(
+    (state) => state.setSearchKeyword
+  );
 
   const handleChangeText = (e: React.ChangeEvent<HTMLInputElement>) => {
     setKeyword(e.target.value);
@@ -13,6 +18,7 @@ const SearchBar = () => {
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && keyword.trim()) {
+      setSearchKeyword(keyword.trim());
       router.push(`/en/search?location=${encodeURIComponent(keyword.trim())}`);
     }
   };
