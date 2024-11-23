@@ -9,37 +9,57 @@ from pymongo import MongoClient
 
 load_dotenv()
 
-def get_cafes_in_vancouver(api_key, min_rating=3.5):
+def get_cafes_in_vancouver(api_key, min_rating=3):
     url = "https://maps.googleapis.com/maps/api/place/textsearch/json"
 
-    params = {
-        "location": "49.2827,-123.1207",  # Vancouverの緯度・経度
-        "radius": 15000, # 15km
-        "query": "coffee shop",
-        "key": api_key,
-    }
+    # バンクーバーの中心座標
+    base_lat, base_lng = 49.2827, -123.1207
+    
+    # La Cuisson cafe
+    # base_lat, base_lng = 49.2499582,-123.1310152
+
+    # 1kmごとにずらして検索するためのオフセットリスト（-5kmから5kmまで1km間隔）
+    offsets = [-1, 0, 1]
 
     all_cafes = []
-    while True:
-        response = requests.get(url, params=params)
-        if response.status_code == 200:
-            cafes = response.json().get('results', [])
-            all_cafes.extend([cafe for cafe in cafes if cafe.get('rating', 0) >= min_rating])
 
-            # 次のページがある場合、next_page_tokenを取得
-            next_page_token = response.json().get('next_page_token')
-            if next_page_token:
-                # 次のリクエストのために、ページトークンを設定し少し待機（トークンが有効になるまで少し時間が必要なことがあります）
-                params['pagetoken'] = next_page_token
-                time.sleep(2)  # トークンが有効になるまで少し待機（2秒くらい）
-            else:
-                # 次のページがない場合はループを終了
-                break
-        else:
-            print("Error fetching data from Google Places API")
-            break
+    # 各オフセットの組み合わせで位置を変更しながら検索
+    for lat_offset in offsets:
+        for lng_offset in offsets:
+            # 緯度・経度を調整
+            location = f"{base_lat + (lat_offset * 0.009)}, {base_lng + (lng_offset * 0.012)}"
+            params = {
+                "location": location,
+                "radius": 1000,  # 1kmの半径で検索
+                "query": "coffee shop",
+                "key": api_key,
+            }
 
-    return all_cafes
+            while True:
+                response = requests.get(url, params=params)
+                if response.status_code == 200:
+                    cafes = response.json().get('results', [])
+                    print("🚀 ~ cafes:", cafes)
+                    all_cafes.extend([cafe for cafe in cafes if cafe.get('rating', 0) >= min_rating])
+
+                    # 次のページがある場合、next_page_tokenを取得
+                    next_page_token = response.json().get('next_page_token')
+                    if next_page_token:
+                        # 次のリクエストのために、ページトークンを設定し少し待機（トークンが有効になるまで少し時間が必要なことがあります）
+                        params['pagetoken'] = next_page_token
+                        time.sleep(5)  # トークンが有効になるまで少し待機（5秒くらい）
+                    else:
+                        # 次のページがない場合はループを終了
+                        break
+                else:
+                    print("Error fetching data from Google Places API")
+                    break
+
+    # 重複を排除（カフェのplace_idでユニークにする）
+    unique_cafes = {cafe['place_id']: cafe for cafe in all_cafes}.values()
+
+    print("🚀 ~ all_cafes_len:", len(unique_cafes))
+    return list(unique_cafes)
 
 # Step 2: Google Places APIでレビューのみを抽出
 def get_reviews_for_cafe(api_key, place_id):
@@ -186,11 +206,11 @@ def get_wifi_status_for_cafes(api_key, gemini_api_key, mongo_uri):
     collection = db['cafe_dev']
 
     # コレクション内のすべてのデータを一括削除
-    collection.delete_many({})
-    print("All documents in the 'cafe_dev' collection have been deleted.")
+    # collection.delete_many({})
+    # print("All documents in the 'cafe_dev' collection have been deleted.")
     
     cafes = get_cafes_in_vancouver(api_key)
-    print("🚀 cafes: ", cafes)
+    # print("🚀 cafes: ", cafes)
 
     result = []
 
@@ -208,19 +228,20 @@ def get_wifi_status_for_cafes(api_key, gemini_api_key, mongo_uri):
 
         # google places APIからカフェ情報とgeminiの分析結果をまとめる
         result.append({
-            "name": cafe.get("name"),
-            "open_now": cafe.get("opening_hours").get("open_now"),
-            "place_id": cafe.get("place_id"),
-            "address": cafe.get("vicinity"),
-            "photo_ref": cafe.get("photoRef"),
-            "rating": cafe.get("rating"),
-            "wifi": gemini_analysis["wifi"],
-            "work": gemini_analysis["work"],
-            "coffee_price": gemini_analysis["price"],
-            "plug": gemini_analysis["plug"],
-            "ai_analysis": gemini_analysis["ai_analysis"],
-            "important_reviews": gemini_analysis["important_reviews"]
+            "name": cafe.get("name", "Unknown"),
+            "open_now": cafe.get("opening_hours", {}).get("open_now", None) if cafe.get("opening_hours") else None,
+            "place_id": cafe.get("place_id", "Unknown"),
+            "address": cafe.get("vicinity", "Unknown"),
+            "photo_ref": cafe.get("photoRef", "None"),
+            "rating": cafe.get("rating", 0),
+            "wifi": gemini_analysis.get("wifi", "Unknown"),
+            "work": gemini_analysis.get("work", "Unknown"),
+            "coffee_price": gemini_analysis.get("price", "Unknown"),
+            "plug": gemini_analysis.get("plug", "Unknown"),
+            "ai_analysis": gemini_analysis.get("ai_analysis", "Unknown"),
+            "important_reviews": gemini_analysis.get("important_reviews", "Unknown")
         })
+
 
     # MongoDBにWiFi情報を保存
     update_cafe_info_in_mongodb(mongo_uri, result)
