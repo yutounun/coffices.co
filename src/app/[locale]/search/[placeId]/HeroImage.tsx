@@ -1,11 +1,13 @@
 "use client";
 
 import { photoUrl } from "@/libs/commons";
-import { selectedStoreI } from "@/store/selectedStore";
+import useSelectedStoreStore, { selectedStoreI } from "@/store/selectedStore";
 import { Box, IconButton } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { ZustandTracker } from "zustand-tracker";
+// import ZustandTracker from "./ZustandTracker";
 
 const HeroImage = ({
   selectedStoreData,
@@ -13,6 +15,10 @@ const HeroImage = ({
   selectedStoreData?: selectedStoreI;
 }) => {
   const router = useRouter();
+
+  const selectedStoreDataStore = useSelectedStoreStore(
+    (state) => state.selectedStoreData
+  );
 
   return (
     <Box
@@ -23,6 +29,11 @@ const HeroImage = ({
         overflow: "hidden",
       }}
     >
+      <ZustandTracker
+        stores={{
+          selectedStoreDataStore: selectedStoreDataStore,
+        }}
+      />
       {/* Back Icon */}
       <IconButton
         onClick={() => router.back()}

@@ -43,7 +43,7 @@
     "react-query": "^3.39.3",
     "sass": "^1.69.5",
     "zustand": "^4.4.7",
-    "zustand-tracker": "^1.0.10"
+    "zustand-tracker": "^1.0.15"
   },
   "devDependencies": {
     "@hookform/devtools": "^4.3.1",
