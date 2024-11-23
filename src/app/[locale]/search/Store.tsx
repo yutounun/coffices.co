@@ -1,10 +1,10 @@
-import useFetchCafeDetail from "@/hooks/useFetchCafeDetail";
 import { photoUrl } from "@/libs/commons";
 import { Grid, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 import Stars from "@/components/ui/Stars";
 import IconSet from "./IconSet";
+import useFetchCafeDetail from "@/hooks/useFetchCafeDetail";
 
 const Store = ({
   placeId,
@@ -14,7 +14,6 @@ const Store = ({
   photoRef,
   useRatingsTotal,
   rating,
-  handleClickStore,
 }: {
   placeId: string;
   name: string;
@@ -23,23 +22,13 @@ const Store = ({
   photoRef?: string;
   useRatingsTotal?: number;
   rating?: number;
-  handleClickStore: (
-    placeId: string,
-    name: string,
-    formatted_address: string,
-    open_now?: boolean,
-    photoRef?: string
-  ) => void;
 }) => {
   const { detailInfo, loading } = useFetchCafeDetail(placeId);
-  // if (loading) {
-  //   return <Loading />;
-  // }
 
   const showIcons = process.env.NEXT_PUBLIC_SHOW_DETAIL_INFO_ON_LIST;
 
   // Don't show the store if there is an error fetching the details
-  // if (detailInfo?.error) return;
+  if (detailInfo?.error) return;
 
   return (
     <Grid
@@ -59,9 +48,6 @@ const Store = ({
           borderRadius: "10px",
         },
       }}
-      onClick={() =>
-        handleClickStore(placeId, name, formatted_address, open_now, photoRef)
-      }
     >
       <Link href={`/ja/search/${placeId}`}>
         <Stack sx={{ p: 1, height: "auto" }}>

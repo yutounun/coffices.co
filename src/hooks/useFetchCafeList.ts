@@ -75,10 +75,8 @@ const useFetchCafeList = () => {
     const fetchStoresByKeyword = async (location: string) => {
       try {
         // 位置情報を取得した後にカフェを検索する
-        setLoading(true);
         const data = await searchCafeOnGoogle(null, location);
         setStores(data);
-        setLoading(false);
       } catch (error) {
         console.error("Error fetching cafes:", error);
       }
@@ -89,11 +87,8 @@ const useFetchCafeList = () => {
 
   return {
     stores,
-    currentLocationMap,
     clickedName,
     handleClickStore,
-    location,
-    loading,
   };
 };
 

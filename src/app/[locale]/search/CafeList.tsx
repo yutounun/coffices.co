@@ -1,22 +1,14 @@
 import { Grid, Stack, Typography } from "@mui/material";
 import Store from "./Store";
 import { CafeDetailI } from "@/types/GooglePlacesTypes";
-import useSearchKeywordStore from "@/store/searchKeywordStore";
 
-const Stores = ({
-  stores,
-  handleClickStore,
+const CafeList = ({
+  location,
+  cafeList,
 }: {
-  stores: CafeDetailI[];
-  handleClickStore: (
-    placeId: string,
-    name: string,
-    formatted_address: string,
-    open_now?: boolean,
-    photoRef?: string
-  ) => void;
+  location?: string;
+  cafeList: CafeDetailI[];
 }) => {
-  const searchKeyword = useSearchKeywordStore((state) => state.searchKeyword);
   return (
     <Stack
       sx={{
@@ -29,13 +21,11 @@ const Stores = ({
     >
       {/* Title */}
       <Typography variant="h3" sx={{ padding: "1em" }}>
-        {searchKeyword
-          ? `Search results for "${searchKeyword}"`
-          : "Search results"}
+        {location ? `Search results for "${location}"` : "Search results"}
       </Typography>
 
       <Grid container spacing={1}>
-        {stores?.map((store) => (
+        {cafeList?.map((store) => (
           <Store
             key={store.place_id}
             placeId={store.place_id}
@@ -45,7 +35,6 @@ const Stores = ({
             name={store.name}
             formatted_address={store.formatted_address}
             open_now={store.opening_hours?.open_now}
-            handleClickStore={handleClickStore}
           />
         ))}
       </Grid>
@@ -53,4 +42,4 @@ const Stores = ({
   );
 };
 
-export default Stores;
+export default CafeList;

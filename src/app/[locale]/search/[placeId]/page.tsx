@@ -10,7 +10,7 @@ import { dummyCafeAnalysisIData } from "@/const/dummyData";
 import { CafeAnalysisI } from "@/types/CafeAnalysis";
 import { CafeDetailI } from "@/types/GooglePlacesTypes";
 
-const SearchByName = async ({ params }: { params: { placeId: string } }) => {
+const CafeDetail = async ({ params }: { params: { placeId: string } }) => {
   const { placeId } = params;
 
   const analytics: CafeAnalysisI =
@@ -22,9 +22,6 @@ const SearchByName = async ({ params }: { params: { placeId: string } }) => {
     process.env.NEXT_PUBLIC_SHOW_DETAIL_STORE === "true"
       ? await findDetailCafeInfo(placeId)
       : {};
-
-  console.log("🚀 ~ SearchByName ~ cafeDetail:", cafeDetail);
-  console.log("🚀 ~ SearchByName ~ analytics:", analytics);
 
   return (
     <Stack
@@ -91,4 +88,4 @@ const SearchByName = async ({ params }: { params: { placeId: string } }) => {
   );
 };
 
-export default SearchByName;
+export default CafeDetail;
