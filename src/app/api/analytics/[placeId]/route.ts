@@ -12,7 +12,7 @@ export async function GET(
   try {
     const { placeId } = params;
     const analytics = await CafeDevModel.findOne({ place_id: placeId });
-    console.log("🚀 ~ analytics:", analytics);
+
     if (!analytics) {
       return new NextResponse(
         JSON.stringify({ error: "Analytics data not found" }),

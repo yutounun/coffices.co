@@ -1,24 +1,25 @@
 import Stars from "@/components/ui/Stars";
-import { selectedStoreI } from "@/store/selectedStore";
-import { CafeDetailI } from "@/types/CafeDetail";
+import { selectedCafeDetailI } from "@/store/selectedStore";
+import { CafeAnalysisI } from "@/types/CafeAnalysis";
 import { Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 
 const OverView = ({
   detailInfo,
-  selectedStoreData,
+  cafeDetail,
 }: {
-  detailInfo?: CafeDetailI;
-  selectedStoreData?: selectedStoreI;
+  detailInfo?: CafeAnalysisI;
+  cafeDetail?: any;
 }) => {
   return (
     <>
       {/* Title */}
-      <Typography variant="h1">{selectedStoreData?.name}</Typography>
+      <Typography variant="h1">{cafeDetail?.name}</Typography>
+
       {/* Area */}
       <Stack direction="row" gap={1} sx={{ alignItems: "center" }}>
-        <Typography variant="body1">{selectedStoreData?.address}</Typography>
+        <Typography variant="body1">{cafeDetail?.address}</Typography>
         <Link
           href={`https://www.google.com/maps/search/?api=1&query=${detailInfo?.name}`}
           target="_blank"

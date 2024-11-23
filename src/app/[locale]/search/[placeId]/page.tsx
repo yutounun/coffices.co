@@ -1,24 +1,30 @@
-"use client";
 import GoogleMap from "@/components/ui/GoogleMap";
 import { Box, Stack, Typography } from "@mui/material";
-import useSelectedStoreStore from "@/store/selectedStore";
 import HeroImage from "./HeroImage";
 import OverView from "./OverView";
 import AnalisisCards from "./AnalisisCards";
 import AiAnalisisMsg from "./AiAnalisisMsg";
 import UsedReviews from "./UsedReviews";
-import useFetchCafeDetail from "@/hooks/useFetchCafeDetail";
-import Loading from "../../loading";
+import { findDetailCafeInfo, getAnalytics } from "@/utils/api";
+import { dummyCafeAnalysisIData } from "@/const/dummyData";
+import { CafeAnalysisI } from "@/types/CafeAnalysis";
+import { CafeDetailI } from "@/types/GooglePlacesTypes";
 
-const SearchByName = () => {
-  const { selectedStoreData } = useSelectedStoreStore();
+const SearchByName = async ({ params }: { params: { placeId: string } }) => {
+  const { placeId } = params;
 
-  const { detailInfo, loading } = useFetchCafeDetail();
-  console.log("🚀 ~ SearchByName ~ detailInfo:", detailInfo);
+  const analytics: CafeAnalysisI =
+    process.env.NEXT_PUBLIC_SHOW_DETAIL_STORE === "true"
+      ? await getAnalytics(placeId)
+      : dummyCafeAnalysisIData;
 
-  if (loading) {
-    return <Loading />;
-  }
+  const cafeDetail: CafeDetailI =
+    process.env.NEXT_PUBLIC_SHOW_DETAIL_STORE === "true"
+      ? await findDetailCafeInfo(placeId)
+      : {};
+
+  console.log("🚀 ~ SearchByName ~ cafeDetail:", cafeDetail);
+  console.log("🚀 ~ SearchByName ~ analytics:", analytics);
 
   return (
     <Stack
@@ -45,21 +51,21 @@ const SearchByName = () => {
           }}
         >
           <Stack gap={1}>
-            <HeroImage selectedStoreData={selectedStoreData} />
+            <HeroImage
+              name={cafeDetail.name}
+              photos={cafeDetail.photos || []}
+            />
 
             <Stack direction="column" sx={{ px: 4 }}>
               {/* Title & Area & Rating */}
-              <OverView
-                selectedStoreData={selectedStoreData}
-                detailInfo={detailInfo}
-              />
+              <OverView cafeDetail={cafeDetail} detailInfo={analytics} />
 
               {/* Analytics */}
-              {detailInfo?.ai_analysis ? (
+              {analytics?.ai_analysis ? (
                 <>
-                  <AnalisisCards detailInfo={detailInfo} />
-                  <AiAnalisisMsg detailInfo={detailInfo} />
-                  <UsedReviews detailInfo={detailInfo} />
+                  <AnalisisCards detailInfo={analytics} />
+                  <AiAnalisisMsg detailInfo={analytics} />
+                  <UsedReviews detailInfo={analytics} />
                 </>
               ) : (
                 <Typography variant="body1">
@@ -79,10 +85,7 @@ const SearchByName = () => {
           width: "100%",
         }}
       >
-        <GoogleMap
-          locationKeyword={null}
-          clickedName={selectedStoreData?.name}
-        />
+        <GoogleMap locationKeyword={null} clickedName={cafeDetail?.name} />
       </Box>
     </Stack>
   );

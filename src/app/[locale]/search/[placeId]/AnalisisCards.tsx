@@ -1,8 +1,8 @@
-import { CafeDetailI } from "@/types/CafeDetail";
+import { CafeAnalysisI } from "@/types/CafeAnalysis";
 import { Stack } from "@mui/material";
 import AnalisisCard from "./AnalisisCard";
 
-const AnalisisCards = ({ detailInfo }: { detailInfo?: CafeDetailI }) => {
+const AnalisisCards = ({ detailInfo }: { detailInfo?: CafeAnalysisI }) => {
   return (
     <Stack
       direction="row"

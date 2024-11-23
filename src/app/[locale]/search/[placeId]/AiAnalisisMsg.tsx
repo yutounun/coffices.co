@@ -1,7 +1,7 @@
-import { CafeDetailI } from "@/types/CafeDetail";
+import { CafeAnalysisI } from "@/types/CafeAnalysis";
 import { Box, Stack, Typography } from "@mui/material";
 
-const AiAnalisisMsg = ({ detailInfo }: { detailInfo?: CafeDetailI }) => {
+const AiAnalisisMsg = ({ detailInfo }: { detailInfo?: CafeAnalysisI }) => {
   return (
     <Stack direction="column" gap={2}>
       <Typography variant="h2">AI Analysis</Typography>

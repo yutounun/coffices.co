@@ -1,4 +1,4 @@
-import { CafeDetailI } from "@/types/CafeDetail";
+import { CafeAnalysisI } from "@/types/CafeAnalysis";
 import { Stack, Tooltip, IconButton, Typography } from "@mui/material";
 import Image from "next/image";
 
@@ -46,7 +46,7 @@ const IconSet = ({
   detailInfo,
   showIcons,
 }: {
-  detailInfo?: CafeDetailI;
+  detailInfo?: CafeAnalysisI;
   showIcons?: string;
 }) => {
   const showQuestionMark = !showIcons || detailInfo?.error;

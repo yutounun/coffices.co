@@ -1,6 +1,6 @@
-import { StoreI } from "@/types/GooglePlacesTypes";
+import { CafeDetailI } from "@/types/GooglePlacesTypes";
 
-export const dummyCafeAnalysisData = {
+export const dummyCafeAnalysisIData = {
   _id: "cafe123",
   name: "Cafe Loft",
   open_now: true,
@@ -33,7 +33,7 @@ export const dummyCafeAnalysisData = {
   ],
 };
 
-export const dummyStores: StoreI[] = [
+export const dummyStores: CafeDetailI[] = [
   {
     place_id: "place_1",
     name: "Coffee Paradise",

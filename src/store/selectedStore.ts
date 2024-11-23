@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-export type selectedStoreI = {
+export type selectedCafeDetailI = {
   id: string;
   name: string;
   address: string;
@@ -10,8 +10,8 @@ export type selectedStoreI = {
 } | null;
 
 interface selectedStoreStateI {
-  selectedStoreData: selectedStoreI;
-  setSelectedStoreData: (store: selectedStoreI) => void;
+  selectedStoreData: selectedCafeDetailI;
+  setSelectedStoreData: (store: selectedCafeDetailI) => void;
 }
 
 const useSelectedStoreStore = create<selectedStoreStateI>()(

@@ -1,13 +1,13 @@
 import { Grid, Stack, Typography } from "@mui/material";
 import Store from "./Store";
-import { StoreI } from "@/types/GooglePlacesTypes";
+import { CafeDetailI } from "@/types/GooglePlacesTypes";
 import useSearchKeywordStore from "@/store/searchKeywordStore";
 
 const Stores = ({
   stores,
   handleClickStore,
 }: {
-  stores: StoreI[];
+  stores: CafeDetailI[];
   handleClickStore: (
     placeId: string,
     name: string,

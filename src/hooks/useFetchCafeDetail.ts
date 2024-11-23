@@ -1,5 +1,5 @@
-import { dummyCafeAnalysisData } from "@/const/dummyData";
-import { CafeDetailI } from "@/types/CafeDetail";
+import { dummyCafeAnalysisIData } from "@/const/dummyData";
+import { CafeAnalysisI } from "@/types/CafeAnalysis";
 import { getAnalytics } from "@/utils/api";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -9,7 +9,7 @@ const useFetchCafeDetail = (argPlaceId?: string) => {
   // Retrieve the placeId from the URL or props
   const placeId = argPlaceId || (params.placeId as string);
   const [loading, setLoading] = useState(true);
-  const [detailInfo, setDetailInfo] = useState<CafeDetailI>();
+  const [detailInfo, setDetailInfo] = useState<CafeAnalysisI>();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,10 +18,10 @@ const useFetchCafeDetail = (argPlaceId?: string) => {
         return;
       }
 
-      const analytics: CafeDetailI =
+      const analytics: CafeAnalysisI =
         process.env.NEXT_PUBLIC_SHOW_DETAIL_STORE === "true"
           ? await getAnalytics(placeId)
-          : dummyCafeAnalysisData;
+          : dummyCafeAnalysisIData;
       setDetailInfo(analytics);
       console.log(" :", analytics?.coffee_price?.min_coffee_price);
       console.log("🚀 ~ fetchData ~ analytics:", analytics);

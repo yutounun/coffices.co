@@ -1,6 +1,6 @@
 import { dummyStores } from "@/const/dummyData";
 import useSelectedStoreStore from "@/store/selectedStore";
-import { StoreI } from "@/types/GooglePlacesTypes";
+import { CafeDetailI } from "@/types/GooglePlacesTypes";
 import { searchCafeOnGoogle } from "@/utils/api";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 const useFetchCafeList = () => {
   const searchParams = useSearchParams();
   const location = searchParams.get("location");
-  const [stores, setStores] = useState<StoreI[]>([]);
+  const [stores, setStores] = useState<CafeDetailI[]>([]);
   const [clickedName, setClickedName] = useState<string>("");
   const [currentLocationMap, setCurrentLocationMap] = useState({
     lat: 0,

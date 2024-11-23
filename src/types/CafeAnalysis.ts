@@ -1,4 +1,7 @@
-export interface CafeDetailI {
+/**
+ * CafeAnalysisI data on MongoDB
+ */
+export interface CafeAnalysisI {
   error: any;
 
   _id: string; // Document ID

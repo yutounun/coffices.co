@@ -9,7 +9,7 @@ export interface PlacePhotoI {
   html_attributions: string[];
 }
 
-export interface StoreI {
+export interface CafeDetailI {
   place_id: string;
   name: string;
   formatted_address: string;

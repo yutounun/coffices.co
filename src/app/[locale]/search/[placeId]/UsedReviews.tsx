@@ -1,8 +1,8 @@
-import { CafeDetailI } from "@/types/CafeDetail";
+import { CafeAnalysisI } from "@/types/CafeAnalysis";
 import { Stack, Typography } from "@mui/material";
 import UsedReview from "./UsedReview";
 
-const UsedReviews = ({ detailInfo }: { detailInfo?: CafeDetailI }) => {
+const UsedReviews = ({ detailInfo }: { detailInfo?: CafeAnalysisI }) => {
   return (
     <Stack direction="column" gap={2} sx={{ pt: 2, pb: 6 }}>
       <Typography variant="h2">Important Reviews used by AI</Typography>
