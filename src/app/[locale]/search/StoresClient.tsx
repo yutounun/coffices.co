@@ -26,6 +26,7 @@ const StoresClient = ({ initialCafes, location }: StoresClientProps) => {
 
           // Retrieve cafes around user's location
           const cafesAround = await searchCafeOnGoogle(userLocation);
+
           setCafes(cafesAround);
         },
         (error) => {

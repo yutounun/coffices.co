@@ -28,7 +28,6 @@ const Store = ({
   const showIcons = process.env.NEXT_PUBLIC_SHOW_DETAIL_INFO_ON_LIST;
 
   // Don't show the store if there is an error fetching the details
-  if (detailInfo?.error) return;
 
   return (
     <Grid
@@ -87,7 +86,9 @@ const Store = ({
               direction="row"
               sx={{ alignItems: "center", marginLeft: "-3px" }}
             >
-              <IconSet detailInfo={detailInfo} showIcons={showIcons} />
+              {detailInfo?.error && (
+                <IconSet detailInfo={detailInfo} showIcons={showIcons} />
+              )}
             </Stack>
             {/* <Typography variant="body1">
               open_now: {open_now ? "open" : "closed"}

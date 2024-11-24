@@ -23,7 +23,6 @@ const useFetchCafeDetail = (argPlaceId?: string) => {
           ? await getAnalytics(placeId)
           : dummyCafeAnalysisIData;
       setDetailInfo(analytics);
-      console.log(" :", analytics?.coffee_price?.min_coffee_price);
       console.log("🚀 ~ fetchData ~ analytics:", analytics);
 
       setLoading(false);
