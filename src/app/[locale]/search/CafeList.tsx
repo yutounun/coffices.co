@@ -21,7 +21,7 @@ const CafeList = ({
     >
       {/* Title */}
       <Typography variant="h3" sx={{ padding: "1em" }}>
-        {location ? `Search results for "${location}"` : "Search results"}
+        {location ? `Search results for "${location}"` : null}
       </Typography>
 
       <Grid container spacing={1}>
