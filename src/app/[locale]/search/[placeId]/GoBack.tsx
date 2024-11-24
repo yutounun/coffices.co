@@ -2,21 +2,13 @@
 import { IconButton } from "@mui/material";
 import { useRouter } from "next/navigation";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { useEffect, useState } from "react";
 
 function BackButton() {
   const router = useRouter();
-  const [isClickable, setIsClickable] = useState(false);
-
-  // Right after the client component is rendered,
-  // provide the button with the event listener to avoid the hydration error
-  useEffect(() => {
-    setIsClickable(true);
-  }, []);
 
   return (
     <IconButton
-      onClick={isClickable ? () => router.back() : undefined}
+      onClick={() => router.back()}
       sx={{
         position: "absolute",
         top: "10px",
