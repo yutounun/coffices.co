@@ -88,9 +88,14 @@ const Store = ({
                 <IconSet detailInfo={detailInfo} showIcons={showIcons} />
               )}
             </Stack> */}
-            {/* <Typography variant="body1">
-              open_now: {open_now ? "open" : "closed"}
-            </Typography> */}
+            <Typography variant="body2">
+              {`${formatted_address.split(",")[0]}, ${
+                formatted_address.split(",")[1]
+              }`}
+            </Typography>
+            <Typography variant="body2">
+              {open_now ? "open" : "closed"}
+            </Typography>
           </Stack>
         </Stack>
       </Link>

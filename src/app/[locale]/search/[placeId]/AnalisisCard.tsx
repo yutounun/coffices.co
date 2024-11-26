@@ -15,11 +15,21 @@ const formatLabel = (label?: any): string => {
     case true:
       return "Available";
     case false:
-      return "Not Available";
+      return "Not Sure";
     case "not sure":
       return "Unknown";
     default: // coffee price
       return label;
+  }
+};
+
+const formatLabelForWork = (label?: any) => {
+  console.log("label", label);
+  switch (label) {
+    case true:
+      return "Good";
+    case false:
+      return "Not Sure";
   }
 };
 
@@ -36,6 +46,7 @@ const AnalisisCard = ({
   src: string;
   alt: string;
 }) => {
+  console.log("title", title);
   return (
     <Stack direction="column" sx={featureStyle}>
       <Image src={src} alt={alt} width={120} height={60} />
@@ -47,8 +58,11 @@ const AnalisisCard = ({
         <Typography variant="h4">{title}</Typography>
         <Stack sx={{ justifyContent: "center", alignItems: "center" }}>
           <Typography variant="h5" sx={{ fontWeight: "regular" }}>
-            {formatLabel(label)}
+            {title === "work friendly"
+              ? formatLabelForWork(label)
+              : formatLabel(label)}
           </Typography>
+
           {confidence !== undefined && (
             <Typography variant="body1">
               {label && (title === "wifi" || title === "plug")
