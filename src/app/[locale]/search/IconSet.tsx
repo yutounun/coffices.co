@@ -49,7 +49,8 @@ const IconSet = ({
   detailInfo?: CafeAnalysisI;
   showIcons?: string;
 }) => {
-  const showQuestionMark = !showIcons || detailInfo?.error;
+  // const showQuestionMark = !showIcons || detailInfo?.error;
+  const showQuestionMark = true;
 
   return (
     <Stack direction="row" spacing={1}>
@@ -58,7 +59,7 @@ const IconSet = ({
         title="Analyzed by Gemini"
         iconSrc="/robot.svg"
         errorIconSrc="/error.svg"
-        condition={!detailInfo?.error}
+        condition={true}
       />
 
       {/* WiFi */}
@@ -100,8 +101,7 @@ const IconSet = ({
             width={15}
             height={15}
           />
-          {(detailInfo?.error ||
-            detailInfo?.coffee_price?.min_coffee_price === "not sure") && (
+          {detailInfo?.coffee_price?.min_coffee_price === "not sure" && (
             <Typography
               component="span"
               sx={{

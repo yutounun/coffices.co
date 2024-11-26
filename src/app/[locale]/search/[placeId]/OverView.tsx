@@ -1,17 +1,10 @@
 import Stars from "@/components/ui/Stars";
-import { selectedCafeDetailI } from "@/store/selectedStore";
-import { CafeAnalysisI } from "@/types/CafeAnalysis";
+import { CafeDetailI } from "@/types/GooglePlacesTypes";
 import { Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 
-const OverView = ({
-  detailInfo,
-  cafeDetail,
-}: {
-  detailInfo?: CafeAnalysisI;
-  cafeDetail?: any;
-}) => {
+const OverView = ({ cafeDetail }: { cafeDetail?: any }) => {
   return (
     <>
       {/* Title */}
@@ -21,7 +14,7 @@ const OverView = ({
       <Stack direction="row" gap={1} sx={{ alignItems: "center" }}>
         <Typography variant="body1">{cafeDetail?.address}</Typography>
         <Link
-          href={`https://www.google.com/maps/search/?api=1&query=${detailInfo?.name}`}
+          href={`https://www.google.com/maps/search/?api=1&query=${cafeDetail?.name}`}
           target="_blank"
           style={{
             height: "20px",
@@ -37,8 +30,8 @@ const OverView = ({
 
       {/* Rating */}
       <Stack direction="row" gap={1}>
-        <Stars rate={detailInfo?.rating || 0} size="1rem" />
-        <Typography variant="body1">{detailInfo?.rating}</Typography>
+        <Stars rate={cafeDetail?.rating || 0} size="1rem" />
+        <Typography variant="body1">{cafeDetail?.rating}</Typography>
       </Stack>
     </>
   );

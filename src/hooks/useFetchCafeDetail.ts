@@ -18,12 +18,12 @@ const useFetchCafeDetail = (argPlaceId?: string) => {
         return;
       }
 
-      const analytics: CafeAnalysisI =
-        process.env.NEXT_PUBLIC_SHOW_DETAIL_STORE === "true"
-          ? await getAnalytics(placeId)
-          : dummyCafeAnalysisIData;
-      setDetailInfo(analytics);
-      console.log("🚀 ~ fetchData ~ analytics:", analytics);
+      // const analytics: CafeAnalysisI =
+      //   process.env.NEXT_PUBLIC_SHOW_DETAIL_STORE === "true"
+      //     ? await getAnalytics(placeId)
+      //     : dummyCafeAnalysisIData;
+      // setDetailInfo(analytics);
+      // console.log("🚀 ~ fetchData ~ analytics:", analytics);
 
       setLoading(false);
     };

@@ -10,16 +10,16 @@ const featureStyle = {
   px: 1,
 };
 
-const formatLabel = (label?: string): string => {
+const formatLabel = (label?: any): string => {
   switch (label) {
-    case "true":
+    case true:
       return "Available";
-    case "false":
+    case false:
       return "Not Available";
     case "not sure":
       return "Unknown";
-    default:
-      return "Unknown";
+    default: // coffee price
+      return label;
   }
 };
 
@@ -51,14 +51,14 @@ const AnalisisCard = ({
           </Typography>
           {confidence !== undefined && (
             <Typography variant="body1">
-              {label === "true" && (title === "wifi" || title === "plug")
+              {label && (title === "wifi" || title === "plug")
                 ? "90"
                 : confidence}
               %
             </Typography>
           )}
         </Stack>
-        <Typography variant="body1">by Gemini 🤖</Typography>
+        {/* <Typography variant="body1">by Gemini 🤖</Typography> */}
       </Stack>
     </Stack>
   );

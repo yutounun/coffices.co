@@ -1,6 +1,5 @@
 import connectDB from "@/libs/connectDB";
-import { locationObjI } from "@/types/GooglePlacesTypes";
-import { NextResponse } from "next/server";
+import { locationObjI, ReviewI } from "@/types/GooglePlacesTypes";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -31,8 +30,8 @@ export async function searchCafeOnGoogle(
 }
 
 export async function findDetailCafeInfo(placeId: string) {
-  console.log("🚀 ~ findDetailCafeInfo ~ placeId:", placeId);
   await connectDB();
+  console.log("🚀 ~ findDetailCafeInfo ~ placeId", placeId);
   const res = await fetch(`${API_URL}/api/search/${placeId}`, {
     headers: {
       "Content-Type": "application/json",
@@ -47,18 +46,19 @@ export async function findDetailCafeInfo(placeId: string) {
  * @param placeId
  * @returns
  */
-export const getAnalytics = async (placeId: string) => {
-  await connectDB();
+
+export const getAnalytics = async (reviews: ReviewI[]) => {
   try {
-    const response = await fetch(`${API_URL}/api/analytics/${placeId}`, {
-      method: "GET",
+    const response = await fetch(`${API_URL}/api/analytics`, {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
+      body: JSON.stringify({ reviews }),
     });
+    console.log("🚀 ~ getAnalytics ~ response.json():", response);
     return response.json();
   } catch (error) {
-    console.error("Error fetching analytics data:", error);
-    throw error;
+    console.error(error);
   }
 };

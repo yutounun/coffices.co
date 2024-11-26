@@ -23,8 +23,6 @@ const Store = ({
   useRatingsTotal?: number;
   rating?: number;
 }) => {
-  const { detailInfo, loading } = useFetchCafeDetail(placeId);
-
   const showIcons = process.env.NEXT_PUBLIC_SHOW_DETAIL_INFO_ON_LIST;
 
   // Don't show the store if there is an error fetching the details
@@ -82,14 +80,14 @@ const Store = ({
               <Typography variant="body1">{rating}</Typography>
               <Typography variant="body2">({useRatingsTotal})</Typography>
             </Stack>
-            <Stack
+            {/* <Stack
               direction="row"
               sx={{ alignItems: "center", marginLeft: "-3px" }}
             >
               {detailInfo?.error && (
                 <IconSet detailInfo={detailInfo} showIcons={showIcons} />
               )}
-            </Stack>
+            </Stack> */}
             {/* <Typography variant="body1">
               open_now: {open_now ? "open" : "closed"}
             </Typography> */}

@@ -13,15 +13,17 @@ import { CafeDetailI } from "@/types/GooglePlacesTypes";
 const CafeDetail = async ({ params }: { params: { placeId: string } }) => {
   const { placeId } = params;
 
-  const analytics: CafeAnalysisI =
-    process.env.NEXT_PUBLIC_SHOW_DETAIL_STORE === "true"
-      ? await getAnalytics(placeId)
-      : dummyCafeAnalysisIData;
-
   const cafeDetail: CafeDetailI =
     process.env.NEXT_PUBLIC_SHOW_DETAIL_STORE === "true"
       ? await findDetailCafeInfo(placeId)
       : {};
+
+  const reviews = cafeDetail.reviews || [];
+
+  const analytics: CafeAnalysisI =
+    process.env.NEXT_PUBLIC_SHOW_DETAIL_STORE === "true"
+      ? await getAnalytics(reviews)
+      : dummyCafeAnalysisIData;
 
   return (
     <Stack
@@ -49,13 +51,13 @@ const CafeDetail = async ({ params }: { params: { placeId: string } }) => {
         >
           <Stack gap={1}>
             <HeroImage
-              name={cafeDetail.name}
-              photos={cafeDetail.photos || []}
+              name={cafeDetail?.name}
+              photos={cafeDetail?.photos || []}
             />
 
             <Stack direction="column" sx={{ px: 4 }}>
               {/* Title & Area & Rating */}
-              <OverView cafeDetail={cafeDetail} detailInfo={analytics} />
+              <OverView cafeDetail={cafeDetail} />
 
               {/* Analytics */}
               {analytics?.ai_analysis ? (

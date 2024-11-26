@@ -2,16 +2,6 @@
  * CafeAnalysisI data on MongoDB
  */
 export interface CafeAnalysisI {
-  error: any;
-
-  _id: string; // Document ID
-  name: string; // Name of the cafe
-  open_now: boolean; // Indicates whether the cafe is currently open
-  place_id: string; // Google Places Place ID
-  address: string | null; // Address of the cafe (nullable)
-  photo_ref: string | null; // Photo reference (nullable)
-  rating: number; // Cafe rating
-
   // Information about WiFi availability
   wifi: {
     wifi_available: string; // WiFi availability ("yes", "no", "not sure", etc.)

@@ -14,13 +14,11 @@ export async function GET(
 ) {
   const apiKey = process.env.NEXT_PUBLIC_GOOGLE_SEARCH_API_KEY;
 
-  const url = `https://maps.googleapis.com/maps/api/place/details/json?fields=name%2Crating%2Cformatted_phone_number%2Cphotos&place_id=${params.placeId}&key=${apiKey}`;
+  const url = `https://maps.googleapis.com/maps/api/place/details/json?fields=name%2Creviews%2Crating%2Cformatted_phone_number%2Cphotos&place_id=${params.placeId}&key=${apiKey}`;
 
-  console.log("🚀 ~ url:", url);
   try {
     const res = await axios.get(url);
     const rtn = res.data;
-    console.log("🚀 ~ rtn:", rtn.result);
     return NextResponse.json(rtn);
   } catch (error) {
     console.log("🚀 ~ POST ~ error:", error);
