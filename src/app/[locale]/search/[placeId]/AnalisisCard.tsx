@@ -19,7 +19,7 @@ const formatLabel = (label?: any): string => {
     case "not sure":
       return "Unknown";
     default: // coffee price
-      return label;
+      return `${label}`;
   }
 };
 

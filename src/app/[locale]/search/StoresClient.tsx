@@ -1,13 +1,14 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import { Box, Stack } from "@mui/material";
 import GoogleMap from "@/components/ui/GoogleMap";
 import Stores from "./CafeList";
 import { searchCafeOnGoogle } from "@/utils/api";
+import { CafeDetailI } from "@/types/GooglePlacesTypes";
 
 interface StoresClientProps {
-  initialCafes: any[];
+  initialCafes: CafeDetailI[];
   location?: string;
 }
 
@@ -41,7 +42,23 @@ const StoresClient = ({ initialCafes, location }: StoresClientProps) => {
     }
   }, [location]);
 
-  return <Stores cafeList={cafes} location={location} />;
+  return (
+    <>
+      <Stores cafeList={cafes} location={location} />
+
+      {/* Map */}
+      <Box
+        sx={{
+          flexGrow: 1,
+          flexBasis: 0,
+          width: "100%",
+        }}
+      >
+        {/* <GoogleMap setCafeMapPlaceId={setCafeMapPlaceId} /> */}
+        <GoogleMap />
+      </Box>
+    </>
+  );
 };
 
 export default StoresClient;

@@ -17,17 +17,6 @@ const CafeList = async ({
     <Stack direction="row" sx={{ height: "90vh", width: "100%" }}>
       <Stack direction="row" sx={{ height: "90vh", width: "100%" }}>
         <StoresClient initialCafes={cafes} location={location} />
-
-        {/* Map */}
-        <Box
-          sx={{
-            flexGrow: 1,
-            flexBasis: 0,
-            width: "100%",
-          }}
-        >
-          <GoogleMap locationKeyword={location} />
-        </Box>
       </Stack>
     </Stack>
   );

@@ -18,7 +18,7 @@ const CafeDetail = async ({ params }: { params: { placeId: string } }) => {
       ? await findDetailCafeInfo(placeId)
       : {};
 
-  const reviews = cafeDetail.reviews || [];
+  const reviews = cafeDetail?.reviews || [];
 
   const analytics: CafeAnalysisI =
     process.env.NEXT_PUBLIC_SHOW_DETAIL_STORE === "true"
@@ -84,7 +84,7 @@ const CafeDetail = async ({ params }: { params: { placeId: string } }) => {
           width: "100%",
         }}
       >
-        <GoogleMap locationKeyword={null} clickedName={cafeDetail?.name} />
+        <GoogleMap location={cafeDetail} />
       </Box>
     </Stack>
   );

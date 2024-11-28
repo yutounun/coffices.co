@@ -17,6 +17,7 @@ const SearchBar = () => {
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    e.preventDefault();
     if (e.key === "Enter" && keyword.trim()) {
       setSearchKeyword(keyword.trim());
       router.push(`/en/search?location=${encodeURIComponent(keyword.trim())}`);
