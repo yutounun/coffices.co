@@ -39,6 +39,10 @@ const StoresClient = ({ initialCafes, location }: StoresClientProps) => {
           maximumAge: 0,
         }
       );
+    } else if (location) {
+      searchCafeOnGoogle(null, location).then((cafes) => {
+        setCafes(cafes);
+      });
     }
   }, [location]);
 

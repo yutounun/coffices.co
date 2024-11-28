@@ -10,13 +10,13 @@ const CafeList = async ({
 }) => {
   const { location } = searchParams;
 
-  // Retrieve cafes based on search keyword
-  const cafes = location ? await searchCafeOnGoogle(null, location) : [];
+  // Retrieve initialCafes based on search keyword
+  const initialCafes = location ? await searchCafeOnGoogle(null, location) : [];
 
   return (
     <Stack direction="row" sx={{ height: "90vh", width: "100%" }}>
       <Stack direction="row" sx={{ height: "90vh", width: "100%" }}>
-        <StoresClient initialCafes={cafes} location={location} />
+        <StoresClient initialCafes={initialCafes} location={location} />
       </Stack>
     </Stack>
   );

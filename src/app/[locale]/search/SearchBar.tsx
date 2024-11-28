@@ -16,11 +16,16 @@ const SearchBar = () => {
     setKeyword(e.target.value);
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    if (e.key === "Enter" && keyword.trim()) {
+  const handleSearch = () => {
+    if (keyword.trim()) {
       setSearchKeyword(keyword.trim());
       router.push(`/en/search?location=${encodeURIComponent(keyword.trim())}`);
+    }
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleSearch();
     }
   };
 
@@ -51,15 +56,12 @@ const SearchBar = () => {
           fontSize: "0.8rem",
         }}
       />
-      <a
-        href={`/en/search?location=${encodeURIComponent(keyword.trim())}`}
-        style={{ display: "flex", alignItems: "center" }}
+      <div
+        onClick={handleSearch}
+        style={{ display: "flex", alignItems: "center", cursor: "pointer" }}
       >
-        <SearchIcon
-          fontSize="small"
-          sx={{ cursor: "pointer", color: "white" }}
-        />
-      </a>
+        <SearchIcon fontSize="small" sx={{ color: "white" }} />
+      </div>
     </Stack>
   );
 };
