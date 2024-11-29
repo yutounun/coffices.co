@@ -14,7 +14,7 @@ const ResponsiveAppBar = () => {
         sx={{
           backgroundColor: "secondary.main",
           px: { xs: 4, md: 16 },
-          height: "10vh !important",
+          height: { xs: "7vh", md: "10vh" },
         }}
       >
         <Toolbar disableGutters>

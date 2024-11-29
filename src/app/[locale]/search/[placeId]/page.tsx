@@ -27,20 +27,32 @@ const CafeDetail = async ({ params }: { params: { placeId: string } }) => {
 
   return (
     <Stack
-      direction="row"
+      direction={{ xs: "column", md: "row" }}
       sx={{
-        height: "90vh !important",
-        mt: "10vh",
+        height: { xs: "93vh !important", md: "90vh !important" },
+        mt: { xs: "7vh", md: "10vh" },
         width: "100%",
         overflowY: "auto",
       }}
     >
+      {/* Map for mobile */}
+      <Box
+        sx={{
+          display: { xs: "block", md: "none" },
+          flexGrow: 1,
+          flexBasis: 0,
+          width: "100%",
+        }}
+      >
+        <GoogleMap location={cafeDetail} />
+      </Box>
+
       <Stack
         direction="row"
         spacing={1}
         sx={{
           overflow: "auto",
-          width: "50%",
+          width: { xs: "100%", md: "50%" },
           backgroundColor: "secondary.light",
         }}
       >
@@ -77,9 +89,10 @@ const CafeDetail = async ({ params }: { params: { placeId: string } }) => {
         </Stack>
       </Stack>
 
-      {/* Map */}
+      {/* Map for laptop */}
       <Box
         sx={{
+          display: { xs: "none", md: "block" },
           flexGrow: 1,
           flexBasis: 0,
           width: "100%",

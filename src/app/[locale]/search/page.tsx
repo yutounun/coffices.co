@@ -13,11 +13,7 @@ const CafeList = async ({
   // Retrieve initialCafes based on search keyword
   const initialCafes = location ? await searchCafeOnGoogle(null, location) : [];
 
-  return (
-    <Stack direction="row" sx={{ height: "90vh", width: "100%", mt: "10vh" }}>
-      <StoresClient initialCafes={initialCafes} location={location} />
-    </Stack>
-  );
+  return <StoresClient initialCafes={initialCafes} location={location} />;
 };
 
 export default CafeList;

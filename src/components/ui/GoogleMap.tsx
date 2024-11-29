@@ -4,6 +4,8 @@ import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import { useSearchParams, useRouter } from "next/navigation";
 import { CafeDetailI } from "@/types/GooglePlacesTypes";
 import Loading from "@/app/[locale]/loading";
+import { useTheme } from "@emotion/react";
+import { useMediaQuery } from "@mui/material";
 
 // Define `libraries` as a constant outside the component
 const libraries = ["places"] as any;
@@ -12,12 +14,22 @@ const containerStyle = {
   width: "100%",
   height: "100%",
 };
+const containerMobileStyle = {
+  width: "100%",
+  height: "200px",
+};
 
 type MapOptions = google.maps.MapOptions;
 
 function CustomGoogleMap({ location }: { location?: CafeDetailI }) {
   const router = useRouter();
   const searchParams = useSearchParams();
+
+  // Access the MUI theme
+  const theme = useTheme();
+
+  // Check if the screen size is below the `md` breakpoint
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   // Parse lat and lng from query parameters
   const paramLat = searchParams.get("lat")
@@ -165,7 +177,7 @@ function CustomGoogleMap({ location }: { location?: CafeDetailI }) {
 
   return center ? (
     <GoogleMap
-      mapContainerStyle={containerStyle}
+      mapContainerStyle={isMobile ? containerMobileStyle : containerStyle}
       center={center || currentLocation}
       zoom={15}
       onLoad={onLoad}

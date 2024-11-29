@@ -13,7 +13,7 @@ const CafeList = ({
     <Stack
       sx={{
         overflow: "auto",
-        width: "50%",
+        width: { xs: "100%", md: "50%" },
         py: 2,
         px: 1,
         backgroundColor: "secondary.light",

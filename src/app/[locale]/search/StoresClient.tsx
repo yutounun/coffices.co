@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect, use } from "react";
-import { Box, Stack } from "@mui/material";
+import { useState, useEffect } from "react";
+import { Box, Stack, useMediaQuery, useTheme } from "@mui/material";
 import GoogleMap from "@/components/ui/GoogleMap";
 import Stores from "./CafeList";
 import { searchCafeOnGoogle } from "@/utils/api";
@@ -14,6 +14,12 @@ interface StoresClientProps {
 
 const StoresClient = ({ initialCafes, location }: StoresClientProps) => {
   const [cafes, setCafes] = useState(initialCafes);
+
+  // Access the MUI theme
+  const theme = useTheme();
+
+  // Check if the screen size is below the `md` breakpoint
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   // If location is not provided, get user's location on client side
   useEffect(() => {
@@ -47,21 +53,41 @@ const StoresClient = ({ initialCafes, location }: StoresClientProps) => {
   }, [location]);
 
   return (
-    <>
+    <Stack
+      direction={isMobile ? "column" : "row"}
+      sx={{
+        height: { xs: "auto", md: "90vh" },
+        width: "100%",
+        mt: "10vh",
+      }}
+    >
+      {/* 地図を最初に表示 (モバイルの場合) */}
+      {isMobile && (
+        <Box
+          sx={{
+            flexGrow: 1,
+            flexBasis: 0,
+            width: "100%",
+          }}
+        >
+          <GoogleMap />
+        </Box>
+      )}
+      {/* カフェリスト */}
       <Stores cafeList={cafes} location={location} />
-
-      {/* Map */}
-      <Box
-        sx={{
-          flexGrow: 1,
-          flexBasis: 0,
-          width: "100%",
-        }}
-      >
-        {/* <GoogleMap setCafeMapPlaceId={setCafeMapPlaceId} /> */}
-        <GoogleMap />
-      </Box>
-    </>
+      {/* 地図をリストの後に表示 (デスクトップの場合) */}
+      {!isMobile && (
+        <Box
+          sx={{
+            flexGrow: 1,
+            flexBasis: 0,
+            width: "100%",
+          }}
+        >
+          <GoogleMap />
+        </Box>
+      )}
+    </Stack>
   );
 };
 

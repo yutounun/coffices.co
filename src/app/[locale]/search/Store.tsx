@@ -31,7 +31,9 @@ const Store = ({
     <Grid
       key={placeId}
       item
-      xs={4}
+      xs={6}
+      sm={4}
+      md={4}
       sx={{
         height: "auto",
         alignItems: "stretch",
