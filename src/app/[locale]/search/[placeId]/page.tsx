@@ -29,7 +29,8 @@ const CafeDetail = async ({ params }: { params: { placeId: string } }) => {
     <Stack
       direction="row"
       sx={{
-        height: "90vh",
+        height: "90vh !important",
+        mt: "10vh",
         width: "100%",
         overflowY: "auto",
       }}

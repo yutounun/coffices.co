@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { photoUrl } from "@/libs/commons";
-import { Box, IconButton } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import Image from "next/image";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
@@ -13,8 +13,10 @@ const buttonStyles = {
   position: "absolute",
   top: "50%",
   transform: "translateY(-50%)",
-  backgroundColor: "rgba(255, 255, 255, 0.7)",
-  "&:hover": { backgroundColor: "rgba(255, 255, 255, 1)" },
+  height: "50px",
+  borderRadius: "40px",
+  backgroundColor: "rgba(255, 255, 255, 0.2)",
+  "&:hover": { backgroundColor: "rgba(255, 255, 255, 0.5)" },
   zIndex: 10,
 };
 
@@ -68,13 +70,13 @@ const HeroImage = ({
         />
       )}
 
-      <IconButton onClick={handlePrev} sx={{ ...buttonStyles, left: "10px" }}>
+      <Button onClick={handlePrev} sx={{ ...buttonStyles, left: "10px" }}>
         <ArrowBackIosIcon />
-      </IconButton>
+      </Button>
 
-      <IconButton onClick={handleNext} sx={{ ...buttonStyles, right: "10px" }}>
+      <Button onClick={handleNext} sx={{ ...buttonStyles, right: "10px" }}>
         <ArrowForwardIosIcon />
-      </IconButton>
+      </Button>
     </Box>
   );
 };

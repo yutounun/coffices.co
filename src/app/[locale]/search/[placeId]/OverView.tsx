@@ -4,7 +4,8 @@ import { Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 
-const OverView = ({ cafeDetail }: { cafeDetail?: any }) => {
+const OverView = ({ cafeDetail }: { cafeDetail?: CafeDetailI }) => {
+  console.log("🚀 ~ OverView ~ cafeDetail:", cafeDetail);
   return (
     <>
       {/* Title */}
@@ -12,7 +13,7 @@ const OverView = ({ cafeDetail }: { cafeDetail?: any }) => {
 
       {/* Area */}
       <Stack direction="row" gap={1} sx={{ alignItems: "center" }}>
-        <Typography variant="body1">{cafeDetail?.address}</Typography>
+        <Typography variant="body1">{cafeDetail?.formatted_address}</Typography>
         <Link
           href={`https://www.google.com/maps/search/?api=1&query=${cafeDetail?.name}`}
           target="_blank"
@@ -21,7 +22,7 @@ const OverView = ({ cafeDetail }: { cafeDetail?: any }) => {
             width: "20px",
             display: "flex",
             alignItems: "center",
-            justifyContent: "center", // 水平方向にも中央揃え
+            justifyContent: "center",
           }}
         >
           <Image src="/detail/map.svg" alt="map" width={20} height={20} />
@@ -32,6 +33,7 @@ const OverView = ({ cafeDetail }: { cafeDetail?: any }) => {
       <Stack direction="row" gap={1}>
         <Stars rate={cafeDetail?.rating || 0} size="1rem" />
         <Typography variant="body1">{cafeDetail?.rating}</Typography>
+        <Typography variant="body1">{`(${cafeDetail?.user_ratings_total})`}</Typography>
       </Stack>
     </>
   );

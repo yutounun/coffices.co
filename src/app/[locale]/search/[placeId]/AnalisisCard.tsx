@@ -15,9 +15,11 @@ const formatLabel = (label?: any): string => {
     case true:
       return "Available";
     case false:
-      return "Not Sure";
+      return "Not Mentioned";
     case "not sure":
-      return "Unknown";
+      return "Not Mentioned";
+    case "unknown":
+      return "Not Mentioned";
     default: // coffee price
       return `${label}`;
   }
@@ -63,14 +65,14 @@ const AnalisisCard = ({
               : formatLabel(label)}
           </Typography>
 
-          {confidence !== undefined && (
+          {/* {confidence !== undefined && (
             <Typography variant="body1">
               {label && (title === "wifi" || title === "plug")
                 ? "90"
                 : confidence}
               %
             </Typography>
-          )}
+          )} */}
         </Stack>
         {/* <Typography variant="body1">by Gemini 🤖</Typography> */}
       </Stack>

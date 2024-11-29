@@ -29,7 +29,7 @@ export default function RootLayout({
       <body className={notojp.className}>
         <QueryClientProviderComponent>
           <Header />
-          <Box sx={{ mt: 8 }}>{children}</Box>
+          <Box>{children}</Box>
         </QueryClientProviderComponent>
         <Snackbar />
       </body>

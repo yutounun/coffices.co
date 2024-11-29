@@ -14,10 +14,8 @@ const CafeList = async ({
   const initialCafes = location ? await searchCafeOnGoogle(null, location) : [];
 
   return (
-    <Stack direction="row" sx={{ height: "90vh", width: "100%" }}>
-      <Stack direction="row" sx={{ height: "90vh", width: "100%" }}>
-        <StoresClient initialCafes={initialCafes} location={location} />
-      </Stack>
+    <Stack direction="row" sx={{ height: "90vh", width: "100%", mt: "10vh" }}>
+      <StoresClient initialCafes={initialCafes} location={location} />
     </Stack>
   );
 };
