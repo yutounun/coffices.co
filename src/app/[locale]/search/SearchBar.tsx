@@ -1,31 +1,31 @@
 "use client";
-import { Stack } from "@mui/material";
-import { useState } from "react";
-import SearchIcon from "@mui/icons-material/Search";
+import { Autocomplete, Stack, TextField } from "@mui/material";
 import { useRouter } from "next/navigation";
-import useSearchKeywordStore from "@/store/searchKeywordStore";
+import usePlacesAutocomplete from "use-places-autocomplete";
+import SearchIcon from "@mui/icons-material/Search";
 
 const SearchBar = () => {
-  const [keyword, setKeyword] = useState("");
   const router = useRouter();
-  const setSearchKeyword = useSearchKeywordStore(
-    (state) => state.setSearchKeyword
-  );
 
-  const handleChangeText = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setKeyword(e.target.value);
-  };
+  const {
+    ready,
+    value,
+    setValue,
+    suggestions: { status, data },
+    clearSuggestions,
+  } = usePlacesAutocomplete();
 
-  const handleSearch = () => {
-    if (keyword.trim()) {
-      setSearchKeyword(keyword.trim());
-      router.push(`/en/search?location=${encodeURIComponent(keyword.trim())}`);
+  const handleSearch = (location: string) => {
+    if (location.trim()) {
+      clearSuggestions();
+      router.push(`/en/search?location=${encodeURIComponent(location.trim())}`);
     }
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      handleSearch();
+  const handleOptionSelect = (event: any, newValue: string | null) => {
+    if (newValue) {
+      setValue(newValue, false);
+      handleSearch(newValue);
     }
   };
 
@@ -35,29 +35,25 @@ const SearchBar = () => {
       sx={{
         gap: 1,
         alignItems: "center",
-        height: 30,
         borderRadius: "12px",
       }}
     >
-      <input
-        type="text"
-        onChange={handleChangeText}
-        onKeyDown={handleKeyDown}
-        value={keyword}
-        placeholder="Search"
-        style={{
-          border: "none",
-          outline: "none",
-          padding: "0 0.8em",
-          width: "100%",
-          height: "80%",
-          borderRadius: "12px",
-          paddingLeft: "0.5em",
-          fontSize: "0.8rem",
-        }}
+      <Autocomplete
+        disablePortal
+        freeSolo
+        value={value}
+        onInputChange={(event, newValue) => setValue(newValue)}
+        onChange={handleOptionSelect}
+        options={status === "OK" ? data.map((place) => place.description) : []}
+        disabled={!ready}
+        sx={{ width: 200, bgcolor: "white", borderRadius: "12px" }}
+        size="small"
+        renderInput={(params) => (
+          <TextField {...params} label="Search for areas" variant="outlined" />
+        )}
       />
       <div
-        onClick={handleSearch}
+        onClick={() => handleSearch(value)}
         style={{ display: "flex", alignItems: "center", cursor: "pointer" }}
       >
         <SearchIcon fontSize="small" sx={{ color: "white" }} />
