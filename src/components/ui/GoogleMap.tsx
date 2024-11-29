@@ -4,8 +4,7 @@ import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import { useSearchParams, useRouter } from "next/navigation";
 import { CafeDetailI } from "@/types/GooglePlacesTypes";
 import Loading from "@/app/[locale]/loading";
-import { useTheme } from "@emotion/react";
-import { useMediaQuery } from "@mui/material";
+import { useMediaQuery, useTheme } from "@mui/material";
 
 // Define `libraries` as a constant outside the component
 const libraries = ["places"] as any;
