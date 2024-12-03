@@ -18,7 +18,7 @@ const Features = () => {
       sx={{
         display: "flex",
         flexDirection: "column",
-        px: 10,
+        px: 5,
         py: 5,
         gap: 5,
       }}
@@ -27,15 +27,14 @@ const Features = () => {
 
       {/* robot */}
       <Stack
-        direction="row"
+        direction={{ xs: "column", md: "row" }}
         sx={{
           gap: 7,
           justifyContent: "space-between",
-          width: "100%",
           alignItems: "center",
         }}
       >
-        <Stack direction="row" sx={{ justifyContent: "center" }}>
+        <Stack sx={{ justifyContent: "center" }}>
           <Image
             src="/landingPage/roboto.png"
             height={150}
@@ -43,25 +42,24 @@ const Features = () => {
             alt="location"
           />
         </Stack>
-        <Stack sx={{ width: "80%" }}>
+        <Stack>
           <Typography variant="h3">
-            Evaluate Work-Friendliness with Gemini's Review Analysis
+            Evaluate Work-Friendliness with Gemini&apos;s Review Analysis
           </Typography>
           <Typography variant="body1">
             Gemini AI analyzes reviews to score how work-friendly a café is.
-            Whether it's fast Wi-Fi or a quiet atmosphere, Gemini helps you find
-            the ideal spot to stay productive without the guesswork.
+            Whether it&apos;s fast Wi-Fi or a quiet atmosphere, Gemini helps you
+            find the ideal spot to stay productive without the guesswork.
           </Typography>
         </Stack>
       </Stack>
 
       {/* Location */}
       <Stack
-        direction="row"
+        direction={{ xs: "column", md: "row" }}
         sx={{
           gap: 7,
           justifyContent: "space-between",
-          width: "100%",
           alignItems: "center",
         }}
       >
@@ -73,13 +71,13 @@ const Features = () => {
             alt="location"
           />
         </Stack>
-        <Stack sx={{ width: "80%" }}>
+        <Stack>
           <Typography variant="h3">
             Search Nearby Cafés Faster Than Google Maps
           </Typography>
           <Typography variant="body1">
             Using your current location, the app quickly lists nearby cafés
-            without unnecessary clutter. It's the fastest way to find a
+            without unnecessary clutter. It&apos;s the fastest way to find a
             work-friendly spot around you, saving your time and energy.
           </Typography>
         </Stack>

@@ -2,7 +2,6 @@
 import { createTheme } from "@mui/material/styles";
 import { PaletteOptions } from "@mui/material/styles/createPalette";
 
-// 型定義の拡張
 declare module "@mui/material/styles/createPalette" {
   interface PaletteOptions {
     neutral?: {
@@ -17,24 +16,27 @@ declare module "@mui/material/styles/createPalette" {
       900?: string;
     };
     gradient?: {
-      1?: string;
+      main?: string;
     };
   }
 }
 
 declare module "@mui/material/styles" {
   interface TypographyVariants {
-    nav: React.CSSProperties;
+    displayLg: React.CSSProperties;
+    displaySm: React.CSSProperties;
   }
 
   interface TypographyVariantsOptions {
-    nav?: React.CSSProperties;
+    displayLg?: React.CSSProperties;
+    displaySm?: React.CSSProperties;
   }
 }
 
 declare module "@mui/material/Typography" {
   interface TypographyPropsVariantOverrides {
-    nav: true;
+    displayLg: true;
+    displaySm: true;
   }
 }
 
@@ -90,27 +92,21 @@ let theme = createTheme({
   typography: {
     displayLg: {
       fontFamily: "Roboto, 'Open Sans', Roboto, 'Helvetica', Arial, sans-serif",
-      fontSize: "2.5rem", // 48px
+      fontSize: "2.5rem",
       fontWeight: 300,
       color: "neutral.900",
-      "@media (max-width:600px)": {
-        fontSize: "2.5rem",
-      },
       lineHeight: 0.8,
     },
     displaySm: {
       fontFamily: "Roboto, 'Open Sans', Roboto, 'Helvetica', Arial, sans-serif",
-      fontSize: "1rem", // 32px
-      fontWeight: "regular",
+      fontSize: "1.2rem",
+      fontWeight: "normal",
       color: "neutral.900",
-      "@media (max-width:600px)": {
-        fontSize: "1.5rem",
-      },
       lineHeight: 1,
     },
     h1: {
       fontFamily: "Roboto, 'Open Sans', Roboto, 'Helvetica', Arial, sans-serif",
-      fontSize: "2.5rem", // 48px
+      fontSize: "2.5rem",
       fontWeight: "normal",
       color: "neutral.900",
       "@media (max-width:600px)": {
@@ -120,7 +116,7 @@ let theme = createTheme({
     },
     h2: {
       fontFamily: "Roboto, 'Open Sans', Roboto, 'Helvetica', Arial, sans-serif",
-      fontSize: "1.6rem", // 32px
+      fontSize: "1.6rem",
       fontWeight: 300,
       color: "neutral.900",
       "@media (max-width:600px)": {
@@ -129,7 +125,7 @@ let theme = createTheme({
     },
     h3: {
       fontFamily: "Roboto, 'Open Sans', Roboto, 'Helvetica', Arial, sans-serif",
-      fontSize: "1.4rem", // 24px
+      fontSize: "1.4rem",
       fontWeight: 300,
       color: "neutral.900",
       "@media (max-width:600px)": {
@@ -138,7 +134,7 @@ let theme = createTheme({
     },
     h4: {
       fontFamily: "Roboto, 'Open Sans', Roboto, 'Helvetica', Arial, sans-serif",
-      fontSize: "1.1rem", // 16px
+      fontSize: "1.1rem",
       fontWeight: "normal",
       color: "neutral.900",
       "@media (max-width:600px)": {
@@ -147,7 +143,7 @@ let theme = createTheme({
     },
     h5: {
       fontFamily: "Roboto, 'Open Sans', Roboto, 'Helvetica', Arial, sans-serif",
-      fontSize: "1rem", // 14px
+      fontSize: "1rem",
       fontWeight: "regurar",
       color: "neutral.900",
       "@media (max-width:600px)": {
@@ -156,7 +152,7 @@ let theme = createTheme({
     },
     subtitle1: {
       fontFamily: "Roboto, 'Open Sans', Roboto, 'Helvetica', Arial, sans-serif",
-      fontSize: "0.9rem", // 16px
+      fontSize: "0.9rem",
       fontWeight: "bold",
       color: "neutral.900",
       "@media (max-width:600px)": {
@@ -165,23 +161,17 @@ let theme = createTheme({
     },
     subtitle2: {
       fontFamily: "Roboto, 'Open Sans', Roboto, 'Helvetica', Arial, sans-serif",
-      fontSize: "0.8rem", // 14px
+      fontSize: "0.8rem",
       fontWeight: "bold",
       color: "neutral.900",
       "@media (max-width:600px)": {
         fontSize: "0.7rem",
       },
     },
-    nav: {
-      fontFamily: "Roboto, 'Open Sans', Roboto, 'Helvetica', Arial, sans-serif",
-      fontSize: "0.8rem",
-      fontWeight: "bold",
-      color: "neutral.900",
-    },
     caption: {
       fontFamily: "Open Sans, Roboto, 'Helvetica', Arial, sans-serif",
-      fontSize: "0.5rem", // 10px
-      lineHeight: 1.5, // 150.6%
+      fontSize: "0.5rem",
+      lineHeight: 1.5,
       color: "rgb(0,0,0,62%)",
       "@media (max-width:600px)": {
         fontSize: "0.5rem",
@@ -189,17 +179,14 @@ let theme = createTheme({
     },
     body1: {
       fontFamily: "Open Sans, Roboto, 'Helvetica', Arial, sans-serif",
-      fontSize: "0.9rem", // 16px
-      lineHeight: 1.63, // 163.2%
+      fontSize: "0.9rem",
+      lineHeight: 1.63,
       color: "rgb(0,0,0,62%)",
-      "@media (max-width:600px)": {
-        fontSize: "0.7rem",
-      },
     },
     body2: {
       fontFamily: "Open Sans, Roboto, 'Helvetica', Arial, sans-serif",
-      fontSize: "0.7rem", // 16px
-      lineHeight: 1.63, // 163.2%
+      fontSize: "0.7rem",
+      lineHeight: 1.63,
       color: "rgb(0,0,0,62%)",
       "@media (max-width:600px)": {
         fontSize: "0.5rem",
@@ -207,9 +194,9 @@ let theme = createTheme({
     },
     button: {
       fontFamily: "Open Sans, Roboto, 'Helvetica', Arial, sans-serif",
-      fontSize: "0.9rem", // 18px
+      fontSize: "0.9rem",
       fontWeight: "normal",
-      lineHeight: 1.63, // 163.2%
+      lineHeight: 1.63,
       color: "rgb(0,0,0,62%)",
       textTransform: "none",
     },

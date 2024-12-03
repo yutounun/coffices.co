@@ -1,4 +1,4 @@
-import { Button, Stack, Typography } from "@mui/material";
+import { Box, Button, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -16,7 +16,13 @@ const Hero = () => {
         background: "linear-gradient(to right bottom, #B7FFA6 0%, #FCFEF3 80%)",
       }}
     >
-      <Stack direction="column" gap={1} alignItems="center">
+      {/* lg */}
+      <Stack
+        direction="column"
+        gap={1}
+        alignItems="center"
+        sx={{ display: { xs: "none", md: "flex" } }}
+      >
         <Typography variant="displayLg">Find the Best Cafe for Work</Typography>
         <Stack direction="row" gap={1.4}>
           <Typography variant="displayLg" sx={{ display: "inline-block" }}>
@@ -32,9 +38,38 @@ const Hero = () => {
           </Typography>
         </Stack>
       </Stack>
-      <Typography variant="displaySm" color="neutral.900">
+
+      {/* sm*/}
+      <Stack
+        sx={{ alignItems: "center", display: { xs: "flex", md: "none" } }}
+        gap={1}
+      >
+        <Typography variant="displayLg">Find Cafe for Work</Typography>
+        <Typography
+          variant="displayLg"
+          sx={{
+            textAlign: "center",
+          }}
+        >
+          with AI
+        </Typography>
+      </Stack>
+
+      <Typography
+        variant="displaySm"
+        color="neutral.900"
+        sx={{ display: { xs: "none", md: "flex" } }}
+      >
         Find work-friendly cafe by analyzing reviews with AI.
       </Typography>
+      <Typography
+        variant="displaySm"
+        color="neutral.900"
+        sx={{ display: { xs: "flex", md: "none" } }}
+      >
+        Analyzing cafe reviews with AI.
+      </Typography>
+
       <Link href="/en/search">
         <Button
           variant="contained"
@@ -48,7 +83,21 @@ const Hero = () => {
           Free Trial with Beta
         </Button>
       </Link>
-      <Image src="/landingpage/demo.png" alt="demo" width={800} height={600} />
+      <Box
+        sx={{
+          width: { xs: "90%", md: "60%" },
+          height: "auto",
+          position: "relative",
+        }}
+      >
+        <Image
+          src="/landingpage/demo.png"
+          alt="demo"
+          layout="responsive"
+          width={800}
+          height={600}
+        />
+      </Box>
     </Stack>
   );
 };

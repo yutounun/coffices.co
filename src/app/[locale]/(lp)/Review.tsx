@@ -13,6 +13,7 @@ const Review = ({
   return (
     <Stack
       sx={{
+        minWidth: 300,
         justifyContent: "flex-start",
         alignItems: "flex-start",
         position: "relative",

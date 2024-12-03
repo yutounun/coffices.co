@@ -7,9 +7,9 @@ const Footer = () => {
       sx={{
         px: 4,
         py: 10,
-        gap: 20,
+        gap: { xs: 5, md: 10 },
         display: "flex",
-        flexDirection: "row",
+        flexDirection: { xs: "column", md: "row" },
       }}
     >
       {footerItems.map((item) => (
