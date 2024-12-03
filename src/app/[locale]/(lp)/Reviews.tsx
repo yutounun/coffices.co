@@ -1,34 +1,47 @@
 import Stars from "@/components/ui/Stars";
-import { Stack, Typography } from "@mui/material";
+import { Container, Stack, Typography } from "@mui/material";
 import Review from "./Review";
 
 const Reviews = () => {
   return (
-    <Stack
+    <Container
+      maxWidth="lg"
       sx={{
+        display: "flex",
+        flexDirection: "column",
         px: 10,
         py: 5,
+        gap: 5,
       }}
     >
-      <Review
-        comment="This app has completely transformed how I choose my work spots. The
-          WiFi and outlet info is always accurate!"
-        name="Anna, Freelancer"
-        rate={5}
-      />
+      <Typography variant="h2">Users Voice</Typography>
 
-      <Review
-        comment="I love the AI analysis feature—it saves me so much time by highlighting the most work-friendly options."
-        name="Sarah, Graphic Designer"
-        rate={5}
-      />
+      <Stack direction="row" gap={2} sx={{ justifyContent: "center" }}>
+        <Review
+          comment="This app has completely transformed how I choose my work spots. The WiFi and outlet info is always accurate!"
+          name="Anna, Freelancer"
+          imgUrl="/landingpage/users/1.jpg"
+        />
 
-      <Review
-        comment="The app is user-friendly and easy to navigate. It's a game-changer for me!"
-        name="John, Software Engineer"
-        rate={5}
-      />
-    </Stack>
+        <Review
+          comment="This app has completely transformed how I choose my work spots. The WiFi and outlet info is always accurate!"
+          name="Sarah, Graphic Designer"
+          imgUrl="/landingpage/users/2.jpg"
+        />
+
+        <Review
+          comment="This app has completely transformed how I choose my work spots. The WiFi and outlet info is always accurate!"
+          name="John, Software Engineer"
+          imgUrl="/landingpage/users/3.jpg"
+        />
+
+        <Review
+          comment="This app has completely transformed how I choose my work spots. The WiFi and outlet info is always accurate!"
+          name="John, Software Engineer"
+          imgUrl="/landingpage/users/4.jpg"
+        />
+      </Stack>
+    </Container>
   );
 };
 

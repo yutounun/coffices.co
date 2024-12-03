@@ -4,7 +4,7 @@ import Header from "@/components/ResponsiveAppBar";
 import { Noto_Sans_JP } from "next/font/google";
 import Snackbar from "@/components/ui/Snackbar";
 import QueryClientProviderComponent from "@/contexts/QueryClientProviderComponent";
-import { Box } from "@mui/material";
+import { Box, CssBaseline } from "@mui/material";
 
 const notojp = Noto_Sans_JP({
   weight: ["400", "500"],
@@ -28,6 +28,7 @@ export default function RootLayout({
     <html lang={locale}>
       <body className={notojp.className}>
         <QueryClientProviderComponent>
+          <CssBaseline />
           <Header />
           <Box>{children}</Box>
         </QueryClientProviderComponent>

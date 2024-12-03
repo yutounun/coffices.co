@@ -1,68 +1,39 @@
-import { Stack, Typography, IconButton } from "@mui/material";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import InstagramIcon from "@mui/icons-material/Instagram";
+import { footerItems } from "@/const/footer";
+import { Container, Stack, Typography } from "@mui/material";
 
 const Footer = () => {
   return (
-    <Stack
+    <Container
       sx={{
         px: 4,
-        py: 5,
-        backgroundColor: "secondary.main",
-        alignItems: "center",
-        gap: 3,
+        py: 10,
+        gap: 20,
+        display: "flex",
+        flexDirection: "row",
       }}
     >
-      {/* Logo */}
-      <Typography variant="h4" sx={{ color: "white", fontWeight: "bold" }}>
-        CafeFinder
-      </Typography>
-
-      {/* Contact Information */}
-      <Typography variant="body2" sx={{ color: "white" }}>
-        Contact us at:{" "}
-        <a
-          href="mailto:support@cafefinder.com"
-          style={{ color: "white", textDecoration: "underline" }}
+      {footerItems.map((item) => (
+        <Stack
+          key={item.heading}
+          direction="column"
+          sx={{ color: "neutral.400" }}
+          gap={2}
         >
-          support@cafefinder.com
-        </a>
-      </Typography>
-
-      {/* Social Media Links */}
-      <Stack direction="row" spacing={2}>
-        <IconButton
-          href="https://facebook.com"
-          target="_blank"
-          rel="noopener"
-          sx={{ color: "white" }}
-        >
-          <FacebookIcon />
-        </IconButton>
-        <IconButton
-          href="https://twitter.com"
-          target="_blank"
-          rel="noopener"
-          sx={{ color: "white" }}
-        >
-          <TwitterIcon />
-        </IconButton>
-        <IconButton
-          href="https://instagram.com"
-          target="_blank"
-          rel="noopener"
-          sx={{ color: "white" }}
-        >
-          <InstagramIcon />
-        </IconButton>
-      </Stack>
-
-      {/* Copyright */}
-      <Typography variant="caption" sx={{ color: "white" }}>
-        © {new Date().getFullYear()} CafeFinder. All rights reserved.
-      </Typography>
-    </Stack>
+          <Typography variant="h4">{item.heading}</Typography>
+          <Stack>
+            {item.titles.map((title) => (
+              <Typography
+                key={title.title}
+                variant="body1"
+                sx={{ color: "neutral.900" }}
+              >
+                {title.title}
+              </Typography>
+            ))}
+          </Stack>
+        </Stack>
+      ))}
+    </Container>
   );
 };
 

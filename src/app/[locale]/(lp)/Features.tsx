@@ -1,4 +1,4 @@
-import { Stack, Typography } from "@mui/material";
+import { Container, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 
 const featureStyle = {
@@ -13,78 +13,78 @@ const featureStyle = {
 
 const Features = () => {
   return (
-    <Stack
+    <Container
+      maxWidth="lg"
       sx={{
-        justifyContent: "center",
-        alignItems: "center",
+        display: "flex",
+        flexDirection: "column",
         px: 10,
         py: 5,
         gap: 5,
       }}
     >
-      <Typography variant="h2">Why Choose Our App?</Typography>
+      <Typography variant="h2">Why This App is selected</Typography>
 
+      {/* robot */}
       <Stack
         direction="row"
         sx={{
           gap: 7,
           justifyContent: "space-between",
+          width: "100%",
+          alignItems: "center",
         }}
       >
-        <Stack direction="column" sx={featureStyle}>
+        <Stack direction="row" sx={{ justifyContent: "center" }}>
           <Image
-            src="/landingpage/icons/wifi.svg"
-            alt="coffee"
-            width={130}
-            height={80}
+            src="/landingPage/roboto.png"
+            height={150}
+            width={150}
+            alt="location"
           />
-          <Typography variant="h4">WiFi Availability</Typography>
-          <Typography variant="body1">
-            Find cafes with reliable and fast WiFi so you can stay connected and
-            get things done.
-          </Typography>
         </Stack>
-        <Stack direction="column" sx={featureStyle}>
-          <Image
-            src="/landingpage/icons/plug.svg"
-            alt="coffee"
-            width={130}
-            height={80}
-          />
-          <Typography variant="h4">Power Outlets Information</Typography>
-          <Typography variant="body1">
-            Never worry about running out of battery! Check cafes with
-            accessible power plugs for uninterrupted work.
+        <Stack sx={{ width: "80%" }}>
+          <Typography variant="h3">
+            Evaluate Work-Friendliness with Gemini's Review Analysis
           </Typography>
-        </Stack>
-        <Stack direction="column" sx={featureStyle}>
-          <Image
-            src="/landingpage/icons/coffee.svg"
-            alt="coffee"
-            width={130}
-            height={80}
-          />
-          <Typography variant="h4">Coffee Price Transparency</Typography>
           <Typography variant="body1">
-            Discover cafes tailored for remote work, with suitable seating,
-            quiet spaces, and a focused atmosphere.
-          </Typography>
-        </Stack>
-        <Stack direction="column" sx={featureStyle}>
-          <Image
-            src="/landingpage/icons/engineer.svg"
-            alt="work friendly"
-            width={130}
-            height={80}
-          />
-          <Typography variant="h4">Comfortable Work Environment</Typography>
-          <Typography variant="body1">
-            Discover cafes tailored for remote work, with suitable seating,
-            quiet spaces, and a focused atmosphere
+            Gemini AI analyzes reviews to score how work-friendly a café is.
+            Whether it's fast Wi-Fi or a quiet atmosphere, Gemini helps you find
+            the ideal spot to stay productive without the guesswork.
           </Typography>
         </Stack>
       </Stack>
-    </Stack>
+
+      {/* Location */}
+      <Stack
+        direction="row"
+        sx={{
+          gap: 7,
+          justifyContent: "space-between",
+          width: "100%",
+          alignItems: "center",
+        }}
+      >
+        <Stack direction="row" sx={{ justifyContent: "center" }}>
+          <Image
+            src="/landingPage/location.png"
+            height={150}
+            width={150}
+            alt="location"
+          />
+        </Stack>
+        <Stack sx={{ width: "80%" }}>
+          <Typography variant="h3">
+            Search Nearby Cafés Faster Than Google Maps
+          </Typography>
+          <Typography variant="body1">
+            Using your current location, the app quickly lists nearby cafés
+            without unnecessary clutter. It's the fastest way to find a
+            work-friendly spot around you, saving your time and energy.
+          </Typography>
+        </Stack>
+      </Stack>
+    </Container>
   );
 };
 

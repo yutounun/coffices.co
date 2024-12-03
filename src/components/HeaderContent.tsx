@@ -1,7 +1,14 @@
 "use client";
 import { useState } from "react";
 import MyLocationIcon from "@mui/icons-material/MyLocation";
-import { Stack, Drawer, IconButton, Box, Tooltip } from "@mui/material";
+import {
+  Stack,
+  Drawer,
+  IconButton,
+  Box,
+  Tooltip,
+  Typography,
+} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import Image from "next/image";
 import NavBar from "@/components/ui/NavBar";
@@ -42,7 +49,12 @@ const HeaderContent = () => {
       >
         {/* Logo */}
         <Link href="/">
-          <Image src="/logo/white.png" alt="logo" width={80} height={40} />
+          <Stack direction="row" alignItems="center">
+            <Image src="/logo/new.png" alt="logo" width={80} height={80} />
+            <Typography variant="h3" sx={{ color: "primary.500" }}>
+              Coffice
+            </Typography>
+          </Stack>
         </Link>
 
         {/* Burger Menu for xs */}
@@ -86,7 +98,7 @@ const HeaderContent = () => {
         >
           <Tooltip title="Search Nearby">
             <IconButton href="/en/search">
-              <MyLocationIcon fontSize="small" sx={{ color: "white" }} />
+              <MyLocationIcon fontSize="small" sx={{ color: "neutral.700" }} />
             </IconButton>
           </Tooltip>
 

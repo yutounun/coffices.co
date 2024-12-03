@@ -1,84 +1,54 @@
-import { Box, Button, Stack, Typography } from "@mui/material";
+import { Button, Stack, Typography } from "@mui/material";
+import Image from "next/image";
 import Link from "next/link";
 
 const Hero = () => {
   return (
     <Stack
-      direction="row"
+      direction="column"
       sx={{
-        position: "relative",
-        mt: 8,
         minHeight: "60vh",
+        pt: "20vh",
+        gap: 3,
+        pb: 10,
+        alignItems: "center",
         width: "100%",
-        backgroundColor: "custom.lightGray",
-        px: 10,
-        py: 5,
-        backgroundImage: "url('/login/background/friends.jpg')",
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "center",
+        background: "linear-gradient(to right bottom, #B7FFA6 0%, #FCFEF3 80%)",
       }}
     >
-      {/* Overlay */}
-      <Box
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          backgroundColor: "rgba(0, 0, 0, 0.5)",
-          zIndex: 2,
-        }}
-      />
-
-      {/* Left Content */}
-      <Stack
-        sx={{
-          width: "50%",
-          justifyContent: "center",
-          zIndex: 3,
-          gap: 1,
-          marginLeft: { xs: 0, md: 10 },
-        }}
-      >
-        <Typography
-          variant="h3"
-          sx={{ fontWeight: "medium", color: "white", fontSize: "1.4rem" }}
-        >
-          Nomad Cafe
-        </Typography>
-        <Typography
-          variant="h1"
-          sx={{ fontWeight: "bold", color: "white", fontSize: "3rem" }}
-        >
-          Find Your Perfect <br /> Work-Friendly Cafe
-        </Typography>
-        <Typography
-          variant="h5"
+      <Stack direction="column" gap={1} alignItems="center">
+        <Typography variant="displayLg">Find the Best Cafe for Work</Typography>
+        <Stack direction="row" gap={1.4}>
+          <Typography variant="displayLg" sx={{ display: "inline-block" }}>
+            with the Power of
+          </Typography>
+          <Typography
+            variant="displayLg"
+            color="secondary.500"
+            fontWeight={600}
+            sx={{ display: "inline-block" }}
+          >
+            AI
+          </Typography>
+        </Stack>
+      </Stack>
+      <Typography variant="displaySm" color="neutral.900">
+        Find work-friendly cafe by analyzing reviews with AI.
+      </Typography>
+      <Link href="/en/search">
+        <Button
+          variant="contained"
+          color="primary"
           sx={{
-            fontWeight: "regular",
-            color: "#ebebeb",
+            boxShadow: 0,
+            borderRadius: 10,
+            ":hover": { boxShadow: 1, backgroundColor: "neutral.200" },
           }}
         >
-          Find cafes with WiFi, power outlets, and a comfy space to work,
-          boosting your productivity
-        </Typography>
-      </Stack>
-      <Stack
-        sx={{
-          width: "50%",
-          zIndex: 3,
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <Link href="/ja/search">
-          <Button size="large" variant="contained">
-            Explore Cafes
-          </Button>
-        </Link>
-      </Stack>
+          Free Trial with Beta
+        </Button>
+      </Link>
+      <Image src="/landingpage/demo.png" alt="demo" width={800} height={600} />
     </Stack>
   );
 };
