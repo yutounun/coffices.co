@@ -21,12 +21,12 @@ const Reviews = () => {
       <Box
         sx={{
           display: "flex",
-          overflowX: "auto", // 横スクロールを有効化
-          width: "100%", // 親要素に合わせた幅
+          overflowX: "auto",
+          width: "100%",
           gap: 2,
-          px: 2, // スクロール時の余白
+          px: 2,
           "&::-webkit-scrollbar": {
-            display: "none", // スクロールバーを非表示（オプション）
+            display: "none",
           },
         }}
       >

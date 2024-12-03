@@ -1,16 +1,6 @@
 import { Container, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 
-const featureStyle = {
-  alignItems: "center",
-  borderRadius: "3%",
-  border: "1px solid gray",
-  width: "17em",
-  px: 2,
-  gap: 1,
-  py: 2,
-};
-
 const Features = () => {
   return (
     <Container
@@ -36,7 +26,7 @@ const Features = () => {
       >
         <Stack sx={{ justifyContent: "center" }}>
           <Image
-            src="/landingPage/roboto.png"
+            src="/landingpage/roboto.png"
             height={150}
             width={150}
             alt="location"
@@ -65,7 +55,7 @@ const Features = () => {
       >
         <Stack direction="row" sx={{ justifyContent: "center" }}>
           <Image
-            src="/landingPage/location.png"
+            src="/landingpage/location.png"
             height={150}
             width={150}
             alt="location"
