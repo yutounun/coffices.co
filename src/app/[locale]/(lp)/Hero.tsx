@@ -85,7 +85,7 @@ const Hero = () => {
       </Link>
       <Box
         sx={{
-          width: { xs: "90%", md: "60%" },
+          width: { xs: "90%", md: "30%" },
           height: "auto",
           position: "relative",
         }}
@@ -94,8 +94,8 @@ const Hero = () => {
           src="/landingpage/demo.png"
           alt="demo"
           layout="responsive"
-          width={800}
-          height={600}
+          width={400}
+          height={300}
         />
       </Box>
     </Stack>
