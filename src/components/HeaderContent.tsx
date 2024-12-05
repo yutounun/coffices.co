@@ -50,7 +50,7 @@ const HeaderContent = () => {
         {/* Logo */}
         <Link href="/">
           <Stack direction="row" alignItems="center">
-            <Image src="/logo/new.png" alt="logo" width={80} height={80} />
+            <Image src="/logo/newLogo.png" alt="logo" width={80} height={80} />
             <Typography variant="h3" sx={{ color: "primary.500" }}>
               Coffice
             </Typography>

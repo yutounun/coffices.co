@@ -26,7 +26,7 @@ const Features = () => {
       >
         <Stack sx={{ justifyContent: "center" }}>
           <Image
-            src="/landingpage/roboto.png"
+            src="/landingpage/robot.png"
             height={150}
             width={150}
             alt="location"
