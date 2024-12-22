@@ -63,10 +63,6 @@ function CustomGoogleMap({ location }: { location?: CafeDetailI }) {
     googleMapsApiKey: process.env.NEXT_PUBLIC_ADDRESS_CHECK_API_KEY as string,
     libraries, // Reuse the static array
   });
-  console.log(
-    "🚀 ~ CustomGoogleMap ~ process.env.NEXT_PUBLIC_ADDRESS_CHECK_API_KEY:",
-    process.env.NEXT_PUBLIC_ADDRESS_CHECK_API_KEY
-  );
 
   const options = useMemo<MapOptions>(
     () => ({
