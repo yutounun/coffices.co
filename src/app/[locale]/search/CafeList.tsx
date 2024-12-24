@@ -16,13 +16,14 @@ const CafeList = ({
         width: { xs: "100%", md: "50%" },
         py: 2,
         px: 1,
-        backgroundColor: "secondary.light",
       }}
     >
       {/* Title */}
-      <Typography variant="h3" sx={{ padding: "1em" }}>
-        {location ? `Search results for "${location}"` : null}
-      </Typography>
+      {location && (
+        <Typography variant="h3" sx={{ padding: "1rem" }}>
+          Search results for {location}
+        </Typography>
+      )}
 
       <Grid container spacing={1}>
         {cafeList?.map((store) => (

@@ -1,10 +1,9 @@
 import { photoUrl } from "@/libs/commons";
-import { Grid, Stack, Typography } from "@mui/material";
+import { Box, Grid, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 import Stars from "@/components/ui/Stars";
-import IconSet from "./IconSet";
-import useFetchCafeDetail from "@/hooks/useFetchCafeDetail";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 const Store = ({
   placeId,
@@ -31,7 +30,7 @@ const Store = ({
     <Grid
       key={placeId}
       item
-      xs={6}
+      xs={12}
       sm={4}
       md={4}
       sx={{
@@ -49,11 +48,14 @@ const Store = ({
       }}
     >
       <Link href={`/ja/search/${placeId}`}>
-        <Stack sx={{ p: 1, height: "auto" }}>
+        <Stack
+          direction={{ xs: "row", md: "column" }}
+          sx={{ p: 1, height: "auto" }}
+        >
           <Stack
             sx={{
               position: "relative",
-              width: "100%",
+              width: { xs: "40%", md: "100%" },
               height: "120px",
               overflow: "hidden",
               borderRadius: "8px",
@@ -75,30 +77,32 @@ const Store = ({
             />
           </Stack>
 
-          <Stack sx={{ p: 1, height: "auto" }}>
-            <Typography variant="h5">{name}</Typography>
-            {/* <Typography variant="body1">{formatted_address}</Typography> */}
-            <Stack direction="row" sx={{ alignItems: "center" }} gap={0.3}>
-              <Stars rate={rating || 0} size={{ xs: "small", md: "large" }} />
-              <Typography variant="body1">{rating}</Typography>
-              <Typography variant="body2">({useRatingsTotal})</Typography>
+          <Stack
+            direction="row"
+            sx={{
+              p: { xs: 2, md: 1 },
+              height: "auto",
+              justifyContent: "between",
+              alignItems: "center",
+              width: { xs: "60%", md: "100%" },
+            }}
+          >
+            <Stack sx={{ width: "100%" }}>
+              <Typography variant="h5">{name}</Typography>
+              <Stack direction="row" sx={{ alignItems: "center" }} gap={0.3}>
+                <Stars rate={rating || 0} size={{ xs: "small", md: "large" }} />
+                <Typography variant="body1">{rating}</Typography>
+                <Typography variant="body2">({useRatingsTotal})</Typography>
+              </Stack>
+              <Typography variant="body2">
+                {`${formatted_address.split(",")[0]}, ${
+                  formatted_address.split(",")[1]
+                }`}
+              </Typography>
             </Stack>
-            {/* <Stack
-              direction="row"
-              sx={{ alignItems: "center", marginLeft: "-3px" }}
-            >
-              {detailInfo?.error && (
-                <IconSet detailInfo={detailInfo} showIcons={showIcons} />
-              )}
-            </Stack> */}
-            <Typography variant="body2">
-              {`${formatted_address.split(",")[0]}, ${
-                formatted_address.split(",")[1]
-              }`}
-            </Typography>
-            <Typography variant="body2">
-              {open_now ? "open" : "closed"}
-            </Typography>
+            <Box sx={{ display: { xs: "flex", md: "none" } }}>
+              <ArrowForwardIosIcon />
+            </Box>
           </Stack>
         </Stack>
       </Link>

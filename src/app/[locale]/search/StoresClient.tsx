@@ -61,7 +61,7 @@ const StoresClient = ({ initialCafes, location }: StoresClientProps) => {
         mt: "10vh",
       }}
     >
-      {/* 地図を最初に表示 (モバイルの場合) */}
+      {/* Display Map first on Mobile */}
       {isMobile && (
         <Box
           sx={{
@@ -73,9 +73,11 @@ const StoresClient = ({ initialCafes, location }: StoresClientProps) => {
           <GoogleMap />
         </Box>
       )}
-      {/* カフェリスト */}
+
+      {/* Cafe List */}
       <Stores cafeList={cafes} location={location} />
-      {/* 地図をリストの後に表示 (デスクトップの場合) */}
+
+      {/* Display map after the list on desktop */}
       {!isMobile && (
         <Box
           sx={{
