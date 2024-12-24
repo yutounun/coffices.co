@@ -53,7 +53,7 @@ let theme = createTheme({
   palette: {
     mode: "light",
     primary: {
-      main: "#FBFBFB",
+      main: "#838F55",
       light: "white",
       dark: "#EFECEC",
       contrastText: "#1D1915",
@@ -91,21 +91,21 @@ let theme = createTheme({
   },
   typography: {
     displayLg: {
-      fontFamily: "Roboto, 'Open Sans', Roboto, 'Helvetica', Arial, sans-serif",
+      fontFamily: "Lato",
       fontSize: "2.5rem",
       fontWeight: 300,
       color: "neutral.900",
       lineHeight: 0.8,
     },
     displaySm: {
-      fontFamily: "Roboto, 'Open Sans', Roboto, 'Helvetica', Arial, sans-serif",
+      fontFamily: "Lato",
       fontSize: "1.2rem",
       fontWeight: "normal",
       color: "neutral.900",
       lineHeight: 1,
     },
     h1: {
-      fontFamily: "Roboto, 'Open Sans', Roboto, 'Helvetica', Arial, sans-serif",
+      fontFamily: "Lato",
       fontSize: "2.5rem",
       fontWeight: "normal",
       color: "neutral.900",
@@ -115,7 +115,7 @@ let theme = createTheme({
       lineHeight: 1,
     },
     h2: {
-      fontFamily: "Roboto, 'Open Sans', Roboto, 'Helvetica', Arial, sans-serif",
+      fontFamily: "Lato",
       fontSize: "1.6rem",
       fontWeight: 300,
       color: "neutral.900",
@@ -124,7 +124,7 @@ let theme = createTheme({
       },
     },
     h3: {
-      fontFamily: "Roboto, 'Open Sans', Roboto, 'Helvetica', Arial, sans-serif",
+      fontFamily: "Lato",
       fontSize: "1.4rem",
       fontWeight: 300,
       color: "neutral.900",
@@ -133,7 +133,7 @@ let theme = createTheme({
       },
     },
     h4: {
-      fontFamily: "Roboto, 'Open Sans', Roboto, 'Helvetica', Arial, sans-serif",
+      fontFamily: "Lato",
       fontSize: "1.1rem",
       fontWeight: "normal",
       color: "neutral.900",
@@ -142,7 +142,7 @@ let theme = createTheme({
       },
     },
     h5: {
-      fontFamily: "Roboto, 'Open Sans', Roboto, 'Helvetica', Arial, sans-serif",
+      fontFamily: "Lato",
       fontSize: "1rem",
       fontWeight: "regurar",
       color: "neutral.900",
@@ -151,7 +151,7 @@ let theme = createTheme({
       },
     },
     subtitle1: {
-      fontFamily: "Roboto, 'Open Sans', Roboto, 'Helvetica', Arial, sans-serif",
+      fontFamily: "Lato",
       fontSize: "0.9rem",
       fontWeight: "bold",
       color: "neutral.900",
@@ -160,7 +160,7 @@ let theme = createTheme({
       },
     },
     subtitle2: {
-      fontFamily: "Roboto, 'Open Sans', Roboto, 'Helvetica', Arial, sans-serif",
+      fontFamily: "Lato",
       fontSize: "0.8rem",
       fontWeight: "bold",
       color: "neutral.900",
@@ -169,7 +169,7 @@ let theme = createTheme({
       },
     },
     caption: {
-      fontFamily: "Open Sans, Roboto, 'Helvetica', Arial, sans-serif",
+      fontFamily: "Latos",
       fontSize: "0.5rem",
       lineHeight: 1.5,
       color: "rgb(0,0,0,62%)",
@@ -178,13 +178,13 @@ let theme = createTheme({
       },
     },
     body1: {
-      fontFamily: "Open Sans, Roboto, 'Helvetica', Arial, sans-serif",
+      fontFamily: "Latos",
       fontSize: "0.9rem",
       lineHeight: 1.63,
       color: "rgb(0,0,0,62%)",
     },
     body2: {
-      fontFamily: "Open Sans, Roboto, 'Helvetica', Arial, sans-serif",
+      fontFamily: "Latos",
       fontSize: "0.7rem",
       lineHeight: 1.63,
       color: "rgb(0,0,0,62%)",
@@ -193,7 +193,7 @@ let theme = createTheme({
       },
     },
     button: {
-      fontFamily: "Open Sans, Roboto, 'Helvetica', Arial, sans-serif",
+      fontFamily: "Latos",
       fontSize: "0.9rem",
       fontWeight: "normal",
       lineHeight: 1.63,

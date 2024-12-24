@@ -1,6 +1,6 @@
 import Stars from "@/components/ui/Stars";
 import { CafeDetailI } from "@/types/GooglePlacesTypes";
-import { Stack, Typography } from "@mui/material";
+import { Rating, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -31,7 +31,12 @@ const OverView = ({ cafeDetail }: { cafeDetail?: CafeDetailI }) => {
 
       {/* Rating */}
       <Stack direction="row" gap={1}>
-        <Stars rate={cafeDetail?.rating || 0} size="1rem" />
+        <Rating
+          name="half-rating-read"
+          defaultValue={cafeDetail?.rating}
+          precision={0.1}
+          readOnly
+        />
         <Typography variant="body1">{cafeDetail?.rating}</Typography>
         <Typography variant="body1">{`(${cafeDetail?.user_ratings_total})`}</Typography>
       </Stack>

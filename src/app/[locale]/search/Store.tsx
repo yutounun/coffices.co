@@ -1,5 +1,5 @@
 import { photoUrl } from "@/libs/commons";
-import { Box, Grid, Stack, Typography } from "@mui/material";
+import { Box, Grid, Rating, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 import Stars from "@/components/ui/Stars";
@@ -90,7 +90,13 @@ const Store = ({
             <Stack sx={{ width: "100%" }}>
               <Typography variant="h5">{name}</Typography>
               <Stack direction="row" sx={{ alignItems: "center" }} gap={0.3}>
-                <Stars rate={rating || 0} size={{ xs: "small", md: "large" }} />
+                {/* <Stars rate={rating || 0} size={{ xs: "small", md: "large" }} /> */}
+                <Rating
+                  name="half-rating-read"
+                  defaultValue={rating}
+                  precision={0.1}
+                  readOnly
+                />
                 <Typography variant="body1">{rating}</Typography>
                 <Typography variant="body2">({useRatingsTotal})</Typography>
               </Stack>

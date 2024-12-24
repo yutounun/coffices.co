@@ -16,8 +16,8 @@ function BackButton() {
         left: "10px",
         zIndex: 10,
         color: "white",
-        backgroundColor: "rgba(255, 255, 255, 0.2)",
-        "&:hover": { backgroundColor: "rgba(255, 255, 255, 0.5)" },
+        backgroundColor: "rgba(0, 0, 0, 0.2)",
+        "&:hover": { backgroundColor: "rgba(0, 0, 0, 0.5)" },
       }}
     >
       <ArrowBackIcon />

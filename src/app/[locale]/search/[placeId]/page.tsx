@@ -2,7 +2,7 @@ import GoogleMap from "@/components/ui/GoogleMap";
 import { Box, Stack, Typography } from "@mui/material";
 import HeroImage from "./HeroImage";
 import OverView from "./OverView";
-import AnalisisCards from "./AnalisisCards";
+import AnalisisChips from "./AnalisisChips";
 import AiAnalisisMsg from "./AiAnalisisMsg";
 import UsedReviews from "./UsedReviews";
 import { findDetailCafeInfo, getAnalytics } from "@/utils/api";
@@ -16,7 +16,7 @@ const CafeDetail = async ({ params }: { params: { placeId: string } }) => {
   const cafeDetail: CafeDetailI =
     process.env.NEXT_PUBLIC_SHOW_DETAIL_STORE === "true"
       ? await findDetailCafeInfo(placeId)
-      : {};
+      : dummyCafeAnalysisIData;
 
   const reviews = cafeDetail?.reviews || [];
 
@@ -53,7 +53,6 @@ const CafeDetail = async ({ params }: { params: { placeId: string } }) => {
         sx={{
           overflow: "auto",
           width: { xs: "100%", md: "50%" },
-          backgroundColor: "secondary.light",
         }}
       >
         <Stack
@@ -62,23 +61,23 @@ const CafeDetail = async ({ params }: { params: { placeId: string } }) => {
             width: "100%",
           }}
         >
-          <Stack gap={1}>
+          <Stack gap={3} sx={{ px: 4 }}>
             <HeroImage
               name={cafeDetail?.name}
               photos={cafeDetail?.photos || []}
             />
 
-            <Stack direction="column" sx={{ px: 4 }}>
+            <Stack direction="column">
               {/* Title & Area & Rating */}
               <OverView cafeDetail={cafeDetail} />
 
               {/* Analytics */}
               {analytics?.ai_analysis ? (
-                <>
-                  <AnalisisCards detailInfo={analytics} />
+                <Stack direction="column" gap={2} sx={{ my: 2 }}>
+                  <AnalisisChips detailInfo={analytics} />
                   <AiAnalisisMsg detailInfo={analytics} />
                   <UsedReviews detailInfo={analytics} />
-                </>
+                </Stack>
               ) : (
                 <Typography variant="body1">
                   AI Analysis is being processed. Please wait a moment.

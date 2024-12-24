@@ -13,10 +13,14 @@ const buttonStyles = {
   position: "absolute",
   top: "50%",
   transform: "translateY(-50%)",
-  height: "50px",
-  borderRadius: "40px",
-  backgroundColor: "rgba(255, 255, 255, 0.2)",
-  "&:hover": { backgroundColor: "rgba(255, 255, 255, 0.5)" },
+  width: "50px",
+  height: "60px",
+  borderRadius: "50%",
+  backgroundColor: "rgba(0, 0, 0, 0.2)",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  "&:hover": { backgroundColor: "rgba(0, 0, 0, 0.5)" },
   zIndex: 10,
 };
 
@@ -66,16 +70,16 @@ const HeroImage = ({
           }
           alt={name || ""}
           fill
-          style={{ objectFit: "cover" }}
+          style={{ objectFit: "cover", borderRadius: "10px" }}
         />
       )}
 
       <Button onClick={handlePrev} sx={{ ...buttonStyles, left: "10px" }}>
-        <ArrowBackIosIcon />
+        <ArrowBackIosIcon style={{ color: "white" }} />
       </Button>
 
       <Button onClick={handleNext} sx={{ ...buttonStyles, right: "10px" }}>
-        <ArrowForwardIosIcon />
+        <ArrowForwardIosIcon style={{ color: "white" }} />
       </Button>
     </Box>
   );
