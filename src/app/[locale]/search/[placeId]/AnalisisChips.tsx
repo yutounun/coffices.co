@@ -35,7 +35,6 @@ const AnalisisCards = ({ detailInfo }: { detailInfo?: CafeAnalysisI }) => {
         alignItems: "center",
         maxWidth: "100%",
         overflowX: "scroll",
-        pl: { xs: 28, md: 0 },
       }}
     >
       <CustomChip
