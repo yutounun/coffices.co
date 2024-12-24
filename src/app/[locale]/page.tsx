@@ -12,7 +12,12 @@ export default function Home() {
 
   return (
     <NextIntlClientProvider messages={pick(messages, "home")}>
-      <Box>
+      <Box
+        sx={{
+          background:
+            "linear-gradient(to right bottom, #B7FFA6 20%, #FCFEF3 50%)",
+        }}
+      >
         <ResponsiveAppBar />
 
         <Hero />

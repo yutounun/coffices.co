@@ -21,10 +21,14 @@ const Reviews = () => {
       <Box
         sx={{
           display: "flex",
+          flexDirection: {
+            xs: "column",
+            md: "row",
+          },
           overflowX: "auto",
           width: "100%",
           gap: 2,
-          px: 2,
+          // px: 2,
           "&::-webkit-scrollbar": {
             display: "none",
           },

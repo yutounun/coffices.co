@@ -13,7 +13,6 @@ const Hero = () => {
         pb: 10,
         alignItems: "center",
         width: "100%",
-        background: "linear-gradient(to right bottom, #B7FFA6 0%, #FCFEF3 80%)",
       }}
     >
       {/* lg */}
