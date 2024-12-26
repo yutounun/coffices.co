@@ -39,10 +39,12 @@ const Store = ({
         paddingLeft: "0 !important",
         ":hover": {
           cursor: "pointer",
-          transform: "scale(1.05)",
+          "@media (min-width:900px)": {
+            transform: "scale(1.05)",
+            backgroundColor: "#E7ECE7",
+          },
           transition: "transform 0.2s ease-in-out",
           zIndex: 1,
-          backgroundColor: "#E7ECE7",
           borderRadius: "10px",
         },
       }}
