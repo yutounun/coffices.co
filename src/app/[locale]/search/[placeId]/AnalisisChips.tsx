@@ -14,19 +14,11 @@ const CustomChip = ({
   condition: boolean;
 }) => {
   return (
-    <Chip
-      icon={icon}
-      label={label}
-      color={condition ? "primary" : "default"}
-      sx={{
-        color: condition ? "#fff" : "#000",
-      }}
-    />
+    <Chip icon={icon} label={label} color={condition ? "primary" : "default"} />
   );
 };
 
 const AnalisisCards = ({ detailInfo }: { detailInfo?: CafeAnalysisI }) => {
-  console.log("🚀 ~ AnalisisCards ~ detailInfo:", detailInfo);
   return (
     <Stack
       direction="row"

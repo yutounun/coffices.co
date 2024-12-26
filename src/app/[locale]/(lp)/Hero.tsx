@@ -76,7 +76,7 @@ const Hero = () => {
           sx={{
             boxShadow: 0,
             borderRadius: 10,
-            ":hover": { boxShadow: 1, backgroundColor: "neutral.200" },
+            ":hover": { boxShadow: 1, backgroundColor: "primary.300" },
           }}
         >
           Free Trial with Beta
