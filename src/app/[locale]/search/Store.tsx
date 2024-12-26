@@ -41,7 +41,7 @@ const Store = ({
           cursor: "pointer",
           "@media (min-width:900px)": {
             transform: "scale(1.05)",
-            backgroundColor: "#E7ECE7",
+            backgroundColor: "neutral.200",
           },
           transition: "transform 0.2s ease-in-out",
           zIndex: 1,

@@ -83,7 +83,8 @@ const StoresClient = ({ initialCafes, location }: StoresClientProps) => {
           sx={{
             flexGrow: 1,
             flexBasis: 0,
-            width: "100%",
+            pr: "1%",
+            pb: "1%",
           }}
         >
           <GoogleMap />
