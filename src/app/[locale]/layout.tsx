@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/ResponsiveAppBar";
-import { Noto_Sans_JP } from "next/font/google";
+import { Lato } from "next/font/google"; // Lato をインポート
 import Snackbar from "@/components/ui/Snackbar";
 import QueryClientProviderComponent from "@/contexts/QueryClientProviderComponent";
 import { Box, CssBaseline } from "@mui/material";
 
-const notojp = Noto_Sans_JP({
-  weight: ["400", "500"],
+// Lato フォント設定
+const lato = Lato({
+  weight: ["400", "700"],
   subsets: ["latin"],
   display: "swap",
 });
@@ -26,7 +27,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang={locale}>
-      <body className={notojp.className}>
+      <body className={lato.className}>
+        {" "}
         <QueryClientProviderComponent>
           <CssBaseline />
           <Header />

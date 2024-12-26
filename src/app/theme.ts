@@ -171,7 +171,7 @@ let theme = createTheme({
       },
     },
     caption: {
-      fontFamily: "Latos",
+      fontFamily: "Lato",
       fontSize: "0.5rem",
       lineHeight: 1.5,
       color: "rgb(0,0,0,62%)",
@@ -180,13 +180,13 @@ let theme = createTheme({
       },
     },
     body1: {
-      fontFamily: "Latos",
+      fontFamily: "Lato",
       fontSize: "0.9rem",
       lineHeight: 1.63,
       color: "rgb(0,0,0,62%)",
     },
     body2: {
-      fontFamily: "Latos",
+      fontFamily: "Lato",
       fontSize: "0.7rem",
       lineHeight: 1.63,
       color: "rgb(0,0,0,62%)",
@@ -195,7 +195,7 @@ let theme = createTheme({
       },
     },
     button: {
-      fontFamily: "Latos",
+      fontFamily: "Lato",
       fontSize: "0.9rem",
       fontWeight: "normal",
       lineHeight: 1.63,
