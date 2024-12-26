@@ -11,24 +11,6 @@ const OverView = ({ cafeDetail }: { cafeDetail?: CafeDetailI }) => {
       {/* Title */}
       <Typography variant="h1">{cafeDetail?.name}</Typography>
 
-      {/* Area */}
-      <Stack direction="row" gap={1} sx={{ alignItems: "center" }}>
-        <Typography variant="body1">{cafeDetail?.formatted_address}</Typography>
-        <Link
-          href={`https://www.google.com/maps/search/?api=1&query=${cafeDetail?.name}`}
-          target="_blank"
-          style={{
-            height: "20px",
-            width: "20px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <Image src="/detail/map.svg" alt="map" width={20} height={20} />
-        </Link>
-      </Stack>
-
       {/* Rating */}
       <Stack direction="row" gap={1}>
         <Rating
