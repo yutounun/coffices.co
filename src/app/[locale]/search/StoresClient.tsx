@@ -1,11 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Box, Stack, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 import GoogleMap from "@/components/ui/GoogleMap";
 import Stores from "./CafeList";
 import { searchCafeOnGoogle } from "@/utils/api";
 import { CafeDetailI } from "@/types/GooglePlacesTypes";
+import Loading from "../loading";
 
 interface StoresClientProps {
   initialCafes: CafeDetailI[];
@@ -14,12 +15,6 @@ interface StoresClientProps {
 
 const StoresClient = ({ initialCafes, location }: StoresClientProps) => {
   const [cafes, setCafes] = useState(initialCafes);
-
-  // Access the MUI theme
-  const theme = useTheme();
-
-  // Check if the screen size is below the `md` breakpoint
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   // If location is not provided, get user's location on client side
   useEffect(() => {
@@ -52,9 +47,13 @@ const StoresClient = ({ initialCafes, location }: StoresClientProps) => {
     }
   }, [location]);
 
+  if (cafes.length === 0) {
+    return <Loading />;
+  }
+
   return (
     <Stack
-      direction={isMobile ? "column" : "row"}
+      direction={{ xs: "column", md: "row" }}
       sx={{
         height: { xs: "auto", md: "90vh" },
         width: "100%",
@@ -62,34 +61,32 @@ const StoresClient = ({ initialCafes, location }: StoresClientProps) => {
       }}
     >
       {/* Display Map first on Mobile */}
-      {isMobile && (
-        <Box
-          sx={{
-            flexGrow: 1,
-            flexBasis: 0,
-            width: "100%",
-          }}
-        >
-          <GoogleMap />
-        </Box>
-      )}
+      <Box
+        sx={{
+          display: { xs: "block", md: "none" },
+          flexGrow: 1,
+          flexBasis: 0,
+          width: "100%",
+        }}
+      >
+        <GoogleMap />
+      </Box>
 
       {/* Cafe List */}
       <Stores cafeList={cafes} location={location} />
 
       {/* Display map after the list on desktop */}
-      {!isMobile && (
-        <Box
-          sx={{
-            flexGrow: 1,
-            flexBasis: 0,
-            pr: "1%",
-            pb: "1%",
-          }}
-        >
-          <GoogleMap />
-        </Box>
-      )}
+      <Box
+        sx={{
+          display: { xs: "none", md: "block" },
+          flexGrow: 1,
+          flexBasis: 0,
+          pr: "1%",
+          pb: "1%",
+        }}
+      >
+        <GoogleMap />
+      </Box>
     </Stack>
   );
 };

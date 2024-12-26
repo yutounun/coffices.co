@@ -28,7 +28,7 @@ const Reviews = () => {
           overflowX: "auto",
           width: "100%",
           gap: 2,
-          // px: 2,
+          py: 1,
           "&::-webkit-scrollbar": {
             display: "none",
           },
