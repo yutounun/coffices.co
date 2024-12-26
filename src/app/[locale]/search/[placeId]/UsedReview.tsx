@@ -10,7 +10,7 @@ const UsedReview = ({ review, index }: { review: string; index: number }) => {
         px: 4,
         py: 2,
         backgroundColor: "white",
-        width: 20,
+        width: { xs: "80%", md: "45%" },
         boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.1)",
         borderRadius: 2,
         height: "fit-content",
