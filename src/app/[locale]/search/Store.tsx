@@ -82,7 +82,8 @@ const Store = ({
           <Stack
             direction="row"
             sx={{
-              p: { xs: 2, md: 1 },
+              p: { xs: 0, md: 1 },
+              pl: { xs: 1, md: 0 },
               height: "auto",
               justifyContent: "between",
               alignItems: "center",
@@ -90,7 +91,7 @@ const Store = ({
             }}
           >
             <Stack sx={{ width: "100%" }}>
-              <Typography variant="h5">{name}</Typography>
+              <Typography variant="h4">{name}</Typography>
               <Stack direction="row" sx={{ alignItems: "center" }} gap={0.3}>
                 {/* <Stars rate={rating || 0} size={{ xs: "small", md: "large" }} /> */}
                 <Rating
@@ -100,16 +101,16 @@ const Store = ({
                   readOnly
                 />
                 <Typography variant="body1">{rating}</Typography>
-                <Typography variant="body2">({useRatingsTotal})</Typography>
+                <Typography variant="body1">({useRatingsTotal})</Typography>
               </Stack>
-              <Typography variant="body2">
+              <Typography variant="body1">
                 {`${formatted_address.split(",")[0]}, ${
                   formatted_address.split(",")[1]
                 }`}
               </Typography>
             </Stack>
             <Box sx={{ display: { xs: "flex", md: "none" } }}>
-              <ArrowForwardIosIcon />
+              <ArrowForwardIosIcon sx={{ color: "#1F2937" }} />
             </Box>
           </Stack>
         </Stack>
