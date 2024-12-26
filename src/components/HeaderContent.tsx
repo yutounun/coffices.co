@@ -20,7 +20,6 @@ import { usePathname } from "next/navigation";
 
 const HeaderContent = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const pathname = usePathname();
 
   const toggleDrawer = (open: any) => (event: any) => {
     if (

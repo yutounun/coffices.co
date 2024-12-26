@@ -53,9 +53,9 @@ const UserActions = ({}) => {
           {t("menus.signout")}
         </Typography> 
       </Button>*/}
-      <IconButton onClick={handleOpenProfile} sx={{ p: 0 }}>
+      {/* <IconButton onClick={handleOpenProfile} sx={{ p: 0 }}>
         <AccountCircleIcon sx={{ color: "white" }} />
-      </IconButton>
+      </IconButton> */}
     </Stack>
   );
 };
