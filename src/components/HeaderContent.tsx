@@ -49,10 +49,12 @@ const HeaderContent = () => {
         {/* Logo */}
         <Link href="/">
           <Stack direction="row" alignItems="center">
-            <Image src="/logo/newLogo.png" alt="logo" width={80} height={80} />
-            <Typography variant="h3" sx={{ color: "primary.500" }}>
-              Coffice
-            </Typography>
+            <Image
+              src="/logo/coffices.png"
+              alt="logo"
+              width={100}
+              height={40}
+            />
           </Stack>
         </Link>
 
