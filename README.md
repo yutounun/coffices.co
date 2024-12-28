@@ -1,6 +1,7 @@
 # Coffices.co ☕💻  
 Your ultimate tool for finding work-friendly cafes with reliable WiFi, power outlets, and a productive atmosphere.
-![coffices portfolio](https://github.com/user-attachments/assets/c21e109e-9e62-4ebb-a5d6-d2b0c4011e5a)
+![Cover (9)](https://github.com/user-attachments/assets/d6b7d276-e5aa-465a-a4c1-af4b99a4848b)
+
 
 ---
 
