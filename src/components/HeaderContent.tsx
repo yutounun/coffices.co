@@ -1,38 +1,17 @@
 "use client";
 import { useState } from "react";
 import MyLocationIcon from "@mui/icons-material/MyLocation";
-import {
-  Stack,
-  Drawer,
-  IconButton,
-  Box,
-  Tooltip,
-  Typography,
-} from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
+import { Stack, IconButton, Tooltip } from "@mui/material";
 import Image from "next/image";
-import NavBar from "@/components/ui/NavBar";
-import UserActions from "@/components/ui/UserActions";
-import LanguageToggle from "@/components/ui/LanguageToggle";
 import SearchBar from "#/[locale]/search/SearchBar";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import BurgerMenu from "./BurgerMenu";
 
 const HeaderContent = () => {
-  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-  const toggleDrawer = (open: any) => (event: any) => {
-    if (
-      event.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
-    ) {
-      return;
-    }
-    setDrawerOpen(open);
-  };
-
-  const closeDrawer = () => {
-    setDrawerOpen(false);
+  const toggleDrawer = () => {
+    setIsDrawerOpen(!isDrawerOpen);
   };
 
   return (
@@ -47,46 +26,22 @@ const HeaderContent = () => {
         }}
       >
         {/* Logo */}
-        <Link href="/">
-          <Stack direction="row" alignItems="center">
+        <Stack direction="row" alignItems="center">
+          <Link href="/">
             <Image
               src="/logo/coffices.png"
               alt="logo"
               width={100}
               height={40}
             />
-          </Stack>
-        </Link>
+          </Link>
+        </Stack>
 
         {/* Burger Menu for xs */}
-        <Box
-          sx={{
-            display: { xs: "flex", md: "none" },
-            flexGrow: 1,
-            justifyContent: "flex-end",
-          }}
-        >
-          <IconButton edge="start" onClick={toggleDrawer(true)} sx={{ ml: 2 }}>
-            <MenuIcon />
-          </IconButton>
-          <Drawer
-            anchor="right"
-            open={drawerOpen}
-            onClose={toggleDrawer(false)}
-            sx={{ width: 250 }}
-          >
-            <Box sx={{ width: 250, py: 2, px: 1 }}>
-              <Stack direction="column" spacing={2} sx={{ p: 2 }}>
-                <LanguageToggle onClose={closeDrawer} />
-                <NavBar onClose={closeDrawer} />
-                <SearchBar />
-              </Stack>
-            </Box>
-          </Drawer>
-        </Box>
+        <BurgerMenu isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer} />
       </Stack>
 
-      {/* Language Switch, NavBar, Search for md */}
+      {/* Language Switch, NavBar, Search for md+ */}
       <Stack direction="row" sx={{ flexGrow: 0, alignItems: "center" }} gap={2}>
         <Stack
           direction="row"
@@ -102,12 +57,9 @@ const HeaderContent = () => {
               <MyLocationIcon fontSize="small" sx={{ color: "neutral.700" }} />
             </IconButton>
           </Tooltip>
-
-          {/* <NavBar /> */}
-
           <SearchBar />
         </Stack>
-        <UserActions />
+        {/* <UserActions /> */}
       </Stack>
     </>
   );

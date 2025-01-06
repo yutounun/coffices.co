@@ -22,8 +22,6 @@ const Store = ({
   useRatingsTotal?: number;
   rating?: number;
 }) => {
-  const showIcons = process.env.NEXT_PUBLIC_SHOW_DETAIL_INFO_ON_LIST;
-
   // Don't show the store if there is an error fetching the details
 
   return (
@@ -104,9 +102,8 @@ const Store = ({
                 <Typography variant="body1">({useRatingsTotal})</Typography>
               </Stack>
               <Typography variant="body1">
-                {`${formatted_address.split(",")[0]}, ${
-                  formatted_address.split(",")[1]
-                }`}
+                {`${formatted_address.split(",")[0]}, ${formatted_address.split(",")[1]
+                  }`}
               </Typography>
             </Stack>
             <Box sx={{ display: { xs: "flex", md: "none" } }}>
